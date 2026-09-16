@@ -67,7 +67,7 @@ h1 em { color: var(--warm); font-family: Georgia, serif; font-weight: 400; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
 .section-heading h2, .method h2 { margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: 1; letter-spacing: -.05em; }
 .result-count { margin: 0; color: var(--muted); font-size: 14px; }
-.filters { display: grid; grid-template-columns: 1.6fr repeat(7, minmax(115px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.filters { display: grid; grid-template-columns: 1.6fr repeat(8, minmax(110px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .filters label { display: flex; flex-direction: column; min-width: 0; padding: 11px 14px; background: var(--panel); }
 .filters label span { margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .filters input, .filters select { width: 100%; padding: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; }
@@ -88,6 +88,12 @@ h1 em { color: var(--warm); font-family: Georgia, serif; font-weight: 400; }
 .year-badge { color: var(--warm); font-family: Georgia, serif; font-size: 28px; }
 .vehicle-title { margin: 0; font-size: 18px; letter-spacing: -.02em; }
 .vehicle-meta, .meta { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+.timing { max-width: 360px; }
+.sale-state { display: inline-block; margin-bottom: 7px; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.state-for-sale, .state-live-auction { border-color: #58773d; color: #cbe99a; }
+.state-live-auction { background: rgba(215,255,104,.07); }
+.state-sold { border-color: #596c83; color: #b9d8f5; }
+.state-bid-not-met, .state-auction-ended { border-color: #806c46; color: var(--warm); }
 .metric { display: flex; flex-direction: column; }
 .metric strong { font-size: 16px; }
 .metric span { margin-top: 4px; color: var(--muted); font-size: 11px; }
