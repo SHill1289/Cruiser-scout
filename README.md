@@ -1,22 +1,28 @@
 # LX470 Finder
 
-A private, automated US listing database for **2006–2007 Lexus LX470s**, continued from the LX470 Finder conversations.
+A private, automated US listing database for **2006â€“2007 Lexus LX470s**, continued from the LX470 Finder conversations.
 
 ## Start here
 
-- **[Browse current inventory](INVENTORY.md)** — readable prices, mileage, sellers and listing links.
-- **[Master vehicles](data/lx470_master.csv)** — one vehicle per valid VIN, with all source URLs.
-- **[Active retail listings](data/retail_listings.csv)** — advertised retail inventory.
-- **[Auctions and salvage](data/auction_salvage_listings.csv)** — separate from retail asking prices.
-- **[Listing history](data/listing_history.csv)** — new listings, price/detail changes, removal and reappearance.
-- **[Source health](data/source_health.json)** — shows errors and partial coverage.
-- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** — choose **Run workflow** on GitHub.
+- **[Browse current inventory](INVENTORY.md)** â€” readable prices, mileage, sellers and listing links.
+- **[Master vehicles](data/lx470_master.csv)** â€” one vehicle per valid VIN, with all source URLs.
+- **[Active retail listings](data/retail_listings.csv)** â€” advertised retail inventory.
+- **[Auctions and salvage](data/auction_salvage_listings.csv)** â€” separate from retail asking prices.
+- **[Listing history](data/listing_history.csv)** â€” new listings, price/detail changes, removal and reappearance.
+- **[Source health](data/source_health.json)** â€” shows errors and partial coverage.
+- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** â€” choose **Run workflow** on GitHub.
 
 ## Automatic updates
 
 GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
 
 GitHub schedules can be delayed; this is a daily research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+## Web dashboard on Vercel
+
+The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing only current clean-title candidates. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
+
+In Vercel, import this GitHub repository and click **Deploy**. The included `vercel.json` selects the `web` folder, so no framework, build command or environment variables are required. The repository can remain private; the deployed dashboard is public.
 
 ## Coverage
 
@@ -47,7 +53,7 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 
 ## Add a listing from another source
 
-Create a JSON file under `imports/` using GitHub's **Add file → Create new file**, then commit it. Use a stable source listing ID. The workflow will import it once; edit the file when you have a new observation. Replaying an unchanged file does not reset `last_seen`.
+Create a JSON file under `imports/` using GitHub's **Add file â†’ Create new file**, then commit it. Use a stable source listing ID. The workflow will import it once; edit the file when you have a new observation. Replaying an unchanged file does not reset `last_seen`.
 
 ```json
 [
@@ -87,3 +93,4 @@ python src/finder.py --offline
 Configuration: `sources/config.json`. Tests cover VIN validation, duplicate/history handling, removal/reappearance, incomplete-source protection, mileage conflicts, imports and parser fixtures. If a website changes, repair its parser against a new public-page sample before re-enabling it. Never replace source errors with an empty successful snapshot.
 
 This repository does not contact sellers, send messages, or place bids.
+

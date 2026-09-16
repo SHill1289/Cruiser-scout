@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current 2006â€“2007 Lexus LX470 clean-title candidates from nationwide listing searches.">
+  <meta name="theme-color" content="#101714">
+  <title>LX470 Finder</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="shell nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="LX470 Finder home">
+        <span class="brand-mark" aria-hidden="true">LX</span>
+        <span>LX470 Finder</span>
+      </a>
+      <a class="nav-link" href="#method">How screening works</a>
+    </nav>
+    <div class="shell hero-grid" id="top">
+      <div>
+        <p class="eyebrow">Nationwide listing tracker</p>
+        <h1>Find the right<br><em>LX470.</em></h1>
+        <p class="lede">A focused, automatically refreshed search for 2006â€“2007 Lexus LX470s with clean-title indicators.</p>
+      </div>
+      <div class="hero-panel" aria-label="Inventory update status">
+        <div class="status-line"><span class="pulse" aria-hidden="true"></span> Daily search active</div>
+        <p class="updated" id="updated">Loading latest inventoryâ€¦</p>
+        <div class="hero-stats">
+          <div><strong id="total-count">â€”</strong><span>Listings</span></div>
+          <div><strong id="year-count">â€”</strong><span>Model years</span></div>
+          <div><strong id="source-count">â€”</strong><span>Sources</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="notice" aria-labelledby="notice-title">
+      <span class="shield" aria-hidden="true">âœ“</span>
+      <div>
+        <h2 id="notice-title">Clean-title candidates</h2>
+        <p id="disclaimer">Listings are screened for title-history signals. Always verify the title before purchasing.</p>
+      </div>
+    </section>
+
+    <section class="inventory" aria-labelledby="inventory-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Current inventory</p>
+          <h2 id="inventory-title">Trucks worth a closer look</h2>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite">Loadingâ€¦</p>
+      </div>
+
+      <form class="filters" id="filters" aria-label="Filter inventory">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="City, seller, VINâ€¦" autocomplete="off">
+        </label>
+        <label><span>Year</span><select id="year"><option value="">All years</option><option>2006</option><option>2007</option></select></label>
+        <label><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
+        <label><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">One owner</option><option value="other">Multiple / unknown</option></select></label>
+        <label><span>Accidents</span><select id="accidents"><option value="">All accident histories</option><option value="none">No reported accidents</option><option value="other">Reported / unknown</option></select></label>
+        <label><span>Max price</span><select id="price"><option value="">Any price</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option><option value="30000">$30,000</option><option value="40000">$40,000</option></select></label>
+        <label><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
+        <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="newest">Recently found</option><option value="year-desc">Newest model year</option></select></label>
+        <button class="reset" id="reset" type="reset">Reset filters</button>
+      </form>
+
+      <div class="summary-strip" id="summary-strip" hidden>
+        <div><span>Median asking price</span><strong id="median-price">â€”</strong></div>
+        <div><span>Median mileage</span><strong id="median-mileage">â€”</strong></div>
+        <div><span>No reported accidents</span><strong id="clean-count">â€”</strong></div>
+      </div>
+
+      <div class="listings" id="listings" aria-live="polite" aria-busy="true"></div>
+      <div class="empty" id="empty" hidden>
+        <h3>No listings match those filters.</h3>
+        <p>Try widening the price, mileage or history selections.</p>
+        <button type="button" id="empty-reset">Show all listings</button>
+      </div>
+    </section>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div>
+        <p class="eyebrow">Buyer due diligence</p>
+        <h2 id="method-title">Screened carefully.<br>Verified by you.</h2>
+      </div>
+      <div class="method-copy">
+        <p>The tracker excludes listings with reported salvage, lemon, frame-damage or theft history. It also records available owner and accident information.</p>
+        <ol>
+          <li><span>01</span>Open the original listing and confirm it is still available.</li>
+          <li><span>02</span>Run the VIN through NMVTIS or CARFAX.</li>
+          <li><span>03</span>Match the report to the physical title and arrange an inspection.</li>
+        </ol>
+        <details>
+          <summary>View source status</summary>
+          <div id="source-health" class="source-health"></div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>LX470 Finder</p>
+    <p>Research aid only Â· Updated automatically each day</p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
+

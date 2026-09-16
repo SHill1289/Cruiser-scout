@@ -114,6 +114,24 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(saved['listings']['test:1']['last_seen'], NOW)
             self.assertEqual(len(saved['history']), 1)
 
+    def test_web_inventory_contains_only_clean_title_candidates(self):
+        with temporary_workspace() as folder:
+            root = Path(folder)
+            (root / 'sources').mkdir()
+            (root / 'imports').mkdir()
+            (root / 'sources/config.json').write_text('{"sources": []}')
+            clean = {**self.row, 'source_listing_id': 'clean',
+                     'title_status': 'clean-title candidate'}
+            unknown = {**self.row, 'source_listing_id': 'unknown',
+                       'listing_url': 'https://example.com/car/2',
+                       'title_status': 'unknown'}
+            (root / 'imports/one.json').write_text(json.dumps([clean, unknown]))
+            run(root, live=False)
+            public = json.loads((root / 'web/inventory.json').read_text())
+            self.assertEqual(public['summary']['active_listings'], 1)
+            self.assertEqual([row['listing_key'] for row in public['listings']], ['test:clean'])
+            self.assertNotIn('notes', public['listings'][0])
+
 
 class ParserTests(unittest.TestCase):
     def clean_fixture(self):
@@ -194,3 +212,4 @@ class ParserTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

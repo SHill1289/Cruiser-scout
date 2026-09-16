@@ -66,7 +66,7 @@ def normalize(raw):
     row = {k: raw.get(k, "") for k in FIELDS}
     row["year"] = int(raw["year"])
     if row["year"] not in (2006, 2007):
-        raise ValueError("Only 2006–2007 vehicles are accepted")
+        raise ValueError("Only 2006â€“2007 vehicles are accepted")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("make", "Lexus")).lower()) != "lexus":
         raise ValueError("Wrong make")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("model", "LX470")).lower()) != "lx470":
@@ -215,7 +215,7 @@ def parse_bat(page, url, now):
     title = plain(title_match[1]) if title_match else ""
     match = re.search(r"\b(2006|2007) Lexus LX\s?470\b", title, re.I)
     if not match:
-        raise ValueError("Not a 2006–2007 LX470 auction")
+        raise ValueError("Not a 2006â€“2007 LX470 auction")
     # Limit extraction to the listing summary, never site strings or user comments.
     intro = re.search(r'<div class="listing-intro[\s\S]*', page)
     if not intro:
@@ -353,6 +353,8 @@ def master_rows(state):
 def save(root, state, health, changes):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
+    web = root / "web"
+    web.mkdir(parents=True, exist_ok=True)
     rows = sorted(state["listings"].values(), key=lambda r: r["listing_key"])
     active = [r for r in rows if r["status"] == "active" and clean_title_candidate(r)]
     excluded = [r for r in rows if r["status"] == "active" and not clean_title_candidate(r)]
@@ -371,8 +373,30 @@ def save(root, state, health, changes):
         temp = data / (filename + ".tmp")
         temp.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         temp.replace(data / filename)
+    public_fields = [
+        "listing_key", "vin", "year", "source", "listing_url", "category",
+        "asking_price", "base_price", "current_bid", "currency", "mileage",
+        "mileage_is_approximate", "city", "state", "seller", "seller_type",
+        "exterior_color", "interior_color", "title_status", "accident_history",
+        "owners", "auction_ends_at", "first_seen", "last_seen", "quality_flags",
+    ]
+    public_inventory = {
+        "generated_at": state["updated_at"],
+        "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
+        "summary": {
+            "vehicles": len(master),
+            "active_listings": len(active),
+            "retail": sum(r["category"] == "retail" for r in active),
+            "auctions": sum(r["category"] != "retail" for r in active),
+        },
+        "source_health": health,
+        "listings": [{key: row.get(key) for key in public_fields} for row in active],
+    }
+    temp = web / "inventory.json.tmp"
+    temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    temp.replace(web / "inventory.json")
     report = ["# LX470 inventory", "", f"Last run: {state['updated_at']}", "",
-              f"**{len(master)} distinct vehicles · {len(outputs['active_listings.csv'])} active listings · {len(changes)} changes this run**", "",
+              f"**{len(master)} distinct vehicles Â· {len(outputs['active_listings.csv'])} active listings Â· {len(changes)} changes this run**", "",
               "Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.", "",
               "## Source health", "", "| Source | Result | Detail |", "|---|---|---|"]
     escape = lambda v: html.escape(str(v or "")).replace("|", "&#124;").replace("\n", " ")
@@ -446,3 +470,4 @@ if __name__ == "__main__":
     parser.add_argument("--offline", action="store_true", help="Import local JSON and regenerate exports without network requests")
     args = parser.parse_args()
     sys.exit(run(live=not args.offline))
+
