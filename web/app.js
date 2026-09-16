@@ -14,15 +14,30 @@ const ui = {
 let inventory = [];
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "year", "color", "owners", "accidents", "price", "mileage", "sort"]
+const controls = ["search", "status", "year", "color", "owners", "accidents", "price", "mileage", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 
 function value(row, key) { return row[key] ?? ""; }
-function listingPrice(row) { return row.asking_price ?? row.current_bid ?? null; }
+function saleState(row) {
+  if (row.status === "sold") return "sold";
+  if (row.category === "auction" && row.status === "active") return "live-auction";
+  if (row.category === "auction" && row.status === "ended" && row.current_bid != null) return "bid-not-met";
+  if (row.category === "auction" && row.status === "ended") return "auction-ended";
+  if (row.status === "active") return "for-sale";
+  return "other";
+}
+function saleStateLabel(row) {
+  return ({ "for-sale": "For sale", "live-auction": "Live auction", sold: "Sold",
+    "bid-not-met": "Bid not met", "auction-ended": "Auction ended", other: "Status unknown" })[saleState(row)];
+}
+function listingPrice(row) { return row.sold_price ?? row.asking_price ?? row.current_bid ?? null; }
 function priceLabel(row) {
   const amount = listingPrice(row);
   if (amount == null) return "Price unavailable";
-  return `${money.format(amount)}${row.current_bid != null && row.asking_price == null ? " current bid" : ""}`;
+  if (row.status === "sold") return `${money.format(amount)} sold`;
+  if (row.category === "auction" && row.status === "ended") return `${money.format(amount)} high bid`;
+  if (row.category === "auction") return `${money.format(amount)} current bid`;
+  return money.format(amount);
 }
 function median(numbers) {
   const values = numbers.filter(Number.isFinite).sort((a, b) => a - b);
@@ -59,6 +74,18 @@ function formatDate(raw) {
   const date = new Date(raw);
   return `Updated ${date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })} at ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZoneName: "short" })}`;
 }
+function formatMoment(raw) {
+  if (!raw) return "time unavailable";
+  const date = new Date(raw);
+  return `${date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}, ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZoneName: "short" })}`;
+}
+function statusTiming(row) {
+  if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} Â· bid observed ${formatMoment(row.bid_observed_at)}`;
+  if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} Â· high bid observed ${formatMoment(row.bid_observed_at)}`;
+  if (saleState(row) === "auction-ended") return `Auction ended ${formatMoment(row.auction_ends_at)}`;
+  if (saleState(row) === "sold") return `Sale recorded ${formatMoment(row.last_seen)}`;
+  return `Last seen for sale ${formatMoment(row.last_seen)}`;
+}
 
 function renderCard(row) {
   const card = document.createElement("article");
@@ -66,12 +93,14 @@ function renderCard(row) {
   card.append(text("div", "year-badge", String(row.year)));
 
   const identity = text("div", "identity", "");
+  identity.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
   identity.append(text("h3", "vehicle-title", `${row.exterior_color || "Color unknown"} Lexus LX470`));
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
+  identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
   card.append(identity);
 
-  card.append(makeMetric(priceLabel(row), row.category === "auction" ? "Auction" : "Asking price"));
+  card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));
   card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, row.interior_color || "Interior unknown"));
 
   const history = text("div", "history", "");
@@ -98,6 +127,7 @@ function matches(row) {
   const amount = listingPrice(row);
   return (!query || haystack.includes(query))
     && (!controls.year.value || String(row.year) === controls.year.value)
+    && (!controls.status.value || saleState(row) === controls.status.value)
     && (!controls.color.value || row.exterior_color === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || (controls.accidents.value === "none" ? row.accident_history === "No reported accidents" : row.accident_history !== "No reported accidents"))
