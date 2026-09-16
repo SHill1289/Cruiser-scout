@@ -1,6 +1,6 @@
 [
   {
-    "observed_at": "2026-09-16T21:51:23+00:00",
+    "observed_at": "2026-09-16T21:55:29+00:00",
     "event": "updated",
     "listing_key": "bringatrailer:2006-lexus-lx470-81",
     "vehicle_key": "vin:JTJHT00W964015853",
@@ -36,8 +36,8 @@
     "auction_ends_at": "",
     "bid_observed_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
-    "last_seen": "2026-09-16T21:51:23+00:00",
-    "last_checked": "2026-09-16T21:51:23+00:00",
+    "last_seen": "2026-09-16T21:55:29+00:00",
+    "last_checked": "2026-09-16T21:55:29+00:00",
     "missing_checks": 0,
     "quality_flags": "",
     "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."
