@@ -25,7 +25,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "seller", "seller_type", "exterior_color", "interior_color", "title_status",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market",
-          "auction_ends_at", "first_seen", "last_seen", "last_checked", "missing_checks",
+          "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 STATUSES = {"active", "sold", "ended", "removed", "unknown"}
 CARGURUS_CLEAN_CRITERIA = {
@@ -230,13 +230,14 @@ def parse_bat(page, url, now):
     vin = re.search(r"Chassis:\s*([A-HJ-NPR-Z0-9]{17})", details_text)
     miles = re.search(r"\b([\d,.]+)(k)? Miles\b", details_text, re.I)
     current = re.search(r"Current Bid:\s*(?:USD\s*)?\$([\d,]+)", text)
+    ended_bid = re.search(r"Bid to\s*(?:USD\s*)?\$([\d,]+)", text, re.I)
     sold = re.search(r"Sold for\s*(?:USD\s*)?\$([\d,]+)", text)
     end = re.search(r'data-until="(\d+)"', summary_html)
     ends_at = datetime.fromtimestamp(int(end[1]), timezone.utc).isoformat() if end else ""
     if sold:
         status = "sold"
-    elif current and ends_at and datetime.fromisoformat(ends_at) > datetime.fromisoformat(now):
-        status = "active"
+    elif current and ends_at:
+        status = "active" if datetime.fromisoformat(ends_at) > datetime.fromisoformat(now) else "ended"
     elif re.search(r"Bid to\s*(?:USD\s*)?\$|Reserve not met|Auction ended", text, re.I):
         status = "ended"
     else:
@@ -256,8 +257,10 @@ def parse_bat(page, url, now):
         accidents = "Unknown"
     row = {"source": "bringatrailer", "source_listing_id": url.rstrip('/').split('/')[-1],
            "year": int(match[1]), "listing_url": url, "vin": vin[1] if vin else "",
-           "category": "auction", "status": status, "current_bid": current[1] if current else None,
+           "category": "auction", "status": status,
+           "current_bid": (current or ended_bid)[1] if (current or ended_bid) and not sold else None,
            "sold_price": sold[1] if sold else None, "auction_ends_at": ends_at,
+           "bid_observed_at": now if (current or ended_bid) and not sold else "",
            "mileage": number(miles[1]) * (1000 if miles[2] else 1) if miles else None,
            "mileage_is_approximate": bool(miles and miles[2]),
            "seller_type": "private" if "Private Party or Dealer : Private Party" in text else "unknown",
@@ -336,7 +339,7 @@ def update(state, rows, now, scopes=()):
         if previous:
             persistent = set(previous.get("quality_flags", "").split(";")) & {"mileage_decreased", "listing_vin_changed"}
             row["quality_flags"] = ";".join(sorted(set(filter(None, row["quality_flags"].split(";"))) | persistent))
-        compare_keys = [k for k in FIELDS if k not in {"first_seen", "last_seen", "last_checked", "missing_checks", "source_days_on_market"}]
+        compare_keys = [k for k in FIELDS if k not in {"first_seen", "last_seen", "last_checked", "missing_checks", "source_days_on_market", "bid_observed_at"}]
         changed = not previous or any(previous.get(k) != row.get(k) for k in compare_keys)
         listings[key] = row
         if changed:
@@ -413,13 +416,14 @@ def save(root, state, health, changes):
         temp.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         temp.replace(data / filename)
     public_fields = [
-        "listing_key", "vin", "year", "source", "listing_url", "category",
-        "asking_price", "base_price", "current_bid", "currency", "mileage",
+        "listing_key", "vin", "year", "source", "listing_url", "status", "category",
+        "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "seller", "seller_type",
         "exterior_color", "interior_color", "title_status", "accident_history",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
-        "auction_ends_at", "first_seen", "last_seen", "quality_flags",
+        "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "quality_flags",
     ]
+    public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
@@ -428,9 +432,11 @@ def save(root, state, health, changes):
             "active_listings": len(active),
             "retail": sum(r["category"] == "retail" for r in active),
             "auctions": sum(r["category"] != "retail" for r in active),
+            "sold": sum(r["status"] == "sold" for r in public_rows),
+            "ended_auctions": sum(r["status"] == "ended" and r["category"] == "auction" for r in public_rows),
         },
         "source_health": health,
-        "listings": [{key: row.get(key) for key in public_fields} for row in active],
+        "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
     }
     temp = web / "inventory.json.tmp"
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
