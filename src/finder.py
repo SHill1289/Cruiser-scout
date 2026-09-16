@@ -388,9 +388,12 @@ def enrich_vehicle_history(root, state, client, max_new_reports, now):
     path = root / "data/vehicle_history_cache.json"
     cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "reports": {}}
     reports = cache.setdefault("reports", {})
+    override_path = root / "overrides/vehicle_history.json"
+    overrides = json.loads(override_path.read_text(encoding="utf-8")) if override_path.exists() else {}
+    overridden_vins = {str(vin).upper().strip() for vin in overrides}
     vins = sorted({row.get("vin", "") for row in state.get("listings", {}).values()
                    if row.get("status") == "active" and clean_title_candidate(row)
-                   and valid_vin(row.get("vin", ""))})
+                   and valid_vin(row.get("vin", "")) and row.get("vin", "") not in overridden_vins})
     ordered = 0
     errors = []
     for vin in vins:
