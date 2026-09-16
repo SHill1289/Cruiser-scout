@@ -1,1 +1,56 @@
-[{"source":"cargurus-2006","status":"ok","detail":"15 parsed of 15; nationwide. Additional pages are not crawled.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"cargurus-2007","status":"ok","detail":"6 parsed of 6; nationwide. Additional pages are not crawled.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"bringatrailer","status":"ok","detail":"1 auction pages parsed. Index coverage only; not a complete auction archive. ","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"carfax","status":"manual_only","detail":"Direct automated request returned HTTP 403 during setup. Import verified observations manually.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"cars.com","status":"manual_only","detail":"Direct automated request returned HTTP 403 during setup. Import verified observations manually.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"edmunds","status":"manual_only","detail":"Direct automated request returned HTTP 403 during setup. Import verified observations manually.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"autotrader","status":"manual_only","detail":"No validated collector yet; manual imports supported.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"copart","status":"manual_only","detail":"No validated collector yet; manual auction/salvage imports supported.","checked_at":"2026-09-15T21:37:06+00:00"},{"source":"iseecars","status":"manual_only","detail":"No validated collector yet; manual imports supported.","checked_at":"2026-09-15T21:37:06+00:00"}]
+[
+  {
+    "source": "cargurus-2006",
+    "status": "ok",
+    "detail": "16 parsed of 16; nationwide. Additional pages are not crawled.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "cargurus-2007",
+    "status": "ok",
+    "detail": "7 parsed of 7; nationwide. Additional pages are not crawled.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "bringatrailer",
+    "status": "ok",
+    "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "carfax",
+    "status": "manual_only",
+    "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "cars.com",
+    "status": "manual_only",
+    "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "edmunds",
+    "status": "manual_only",
+    "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "autotrader",
+    "status": "manual_only",
+    "detail": "No validated collector yet; manual imports supported.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "copart",
+    "status": "manual_only",
+    "detail": "No validated collector yet; manual auction/salvage imports supported.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  },
+  {
+    "source": "iseecars",
+    "status": "manual_only",
+    "detail": "No validated collector yet; manual imports supported.",
+    "checked_at": "2026-09-16T12:48:04+00:00"
+  }
+]
