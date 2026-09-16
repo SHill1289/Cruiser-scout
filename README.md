@@ -28,7 +28,7 @@ In Vercel, import this GitHub repository and click **Deploy**. The included `ver
 
 | Source | Automatic coverage |
 |---|---|
-| CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. Supplemental searches identify single-owner and no-reported-accident listings. Search-result data only. |
+| CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. A supplemental search identifies no-reported-accident candidates. Owner counts remain unverified because search-result data does not include the count. |
 | Bring a Trailer | Matching auctions exposed on the LX470 index, plus rechecks of previously tracked active/unknown auctions. Only listings that explicitly say the title is clean appear in current inventory. Not a full historical archive. |
 | CARFAX, Cars.com, Edmunds | Direct requests returned HTTP 403 during setup; manual imports supported. |
 | Autotrader, iSeeCars, Copart | Manual imports supported; no validated automatic collector yet. |
@@ -41,7 +41,7 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - Every listing retains its own source, seller, asking price or auction bid, URL and dates. `database.json` is the authoritative state; CSVs and `INVENTORY.md` are generated views.
 - `active` means advertised at `last_seen`, not seller-confirmed availability. `last_checked` may be later than `last_seen`.
 - Current inventory contains only **clean-title candidates**. CarGurus must report no salvage, lemon, frame-damage or theft history. Bring a Trailer must explicitly describe a clean title. Because marketplace filters are not an official title record, confirm every candidate with NMVTIS/CARFAX and the physical title before purchase. Other active observations remain in `data/excluded_listings.csv` for audit.
-- Exterior color, interior color, owner category and accident history appear in the readable inventory and CSV exports. CarGurus identifies single-owner listings; all others are recorded as `Multiple or unknown`. Accident history is `No reported accidents` only when the listing appears in the source's no-accident results.
+- Exterior color, interior color, owner category and accident history appear in the readable inventory and CSV exports. CarGurus owner counts are recorded as `Unverified` because its search result does not provide a count and its single-owner filter produced a result whose detail page reported three owners. Accident history is `No reported accidents` only when the listing appears in the source's no-accident results.
 - Three complete CarGurus searches without a listing mark it `removed`, **never sold**. Failed/partial searches do not count as absence. Only explicit source/import evidence sets `sold`; an auction ending without a sale is `ended` or `unknown`.
 - `first_seen` is the date this database first observed a listing, not its original publication date. `source_days_on_market` is retained separately.
 - History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.

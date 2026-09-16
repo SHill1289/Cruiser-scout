@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T13:46:59+00:00",
+  "generated_at": "2026-09-16T13:56:17+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 19,
@@ -12,55 +12,55 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "14 parsed of 14; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "4 parsed of 4; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-16T13:46:59+00:00"
+      "checked_at": "2026-09-16T13:01:56+00:00"
     }
   ],
   "listings": [
@@ -73,7 +73,7 @@
       "category": "auction",
       "asking_price": null,
       "base_price": null,
-      "current_bid": 5100,
+      "current_bid": 5000,
       "currency": "USD",
       "mileage": 209000,
       "mileage_is_approximate": true,
@@ -88,7 +88,7 @@
       "owners": "Unknown",
       "auction_ends_at": "2026-09-16T18:58:00+00:00",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -112,10 +112,10 @@
       "interior_color": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -139,10 +139,10 @@
       "interior_color": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -166,10 +166,10 @@
       "interior_color": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -193,10 +193,10 @@
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -220,10 +220,10 @@
       "interior_color": "White (Ivory leather)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -247,10 +247,10 @@
       "interior_color": "Off-white",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -274,10 +274,10 @@
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -301,10 +301,10 @@
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -328,10 +328,10 @@
       "interior_color": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -355,10 +355,10 @@
       "interior_color": "Stone",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -382,10 +382,10 @@
       "interior_color": "White (Ivory leather)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -409,10 +409,10 @@
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -436,10 +436,10 @@
       "interior_color": "Brown (Tan)",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -463,10 +463,10 @@
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -490,10 +490,10 @@
       "interior_color": "Brown (Tan)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -517,10 +517,10 @@
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "Multiple or unknown",
+      "owners": "Unverified",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -544,10 +544,10 @@
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
-      "first_seen": "2026-09-16T12:48:04+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "first_seen": "2026-09-16T13:00:38+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     },
     {
@@ -571,11 +571,12 @@
       "interior_color": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
-      "owners": "1",
+      "owners": "Unverified",
       "auction_ends_at": "",
-      "first_seen": "2026-09-16T12:48:04+00:00",
-      "last_seen": "2026-09-16T13:46:59+00:00",
+      "first_seen": "2026-09-16T13:00:38+00:00",
+      "last_seen": "2026-09-16T13:01:56+00:00",
       "quality_flags": ""
     }
   ]
 }
+

@@ -1,7 +1,7 @@
 {
   "sources": [
-    {"id":"cargurus-2006","type":"cargurus","enabled":true,"year":2006,"url":"https://www.cargurus.com/Cars/l-Used-2006-Lexus-LX-470-4WD-t101283?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true","single_owner_url":"https://www.cargurus.com/Cars/l-Used-2006-Lexus-LX-470-4WD-t101283?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&hideMultipleOwners=true","no_accidents_url":"https://www.cargurus.com/Cars/l-Used-2006-Lexus-LX-470-4WD-t101283?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0"},
-    {"id":"cargurus-2007","type":"cargurus","enabled":true,"year":2007,"url":"https://www.cargurus.com/Cars/l-Used-2007-Lexus-LX-470-4WD-t101282?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true","single_owner_url":"https://www.cargurus.com/Cars/l-Used-2007-Lexus-LX-470-4WD-t101282?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&hideMultipleOwners=true","no_accidents_url":"https://www.cargurus.com/Cars/l-Used-2007-Lexus-LX-470-4WD-t101282?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0"},
+    {"id":"cargurus-2006","type":"cargurus","enabled":true,"year":2006,"url":"https://www.cargurus.com/Cars/l-Used-2006-Lexus-LX-470-4WD-t101283?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true","no_accidents_url":"https://www.cargurus.com/Cars/l-Used-2006-Lexus-LX-470-4WD-t101283?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0"},
+    {"id":"cargurus-2007","type":"cargurus","enabled":true,"year":2007,"url":"https://www.cargurus.com/Cars/l-Used-2007-Lexus-LX-470-4WD-t101282?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true","no_accidents_url":"https://www.cargurus.com/Cars/l-Used-2007-Lexus-LX-470-4WD-t101282?distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0"},
     {"id":"bringatrailer","type":"bringatrailer","enabled":true,"url":"https://bringatrailer.com/lexus/lx470/"},
     {"id":"carfax","enabled":false,"reason":"Direct automated request returned HTTP 403 during setup. Import verified observations manually."},
     {"id":"cars.com","enabled":false,"reason":"Direct automated request returned HTTP 403 during setup. Import verified observations manually."},
@@ -11,3 +11,4 @@
     {"id":"iseecars","enabled":false,"reason":"No validated collector yet; manual imports supported."}
   ]
 }
+

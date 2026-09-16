@@ -8,7 +8,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
-                    cargurus_listing_ids, clean_title_candidate, csv_text, run, valid_vin)
+                    cargurus_listing_ids, clean_title_candidate, csv_text,
+                    remove_unverified_cargurus_owner_inferences, run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -143,7 +144,7 @@ class ParserTests(unittest.TestCase):
     def test_live_structure_fixture(self):
         context = self.clean_fixture()
         page = 'window.__remixContext = ' + json.dumps(context) + ';'
-        rows, complete, total = parse_cargurus(page, 2006, {'458480534'}, {'458480534'})
+        rows, complete, total = parse_cargurus(page, 2006, {'458480534'})
         self.assertEqual(len(rows), 15)
         self.assertEqual(total, 15)
         self.assertTrue(complete)
@@ -152,7 +153,7 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['base_price'], 21988)
         self.assertEqual(target['exterior_color'], 'Black Onyx')
         self.assertEqual(target['interior_color'], 'Gray')
-        self.assertEqual(target['owners'], '1')
+        self.assertEqual(target['owners'], 'Unverified')
         self.assertEqual(target['accident_history'], 'No reported accidents')
         self.assertTrue(clean_title_candidate(target))
 
@@ -166,6 +167,13 @@ class ParserTests(unittest.TestCase):
         context = json.loads((Path(__file__).parent / 'fixtures/cargurus.json').read_text())
         with self.assertRaises(ValueError):
             parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+
+    def test_cargurus_owner_filter_inferences_are_removed(self):
+        state = {'listings': {'cargurus:1': {**listing(), 'source': 'cargurus', 'owners': '1'}},
+                 'history': [{**listing(), 'source': 'cargurus', 'owners': 'Multiple or unknown'}]}
+        remove_unverified_cargurus_owner_inferences(state)
+        self.assertEqual(state['listings']['cargurus:1']['owners'], 'Unverified')
+        self.assertEqual(state['history'][0]['owners'], 'Unverified')
 
     def test_history_subset_must_be_complete_and_filtered(self):
         context = self.clean_fixture()

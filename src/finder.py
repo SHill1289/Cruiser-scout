@@ -165,9 +165,8 @@ def cargurus_listing_ids(page, year, extra_criteria):
     return ids
 
 
-def parse_cargurus(page, year, single_owner_ids=None, no_accident_ids=None):
+def parse_cargurus(page, year, no_accident_ids=None):
     search = cargurus_search(page, year)
-    single_owner_ids = single_owner_ids or set()
     no_accident_ids = no_accident_ids or set()
     rows = {}
     for tile in search["tiles"]:
@@ -193,7 +192,7 @@ def parse_cargurus(page, year, single_owner_ids=None, no_accident_ids=None):
             "interior_color": d.get("interiorColorData", {}).get("localized", ""),
             "title_status": "clean-title candidate",
             "accident_history": "No reported accidents" if listing_id in no_accident_ids else "Accident reported or history unavailable",
-            "owners": "1" if listing_id in single_owner_ids else "Multiple or unknown",
+            "owners": "Unverified",
             "source_days_on_market": d.get("daysOnMarket", ""),
             "notes": "CarGurus clean-history filters exclude reported salvage, lemon, frame-damage and theft history. This is a clean-title candidate, not a legal title guarantee; verify through NMVTIS/CARFAX and the physical title. Asking price includes listed fees when supplied; taxes/shipping may be extra.",
         })
@@ -272,6 +271,13 @@ def parse_bat(page, url, now):
 
 def clean_title_candidate(row):
     return row.get("title_status") in {"clean-title candidate", "clean title"}
+
+
+def remove_unverified_cargurus_owner_inferences(state):
+    """Discard owner counts inferred from a search filter instead of listing evidence."""
+    for row in list(state.get("listings", {}).values()) + list(state.get("history", [])):
+        if row.get("source") == "cargurus":
+            row["owners"] = "Unverified"
 
 
 def update(state, rows, now, scopes=()):
@@ -415,6 +421,7 @@ def save(root, state, health, changes):
 def run(root=ROOT, live=True):
     path = root / "data/database.json"
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "listings": {}, "history": [], "imports": []}
+    remove_unverified_cargurus_owner_inferences(state)
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))
     fetcher = Fetcher()
@@ -425,9 +432,8 @@ def run(root=ROOT, live=True):
                 continue
             try:
                 if source["type"] == "cargurus":
-                    owner_ids = cargurus_listing_ids(fetcher.get(source["single_owner_url"]), source["year"], {"hideMultipleOwners": True})
                     no_accident_ids = cargurus_listing_ids(fetcher.get(source["no_accidents_url"]), source["year"], {"maxAccidents": 0})
-                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], owner_ids, no_accident_ids)
+                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], no_accident_ids)
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"]))

@@ -41,6 +41,19 @@ function makeMetric(main, label) {
   node.append(text("strong", "", main), text("span", "", label));
   return node;
 }
+function ownerGroup(row) {
+  const owners = String(row.owners || "").trim();
+  if (owners === "1") return "1";
+  if (/^[2-9]\d*$/.test(owners) || /multiple/i.test(owners)) return "multiple";
+  return "unknown";
+}
+function ownerLabel(row) {
+  const owners = String(row.owners || "").trim();
+  if (owners === "1") return "1 owner";
+  if (/^[2-9]\d*$/.test(owners)) return `${owners} owners`;
+  if (/multiple/i.test(owners)) return "Multiple owners";
+  return "Owners unverified";
+}
 function formatDate(raw) {
   if (!raw) return "Update time unavailable";
   const date = new Date(raw);
@@ -62,8 +75,7 @@ function renderCard(row) {
   card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, row.interior_color || "Interior unknown"));
 
   const history = text("div", "history", "");
-  const owner = row.owners === "1" ? "1 owner" : (row.owners || "Owners unknown");
-  history.append(text("span", row.owners === "1" ? "tag good" : "tag", owner));
+  history.append(text("span", ownerGroup(row) === "1" ? "tag good" : "tag", ownerLabel(row)));
   history.append(text("span", row.accident_history === "No reported accidents" ? "tag good" : "tag", row.accident_history || "History unknown"));
   card.append(history);
 
@@ -83,7 +95,7 @@ function matches(row) {
   return (!query || haystack.includes(query))
     && (!controls.year.value || String(row.year) === controls.year.value)
     && (!controls.color.value || row.exterior_color === controls.color.value)
-    && (!controls.owners.value || (controls.owners.value === "1" ? row.owners === "1" : row.owners !== "1"))
+    && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || (controls.accidents.value === "none" ? row.accident_history === "No reported accidents" : row.accident_history !== "No reported accidents"))
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
     && (!controls.mileage.value || (row.mileage != null && row.mileage <= Number(controls.mileage.value)));
