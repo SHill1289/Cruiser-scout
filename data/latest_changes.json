@@ -1,6 +1,6 @@
 [
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "updated",
     "listing_key": "bringatrailer:2006-lexus-lx470-81",
     "vehicle_key": "vin:JTJHT00W964015853",
@@ -27,19 +27,22 @@
     "title_status": "clean title",
     "accident_history": "No accident on history report; seller discloses prior accident",
     "owners": "Unknown",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": "",
     "service_records": "",
     "rust_notes": "",
     "source_days_on_market": "",
     "auction_ends_at": "2026-09-16T18:58:00+00:00",
     "first_seen": "2026-09-15T21:33:45+00:00",
-    "last_seen": "2026-09-16T13:59:50+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_seen": "2026-09-16T14:12:59+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 0,
     "quality_flags": "",
     "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."
   },
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "removed",
     "listing_key": "cargurus:457366701",
     "vehicle_key": "vin:JTJHT00W164007178",
@@ -72,13 +75,16 @@
     "auction_ends_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
     "last_seen": "2026-09-15T21:37:06+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 3,
     "quality_flags": "",
-    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters."
+    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": ""
   },
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "removed",
     "listing_key": "cargurus:424075972",
     "vehicle_key": "vin:JTJHT00W164003504",
@@ -111,13 +117,16 @@
     "auction_ends_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
     "last_seen": "2026-09-15T21:37:06+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 3,
     "quality_flags": "",
-    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters."
+    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": ""
   },
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "removed",
     "listing_key": "cargurus:455067462",
     "vehicle_key": "vin:JTJHT00W774026416",
@@ -150,13 +159,16 @@
     "auction_ends_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
     "last_seen": "2026-09-15T21:37:06+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 3,
     "quality_flags": "",
-    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters."
+    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": ""
   },
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "removed",
     "listing_key": "cargurus:441951954",
     "vehicle_key": "vin:JTJHT00W074020943",
@@ -189,13 +201,16 @@
     "auction_ends_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
     "last_seen": "2026-09-15T21:37:06+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 3,
     "quality_flags": "",
-    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters."
+    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": ""
   },
   {
-    "observed_at": "2026-09-16T13:59:50+00:00",
+    "observed_at": "2026-09-16T14:12:59+00:00",
     "event": "removed",
     "listing_key": "cargurus:457612690",
     "vehicle_key": "vin:JTJHT00W974021959",
@@ -228,9 +243,12 @@
     "auction_ends_at": "",
     "first_seen": "2026-09-15T21:33:45+00:00",
     "last_seen": "2026-09-15T21:37:06+00:00",
-    "last_checked": "2026-09-16T13:59:50+00:00",
+    "last_checked": "2026-09-16T14:12:59+00:00",
     "missing_checks": 3,
     "quality_flags": "",
-    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters."
+    "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+    "owners_source": "",
+    "owners_verified_at": "",
+    "owner_evidence_url": ""
   }
 ]
