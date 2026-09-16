@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T18:04:11+00:00",
+  "generated_at": "2026-09-16T19:07:47+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 19,
@@ -12,55 +12,55 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "14 parsed of 14; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "4 parsed of 4; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-16T18:04:11+00:00"
+      "checked_at": "2026-09-16T19:07:47+00:00"
     }
   ],
   "listings": [
@@ -73,7 +73,7 @@
       "category": "auction",
       "asking_price": null,
       "base_price": null,
-      "current_bid": 5800,
+      "current_bid": 12500,
       "currency": "USD",
       "mileage": 209000,
       "mileage_is_approximate": true,
@@ -89,9 +89,9 @@
       "owners_source": "",
       "owners_verified_at": "",
       "owner_evidence_url": "",
-      "auction_ends_at": "2026-09-16T18:58:00+00:00",
+      "auction_ends_at": "2026-09-16T19:09:26+00:00",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -121,7 +121,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -151,7 +151,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -181,7 +181,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -211,7 +211,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -241,7 +241,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -271,7 +271,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -301,7 +301,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -331,7 +331,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -361,7 +361,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -391,7 +391,7 @@
       "owner_evidence_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457366712",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -421,7 +421,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -451,7 +451,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -481,7 +481,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -511,7 +511,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -541,7 +541,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -571,7 +571,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -601,7 +601,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     },
     {
@@ -631,7 +631,7 @@
       "owner_evidence_url": "",
       "auction_ends_at": "",
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-16T18:04:11+00:00",
+      "last_seen": "2026-09-16T19:07:47+00:00",
       "quality_flags": ""
     }
   ]
