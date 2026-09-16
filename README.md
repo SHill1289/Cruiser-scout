@@ -1,2 +1,87 @@
-# lx470-finder
-Automated database of 2006–2007 Lexus LX470 listings for sale
+# LX470 Finder
+
+A private, automated US listing database for **2006–2007 Lexus LX470s**, continued from the LX470 Finder conversations.
+
+## Start here
+
+- **[Browse current inventory](INVENTORY.md)** — readable prices, mileage, sellers and listing links.
+- **[Master vehicles](data/lx470_master.csv)** — one vehicle per valid VIN, with all source URLs.
+- **[Active retail listings](data/retail_listings.csv)** — advertised retail inventory.
+- **[Auctions and salvage](data/auction_salvage_listings.csv)** — separate from retail asking prices.
+- **[Listing history](data/listing_history.csv)** — new listings, price/detail changes, removal and reappearance.
+- **[Source health](data/source_health.json)** — shows errors and partial coverage.
+- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** — choose **Run workflow** on GitHub.
+
+## Automatic updates
+
+GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
+
+GitHub schedules can be delayed; this is a daily research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+## Coverage
+
+| Source | Automatic coverage |
+|---|---|
+| CarGurus | Nationwide searches for each year, with explicit distance/year validation. Search-result data only. |
+| Bring a Trailer | Matching auctions exposed on the LX470 index, plus rechecks of previously tracked active/unknown auctions. Not a full historical archive. |
+| CARFAX, Cars.com, Edmunds | Direct requests returned HTTP 403 during setup; manual imports supported. |
+| Autotrader, iSeeCars, Copart | Manual imports supported; no validated automatic collector yet. |
+
+This is not every LX470 for sale nationwide. CarGurus pagination is deliberately not crawled: multi-page or count-mismatched responses are reported as partial and cannot remove vehicles. Collectors respect robots.txt, use an identifiable user agent, wait between requests and do not bypass access blocks. A source can behave differently on GitHub's servers; check the first Actions run and source health.
+
+## What the database means
+
+- A checksum-valid VIN with matching LX470 prefix/year joins listings across sources. Missing/invalid VINs stay separate using source and listing ID; fuzzy matching never silently merges trucks.
+- Every listing retains its own source, seller, asking price or auction bid, URL and dates. `database.json` is the authoritative state; CSVs and `INVENTORY.md` are generated views.
+- `active` means advertised at `last_seen`, not seller-confirmed availability. `last_checked` may be later than `last_seen`.
+- Three complete CarGurus searches without a listing mark it `removed`, **never sold**. Failed/partial searches do not count as absence. Only explicit source/import evidence sets `sold`; an auction ending without a sale is `ended` or `unknown`.
+- `first_seen` is the date this database first observed a listing, not its original publication date. `source_days_on_market` is retained separately.
+- History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.
+- Unknown title, accident, service, owner and rust information stays unknown. An accident report does not by itself mean salvage title. Retail does not mean verified clean title. Auction membership does not mean salvage.
+- Auction bids and sold prices are separate from retail asking prices. Rounded auction mileage is flagged approximate. USD is used by these US collectors.
+- A mileage decrease or conflicting active-source mileage is flagged for review. The master row selects the most recently seen active listing; use individual listings/history for comparisons rather than interpreting its price as a market valuation.
+- The earlier conversation's leads are preserved in [prior leads](data/prior_leads.csv), separately from verified observations. Its duplicated VIN/mileage claims are not imported into current inventory.
+- No Finder Score or rust inference is invented. Inspection/service evidence is needed to rank condition confidently.
+
+## Add a listing from another source
+
+Create a JSON file under `imports/` using GitHub's **Add file → Create new file**, then commit it. Use a stable source listing ID. The workflow will import it once; edit the file when you have a new observation. Replaying an unchanged file does not reset `last_seen`.
+
+```json
+[
+  {
+    "source": "manual-dealer",
+    "source_listing_id": "REPLACE-WITH-STOCK-ID",
+    "listing_url": "https://example.com/replace-with-real-listing",
+    "year": 2007,
+    "make": "Lexus",
+    "model": "LX470",
+    "vin": "",
+    "status": "active",
+    "category": "retail",
+    "asking_price": null,
+    "mileage": null,
+    "seller": "",
+    "city": "",
+    "state": "",
+    "title_status": "unknown",
+    "notes": "Record the evidence and when you checked the listing."
+  }
+]
+```
+
+The example is not a real listing. Replace its values before importing. Allowed statuses: `active`, `sold`, `ended`, `removed`, `unknown`; categories: `retail`, `auction`, `salvage`. Mark auction/salvage correctly and use `current_bid`/`sold_price` instead of `asking_price` where appropriate. Imports are stamped when processed; use this for newly checked observations, not undated historical backfills.
+
+## Local use and maintenance
+
+Python 3.12+; no third-party packages.
+
+```sh
+python -m unittest discover -s tests -v
+python src/finder.py
+python src/finder.py --offline
+```
+
+Configuration: `sources/config.json`. Tests cover VIN validation, duplicate/history handling, removal/reappearance, incomplete-source protection, mileage conflicts, imports and parser fixtures. If a website changes, repair its parser against a new public-page sample before re-enabling it. Never replace source errors with an empty successful snapshot.
+
+This repository does not contact sellers, send messages, or place bids.
