@@ -62,10 +62,6 @@ jobs:
       - name: Collect and update history
         id: collect
         continue-on-error: true
-        env:
-          VEHICLES_API_KEY: ${{ secrets.VEHICLES_API_KEY }}
-          VEHICLES_HISTORY_ENABLED: ${{ vars.VEHICLES_HISTORY_ENABLED || 'false' }}
-          VEHICLES_HISTORY_MAX_NEW_REPORTS_PER_RUN: ${{ vars.VEHICLES_HISTORY_MAX_NEW_REPORTS_PER_RUN || '0' }}
         run: python src/finder.py
       - name: Save data and source health
         if: always() && steps.collect.outcome != 'skipped'
