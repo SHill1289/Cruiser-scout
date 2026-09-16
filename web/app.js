@@ -94,7 +94,9 @@ function renderCard(row) {
 
   const identity = text("div", "identity", "");
   identity.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
-  identity.append(text("h3", "vehicle-title", `${row.exterior_color || "Color unknown"} Lexus LX470`));
+  const title = text("h3", "vehicle-title", `${row.exterior_color || "Color unknown"} Lexus `);
+  title.append(text("span", "model-wordmark", "LX470"));
+  identity.append(title);
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
   identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
