@@ -101,6 +101,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add overrides/vehicle_history.json data/ web/inventory.json INVENTORY.md
+          if git diff --cached --quiet; then
+            echo 'That verified owner count is already current.'
+            exit 0
+          fi
           git commit -m "Verify owner count for $VIN"
           git push origin HEAD:main
 
