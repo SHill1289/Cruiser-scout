@@ -1,0 +1,106 @@
+name: Verify owner count (free)
+
+on:
+  workflow_dispatch:
+    inputs:
+      vin:
+        description: '17-character VIN shown on the listing'
+        required: true
+        type: string
+      owner_count:
+        description: 'Owner count displayed by the listing'
+        required: true
+        type: string
+      evidence_url:
+        description: 'HTTPS listing page where you saw the count'
+        required: true
+        type: string
+      evidence_source:
+        description: 'Source name'
+        required: true
+        default: 'CarGurus listing detail'
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lx470-refs/heads/main
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      VIN: ${{ inputs.vin }}
+      OWNER_COUNT: ${{ inputs.owner_count }}
+      EVIDENCE_URL: ${{ inputs.evidence_url }}
+      EVIDENCE_SOURCE: ${{ inputs.evidence_source }}
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and save the evidence
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.parse
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          sys.path.insert(0, 'src')
+          from finder import valid_vin
+
+          vin = os.environ['VIN'].strip().upper()
+          source = os.environ['EVIDENCE_SOURCE'].strip()
+          url = os.environ['EVIDENCE_URL'].strip()
+          try:
+              owners = int(os.environ['OWNER_COUNT'].strip())
+          except ValueError:
+              raise SystemExit('Owner count must be a whole number.')
+
+          if not valid_vin(vin):
+              raise SystemExit('VIN is not a valid 17-character VIN.')
+          if not 1 <= owners <= 20:
+              raise SystemExit('Owner count must be between 1 and 20.')
+          if not source or len(source) > 100 or any(c in source for c in '\r\n'):
+              raise SystemExit('Source name must be 1-100 characters on one line.')
+          parts = urllib.parse.urlsplit(url)
+          if parts.scheme != 'https' or not parts.hostname:
+              raise SystemExit('Evidence URL must be a complete HTTPS link.')
+
+          database = json.loads(Path('data/database.json').read_text(encoding='utf-8'))
+          if not any(row.get('vin') == vin for row in database.get('listings', {}).values()):
+              raise SystemExit('That VIN is not currently tracked by LX470 Finder.')
+
+          path = Path('overrides/vehicle_history.json')
+          overrides = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
+          overrides[vin] = {
+              'owners': owners,
+              'source': source,
+              'verified_at': datetime.now(timezone.utc).date().isoformat(),
+              'evidence_url': url,
+          }
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(dict(sorted(overrides.items())), indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Test and rebuild the inventory
+        run: |
+          python -m unittest discover -s tests -v
+          python src/finder.py --offline
+      - name: Publish the verified count
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add overrides/vehicle_history.json data/ web/inventory.json INVENTORY.md
+          git commit -m "Verify owner count for $VIN"
+          git push origin HEAD:main
+

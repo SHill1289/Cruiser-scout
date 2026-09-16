@@ -9,8 +9,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     apply_vehicle_history_overrides, cargurus_listing_ids,
-                    clean_title_candidate, csv_text, enrich_vehicle_history,
-                    owner_count_from_history,
+                    clean_title_candidate, csv_text,
                     remove_unverified_cargurus_owner_inferences, run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
@@ -153,76 +152,6 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(saved['owners'], '3')
             self.assertEqual(saved['owners_verified_at'], '2026-09-16')
             self.assertEqual(saved['owner_evidence_url'], self.row['listing_url'])
-
-    def test_vehicle_history_owner_count_requires_coverage(self):
-        result = {'metadata': {'vin': self.row['vin'], 'coverage': {'availableSections': ['ownership']}},
-                  'report': {'ownership': [{'ownerNumber': 1}, {'ownerNumber': 3}]}}
-        self.assertEqual(owner_count_from_history(result, self.row['vin']), 3)
-        result['metadata']['coverage']['availableSections'] = []
-        self.assertIsNone(owner_count_from_history(result, self.row['vin']))
-
-    def test_cached_vehicle_history_is_applied_without_new_purchase(self):
-        class FakeClient:
-            def __init__(self):
-                self.created = []
-
-            def create_report(self, vin):
-                self.created.append(vin)
-                return {'id': str(uuid.uuid4()), 'vin': vin, 'status': 'queued', 'hasResult': False}
-
-            def get_report(self, report_id):
-                return {'status': 'completed', 'hasResult': True}
-
-            def get_result(self, report_id):
-                return {'metadata': {'vin': self_vin, 'provider': 'test-provider',
-                                     'retrievedAt': '2026-09-16T12:00:00Z',
-                                     'coverage': {'availableSections': ['ownership']}},
-                        'report': {'ownership': [{'ownerNumber': 1}, {'ownerNumber': 3}]}}
-
-        self_vin = self.row['vin']
-        with temporary_workspace() as folder:
-            root = Path(folder)
-            (root / 'data').mkdir()
-            report_id = str(uuid.uuid4())
-            (root / 'data/vehicle_history_cache.json').write_text(json.dumps({
-                'version': 1, 'reports': {self_vin: {'report_id': report_id, 'status': 'queued'}}
-            }))
-            state = {'listings': {'test:1': {**self.row, 'title_status': 'clean-title candidate'}},
-                     'history': []}
-            client = FakeClient()
-            health = enrich_vehicle_history(root, state, client, 0, NOW)
-            self.assertEqual(state['listings']['test:1']['owners'], '3')
-            self.assertEqual(state['listings']['test:1']['owners_verified_at'], '2026-09-16')
-            self.assertEqual(client.created, [])
-            self.assertEqual(health['status'], 'ok')
-
-    def test_vehicle_history_purchase_limit_is_enforced(self):
-        class FakeClient:
-            def __init__(self):
-                self.created = []
-
-            def create_report(self, vin):
-                self.created.append(vin)
-                return {'id': str(uuid.uuid4()), 'vin': vin, 'status': 'queued', 'hasResult': False}
-
-        with temporary_workspace() as folder:
-            root = Path(folder)
-            (root / 'overrides').mkdir()
-            (root / 'overrides/vehicle_history.json').write_text(json.dumps({self.row['vin']: {
-                'owners': 3, 'source': 'manual', 'verified_at': '2026-09-16',
-                'evidence_url': self.row['listing_url']
-            }}))
-            second = {**self.row, 'source_listing_id': '2', 'listing_key': 'test:2',
-                      'vin': 'JTJHT00W864019828', 'vehicle_key': 'vin:JTJHT00W864019828'}
-            state = {'listings': {
-                'test:1': {**self.row, 'title_status': 'clean-title candidate'},
-                'test:2': {**second, 'title_status': 'clean-title candidate'},
-            }, 'history': []}
-            client = FakeClient()
-            enrich_vehicle_history(root, state, client, 1, NOW)
-            self.assertEqual(len(client.created), 1)
-            self.assertEqual(client.created[0], second['vin'])
-
 
 class ParserTests(unittest.TestCase):
     def clean_fixture(self):

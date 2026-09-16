@@ -14,7 +14,7 @@ A private, automated US listing database for **2006â€“2007 Lexus LX470s**, 
 
 ## Automatic updates
 
-GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. The listing search needs no paid service or external database. The workflow tests the code, collects listings and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
+GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
 
 GitHub schedules can be delayed; this is a daily research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
@@ -43,7 +43,6 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - Current inventory contains only **clean-title candidates**. CarGurus must report no salvage, lemon, frame-damage or theft history. Bring a Trailer must explicitly describe a clean title. Because marketplace filters are not an official title record, confirm every candidate with NMVTIS/CARFAX and the physical title before purchase. Other active observations remain in `data/excluded_listings.csv` for audit.
 - Exterior color, interior color, owner category and accident history appear in the readable inventory and CSV exports. CarGurus owner counts are recorded as `Unverified` because its search result does not provide a count and its single-owner filter produced a result whose detail page reported three owners. Accident history is `No reported accidents` only when the listing appears in the source's no-accident results.
 - Human-verified owner counts can be saved by VIN in `overrides/vehicle_history.json`. Each entry requires the count, evidence source, verification date and HTTPS evidence URL. These facts override the unverified search-result value on every refresh and remain auditable in Git.
-- Optional automatic owner counts use the Vehicles.dev asynchronous vehicle-history API. Reports are cached by VIN in `data/vehicle_history_cache.json`, so a completed report is reused instead of purchased again. Owner counts are accepted only when the response explicitly declares ownership coverage; missing coverage remains unverified. Manual overrides retain priority.
 - Three complete CarGurus searches without a listing mark it `removed`, **never sold**. Failed/partial searches do not count as absence. Only explicit source/import evidence sets `sold`; an auction ending without a sale is `ended` or `unknown`.
 - `first_seen` is the date this database first observed a listing, not its original publication date. `source_days_on_market` is retained separately.
 - History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.
@@ -94,16 +93,11 @@ python src/finder.py --offline
 
 Configuration: `sources/config.json`. Tests cover VIN validation, duplicate/history handling, removal/reappearance, incomplete-source protection, mileage conflicts, imports and parser fixtures. If a website changes, repair its parser against a new public-page sample before re-enabling it. Never replace source errors with an empty successful snapshot.
 
-### Optional automatic owner-history setup
+### Verify an owner count for free
 
-Vehicles.dev currently requires its **Pro plan ($299/month)** and charges **$1.99 for each successfully completed vehicle-history report**. The integration is disabled by default and orders zero reports unless both controls below are deliberately enabled. Pricing can change; confirm it in the provider's documentation before subscribing.
+When a listing page displays an owner count, open **Actions â†’ Verify owner count (free) â†’ Run workflow**. Enter the listing's VIN, displayed owner count, source name and listing URL. GitHub validates the values, records the evidence in `overrides/vehicle_history.json`, rebuilds the inventory and updates the Vercel data automatically.
 
-1. Create a Vehicles.dev product key with `reports:order` and `reports:read` access.
-2. Add it to the GitHub repository as an Actions secret named `VEHICLES_API_KEY`.
-3. Add an Actions variable named `VEHICLES_HISTORY_ENABLED` with value `true`.
-4. Add `VEHICLES_HISTORY_MAX_NEW_REPORTS_PER_RUN` with the maximum number of new VIN reports the daily run may buy. Pending and completed cached reports can still be checked when this value is `0`.
-
-The API key is sent only as a bearer header from GitHub Actions. It is never written to the repository, generated exports, workflow output or the public Vercel site. Use a small purchase limit for the first run, review `data/vehicle_history_cache.json`, then raise the limit only if the results are useful.
+This is intentionally evidence based. Free government VIN services provide specifications, recalls and limited theft/salvage checks, but do not provide an exact previous-owner count. Listings without visible owner-count evidence remain `Unverified` rather than receiving a guess.
 
 This repository does not contact sellers, send messages, or place bids.
 
