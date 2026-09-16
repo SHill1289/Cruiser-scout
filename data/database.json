@@ -866,10 +866,10 @@
       "interior_color": "Ivory Leather",
       "title_status": "clean title",
       "accident_history": "No accident on history report; seller discloses prior accident",
-      "owners": "Unknown",
-      "owners_source": "",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
+      "owners": "4",
+      "owners_source": "Bring a Trailer listing detail",
+      "owners_verified_at": "2026-09-16",
+      "owner_evidence_url": "https://bringatrailer.com/listing/2006-lexus-lx470-81/",
       "service_records": "",
       "rust_notes": "",
       "source_days_on_market": "",
@@ -3179,5 +3179,5 @@
     }
   ],
   "imports": [],
-  "updated_at": "2026-09-16T19:09:18+00:00"
+  "updated_at": "2026-09-16T19:21:29+00:00"
 }

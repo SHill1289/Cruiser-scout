@@ -1,4 +1,10 @@
 {
+  "JTJHT00W964015853": {
+    "owners": 4,
+    "source": "Bring a Trailer listing detail",
+    "verified_at": "2026-09-16",
+    "evidence_url": "https://bringatrailer.com/listing/2006-lexus-lx470-81/"
+  },
   "JTJHT00WX74023512": {
     "owners": 3,
     "source": "CarGurus listing detail",
@@ -6,4 +12,3 @@
     "evidence_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457366712"
   }
 }
-

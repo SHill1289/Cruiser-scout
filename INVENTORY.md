@@ -1,8 +1,8 @@
 # LX470 inventory
 
-Last run: 2026-09-16T19:09:18+00:00
+Last run: 2026-09-16T19:21:29+00:00
 
-**19 distinct vehicles Â· 19 active listings Â· 1 changes this run**
+**19 distinct vehicles Â· 19 active listings Â· 0 changes this run**
 
 Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.
 
@@ -47,6 +47,6 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 
 | Year | Status | Current bid USD | Sold price USD | Miles | Exterior | Interior | Owners | Accidents | Title | VIN | Listing |
 |---|---|---:|---:|---:|---|---|---|---|---|---|---|
-| 2006 | active | 13000 |  | 209000 | Black Onyx | Ivory Leather | Unknown | No accident on history report; seller discloses prior accident | clean title | JTJHT00W964015853 | [Open](https://bringatrailer.com/listing/2006-lexus-lx470-81/) |
+| 2006 | active | 13000 |  | 209000 | Black Onyx | Ivory Leather | 4 | No accident on history report; seller discloses prior accident | clean title | JTJHT00W964015853 | [Open](https://bringatrailer.com/listing/2006-lexus-lx470-81/) |
 
 0 active listings are retained for audit but excluded because clean-title eligibility was not established. See `data/excluded_listings.csv`.
