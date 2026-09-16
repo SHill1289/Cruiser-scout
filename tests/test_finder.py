@@ -207,6 +207,11 @@ class DatabaseTests(unittest.TestCase):
 
         with temporary_workspace() as folder:
             root = Path(folder)
+            (root / 'overrides').mkdir()
+            (root / 'overrides/vehicle_history.json').write_text(json.dumps({self.row['vin']: {
+                'owners': 3, 'source': 'manual', 'verified_at': '2026-09-16',
+                'evidence_url': self.row['listing_url']
+            }}))
             second = {**self.row, 'source_listing_id': '2', 'listing_key': 'test:2',
                       'vin': 'JTJHT00W864019828', 'vehicle_key': 'vin:JTJHT00W864019828'}
             state = {'listings': {
@@ -216,6 +221,7 @@ class DatabaseTests(unittest.TestCase):
             client = FakeClient()
             enrich_vehicle_history(root, state, client, 1, NOW)
             self.assertEqual(len(client.created), 1)
+            self.assertEqual(client.created[0], second['vin'])
 
 
 class ParserTests(unittest.TestCase):
