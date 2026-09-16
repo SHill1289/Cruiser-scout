@@ -7,7 +7,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from finder import normalize, update, master_rows, parse_cargurus, parse_bat, csv_text, run, valid_vin
+from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
+                    cargurus_listing_ids, clean_title_candidate, csv_text, run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -115,23 +116,48 @@ class DatabaseTests(unittest.TestCase):
 
 
 class ParserTests(unittest.TestCase):
+    def clean_fixture(self):
+        context = json.loads((Path(__file__).parent / 'fixtures/cargurus.json').read_text())
+        criteria = context['state']['loaderData']['route']['search']['appliedFilterCriteria']
+        criteria.update(hideLemon=True, hideFrameDamaged=True, hideSalvage=True, hideTheft=True)
+        return context
+
     def test_live_structure_fixture(self):
-        fixture = Path(__file__).parent / 'fixtures/cargurus.json'
-        context = json.loads(fixture.read_text())
+        context = self.clean_fixture()
         page = 'window.__remixContext = ' + json.dumps(context) + ';'
-        rows, complete, total = parse_cargurus(page, 2006)
+        rows, complete, total = parse_cargurus(page, 2006, {'458480534'}, {'458480534'})
         self.assertEqual(len(rows), 15)
         self.assertEqual(total, 15)
         self.assertTrue(complete)
         target = next(r for r in rows if r['vin'] == 'JTJHT00W464018109')
         self.assertEqual(target['asking_price'], 22777)
         self.assertEqual(target['base_price'], 21988)
+        self.assertEqual(target['exterior_color'], 'Black Onyx')
+        self.assertEqual(target['interior_color'], 'Gray')
+        self.assertEqual(target['owners'], '1')
+        self.assertEqual(target['accident_history'], 'No reported accidents')
+        self.assertTrue(clean_title_candidate(target))
 
     def test_partial_results_not_complete(self):
-        context = json.loads((Path(__file__).parent / 'fixtures/cargurus.json').read_text())
+        context = self.clean_fixture()
         context['state']['loaderData']['route']['search']['pageCount'] = 2
         _, complete, _ = parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
         self.assertFalse(complete)
+
+    def test_unfiltered_results_are_rejected(self):
+        context = json.loads((Path(__file__).parent / 'fixtures/cargurus.json').read_text())
+        with self.assertRaises(ValueError):
+            parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+
+    def test_history_subset_must_be_complete_and_filtered(self):
+        context = self.clean_fixture()
+        search = context['state']['loaderData']['route']['search']
+        search['appliedFilterCriteria']['hideMultipleOwners'] = True
+        page = 'window.__remixContext = ' + json.dumps(context)
+        self.assertEqual(len(cargurus_listing_ids(page, 2006, {'hideMultipleOwners': True})), 15)
+        search['pageCount'] = 2
+        with self.assertRaises(ValueError):
+            cargurus_listing_ids('window.__remixContext = ' + json.dumps(context), 2006, {'hideMultipleOwners': True})
 
     def test_blocked_html_raises(self):
         with self.assertRaises(ValueError):
@@ -155,10 +181,15 @@ class ParserTests(unittest.TestCase):
         self.assertIsNone(row['sold_price'])
 
     def test_bat_details_after_statistics(self):
-        page = '<h1>2006 Lexus LX470</h1><div class="listing-intro">Current Bid: USD $3,250 <span data-until="1789585080"></span><div class="listing-actions-stats"></div><strong>Listing Details</strong><ul><li>Chassis: <a>JTJHT00W964015853</a></li><li>209k Miles</li></ul>'
+        page = '<h1>2006 Lexus LX470</h1><div class="listing-intro">Current Bid: USD $3,250 <span data-until="1789585080"></span><div class="listing-actions-stats"></div><strong>Listing Details</strong><ul><li>Chassis: <a>JTJHT00W964015853</a></li><li>209k Miles</li><li>Black Onyx Paint</li><li>Ivory Leather Upholstery</li></ul><div class="post-excerpt"><p>Offered with an accident-free Carfax report and a clean New York title.</p></div>'
         row = parse_bat(page, 'https://bringatrailer.com/listing/2006-lexus-lx470-81/', NOW)
         self.assertEqual(row['vin'], 'JTJHT00W964015853')
         self.assertEqual(row['vehicle_key'], 'vin:JTJHT00W964015853')
+        self.assertEqual(row['exterior_color'], 'Black Onyx')
+        self.assertEqual(row['interior_color'], 'Ivory Leather')
+        self.assertEqual(row['accident_history'], 'No reported accidents')
+        self.assertEqual(row['title_status'], 'clean title')
+        self.assertTrue(clean_title_candidate(row))
 
 
 if __name__ == '__main__':

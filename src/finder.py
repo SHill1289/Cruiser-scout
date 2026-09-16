@@ -27,6 +27,12 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "auction_ends_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 STATUSES = {"active", "sold", "ended", "removed", "unknown"}
+CARGURUS_CLEAN_CRITERIA = {
+    "hideLemon": True,
+    "hideFrameDamaged": True,
+    "hideSalvage": True,
+    "hideTheft": True,
+}
 
 
 def utcnow():
@@ -130,7 +136,7 @@ class Fetcher:
             self.last[host] = time.monotonic()
 
 
-def parse_cargurus(page, year):
+def cargurus_search(page, year, extra_criteria=None):
     marker = re.search(r"window\.__remixContext\s*=\s*", page)
     if not marker:
         raise ValueError("CarGurus data missing; page may be blocked or its format changed")
@@ -143,6 +149,26 @@ def parse_cargurus(page, year):
     criteria = search["appliedFilterCriteria"]
     if criteria.get("distance", 0) < 50000 or criteria.get("startYear") != year or criteria.get("endYear") != year:
         raise ValueError("Source did not apply nationwide/year filters")
+    required = {**CARGURUS_CLEAN_CRITERIA, **(extra_criteria or {})}
+    if any(criteria.get(key) != value for key, value in required.items()):
+        raise ValueError("Source did not apply required clean-history filters")
+    return search
+
+
+def cargurus_listing_ids(page, year, extra_criteria):
+    search = cargurus_search(page, year, extra_criteria)
+    ids = {str(tile["data"]["id"]) for tile in search["tiles"]
+           if tile.get("type", "").startswith("LISTING_USED")}
+    complete = search.get("pageCount") == 1 and len(ids) == search.get("totalListings")
+    if not complete:
+        raise ValueError("Supplemental CarGurus history search was incomplete")
+    return ids
+
+
+def parse_cargurus(page, year, single_owner_ids=None, no_accident_ids=None):
+    search = cargurus_search(page, year)
+    single_owner_ids = single_owner_ids or set()
+    no_accident_ids = no_accident_ids or set()
     rows = {}
     for tile in search["tiles"]:
         if not tile.get("type", "").startswith("LISTING_USED"):
@@ -152,7 +178,8 @@ def parse_cargurus(page, year):
         if int(ontology.get("carYear", 0)) != year or ontology.get("makeName") != "Lexus" or ontology.get("modelName") != "LX" or not ontology.get("trimName", "").startswith("470"):
             continue
         seller, price = d.get("sellerData", {}), d.get("priceData", {})
-        rows[str(d["id"])] = normalize({
+        listing_id = str(d["id"])
+        rows[listing_id] = normalize({
             "source": "cargurus", "source_listing_id": d["id"], "year": year,
             "vin": d.get("vin", ""), "status": "active", "category": "retail",
             "listing_url": f'https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing={d["id"]}',
@@ -164,8 +191,11 @@ def parse_cargurus(page, year):
             "seller_type": "dealer" if seller.get("serviceProviderId") else "unknown",
             "exterior_color": d.get("exteriorColorData", {}).get("name", ""),
             "interior_color": d.get("interiorColorData", {}).get("localized", ""),
+            "title_status": "clean-title candidate",
+            "accident_history": "No reported accidents" if listing_id in no_accident_ids else "Accident reported or history unavailable",
+            "owners": "1" if listing_id in single_owner_ids else "Multiple or unknown",
             "source_days_on_market": d.get("daysOnMarket", ""),
-            "notes": "Source asking price includes listed fees when supplied; taxes/shipping may be extra. History and title not inferred from search filters.",
+            "notes": "CarGurus clean-history filters exclude reported salvage, lemon, frame-damage and theft history. This is a clean-title candidate, not a legal title guarantee; verify through NMVTIS/CARFAX and the physical title. Asking price includes listed fees when supplied; taxes/shipping may be extra.",
         })
         if d.get("mileageData", {}).get("unit") != "MILES":
             raise ValueError("Unexpected mileage units")
@@ -194,6 +224,9 @@ def parse_bat(page, url, now):
     text = plain(summary_html)
     details = re.search(r'<strong>Listing Details</strong>\s*<ul>(.*?)</ul>', page, re.S)
     details_text = plain(details[1]) if details else text
+    detail_items = [plain(item) for item in re.findall(r'<li\b[^>]*>(.*?)</li>', details[1], re.S)] if details else []
+    excerpt = re.search(r'<div class="post-excerpt"[^>]*>(.*?)</div>', page, re.S)
+    excerpt_text = plain(excerpt[1]) if excerpt else ""
     vin = re.search(r"Chassis:\s*([A-HJ-NPR-Z0-9]{17})", details_text)
     miles = re.search(r"\b([\d,.]+)(k)? Miles\b", details_text, re.I)
     current = re.search(r"Current Bid:\s*(?:USD\s*)?\$([\d,]+)", text)
@@ -208,6 +241,19 @@ def parse_bat(page, url, now):
         status = "ended"
     else:
         status = "unknown"
+    exterior_item = next((item for item in detail_items if item.endswith(" Paint")), "")
+    interior_item = next((item for item in detail_items if item.endswith(" Upholstery")), "")
+    clean_title = re.search(r"\bclean(?: [A-Za-z]+){0,3} title\b", excerpt_text, re.I)
+    accident_free = re.search(r"\baccident-free (?:Carfax|AutoCheck)(?: report)?\b", excerpt_text, re.I)
+    disclosed_accident = re.search(r"\b(?:seller[^.]{0,100})?(?:involved in|has|had) an accident\b", excerpt_text, re.I)
+    if accident_free and disclosed_accident:
+        accidents = "No accident on history report; seller discloses prior accident"
+    elif accident_free:
+        accidents = "No reported accidents"
+    elif disclosed_accident:
+        accidents = "Seller discloses prior accident"
+    else:
+        accidents = "Unknown"
     row = {"source": "bringatrailer", "source_listing_id": url.rstrip('/').split('/')[-1],
            "year": int(match[1]), "listing_url": url, "vin": vin[1] if vin else "",
            "category": "auction", "status": status, "current_bid": current[1] if current else None,
@@ -215,8 +261,17 @@ def parse_bat(page, url, now):
            "mileage": number(miles[1]) * (1000 if miles[2] else 1) if miles else None,
            "mileage_is_approximate": bool(miles and miles[2]),
            "seller_type": "private" if "Private Party or Dealer : Private Party" in text else "unknown",
-           "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Title/history require review of the listing."}
+           "exterior_color": exterior_item.removesuffix(" Paint"),
+           "interior_color": interior_item.removesuffix(" Upholstery"),
+           "title_status": "clean title" if clean_title else "unknown",
+           "accident_history": accidents,
+           "owners": "Unknown",
+           "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."}
     return normalize(row)
+
+
+def clean_title_candidate(row):
+    return row.get("title_status") in {"clean-title candidate", "clean title"}
 
 
 def update(state, rows, now, scopes=()):
@@ -299,13 +354,17 @@ def save(root, state, health, changes):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
     rows = sorted(state["listings"].values(), key=lambda r: r["listing_key"])
-    outputs = {"listings.csv": rows, "active_listings.csv": [r for r in rows if r["status"] == "active"],
-               "retail_listings.csv": [r for r in rows if r["status"] == "active" and r["category"] == "retail"],
-               "auction_salvage_listings.csv": [r for r in rows if r["category"] != "retail"],
+    active = [r for r in rows if r["status"] == "active" and clean_title_candidate(r)]
+    excluded = [r for r in rows if r["status"] == "active" and not clean_title_candidate(r)]
+    outputs = {"listings.csv": rows, "active_listings.csv": active,
+               "excluded_listings.csv": excluded,
+               "retail_listings.csv": [r for r in active if r["category"] == "retail"],
+               "auction_salvage_listings.csv": [r for r in active if r["category"] != "retail"],
                "sold_listings.csv": [r for r in rows if r["status"] == "sold"]}
     for filename, items in outputs.items():
         (data / filename).write_text(csv_text(items, FIELDS), encoding="utf-8")
-    master = master_rows(state)
+    eligible_keys = {r["vehicle_key"] for r in active}
+    master = [r for r in master_rows(state) if r["vehicle_key"] in eligible_keys]
     (data / "lx470_master.csv").write_text(csv_text(master, FIELDS + ["listing_count", "sources", "listing_urls"]), encoding="utf-8")
     (data / "listing_history.csv").write_text(csv_text(state["history"], ["observed_at", "event"] + FIELDS), encoding="utf-8")
     for filename, obj in [("database.json", state), ("source_health.json", health), ("latest_changes.json", changes)]:
@@ -314,17 +373,18 @@ def save(root, state, health, changes):
         temp.replace(data / filename)
     report = ["# LX470 inventory", "", f"Last run: {state['updated_at']}", "",
               f"**{len(master)} distinct vehicles · {len(outputs['active_listings.csv'])} active listings · {len(changes)} changes this run**", "",
-              "Active means seen advertised at last_seen; availability is not seller-confirmed. Check source health and dates below.", "",
+              "Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.", "",
               "## Source health", "", "| Source | Result | Detail |", "|---|---|---|"]
     escape = lambda v: html.escape(str(v or "")).replace("|", "&#124;").replace("\n", " ")
     for source in health:
         report.append(f"| {escape(source['source'])} | {escape(source['status'])} | {escape(source.get('detail', ''))} |")
-    report += ["", "## Advertised retail listings", "", "| Year | Asking USD | Miles | Location | Seller | VIN | Last seen | Listing |", "|---|---:|---:|---|---|---|---|---|"]
+    report += ["", "## Advertised retail listings", "", "| Year | Asking USD | Miles | Exterior | Interior | Owners | Accidents | Title screen | Location | Seller | VIN | Last seen | Listing |", "|---|---:|---:|---|---|---|---|---|---|---|---|---|---|"]
     for row in sorted(outputs["retail_listings.csv"], key=lambda r: r["asking_price"] if r["asking_price"] is not None else float('inf')):
-        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "asking_price", "mileage"]) + f" | {escape(row['city'])}, {escape(row['state'])} | {escape(row['seller'])} | {escape(row['vin'])} | {escape(row['last_seen'])} | [Open]({row['listing_url']}) |")
-    report += ["", "## Auctions and salvage", "", "| Year | Status | Current bid USD | Sold price USD | Miles | VIN | Listing |", "|---|---|---:|---:|---:|---|---|"]
+        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "asking_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status"]) + f" | {escape(row['city'])}, {escape(row['state'])} | {escape(row['seller'])} | {escape(row['vin'])} | {escape(row['last_seen'])} | [Open]({row['listing_url']}) |")
+    report += ["", "## Auctions and salvage", "", "| Year | Status | Current bid USD | Sold price USD | Miles | Exterior | Interior | Owners | Accidents | Title | VIN | Listing |", "|---|---|---:|---:|---:|---|---|---|---|---|---|---|"]
     for row in outputs["auction_salvage_listings.csv"]:
-        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "status", "current_bid", "sold_price", "mileage", "vin"]) + f" | [Open]({row['listing_url']}) |")
+        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "status", "current_bid", "sold_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status", "vin"]) + f" | [Open]({row['listing_url']}) |")
+    report += ["", f"{len(excluded)} active listings are retained for audit but excluded because clean-title eligibility was not established. See `data/excluded_listings.csv`."]
     (root / "INVENTORY.md").write_text("\n".join(report) + "\n", encoding="utf-8")
 
 
@@ -341,7 +401,9 @@ def run(root=ROOT, live=True):
                 continue
             try:
                 if source["type"] == "cargurus":
-                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"])
+                    owner_ids = cargurus_listing_ids(fetcher.get(source["single_owner_url"]), source["year"], {"hideMultipleOwners": True})
+                    no_accident_ids = cargurus_listing_ids(fetcher.get(source["no_accidents_url"]), source["year"], {"maxAccidents": 0})
+                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], owner_ids, no_accident_ids)
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"]))
