@@ -8,7 +8,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
-                    cargurus_listing_ids, clean_title_candidate, csv_text,
+                    apply_vehicle_history_overrides, cargurus_listing_ids,
+                    clean_title_candidate, csv_text,
                     remove_unverified_cargurus_owner_inferences, run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
@@ -132,6 +133,25 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(public['summary']['active_listings'], 1)
             self.assertEqual([row['listing_key'] for row in public['listings']], ['test:clean'])
             self.assertNotIn('notes', public['listings'][0])
+
+    def test_verified_owner_override_applies_by_vin(self):
+        with temporary_workspace() as folder:
+            root = Path(folder)
+            (root / 'overrides').mkdir()
+            (root / 'overrides/vehicle_history.json').write_text(json.dumps({
+                self.row['vin']: {
+                    'owners': 3,
+                    'source': 'CarGurus listing detail',
+                    'verified_at': '2026-09-16',
+                    'evidence_url': self.row['listing_url'],
+                }
+            }))
+            state = {'listings': {'test:1': dict(self.row)}, 'history': []}
+            apply_vehicle_history_overrides(root, state)
+            saved = state['listings']['test:1']
+            self.assertEqual(saved['owners'], '3')
+            self.assertEqual(saved['owners_verified_at'], '2026-09-16')
+            self.assertEqual(saved['owner_evidence_url'], self.row['listing_url'])
 
 
 class ParserTests(unittest.TestCase):

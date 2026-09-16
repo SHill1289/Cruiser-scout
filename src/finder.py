@@ -23,7 +23,8 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
           "seller", "seller_type", "exterior_color", "interior_color", "title_status",
-          "accident_history", "owners", "service_records", "rust_notes", "source_days_on_market",
+          "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
+          "service_records", "rust_notes", "source_days_on_market",
           "auction_ends_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 STATUSES = {"active", "sold", "ended", "removed", "unknown"}
@@ -278,6 +279,38 @@ def remove_unverified_cargurus_owner_inferences(state):
     for row in list(state.get("listings", {}).values()) + list(state.get("history", [])):
         if row.get("source") == "cargurus":
             row["owners"] = "Unverified"
+            row["owners_source"] = ""
+            row["owners_verified_at"] = ""
+            row["owner_evidence_url"] = ""
+
+
+def apply_vehicle_history_overrides(root, state):
+    """Apply human-verified history facts that search-result feeds do not expose."""
+    path = root / "overrides/vehicle_history.json"
+    if not path.exists():
+        return
+    overrides = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(overrides, dict):
+        raise ValueError("Vehicle-history overrides must be an object keyed by VIN")
+    for vin, evidence in overrides.items():
+        vin = str(vin).upper().strip()
+        owners = evidence.get("owners")
+        verified_at = str(evidence.get("verified_at", ""))
+        source = str(evidence.get("source", ""))
+        evidence_url = str(evidence.get("evidence_url", ""))
+        parts = urllib.parse.urlsplit(evidence_url)
+        if not valid_vin(vin) or not isinstance(owners, int) or not 1 <= owners <= 20:
+            raise ValueError(f"Invalid owner-count override for {vin}")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", verified_at) or not source:
+            raise ValueError(f"Owner-count override for {vin} needs source and YYYY-MM-DD verified_at")
+        if parts.scheme != "https" or not parts.hostname:
+            raise ValueError(f"Owner-count override for {vin} needs an HTTPS evidence URL")
+        for row in state.get("listings", {}).values():
+            if row.get("vin") == vin:
+                row["owners"] = str(owners)
+                row["owners_source"] = source
+                row["owners_verified_at"] = verified_at
+                row["owner_evidence_url"] = evidence_url
 
 
 def update(state, rows, now, scopes=()):
@@ -384,7 +417,8 @@ def save(root, state, health, changes):
         "asking_price", "base_price", "current_bid", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "seller", "seller_type",
         "exterior_color", "interior_color", "title_status", "accident_history",
-        "owners", "auction_ends_at", "first_seen", "last_seen", "quality_flags",
+        "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
+        "auction_ends_at", "first_seen", "last_seen", "quality_flags",
     ]
     public_inventory = {
         "generated_at": state["updated_at"],
@@ -462,6 +496,7 @@ def run(root=ROOT, live=True):
             rows.extend(batch)
             state["imports"].append(fingerprint)
     changes = update(state, rows, now, scopes)
+    apply_vehicle_history_overrides(root, state)
     if live:
         health = [{**h, "checked_at": now} for h in health]
     elif (root / "data/source_health.json").exists():

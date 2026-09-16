@@ -75,7 +75,11 @@ function renderCard(row) {
   card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, row.interior_color || "Interior unknown"));
 
   const history = text("div", "history", "");
-  history.append(text("span", ownerGroup(row) === "1" ? "tag good" : "tag", ownerLabel(row)));
+  const ownerTag = text("span", ownerGroup(row) === "1" ? "tag good" : "tag", ownerLabel(row));
+  if (ownerGroup(row) !== "unknown" && row.owners_verified_at) {
+    ownerTag.title = `Verified ${row.owners_verified_at}${row.owners_source ? ` via ${row.owners_source}` : ""}`;
+  }
+  history.append(ownerTag);
   history.append(text("span", row.accident_history === "No reported accidents" ? "tag good" : "tag", row.accident_history || "History unknown"));
   card.append(history);
 
