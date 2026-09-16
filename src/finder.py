@@ -7,7 +7,6 @@ import hashlib
 import html
 import io
 import json
-import os
 import re
 import sys
 import time
@@ -15,7 +14,6 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import urllib.robotparser
-import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -36,8 +34,6 @@ CARGURUS_CLEAN_CRITERIA = {
     "hideSalvage": True,
     "hideTheft": True,
 }
-VEHICLE_HISTORY_API = "https://api.vehicles.dev"
-HISTORY_IDEMPOTENCY_NAMESPACE = uuid.UUID("2f2d6c86-d021-49be-900f-a810c319e684")
 
 
 def utcnow():
@@ -139,56 +135,6 @@ class Fetcher:
             return self.request(url)
         finally:
             self.last[host] = time.monotonic()
-
-
-class VehicleHistoryError(RuntimeError):
-    pass
-
-
-class VehicleHistoryClient:
-    """Small Vehicles.dev client; credentials never enter generated data or logs."""
-    def __init__(self, api_key):
-        if not api_key.startswith("vdev_"):
-            raise ValueError("VEHICLES_API_KEY is not a Vehicles.dev product key")
-        self.api_key = api_key
-
-    def request(self, method, path, payload=None, idempotency_key=None):
-        if not path.startswith("/v1/vehicles/history-reports"):
-            raise ValueError("Vehicle-history API path is not allowlisted")
-        headers = {"Authorization": f"Bearer {self.api_key}", "Accept": "application/json",
-                   "User-Agent": UA}
-        data = None
-        if payload is not None:
-            data = json.dumps(payload).encode("utf-8")
-            headers["Content-Type"] = "application/json"
-        if idempotency_key:
-            headers["Idempotency-Key"] = idempotency_key
-        req = urllib.request.Request(VEHICLE_HISTORY_API + path, data=data, headers=headers, method=method)
-        try:
-            with urllib.request.urlopen(req, timeout=30) as response:
-                body = response.read(1_000_001)
-                if len(body) > 1_000_000:
-                    raise VehicleHistoryError("Vehicle-history response exceeded 1 MB")
-                return json.loads(body)
-        except urllib.error.HTTPError as exc:
-            try:
-                problem = json.loads(exc.read(100_000))
-            except Exception:
-                problem = {}
-            code = problem.get("code", f"http_{exc.code}")
-            raise VehicleHistoryError(f"Vehicles.dev request failed: {code}") from None
-
-    def create_report(self, vin):
-        key = str(uuid.uuid5(HISTORY_IDEMPOTENCY_NAMESPACE, vin))
-        return self.request("POST", "/v1/vehicles/history-reports", {"vin": vin}, key)
-
-    def get_report(self, report_id):
-        report_id = str(uuid.UUID(report_id))
-        return self.request("GET", f"/v1/vehicles/history-reports/{report_id}")
-
-    def get_result(self, report_id):
-        report_id = str(uuid.UUID(report_id))
-        return self.request("GET", f"/v1/vehicles/history-reports/{report_id}/result")
 
 
 def cargurus_search(page, year, extra_criteria=None):
@@ -365,89 +311,6 @@ def apply_vehicle_history_overrides(root, state):
                 row["owners_source"] = source
                 row["owners_verified_at"] = verified_at
                 row["owner_evidence_url"] = evidence_url
-
-
-def owner_count_from_history(result, vin):
-    """Return a provider-supported owner count, never infer one from missing data."""
-    metadata = result.get("metadata", {})
-    coverage = metadata.get("coverage", {})
-    if metadata.get("vin") != vin or "ownership" not in coverage.get("availableSections", []):
-        return None
-    ownership = result.get("report", {}).get("ownership")
-    if not isinstance(ownership, list):
-        return None
-    numbers = [record.get("ownerNumber") for record in ownership if isinstance(record, dict)]
-    numbers = [value for value in numbers if isinstance(value, int) and 1 <= value <= 20]
-    return max(numbers) if numbers else None
-
-
-def enrich_vehicle_history(root, state, client, max_new_reports, now):
-    """Poll cached reports and order at most a caller-approved number of new ones."""
-    if not isinstance(max_new_reports, int) or not 0 <= max_new_reports <= 100:
-        raise ValueError("VEHICLES_HISTORY_MAX_NEW_REPORTS_PER_RUN must be between 0 and 100")
-    path = root / "data/vehicle_history_cache.json"
-    cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "reports": {}}
-    reports = cache.setdefault("reports", {})
-    override_path = root / "overrides/vehicle_history.json"
-    overrides = json.loads(override_path.read_text(encoding="utf-8")) if override_path.exists() else {}
-    overridden_vins = {str(vin).upper().strip() for vin in overrides}
-    vins = sorted({row.get("vin", "") for row in state.get("listings", {}).values()
-                   if row.get("status") == "active" and clean_title_candidate(row)
-                   and valid_vin(row.get("vin", "")) and row.get("vin", "") not in overridden_vins})
-    ordered = 0
-    errors = []
-    for vin in vins:
-        entry = reports.get(vin)
-        try:
-            if entry and entry.get("report_id") and not entry.get("owner_count"):
-                status = client.get_report(entry["report_id"])
-                entry.update(status=status.get("status", "unknown"),
-                             has_result=bool(status.get("hasResult")), checked_at=now)
-                if status.get("status") == "completed" and status.get("hasResult"):
-                    result = client.get_result(entry["report_id"])
-                    count = owner_count_from_history(result, vin)
-                    metadata = result.get("metadata", {})
-                    entry.update(owner_count=count, provider=metadata.get("provider", ""),
-                                 retrieved_at=metadata.get("retrievedAt", ""),
-                                 coverage=metadata.get("coverage", {}))
-            elif not entry and ordered < max_new_reports:
-                created = client.create_report(vin)
-                report_id = str(uuid.UUID(created["id"]))
-                if created.get("vin") != vin:
-                    raise VehicleHistoryError("Vehicle-history create response VIN mismatch")
-                reports[vin] = {"report_id": report_id, "status": created.get("status", "unknown"),
-                                "has_result": bool(created.get("hasResult")),
-                                "ordered_at": now, "checked_at": now}
-                ordered += 1
-        except (ValueError, KeyError, VehicleHistoryError) as exc:
-            errors.append(f"{vin}: {exc}")
-
-    verified = 0
-    for vin, entry in reports.items():
-        count = entry.get("owner_count")
-        if not isinstance(count, int) or not 1 <= count <= 20:
-            continue
-        retrieved = str(entry.get("retrieved_at", ""))[:10]
-        provider = entry.get("provider") or "provider"
-        for row in state.get("listings", {}).values():
-            if row.get("vin") == vin:
-                row["owners"] = str(count)
-                row["owners_source"] = f"Vehicles.dev history report ({provider})"
-                row["owners_verified_at"] = retrieved
-                row["owner_evidence_url"] = ""
-                verified += 1
-
-    cache["updated_at"] = now
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix(".json.tmp")
-    temp.write_text(json.dumps(cache, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    temp.replace(path)
-    pending = sum(bool(entry.get("report_id")) and not entry.get("owner_count") for entry in reports.values())
-    status = "partial" if errors else "ok"
-    detail = f"{verified} listing rows verified; {pending} reports pending; {ordered} new reports ordered."
-    if errors:
-        detail += " " + "; ".join(errors)
-    return {"source": "vehicles.dev-history", "status": status, "detail": detail}
 
 
 def update(state, rows, now, scopes=()):
@@ -633,16 +496,6 @@ def run(root=ROOT, live=True):
             rows.extend(batch)
             state["imports"].append(fingerprint)
     changes = update(state, rows, now, scopes)
-    history_enabled = os.environ.get("VEHICLES_HISTORY_ENABLED", "false").lower() == "true"
-    if live and history_enabled:
-        try:
-            api_key = os.environ.get("VEHICLES_API_KEY", "")
-            if not api_key:
-                raise ValueError("VEHICLES_API_KEY secret is missing")
-            max_new = int(os.environ.get("VEHICLES_HISTORY_MAX_NEW_REPORTS_PER_RUN", "0"))
-            health.append(enrich_vehicle_history(root, state, VehicleHistoryClient(api_key), max_new, now))
-        except Exception as exc:
-            health.append({"source": "vehicles.dev-history", "status": "error", "detail": str(exc)})
     apply_vehicle_history_overrides(root, state)
     if live:
         health = [{**h, "checked_at": now} for h in health]
