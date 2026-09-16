@@ -55,7 +55,7 @@ function renderCard(row) {
   const identity = text("div", "identity", "");
   identity.append(text("h3", "vehicle-title", `${row.exterior_color || "Color unknown"} Lexus LX470`));
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
-  identity.append(text("p", "vehicle-meta", `${place} Â· ${row.seller || row.source}`));
+  identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
   card.append(identity);
 
   card.append(makeMetric(priceLabel(row), row.category === "auction" ? "Auction" : "Asking price"));
@@ -67,7 +67,7 @@ function renderCard(row) {
   history.append(text("span", row.accident_history === "No reported accidents" ? "tag good" : "tag", row.accident_history || "History unknown"));
   card.append(history);
 
-  const link = text("a", "open-link", "â†—");
+  const link = text("a", "open-link", "\u2197");
   link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
@@ -110,8 +110,8 @@ function render() {
   ui.summary.hidden = rows.length === 0;
   const price = median(rows.map(listingPrice));
   const mileage = median(rows.map(row => row.mileage));
-  ui.medianPrice.textContent = price == null ? "â€”" : money.format(price);
-  ui.medianMileage.textContent = mileage == null ? "â€”" : `${integer.format(mileage)} mi`;
+  ui.medianPrice.textContent = price == null ? "\u2014" : money.format(price);
+  ui.medianMileage.textContent = mileage == null ? "\u2014" : `${integer.format(mileage)} mi`;
   ui.cleanCount.textContent = String(rows.filter(row => row.accident_history === "No reported accidents").length);
 }
 
