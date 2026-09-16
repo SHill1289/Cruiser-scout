@@ -127,11 +127,24 @@ class DatabaseTests(unittest.TestCase):
             unknown = {**self.row, 'source_listing_id': 'unknown',
                        'listing_url': 'https://example.com/car/2',
                        'title_status': 'unknown'}
-            (root / 'imports/one.json').write_text(json.dumps([clean, unknown]))
+            sold = {**self.row, 'source_listing_id': 'sold',
+                    'listing_url': 'https://example.com/car/3', 'status': 'sold',
+                    'title_status': 'clean title', 'asking_price': None, 'sold_price': 18000}
+            ended = {**self.row, 'source_listing_id': 'ended',
+                     'listing_url': 'https://example.com/car/4', 'status': 'ended',
+                     'category': 'auction', 'title_status': 'clean title',
+                     'asking_price': None, 'current_bid': 12000,
+                     'auction_ends_at': NOW, 'bid_observed_at': NOW}
+            (root / 'imports/one.json').write_text(json.dumps([clean, unknown, sold, ended]))
             run(root, live=False)
             public = json.loads((root / 'web/inventory.json').read_text())
             self.assertEqual(public['summary']['active_listings'], 1)
-            self.assertEqual([row['listing_key'] for row in public['listings']], ['test:clean'])
+            self.assertEqual({row['listing_key'] for row in public['listings']},
+                             {'test:clean', 'test:sold', 'test:ended'})
+            self.assertEqual(public['summary']['sold'], 1)
+            self.assertEqual(public['summary']['ended_auctions'], 1)
+            ended_public = next(row for row in public['listings'] if row['status'] == 'ended')
+            self.assertEqual(ended_public['bid_observed_at'], NOW)
             self.assertNotIn('notes', public['listings'][0])
 
     def test_verified_owner_override_applies_by_vin(self):
@@ -215,15 +228,18 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(row['current_bid'], 3250)
         self.assertIsNone(row['asking_price'])
         self.assertEqual(row['mileage'], 209000)
+        self.assertEqual(row['bid_observed_at'], NOW)
         self.assertTrue(row['mileage_is_approximate'])
         row = parse_bat(page, row['listing_url'], '2026-09-20T22:00:00+00:00')
-        self.assertEqual(row['status'], 'unknown')
+        self.assertEqual(row['status'], 'ended')
 
     def test_unsold_auction_is_not_sold(self):
         page = '<h1>2007 Lexus LX470</h1><div class="listing-intro">Bid to USD $12,000 Reserve not met<div class="listing-actions-stats">'
         row = parse_bat(page, 'https://bringatrailer.com/listing/2007-lexus-lx470-example/', NOW)
         self.assertEqual(row['status'], 'ended')
         self.assertIsNone(row['sold_price'])
+        self.assertEqual(row['current_bid'], 12000)
+        self.assertEqual(row['bid_observed_at'], NOW)
 
     def test_bat_details_after_statistics(self):
         page = '<h1>2006 Lexus LX470</h1><div class="listing-intro">Current Bid: USD $3,250 <span data-until="1789585080"></span><div class="listing-actions-stats"></div><strong>Listing Details</strong><ul><li>Chassis: <a>JTJHT00W964015853</a></li><li>209k Miles</li><li>Black Onyx Paint</li><li>Ivory Leather Upholstery</li></ul><div class="post-excerpt"><p>Offered with an accident-free Carfax report and a clean New York title.</p></div>'
