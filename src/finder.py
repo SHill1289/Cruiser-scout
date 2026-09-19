@@ -266,6 +266,11 @@ def parse_listing_photo(page):
         parts = urllib.parse.urlsplit(url)
         if parts.scheme == "https" and parts.hostname:
             return url
+    # CarGurus preloads the lead image instead of consistently emitting og:image
+    # to non-browser clients. Limit the fallback to its public vehicle-photo CDN.
+    cargurus = re.search(r'''https://static\.cargurus\.com/images/forsale/[^"'<>\s]+''', page.replace("\\/", "/"), re.I)
+    if cargurus:
+        return html.unescape(cargurus[0]).replace("\\/", "/")
     return ""
 
 

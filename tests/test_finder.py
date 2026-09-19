@@ -227,6 +227,12 @@ class ParserTests(unittest.TestCase):
         page = '<meta property="og:image" content="https://images.example.com/lx470.jpg?size=large&amp;crop=1">'
         self.assertEqual(parse_listing_photo(page),
                          'https://images.example.com/lx470.jpg?size=large&crop=1')
+        preload = '<link rel="preload" as="image" href="https://static.cargurus.com/images/forsale/2026/08/lx470.jpeg">'
+        self.assertEqual(parse_listing_photo(preload),
+                         'https://static.cargurus.com/images/forsale/2026/08/lx470.jpeg')
+        escaped = r'{"imageUrl":"https:\/\/static.cargurus.com\/images\/forsale\/lx470.jpg"}'
+        self.assertEqual(parse_listing_photo(escaped),
+                         'https://static.cargurus.com/images/forsale/lx470.jpg')
 
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()
