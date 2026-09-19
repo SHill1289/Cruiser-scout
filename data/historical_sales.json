@@ -211,6 +211,16 @@
   },
   {
     "source": "Bring a Trailer",
+    "source_listing_id": "2007-lexus-lx470-47",
+    "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-47/",
+    "year": 2007,
+    "sold_at": "2025-11-16",
+    "sale_price": 55500,
+    "mileage": 129000,
+    "mileage_is_approximate": true
+  },
+  {
+    "source": "Bring a Trailer",
     "source_listing_id": "2006-lexus-lx470-68",
     "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-68/",
     "year": 2006,
@@ -227,6 +237,16 @@
     "sold_at": "2025-10-17",
     "sale_price": 12850,
     "mileage": 233000,
+    "mileage_is_approximate": true
+  },
+  {
+    "source": "Bring a Trailer",
+    "source_listing_id": "2006-lexus-lx470-67",
+    "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-67/",
+    "year": 2006,
+    "sold_at": "2025-10-16",
+    "sale_price": 120000,
+    "mileage": 18000,
     "mileage_is_approximate": true
   },
   {
