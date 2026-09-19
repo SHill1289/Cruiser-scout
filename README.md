@@ -14,7 +14,7 @@ A private, automated US listing database for **2006â€“2007 Lexus LX470s**, 
 
 ## Automatic updates
 
-GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
+GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings, renders public detail pages when needed to capture lead photos, and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
 
 GitHub schedules can be delayed; this is a daily research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 

@@ -181,6 +181,44 @@ class Fetcher:
             self.last[host] = time.monotonic()
 
 
+class BrowserPhotoFetcher:
+    """Render JavaScript listing pages only when plain HTML omits the lead photo."""
+    def __init__(self):
+        self.driver = None
+        self.photos = {}
+        self.last = 0
+
+    def photo(self, url):
+        if url in self.photos:
+            return self.photos[url]
+        try:
+            from selenium import webdriver
+            from selenium.webdriver.support.ui import WebDriverWait
+            if self.driver is None:
+                options = webdriver.ChromeOptions()
+                for argument in ("--headless=new", "--no-sandbox", "--disable-dev-shm-usage",
+                                 "--window-size=1280,900"):
+                    options.add_argument(argument)
+                self.driver = webdriver.Chrome(options=options)
+                self.driver.set_page_load_timeout(30)
+            time.sleep(max(0, 2 - (time.monotonic() - self.last)))
+            self.driver.get(url)
+            self.last = time.monotonic()
+            photo = WebDriverWait(self.driver, 20).until(lambda driver: driver.execute_script(
+                "return document.querySelector('#PreviewGalleryMainImage img')?.currentSrc || "
+                "document.querySelector('#PreviewGalleryMainImage img')?.src || ''"))
+            parts = urllib.parse.urlsplit(photo)
+            self.photos[url] = photo if parts.scheme == "https" and parts.hostname else ""
+        except Exception:
+            self.photos[url] = ""
+        return self.photos[url]
+
+    def close(self):
+        if self.driver is not None:
+            self.driver.quit()
+            self.driver = None
+
+
 def cargurus_search(page, year, extra_criteria=None):
     marker = re.search(r"window\.__remixContext\s*=\s*", page)
     if not marker:
@@ -280,7 +318,7 @@ def listing_detail_url(row):
     return row.get("listing_url", "")
 
 
-def add_listing_photo(row, fetcher):
+def add_listing_photo(row, fetcher, browser_fetcher=None):
     """Add a source-hosted lead photo without making image failure fatal."""
     url = listing_detail_url(row)
     if not url:
@@ -289,13 +327,15 @@ def add_listing_photo(row, fetcher):
         photo = parse_listing_photo(fetcher.get(url))
     except Exception as error:
         return str(error)
+    if not photo and row.get("source") == "cargurus" and browser_fetcher is not None:
+        photo = browser_fetcher.photo(url)
     if not photo:
         return "lead photo metadata unavailable"
     row["photo_url"] = photo
     return ""
 
 
-def backfill_listing_photos(state, fetcher):
+def backfill_listing_photos(state, fetcher, browser_fetcher=None):
     """Fetch photos for existing public rows, including completed auctions."""
     errors = []
     for row in state.get("listings", {}).values():
@@ -303,7 +343,7 @@ def backfill_listing_photos(state, fetcher):
                 or row.get("status") not in {"active", "sold", "ended"}
                 or not clean_title_candidate(row)):
             continue
-        error = add_listing_photo(row, fetcher)
+        error = add_listing_photo(row, fetcher, browser_fetcher)
         if error:
             errors.append(f'{row.get("listing_key", "listing")}: {error}')
     return errors
@@ -575,7 +615,8 @@ def run(root=ROOT, live=True):
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))
     fetcher = Fetcher()
-    photo_backfill_errors = backfill_listing_photos(state, fetcher) if live else []
+    photo_browser = BrowserPhotoFetcher() if live else None
+    photo_backfill_errors = backfill_listing_photos(state, fetcher, photo_browser) if live else []
     if live:
         for source in config["sources"]:
             if not source["enabled"]:
@@ -585,7 +626,7 @@ def run(root=ROOT, live=True):
                 if source["type"] == "cargurus":
                     no_accident_ids = cargurus_listing_ids(fetcher.get(source["no_accidents_url"]), source["year"], {"maxAccidents": 0})
                     batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], no_accident_ids)
-                    photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher))]
+                    photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"]))
@@ -613,6 +654,8 @@ def run(root=ROOT, live=True):
             batch = [normalize(row) for row in payload]
             rows.extend(batch)
             state["imports"].append(fingerprint)
+    if photo_browser is not None:
+        photo_browser.close()
     changes = update(state, rows, now, scopes)
     apply_vehicle_history_overrides(root, state)
     if live:
