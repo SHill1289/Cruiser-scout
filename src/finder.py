@@ -360,6 +360,8 @@ def listing_detail_url(row):
 
 def add_listing_photo(row, fetcher, browser_fetcher=None):
     """Add a source-hosted lead photo without making image failure fatal."""
+    if row.get("photo_url"):
+        return ""
     url = listing_detail_url(row)
     if not url:
         return "listing URL unavailable"
