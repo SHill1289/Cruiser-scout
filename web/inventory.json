@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T18:49:55+00:00",
+  "generated_at": "2026-09-19T19:00:17+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 20,
@@ -14,61 +14,61 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "15 parsed of 15; 0 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "5 parsed of 5; 0 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "20 existing listing photos were unavailable; placeholders remain.",
-      "checked_at": "2026-09-19T18:49:55+00:00"
+      "checked_at": "2026-09-19T19:00:17+00:00"
     }
   ],
   "listings": [
@@ -141,7 +141,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -177,7 +177,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -213,7 +213,7 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -249,7 +249,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -285,7 +285,7 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -321,7 +321,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -357,7 +357,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -393,7 +393,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -429,7 +429,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -465,7 +465,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -501,7 +501,7 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -537,7 +537,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -573,7 +573,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -609,7 +609,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -645,7 +645,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -681,7 +681,7 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -717,7 +717,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -753,7 +753,7 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -789,7 +789,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     },
     {
@@ -825,7 +825,7 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-09-19T18:49:55+00:00",
+      "last_seen": "2026-09-19T19:00:17+00:00",
       "quality_flags": ""
     }
   ]
