@@ -106,7 +106,25 @@ function statusTiming(row) {
 function renderCard(row) {
   const card = document.createElement("article");
   card.className = "listing";
-  card.append(text("div", "year-badge", String(row.year)));
+  const media = text("div", row.photo_url ? "listing-media" : "listing-media photo-missing", "");
+  if (row.photo_url) {
+    const photo = document.createElement("img");
+    photo.src = row.photo_url;
+    photo.alt = `${row.year} ${row.exterior_color || ""} Lexus LX470`.replace(/\s+/g, " ").trim();
+    photo.loading = "lazy";
+    photo.decoding = "async";
+    photo.referrerPolicy = "no-referrer";
+    photo.addEventListener("error", () => {
+      photo.remove();
+      media.classList.add("photo-missing");
+      media.prepend(text("span", "photo-placeholder", "LX"));
+    }, { once: true });
+    media.append(photo);
+  } else {
+    media.append(text("span", "photo-placeholder", "LX"));
+  }
+  media.append(text("span", "year-badge", String(row.year)));
+  card.append(media);
 
   const identity = text("div", "identity", "");
   identity.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));

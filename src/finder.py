@@ -22,7 +22,7 @@ UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
 FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
-          "seller", "seller_type", "exterior_color", "interior_color", "title_status",
+          "seller", "seller_type", "photo_url", "exterior_color", "interior_color", "title_status",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
           "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
@@ -67,7 +67,7 @@ def normalize(raw):
     row = {k: raw.get(k, "") for k in FIELDS}
     row["year"] = int(raw["year"])
     if row["year"] not in (2006, 2007):
-        raise ValueError("Only 2006â€“2007 vehicles are accepted")
+        raise ValueError("Only 2006Ã¢â‚¬â€œ2007 vehicles are accepted")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("make", "Lexus")).lower()) != "lexus":
         raise ValueError("Wrong make")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("model", "LX470")).lower()) != "lx470":
@@ -78,6 +78,10 @@ def normalize(raw):
     parts = urllib.parse.urlsplit(row["listing_url"])
     if parts.scheme != "https" or not parts.hostname:
         raise ValueError("An HTTPS listing URL is required")
+    if row["photo_url"]:
+        photo_parts = urllib.parse.urlsplit(str(row["photo_url"]))
+        if photo_parts.scheme != "https" or not photo_parts.hostname:
+            raise ValueError("photo_url must be a complete HTTPS URL")
     row["listing_key"] = row["source"] + ":" + row["source_listing_id"]
     row["vin"] = str(row["vin"]).upper().strip()
     flags = set(filter(None, str(row["quality_flags"]).split(";")))
@@ -143,6 +147,7 @@ class Fetcher:
     def __init__(self):
         self.robots = {}
         self.last = {}
+        self.pages = {}
 
     def request(self, url):
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html"})
@@ -153,6 +158,8 @@ class Fetcher:
             return data.decode("utf-8", errors="replace")
 
     def get(self, url):
+        if url in self.pages:
+            return self.pages[url]
         parts = urllib.parse.urlsplit(url)
         host = parts.netloc
         if parts.scheme != "https" or host not in {"www.cargurus.com", "bringatrailer.com"}:
@@ -167,7 +174,9 @@ class Fetcher:
         delay = max(2, parser.crawl_delay(UA) or 0)
         time.sleep(max(0, delay - (time.monotonic() - self.last.get(host, 0))))
         try:
-            return self.request(url)
+            page = self.request(url)
+            self.pages[url] = page
+            return page
         finally:
             self.last[host] = time.monotonic()
 
@@ -217,7 +226,7 @@ def parse_cargurus(page, year, no_accident_ids=None):
         rows[listing_id] = normalize({
             "source": "cargurus", "source_listing_id": d["id"], "year": year,
             "vin": d.get("vin", ""), "status": "active", "category": "retail",
-            "listing_url": f'https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing={d["id"]}',
+            "listing_url": f'https://www.cargurus.com/details/{d["id"]}',
             "asking_price": price.get("pricePlusFees", price.get("totalPrice", price.get("current"))),
             "base_price": price.get("basePrice", price.get("current")),
             "mileage": d.get("mileageData", {}).get("value"),
@@ -245,12 +254,62 @@ def plain(page):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", page))).strip()
 
 
+def parse_listing_photo(page):
+    """Return a public lead-image URL from standard social metadata."""
+    for tag in re.findall(r"<meta\b[^>]*>", page, re.I):
+        if not re.search(r'''(?:property|name)\s*=\s*["'](?:og:image|twitter:image(?::src)?)["']''', tag, re.I):
+            continue
+        content = re.search(r'''content\s*=\s*["']([^"']+)["']''', tag, re.I)
+        if not content:
+            continue
+        url = html.unescape(content[1]).replace("\\/", "/")
+        parts = urllib.parse.urlsplit(url)
+        if parts.scheme == "https" and parts.hostname:
+            return url
+    return ""
+
+
+def listing_detail_url(row):
+    if row.get("source") == "cargurus" and row.get("source_listing_id"):
+        return f'https://www.cargurus.com/details/{row["source_listing_id"]}'
+    return row.get("listing_url", "")
+
+
+def add_listing_photo(row, fetcher):
+    """Add a source-hosted lead photo without making image failure fatal."""
+    url = listing_detail_url(row)
+    if not url:
+        return "listing URL unavailable"
+    try:
+        photo = parse_listing_photo(fetcher.get(url))
+    except Exception as error:
+        return str(error)
+    if not photo:
+        return "lead photo metadata unavailable"
+    row["photo_url"] = photo
+    return ""
+
+
+def backfill_listing_photos(state, fetcher):
+    """Fetch photos for existing public rows, including completed auctions."""
+    errors = []
+    for row in state.get("listings", {}).values():
+        if (row.get("photo_url") or row.get("source") not in {"cargurus", "bringatrailer"}
+                or row.get("status") not in {"active", "sold", "ended"}
+                or not clean_title_candidate(row)):
+            continue
+        error = add_listing_photo(row, fetcher)
+        if error:
+            errors.append(f'{row.get("listing_key", "listing")}: {error}')
+    return errors
+
+
 def parse_bat(page, url, now):
     title_match = re.search(r'<h1\b[^>]*>(.*?)</h1>', page, re.S)
     title = plain(title_match[1]) if title_match else ""
     match = re.search(r"\b(2006|2007) Lexus LX\s?470\b", title, re.I)
     if not match:
-        raise ValueError("Not a 2006â€“2007 LX470 auction")
+        raise ValueError("Not a 2006Ã¢â‚¬â€œ2007 LX470 auction")
     # Limit extraction to the listing summary, never site strings or user comments.
     intro = re.search(r'<div class="listing-intro[\s\S]*', page)
     if not intro:
@@ -301,6 +360,7 @@ def parse_bat(page, url, now):
            "seller_type": "private" if "Private Party or Dealer : Private Party" in text else "unknown",
            "exterior_color": exterior_item.removesuffix(" Paint"),
            "interior_color": interior_item.removesuffix(" Upholstery"),
+           "photo_url": parse_listing_photo(page),
            "title_status": "clean title" if clean_title else "unknown",
            "accident_history": accidents,
            "owners": "Unknown",
@@ -364,6 +424,8 @@ def update(state, rows, now, scopes=()):
         seen.add(key)
         previous = listings.get(key)
         row["first_seen"] = previous["first_seen"] if previous else now
+        if not row["photo_url"] and previous and previous.get("photo_url"):
+            row["photo_url"] = previous["photo_url"]
         if not row["listed_at"]:
             if previous and previous.get("listed_at"):
                 row["listed_at"] = previous["listed_at"]
@@ -460,7 +522,7 @@ def save(root, state, health, changes):
     public_fields = [
         "listing_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
-        "mileage_is_approximate", "city", "state", "seller", "seller_type",
+        "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url",
         "exterior_color", "interior_color", "title_status", "accident_history",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
@@ -484,7 +546,7 @@ def save(root, state, health, changes):
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     temp.replace(web / "inventory.json")
     report = ["# LX470 inventory", "", f"Last run: {state['updated_at']}", "",
-              f"**{len(master)} distinct vehicles Â· {len(outputs['active_listings.csv'])} active listings Â· {len(changes)} changes this run**", "",
+              f"**{len(master)} distinct vehicles Ã‚Â· {len(outputs['active_listings.csv'])} active listings Ã‚Â· {len(changes)} changes this run**", "",
               "Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.", "",
               "## Source health", "", "| Source | Result | Detail |", "|---|---|---|"]
     escape = lambda v: html.escape(str(v or "")).replace("|", "&#124;").replace("\n", " ")
@@ -508,6 +570,7 @@ def run(root=ROOT, live=True):
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))
     fetcher = Fetcher()
+    photo_backfill_errors = backfill_listing_photos(state, fetcher) if live else []
     if live:
         for source in config["sources"]:
             if not source["enabled"]:
@@ -517,10 +580,11 @@ def run(root=ROOT, live=True):
                 if source["type"] == "cargurus":
                     no_accident_ids = cargurus_listing_ids(fetcher.get(source["no_accidents_url"]), source["year"], {"maxAccidents": 0})
                     batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], no_accident_ids)
+                    photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher))]
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"]))
-                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; nationwide. Additional pages are not crawled."})
+                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled."})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = set(re.findall(r'https://bringatrailer.com/listing/200[67]-lexus-lx-?470[^\s"<>]*/', page))
@@ -548,6 +612,8 @@ def run(root=ROOT, live=True):
     apply_vehicle_history_overrides(root, state)
     if live:
         health = [{**h, "checked_at": now} for h in health]
+        if photo_backfill_errors:
+            health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain.", "checked_at": now})
     elif (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text(encoding="utf-8"))
     save(root, state, health, changes)
@@ -560,4 +626,5 @@ if __name__ == "__main__":
     parser.add_argument("--offline", action="store_true", help="Import local JSON and regenerate exports without network requests")
     args = parser.parse_args()
     sys.exit(run(live=not args.offline))
+
 

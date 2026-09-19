@@ -20,7 +20,7 @@ GitHub schedules can be delayed; this is a daily research tool, not a real-time 
 
 ## Web dashboard on Vercel
 
-The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing only current clean-title candidates. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
+The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing only current clean-title candidates. Listing cards use the marketplace's public lead photo when available and fall back to a neutral LX placeholder. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
 
 In Vercel, import this GitHub repository and click **Deploy**. The included `vercel.json` selects the `web` folder, so no framework, build command or environment variables are required. The repository can remain private; the deployed dashboard is public.
 

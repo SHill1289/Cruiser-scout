@@ -11,7 +11,8 @@ from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, cargurus_listing_ids,
                     clean_title_candidate, csv_text,
-                    remove_unverified_cargurus_owner_inferences, run, valid_vin)
+                    parse_listing_photo, remove_unverified_cargurus_owner_inferences,
+                    run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -73,6 +74,12 @@ class DatabaseTests(unittest.TestCase):
         saved = self.state['listings']['test:1']
         self.assertEqual(saved['listed_at'], '2026-09-01')
         self.assertFalse(saved['listed_at_is_estimated'])
+
+    def test_photo_is_preserved_when_a_refresh_has_no_image(self):
+        update(self.state, [{**self.row, 'photo_url': 'https://images.example.com/lx470.jpg'}], NOW)
+        update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
+        self.assertEqual(self.state['listings']['test:1']['photo_url'],
+                         'https://images.example.com/lx470.jpg')
 
     def test_old_database_listing_date_is_backfilled(self):
         old = dict(self.row)
@@ -216,6 +223,11 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['accident_history'], 'No reported accidents')
         self.assertTrue(clean_title_candidate(target))
 
+    def test_social_photo_metadata(self):
+        page = '<meta property="og:image" content="https://images.example.com/lx470.jpg?size=large&amp;crop=1">'
+        self.assertEqual(parse_listing_photo(page),
+                         'https://images.example.com/lx470.jpg?size=large&crop=1')
+
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()
         context['state']['loaderData']['route']['search']['pageCount'] = 2
@@ -249,7 +261,7 @@ class ParserTests(unittest.TestCase):
             parse_cargurus('<h1>Access denied</h1>', 2006)
 
     def test_auction_bid_is_not_asking_price(self):
-        page = '<h1>2006 Lexus LX470</h1><div class="listing-intro"><span>Current Bid: USD $3,250</span><span data-until="1789585080"></span><li>Chassis: JTJHT00W964015853</li><li>209k Miles</li><b>Lot #263426</b><div class="listing-actions-stats">'
+        page = '<meta property="og:image" content="https://bringatrailer.com/lx470.jpg"><h1>2006 Lexus LX470</h1><div class="listing-intro"><span>Current Bid: USD $3,250</span><span data-until="1789585080"></span><li>Chassis: JTJHT00W964015853</li><li>209k Miles</li><b>Lot #263426</b><div class="listing-actions-stats">'
         row = parse_bat(page, 'https://bringatrailer.com/listing/2006-lexus-lx470-81/', NOW)
         self.assertEqual(row['status'], 'active')
         self.assertEqual(row['current_bid'], 3250)
@@ -257,6 +269,7 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(row['mileage'], 209000)
         self.assertEqual(row['bid_observed_at'], NOW)
         self.assertTrue(row['mileage_is_approximate'])
+        self.assertEqual(row['photo_url'], 'https://bringatrailer.com/lx470.jpg')
         row = parse_bat(page, row['listing_url'], '2026-09-20T22:00:00+00:00')
         self.assertEqual(row['status'], 'ended')
 
