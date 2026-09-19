@@ -214,9 +214,12 @@ class BrowserPhotoFetcher:
             time.sleep(max(0, 2 - (time.monotonic() - self.last)))
             self.driver.get(url)
             self.last = time.monotonic()
-            photo = WebDriverWait(self.driver, 20).until(lambda driver: driver.execute_script(
+            photo = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script(
                 "return document.querySelector('#PreviewGalleryMainImage img')?.currentSrc || "
-                "document.querySelector('#PreviewGalleryMainImage img')?.src || ''"))
+                "document.querySelector('#PreviewGalleryMainImage img')?.src || "
+                "document.querySelector('link[rel=preload][as=image]')?.href || "
+                "document.querySelector('meta[property=\\\"og:image\\\"]')?.content || "
+                "document.querySelector('meta[name=\\\"twitter:image\\\"]')?.content || ''"))
             parts = urllib.parse.urlsplit(photo)
             self.photos[url] = photo if parts.scheme == "https" and parts.hostname else ""
         except Exception as error:
@@ -262,6 +265,28 @@ def cargurus_listing_ids(page, year, extra_criteria):
     return ids
 
 
+def cargurus_photo(value):
+    """Find the largest vehicle photo embedded in a CarGurus result tile."""
+    candidates = []
+
+    def visit(item):
+        if isinstance(item, dict):
+            for nested in item.values():
+                visit(nested)
+        elif isinstance(item, list):
+            for nested in item:
+                visit(nested)
+        elif isinstance(item, str) and item.startswith("https://"):
+            parts = urllib.parse.urlsplit(item)
+            if (parts.hostname or "").endswith("cargurus.com") and "/images/forsale/" in parts.path:
+                size = re.search(r"-(\d+)x(\d+)\.(?:jpe?g|webp|png)$", parts.path, re.I)
+                area = int(size[1]) * int(size[2]) if size else 0
+                candidates.append((area, item))
+
+    visit(value)
+    return max(candidates, default=(0, ""))[1]
+
+
 def parse_cargurus(page, year, no_accident_ids=None):
     search = cargurus_search(page, year)
     no_accident_ids = no_accident_ids or set()
@@ -285,6 +310,7 @@ def parse_cargurus(page, year, no_accident_ids=None):
             "city": seller.get("city", ""), "state": seller.get("region", ""),
             "seller": seller.get("serviceProviderName", ""),
             "seller_type": "dealer" if seller.get("serviceProviderId") else "unknown",
+            "photo_url": cargurus_photo(d),
             "exterior_color": d.get("exteriorColorData", {}).get("name", ""),
             "interior_color": d.get("interiorColorData", {}).get("localized", ""),
             "title_status": "clean-title candidate",

@@ -9,7 +9,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
-                    apply_vehicle_history_overrides, cargurus_listing_ids,
+                    apply_vehicle_history_overrides, cargurus_listing_ids, cargurus_photo,
                     clean_title_candidate, csv_text,
                     parse_listing_photo, remove_unverified_cargurus_owner_inferences,
                     run, valid_vin)
@@ -233,6 +233,13 @@ class ParserTests(unittest.TestCase):
         escaped = r'{"imageUrl":"https:\/\/static.cargurus.com\/images\/forsale\/lx470.jpg"}'
         self.assertEqual(parse_listing_photo(escaped),
                          'https://static.cargurus.com/images/forsale/lx470.jpg')
+
+    def test_largest_cargurus_tile_photo(self):
+        tile = {'logo': 'https://static.cargurus.com/images/dealer/logo.png',
+                'pictures': ['https://static.cargurus.com/images/forsale/lx-64x48.jpeg',
+                             {'url': 'https://static.cargurus.com/images/forsale/lx-1024x768.jpeg'}]}
+        self.assertEqual(cargurus_photo(tile),
+                         'https://static.cargurus.com/images/forsale/lx-1024x768.jpeg')
 
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()
