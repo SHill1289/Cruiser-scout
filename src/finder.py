@@ -337,14 +337,18 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
     url = listing_detail_url(row)
     if not url:
         return "listing URL unavailable"
+    photo = ""
+    plain_error = ""
     try:
         photo = parse_listing_photo(fetcher.get(url))
     except Exception as error:
-        return str(error)
+        plain_error = str(error)
     if not photo and row.get("source") == "cargurus" and browser_fetcher is not None:
         photo = browser_fetcher.photo(url)
     if not photo:
-        return browser_fetcher.error(url) if browser_fetcher is not None else "lead photo metadata unavailable"
+        if browser_fetcher is not None and row.get("source") == "cargurus":
+            return browser_fetcher.error(url)
+        return plain_error or "lead photo metadata unavailable"
     row["photo_url"] = photo
     return ""
 
