@@ -8,10 +8,15 @@ const ui = {
   color: document.querySelector("#color"), summary: document.querySelector("#summary-strip"),
   medianPrice: document.querySelector("#median-price"), medianMileage: document.querySelector("#median-mileage"),
   cleanCount: document.querySelector("#clean-count"), sourceHealth: document.querySelector("#source-health"),
+  marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
+  marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
+  marketSource: document.querySelector("#market-source"),
   form: document.querySelector("#filters")
 };
 
 let inventory = [];
+let marketSales = [];
+let generatedAt = new Date();
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const controls = ["search", "status", "year", "color", "owners", "accidents", "price", "mileage", "sort"]
@@ -45,6 +50,7 @@ function median(numbers) {
   const middle = Math.floor(values.length / 2);
   return values.length % 2 ? values[middle] : (values[middle - 1] + values[middle]) / 2;
 }
+function average(numbers) { return numbers.length ? numbers.reduce((total, number) => total + number, 0) / numbers.length : null; }
 function text(tag, className, content) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -96,8 +102,8 @@ function listingDates(row) {
   return dates;
 }
 function statusTiming(row) {
-  if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} Â· bid observed ${formatMoment(row.bid_observed_at)}`;
-  if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} Â· high bid observed ${formatMoment(row.bid_observed_at)}`;
+  if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} · bid observed ${formatMoment(row.bid_observed_at)}`;
+  if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} · high bid observed ${formatMoment(row.bid_observed_at)}`;
   if (saleState(row) === "auction-ended") return `Auction ended ${formatMoment(row.auction_ends_at)}`;
   if (saleState(row) === "sold") return `Sale recorded ${formatMoment(row.last_seen)}`;
   return `Last seen for sale ${formatMoment(row.last_seen)}`;
@@ -201,6 +207,43 @@ function render() {
   ui.cleanCount.textContent = String(rows.filter(row => row.accident_history === "No reported accidents").length);
 }
 
+function renderMarket() {
+  const months = Number(ui.marketPeriod.value || 24);
+  const cutoff = new Date(generatedAt);
+  cutoff.setUTCMonth(cutoff.getUTCMonth() - months);
+  const year = ui.marketYear.value;
+  const sales = marketSales.filter(sale => (!year || String(sale.year) === year)
+    && new Date(`${sale.sold_at}T23:59:59Z`) >= cutoff
+    && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
+  const bands = [
+    { label: "Under 100k", detail: "0–99,999 miles", includes: miles => miles < 100000 },
+    { label: "100k–150k", detail: "100,000–149,999 miles", includes: miles => miles >= 100000 && miles < 150000 },
+    { label: "150k–250k", detail: "150,000–249,999 miles", includes: miles => miles >= 150000 && miles < 250000 },
+    { label: "250k+", detail: "250,000 miles and above", includes: miles => miles >= 250000 },
+  ];
+  const results = bands.map(band => ({ ...band, sales: sales.filter(sale => band.includes(sale.mileage)) }));
+  const highest = Math.max(...results.map(result => average(result.sales.map(sale => sale.sale_price)) || 0), 1);
+  ui.marketBands.replaceChildren(...results.map(result => {
+    const prices = result.sales.map(sale => sale.sale_price);
+    const mean = average(prices);
+    const card = text("article", "market-band", "");
+    card.append(text("p", "band-label", result.label), text("p", "band-detail", result.detail));
+    card.append(text("strong", "band-average", mean == null ? "—" : money.format(mean)));
+    card.append(text("span", "band-caption", "Average sale price"));
+    const bar = text("div", "band-bar", "");
+    const fill = text("span", "", "");
+    fill.style.width = `${mean == null ? 0 : Math.max(4, (mean / highest) * 100)}%`;
+    bar.append(fill);
+    card.append(bar);
+    const facts = text("div", "band-facts", "");
+    facts.append(text("span", "", `${prices.length} sale${prices.length === 1 ? "" : "s"}`),
+      text("span", "", prices.length ? `Median ${money.format(median(prices))}` : "No completed sales"));
+    card.append(facts);
+    return card;
+  }));
+  ui.marketCount.textContent = `${sales.length} completed sale${sales.length === 1 ? "" : "s"} in this view`;
+}
+
 function reset() {
   ui.form.reset();
   render();
@@ -212,6 +255,9 @@ async function load() {
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
     const data = await response.json();
     inventory = Array.isArray(data.listings) ? data.listings : [];
+    marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
+    generatedAt = new Date(data.generated_at || Date.now());
+    ui.marketSource.textContent = data.market_history?.source || "Completed auction results";
     ui.updated.textContent = formatDate(data.generated_at);
     ui.disclaimer.textContent = data.disclaimer;
     ui.total.textContent = integer.format(inventory.length);
@@ -226,6 +272,7 @@ async function load() {
       ui.sourceHealth.append(row);
     });
     render();
+    renderMarket();
   } catch (error) {
     ui.listings.setAttribute("aria-busy", "false");
     ui.listings.replaceChildren(text("p", "loading", "The inventory could not be loaded. Please refresh in a moment."));
@@ -235,7 +282,8 @@ async function load() {
 }
 
 ui.form.addEventListener("input", render);
+ui.marketPeriod.addEventListener("input", renderMarket);
+ui.marketYear.addEventListener("input", renderMarket);
 ui.form.addEventListener("reset", () => setTimeout(render, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
 load();
-

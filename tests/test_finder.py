@@ -9,7 +9,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
-                    apply_vehicle_history_overrides, cargurus_listing_ids, cargurus_photo,
+                    apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
+                    cargurus_listing_ids, cargurus_photo, parse_historical_sale,
                     clean_title_candidate, csv_text,
                     parse_listing_photo, remove_unverified_cargurus_owner_inferences,
                     run, valid_vin)
@@ -240,6 +241,8 @@ class ParserTests(unittest.TestCase):
                              {'url': 'https://static.cargurus.com/images/forsale/lx-1024x768.jpeg'}]}
         self.assertEqual(cargurus_photo(tile),
                          'https://static.cargurus.com/images/forsale/lx-1024x768.jpeg')
+        self.assertEqual(cargurus_photo({'pictureData': {'url': '//images.example.com/lx.jpg'}}),
+                         'https://images.example.com/lx.jpg')
 
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()
@@ -294,6 +297,23 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(row['current_bid'], 12000)
         self.assertEqual(row['bid_observed_at'], NOW)
 
+    def test_completed_sale_record_and_archive_links(self):
+        page = ('<p>Service completed January 4, 2022</p>'
+                '<title>2006 Lexus LX470 sold for $25,000 on May 13, 2026</title>'
+                '<h1>2006 Lexus LX470</h1><div class="listing-intro">Sold for USD $25,000'
+                '<div class="listing-actions-stats"></div><strong>Listing Details</strong><ul>'
+                '<li>Chassis: JTJHT00W264012020</li><li>83k Miles</li></ul>')
+        sale = parse_historical_sale(page, 'https://bringatrailer.com/listing/2006-lexus-lx470-38/', NOW)
+        self.assertEqual(sale['sold_at'], '2026-05-13')
+        self.assertEqual(sale['sale_price'], 25000)
+        self.assertEqual(sale['mileage'], 83000)
+        self.assertEqual(bat_sale_date('This Listing Sold May 13, 2026'), '2026-05-13')
+        self.assertEqual(bat_sale_date('Service January 4, 2022. This Listing Sold for $25,000 on May 13, 2026'),
+                         '2026-05-13')
+        archive = '<a href="/listing/2007-lexus-lx470-57/">sold</a>'
+        self.assertEqual(bat_listing_urls(archive),
+                         {'https://bringatrailer.com/listing/2007-lexus-lx470-57/'})
+
     def test_bat_details_after_statistics(self):
         page = '<h1>2006 Lexus LX470</h1><div class="listing-intro">Current Bid: USD $3,250 <span data-until="1789585080"></span><div class="listing-actions-stats"></div><strong>Listing Details</strong><ul><li>Chassis: <a>JTJHT00W964015853</a></li><li>209k Miles</li><li>Black Onyx Paint</li><li>Ivory Leather Upholstery</li></ul><div class="post-excerpt"><p>Offered with an accident-free Carfax report and a clean New York title.</p></div>'
         row = parse_bat(page, 'https://bringatrailer.com/listing/2006-lexus-lx470-81/', NOW)
@@ -308,4 +328,3 @@ class ParserTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

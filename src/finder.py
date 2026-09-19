@@ -68,7 +68,7 @@ def normalize(raw):
     row = {k: raw.get(k, "") for k in FIELDS}
     row["year"] = int(raw["year"])
     if row["year"] not in (2006, 2007):
-        raise ValueError("Only 2006Ã¢â‚¬â€œ2007 vehicles are accepted")
+        raise ValueError("Only 2006â€“2007 vehicles are accepted")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("make", "Lexus")).lower()) != "lexus":
         raise ValueError("Wrong make")
     if re.sub(r"[^a-z0-9]", "", str(raw.get("model", "LX470")).lower()) != "lx470":
@@ -269,6 +269,16 @@ def cargurus_photo(value):
     """Find the largest vehicle photo embedded in a CarGurus result tile."""
     candidates = []
 
+    picture = value.get("pictureData", {}) if isinstance(value, dict) else {}
+    direct = picture.get("url", "") if isinstance(picture, dict) else ""
+    if direct.startswith("//"):
+        direct = "https:" + direct
+    elif direct.startswith("http://"):
+        direct = "https://" + direct.removeprefix("http://")
+    direct_parts = urllib.parse.urlsplit(direct)
+    if direct_parts.scheme == "https" and direct_parts.hostname:
+        return direct
+
     def visit(item):
         if isinstance(item, dict):
             for nested in item.values():
@@ -400,7 +410,7 @@ def parse_bat(page, url, now):
     title = plain(title_match[1]) if title_match else ""
     match = re.search(r"\b(2006|2007) Lexus LX\s?470\b", title, re.I)
     if not match:
-        raise ValueError("Not a 2006Ã¢â‚¬â€œ2007 LX470 auction")
+        raise ValueError("Not a 2006â€“2007 LX470 auction")
     # Limit extraction to the listing summary, never site strings or user comments.
     intro = re.search(r'<div class="listing-intro[\s\S]*', page)
     if not intro:
@@ -457,6 +467,69 @@ def parse_bat(page, url, now):
            "owners": "Unknown",
            "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."}
     return normalize(row)
+
+
+def bat_sale_date(page):
+    """Extract the completed-auction date as YYYY-MM-DD."""
+    decoded = html.unescape(page)
+    month = r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
+    full_date = rf"({month}\s+\d{{1,2}},\s+20\d{{2}})"
+    # Auction pages often mention older service dates before the result. Only
+    # accept a long-form date when it is attached to the completed-sale text.
+    for pattern in (
+        rf"This\s+Listing\s+Sold[\s\S]{{0,240}}?\b{full_date}\b",
+        rf"\bSold\s+for[\s\S]{{0,160}}?\bon\s+{full_date}\b",
+        rf"<title[^>]*>[\s\S]{{0,300}}?\b(?:sold|auction result)[\s\S]{{0,180}}?\b{full_date}\b",
+    ):
+        match = re.search(pattern, decoded, re.I)
+        if match:
+            return datetime.strptime(match[1].title(), "%B %d, %Y").date().isoformat()
+    match = re.search(r"Sold for[^<]{0,80}\bon\s+(\d{1,2})/(\d{1,2})/(\d{2,4})", decoded, re.I)
+    if match:
+        year = int(match[3]) + (2000 if len(match[3]) == 2 else 0)
+        return f"{year:04d}-{int(match[1]):02d}-{int(match[2]):02d}"
+    return ""
+
+
+def parse_historical_sale(page, url, now):
+    """Return the small, auditable record used for market-price statistics."""
+    row = parse_bat(page, url, now)
+    sold_at = bat_sale_date(page)
+    if row["status"] != "sold" or row["sold_price"] is None:
+        raise ValueError("Auction did not record a completed sale")
+    if row["mileage"] is None:
+        raise ValueError("Completed sale did not expose mileage")
+    if not sold_at:
+        raise ValueError("Completed sale date unavailable")
+    return {
+        "source": "Bring a Trailer", "source_listing_id": row["source_listing_id"],
+        "listing_url": url, "year": row["year"], "sold_at": sold_at,
+        "sale_price": row["sold_price"], "mileage": row["mileage"],
+        "mileage_is_approximate": row["mileage_is_approximate"],
+    }
+
+
+def bat_listing_urls(page):
+    """Discover 2006-2007 listing links in the public BaT model archive."""
+    paths = re.findall(r'''href=["'](?:https://bringatrailer\.com)?(/listing/200[67]-lexus-lx-?470[^"'?#]*/)["']''', page, re.I)
+    absolute = re.findall(r'''https://bringatrailer\.com/listing/200[67]-lexus-lx-?470[^\s"'<>?#]*/''', page, re.I)
+    return {"https://bringatrailer.com" + path for path in paths} | set(absolute)
+
+
+def collect_historical_sales(root, state, fetcher, archive_page, now):
+    """Backfill the two-year seed once, then add newly discovered completed sales."""
+    seed = json.loads((root / "sources/historical_sales.json").read_text(encoding="utf-8"))
+    existing = {row["listing_url"]: row for row in state.setdefault("historical_sales", [])}
+    candidates = set(seed.get("listing_urls", [])) | bat_listing_urls(archive_page)
+    errors = []
+    for url in sorted(candidates - existing.keys()):
+        try:
+            sale = parse_historical_sale(fetcher.get(url), url, now)
+            existing[url] = sale
+        except Exception as error:
+            errors.append(f"{url}: {error}")
+    state["historical_sales"] = sorted(existing.values(), key=lambda row: (row["sold_at"], row["listing_url"]), reverse=True)
+    return len(candidates), errors
 
 
 def clean_title_candidate(row):
@@ -602,6 +675,10 @@ def save(root, state, health, changes):
                "sold_listings.csv": [r for r in rows if r["status"] == "sold"]}
     for filename, items in outputs.items():
         (data / filename).write_text(csv_text(items, FIELDS), encoding="utf-8")
+    sale_fields = ["source", "source_listing_id", "listing_url", "year", "sold_at", "sale_price", "mileage", "mileage_is_approximate"]
+    historical_sales = state.get("historical_sales", [])
+    (data / "historical_sales.csv").write_text(csv_text(historical_sales, sale_fields), encoding="utf-8")
+    (data / "historical_sales.json").write_text(json.dumps(historical_sales, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     eligible_keys = {r["vehicle_key"] for r in active}
     master = [r for r in master_rows(state) if r["vehicle_key"] in eligible_keys]
     (data / "lx470_master.csv").write_text(csv_text(master, FIELDS + ["listing_count", "sources", "listing_urls"]), encoding="utf-8")
@@ -619,6 +696,8 @@ def save(root, state, health, changes):
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
+    cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
+    public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
@@ -631,13 +710,18 @@ def save(root, state, health, changes):
             "ended_auctions": sum(r["status"] == "ended" and r["category"] == "auction" for r in public_rows),
         },
         "source_health": health,
+        "market_history": {
+            "source": "Bring a Trailer completed auctions",
+            "window_months": 24,
+            "sales": public_sales,
+        },
         "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
     }
     temp = web / "inventory.json.tmp"
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     temp.replace(web / "inventory.json")
     report = ["# LX470 inventory", "", f"Last run: {state['updated_at']}", "",
-              f"**{len(master)} distinct vehicles Ã‚Â· {len(outputs['active_listings.csv'])} active listings Ã‚Â· {len(changes)} changes this run**", "",
+              f"**{len(master)} distinct vehicles Â· {len(outputs['active_listings.csv'])} active listings Â· {len(changes)} changes this run**", "",
               "Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.", "",
               "## Source health", "", "| Source | Result | Detail |", "|---|---|---|"]
     escape = lambda v: html.escape(str(v or "")).replace("|", "&#124;").replace("\n", " ")
@@ -680,7 +764,7 @@ def run(root=ROOT, live=True):
                     health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled.{photo_note}"})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
-                    urls = set(re.findall(r'https://bringatrailer.com/listing/200[67]-lexus-lx-?470[^\s"<>]*/', page))
+                    urls = bat_listing_urls(page)
                     urls.update(r["listing_url"] for r in state["listings"].values() if r["source"] == "bringatrailer" and r["status"] in {"active", "unknown"})
                     if "listing" not in page or not re.search(r"LX\s?470", page, re.I):
                         raise ValueError("Auction index format changed")
@@ -691,6 +775,11 @@ def run(root=ROOT, live=True):
                         except Exception as e:
                             errors.append(f"{url}: {e}")
                     health.append({"source": source["id"], "status": "partial" if errors or len(urls) > 30 else "ok", "detail": f"{min(len(urls),30)-len(errors)} auction pages parsed. Index coverage only; not a complete auction archive. " + "; ".join(errors)})
+                    sale_candidates, sale_errors = collect_historical_sales(root, state, fetcher, page, now)
+                    detail = f"{len(state['historical_sales'])} completed sales retained from {sale_candidates} discovered or seeded auctions."
+                    if sale_errors:
+                        detail += f" {len(sale_errors)} records unavailable; first error: {sale_errors[0]}"
+                    health.append({"source": "historical sales", "status": "warning" if sale_errors else "ok", "detail": detail})
             except Exception as e:
                 health.append({"source": source["id"], "status": "error", "detail": str(e)})
     # An edited import file is a new observation; unchanged files do not refresh last_seen.
@@ -721,5 +810,4 @@ if __name__ == "__main__":
     parser.add_argument("--offline", action="store_true", help="Import local JSON and regenerate exports without network requests")
     args = parser.parse_args()
     sys.exit(run(live=not args.offline))
-
 

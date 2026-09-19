@@ -1,16 +1,17 @@
 # LX470 Finder
 
-A private, automated US listing database for **2006â€“2007 Lexus LX470s**, continued from the LX470 Finder conversations.
+A private, automated US listing database for **2006–2007 Lexus LX470s**, continued from the LX470 Finder conversations.
 
 ## Start here
 
-- **[Browse current inventory](INVENTORY.md)** â€” readable prices, mileage, sellers and listing links.
-- **[Master vehicles](data/lx470_master.csv)** â€” one vehicle per valid VIN, with all source URLs.
-- **[Active retail listings](data/retail_listings.csv)** â€” advertised retail inventory.
-- **[Auctions and salvage](data/auction_salvage_listings.csv)** â€” separate from retail asking prices.
-- **[Listing history](data/listing_history.csv)** â€” new listings, price/detail changes, removal and reappearance.
-- **[Source health](data/source_health.json)** â€” shows errors and partial coverage.
-- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** â€” choose **Run workflow** on GitHub.
+- **[Browse current inventory](INVENTORY.md)** — readable prices, mileage, sellers and listing links.
+- **[Master vehicles](data/lx470_master.csv)** — one vehicle per valid VIN, with all source URLs.
+- **[Active retail listings](data/retail_listings.csv)** — advertised retail inventory.
+- **[Auctions and salvage](data/auction_salvage_listings.csv)** — separate from retail asking prices.
+- **[Listing history](data/listing_history.csv)** — new listings, price/detail changes, removal and reappearance.
+- **[Completed-sale history](data/historical_sales.csv)** ? auditable 2006?2007 auction results used for mileage-band pricing.
+- **[Source health](data/source_health.json)** — shows errors and partial coverage.
+- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** — choose **Run workflow** on GitHub.
 
 ## Automatic updates
 
@@ -20,7 +21,7 @@ GitHub schedules can be delayed; this is a daily research tool, not a real-time 
 
 ## Web dashboard on Vercel
 
-The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing only current clean-title candidates. Listing cards use the marketplace's public lead photo when available and fall back to a neutral LX placeholder. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
+The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing current clean-title candidates and two years of completed-sale market history. Listing cards use the marketplace's public lead photo when available and fall back to a neutral LX placeholder. The market section reports average and median sale price for under 100k, 100k?150k, 150k?250k and 250k+ mileage bands, with 12/24-month and model-year filters. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
 
 In Vercel, import this GitHub repository and click **Deploy**. The included `vercel.json` selects the `web` folder, so no framework, build command or environment variables are required. The repository can remain private; the deployed dashboard is public.
 
@@ -29,7 +30,7 @@ In Vercel, import this GitHub repository and click **Deploy**. The included `ver
 | Source | Automatic coverage |
 |---|---|
 | CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. A supplemental search identifies no-reported-accident candidates. Owner counts remain unverified because search-result data does not include the count. |
-| Bring a Trailer | Matching auctions exposed on the LX470 index, plus rechecks of previously tracked active/unknown auctions. Only listings that explicitly say the title is clean appear in current inventory. Not a full historical archive. |
+| Bring a Trailer | Matching auctions exposed on the LX470 index, plus rechecks of previously tracked active/unknown auctions. Only listings that explicitly say the title is clean appear in current inventory. A seeded two-year set of completed 2006?2007 sales is retained for market statistics, and newly exposed completed auctions are added automatically. |
 | CARFAX, Cars.com, Edmunds | Direct requests returned HTTP 403 during setup; manual imports supported. |
 | Autotrader, iSeeCars, Copart | Manual imports supported; no validated automatic collector yet. |
 
@@ -48,13 +49,14 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.
 - Unknown title, accident, service, owner and rust information stays unknown. An accident report does not by itself mean salvage title. Retail does not mean verified clean title. Auction membership does not mean salvage.
 - Auction bids and sold prices are separate from retail asking prices. Rounded auction mileage is flagged approximate. USD is used by these US collectors.
+- Historical mileage-band figures use completed Bring a Trailer auction prices and exclude buyer fees, private-party sales and unsold auctions. They describe that auction sample, not a formal vehicle appraisal.
 - A mileage decrease or conflicting active-source mileage is flagged for review. The master row selects the most recently seen active listing; use individual listings/history for comparisons rather than interpreting its price as a market valuation.
 - The earlier conversation's leads are preserved in [prior leads](data/prior_leads.csv), separately from verified observations. Its duplicated VIN/mileage claims are not imported into current inventory.
 - No Finder Score or rust inference is invented. Inspection/service evidence is needed to rank condition confidently.
 
 ## Add a listing from another source
 
-Create a JSON file under `imports/` using GitHub's **Add file â†’ Create new file**, then commit it. Use a stable source listing ID. The workflow will import it once; edit the file when you have a new observation. Replaying an unchanged file does not reset `last_seen`.
+Create a JSON file under `imports/` using GitHub's **Add file → Create new file**, then commit it. Use a stable source listing ID. The workflow will import it once; edit the file when you have a new observation. Replaying an unchanged file does not reset `last_seen`.
 
 ```json
 [
@@ -97,9 +99,8 @@ Configuration: `sources/config.json`. Tests cover VIN validation, duplicate/hist
 
 ### Verify an owner count for free
 
-When a listing page displays an owner count, open **Actions â†’ Verify owner count (free) â†’ Run workflow**. Enter the listing's VIN, displayed owner count, source name and listing URL. GitHub validates the values, records the evidence in `overrides/vehicle_history.json`, rebuilds the inventory and updates the Vercel data automatically.
+When a listing page displays an owner count, open **Actions → Verify owner count (free) → Run workflow**. Enter the listing's VIN, displayed owner count, source name and listing URL. GitHub validates the values, records the evidence in `overrides/vehicle_history.json`, rebuilds the inventory and updates the Vercel data automatically.
 
 This is intentionally evidence based. Free government VIN services provide specifications, recalls and limited theft/salvage checks, but do not provide an exact previous-owner count. Listings without visible owner-count evidence remain `Unverified` rather than receiving a guess.
 
 This repository does not contact sellers, send messages, or place bids.
-
