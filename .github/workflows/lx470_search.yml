@@ -60,7 +60,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install the photo collector
-        run: python -m pip install --disable-pip-version-check selenium==4.49.0
+        run: |
+          python -m pip install --disable-pip-version-check selenium==4.49.0
+          google-chrome --version
+          chromedriver --version
       - name: Collect and update history
         id: collect
         continue-on-error: true

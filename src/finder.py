@@ -8,6 +8,7 @@ import html
 import io
 import json
 import re
+import shutil
 import sys
 import time
 import urllib.error
@@ -186,6 +187,7 @@ class BrowserPhotoFetcher:
     def __init__(self):
         self.driver = None
         self.photos = {}
+        self.errors = {}
         self.last = 0
 
     def photo(self, url):
@@ -193,13 +195,21 @@ class BrowserPhotoFetcher:
             return self.photos[url]
         try:
             from selenium import webdriver
+            from selenium.webdriver.chrome.service import Service
             from selenium.webdriver.support.ui import WebDriverWait
             if self.driver is None:
                 options = webdriver.ChromeOptions()
                 for argument in ("--headless=new", "--no-sandbox", "--disable-dev-shm-usage",
-                                 "--window-size=1280,900"):
+                                 "--disable-gpu", "--window-size=1280,900"):
                     options.add_argument(argument)
-                self.driver = webdriver.Chrome(options=options)
+                chrome = next((path for name in ("google-chrome", "google-chrome-stable",
+                                                  "chromium", "chromium-browser")
+                               if (path := shutil.which(name))), None)
+                if chrome:
+                    options.binary_location = chrome
+                driver = shutil.which("chromedriver")
+                service = Service(executable_path=driver) if driver else Service()
+                self.driver = webdriver.Chrome(service=service, options=options)
                 self.driver.set_page_load_timeout(30)
             time.sleep(max(0, 2 - (time.monotonic() - self.last)))
             self.driver.get(url)
@@ -209,9 +219,13 @@ class BrowserPhotoFetcher:
                 "document.querySelector('#PreviewGalleryMainImage img')?.src || ''"))
             parts = urllib.parse.urlsplit(photo)
             self.photos[url] = photo if parts.scheme == "https" and parts.hostname else ""
-        except Exception:
+        except Exception as error:
             self.photos[url] = ""
+            self.errors[url] = f"{type(error).__name__}: {error}".replace("\n", " ")[:500]
         return self.photos[url]
+
+    def error(self, url):
+        return self.errors.get(url, "lead photo metadata unavailable")
 
     def close(self):
         if self.driver is not None:
@@ -330,7 +344,7 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
     if not photo and row.get("source") == "cargurus" and browser_fetcher is not None:
         photo = browser_fetcher.photo(url)
     if not photo:
-        return "lead photo metadata unavailable"
+        return browser_fetcher.error(url) if browser_fetcher is not None else "lead photo metadata unavailable"
     row["photo_url"] = photo
     return ""
 
@@ -630,7 +644,8 @@ def run(root=ROOT, live=True):
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"]))
-                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled."})
+                    photo_note = f" First photo error: {photo_errors[0]}" if photo_errors else ""
+                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled.{photo_note}"})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = set(re.findall(r'https://bringatrailer.com/listing/200[67]-lexus-lx-?470[^\s"<>]*/', page))
@@ -661,7 +676,7 @@ def run(root=ROOT, live=True):
     if live:
         health = [{**h, "checked_at": now} for h in health]
         if photo_backfill_errors:
-            health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain.", "checked_at": now})
+            health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain. First error: {photo_backfill_errors[0]}", "checked_at": now})
     elif (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text(encoding="utf-8"))
     save(root, state, health, changes)
