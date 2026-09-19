@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-18T17:05:50+00:00",
+  "generated_at": "2026-09-19T16:31:04+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
-    "vehicles": 20,
-    "active_listings": 20,
-    "retail": 20,
+    "vehicles": 21,
+    "active_listings": 21,
+    "retail": 21,
     "auctions": 0,
     "sold": 1,
     "ended_auctions": 0
@@ -13,56 +13,56 @@
     {
       "source": "cargurus-2006",
       "status": "ok",
-      "detail": "14 parsed of 14; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "detail": "15 parsed of 15; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "5 parsed of 5; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-18T17:05:50+00:00"
+      "checked_at": "2026-09-19T16:31:04+00:00"
     }
   ],
   "listings": [
@@ -129,7 +129,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -162,7 +162,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -195,7 +195,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -228,7 +228,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -261,7 +261,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -294,7 +294,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -327,7 +327,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -360,7 +360,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -393,7 +393,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -426,7 +426,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -459,7 +459,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -492,7 +492,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -525,7 +525,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -558,7 +558,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -591,7 +591,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -624,7 +624,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -657,7 +657,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -690,7 +690,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -723,7 +723,7 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-18T17:05:50+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     },
     {
@@ -757,6 +757,39 @@
       "bid_observed_at": "",
       "first_seen": "2026-09-16T13:00:38+00:00",
       "last_seen": "2026-09-17T17:38:23+00:00",
+      "quality_flags": ""
+    },
+    {
+      "listing_key": "cargurus:459345660",
+      "vin": "JTJHT00W764006987",
+      "year": 2006,
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=459345660",
+      "status": "active",
+      "category": "retail",
+      "asking_price": null,
+      "base_price": null,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 260874,
+      "mileage_is_approximate": "",
+      "city": "Mesa",
+      "state": "AZ",
+      "seller": "Ultimate Autos",
+      "seller_type": "dealer",
+      "exterior_color": "",
+      "interior_color": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "Accident reported or history unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "first_seen": "2026-09-19T16:31:04+00:00",
+      "last_seen": "2026-09-19T16:31:04+00:00",
       "quality_flags": ""
     }
   ]
