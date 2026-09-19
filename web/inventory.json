@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T18:18:20+00:00",
+  "generated_at": "2026-09-19T18:38:54+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 20,
@@ -13,56 +13,62 @@
     {
       "source": "cargurus-2006",
       "status": "ok",
-      "detail": "15 parsed of 15; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "detail": "15 parsed of 15; 0 photos found; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
-      "detail": "5 parsed of 5; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "detail": "5 parsed of 5; 0 photos found; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-19T18:18:20+00:00"
+      "checked_at": "2026-09-19T18:38:54+00:00"
+    },
+    {
+      "source": "listing photos",
+      "status": "warning",
+      "detail": "20 existing listing photos were unavailable; placeholders remain.",
+      "checked_at": "2026-09-19T18:38:54+00:00"
     }
   ],
   "listings": [
@@ -85,6 +91,7 @@
       "state": "",
       "seller": "",
       "seller_type": "unknown",
+      "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/08/20260826_135843-scaled-copy-2026-09-03-z2m-50060.jpg",
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "title_status": "clean title",
@@ -106,7 +113,7 @@
       "vin": "JTJHT00W764019528",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=436324031",
+      "listing_url": "https://www.cargurus.com/details/436324031",
       "status": "active",
       "category": "retail",
       "asking_price": 8900,
@@ -120,6 +127,7 @@
       "state": "IL",
       "seller": "Motor Deals USA",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "White",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -133,7 +141,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -141,7 +149,7 @@
       "vin": "JTJHT00W264008291",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=440552873",
+      "listing_url": "https://www.cargurus.com/details/440552873",
       "status": "active",
       "category": "retail",
       "asking_price": 28349,
@@ -155,6 +163,7 @@
       "state": "OH",
       "seller": "614 Cars",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -168,7 +177,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -176,7 +185,7 @@
       "vin": "JTJHT00WX64018325",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=443658870",
+      "listing_url": "https://www.cargurus.com/details/443658870",
       "status": "active",
       "category": "retail",
       "asking_price": 23995,
@@ -190,6 +199,7 @@
       "state": "CA",
       "seller": "San Diego Auto House",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -203,7 +213,7 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -211,7 +221,7 @@
       "vin": "JTJHT00W164008900",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=449010562",
+      "listing_url": "https://www.cargurus.com/details/449010562",
       "status": "active",
       "category": "retail",
       "asking_price": 24249,
@@ -225,6 +235,7 @@
       "state": "GA",
       "seller": "Persichetti Motorsports",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
@@ -238,7 +249,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -246,7 +257,7 @@
       "vin": "JTJHT00W264015158",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=449684771",
+      "listing_url": "https://www.cargurus.com/details/449684771",
       "status": "active",
       "category": "retail",
       "asking_price": 14371,
@@ -260,6 +271,7 @@
       "state": "IL",
       "seller": "MGM Classic Cars",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
       "title_status": "clean-title candidate",
@@ -273,7 +285,7 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -281,7 +293,7 @@
       "vin": "JTJHT00W564016238",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=450232382",
+      "listing_url": "https://www.cargurus.com/details/450232382",
       "status": "active",
       "category": "retail",
       "asking_price": 24394,
@@ -295,6 +307,7 @@
       "state": "VA",
       "seller": "Skyline Auto Group ",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Silver",
       "interior_color": "Off-white",
       "title_status": "clean-title candidate",
@@ -308,7 +321,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -316,7 +329,7 @@
       "vin": "JTJHT00WX64009804",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=454578510",
+      "listing_url": "https://www.cargurus.com/details/454578510",
       "status": "active",
       "category": "retail",
       "asking_price": 31180,
@@ -330,6 +343,7 @@
       "state": "MA",
       "seller": "Direct Auto Team",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Silver",
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
@@ -343,7 +357,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -351,7 +365,7 @@
       "vin": "JTJHT00W874022441",
       "year": 2007,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=454664523",
+      "listing_url": "https://www.cargurus.com/details/454664523",
       "status": "active",
       "category": "retail",
       "asking_price": 20995,
@@ -365,6 +379,7 @@
       "state": "NY",
       "seller": "Sunrise Auto Sales",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "White",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -378,7 +393,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -386,7 +401,7 @@
       "vin": "JTJHT00W364005108",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=455377530",
+      "listing_url": "https://www.cargurus.com/details/455377530",
       "status": "active",
       "category": "retail",
       "asking_price": 40138.25,
@@ -400,6 +415,7 @@
       "state": "CA",
       "seller": "Flex Automotive Inc",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Silver",
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
@@ -413,7 +429,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -421,7 +437,7 @@
       "vin": "JTJHT00W964005131",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=455935117",
+      "listing_url": "https://www.cargurus.com/details/455935117",
       "status": "active",
       "category": "retail",
       "asking_price": 13694,
@@ -435,6 +451,7 @@
       "state": "NJ",
       "seller": "IAUTOMALL",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
@@ -448,7 +465,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -456,7 +473,7 @@
       "vin": "JTJHT00W864019828",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=456313629",
+      "listing_url": "https://www.cargurus.com/details/456313629",
       "status": "active",
       "category": "retail",
       "asking_price": 27650,
@@ -470,6 +487,7 @@
       "state": "MA",
       "seller": "AK Motors",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -483,7 +501,7 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -491,7 +509,7 @@
       "vin": "JTJHT00WX74023512",
       "year": 2007,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457366712",
+      "listing_url": "https://www.cargurus.com/details/457366712",
       "status": "active",
       "category": "retail",
       "asking_price": 39900,
@@ -505,6 +523,7 @@
       "state": "FL",
       "seller": "King's Chariot",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black Onyx",
       "interior_color": "Stone",
       "title_status": "clean-title candidate",
@@ -518,7 +537,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -526,7 +545,7 @@
       "vin": "JTJHT00W564019673",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457366727",
+      "listing_url": "https://www.cargurus.com/details/457366727",
       "status": "active",
       "category": "retail",
       "asking_price": 35500,
@@ -540,6 +559,7 @@
       "state": "FL",
       "seller": "King's Chariot",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
       "title_status": "clean-title candidate",
@@ -553,7 +573,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -561,7 +581,7 @@
       "vin": "JTJHT00WX74025471",
       "year": 2007,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457613100",
+      "listing_url": "https://www.cargurus.com/details/457613100",
       "status": "active",
       "category": "retail",
       "asking_price": 30249,
@@ -575,6 +595,7 @@
       "state": "GA",
       "seller": "Persichetti Motorsports",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Gray",
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
@@ -588,7 +609,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -596,7 +617,7 @@
       "vin": "JTJHT00W774020647",
       "year": 2007,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=457621994",
+      "listing_url": "https://www.cargurus.com/details/457621994",
       "status": "active",
       "category": "retail",
       "asking_price": 19996,
@@ -610,6 +631,7 @@
       "state": "MA",
       "seller": "ByPex",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black",
       "interior_color": "Brown (Tan)",
       "title_status": "clean-title candidate",
@@ -623,7 +645,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -631,7 +653,7 @@
       "vin": "JTJHT00W464018109",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=458480534",
+      "listing_url": "https://www.cargurus.com/details/458480534",
       "status": "active",
       "category": "retail",
       "asking_price": 22777,
@@ -645,6 +667,7 @@
       "state": "NC",
       "seller": "Carolina Luxury Auto Group",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Black Onyx",
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
@@ -658,7 +681,7 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -666,7 +689,7 @@
       "vin": "JTJHT00W464010351",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=458809207",
+      "listing_url": "https://www.cargurus.com/details/458809207",
       "status": "active",
       "category": "retail",
       "asking_price": 14746,
@@ -680,6 +703,7 @@
       "state": "KY",
       "seller": "Buy Rite Auto Center",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "White",
       "interior_color": "Brown (Tan)",
       "title_status": "clean-title candidate",
@@ -693,7 +717,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -701,7 +725,7 @@
       "vin": "JTJHT00W964017246",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=458962414",
+      "listing_url": "https://www.cargurus.com/details/458962414",
       "status": "active",
       "category": "retail",
       "asking_price": 21074,
@@ -715,6 +739,7 @@
       "state": "GA",
       "seller": "Atlanta Toyota",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "Onyx Black",
       "interior_color": "Gray",
       "title_status": "clean-title candidate",
@@ -728,7 +753,7 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -736,7 +761,7 @@
       "vin": "JTJHT00W074027827",
       "year": 2007,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=459000535",
+      "listing_url": "https://www.cargurus.com/details/459000535",
       "status": "active",
       "category": "retail",
       "asking_price": 21245,
@@ -750,6 +775,7 @@
       "state": "NC",
       "seller": "Master Auto Group",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "White",
       "interior_color": "Brown (Beige)",
       "title_status": "clean-title candidate",
@@ -763,7 +789,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     },
     {
@@ -771,7 +797,7 @@
       "vin": "JTJHT00W764006987",
       "year": 2006,
       "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action#listing=459345660",
+      "listing_url": "https://www.cargurus.com/details/459345660",
       "status": "active",
       "category": "retail",
       "asking_price": null,
@@ -785,6 +811,7 @@
       "state": "AZ",
       "seller": "Ultimate Autos",
       "seller_type": "dealer",
+      "photo_url": "",
       "exterior_color": "",
       "interior_color": "",
       "title_status": "clean-title candidate",
@@ -798,7 +825,7 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-09-19T18:18:20+00:00",
+      "last_seen": "2026-09-19T18:38:54+00:00",
       "quality_flags": ""
     }
   ]
