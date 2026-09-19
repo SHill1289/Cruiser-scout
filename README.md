@@ -44,7 +44,7 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - Exterior color, interior color, owner category and accident history appear in the readable inventory and CSV exports. CarGurus owner counts are recorded as `Unverified` because its search result does not provide a count and its single-owner filter produced a result whose detail page reported three owners. Accident history is `No reported accidents` only when the listing appears in the source's no-accident results.
 - Human-verified owner counts can be saved by VIN in `overrides/vehicle_history.json`. Each entry requires the count, evidence source, verification date and HTTPS evidence URL. These facts override the unverified search-result value on every refresh and remain auditable in Git.
 - Three complete CarGurus searches without a listing mark it `removed`, **never sold**. Failed/partial searches do not count as absence. Only explicit source/import evidence sets `sold`; an auction ending without a sale is `ended` or `unknown`.
-- `first_seen` is the date this database first observed a listing, not its original publication date. `source_days_on_market` is retained separately.
+- `listed_at` is the marketplace listing date. When a source supplies only days on market, the Finder stores a stable estimated date and marks `listed_at_is_estimated` as true. `first_seen` is the separate timestamp when the Finder first discovered that listing.
 - History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.
 - Unknown title, accident, service, owner and rust information stays unknown. An accident report does not by itself mean salvage title. Retail does not mean verified clean title. Auction membership does not mean salvage.
 - Auction bids and sold prices are separate from retail asking prices. Rounded auction mileage is flagged approximate. USD is used by these US collectors.
@@ -69,6 +69,8 @@ Create a JSON file under `imports/` using GitHub's **Add file â†’ Create ne
     "status": "active",
     "category": "retail",
     "asking_price": null,
+    "listed_at": "2026-09-19",
+    "listed_at_is_estimated": false,
     "mileage": null,
     "seller": "",
     "city": "",

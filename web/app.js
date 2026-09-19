@@ -79,6 +79,22 @@ function formatMoment(raw) {
   const date = new Date(raw);
   return `${date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}, ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZoneName: "short" })}`;
 }
+function formatDay(raw) {
+  if (!raw) return "Unavailable";
+  const date = new Date(/^\d{4}-\d{2}-\d{2}$/.test(raw) ? `${raw}T12:00:00` : raw);
+  if (Number.isNaN(date.getTime())) return "Unavailable";
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+function listingDates(row) {
+  const dates = text("div", "listing-dates", "");
+  const listed = text("p", "date-fact", "");
+  listed.append(text("span", "", "Listed"), text("strong", "", formatDay(row.listed_at)));
+  if (row.listed_at && row.listed_at_is_estimated) listed.append(text("small", "", "Estimated from days on market"));
+  const added = text("p", "date-fact", "");
+  added.append(text("span", "", "Added to Finder"), text("strong", "", formatDay(row.first_seen)));
+  dates.append(listed, added);
+  return dates;
+}
 function statusTiming(row) {
   if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} Â· bid observed ${formatMoment(row.bid_observed_at)}`;
   if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} Â· high bid observed ${formatMoment(row.bid_observed_at)}`;
@@ -107,6 +123,7 @@ function renderCard(row) {
 
   card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));
   card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, row.interior_color || "Interior unknown"));
+  card.append(listingDates(row));
 
   const history = text("div", "history", "");
   const ownerTag = text("span", ownerGroup(row) === "1" ? "tag good" : "tag", ownerLabel(row));

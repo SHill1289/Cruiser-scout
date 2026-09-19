@@ -14,7 +14,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import urllib.robotparser
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +24,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
           "seller", "seller_type", "exterior_color", "interior_color", "title_status",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
-          "service_records", "rust_notes", "source_days_on_market",
+          "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
           "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 STATUSES = {"active", "sold", "ended", "removed", "unknown"}
@@ -100,8 +100,43 @@ def normalize(raw):
     row["currency"] = row["currency"] or "USD"
     for key in ("asking_price", "base_price", "current_bid", "sold_price", "mileage"):
         row[key] = number(row[key])
+    if row["listed_at"]:
+        try:
+            datetime.fromisoformat(str(row["listed_at"]).replace("Z", "+00:00"))
+        except ValueError as error:
+            raise ValueError("listed_at must be an ISO 8601 date or timestamp") from error
+    if row["listed_at_is_estimated"] not in ("", True, False):
+        raise ValueError("listed_at_is_estimated must be true or false")
+    row["listed_at_is_estimated"] = bool(row["listed_at_is_estimated"])
     row["quality_flags"] = ";".join(sorted(flags))
     return row
+
+
+def inferred_listed_at(row, observed_at):
+    """Estimate the source listing date from its reported days on market."""
+    days = row.get("source_days_on_market")
+    if days in (None, ""):
+        return ""
+    try:
+        days = int(days)
+        observed = datetime.fromisoformat(str(observed_at).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return ""
+    if days < 0:
+        return ""
+    return (observed.date() - timedelta(days=days)).isoformat()
+
+
+def backfill_listing_dates(state):
+    """Add stable source listing dates to databases created before this field existed."""
+    records = list(state.get("listings", {}).values()) + list(state.get("history", []))
+    for row in records:
+        if row.get("listed_at"):
+            continue
+        observed_at = row.get("first_seen") or row.get("observed_at")
+        inferred = inferred_listed_at(row, observed_at) if observed_at else ""
+        row["listed_at"] = inferred
+        row["listed_at_is_estimated"] = bool(inferred)
 
 
 class Fetcher:
@@ -329,6 +364,13 @@ def update(state, rows, now, scopes=()):
         seen.add(key)
         previous = listings.get(key)
         row["first_seen"] = previous["first_seen"] if previous else now
+        if not row["listed_at"]:
+            if previous and previous.get("listed_at"):
+                row["listed_at"] = previous["listed_at"]
+                row["listed_at_is_estimated"] = bool(previous.get("listed_at_is_estimated"))
+            else:
+                row["listed_at"] = inferred_listed_at(row, now)
+                row["listed_at_is_estimated"] = bool(row["listed_at"])
         row["last_seen"] = now
         row["last_checked"] = now
         row["missing_checks"] = 0
@@ -339,7 +381,7 @@ def update(state, rows, now, scopes=()):
         if previous:
             persistent = set(previous.get("quality_flags", "").split(";")) & {"mileage_decreased", "listing_vin_changed"}
             row["quality_flags"] = ";".join(sorted(set(filter(None, row["quality_flags"].split(";"))) | persistent))
-        compare_keys = [k for k in FIELDS if k not in {"first_seen", "last_seen", "last_checked", "missing_checks", "source_days_on_market", "bid_observed_at"}]
+        compare_keys = [k for k in FIELDS if k not in {"first_seen", "last_seen", "last_checked", "missing_checks", "source_days_on_market", "listed_at", "listed_at_is_estimated", "bid_observed_at"}]
         changed = not previous or any(previous.get(k) != row.get(k) for k in compare_keys)
         listings[key] = row
         if changed:
@@ -421,7 +463,7 @@ def save(root, state, health, changes):
         "mileage_is_approximate", "city", "state", "seller", "seller_type",
         "exterior_color", "interior_color", "title_status", "accident_history",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
-        "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "quality_flags",
+        "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     public_inventory = {
@@ -461,6 +503,7 @@ def save(root, state, health, changes):
 def run(root=ROOT, live=True):
     path = root / "data/database.json"
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "listings": {}, "history": [], "imports": []}
+    backfill_listing_dates(state)
     remove_unverified_cargurus_owner_inferences(state)
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))

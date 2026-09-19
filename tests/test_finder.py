@@ -8,6 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
+                    backfill_listing_dates,
                     apply_vehicle_history_overrides, cargurus_listing_ids,
                     clean_title_candidate, csv_text,
                     remove_unverified_cargurus_owner_inferences, run, valid_vin)
@@ -56,6 +57,30 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
         self.assertEqual(len(self.state['history']), 1)
         self.assertEqual(len(self.state['listings']), 1)
+
+    def test_listing_and_finder_dates_are_kept_separate(self):
+        row = {**self.row, 'source_days_on_market': 5}
+        update(self.state, [row], NOW)
+        saved = self.state['listings']['test:1']
+        self.assertEqual(saved['listed_at'], '2026-09-10')
+        self.assertTrue(saved['listed_at_is_estimated'])
+        self.assertEqual(saved['first_seen'], NOW)
+        update(self.state, [{**row, 'source_days_on_market': 6}], '2026-09-16T22:00:00+00:00')
+        self.assertEqual(self.state['listings']['test:1']['listed_at'], '2026-09-10')
+
+    def test_exact_listing_date_is_preserved(self):
+        update(self.state, [{**self.row, 'listed_at': '2026-09-01', 'listed_at_is_estimated': False}], NOW)
+        saved = self.state['listings']['test:1']
+        self.assertEqual(saved['listed_at'], '2026-09-01')
+        self.assertFalse(saved['listed_at_is_estimated'])
+
+    def test_old_database_listing_date_is_backfilled(self):
+        old = dict(self.row)
+        old.update(first_seen=NOW, source_days_on_market=5)
+        state = {'listings': {'test:1': old}, 'history': []}
+        backfill_listing_dates(state)
+        self.assertEqual(state['listings']['test:1']['listed_at'], '2026-09-10')
+        self.assertTrue(state['listings']['test:1']['listed_at_is_estimated'])
 
     def test_same_vin_across_sources_and_price_history(self):
         update(self.state, [self.row, {**self.row, 'source': 'another'}], NOW)
@@ -145,6 +170,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(public['summary']['ended_auctions'], 1)
             ended_public = next(row for row in public['listings'] if row['status'] == 'ended')
             self.assertEqual(ended_public['bid_observed_at'], NOW)
+            self.assertIn('listed_at', public['listings'][0])
+            self.assertIn('first_seen', public['listings'][0])
             self.assertNotIn('notes', public['listings'][0])
 
     def test_verified_owner_override_applies_by_vin(self):
