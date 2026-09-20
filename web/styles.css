@@ -121,7 +121,12 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .color-detail small { grid-column: 1 / -1; margin-bottom: 3px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .color-detail strong { max-width: 125px; overflow: hidden; color: #d9dfda; font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
 .color-detail em { color: #75827b; font-size: 9px; font-style: normal; }
-.sale-state { display: inline-block; margin-bottom: 7px; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.listing-state-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
+.sale-state { display: inline-block; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.deal-rating { display: inline-block; padding: 2px 7px; border: 1px solid; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; cursor: help; }
+.deal-great { border-color: #769d42; color: #c8ff3d; background: rgba(200,255,61,.05); }
+.deal-fair { border-color: #8e7c5d; color: #d9c39a; background: rgba(217,195,154,.04); }
+.deal-bad { border-color: #955d55; color: #e2a099; background: rgba(226,160,153,.04); }
 .state-for-sale, .state-live-auction { border-color: #58773d; color: #cbe99a; }
 .state-live-auction { background: rgba(215,255,104,.07); }
 .state-sold { border-color: #596c83; color: #b9d8f5; }
@@ -222,3 +227,4 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   footer { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+

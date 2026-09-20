@@ -17,6 +17,7 @@ import urllib.request
 import urllib.robotparser
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from statistics import median
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -607,6 +608,38 @@ def clean_title_candidate(row):
     return row.get("title_status") in {"clean-title candidate", "clean title"}
 
 
+def deal_rating(row, sales, minimum_comparables=3):
+    """Compare a retail asking price with the median sale in its mileage band."""
+    if (row.get("status") != "active" or row.get("category") != "retail"
+            or not isinstance(row.get("asking_price"), (int, float))
+            or not isinstance(row.get("mileage"), (int, float))):
+        return {}
+    miles = row["mileage"]
+    if miles < 100_000:
+        label, includes = "Under 100k", lambda value: value < 100_000
+    elif miles < 150_000:
+        label, includes = "100k-150k", lambda value: 100_000 <= value < 150_000
+    elif miles < 250_000:
+        label, includes = "150k-250k", lambda value: 150_000 <= value < 250_000
+    else:
+        label, includes = "250k+", lambda value: value >= 250_000
+    prices = [sale.get("sale_price") for sale in sales
+              if isinstance(sale.get("mileage"), (int, float)) and includes(sale["mileage"])
+              and isinstance(sale.get("sale_price"), (int, float))]
+    if len(prices) < minimum_comparables:
+        return {}
+    baseline = median(prices)
+    difference = round(((row["asking_price"] - baseline) / baseline) * 100)
+    quality = "great" if difference <= -15 else "fair" if difference <= 15 else "bad"
+    return {
+        "deal_quality": quality,
+        "deal_percent_vs_median": difference,
+        "deal_comparable_count": len(prices),
+        "deal_median_price": baseline,
+        "deal_mileage_band": label,
+    }
+
+
 def remove_unverified_cargurus_owner_inferences(state):
     """Discard owner counts inferred from a search filter instead of listing evidence."""
     for row in list(state.get("listings", {}).values()) + list(state.get("history", [])):
@@ -765,10 +798,12 @@ def save(root, state, health, changes):
         "exterior_color", "interior_color", "title_status", "accident_history",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
+        "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
+    public_rows = [{**row, **deal_rating(row, public_sales)} for row in public_rows]
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",

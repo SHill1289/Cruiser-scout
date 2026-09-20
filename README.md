@@ -23,6 +23,8 @@ GitHub schedules can be delayed; this is a periodic research tool, not a real-ti
 
 The responsive dashboard in `web/` reads `web/inventory.json`, a public-safe export containing current clean-title candidates and two years of completed-sale market history. Listing cards use the marketplace's public lead photo when available and fall back to a neutral LX placeholder. Exterior and interior labels are normalized against the factory 2006?2007 Lexus palette in `web/factory-colors.json`; the exact Lexus paint code is shown when known, while the on-screen swatch remains an approximation of pearl or metallic paint. The market section reports average and median sale price for under 100k, 100k?150k, 150k?250k and 250k+ mileage bands, with 12/24-month and model-year filters. Every database refresh rebuilds that file. Once this repository is imported into Vercel, each GitHub commit automatically publishes the newest inventory.
 
+Active retail listings receive a text-only deal label when at least three completed sales exist in the same mileage range. An asking price at least 15% below the two-year median is **Great deal**, a price within 15% is **Fair deal**, and a price more than 15% above is **Bad deal**. Listings without enough price, mileage or comparable-sale data are left unrated. These labels compare price only and do not account for condition, maintenance or modifications.
+
 In Vercel, import this GitHub repository and click **Deploy**. The included `vercel.json` selects the `web` folder, so no framework, build command or environment variables are required. The repository can remain private; the deployed dashboard is public.
 
 ## Coverage

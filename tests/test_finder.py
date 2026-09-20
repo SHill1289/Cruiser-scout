@@ -11,7 +11,7 @@ from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
-                    clean_title_candidate, csv_text,
+                    clean_title_candidate, csv_text, deal_rating,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
                     run, valid_vin)
 
@@ -132,6 +132,27 @@ class DatabaseTests(unittest.TestCase):
 
     def test_csv_formula_safety(self):
         self.assertIn("'=HYPERLINK", csv_text([{'seller': '=HYPERLINK(1)'}], ['seller']))
+
+    def test_deal_quality_uses_mileage_band_median(self):
+        sales = [
+            {'mileage': 160000, 'sale_price': 20000},
+            {'mileage': 190000, 'sale_price': 22000},
+            {'mileage': 240000, 'sale_price': 24000},
+            {'mileage': 90000, 'sale_price': 40000},
+        ]
+        great = deal_rating({**self.row, 'asking_price': 18000, 'mileage': 180000}, sales)
+        fair = deal_rating({**self.row, 'asking_price': 22000, 'mileage': 180000}, sales)
+        bad = deal_rating({**self.row, 'asking_price': 26000, 'mileage': 180000}, sales)
+        self.assertEqual(great['deal_quality'], 'great')
+        self.assertEqual(fair['deal_quality'], 'fair')
+        self.assertEqual(bad['deal_quality'], 'bad')
+        self.assertEqual(fair['deal_median_price'], 22000)
+        self.assertEqual(fair['deal_comparable_count'], 3)
+
+    def test_deal_quality_requires_three_comparables(self):
+        sales = [{'mileage': 160000, 'sale_price': 20000}, {'mileage': 190000, 'sale_price': 22000}]
+        self.assertEqual(deal_rating(self.row, sales), {})
+        self.assertEqual(deal_rating({**self.row, 'status': 'sold'}, sales * 2), {})
 
     def test_unchanged_import_does_not_refresh_last_seen(self):
         with temporary_workspace() as folder:

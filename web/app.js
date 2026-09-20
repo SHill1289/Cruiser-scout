@@ -139,6 +139,16 @@ function statusTiming(row) {
   if (saleState(row) === "sold") return `Sale recorded ${formatMoment(row.last_seen)}`;
   return `Last seen for sale ${formatMoment(row.last_seen)}`;
 }
+function dealBadge(row) {
+  const labels = { great: "Great deal", fair: "Fair deal", bad: "Bad deal" };
+  if (!labels[row.deal_quality]) return null;
+  const badge = text("span", `deal-rating deal-${row.deal_quality}`, labels[row.deal_quality]);
+  const difference = Number(row.deal_percent_vs_median);
+  const comparison = difference === 0 ? "matches" : `${Math.abs(difference)}% ${difference < 0 ? "below" : "above"}`;
+  badge.title = `Asking price ${comparison} the ${money.format(row.deal_median_price)} median of ${row.deal_comparable_count} completed sales in the ${row.deal_mileage_band} mileage range. Price comparison does not account for condition, maintenance or modifications.`;
+  badge.setAttribute("aria-label", `${labels[row.deal_quality]}. ${badge.title}`);
+  return badge;
+}
 
 function renderCard(row) {
   const card = document.createElement("article");
@@ -164,7 +174,11 @@ function renderCard(row) {
   card.append(media);
 
   const identity = text("div", "identity", "");
-  identity.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
+  const stateRow = text("div", "listing-state-row", "");
+  stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
+  const rating = dealBadge(row);
+  if (rating) stateRow.append(rating);
+  identity.append(stateRow);
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
   const title = text("h3", "vehicle-title", `${exterior.name === "Unknown" ? "Color unknown" : exterior.name} Lexus `);
   const wordmark = text("span", "model-wordmark", "");
@@ -330,3 +344,4 @@ ui.marketYear.addEventListener("input", renderMarket);
 ui.form.addEventListener("reset", () => setTimeout(render, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
 load();
+
