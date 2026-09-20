@@ -12,7 +12,7 @@ from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
                     clean_title_candidate, csv_text,
-                    parse_listing_photo, remove_unverified_cargurus_owner_inferences,
+                    parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
                     run, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
@@ -224,6 +224,40 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['accident_history'], 'No reported accidents')
         self.assertTrue(clean_title_candidate(target))
 
+    def test_truecar_clean_title_listing(self):
+        vin = 'JTJHT00W074027827'
+        listing_ref = 'ConsumerSummaryListing:test'
+        dealer_ref = 'ListingDealership:test'
+        search_key = ('marketplaceListingSearch({"filters":{"condition":"USED",'
+                      '"makeModelTrim":[{"makeSlug":"lexus","modelSlug":"lx",'
+                      '"trimSlugs":["lx-470"]}],"withinRadius":{"distance":5000,'
+                      '"postalCode":"27106"},"year":{"max":2007,"min":2006}},'
+                      '"first":30,"offset":0,"sort":"BEST_MATCH"})')
+        state = {
+            'ROOT_QUERY': {search_key: {'totalCount': 1, 'edges': [{'node': {'__ref': listing_ref}}],
+                                       'pageInfo': {'hasNextPage': False}}},
+            dealer_ref: {'name': 'Master Auto Group', 'location': {'geolocation': {'city': 'Raleigh', 'state': 'NC'}}},
+            listing_ref: {
+                'pricing': {'listPrice': 21245}, 'dealership': {'__ref': dealer_ref},
+                'galleryImages({"galleryImagesCount":1})': {'edges': [{'node': {'url': 'https://images.example.com/lx.jpg'}}]},
+                'conditionHistory': {'accidentCount': 1, 'ownerCount': 3, 'isCleanTitle': True},
+                'vehicle': {'year': 2007, 'vin': vin, 'mileage': 198412,
+                            'make': {'name': 'Lexus'}, 'style': {'trimName': 'LX 470'},
+                            'details': {'listedAt': '2026-09-16T00:45:00.000Z',
+                                        'exteriorColorName': 'Crystal White', 'interiorColorName': 'Beige'}},
+            },
+        }
+        page = '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+            {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+        rows, complete, total = parse_truecar(page, NOW)
+        self.assertTrue(complete)
+        self.assertEqual(total, 1)
+        self.assertEqual(rows[0]['vin'], vin)
+        self.assertEqual(rows[0]['owners'], '3')
+        self.assertEqual(rows[0]['accident_history'], '1 reported accident')
+        self.assertEqual(rows[0]['exterior_color'], 'Crystal White')
+        self.assertEqual(rows[0]['listed_at'], '2026-09-16T00:45:00.000Z')
+
     def test_social_photo_metadata(self):
         page = '<meta property="og:image" content="https://images.example.com/lx470.jpg?size=large&amp;crop=1">'
         self.assertEqual(parse_listing_photo(page),
@@ -328,3 +362,4 @@ class ParserTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

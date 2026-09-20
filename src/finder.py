@@ -163,7 +163,7 @@ class Fetcher:
             return self.pages[url]
         parts = urllib.parse.urlsplit(url)
         host = parts.netloc
-        if parts.scheme != "https" or host not in {"www.cargurus.com", "bringatrailer.com"}:
+        if parts.scheme != "https" or host not in {"www.cargurus.com", "bringatrailer.com", "www.truecar.com"}:
             raise ValueError("Collector host is not allowlisted")
         if host not in self.robots:
             parser = urllib.robotparser.RobotFileParser()
@@ -335,6 +335,77 @@ def parse_cargurus(page, year, no_accident_ids=None):
     if not rows and search.get("totalListings") != 0:
         raise ValueError("No valid listings parsed from nonempty results")
     return list(rows.values()), complete, search.get("totalListings")
+
+
+def parse_truecar(page, now):
+    """Parse nationwide clean-title LX470 listings from TrueCar's public search page."""
+    match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page, re.S)
+    if not match:
+        raise ValueError("TrueCar structured data missing; page may be blocked or its format changed")
+    payload = json.loads(html.unescape(match[1]))
+    state = payload.get("props", {}).get("pageProps", {}).get("__APOLLO_STATE__", {})
+    root = state.get("ROOT_QUERY", {})
+    searches = [(key, value) for key, value in root.items()
+                if key.startswith("marketplaceListingSearch(")
+                and isinstance(value, dict) and "totalCount" in value]
+    if len(searches) != 1:
+        raise ValueError("Expected one TrueCar marketplace search result")
+    search_key, search = searches[0]
+    if not all(token in search_key for token in ('"makeSlug":"lexus"', '"modelSlug":"lx"',
+                                                   '"trimSlugs":["lx-470"]',
+                                                   '"distance":5000', '"max":2007', '"min":2006')):
+        raise ValueError("TrueCar did not apply nationwide 2006-2007 LX 470 filters")
+    edges = search.get("edges", [])
+    total = search.get("totalCount")
+    complete = not search.get("pageInfo", {}).get("hasNextPage") and total == len(edges)
+    rows = []
+    for edge in edges:
+        ref = edge.get("node", {}).get("__ref", "")
+        listing = state.get(ref, {})
+        vehicle = listing.get("vehicle", {})
+        style = vehicle.get("style", {}) or {}
+        year = vehicle.get("year")
+        vin = str(vehicle.get("vin", "")).upper()
+        if year not in (2006, 2007) or vehicle.get("make", {}).get("name") != "Lexus" or style.get("trimName") != "LX 470":
+            continue
+        history = listing.get("conditionHistory", {}) or {}
+        if history.get("isCleanTitle") is not True:
+            continue
+        details = vehicle.get("details", {}) or {}
+        dealer_ref = listing.get("dealership", {}).get("__ref", "")
+        dealer = state.get(dealer_ref, {})
+        location = dealer.get("location", {}).get("geolocation", {}) or {}
+        gallery = next((value for key, value in listing.items() if key.startswith("galleryImages(")), {}) or {}
+        photos = [item.get("node", {}).get("url", "") for item in gallery.get("edges", [])]
+        photo = next((url for url in photos if url.startswith("https://")), "")
+        accident_count = history.get("accidentCount")
+        accidents = ("No reported accidents" if accident_count == 0 else
+                     f"{accident_count} reported accident{'s' if accident_count != 1 else ''}" if isinstance(accident_count, int) else
+                     "Unknown")
+        owner_count = history.get("ownerCount")
+        listing_url = f"https://www.truecar.com/used-cars-for-sale/listing/{vin}/"
+        rows.append(normalize({
+            "source": "truecar", "source_listing_id": vin, "year": year, "vin": vin,
+            "listing_url": listing_url, "status": "active", "category": "retail",
+            "asking_price": listing.get("pricing", {}).get("listPrice"),
+            "mileage": vehicle.get("mileage", details.get("mileage")),
+            "city": location.get("city", details.get("dealerCity", "")),
+            "state": location.get("state", details.get("dealerState", "")),
+            "seller": dealer.get("name", ""), "seller_type": "dealer",
+            "photo_url": photo,
+            "exterior_color": details.get("exteriorColorName", vehicle.get("exteriorColor", "")),
+            "interior_color": details.get("interiorColorName", vehicle.get("interiorColor", "")),
+            "title_status": "clean title", "accident_history": accidents,
+            "owners": str(owner_count) if isinstance(owner_count, int) else "Unknown",
+            "owners_source": "TrueCar / Experian AutoCheck" if isinstance(owner_count, int) else "",
+            "owner_evidence_url": listing_url if isinstance(owner_count, int) else "",
+            "owners_verified_at": now[:10] if isinstance(owner_count, int) else "",
+            "listed_at": details.get("listedAt", ""), "listed_at_is_estimated": False,
+            "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase.",
+        }))
+    if len(rows) != len(edges):
+        complete = False
+    return rows, complete, total
 
 
 def plain(page):
@@ -762,6 +833,13 @@ def run(root=ROOT, live=True):
                         scopes.append(("cargurus", source["year"]))
                     photo_note = f" First photo error: {photo_errors[0]}" if photo_errors else ""
                     health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled.{photo_note}"})
+                elif source["type"] == "truecar":
+                    batch, complete, total = parse_truecar(fetcher.get(source["url"]), now)
+                    rows.extend(batch)
+                    if complete:
+                        scopes.extend(("truecar", year) for year in (2006, 2007))
+                    health.append({"source": source["id"], "status": "ok" if complete else "partial",
+                                   "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. Owner and accident counts are source-reported from Experian AutoCheck."})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = bat_listing_urls(page)
@@ -810,4 +888,5 @@ if __name__ == "__main__":
     parser.add_argument("--offline", action="store_true", help="Import local JSON and regenerate exports without network requests")
     args = parser.parse_args()
     sys.exit(run(live=not args.offline))
+
 
