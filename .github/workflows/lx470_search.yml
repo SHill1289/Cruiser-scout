@@ -2,7 +2,7 @@ name: LX470 database refresh
 
 on:
   schedule:
-    - cron: '17 13 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
   push:
     branches: [main]

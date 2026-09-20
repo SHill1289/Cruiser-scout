@@ -15,9 +15,9 @@ A private, automated US listing database for **2006–2007 Lexus LX470s**, conti
 
 ## Automatic updates
 
-GitHub Actions runs daily at **13:17 UTC** (9:17 a.m. Eastern daylight time / 8:17 a.m. Eastern standard time). It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings, renders public detail pages when needed to capture lead photos, and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
+GitHub Actions runs every six hours at **00:17, 06:17, 12:17 and 18:17 UTC**. In Eastern time, those runs occur at 8:17 p.m., 2:17 a.m., 8:17 a.m. and 2:17 p.m. during daylight saving time, and one hour earlier during standard time. It also runs when collectors, configuration, imports or tests change on `main`. No paid service, API key or external database is required. The workflow tests the code, collects listings, renders public detail pages when needed to capture lead photos, and commits refreshed data back here. Source failures are saved and make the run visibly fail, while successful sources still update.
 
-GitHub schedules can be delayed; this is a daily research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+GitHub schedules can be delayed; this is a periodic research tool, not a real-time availability guarantee. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
 ## Web dashboard on Vercel
 
@@ -104,3 +104,4 @@ When a listing page displays an owner count, open **Actions → Verify owner cou
 This is intentionally evidence based. Free government VIN services provide specifications, recalls and limited theft/salvage checks, but do not provide an exact previous-owner count. Listings without visible owner-count evidence remain `Unverified` rather than receiving a guess.
 
 This repository does not contact sellers, send messages, or place bids.
+
