@@ -16,10 +16,11 @@ const ui = {
 
 let inventory = [];
 let marketSales = [];
+let colorReference = { exterior: [], interior_by_year: {} };
 let generatedAt = new Date();
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "status", "year", "color", "owners", "accidents", "price", "mileage", "sort"]
+const controls = ["search", "status", "color", "owners", "accidents", "price", "mileage", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 
 function value(row, key) { return row[key] ?? ""; }
@@ -61,6 +62,36 @@ function makeMetric(main, label) {
   const node = text("div", "metric", "");
   node.append(text("strong", "", main), text("span", "", label));
   return node;
+}
+function normalizedColorName(raw) {
+  return String(raw || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+function resolveFactoryColor(kind, raw, year) {
+  const reported = normalizedColorName(raw);
+  const entries = kind === "exterior"
+    ? colorReference.exterior || []
+    : colorReference.interior_by_year?.[String(year)] || [];
+  if (!reported) return { name: "Unknown", swatch: "", code: "", factory: false, reported: "" };
+  const match = entries.find(entry => [entry.name, ...(entry.aliases || [])]
+    .map(normalizedColorName).includes(reported));
+  return match ? { ...match, factory: true, reported: raw }
+    : { name: raw, swatch: "", code: "", factory: false, reported: raw };
+}
+function makeColorFact(kind, raw, year) {
+  const color = resolveFactoryColor(kind, raw, year);
+  const fact = text("span", "color-fact", "");
+  const swatch = text("span", color.swatch ? "color-swatch" : "color-swatch color-unknown", "");
+  if (color.swatch) swatch.style.background = color.swatch;
+  swatch.setAttribute("aria-hidden", "true");
+  const label = kind === "exterior" ? "Exterior" : "Interior";
+  const detail = text("span", "color-detail", "");
+  detail.append(text("small", "", label), text("strong", "", color.name));
+  if (color.code) detail.append(text("em", "", color.code));
+  fact.append(swatch, detail);
+  fact.title = color.factory
+    ? `Lexus factory color${color.code ? `, paint code ${color.code}` : ""}. Swatch is a screen approximation.${color.reported && normalizedColorName(color.reported) !== normalizedColorName(color.name) ? ` Listing reported ${color.reported}.` : ""}`
+    : color.reported ? `Marketplace color: ${color.reported}. Exact Lexus factory color is not verified.` : `${label} color unavailable.`;
+  return fact;
 }
 function ownerGroup(row) {
   const owners = String(row.owners || "").trim();
@@ -134,7 +165,8 @@ function renderCard(row) {
 
   const identity = text("div", "identity", "");
   identity.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
-  const title = text("h3", "vehicle-title", `${row.exterior_color || "Color unknown"} Lexus `);
+  const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
+  const title = text("h3", "vehicle-title", `${exterior.name === "Unknown" ? "Color unknown" : exterior.name} Lexus `);
   const wordmark = text("span", "model-wordmark", "");
   wordmark.setAttribute("role", "img");
   wordmark.setAttribute("aria-label", "LX470");
@@ -143,10 +175,13 @@ function renderCard(row) {
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
   identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
+  const colors = text("div", "color-pair", "");
+  colors.append(makeColorFact("exterior", row.exterior_color, row.year), makeColorFact("interior", row.interior_color, row.year));
+  identity.append(colors);
   card.append(identity);
 
   card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));
-  card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, row.interior_color || "Interior unknown"));
+  card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, "Mileage"));
   card.append(listingDates(row));
 
   const history = text("div", "history", "");
@@ -169,12 +204,14 @@ function renderCard(row) {
 
 function matches(row) {
   const query = controls.search.value.trim().toLowerCase();
-  const haystack = [row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color, row.source].join(" ").toLowerCase();
+  const factoryExterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
+  const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year);
+  const haystack = [row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
+    factoryExterior.name, factoryInterior.name, row.source].join(" ").toLowerCase();
   const amount = listingPrice(row);
   return (!query || haystack.includes(query))
-    && (!controls.year.value || String(row.year) === controls.year.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
-    && (!controls.color.value || row.exterior_color === controls.color.value)
+    && (!controls.color.value || factoryExterior.name === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || (controls.accidents.value === "none" ? row.accident_history === "No reported accidents" : row.accident_history !== "No reported accidents"))
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
@@ -186,8 +223,7 @@ function sortRows(rows) {
   const strategies = {
     "price-asc": (a, b) => (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing),
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
-    "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
-    "year-desc": (a, b) => b.year - a.year || (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing)
+    "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen))
   };
   return rows.sort(strategies[controls.sort.value]);
 }
@@ -254,6 +290,12 @@ async function load() {
     const response = await fetch("inventory.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
     const data = await response.json();
+    try {
+      const colorResponse = await fetch("factory-colors.json", { cache: "no-store" });
+      if (colorResponse.ok) colorReference = await colorResponse.json();
+    } catch (colorError) {
+      console.warn("Factory color reference unavailable", colorError);
+    }
     inventory = Array.isArray(data.listings) ? data.listings : [];
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
     generatedAt = new Date(data.generated_at || Date.now());
@@ -264,7 +306,8 @@ async function load() {
     ui.years.textContent = new Set(inventory.map(row => row.year)).size;
     ui.sources.textContent = new Set(inventory.map(row => row.source)).size;
 
-    [...new Set(inventory.map(row => row.exterior_color).filter(Boolean))].sort()
+    [...new Set(inventory.map(row => resolveFactoryColor("exterior", row.exterior_color, row.year).name)
+      .filter(name => name && name !== "Unknown"))].sort()
       .forEach(color => ui.color.add(new Option(color, color)));
     (data.source_health || []).forEach(source => {
       const row = text("div", "health-row", "");

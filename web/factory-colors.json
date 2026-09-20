@@ -1,0 +1,81 @@
+{
+  "description": "Factory color names for US-market 2006-2007 Lexus LX 470s. Paint codes identify the finish; CSS swatches are screen approximations and cannot reproduce metallic or pearl paint exactly.",
+  "sources": [
+    {
+      "name": "Lexus Canada 2006 LX 470 specifications",
+      "url": "https://media.lexus.ca/content/dam/media-lexus/general/unassigned/20145/eng_2006LX470_specs.pdf"
+    },
+    {
+      "name": "Lexus 2007 LX e-brochure",
+      "url": "https://xr793.com/wp-content/uploads/2022/01/2007-Lexus-LX.pdf"
+    },
+    {
+      "name": "2007 Toyota/Lexus Color Compatibility Guide",
+      "url": "https://industrial.sherwin-williams.com/content/dam/pcg/sherwin-williams/automotive/emeai/nl/nl-nl/pdfs/swaf-2007_toyota_lexus_ccg.pdf"
+    }
+  ],
+  "exterior": [
+    {
+      "name": "Black Onyx",
+      "code": "202",
+      "swatch": "linear-gradient(145deg, #252a29, #050606 68%)",
+      "aliases": ["Black", "Onyx Black"]
+    },
+    {
+      "name": "Classic Silver Metallic",
+      "code": "1F7",
+      "swatch": "linear-gradient(145deg, #d2d5d4, #858c8f 68%)",
+      "aliases": ["Silver", "Classic Silver"]
+    },
+    {
+      "name": "Crystal White",
+      "code": "062",
+      "swatch": "linear-gradient(145deg, #fffdf4, #d9ddd8 68%)",
+      "aliases": ["White", "Crystal White Pearl"]
+    },
+    {
+      "name": "Cypress Pearl",
+      "code": "6T7",
+      "swatch": "linear-gradient(145deg, #7c8b7c, #4f6256 68%)",
+      "aliases": ["Green", "Cypress Mica"]
+    },
+    {
+      "name": "Galactic Gray Mica",
+      "code": "1E9",
+      "swatch": "linear-gradient(145deg, #73797a, #434a4d 68%)",
+      "aliases": ["Gray", "Grey", "Galactic Grey Mica"]
+    },
+    {
+      "name": "Sand Dollar Pearl",
+      "code": "4R2",
+      "swatch": "linear-gradient(145deg, #d8c9ab, #aa997c 68%)",
+      "aliases": ["Beige", "Gold", "Tan"]
+    }
+  ],
+  "interior_by_year": {
+    "2006": [
+      {
+        "name": "Ivory",
+        "swatch": "linear-gradient(145deg, #e8ddc8, #bdae93 68%)",
+        "aliases": ["Ivory Leather", "White (Ivory leather)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
+      },
+      {
+        "name": "Gray",
+        "swatch": "linear-gradient(145deg, #aaa9a4, #706f6b 68%)",
+        "aliases": ["Grey", "Stone"]
+      }
+    ],
+    "2007": [
+      {
+        "name": "Ivory",
+        "swatch": "linear-gradient(145deg, #e8ddc8, #bdae93 68%)",
+        "aliases": ["Ivory Leather", "White (Ivory leather)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
+      },
+      {
+        "name": "Stone",
+        "swatch": "linear-gradient(145deg, #aaa79f, #74726c 68%)",
+        "aliases": ["Gray", "Grey", "Stone Leather"]
+      }
+    ]
+  }
+}

@@ -84,7 +84,7 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
 .section-heading h2, .method h2 { margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: 1.04; letter-spacing: -.022em; font-weight: 700; font-kerning: normal; }
 .result-count { margin: 0; color: var(--muted); font-size: 14px; }
-.filters { display: grid; grid-template-columns: 1.6fr repeat(8, minmax(110px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.filters { display: grid; grid-template-columns: 1.6fr repeat(7, minmax(110px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .filters label { display: flex; flex-direction: column; min-width: 0; padding: 11px 14px; background: var(--panel); }
 .filters label span { margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .filters input, .filters select { width: 100%; padding: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; }
@@ -113,6 +113,14 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .vehicle-title .model-wordmark { width: 4.2em; height: .8em; color: var(--ink); white-space: nowrap; }
 .vehicle-meta, .meta { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
 .timing { max-width: 360px; }
+.color-pair { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 12px; }
+.color-fact { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+.color-swatch { flex: 0 0 auto; width: 17px; height: 17px; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18), 0 1px 4px rgba(0,0,0,.28); }
+.color-swatch.color-unknown { background: repeating-linear-gradient(135deg, #26312c 0 4px, #111815 4px 8px); }
+.color-detail { display: grid; grid-template-columns: auto auto; align-items: baseline; column-gap: 5px; line-height: 1.05; }
+.color-detail small { grid-column: 1 / -1; margin-bottom: 3px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.color-detail strong { max-width: 125px; overflow: hidden; color: #d9dfda; font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.color-detail em { color: #75827b; font-size: 9px; font-style: normal; }
 .sale-state { display: inline-block; margin-bottom: 7px; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .state-for-sale, .state-live-auction { border-color: #58773d; color: #cbe99a; }
 .state-live-auction { background: rgba(215,255,104,.07); }
