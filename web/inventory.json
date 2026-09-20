@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T19:39:39+00:00",
+  "generated_at": "2026-09-20T20:06:51+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 21,
@@ -14,67 +14,67 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "16 parsed of 16; 15 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "5 parsed of 5; 5 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "historical sales",
       "status": "ok",
       "detail": "50 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:459345660: TimeoutException: Message:  ",
-      "checked_at": "2026-09-20T19:39:39+00:00"
+      "checked_at": "2026-09-20T20:06:51+00:00"
     }
   ],
   "market_history": {
@@ -653,7 +653,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -689,7 +689,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -725,7 +725,7 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -761,7 +761,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -797,7 +797,7 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -833,7 +833,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -869,7 +869,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -905,7 +905,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -941,7 +941,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -977,7 +977,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1013,7 +1013,7 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1049,7 +1049,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1085,7 +1085,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1121,7 +1121,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1157,7 +1157,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1193,7 +1193,7 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1229,7 +1229,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1265,7 +1265,7 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1301,7 +1301,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1337,7 +1337,7 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     },
     {
@@ -1373,7 +1373,7 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-09-20T19:39:39+00:00",
+      "last_seen": "2026-09-20T20:06:51+00:00",
       "quality_flags": ""
     }
   ]
