@@ -3,72 +3,72 @@
     "source": "cargurus-2006",
     "status": "ok",
     "detail": "16 parsed of 16; 15 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "cargurus-2007",
     "status": "ok",
     "detail": "5 parsed of 5; 5 photos found; nationwide. Additional pages are not crawled.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "truecar",
     "status": "ok",
     "detail": "2 clean-title listings parsed of 2; nationwide. Owner and accident counts are source-reported from Experian AutoCheck.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "bringatrailer",
     "status": "ok",
     "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "historical sales",
     "status": "ok",
     "detail": "50 completed sales retained from 50 discovered or seeded auctions.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "carfax",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "cars.com",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "edmunds",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "autotrader",
     "status": "manual_only",
     "detail": "No validated collector yet; manual imports supported.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "copart",
     "status": "manual_only",
     "detail": "No validated collector yet; manual auction/salvage imports supported.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "iseecars",
     "status": "manual_only",
     "detail": "No validated collector yet; manual imports supported.",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   },
   {
     "source": "listing photos",
     "status": "warning",
     "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:459345660: TimeoutException: Message:  ",
-    "checked_at": "2026-09-20T20:50:44+00:00"
+    "checked_at": "2026-09-20T21:17:53+00:00"
   }
 ]
