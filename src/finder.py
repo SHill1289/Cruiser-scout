@@ -25,6 +25,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
           "seller", "seller_type", "photo_url", "exterior_color", "interior_color", "title_status",
+          "reported_extras",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
           "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
@@ -65,62 +66,27 @@ def valid_vin(vin):
     return vin[8] == ("X" if total % 11 == 10 else str(total % 11))
 
 
-VIN_SPEC_FIELDS = {
-    "BodyClass": "body_style", "DriveType": "drive_type",
-    "EngineCylinders": "cylinders", "DisplacementL": "engine_liters",
-    "FuelTypePrimary": "fuel", "PlantCountry": "assembly_country",
-    "PlantCity": "assembly_city", "Trim": "trim",
+DISTINCT_EXTRAS = {
+    "DVD Entertainment System": "Rear-seat DVD",
+    "Rear Seat Entertainment": "Rear-seat DVD",
+    "Night View": "Night View",
+    "Night Vision": "Night View",
+    "CarPlay": "CarPlay",
+    "Apple CarPlay": "CarPlay",
+    "Remote Start": "Remote start",
 }
 
 
-def parse_vin_specs(payload, vin, year):
-    """Accept only an unambiguous LX 470 decode; blanks remain unknown."""
-    results = payload.get("Results")
-    if not isinstance(results, list) or len(results) != 1 or not isinstance(results[0], dict):
-        raise ValueError("VIN decoder returned no unique result")
-    decoded = results[0]
-    if decoded.get("ErrorCode") not in (None, "", "0"):
-        raise ValueError("VIN decoder reported an incomplete or corrected decode")
-    model = re.sub(r"[^A-Z0-9]", "", str(decoded.get("Model") or "").upper())
-    if (str(decoded.get("VIN") or "").upper() != vin or
-            str(decoded.get("Make") or "").strip().lower() != "lexus" or
-            model not in {"LX", "LX470"} or str(decoded.get("ModelYear") or "") != str(year)):
-        raise ValueError("VIN decoder make, model, year or VIN did not match")
-    specs = {output: str(decoded[source]).strip()
-             for source, output in VIN_SPEC_FIELDS.items()
-             if decoded.get(source) not in (None, "", "Not Applicable")}
-    return {"year": year, "make": "Lexus", "model": "LX 470", **specs}
-
-
-def collect_vin_specs(root, state, live, request=None):
-    """Persist verified decodes; a temporary API error never erases prior results."""
-    path = root / "data/vin_specs.json"
-    cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-    if not isinstance(cache, dict):
-        raise ValueError("VIN specification cache must be an object")
-    candidates = {row["vin"]: row["year"] for row in state["listings"].values()
-                  if row["vehicle_key"] == "vin:" + row["vin"] and
-                  row["status"] in {"active", "sold", "ended"}}
-    missing = sorted(vin for vin in candidates if vin not in cache)
-    errors = []
-    if live:
-        request = request or urllib.request.urlopen
-        for vin in missing:
-            url = ("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/" + vin +
-                   "?format=json&modelyear=" + str(candidates[vin]))
-            try:
-                query = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-                with request(query, timeout=10) as response:
-                    body = response.read(2_000_001)
-                if len(body) > 2_000_000:
-                    raise ValueError("VIN decoder response too large")
-                cache[vin] = parse_vin_specs(json.loads(body), vin, candidates[vin])
-            except (OSError, ValueError, KeyError, TypeError) as error:
-                errors.append(f"{vin}: {type(error).__name__}: {error}"[:300])
-            time.sleep(0.4)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return cache, len(missing), errors
+def listing_extras(features):
+    """Keep only source-reported extras that distinguish these model years."""
+    if not isinstance(features, list):
+        return ""
+    labels = set()
+    for item in features:
+        name = item.get("name") if isinstance(item, dict) else item
+        if isinstance(name, str) and name in DISTINCT_EXTRAS:
+            labels.add(DISTINCT_EXTRAS[name])
+    return ";".join(sorted(labels))
 
 
 def normalize(raw):
@@ -382,6 +348,7 @@ def parse_cargurus(page, year, no_accident_ids=None):
             "photo_url": cargurus_photo(d),
             "exterior_color": d.get("exteriorColorData", {}).get("name", ""),
             "interior_color": d.get("interiorColorData", {}).get("localized", ""),
+            "reported_extras": listing_extras(d.get("vehicleFeatures", [])),
             "title_status": "clean-title candidate",
             "accident_history": "No reported accidents" if listing_id in no_accident_ids else "Accident reported or history unavailable",
             "owners": "Unverified",
@@ -465,6 +432,7 @@ def parse_truecar(page, now):
             "photo_url": photo,
             "exterior_color": details.get("exteriorColorName", vehicle.get("exteriorColor", "")),
             "interior_color": details.get("interiorColorName", vehicle.get("interiorColor", "")),
+            "reported_extras": listing_extras(vehicle.get("keyFeatures") or details.get("keyFeatures", [])),
             "title_status": "clean title", "accident_history": accidents,
             "owners": str(owner_count) if isinstance(owner_count, int) else "Unknown",
             "owners_source": "TrueCar / Experian AutoCheck" if isinstance(owner_count, int) else "",
@@ -833,7 +801,7 @@ def master_rows(state):
     return result
 
 
-def save(root, state, health, changes, vin_specs=None):
+def save(root, state, health, changes):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
     web = root / "web"
@@ -864,19 +832,15 @@ def save(root, state, health, changes, vin_specs=None):
         "listing_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url",
-        "exterior_color", "interior_color", "title_status", "accident_history",
+        "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
-        "vin_specs",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
-    vin_specs = vin_specs or {}
-    public_rows = [{**row, **deal_rating(row, public_sales),
-                    "vin_specs": vin_specs.get(row["vin"]) if row["vehicle_key"] == "vin:" + row["vin"] else None}
-                   for row in public_rows]
+    public_rows = [{**row, **deal_rating(row, public_sales)} for row in public_rows]
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
@@ -980,18 +944,13 @@ def run(root=ROOT, live=True):
         photo_browser.close()
     changes = update(state, rows, now, scopes)
     apply_vehicle_history_overrides(root, state)
-    vin_specs, pending_specs, spec_errors = collect_vin_specs(root, state, live)
     if live:
         health = [{**h, "checked_at": now} for h in health]
-        health.append({"source": "NHTSA VIN decoder", "status": "warning" if spec_errors else "ok",
-                       "detail": f"{len(vin_specs)} VINs cached; {pending_specs - len(spec_errors)} newly decoded. " +
-                                 (f"{len(spec_errors)} lookups unavailable; first error: {spec_errors[0]}" if spec_errors else "Factory identification only; not a build sheet."),
-                       "checked_at": now})
         if photo_backfill_errors:
             health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain. First error: {photo_backfill_errors[0]}", "checked_at": now})
     elif (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text(encoding="utf-8"))
-    save(root, state, health, changes, vin_specs)
+    save(root, state, health, changes)
     print(json.dumps({"vehicles": len(master_rows(state)), "listings": len(state["listings"]), "changes": len(changes), "sources": health}, indent=2))
     return 1 if any(h["status"] in {"error", "partial"} for h in health) else 0
 

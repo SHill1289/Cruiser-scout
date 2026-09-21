@@ -150,29 +150,22 @@ function dealBadge(row) {
   return badge;
 }
 
-function vinSpecs(row) {
-  if (!row.vin || !row.vin_specs) return null;
-  const specs = row.vin_specs;
-  const fields = [
-    ["Body", specs.body_style], ["Drive", specs.drive_type],
-    ["Engine", [specs.engine_liters ? `${specs.engine_liters} L` : "", specs.cylinders ? `${specs.cylinders} cylinders` : ""].filter(Boolean).join(" · ")],
-    ["Fuel", specs.fuel], ["Trim", specs.trim],
-    ["Assembled", [specs.assembly_city, specs.assembly_country].filter(Boolean).join(", ")]
-  ].filter(([, value]) => value);
+function reportedExtras(row) {
+  const extras = String(row.reported_extras || "").split(";").filter(Boolean);
+  if (!extras.length) return null;
   const panel = document.createElement("details");
-  panel.className = "vin-specs";
-  panel.append(text("summary", "", "VIN specifications"));
-  const content = text("div", "vin-specs-content", "");
-  const list = text("dl", "", "");
-  [["VIN", row.vin], ["Vehicle", `${specs.year} ${specs.make} ${specs.model}`], ...fields]
-    .forEach(([label, value]) => list.append(text("dt", "", label), text("dd", "", value)));
-  content.append(list);
-  const source = text("p", "vin-specs-source", "Decoded by ");
-  const link = text("a", "", "NHTSA vPIC");
-  link.href = `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/${encodeURIComponent(row.vin)}?format=json&modelyear=${specs.year}`;
+  panel.className = "reported-extras";
+  panel.append(text("summary", "", `Listing-reported extras (${extras.length})`));
+  const content = text("div", "reported-extras-content", "");
+  const tags = text("div", "reported-extras-tags", "");
+  tags.append(...extras.map(extra => text("span", "reported-extra", extra)));
+  content.append(tags);
+  const source = text("p", "reported-extras-source", "Marketplace tags can be wrong or describe aftermarket additions. Confirm equipment in photos or with the seller. ");
+  const link = text("a", "", `View on ${row.source}`);
+  link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  source.append(link, document.createTextNode(". VIN data does not verify equipment, paint, title or history on this truck."));
+  source.append(link);
   content.append(source);
   panel.append(content);
   return panel;
@@ -220,8 +213,8 @@ function renderCard(row) {
   const colors = text("div", "color-pair", "");
   colors.append(makeColorFact("exterior", row.exterior_color, row.year), makeColorFact("interior", row.interior_color, row.year));
   identity.append(colors);
-  const specs = vinSpecs(row);
-  if (specs) identity.append(specs);
+  const extras = reportedExtras(row);
+  if (extras) identity.append(extras);
   card.append(identity);
 
   card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));

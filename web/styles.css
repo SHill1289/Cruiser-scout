@@ -121,14 +121,13 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .color-detail small { grid-column: 1 / -1; margin-bottom: 3px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .color-detail strong { max-width: 125px; overflow: hidden; color: #d9dfda; font-size: 10px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
 .color-detail em { color: #75827b; font-size: 9px; font-style: normal; }
-.vin-specs { margin-top: 12px; max-width: 340px; }
-.vin-specs summary { width: max-content; color: var(--warm); font-size: 11px; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
-.vin-specs-content { padding: 12px 0 3px; }
-.vin-specs dl { display: grid; grid-template-columns: 72px 1fr; gap: 6px 10px; margin: 0; font-size: 11px; line-height: 1.35; }
-.vin-specs dt { color: var(--muted); }
-.vin-specs dd { margin: 0; overflow-wrap: anywhere; }
-.vin-specs-source { margin: 11px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
-.vin-specs-source a { color: var(--warm); }
+.reported-extras { margin-top: 12px; max-width: 340px; }
+.reported-extras summary { width: max-content; color: var(--warm); font-size: 11px; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.reported-extras-content { padding: 11px 0 3px; }
+.reported-extras-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.reported-extra { padding: 3px 6px; border: 1px solid var(--line); color: #d9dfda; font-size: 10px; }
+.reported-extras-source { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
+.reported-extras-source a { color: var(--warm); }
 .listing-state-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
 .sale-state { display: inline-block; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .deal-rating { display: inline-block; padding: 2px 7px; border: 1px solid; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; cursor: help; }

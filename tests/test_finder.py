@@ -1,6 +1,5 @@
 import contextlib
 import json
-import io
 import sys
 import shutil
 import uuid
@@ -12,10 +11,9 @@ from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
-                    clean_title_candidate, csv_text, deal_rating,
+                    clean_title_candidate, csv_text, deal_rating, listing_extras,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
                     run, valid_vin)
-from finder import collect_vin_specs, parse_vin_specs
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -50,37 +48,13 @@ class DatabaseTests(unittest.TestCase):
         bad = normalize({**self.row, 'vin': 'JTJHT00W464018100'})
         self.assertTrue(bad['vehicle_key'].startswith('listing:'))
 
-    def test_vin_specs_validate_identity_and_preserve_unknown_values(self):
-        vin = self.row['vin']
-        decoded = {'Results': [{'VIN': vin, 'Make': 'LEXUS', 'Model': 'LX 470',
-                                'ModelYear': '2006', 'BodyClass': 'Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)',
-                                'EngineCylinders': '8', 'DisplacementL': '', 'PlantCountry': 'JAPAN'}]}
-        specs = parse_vin_specs(decoded, vin, 2006)
-        self.assertEqual(specs['cylinders'], '8')
-        self.assertEqual(specs['assembly_country'], 'JAPAN')
-        self.assertNotIn('engine_liters', specs)
-        for change in ({'Make': 'Toyota'}, {'ModelYear': '2007'}, {'VIN': 'JTJHT00W464018100'}):
-            with self.subTest(change=change), self.assertRaises(ValueError):
-                parse_vin_specs({'Results': [{**decoded['Results'][0], **change}]}, vin, 2006)
-
-    def test_vin_specs_cache_only_requests_new_valid_vins(self):
-        vin = self.row['vin']
-        payload = {'Results': [{'VIN': vin, 'Make': 'Lexus', 'Model': 'LX', 'ModelYear': '2006',
-                                'DriveType': '4WD/4-Wheel Drive/4x4'}]}
-        calls = []
-        def request(query, timeout):
-            calls.append(query.full_url)
-            self.assertEqual(timeout, 10)
-            return io.BytesIO(json.dumps(payload).encode())
-        invalid = normalize({**self.row, 'source_listing_id': 'bad', 'vin': 'JTJHT00W464018100'})
-        state = {'listings': {'valid': self.row, 'invalid': invalid}}
-        with temporary_workspace() as root:
-            cache, missing, errors = collect_vin_specs(root, state, True, request)
-            self.assertEqual((missing, errors, len(calls)), (1, [], 1))
-            self.assertEqual(cache[vin]['drive_type'], '4WD/4-Wheel Drive/4x4')
-            cache, missing, errors = collect_vin_specs(root, state, True, request)
-            self.assertEqual((missing, errors, len(calls)), (0, [], 1))
-            self.assertEqual(cache[vin]['year'], 2006)
+    def test_listing_extras_excludes_standard_and_generic_features(self):
+        features = ['Navigation System', 'Backup Camera', 'Leather Seats',
+                    'DVD Entertainment System', 'CarPlay', 'Remote Start',
+                    'Premium Package', 'DVD Entertainment System']
+        self.assertEqual(listing_extras(features), 'CarPlay;Rear-seat DVD;Remote start')
+        self.assertEqual(listing_extras([{'name': 'Night View'}, {'name': 'Moonroof'}]), 'Night View')
+        self.assertEqual(listing_extras(None), '')
 
     def test_scope_filters_and_missing_vin(self):
         for field, value in [('year', 2005), ('make', 'Toyota'), ('model', 'LX570')]:
@@ -211,6 +185,7 @@ class DatabaseTests(unittest.TestCase):
             (root / 'imports').mkdir()
             (root / 'sources/config.json').write_text('{"sources": []}')
             clean = {**self.row, 'source_listing_id': 'clean',
+                     'reported_extras': 'Rear-seat DVD',
                      'title_status': 'clean-title candidate'}
             unknown = {**self.row, 'source_listing_id': 'unknown',
                        'listing_url': 'https://example.com/car/2',
@@ -224,9 +199,6 @@ class DatabaseTests(unittest.TestCase):
                      'asking_price': None, 'current_bid': 12000,
                      'auction_ends_at': NOW, 'bid_observed_at': NOW}
             (root / 'imports/one.json').write_text(json.dumps([clean, unknown, sold, ended]))
-            (root / 'data').mkdir()
-            (root / 'data/vin_specs.json').write_text(json.dumps({self.row['vin']: {
-                'year': 2006, 'make': 'Lexus', 'model': 'LX 470', 'cylinders': '8'}}))
             run(root, live=False)
             public = json.loads((root / 'web/inventory.json').read_text())
             self.assertEqual(public['summary']['active_listings'], 1)
@@ -238,7 +210,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(ended_public['bid_observed_at'], NOW)
             self.assertIn('listed_at', public['listings'][0])
             self.assertIn('first_seen', public['listings'][0])
-            self.assertEqual(public['listings'][0]['vin_specs']['cylinders'], '8')
+            self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['reported_extras'], 'Rear-seat DVD')
+            self.assertNotIn('vin_specs', public['listings'][0])
             self.assertNotIn('notes', public['listings'][0])
 
     def test_verified_owner_override_applies_by_vin(self):
@@ -269,6 +242,8 @@ class ParserTests(unittest.TestCase):
 
     def test_live_structure_fixture(self):
         context = self.clean_fixture()
+        context['state']['loaderData']['route']['search']['tiles'][0]['data']['vehicleFeatures'] = [
+            'Navigation System', 'DVD Entertainment System', 'CarPlay']
         page = 'window.__remixContext = ' + json.dumps(context) + ';'
         rows, complete, total = parse_cargurus(page, 2006, {'458480534'})
         self.assertEqual(len(rows), 15)
@@ -281,6 +256,7 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['interior_color'], 'Gray')
         self.assertEqual(target['owners'], 'Unverified')
         self.assertEqual(target['accident_history'], 'No reported accidents')
+        self.assertEqual(target['reported_extras'], 'CarPlay;Rear-seat DVD')
         self.assertTrue(clean_title_candidate(target))
 
     def test_truecar_clean_title_listing(self):
@@ -301,6 +277,7 @@ class ParserTests(unittest.TestCase):
                 'galleryImages({"galleryImagesCount":1})': {'edges': [{'node': {'url': 'https://images.example.com/lx.jpg'}}]},
                 'conditionHistory': {'accidentCount': 1, 'ownerCount': 3, 'isCleanTitle': True},
                 'vehicle': {'year': 2007, 'vin': vin, 'mileage': 198412,
+                            'keyFeatures': ['Navigation', 'Night View'],
                             'make': {'name': 'Lexus'}, 'style': {'trimName': 'LX 470'},
                             'details': {'listedAt': '2026-09-16T00:45:00.000Z',
                                         'exteriorColorName': 'Crystal White', 'interiorColorName': 'Beige'}},
@@ -316,6 +293,7 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(rows[0]['accident_history'], '1 reported accident')
         self.assertEqual(rows[0]['exterior_color'], 'Crystal White')
         self.assertEqual(rows[0]['listed_at'], '2026-09-16T00:45:00.000Z')
+        self.assertEqual(rows[0]['reported_extras'], 'Night View')
         reordered = 'marketplaceListingSearch(' + json.dumps(
             json.loads(search_key[len('marketplaceListingSearch('):-1]), sort_keys=True) + ')'
         state['ROOT_QUERY'] = {reordered: state['ROOT_QUERY'][search_key]}
