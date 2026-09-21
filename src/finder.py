@@ -801,6 +801,47 @@ def master_rows(state):
     return result
 
 
+RUST_CHECK_STATES = {
+    "MI": "Michigan", "NY": "New York", "OH": "Ohio", "WI": "Wisconsin",
+    "PA": "Pennsylvania", "MN": "Minnesota", "MA": "Massachusetts",
+    "CT": "Connecticut", "RI": "Rhode Island", "NH": "New Hampshire",
+    "VT": "Vermont", "ME": "Maine", "IL": "Illinois", "IN": "Indiana",
+    "IA": "Iowa",
+}
+
+
+def rust_check_state(value):
+    location = str(value or "").strip().upper()
+    if location in RUST_CHECK_STATES:
+        return location
+    return next((code for code, name in RUST_CHECK_STATES.items() if name.upper() == location), "")
+
+
+def rust_location_evidence(row, state):
+    """Report observed marketplace locations, not registration history or rust condition."""
+    vehicle_key = row.get("vehicle_key", "")
+    listing_key = row.get("listing_key", "")
+
+    def same_truck(other):
+        # Only validated VINs may link different marketplace listings.
+        return (other.get("vehicle_key") == vehicle_key if vehicle_key.startswith("vin:")
+                else other.get("listing_key") == listing_key)
+
+    matches = [other for other in state.get("listings", {}).values() if same_truck(other)]
+    active_states = {code for other in matches if other.get("status") == "active"
+                     if (code := rust_check_state(other.get("state")))}
+    current = rust_check_state(row.get("state")) if row.get("status") == "active" else ""
+    also = sorted(active_states - {current}) if row.get("status") == "active" else []
+    previous = {code for other in matches if other.get("status") != "active"
+                if (code := rust_check_state(other.get("state")))}
+    previous.update(code for observation in state.get("history", [])
+                    if same_truck(observation) and observation.get("event") != "removed"
+                    if (code := rust_check_state(observation.get("state"))))
+    previous -= active_states
+    return {"current_state": current, "also_listed_states": also,
+            "previously_listed_states": sorted(previous)}
+
+
 def save(root, state, health, changes):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
@@ -836,11 +877,13 @@ def save(root, state, health, changes):
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
+        "rust_location",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
-    public_rows = [{**row, **deal_rating(row, public_sales)} for row in public_rows]
+    public_rows = [{**row, **deal_rating(row, public_sales),
+                    "rust_location": rust_location_evidence(row, state)} for row in public_rows]
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",

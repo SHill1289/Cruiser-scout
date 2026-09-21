@@ -134,6 +134,8 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .deal-great { border-color: #769d42; color: #c8ff3d; background: rgba(200,255,61,.05); }
 .deal-fair { border-color: #8e7c5d; color: #d9c39a; background: rgba(217,195,154,.04); }
 .deal-bad { border-color: #955d55; color: #e2a099; background: rgba(226,160,153,.04); }
+.rust-location { display: inline-block; padding: 2px 7px; border: 1px solid #8a7551; color: #d9c39a; background: rgba(217,195,154,.05); font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; cursor: help; }
+.rust-location:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .state-for-sale, .state-live-auction { border-color: #58773d; color: #cbe99a; }
 .state-live-auction { background: rgba(215,255,104,.07); }
 .state-sold { border-color: #596c83; color: #b9d8f5; }

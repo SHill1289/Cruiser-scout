@@ -56,7 +56,8 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - Historical mileage-band figures use completed Bring a Trailer auction prices and exclude buyer fees, private-party sales and unsold auctions. They describe that auction sample, not a formal vehicle appraisal.
 - A mileage decrease or conflicting active-source mileage is flagged for review. The master row selects the most recently seen active listing; use individual listings/history for comparisons rather than interpreting its price as a market valuation.
 - The earlier conversation's leads are preserved in [prior leads](data/prior_leads.csv), separately from verified observations. Its duplicated VIN/mileage claims are not imported into current inventory.
-- No Finder Score or rust inference is invented. Inspection/service evidence is needed to rank condition confidently.
+- The underside-check marker covers MI, NY, OH, WI, PA, MN, MA, CT, RI, NH, VT, ME, IL, IN and IA. It distinguishes a current marketplace advertisement from a previous VIN-matched listing observation in one of these states. It does not establish registration history or actual rust, and an unmarked listing is not necessarily rust-free. Inspect the underside before purchase.
+- No Finder Score or rust-condition inference is invented. Inspection/service evidence is needed to rank condition confidently.
 
 ## Add a listing from another source
 

@@ -13,7 +13,7 @@ from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
                     clean_title_candidate, csv_text, deal_rating, listing_extras,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
-                    run, valid_vin)
+                    run, rust_location_evidence, valid_vin)
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -104,6 +104,26 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [{**self.row, 'asking_price': 21000}], '2026-09-16T22:00:00+00:00')
         self.assertEqual(self.state['history'][0]['asking_price'], 22000)
         self.assertEqual(self.state['history'][-1]['asking_price'], 21000)
+
+    def test_rust_location_tracks_current_and_prior_vin_observations(self):
+        update(self.state, [{**self.row, 'state': 'New York'}], NOW)
+        update(self.state, [{**self.row, 'state': 'GA'}], '2026-09-16T22:00:00+00:00')
+        current = self.state['listings']['test:1']
+        self.assertEqual(rust_location_evidence(current, self.state), {
+            'current_state': '', 'also_listed_states': [], 'previously_listed_states': ['NY']})
+        other = {**self.row, 'source': 'other', 'listing_key': 'other:1', 'state': 'WI'}
+        update(self.state, [other], '2026-09-17T22:00:00+00:00')
+        self.assertEqual(rust_location_evidence(current, self.state)['also_listed_states'], ['WI'])
+        self.assertEqual(rust_location_evidence(self.state['listings']['other:1'], self.state)['current_state'], 'WI')
+
+    def test_rust_location_never_links_different_trucks_without_valid_vin(self):
+        first = normalize({**self.row, 'vin': '', 'state': 'OH'})
+        second = normalize({**self.row, 'vin': '', 'source': 'other',
+                            'source_listing_id': '2', 'listing_url': 'https://example.com/car/2',
+                            'state': 'GA'})
+        update(self.state, [first, second], NOW)
+        self.assertEqual(rust_location_evidence(self.state['listings']['other:2'], self.state), {
+            'current_state': '', 'also_listed_states': [], 'previously_listed_states': []})
 
     def test_failures_and_partial_snapshots_never_remove(self):
         update(self.state, [self.row], NOW)

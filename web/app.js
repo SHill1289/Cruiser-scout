@@ -150,6 +150,23 @@ function dealBadge(row) {
   return badge;
 }
 
+function rustLocationBadge(row) {
+  const evidence = row.rust_location || {};
+  const current = evidence.current_state;
+  const also = evidence.also_listed_states || [];
+  const previous = evidence.previously_listed_states || [];
+  if (!current && !also.length && !previous.length) return null;
+  const parts = [];
+  if (current) parts.push(`Currently advertised in ${current}`);
+  if (also.length) parts.push(`Also advertised in ${also.join(", ")}`);
+  if (previous.length) parts.push(`Previously advertised in ${previous.join(", ")}`);
+  const badge = text("span", "rust-location", `Underside check · ${[current, ...also, ...previous].join(", ")}`);
+  badge.title = `${parts.join("; ")}. Based on marketplace listing locations only; this does not establish registration history or the presence of rust. Inspect the underside before purchase.`;
+  badge.setAttribute("aria-label", badge.title);
+  badge.tabIndex = 0;
+  return badge;
+}
+
 function reportedExtras(row) {
   const extras = String(row.reported_extras || "").split(";").filter(Boolean);
   if (!extras.length) return null;
@@ -199,6 +216,8 @@ function renderCard(row) {
   stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
   const rating = dealBadge(row);
   if (rating) stateRow.append(rating);
+  const rustLocation = rustLocationBadge(row);
+  if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
   const title = text("h3", "vehicle-title", `${exterior.name === "Unknown" ? "Color unknown" : exterior.name} Lexus `);
