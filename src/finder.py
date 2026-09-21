@@ -966,7 +966,44 @@ def rust_location_evidence(row, state):
             "previously_listed_states": sorted(previous)}
 
 
-def save(root, state, health, changes):
+def cache_public_photos(root, rows, opener=urllib.request.urlopen):
+    """Serve TrueCar gallery photos locally when its CDN blocks embedded images."""
+    folder = root / "web/photos"
+    folder.mkdir(parents=True, exist_ok=True)
+    for row in rows:
+        if row.get("source") != "truecar":
+            continue
+        urls = [row.get("photo_url", ""), *(row.get("photo_urls") or [])]
+        saved, seen_paths = [], set()
+        for url in urls:
+            parts = urllib.parse.urlsplit(url)
+            if (parts.scheme != "https" or parts.hostname != "listings-prod.tcimg.net"
+                    or not parts.path.endswith(".jpg") or parts.path in seen_paths):
+                continue
+            seen_paths.add(parts.path)
+            filename = hashlib.sha256(parts.path.encode()).hexdigest()[:20] + ".jpg"
+            target = folder / filename
+            if not target.exists():
+                image_url = urllib.parse.urlunsplit(parts._replace(query="h=675&w=1200"))
+                request = urllib.request.Request(image_url, headers={"User-Agent": UA, "Accept": "image/jpeg"})
+                try:
+                    with opener(request, timeout=20) as response:
+                        image = response.read(2_000_001)
+                    if len(image) > 2_000_000 or not image.startswith(b"\xff\xd8\xff"):
+                        continue
+                    target.write_bytes(image)
+                except Exception as error:
+                    print("Photo cache unavailable:", row.get("source_listing_id"), type(error).__name__)
+                    continue
+            saved.append("photos/" + filename)
+            if len(saved) == 8:
+                break
+        if saved:
+            row["photo_url"] = saved[0]
+            row["photo_urls"] = saved
+
+
+def save(root, state, health, changes, cache_photos=False):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
     web = root / "web"
@@ -1009,6 +1046,8 @@ def save(root, state, health, changes):
     public_rows = [{**row, **deal_rating(row, public_sales),
                     "accident_category": accident_category(row.get("accident_history")),
                     "rust_location": rust_location_evidence(row, state)} for row in public_rows]
+    if cache_photos:
+        cache_public_photos(root, public_rows)
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
@@ -1130,7 +1169,7 @@ def run(root=ROOT, live=True):
             health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain. First error: {photo_backfill_errors[0]}", "checked_at": now})
     elif (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text(encoding="utf-8"))
-    save(root, state, health, changes)
+    save(root, state, health, changes, cache_photos=live)
     print(json.dumps({"vehicles": len(master_rows(state)), "listings": len(state["listings"]), "changes": len(changes), "sources": health}, indent=2))
     return 1 if any(h["status"] in {"error", "partial"} for h in health) else 0
 

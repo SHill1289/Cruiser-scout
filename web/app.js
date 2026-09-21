@@ -65,7 +65,7 @@ function text(tag, className, content) {
 }
 function galleryUrls(row) {
   return [...new Set([row.photo_url, ...(Array.isArray(row.photo_urls) ? row.photo_urls : [])]
-    .filter(url => typeof url === "string" && /^https:\/\//.test(url)))].slice(0, 8);
+    .filter(url => typeof url === "string" && (/^https:\/\//.test(url) || /^photos\/[a-f0-9]{20}\.jpg$/.test(url))))].slice(0, 8);
 }
 function showLargePhoto() {
   if (!activeGallery) return;

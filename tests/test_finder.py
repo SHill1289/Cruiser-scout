@@ -1,4 +1,5 @@
 import contextlib
+import io
 import json
 import sys
 import shutil
@@ -7,7 +8,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from finder import (accident_category, add_listing_photo, correct_ambiguous_accident_history,
+from finder import (accident_category, add_listing_photo, cache_public_photos, correct_ambiguous_accident_history,
                     gallery_image_urls, gallery_urls_in_page,
                     normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
@@ -126,6 +127,17 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(add_listing_photo(row, Fetcher()), '')
         self.assertEqual(row['photo_urls'], photos)
         self.assertEqual(row['photo_url'], photos[0])
+
+    def test_truecar_gallery_photos_are_served_locally(self):
+        base = 'https://listings-prod.tcimg.net/listings/123/45/JTJHT00W074027827/'
+        rows = [{'source': 'truecar', 'source_listing_id': 'JTJHT00W074027827',
+                 'photo_url': base + '001.jpg',
+                 'photo_urls': [base + '001.jpg?h=33', base + '002.jpg?h=33']}]
+        with temporary_workspace() as root:
+            cache_public_photos(root, rows, opener=lambda request, timeout: io.BytesIO(b'\xff\xd8\xfftest'))
+            self.assertEqual(len(rows[0]['photo_urls']), 2)
+            self.assertEqual(rows[0]['photo_url'], rows[0]['photo_urls'][0])
+            self.assertTrue(all((root / 'web' / url).exists() for url in rows[0]['photo_urls']))
 
     def test_old_database_listing_date_is_backfilled(self):
         old = dict(self.row)
