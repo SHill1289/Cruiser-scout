@@ -160,7 +160,11 @@ function rustLocationBadge(row) {
   if (current) parts.push(`Currently advertised in ${current}`);
   if (also.length) parts.push(`Also advertised in ${also.join(", ")}`);
   if (previous.length) parts.push(`Previously advertised in ${previous.join(", ")}`);
-  const badge = text("span", "rust-location", `Underside check · ${[current, ...also, ...previous].join(", ")}`);
+  const labels = [];
+  if (current) labels.push(`Listed ${current}`);
+  if (also.length) labels.push(`Also listed ${also.join(", ")}`);
+  if (previous.length) labels.push(`Previously listed ${previous.join(", ")}`);
+  const badge = text("span", "rust-location", `Rust check · ${labels.join(" · ")}`);
   badge.title = `${parts.join("; ")}. Based on marketplace listing locations only; this does not establish registration history or the presence of rust. Inspect the underside before purchase.`;
   badge.setAttribute("aria-label", badge.title);
   badge.tabIndex = 0;
