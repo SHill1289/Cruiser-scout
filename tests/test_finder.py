@@ -8,7 +8,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (accident_category, add_listing_photo, correct_ambiguous_accident_history,
-                    gallery_image_urls,
+                    gallery_image_urls, gallery_urls_in_page,
                     normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
@@ -116,17 +116,14 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
         self.assertEqual(self.state['listings']['test:1']['photo_urls'], photos)
 
-    def test_gallery_collection_does_not_need_a_second_fetch_when_source_has_photos(self):
+    def test_gallery_collection_from_listing_html(self):
         photos = ['https://static.cargurus.com/images/forsale/one-1024x768.jpeg',
                   'https://static.cargurus.com/images/forsale/two-1024x768.jpeg']
-        class Browser:
-            def gallery(self, url):
-                return photos
         class Fetcher:
             def get(self, url):
-                raise AssertionError('Gallery should not need a second page fetch')
+                return ''.join('<img src="' + photo + '">' for photo in photos)
         row = {**self.row, 'source': 'cargurus', 'source_listing_id': '1'}
-        self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
+        self.assertEqual(add_listing_photo(row, Fetcher()), '')
         self.assertEqual(row['photo_urls'], photos)
         self.assertEqual(row['photo_url'], photos[0])
 
@@ -405,6 +402,14 @@ class ParserTests(unittest.TestCase):
         self.assertIn('h=675', photos[1])
         self.assertIn('w=1200', photos[1])
         self.assertEqual(len(photos), 2)
+
+    def test_listing_html_gallery_excludes_other_vehicle_photos(self):
+        lead = 'https://static.cargurus.com/images/forsale/2026/one-1024x768.jpeg'
+        second = 'https://static.cargurus.com/images/forsale/2026/two-296x222.jpeg'
+        unrelated = 'https://static.cargurus.com/images/forsale/2025/other-296x222.jpeg'
+        page = '<img src="' + second + '"><img src="' + unrelated + '">'
+        self.assertEqual(gallery_urls_in_page(page, 'cargurus', lead),
+                         [lead, second.replace('-296x222.', '-1024x768.')])
 
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()

@@ -128,6 +128,25 @@ def gallery_image_urls(raw):
     return photos
 
 
+def gallery_urls_in_page(page, source, lead_url="", vin=""):
+    """Extract source-hosted vehicle images from a listing's public HTML."""
+    page = html.unescape(page.replace("\\/", "/"))
+    if source == "cargurus":
+        matches = re.findall(r'https://static\.cargurus\.com/images/forsale/[^"\'<>\s\\]+', page, re.I)
+        lead_parts = urllib.parse.urlsplit(lead_url)
+        if lead_parts.hostname == "static.cargurus.com":
+            directory = lead_url.rsplit("/", 1)[0] + "/"
+            matches = [url for url in matches if url.startswith(directory)]
+    elif source == "truecar":
+        matches = re.findall(r'https://listings-prod\.tcimg\.net/listings/[^"\'<>\s\\]+', page, re.I)
+        if vin:
+            matches = [url for url in matches if f"/{vin}/" in url]
+    else:
+        return []
+    matches = [url.rstrip("),.;") for url in matches]
+    return gallery_image_urls([lead_url, *matches])
+
+
 def normalize(raw):
     row = {k: raw.get(k, "") for k in FIELDS}
     row["year"] = int(raw["year"])
@@ -573,21 +592,23 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
     url = listing_detail_url(row)
     if not url:
         return "listing URL unavailable"
-    if browser_fetcher is not None and row.get("source") in {"cargurus", "truecar"}:
-        photos = browser_fetcher.gallery(url)
-        if photos:
+    page = ""
+    plain_error = ""
+    try:
+        page = fetcher.get(url)
+    except Exception as error:
+        plain_error = str(error)
+    if page and row.get("source") in {"cargurus", "truecar"}:
+        photos = gallery_urls_in_page(page, row["source"], row.get("photo_url", ""), row.get("vin", ""))
+        print("Listing HTML gallery:", row["source"], row["source_listing_id"], len(photos))
+        if len(photos) > 1:
             row["photo_urls"] = photos
             row["photo_url"] = photos[0]
             return ""
     if row.get("photo_url"):
         row["photo_urls"] = [row["photo_url"]]
         return ""
-    photo = ""
-    plain_error = ""
-    try:
-        photo = parse_listing_photo(fetcher.get(url))
-    except Exception as error:
-        plain_error = str(error)
+    photo = parse_listing_photo(page) if page else ""
     if not photo and row.get("source") == "cargurus" and browser_fetcher is not None:
         photo = browser_fetcher.photo(url)
     if not photo:
