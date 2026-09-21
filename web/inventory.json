@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-09-21T14:43:56+00:00",
+  "generated_at": "2026-09-21T19:08:12+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
-    "vehicles": 21,
-    "active_listings": 23,
-    "retail": 23,
+    "vehicles": 22,
+    "active_listings": 24,
+    "retail": 24,
     "auctions": 0,
     "sold": 1,
     "ended_auctions": 0
@@ -13,74 +13,74 @@
     {
       "source": "cargurus-2006",
       "status": "ok",
-      "detail": "16 parsed of 16; 15 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "detail": "17 parsed of 17; 16 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "5 parsed of 5; 5 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "truecar",
-      "status": "ok",
-      "detail": "2 clean-title listings parsed of 2; nationwide. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "status": "error",
+      "detail": "HTTP Error 403: Forbidden",
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "historical sales",
       "status": "ok",
       "detail": "50 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:459345660: TimeoutException: Message:  ",
-      "checked_at": "2026-09-21T14:43:56+00:00"
+      "checked_at": "2026-09-21T19:08:12+00:00"
     }
   ],
   "market_history": {
@@ -610,6 +610,7 @@
       "seller": "",
       "seller_type": "unknown",
       "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/08/20260826_135843-scaled-copy-2026-09-03-z2m-50060.jpg",
+      "photo_urls": null,
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": null,
@@ -658,6 +659,9 @@
       "seller": "Motor Deals USA",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/06/12/14/58/2006_lexus_lx-pic-6463835718860128187-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/06/12/14/58/2006_lexus_lx-pic-6463835718860128187-1024x768.jpeg"
+      ],
       "exterior_color": "White",
       "interior_color": "",
       "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
@@ -673,7 +677,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -706,6 +710,9 @@
       "seller": "614 Cars",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/01/11/59/2006_lexus_lx-pic-6042394948840194466-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/01/11/59/2006_lexus_lx-pic-6042394948840194466-1024x768.jpeg"
+      ],
       "exterior_color": "",
       "interior_color": "",
       "reported_extras": "",
@@ -721,7 +728,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 48,
@@ -754,6 +761,9 @@
       "seller": "San Diego Auto House",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/04/01/20/14/2006_lexus_lx-pic-5665456999812586208-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/04/01/20/14/2006_lexus_lx-pic-5665456999812586208-1024x768.jpeg"
+      ],
       "exterior_color": "",
       "interior_color": "",
       "reported_extras": "",
@@ -769,7 +779,7 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 26,
@@ -802,6 +812,9 @@
       "seller": "Persichetti Motorsports",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/05/29/14/46/2006_lexus_lx-pic-3835718161735504539-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/05/29/14/46/2006_lexus_lx-pic-3835718161735504539-1024x768.jpeg"
+      ],
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
       "reported_extras": "",
@@ -817,7 +830,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 27,
@@ -850,6 +863,9 @@
       "seller": "MGM Classic Cars",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/07/21/05/22/2006_lexus_lx-pic-7746867946457051543-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/07/21/05/22/2006_lexus_lx-pic-7746867946457051543-1024x768.jpeg"
+      ],
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
       "reported_extras": "",
@@ -865,7 +881,7 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -898,6 +914,9 @@
       "seller": "Skyline Auto Group ",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/06/20/14/24/2006_lexus_lx-pic-5110929475100017749-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/06/20/14/24/2006_lexus_lx-pic-5110929475100017749-1024x768.jpeg"
+      ],
       "exterior_color": "Silver",
       "interior_color": "Off-white",
       "reported_extras": "",
@@ -913,7 +932,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -946,6 +965,9 @@
       "seller": "Direct Auto Team",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/22/53/2006_lexus_lx-pic-6223159330775167436-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/16/22/53/2006_lexus_lx-pic-6223159330775167436-1024x768.jpeg"
+      ],
       "exterior_color": "Silver",
       "interior_color": "Gray",
       "reported_extras": "Rear-seat DVD",
@@ -961,7 +983,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 6,
@@ -994,6 +1016,9 @@
       "seller": "Sunrise Auto Sales",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/13/06/2007_lexus_lx-pic-6075483111668833938-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/28/13/06/2007_lexus_lx-pic-6075483111668833938-1024x768.jpeg"
+      ],
       "exterior_color": "White",
       "interior_color": "",
       "reported_extras": "",
@@ -1009,7 +1034,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 10,
@@ -1042,6 +1067,9 @@
       "seller": "Flex Automotive Inc",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/05/16/53/2006_lexus_lx-pic-5662236248984491792-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/05/16/53/2006_lexus_lx-pic-5662236248984491792-1024x768.jpeg"
+      ],
       "exterior_color": "Silver",
       "interior_color": "Gray",
       "reported_extras": "",
@@ -1057,7 +1085,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 36,
@@ -1090,6 +1118,9 @@
       "seller": "IAUTOMALL",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/13/06/34/2006_lexus_lx-pic-1914255273098638647-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/13/06/34/2006_lexus_lx-pic-1914255273098638647-1024x768.jpeg"
+      ],
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
       "reported_extras": "",
@@ -1105,7 +1136,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -28,
@@ -1138,6 +1169,9 @@
       "seller": "AK Motors",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/16/19/07/2006_lexus_lx-pic-4966649751830853530-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/16/19/07/2006_lexus_lx-pic-4966649751830853530-1024x768.jpeg"
+      ],
       "exterior_color": "",
       "interior_color": "",
       "reported_extras": "",
@@ -1153,7 +1187,7 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -38,
@@ -1186,6 +1220,9 @@
       "seller": "King's Chariot",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/03/46/2007_lexus_lx-pic-775115144869839135-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/28/03/46/2007_lexus_lx-pic-775115144869839135-1024x768.jpeg"
+      ],
       "exterior_color": "Black Onyx",
       "interior_color": "Stone",
       "reported_extras": "",
@@ -1201,7 +1238,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 109,
@@ -1234,6 +1271,9 @@
       "seller": "King's Chariot",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/03/34/2006_lexus_lx-pic-7464718577188630485-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/28/03/34/2006_lexus_lx-pic-7464718577188630485-1024x768.jpeg"
+      ],
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
       "reported_extras": "",
@@ -1249,7 +1289,7 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 86,
@@ -1282,6 +1322,9 @@
       "seller": "Persichetti Motorsports",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/30/06/52/2007_lexus_lx-pic-2990799071660587386-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/30/06/52/2007_lexus_lx-pic-2990799071660587386-1024x768.jpeg"
+      ],
       "exterior_color": "Gray",
       "interior_color": "Gray",
       "reported_extras": "",
@@ -1297,7 +1340,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 58,
@@ -1330,6 +1373,9 @@
       "seller": "ByPex",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/30/14/21/2007_lexus_lx-pic-3676265486816612954-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/30/14/21/2007_lexus_lx-pic-3676265486816612954-1024x768.jpeg"
+      ],
       "exterior_color": "Black",
       "interior_color": "Brown (Tan)",
       "reported_extras": "",
@@ -1345,7 +1391,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 5,
@@ -1378,6 +1424,9 @@
       "seller": "Carolina Luxury Auto Group",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/09/20/14/2006_lexus_lx-pic-4950752030717862848-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/09/20/14/2006_lexus_lx-pic-4950752030717862848-1024x768.jpeg"
+      ],
       "exterior_color": "Black Onyx",
       "interior_color": "Gray",
       "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
@@ -1393,7 +1442,7 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 19,
@@ -1426,6 +1475,9 @@
       "seller": "Buy Rite Auto Center",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/12/21/01/2006_lexus_lx-pic-7282658764236048576-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/12/21/01/2006_lexus_lx-pic-7282658764236048576-1024x768.jpeg"
+      ],
       "exterior_color": "White",
       "interior_color": "Brown (Tan)",
       "reported_extras": "",
@@ -1441,7 +1493,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -23,
@@ -1474,6 +1526,9 @@
       "seller": "Atlanta Toyota",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/09/45/2006_lexus_lx-pic-4191869050115516631-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/16/09/45/2006_lexus_lx-pic-4191869050115516631-1024x768.jpeg"
+      ],
       "exterior_color": "Onyx Black",
       "interior_color": "Gray",
       "reported_extras": "",
@@ -1489,7 +1544,7 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 10,
@@ -1522,6 +1577,9 @@
       "seller": "Master Auto Group",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/11/23/2007_lexus_lx-pic-915892171582772688-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/16/11/23/2007_lexus_lx-pic-915892171582772688-1024x768.jpeg"
+      ],
       "exterior_color": "White",
       "interior_color": "Brown (Beige)",
       "reported_extras": "",
@@ -1537,7 +1595,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
@@ -1570,6 +1628,7 @@
       "seller": "Ultimate Autos",
       "seller_type": "dealer",
       "photo_url": "",
+      "photo_urls": [],
       "exterior_color": "",
       "interior_color": "",
       "reported_extras": "CarPlay",
@@ -1585,7 +1644,7 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1618,6 +1677,9 @@
       "seller": "Cas",
       "seller_type": "dealer",
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/20/04/06/2006_lexus_lx-pic-3125246123055959523-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/20/04/06/2006_lexus_lx-pic-3125246123055959523-1024x768.jpeg"
+      ],
       "exterior_color": "Black",
       "interior_color": "Brown (Tan)",
       "reported_extras": "",
@@ -1633,13 +1695,64 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-09-21T14:43:56+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
       "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:459500262",
+      "vin": "JTJHT00W764015690",
+      "year": 2006,
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/459500262",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 14500,
+      "base_price": 14500,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 178540,
+      "mileage_is_approximate": "",
+      "city": "Whittier",
+      "state": "CA",
+      "seller": "5 Lion Auto Inc",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/09/21/12/27/2006_lexus_lx-pic-8634967596034084055-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/21/12/27/2006_lexus_lx-pic-8634967596034084055-1024x768.jpeg"
+      ],
+      "exterior_color": "Gray",
+      "interior_color": "Gray",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "",
+      "listed_at_is_estimated": false,
+      "first_seen": "2026-09-21T19:08:12+00:00",
+      "last_seen": "2026-09-21T19:08:12+00:00",
+      "quality_flags": "",
+      "deal_quality": "great",
+      "deal_percent_vs_median": -24,
+      "deal_comparable_count": 29,
+      "deal_median_price": 19103,
+      "deal_mileage_band": "150k-250k",
       "rust_location": {
         "current_state": "",
         "also_listed_states": [],
@@ -1666,6 +1779,9 @@
       "seller": "Master Auto Group",
       "seller_type": "dealer",
       "photo_url": "https://listings-prod.tcimg.net/listings/107917/27/78/JTJHT00W074027827/001_2026091610.jpg",
+      "photo_urls": [
+        "https://listings-prod.tcimg.net/listings/107917/27/78/JTJHT00W074027827/001_2026091610.jpg"
+      ],
       "exterior_color": "Crystal White",
       "interior_color": "Beige",
       "reported_extras": "",
@@ -1714,6 +1830,9 @@
       "seller": "Persichetti Motorsports",
       "seller_type": "dealer",
       "photo_url": "https://listings-prod.tcimg.net/listings/43903/71/54/JTJHT00WX74025471/001_2026083015.jpg",
+      "photo_urls": [
+        "https://listings-prod.tcimg.net/listings/43903/71/54/JTJHT00WX74025471/001_2026083015.jpg"
+      ],
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Gray",
       "reported_extras": "",
