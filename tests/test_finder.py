@@ -316,6 +316,20 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(rows[0]['accident_history'], '1 reported accident')
         self.assertEqual(rows[0]['exterior_color'], 'Crystal White')
         self.assertEqual(rows[0]['listed_at'], '2026-09-16T00:45:00.000Z')
+        reordered = 'marketplaceListingSearch(' + json.dumps(
+            json.loads(search_key[len('marketplaceListingSearch('):-1]), sort_keys=True) + ')'
+        state['ROOT_QUERY'] = {reordered: state['ROOT_QUERY'][search_key]}
+        page = '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+            {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+        self.assertTrue(parse_truecar(page, NOW)[1])
+        broad = json.loads(reordered[len('marketplaceListingSearch('):-1])
+        broad['filters']['withinRadius']['distance'] = 50
+        state['ROOT_QUERY'] = {'marketplaceListingSearch(' + json.dumps(broad) + ')':
+                               state['ROOT_QUERY'][reordered]}
+        page = '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+            {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+        with self.assertRaises(ValueError):
+            parse_truecar(page, NOW)
 
     def test_social_photo_metadata(self):
         page = '<meta property="og:image" content="https://images.example.com/lx470.jpg?size=large&amp;crop=1">'

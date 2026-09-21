@@ -410,10 +410,21 @@ def parse_truecar(page, now):
     if len(searches) != 1:
         raise ValueError("Expected one TrueCar marketplace search result")
     search_key, search = searches[0]
-    if not all(token in search_key for token in ('"makeSlug":"lexus"', '"modelSlug":"lx"',
-                                                   '"trimSlugs":["lx-470"]',
-                                                   '"distance":5000', '"max":2007', '"min":2006')):
-        raise ValueError("TrueCar did not apply nationwide 2006-2007 LX 470 filters")
+    try:
+        search_args = json.loads(search_key[len("marketplaceListingSearch("):-1])
+        filters = search_args["filters"]
+        scope_ok = (
+            search_args.get("offset") == 0 and filters.get("condition") == "USED" and
+            filters.get("makeModelTrim") == [{"makeSlug": "lexus", "modelSlug": "lx", "trimSlugs": ["lx-470"]}] and
+            filters.get("withinRadius", {}).get("distance") == 5000 and
+            filters.get("year") == {"min": 2006, "max": 2007} and
+            set(filters) <= {"condition", "fallbackStrategy", "makeModelTrim", "withinRadius", "year"}
+        )
+    except (ValueError, KeyError, TypeError, AttributeError) as error:
+        raise ValueError("TrueCar search filters could not be read") from error
+    if not scope_ok:
+        detail = json.dumps(filters, sort_keys=True, separators=(",", ":"))[:350]
+        raise ValueError("TrueCar did not apply nationwide 2006-2007 LX 470 filters: " + detail)
     edges = search.get("edges", [])
     total = search.get("totalCount")
     complete = not search.get("pageInfo", {}).get("hasNextPage") and total == len(edges)
