@@ -42,6 +42,7 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 ## What the database means
 
 - A checksum-valid VIN with matching LX470 prefix/year joins listings across sources. Missing/invalid VINs stay separate using source and listing ID; fuzzy matching never silently merges trucks.
+- The refresh decodes each newly seen valid VIN through the free [NHTSA vPIC API](https://vpic.nhtsa.dot.gov/api/) and caches successful results in `data/vin_specs.json`. Expand **VIN specifications** on a listing for available body, drivetrain, engine, fuel, trim and assembly information, with a direct source link. Empty fields remain unknown; a failed lookup is retried on a later refresh. This is identification data, not a Lexus build sheet and not proof of installed options, factory paint, title or accident history.
 - Every listing retains its own source, seller, asking price or auction bid, URL and dates. `database.json` is the authoritative state; CSVs and `INVENTORY.md` are generated views.
 - `active` means advertised at `last_seen`, not seller-confirmed availability. `last_checked` may be later than `last_seen`.
 - Current inventory contains only **clean-title candidates**. CarGurus must report no salvage, lemon, frame-damage or theft history; TrueCar must explicitly report a clean title; Bring a Trailer must explicitly describe a clean title. Because marketplace filters are not an official title record, confirm every candidate with NMVTIS/CARFAX and the physical title before purchase. Other active observations remain in `data/excluded_listings.csv` for audit.
@@ -107,4 +108,3 @@ When a listing page displays an owner count, open **Actions → Verify owner cou
 This is intentionally evidence based. Free government VIN services provide specifications, recalls and limited theft/salvage checks, but do not provide an exact previous-owner count. Listings without visible owner-count evidence remain `Unverified` rather than receiving a guess.
 
 This repository does not contact sellers, send messages, or place bids.
-

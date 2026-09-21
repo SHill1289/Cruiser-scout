@@ -150,6 +150,34 @@ function dealBadge(row) {
   return badge;
 }
 
+function vinSpecs(row) {
+  if (!row.vin || !row.vin_specs) return null;
+  const specs = row.vin_specs;
+  const fields = [
+    ["Body", specs.body_style], ["Drive", specs.drive_type],
+    ["Engine", [specs.engine_liters ? `${specs.engine_liters} L` : "", specs.cylinders ? `${specs.cylinders} cylinders` : ""].filter(Boolean).join(" · ")],
+    ["Fuel", specs.fuel], ["Trim", specs.trim],
+    ["Assembled", [specs.assembly_city, specs.assembly_country].filter(Boolean).join(", ")]
+  ].filter(([, value]) => value);
+  const panel = document.createElement("details");
+  panel.className = "vin-specs";
+  panel.append(text("summary", "", "VIN specifications"));
+  const content = text("div", "vin-specs-content", "");
+  const list = text("dl", "", "");
+  [["VIN", row.vin], ["Vehicle", `${specs.year} ${specs.make} ${specs.model}`], ...fields]
+    .forEach(([label, value]) => list.append(text("dt", "", label), text("dd", "", value)));
+  content.append(list);
+  const source = text("p", "vin-specs-source", "Decoded by ");
+  const link = text("a", "", "NHTSA vPIC");
+  link.href = `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/${encodeURIComponent(row.vin)}?format=json&modelyear=${specs.year}`;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  source.append(link, document.createTextNode(". VIN data does not verify equipment, paint, title or history on this truck."));
+  content.append(source);
+  panel.append(content);
+  return panel;
+}
+
 function renderCard(row) {
   const card = document.createElement("article");
   card.className = "listing";
@@ -192,6 +220,8 @@ function renderCard(row) {
   const colors = text("div", "color-pair", "");
   colors.append(makeColorFact("exterior", row.exterior_color, row.year), makeColorFact("interior", row.interior_color, row.year));
   identity.append(colors);
+  const specs = vinSpecs(row);
+  if (specs) identity.append(specs);
   card.append(identity);
 
   card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));
@@ -344,4 +374,3 @@ ui.marketYear.addEventListener("input", renderMarket);
 ui.form.addEventListener("reset", () => setTimeout(render, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
 load();
-
