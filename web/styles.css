@@ -152,6 +152,7 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .history { display: flex; flex-direction: column; gap: 6px; }
 .tag { width: max-content; max-width: 100%; padding: 3px 8px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tag.good { border-color: #58773d; color: #cbe99a; }
+.tag.alert { border-color: #955d55; color: #e2a099; }
 .open-link { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; color: var(--accent); text-decoration: none; font-size: 20px; transition: background .18s, color .18s; }
 .open-link-label { display: none; }
 .open-link:hover { background: var(--accent); color: var(--accent-dark); }

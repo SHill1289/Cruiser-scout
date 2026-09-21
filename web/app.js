@@ -106,6 +106,13 @@ function ownerLabel(row) {
   if (/multiple/i.test(owners)) return "Multiple owners";
   return "Owners unverified";
 }
+function accidentGroup(row) {
+  if (["none", "reported", "unavailable"].includes(row.accident_category)) return row.accident_category;
+  const label = String(row.accident_history || "").trim().toLowerCase();
+  if (label === "no reported accidents") return "none";
+  if (/\b\d+ reported accidents?\b/.test(label) || label.includes("seller discloses prior accident") || label === "accident reported") return "reported";
+  return "unavailable";
+}
 function formatDate(raw) {
   if (!raw) return "Update time unavailable";
   const date = new Date(raw);
@@ -253,7 +260,11 @@ function renderCard(row) {
     ownerTag.title = `Verified ${row.owners_verified_at}${row.owners_source ? ` via ${row.owners_source}` : ""}`;
   }
   history.append(ownerTag);
-  history.append(text("span", row.accident_history === "No reported accidents" ? "tag good" : "tag", row.accident_history || "History unknown"));
+  const accident = accidentGroup(row);
+  const accidentTag = text("span", accident === "none" ? "tag good" : accident === "reported" ? "tag alert" : "tag",
+    accident === "unavailable" ? "History unavailable" : row.accident_history);
+  if (accident === "reported" && row.accident_history) accidentTag.title = row.accident_history;
+  history.append(accidentTag);
   card.append(history);
 
   const link = text("a", "open-link", "");
@@ -277,7 +288,7 @@ function matches(row) {
     && (!controls.status.value || saleState(row) === controls.status.value)
     && (!controls.color.value || factoryExterior.name === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
-    && (!controls.accidents.value || (controls.accidents.value === "none" ? row.accident_history === "No reported accidents" : row.accident_history !== "No reported accidents"))
+    && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
     && (!controls.mileage.value || (row.mileage != null && row.mileage <= Number(controls.mileage.value)));
 }
@@ -304,7 +315,7 @@ function render() {
   const mileage = median(rows.map(row => row.mileage));
   ui.medianPrice.textContent = price == null ? "\u2014" : money.format(price);
   ui.medianMileage.textContent = mileage == null ? "\u2014" : `${integer.format(mileage)} mi`;
-  ui.cleanCount.textContent = String(rows.filter(row => row.accident_history === "No reported accidents").length);
+  ui.cleanCount.textContent = String(rows.filter(row => accidentGroup(row) === "none").length);
 }
 
 function renderMarket() {

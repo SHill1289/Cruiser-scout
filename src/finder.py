@@ -169,6 +169,25 @@ def backfill_listing_dates(state):
         row["listed_at_is_estimated"] = bool(inferred)
 
 
+def accident_category(value):
+    """Only explicit source evidence may classify a listing as accident-reported."""
+    label = str(value or "").strip().lower()
+    if label == "no reported accidents":
+        return "none"
+    if (re.search(r"\b\d+ reported accidents?\b", label)
+            or "seller discloses prior accident" in label
+            or label == "accident reported"):
+        return "reported"
+    return "unavailable"
+
+
+def correct_ambiguous_accident_history(state):
+    """Remove an old CarGurus inference from retained listings and history."""
+    for row in list(state.get("listings", {}).values()) + list(state.get("history", [])):
+        if row.get("accident_history") in {"Accident reported or history unavailable", "Unknown", ""}:
+            row["accident_history"] = "History unavailable"
+
+
 class Fetcher:
     def __init__(self):
         self.robots = {}
@@ -350,10 +369,10 @@ def parse_cargurus(page, year, no_accident_ids=None):
             "interior_color": d.get("interiorColorData", {}).get("localized", ""),
             "reported_extras": listing_extras(d.get("vehicleFeatures", [])),
             "title_status": "clean-title candidate",
-            "accident_history": "No reported accidents" if listing_id in no_accident_ids else "Accident reported or history unavailable",
+            "accident_history": "No reported accidents" if listing_id in no_accident_ids else "History unavailable",
             "owners": "Unverified",
             "source_days_on_market": d.get("daysOnMarket", ""),
-            "notes": "CarGurus clean-history filters exclude reported salvage, lemon, frame-damage and theft history. This is a clean-title candidate, not a legal title guarantee; verify through NMVTIS/CARFAX and the physical title. Asking price includes listed fees when supplied; taxes/shipping may be extra.",
+            "notes": "CarGurus clean-history filters exclude reported salvage, lemon, frame-damage and theft history. Absence from the separate no-accident results does not prove an accident. This is a clean-title candidate, not a legal title guarantee; verify through NMVTIS/CARFAX and the physical title. Asking price includes listed fees when supplied; taxes/shipping may be extra.",
         })
         if d.get("mileageData", {}).get("unit") != "MILES":
             raise ValueError("Unexpected mileage units")
@@ -418,7 +437,7 @@ def parse_truecar(page, now):
         accident_count = history.get("accidentCount")
         accidents = ("No reported accidents" if accident_count == 0 else
                      f"{accident_count} reported accident{'s' if accident_count != 1 else ''}" if isinstance(accident_count, int) else
-                     "Unknown")
+                     "History unavailable")
         owner_count = history.get("ownerCount")
         listing_url = f"https://www.truecar.com/used-cars-for-sale/listing/{vin}/"
         rows.append(normalize({
@@ -558,7 +577,7 @@ def parse_bat(page, url, now):
     elif disclosed_accident:
         accidents = "Seller discloses prior accident"
     else:
-        accidents = "Unknown"
+        accidents = "History unavailable"
     row = {"source": "bringatrailer", "source_listing_id": url.rstrip('/').split('/')[-1],
            "year": int(match[1]), "listing_url": url, "vin": vin[1] if vin else "",
            "category": "auction", "status": status,
@@ -873,7 +892,7 @@ def save(root, state, health, changes):
         "listing_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url",
-        "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history",
+        "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
@@ -883,6 +902,7 @@ def save(root, state, health, changes):
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_rows = [{**row, **deal_rating(row, public_sales),
+                    "accident_category": accident_category(row.get("accident_history")),
                     "rust_location": rust_location_evidence(row, state)} for row in public_rows]
     public_inventory = {
         "generated_at": state["updated_at"],
@@ -927,6 +947,7 @@ def run(root=ROOT, live=True):
     path = root / "data/database.json"
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "listings": {}, "history": [], "imports": []}
     backfill_listing_dates(state)
+    correct_ambiguous_accident_history(state)
     remove_unverified_cargurus_owner_inferences(state)
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))

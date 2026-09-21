@@ -7,7 +7,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from finder import (normalize, update, master_rows, parse_cargurus, parse_bat,
+from finder import (accident_category, correct_ambiguous_accident_history,
+                    normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
@@ -61,6 +62,22 @@ class DatabaseTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 normalize({**self.row, field: value})
         self.assertIn('missing_vin', normalize({**self.row, 'vin': ''})['quality_flags'])
+
+    def test_accident_categories_require_explicit_evidence(self):
+        self.assertEqual(accident_category('No reported accidents'), 'none')
+        self.assertEqual(accident_category('1 reported accident'), 'reported')
+        self.assertEqual(accident_category('Seller discloses prior accident'), 'reported')
+        self.assertEqual(accident_category('No accident on history report; seller discloses prior accident'), 'reported')
+        self.assertEqual(accident_category('Accident reported or history unavailable'), 'unavailable')
+        self.assertEqual(accident_category('History unavailable'), 'unavailable')
+        self.assertEqual(accident_category('Unknown'), 'unavailable')
+
+    def test_old_ambiguous_accident_labels_are_corrected(self):
+        old = {**self.row, 'accident_history': 'Accident reported or history unavailable'}
+        state = {'listings': {'test:1': dict(old)}, 'history': [dict(old)]}
+        correct_ambiguous_accident_history(state)
+        self.assertEqual(state['listings']['test:1']['accident_history'], 'History unavailable')
+        self.assertEqual(state['history'][0]['accident_history'], 'History unavailable')
 
     def test_duplicate_observations_do_not_duplicate_history(self):
         update(self.state, [self.row, self.row], NOW)
@@ -231,6 +248,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertIn('listed_at', public['listings'][0])
             self.assertIn('first_seen', public['listings'][0])
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['reported_extras'], 'Rear-seat DVD')
+            self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['accident_category'], 'unavailable')
             self.assertNotIn('vin_specs', public['listings'][0])
             self.assertNotIn('notes', public['listings'][0])
 
@@ -276,6 +294,8 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['interior_color'], 'Gray')
         self.assertEqual(target['owners'], 'Unverified')
         self.assertEqual(target['accident_history'], 'No reported accidents')
+        without_clear_history = next(r for r in rows if r['vin'] != target['vin'])
+        self.assertEqual(without_clear_history['accident_history'], 'History unavailable')
         self.assertEqual(target['reported_extras'], 'CarPlay;Rear-seat DVD')
         self.assertTrue(clean_title_candidate(target))
 
