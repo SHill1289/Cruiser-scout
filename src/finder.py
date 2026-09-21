@@ -24,7 +24,7 @@ UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
 FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
-          "seller", "seller_type", "photo_url", "exterior_color", "interior_color", "title_status",
+          "seller", "seller_type", "photo_url", "photo_urls", "exterior_color", "interior_color", "title_status",
           "reported_extras",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
@@ -89,6 +89,45 @@ def listing_extras(features):
     return ";".join(sorted(labels))
 
 
+def safe_photo_urls(urls):
+    if not isinstance(urls, list):
+        raise ValueError("photo_urls must be a list")
+    result = []
+    for url in urls:
+        if not isinstance(url, str):
+            raise ValueError("photo_urls must contain HTTPS URLs")
+        parts = urllib.parse.urlsplit(url)
+        if parts.scheme != "https" or not parts.hostname:
+            raise ValueError("photo_urls must contain HTTPS URLs")
+        if url not in result:
+            result.append(url)
+        if len(result) == 8:
+            break
+    return result
+
+
+def gallery_image_urls(raw):
+    """Keep vehicle CDN URLs and request usable sizes of gallery thumbnails."""
+    photos = []
+    for photo in raw:
+        parts = urllib.parse.urlsplit(photo)
+        if parts.scheme != "https" or not parts.hostname:
+            continue
+        if parts.hostname == "static.cargurus.com" and parts.path.startswith("/images/forsale/"):
+            photo = photo.replace("-296x222.", "-1024x768.")
+        elif parts.hostname == "listings-prod.tcimg.net" and "/listings/" in parts.path:
+            query = urllib.parse.parse_qs(parts.query)
+            query.update({"h": ["675"], "w": ["1200"]})
+            photo = urllib.parse.urlunsplit(parts._replace(query=urllib.parse.urlencode(query, doseq=True)))
+        else:
+            continue
+        if photo not in photos:
+            photos.append(photo)
+        if len(photos) == 8:
+            break
+    return photos
+
+
 def normalize(raw):
     row = {k: raw.get(k, "") for k in FIELDS}
     row["year"] = int(raw["year"])
@@ -108,6 +147,11 @@ def normalize(raw):
         photo_parts = urllib.parse.urlsplit(str(row["photo_url"]))
         if photo_parts.scheme != "https" or not photo_parts.hostname:
             raise ValueError("photo_url must be a complete HTTPS URL")
+    row["photo_urls"] = safe_photo_urls(row["photo_urls"] or [])
+    if row["photo_url"] and row["photo_url"] not in row["photo_urls"]:
+        row["photo_urls"] = [row["photo_url"], *row["photo_urls"]][:8]
+    if not row["photo_url"] and row["photo_urls"]:
+        row["photo_url"] = row["photo_urls"][0]
     row["listing_key"] = row["source"] + ":" + row["source_listing_id"]
     row["vin"] = str(row["vin"]).upper().strip()
     flags = set(filter(None, str(row["quality_flags"]).split(";")))
@@ -227,16 +271,17 @@ class Fetcher:
 
 
 class BrowserPhotoFetcher:
-    """Render JavaScript listing pages only when plain HTML omits the lead photo."""
+    """Read a small set of source-hosted photos from public listing galleries."""
     def __init__(self):
         self.driver = None
-        self.photos = {}
+        self.galleries = {}
         self.errors = {}
         self.last = 0
 
-    def photo(self, url):
-        if url in self.photos:
-            return self.photos[url]
+    def gallery(self, url):
+        if url in self.galleries:
+            return self.galleries[url]
+        self.galleries[url] = []
         try:
             from selenium import webdriver
             from selenium.webdriver.chrome.service import Service
@@ -258,21 +303,29 @@ class BrowserPhotoFetcher:
             time.sleep(max(0, 2 - (time.monotonic() - self.last)))
             self.driver.get(url)
             self.last = time.monotonic()
-            photo = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script(
-                "return document.querySelector('#PreviewGalleryMainImage img')?.currentSrc || "
-                "document.querySelector('#PreviewGalleryMainImage img')?.src || "
-                "document.querySelector('link[rel=preload][as=image]')?.href || "
-                "document.querySelector('meta[property=\\\"og:image\\\"]')?.content || "
-                "document.querySelector('meta[name=\\\"twitter:image\\\"]')?.content || ''"))
-            parts = urllib.parse.urlsplit(photo)
-            self.photos[url] = photo if parts.scheme == "https" and parts.hostname else ""
+            raw = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script("""
+                const pick = image => image.currentSrc || image.src || '';
+                if (location.hostname.endsWith('cargurus.com')) {
+                    const main = document.querySelector('#PreviewGalleryMainImage img');
+                    const thumbs = [...document.querySelectorAll('img[alt^="View vehicle photo"]')];
+                    return main && thumbs.length ? [pick(main), ...thumbs.map(pick)] : null;
+                }
+                if (location.hostname.endsWith('truecar.com')) {
+                    const images = [...document.querySelectorAll('img[alt*=" - open gallery"]')];
+                    return images.length ? images.map(pick) : null;
+                }
+                return null;
+            """))
+            self.galleries[url] = gallery_image_urls(raw)
         except Exception as error:
-            self.photos[url] = ""
             self.errors[url] = f"{type(error).__name__}: {error}".replace("\n", " ")[:500]
-        return self.photos[url]
+        return self.galleries[url]
+
+    def photo(self, url):
+        return next(iter(self.gallery(url)), "")
 
     def error(self, url):
-        return self.errors.get(url, "lead photo metadata unavailable")
+        return self.errors.get(url, "gallery photos unavailable")
 
     def close(self):
         if self.driver is not None:
@@ -433,7 +486,8 @@ def parse_truecar(page, now):
         location = dealer.get("location", {}).get("geolocation", {}) or {}
         gallery = next((value for key, value in listing.items() if key.startswith("galleryImages(")), {}) or {}
         photos = [item.get("node", {}).get("url", "") for item in gallery.get("edges", [])]
-        photo = next((url for url in photos if url.startswith("https://")), "")
+        photos = [url for url in photos if url.startswith("https://")][:8]
+        photo = next(iter(photos), "")
         accident_count = history.get("accidentCount")
         accidents = ("No reported accidents" if accident_count == 0 else
                      f"{accident_count} reported accident{'s' if accident_count != 1 else ''}" if isinstance(accident_count, int) else
@@ -448,7 +502,7 @@ def parse_truecar(page, now):
             "city": location.get("city", details.get("dealerCity", "")),
             "state": location.get("state", details.get("dealerState", "")),
             "seller": dealer.get("name", ""), "seller_type": "dealer",
-            "photo_url": photo,
+            "photo_url": photo, "photo_urls": photos,
             "exterior_color": details.get("exteriorColorName", vehicle.get("exteriorColor", "")),
             "interior_color": details.get("interiorColorName", vehicle.get("interiorColor", "")),
             "reported_extras": listing_extras(vehicle.get("keyFeatures") or details.get("keyFeatures", [])),
@@ -497,12 +551,21 @@ def listing_detail_url(row):
 
 
 def add_listing_photo(row, fetcher, browser_fetcher=None):
-    """Add a source-hosted lead photo without making image failure fatal."""
-    if row.get("photo_url"):
+    """Add a source gallery where available, preserving a usable lead-photo fallback."""
+    if len(row.get("photo_urls") or []) > 1:
         return ""
     url = listing_detail_url(row)
     if not url:
         return "listing URL unavailable"
+    if browser_fetcher is not None and row.get("source") in {"cargurus", "truecar"}:
+        photos = browser_fetcher.gallery(url)
+        if photos:
+            row["photo_urls"] = photos
+            row["photo_url"] = photos[0]
+            return ""
+    if row.get("photo_url"):
+        row["photo_urls"] = [row["photo_url"]]
+        return ""
     photo = ""
     plain_error = ""
     try:
@@ -516,6 +579,7 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
             return browser_fetcher.error(url)
         return plain_error or "lead photo metadata unavailable"
     row["photo_url"] = photo
+    row["photo_urls"] = [photo]
     return ""
 
 
@@ -523,9 +587,11 @@ def backfill_listing_photos(state, fetcher, browser_fetcher=None):
     """Fetch photos for existing public rows, including completed auctions."""
     errors = []
     for row in state.get("listings", {}).values():
-        if (row.get("photo_url") or row.get("source") not in {"cargurus", "bringatrailer"}
+        if (row.get("source") not in {"cargurus", "truecar", "bringatrailer"}
                 or row.get("status") not in {"active", "sold", "ended"}
                 or not clean_title_candidate(row)):
+            continue
+        if len(row.get("photo_urls") or []) > 1 or (row.get("source") == "bringatrailer" and row.get("photo_url")):
             continue
         error = add_listing_photo(row, fetcher, browser_fetcher)
         if error:
@@ -750,6 +816,8 @@ def update(state, rows, now, scopes=()):
         row["first_seen"] = previous["first_seen"] if previous else now
         if not row["photo_url"] and previous and previous.get("photo_url"):
             row["photo_url"] = previous["photo_url"]
+        if previous and len(previous.get("photo_urls") or []) > len(row.get("photo_urls") or []):
+            row["photo_urls"] = previous["photo_urls"]
         if not row["listed_at"]:
             if previous and previous.get("listed_at"):
                 row["listed_at"] = previous["listed_at"]
@@ -891,7 +959,7 @@ def save(root, state, health, changes):
     public_fields = [
         "listing_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
-        "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url",
+        "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url", "photo_urls",
         "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
@@ -971,11 +1039,12 @@ def run(root=ROOT, live=True):
                     health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled.{photo_note}"})
                 elif source["type"] == "truecar":
                     batch, complete, total = parse_truecar(fetcher.get(source["url"]), now)
+                    photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
                         scopes.extend(("truecar", year) for year in (2006, 2007))
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
-                                   "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. Owner and accident counts are source-reported from Experian AutoCheck."})
+                                   "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck."})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = bat_listing_urls(page)

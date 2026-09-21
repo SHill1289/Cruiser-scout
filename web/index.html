@@ -126,6 +126,22 @@
     </div>
     <p>Research aid only &middot; Updated automatically every six hours</p>
   </footer>
+  <dialog class="photo-dialog" id="photo-dialog" aria-label="Vehicle photo gallery">
+    <div class="photo-dialog-header">
+      <strong id="photo-title">Listing photos</strong>
+      <button type="button" id="photo-close" aria-label="Close photo gallery">Close &times;</button>
+    </div>
+    <div class="photo-stage">
+      <button type="button" id="photo-previous" aria-label="Previous photo">&#8249;</button>
+      <img id="photo-large" alt="">
+      <p id="photo-error" hidden>That photo is unavailable. Try another image or open the original listing.</p>
+      <button type="button" id="photo-next" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div class="photo-dialog-footer">
+      <span id="photo-count"></span>
+      <a id="photo-source" target="_blank" rel="noopener noreferrer">Open original listing &#8599;</a>
+    </div>
+  </dialog>
   <script src="app.js" defer></script>
 </body>
 </html>

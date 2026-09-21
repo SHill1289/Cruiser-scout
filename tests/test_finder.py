@@ -7,7 +7,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from finder import (accident_category, correct_ambiguous_accident_history,
+from finder import (accident_category, add_listing_photo, correct_ambiguous_accident_history,
+                    gallery_image_urls,
                     normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
@@ -106,6 +107,28 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
         self.assertEqual(self.state['listings']['test:1']['photo_url'],
                          'https://images.example.com/lx470.jpg')
+
+    def test_gallery_is_validated_and_preserved_across_refreshes(self):
+        photos = ['https://images.example.com/one.jpg', 'https://images.example.com/two.jpg']
+        with self.assertRaises(ValueError):
+            normalize({**self.row, 'photo_urls': ['http://images.example.com/photo.jpg']})
+        update(self.state, [{**self.row, 'photo_url': photos[0], 'photo_urls': photos + [photos[0]]}], NOW)
+        update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
+        self.assertEqual(self.state['listings']['test:1']['photo_urls'], photos)
+
+    def test_gallery_collection_does_not_need_a_second_fetch_when_source_has_photos(self):
+        photos = ['https://static.cargurus.com/images/forsale/one-1024x768.jpeg',
+                  'https://static.cargurus.com/images/forsale/two-1024x768.jpeg']
+        class Browser:
+            def gallery(self, url):
+                return photos
+        class Fetcher:
+            def get(self, url):
+                raise AssertionError('Gallery should not need a second page fetch')
+        row = {**self.row, 'source': 'cargurus', 'source_listing_id': '1'}
+        self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
+        self.assertEqual(row['photo_urls'], photos)
+        self.assertEqual(row['photo_url'], photos[0])
 
     def test_old_database_listing_date_is_backfilled(self):
         old = dict(self.row)
@@ -314,7 +337,9 @@ class ParserTests(unittest.TestCase):
             dealer_ref: {'name': 'Master Auto Group', 'location': {'geolocation': {'city': 'Raleigh', 'state': 'NC'}}},
             listing_ref: {
                 'pricing': {'listPrice': 21245}, 'dealership': {'__ref': dealer_ref},
-                'galleryImages({"galleryImagesCount":1})': {'edges': [{'node': {'url': 'https://images.example.com/lx.jpg'}}]},
+                'galleryImages({"galleryImagesCount":2})': {'edges': [
+                    {'node': {'url': 'https://images.example.com/lx.jpg'}},
+                    {'node': {'url': 'https://images.example.com/rear.jpg'}}]},
                 'conditionHistory': {'accidentCount': 1, 'ownerCount': 3, 'isCleanTitle': True},
                 'vehicle': {'year': 2007, 'vin': vin, 'mileage': 198412,
                             'keyFeatures': ['Navigation', 'Night View'],
@@ -334,6 +359,8 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(rows[0]['exterior_color'], 'Crystal White')
         self.assertEqual(rows[0]['listed_at'], '2026-09-16T00:45:00.000Z')
         self.assertEqual(rows[0]['reported_extras'], 'Night View')
+        self.assertEqual(rows[0]['photo_urls'], ['https://images.example.com/lx.jpg',
+                                                 'https://images.example.com/rear.jpg'])
         reordered = 'marketplaceListingSearch(' + json.dumps(
             json.loads(search_key[len('marketplaceListingSearch('):-1]), sort_keys=True) + ')'
         state['ROOT_QUERY'] = {reordered: state['ROOT_QUERY'][search_key]}
@@ -368,6 +395,16 @@ class ParserTests(unittest.TestCase):
                          'https://static.cargurus.com/images/forsale/lx-1024x768.jpeg')
         self.assertEqual(cargurus_photo({'pictureData': {'url': '//images.example.com/lx.jpg'}}),
                          'https://images.example.com/lx.jpg')
+
+    def test_gallery_thumbnails_use_larger_source_images(self):
+        cargurus = 'https://static.cargurus.com/images/forsale/lx-296x222.jpeg'
+        truecar = 'https://listings-prod.tcimg.net/listings/123/lx.jpg?auto=format&h=33&w=60'
+        photos = gallery_image_urls([cargurus, cargurus, truecar,
+                                    'https://static.cargurus.com/images/dealer/logo.png'])
+        self.assertEqual(photos[0], cargurus.replace('-296x222.', '-1024x768.'))
+        self.assertIn('h=675', photos[1])
+        self.assertIn('w=1200', photos[1])
+        self.assertEqual(len(photos), 2)
 
     def test_partial_results_not_complete(self):
         context = self.clean_fixture()

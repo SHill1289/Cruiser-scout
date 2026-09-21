@@ -11,13 +11,18 @@ const ui = {
   marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
   marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
   marketSource: document.querySelector("#market-source"),
-  form: document.querySelector("#filters"), filterToggle: document.querySelector("#filter-toggle")
+  form: document.querySelector("#filters"), filterToggle: document.querySelector("#filter-toggle"),
+  photoDialog: document.querySelector("#photo-dialog"), photoLarge: document.querySelector("#photo-large"),
+  photoError: document.querySelector("#photo-error"), photoCount: document.querySelector("#photo-count"),
+  photoTitle: document.querySelector("#photo-title"), photoSource: document.querySelector("#photo-source"),
+  photoPrevious: document.querySelector("#photo-previous"), photoNext: document.querySelector("#photo-next")
 };
 
 let inventory = [];
 let marketSales = [];
 let colorReference = { exterior: [], interior_by_year: {} };
 let generatedAt = new Date();
+let activeGallery = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const controls = ["search", "status", "color", "owners", "accidents", "price", "mileage", "sort"]
@@ -58,6 +63,44 @@ function text(tag, className, content) {
   node.textContent = content;
   return node;
 }
+function galleryUrls(row) {
+  return [...new Set([row.photo_url, ...(Array.isArray(row.photo_urls) ? row.photo_urls : [])]
+    .filter(url => typeof url === "string" && /^https:\/\//.test(url)))].slice(0, 8);
+}
+function showLargePhoto() {
+  if (!activeGallery) return;
+  const { row, urls, index } = activeGallery;
+  ui.photoLarge.hidden = false;
+  ui.photoError.hidden = true;
+  ui.photoLarge.src = urls[index];
+  ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " Lexus LX470";
+  ui.photoCount.textContent = (index + 1) + " of " + urls.length;
+  ui.photoTitle.textContent = row.year + " Lexus LX470 · " + (row.seller || row.source);
+  ui.photoSource.href = row.listing_url;
+  ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
+}
+function stepLargePhoto(step) {
+  if (!activeGallery) return;
+  activeGallery.index = (activeGallery.index + step + activeGallery.urls.length) % activeGallery.urls.length;
+  showLargePhoto();
+}
+function openGallery(row, urls, index) {
+  activeGallery = { row, urls, index };
+  showLargePhoto();
+  ui.photoDialog.showModal();
+}
+ui.photoPrevious.addEventListener("click", () => stepLargePhoto(-1));
+ui.photoNext.addEventListener("click", () => stepLargePhoto(1));
+document.querySelector("#photo-close").addEventListener("click", () => ui.photoDialog.close());
+ui.photoDialog.addEventListener("close", () => { activeGallery = null; });
+ui.photoDialog.addEventListener("click", event => { if (event.target === ui.photoDialog) ui.photoDialog.close(); });
+ui.photoDialog.addEventListener("keydown", event => {
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    stepLargePhoto(event.key === "ArrowLeft" ? -1 : 1);
+  }
+});
+ui.photoLarge.addEventListener("error", () => { ui.photoLarge.hidden = true; ui.photoError.hidden = false; });
 function makeMetric(main, label) {
   const node = text("div", "metric", "");
   node.append(text("strong", "", main), text("span", "", label));
@@ -202,20 +245,57 @@ function reportedExtras(row) {
 function renderCard(row) {
   const card = document.createElement("article");
   card.className = "listing";
-  const media = text("div", row.photo_url ? "listing-media" : "listing-media photo-missing", "");
-  if (row.photo_url) {
+  const photos = galleryUrls(row);
+  const media = text("div", photos.length ? "listing-media" : "listing-media photo-missing", "");
+  if (photos.length) {
+    let index = 0;
+    const failed = new Set();
+    const trigger = text("button", "photo-viewer", "");
+    trigger.type = "button";
+    trigger.setAttribute("aria-label", "View photos for " + row.year + " Lexus LX470 on " + row.source);
     const photo = document.createElement("img");
-    photo.src = row.photo_url;
     photo.alt = `${row.year} ${row.exterior_color || ""} Lexus LX470`.replace(/\s+/g, " ").trim();
     photo.loading = "lazy";
     photo.decoding = "async";
     photo.referrerPolicy = "no-referrer";
+    const counter = text("span", "photo-counter", "");
+    const show = next => {
+      index = (next + photos.length) % photos.length;
+      photo.dataset.index = String(index);
+      photo.src = photos[index];
+      counter.textContent = (index + 1) + " / " + photos.length;
+    };
     photo.addEventListener("error", () => {
-      photo.remove();
-      media.classList.add("photo-missing");
-      media.prepend(text("span", "photo-placeholder", "LX"));
-    }, { once: true });
-    media.append(photo);
+      failed.add(Number(photo.dataset.index));
+      const next = photos.findIndex((_, position) => !failed.has(position));
+      if (next >= 0) show(next);
+      else {
+        trigger.remove();
+        media.classList.add("photo-missing");
+        media.prepend(text("span", "photo-placeholder", "LX"));
+        counter.remove();
+        media.querySelectorAll(".photo-step").forEach(button => button.remove());
+      }
+    });
+    trigger.addEventListener("click", () => {
+      const available = photos.filter((_, position) => !failed.has(position));
+      openGallery(row, available, Math.max(0, available.indexOf(photos[index])));
+    });
+    trigger.append(photo);
+    media.append(trigger);
+    if (photos.length > 1) {
+      const step = (direction, label) => {
+        const button = text("button", "photo-step photo-" + label, direction < 0 ? "‹" : "›");
+        button.type = "button";
+        button.setAttribute("aria-label", (direction < 0 ? "Previous" : "Next") + " photo for " + row.year + " Lexus LX470");
+        button.addEventListener("click", () => show(index + direction));
+        media.append(button);
+      };
+      step(-1, "previous");
+      step(1, "next");
+      media.append(counter);
+    }
+    show(0);
   } else {
     media.append(text("span", "photo-placeholder", "LX"));
   }
