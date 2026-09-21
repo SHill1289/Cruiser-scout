@@ -1095,6 +1095,11 @@ def run(root=ROOT, live=True):
             host = urllib.parse.urlsplit(url).hostname or "unknown"
             counts.setdefault(host, []).append(len(photos))
         print("Photo gallery counts by source:", json.dumps(counts, sort_keys=True))
+        errors = {}
+        for url, error in photo_browser.errors.items():
+            host = urllib.parse.urlsplit(url).hostname or "unknown"
+            errors.setdefault(host, error)
+        print("First photo gallery error by source:", json.dumps(errors, sort_keys=True))
         photo_browser.close()
     changes = update(state, rows, now, scopes)
     apply_vehicle_history_overrides(root, state)
