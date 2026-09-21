@@ -303,7 +303,7 @@ class BrowserPhotoFetcher:
             time.sleep(max(0, 2 - (time.monotonic() - self.last)))
             self.driver.get(url)
             self.last = time.monotonic()
-            raw = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script("""
+            gallery_script = """
                 const pick = image => image.currentSrc || image.src || '';
                 if (location.hostname.endsWith('cargurus.com')) {
                     const main = document.querySelector('#PreviewGalleryMainImage img');
@@ -315,7 +315,17 @@ class BrowserPhotoFetcher:
                     return images.length ? images.map(pick) : null;
                 }
                 return null;
-            """))
+            """
+            raw = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script(gallery_script))
+            # Galleries often render the first thumbnail before the rest. Give
+            # lazy thumbnails a moment to appear before saving this listing.
+            for _ in range(6):
+                time.sleep(0.5)
+                later = self.driver.execute_script(gallery_script) or []
+                if len(later) > len(raw):
+                    raw = later
+                if len(raw) >= 9:
+                    break
             self.galleries[url] = gallery_image_urls(raw)
         except Exception as error:
             self.errors[url] = f"{type(error).__name__}: {error}".replace("\n", " ")[:500]
