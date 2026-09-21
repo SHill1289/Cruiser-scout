@@ -304,15 +304,21 @@ class BrowserPhotoFetcher:
             self.driver.get(url)
             self.last = time.monotonic()
             gallery_script = """
-                const pick = image => image.currentSrc || image.src || '';
+                const pick = image => [image.getAttribute('src'), image.currentSrc, image.getAttribute('data-src')]
+                    .find(url => url && url.startsWith('https://')) || '';
                 if (location.hostname.endsWith('cargurus.com')) {
                     const main = document.querySelector('#PreviewGalleryMainImage img');
-                    const thumbs = [...document.querySelectorAll('img[alt^="View vehicle photo"]')];
-                    return main && thumbs.length ? [pick(main), ...thumbs.map(pick)] : null;
+                    const lead = main && pick(main);
+                    if (!lead) return null;
+                    const directory = lead.slice(0, lead.lastIndexOf('/') + 1);
+                    const images = [...document.images].map(pick).filter(url => url.startsWith(directory));
+                    return [lead, ...images];
                 }
                 if (location.hostname.endsWith('truecar.com')) {
-                    const images = [...document.querySelectorAll('img[alt*=" - open gallery"]')];
-                    return images.length ? images.map(pick) : null;
+                    const vin = location.pathname.split('/').filter(Boolean).pop();
+                    const images = [...document.images].map(pick)
+                        .filter(url => url.includes('/listings/') && url.includes('/' + vin + '/'));
+                    return images.length ? images : null;
                 }
                 return null;
             """
@@ -1084,6 +1090,11 @@ def run(root=ROOT, live=True):
             rows.extend(batch)
             state["imports"].append(fingerprint)
     if photo_browser is not None:
+        counts = {}
+        for url, photos in photo_browser.galleries.items():
+            host = urllib.parse.urlsplit(url).hostname or "unknown"
+            counts.setdefault(host, []).append(len(photos))
+        print("Photo gallery counts by source:", json.dumps(counts, sort_keys=True))
         photo_browser.close()
     changes = update(state, rows, now, scopes)
     apply_vehicle_history_overrides(root, state)
