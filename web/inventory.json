@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T13:32:24+00:00",
+  "generated_at": "2026-09-21T13:46:32+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 21,
@@ -14,79 +14,73 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "16 parsed of 16; 15 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "5 parsed of 5; 5 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "2 clean-title listings parsed of 2; nationwide. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "historical sales",
       "status": "ok",
       "detail": "50 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
-    },
-    {
-      "source": "NHTSA VIN decoder",
-      "status": "ok",
-      "detail": "22 VINs cached; 0 newly decoded. Factory identification only; not a build sheet.",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:459345660: TimeoutException: Message:  ",
-      "checked_at": "2026-09-21T13:32:24+00:00"
+      "checked_at": "2026-09-21T13:46:32+00:00"
     }
   ],
   "market_history": {
@@ -618,6 +612,7 @@
       "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/08/20260826_135843-scaled-copy-2026-09-03-z2m-50060.jpg",
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
+      "reported_extras": null,
       "title_status": "clean title",
       "accident_history": "No accident on history report; seller discloses prior accident",
       "owners": "4",
@@ -635,20 +630,7 @@
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
-      "deal_mileage_band": null,
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": null
     },
     {
       "listing_key": "cargurus:436324031",
@@ -672,6 +654,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/06/12/14/58/2006_lexus_lx-pic-6463835718860128187-1024x768.jpeg",
       "exterior_color": "White",
       "interior_color": "",
+      "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -683,26 +666,13 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
-      "deal_mileage_band": null,
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": null
     },
     {
       "listing_key": "cargurus:440552873",
@@ -726,6 +696,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/01/11/59/2006_lexus_lx-pic-6042394948840194466-1024x768.jpeg",
       "exterior_color": "",
       "interior_color": "",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -737,26 +708,13 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 48,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:443658870",
@@ -780,6 +738,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/04/01/20/14/2006_lexus_lx-pic-5665456999812586208-1024x768.jpeg",
       "exterior_color": "",
       "interior_color": "",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -791,26 +750,13 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 26,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:449010562",
@@ -834,6 +780,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/05/29/14/46/2006_lexus_lx-pic-3835718161735504539-1024x768.jpeg",
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -845,26 +792,13 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 27,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:449684771",
@@ -888,6 +822,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/07/21/05/22/2006_lexus_lx-pic-7746867946457051543-1024x768.jpeg",
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -899,26 +834,13 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
-      "deal_mileage_band": null,
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": null
     },
     {
       "listing_key": "cargurus:450232382",
@@ -942,6 +864,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/06/20/14/24/2006_lexus_lx-pic-5110929475100017749-1024x768.jpeg",
       "exterior_color": "Silver",
       "interior_color": "Off-white",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -953,26 +876,13 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:454578510",
@@ -996,6 +906,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/22/53/2006_lexus_lx-pic-6223159330775167436-1024x768.jpeg",
       "exterior_color": "Silver",
       "interior_color": "Gray",
+      "reported_extras": "Rear-seat DVD",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1007,26 +918,13 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 6,
       "deal_comparable_count": 11,
       "deal_median_price": 29500,
-      "deal_mileage_band": "100k-150k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "100k-150k"
     },
     {
       "listing_key": "cargurus:454664523",
@@ -1050,6 +948,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/13/06/2007_lexus_lx-pic-6075483111668833938-1024x768.jpeg",
       "exterior_color": "White",
       "interior_color": "",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1061,26 +960,13 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 10,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:455377530",
@@ -1104,6 +990,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/05/16/53/2006_lexus_lx-pic-5662236248984491792-1024x768.jpeg",
       "exterior_color": "Silver",
       "interior_color": "Gray",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1115,26 +1002,13 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 36,
       "deal_comparable_count": 11,
       "deal_median_price": 29500,
-      "deal_mileage_band": "100k-150k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "100k-150k"
     },
     {
       "listing_key": "cargurus:455935117",
@@ -1158,6 +1032,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/13/06/34/2006_lexus_lx-pic-1914255273098638647-1024x768.jpeg",
       "exterior_color": "Black",
       "interior_color": "Brown (Beige)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1169,26 +1044,13 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -28,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:456313629",
@@ -1212,6 +1074,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/16/19/07/2006_lexus_lx-pic-4966649751830853530-1024x768.jpeg",
       "exterior_color": "",
       "interior_color": "",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1223,26 +1086,13 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -38,
       "deal_comparable_count": 9,
       "deal_median_price": 44500,
-      "deal_mileage_band": "Under 100k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "Under 100k"
     },
     {
       "listing_key": "cargurus:457366712",
@@ -1266,6 +1116,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/03/46/2007_lexus_lx-pic-775115144869839135-1024x768.jpeg",
       "exterior_color": "Black Onyx",
       "interior_color": "Stone",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "3",
@@ -1277,26 +1128,13 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 109,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:457366727",
@@ -1320,6 +1158,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/28/03/34/2006_lexus_lx-pic-7464718577188630485-1024x768.jpeg",
       "exterior_color": "Black Onyx",
       "interior_color": "White (Ivory leather)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1331,26 +1170,13 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 86,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:457613100",
@@ -1374,6 +1200,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/30/06/52/2007_lexus_lx-pic-2990799071660587386-1024x768.jpeg",
       "exterior_color": "Gray",
       "interior_color": "Gray",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1385,26 +1212,13 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 58,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:457621994",
@@ -1428,6 +1242,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/08/30/14/21/2007_lexus_lx-pic-3676265486816612954-1024x768.jpeg",
       "exterior_color": "Black",
       "interior_color": "Brown (Tan)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1439,26 +1254,13 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 5,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:458480534",
@@ -1482,6 +1284,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/09/20/14/2006_lexus_lx-pic-4950752030717862848-1024x768.jpeg",
       "exterior_color": "Black Onyx",
       "interior_color": "Gray",
+      "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1493,26 +1296,13 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 19,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:458809207",
@@ -1536,6 +1326,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/12/21/01/2006_lexus_lx-pic-7282658764236048576-1024x768.jpeg",
       "exterior_color": "White",
       "interior_color": "Brown (Tan)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1547,26 +1338,13 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -23,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:458962414",
@@ -1590,6 +1368,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/09/45/2006_lexus_lx-pic-4191869050115516631-1024x768.jpeg",
       "exterior_color": "Onyx Black",
       "interior_color": "Gray",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1601,26 +1380,13 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 10,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:459000535",
@@ -1644,6 +1410,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/16/11/23/2007_lexus_lx-pic-915892171582772688-1024x768.jpeg",
       "exterior_color": "White",
       "interior_color": "Brown (Beige)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1655,26 +1422,13 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "cargurus:459345660",
@@ -1698,6 +1452,7 @@
       "photo_url": "",
       "exterior_color": "",
       "interior_color": "",
+      "reported_extras": "CarPlay",
       "title_status": "clean-title candidate",
       "accident_history": "Accident reported or history unavailable",
       "owners": "Unverified",
@@ -1709,26 +1464,13 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
-      "deal_mileage_band": null,
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": null
     },
     {
       "listing_key": "cargurus:459454421",
@@ -1752,6 +1494,7 @@
       "photo_url": "https://static.cargurus.com/images/forsale/2026/09/20/04/06/2006_lexus_lx-pic-3125246123055959523-1024x768.jpeg",
       "exterior_color": "Black",
       "interior_color": "Brown (Tan)",
+      "reported_extras": "",
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "owners": "Unverified",
@@ -1763,26 +1506,13 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
       "deal_comparable_count": null,
       "deal_median_price": null,
-      "deal_mileage_band": null,
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "AWD/All-Wheel Drive",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2006
-      }
+      "deal_mileage_band": null
     },
     {
       "listing_key": "truecar:JTJHT00W074027827",
@@ -1806,6 +1536,7 @@
       "photo_url": "https://listings-prod.tcimg.net/listings/107917/27/78/JTJHT00W074027827/001_2026091610.jpg",
       "exterior_color": "Crystal White",
       "interior_color": "Beige",
+      "reported_extras": "",
       "title_status": "clean title",
       "accident_history": "1 reported accident",
       "owners": "3",
@@ -1817,26 +1548,13 @@
       "listed_at": "2026-09-16T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     },
     {
       "listing_key": "truecar:JTJHT00WX74025471",
@@ -1860,6 +1578,7 @@
       "photo_url": "https://listings-prod.tcimg.net/listings/43903/71/54/JTJHT00WX74025471/001_2026083015.jpg",
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Gray",
+      "reported_extras": "",
       "title_status": "clean title",
       "accident_history": "No reported accidents",
       "owners": "3",
@@ -1871,26 +1590,13 @@
       "listed_at": "2026-08-30T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-09-21T13:32:24+00:00",
+      "last_seen": "2026-09-21T13:46:32+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 58,
       "deal_comparable_count": 29,
       "deal_median_price": 19103,
-      "deal_mileage_band": "150k-250k",
-      "vin_specs": {
-        "assembly_city": "TOYOTA CITY",
-        "assembly_country": "JAPAN",
-        "body_style": "Sport Utility Vehicle [SUV]/Multipurpose Vehicle [MPV]",
-        "cylinders": "8",
-        "drive_type": "4WD/4-Wheel Drive/4x4",
-        "engine_liters": "4.7",
-        "fuel": "Gasoline",
-        "make": "Lexus",
-        "model": "LX 470",
-        "trim": "470",
-        "year": 2007
-      }
+      "deal_mileage_band": "150k-250k"
     }
   ]
 }
