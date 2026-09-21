@@ -91,6 +91,7 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .filters select { cursor: pointer; }
 .filters option { background: #18221e; }
 .filters label:focus-within { box-shadow: inset 0 -2px var(--accent); }
+.filter-toggle { display: none; }
 .reset { grid-column: 1 / -1; padding: 10px 16px; border: 0; border-top: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; text-align: right; font-size: 12px; }
 .reset:hover { color: var(--accent); }
 .summary-strip { display: grid; grid-template-columns: repeat(3, 1fr); margin: 24px 0; border-block: 1px solid var(--line); }
@@ -152,6 +153,7 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .tag { width: max-content; max-width: 100%; padding: 3px 8px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tag.good { border-color: #58773d; color: #cbe99a; }
 .open-link { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; color: var(--accent); text-decoration: none; font-size: 20px; transition: background .18s, color .18s; }
+.open-link-label { display: none; }
 .open-link:hover { background: var(--accent); color: var(--accent-dark); }
 .empty { margin-top: 24px; padding: 70px 30px; border: 1px solid var(--line); text-align: center; }
 .empty h3 { margin: 0; font-size: 24px; }
@@ -207,17 +209,27 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
 @media (max-width: 760px) {
   .shell { width: min(100% - 28px, 1180px); }
   .hero { min-height: auto; }
-  .hero::after { width: 520px; right: -130px; bottom: -8px; }
+  .hero::after { width: 420px; right: -130px; bottom: -8px; }
   .hero::before { width: 240px; right: -55px; top: 100px; opacity: .014; }
   .nav { height: 72px; }
   .nav-link { display: none; }
-  .hero-grid { grid-template-columns: 1fr; gap: 48px; min-height: auto; padding: 70px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; min-height: auto; padding: 54px 0 44px; }
+  h1 { font-size: clamp(44px, 10vw, 72px); line-height: .95; }
   .hero-panel { padding: 22px; }
   .notice { margin: 30px 0; padding: 20px; }
   .inventory { padding: 35px 0 70px; }
-  .section-heading { align-items: flex-start; flex-direction: column; }
+  .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+  .section-heading h2, .method h2 { font-size: clamp(32px, 7vw, 46px); }
   .filters { grid-template-columns: repeat(2, 1fr); }
   .search-field { grid-column: 1 / -1; }
+  .filters label { padding: 8px 12px; }
+  .filters input, .filters select { min-height: 34px; font-size: 16px; }
+  .filters .advanced-filter { order: 4; }
+  .filters:not(.filters-expanded) .advanced-filter { display: none; }
+  .filter-toggle { display: block; grid-column: 1 / -1; order: 3; min-height: 44px; padding: 8px 14px; border: 0; background: var(--panel); color: var(--warm); font-size: 13px; font-weight: 700; text-align: left; cursor: pointer; }
+  .filter-toggle::after { content: "+"; float: right; font-size: 18px; line-height: 1; }
+  .filters-expanded .filter-toggle::after { content: "−"; }
+  .reset { order: 5; min-height: 44px; font-size: 13px; }
   .summary-strip { grid-template-columns: 1fr; }
   .summary-strip div { border-right: 0; border-bottom: 1px solid var(--line); }
   .summary-strip div:last-child { border-bottom: 0; }
@@ -230,9 +242,39 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   .market-controls { grid-template-columns: 1fr; width: 100%; }
   .market-controls select { min-width: 0; }
   .market-bands { grid-template-columns: 1fr; }
-  .market-band { border-right: 0; border-bottom: 1px solid var(--line) !important; }
+  .market-band { padding: 20px; border-right: 0; border-bottom: 1px solid var(--line) !important; }
+  .band-detail { margin-bottom: 14px; }
+  .band-bar { margin: 16px 0 12px; }
   .market-band:last-child { border-bottom: 0 !important; }
   .method { grid-template-columns: 1fr; gap: 40px; padding: 70px 0; }
   footer { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .hero-stats strong { font-size: 24px; }
+  .notice { gap: 12px; padding: 16px; }
+  .notice p { font-size: 13px; }
+  .listing { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "media media" "identity identity" "price mileage" "dates dates" "history history" "link link"; gap: 12px 0; margin-bottom: 18px; padding: 0; border: 1px solid var(--line); background: var(--panel); }
+  .listing:first-child { border-top: 1px solid var(--line); }
+  .listing-media { grid-area: media; aspect-ratio: 16 / 10; border: 0; border-bottom: 1px solid var(--line); }
+  .identity { grid-area: identity; min-width: 0; padding: 4px 16px 0; }
+  .vehicle-title { font-size: 18px; }
+  .listing .metric { grid-column: auto; min-width: 0; padding: 0 16px; }
+  .listing .price-metric { grid-area: price; }
+  .listing .mileage-metric { grid-area: mileage; }
+  .listing .metric strong { overflow-wrap: anywhere; }
+  .listing .listing-dates { grid-area: dates; flex-direction: row; justify-content: space-between; gap: 12px; padding: 10px 16px 0; border-top: 1px solid var(--line); }
+  .listing .history { grid-area: history; gap: 6px; padding: 0 16px; }
+  .listing .open-link { grid-area: link; display: flex; justify-content: space-between; width: auto; height: 48px; margin: 0 16px 16px; padding: 0 14px; border-radius: 0; font-size: 15px; font-weight: 700; }
+  .open-link-label { display: inline; }
+  .open-link-arrow { font-size: 20px; }
+  .color-detail strong { max-width: 105px; }
+  .market-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .market-controls label { min-width: 0; padding: 8px 10px; }
+  .market-controls select { width: 100%; min-height: 34px; font-size: 16px; }
+}
+@media (max-width: 360px) {
+  .brand { gap: 6px; font-size: 14px; }
+  .brand-mark, .brand-mark img { width: 38px; }
+  .listing .listing-dates { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }

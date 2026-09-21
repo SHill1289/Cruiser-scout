@@ -59,12 +59,13 @@
           <input id="search" type="search" placeholder="City, seller, VIN&hellip;" autocomplete="off">
         </label>
         <label><span>Status</span><select id="status"><option value="">All statuses</option><option value="for-sale">For sale</option><option value="live-auction">Live auction</option><option value="sold">Sold</option><option value="bid-not-met">Bid not met</option><option value="auction-ended">Auction ended</option></select></label>
-        <label><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
-        <label><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">Verified one owner</option><option value="multiple">Verified 2+ owners</option><option value="unknown">Unverified</option></select></label>
-        <label><span>Accidents</span><select id="accidents"><option value="">All accident histories</option><option value="none">No reported accidents</option><option value="other">Reported / unknown</option></select></label>
-        <label><span>Max price</span><select id="price"><option value="">Any price</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option><option value="30000">$30,000</option><option value="40000">$40,000</option></select></label>
-        <label><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
+        <label class="advanced-filter"><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
+        <label class="advanced-filter"><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">Verified one owner</option><option value="multiple">Verified 2+ owners</option><option value="unknown">Unverified</option></select></label>
+        <label class="advanced-filter"><span>Accidents</span><select id="accidents"><option value="">All accident histories</option><option value="none">No reported accidents</option><option value="other">Reported / unknown</option></select></label>
+        <label class="advanced-filter"><span>Max price</span><select id="price"><option value="">Any price</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option><option value="30000">$30,000</option><option value="40000">$40,000</option></select></label>
+        <label class="advanced-filter"><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
         <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="newest">Recently found</option></select></label>
+        <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters">More filters</button>
         <button class="reset" id="reset" type="reset">Reset filters</button>
       </form>
 

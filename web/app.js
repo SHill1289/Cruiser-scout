@@ -11,7 +11,7 @@ const ui = {
   marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
   marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
   marketSource: document.querySelector("#market-source"),
-  form: document.querySelector("#filters")
+  form: document.querySelector("#filters"), filterToggle: document.querySelector("#filter-toggle")
 };
 
 let inventory = [];
@@ -240,8 +240,11 @@ function renderCard(row) {
   if (extras) identity.append(extras);
   card.append(identity);
 
-  card.append(makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price"));
-  card.append(makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, "Mileage"));
+  const price = makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price");
+  price.classList.add("price-metric");
+  const mileage = makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, "Mileage");
+  mileage.classList.add("mileage-metric");
+  card.append(price, mileage);
   card.append(listingDates(row));
 
   const history = text("div", "history", "");
@@ -253,7 +256,8 @@ function renderCard(row) {
   history.append(text("span", row.accident_history === "No reported accidents" ? "tag good" : "tag", row.accident_history || "History unknown"));
   card.append(history);
 
-  const link = text("a", "open-link", "\u2197");
+  const link = text("a", "open-link", "");
+  link.append(text("span", "open-link-label", "View listing"), text("span", "open-link-arrow", "\u2197"));
   link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
@@ -342,7 +346,16 @@ function renderMarket() {
 
 function reset() {
   ui.form.reset();
+  updateFilterToggle();
   render();
+}
+
+function updateFilterToggle() {
+  const active = ["color", "owners", "accidents", "price", "mileage"]
+    .filter(id => controls[id].value).length;
+  const expanded = ui.form.classList.contains("filters-expanded");
+  ui.filterToggle.textContent = `${expanded ? "Hide" : "More"} filters${active ? ` (${active})` : ""}`;
+  ui.filterToggle.setAttribute("aria-expanded", String(expanded));
 }
 
 async function load() {
@@ -384,9 +397,13 @@ async function load() {
   }
 }
 
-ui.form.addEventListener("input", render);
+ui.form.addEventListener("input", () => { updateFilterToggle(); render(); });
+ui.filterToggle.addEventListener("click", () => {
+  ui.form.classList.toggle("filters-expanded");
+  updateFilterToggle();
+});
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
-ui.form.addEventListener("reset", () => setTimeout(render, 0));
+ui.form.addEventListener("reset", () => setTimeout(() => { updateFilterToggle(); render(); }, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
 load();
