@@ -9,6 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (accident_category, add_listing_photo, cache_public_photos, correct_ambiguous_accident_history,
+                    cargurus_condition_claims, condition_claims,
                     gallery_image_urls, gallery_urls_in_page,
                     normalize, update, master_rows, parse_cargurus, parse_bat,
                     backfill_listing_dates,
@@ -127,6 +128,36 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(add_listing_photo(row, Fetcher()), '')
         self.assertEqual(row['photo_urls'], photos)
         self.assertEqual(row['photo_url'], photos[0])
+
+    def test_condition_claims_require_explicit_listing_evidence(self):
+        generic = condition_claims(['Standard AHC, navigation, and a reliable timing belt are included.'])
+        self.assertFalse(generic)
+        claims = condition_claims([
+            'A timing belt service was performed in April 2022. Corrosion is visible on the underside.',
+            'The seller notes AHC is not working and service records are included.',
+            'Factory options include navigation. An aftermarket lift kit was installed.',
+        ])
+        self.assertEqual(claims['timing_belt_status'], 'Service reported')
+        self.assertEqual(claims['rust_status'], 'Rust reported')
+        self.assertEqual(claims['ahc_status'], 'Issue reported')
+        self.assertEqual(claims['navigation_status'], 'Advertised; operation unknown')
+        self.assertEqual(claims['service_records_status'], 'Records mentioned')
+        self.assertEqual(claims['modifications_status'], 'Modification reported')
+        self.assertEqual(condition_claims(['No rust visible.'])['rust_status'], 'No rust reported by listing')
+        self.assertEqual(condition_claims(['The timing belt needs replacement.'])['timing_belt_status'], 'Service due per listing')
+
+    def test_dealer_description_excludes_generic_equipment_and_persists(self):
+        page = ('<h3>Dealer&#x27;s description</h3><div><p>Documented maintenance and no concerning rust.</p></div>'
+                '<h3>Additional Information</h3><div>Navigation System AHC working</div>')
+        claims = cargurus_condition_claims(page)
+        self.assertEqual(claims['service_records_status'], 'Records mentioned')
+        self.assertEqual(claims['rust_status'], 'No rust reported by listing')
+        self.assertNotIn('navigation_status', claims)
+        self.assertNotIn('ahc_status', claims)
+        first = {**self.row, **claims}
+        update(self.state, [first], NOW)
+        update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
+        self.assertEqual(self.state['listings']['test:1']['rust_evidence'], claims['rust_evidence'])
 
     def test_truecar_gallery_photos_are_served_locally(self):
         base = 'https://listings-prod.tcimg.net/listings/123/45/JTJHT00W074027827/'
@@ -255,6 +286,7 @@ class DatabaseTests(unittest.TestCase):
             (root / 'sources/config.json').write_text('{"sources": []}')
             clean = {**self.row, 'source_listing_id': 'clean',
                      'reported_extras': 'Rear-seat DVD',
+                     'timing_belt_status': 'Service reported', 'timing_belt_evidence': 'The timing belt was replaced.',
                      'title_status': 'clean-title candidate'}
             unknown = {**self.row, 'source_listing_id': 'unknown',
                        'listing_url': 'https://example.com/car/2',
@@ -280,6 +312,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertIn('listed_at', public['listings'][0])
             self.assertIn('first_seen', public['listings'][0])
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['reported_extras'], 'Rear-seat DVD')
+            self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['timing_belt_status'], 'Service reported')
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['accident_category'], 'unavailable')
             self.assertNotIn('vin_specs', public['listings'][0])
             self.assertNotIn('notes', public['listings'][0])
@@ -515,6 +548,18 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(row['accident_history'], 'No reported accidents')
         self.assertEqual(row['title_status'], 'clean title')
         self.assertTrue(clean_title_candidate(row))
+
+    def test_auction_condition_only_uses_listing_narrative(self):
+        page = ('<h1>2006 Lexus LX470</h1><div class="listing-intro">Sold for USD $25,000'
+                '<div class="listing-actions-stats"></div><div class="post-excerpt">'
+                '<p>A timing belt service was performed in April 2022.</p>'
+                '<p>Corrosion is visible on the underside.</p></div>'
+                '<div class="comments"><p>AHC works and navigation is broken.</p></div>')
+        row = parse_bat(page, 'https://bringatrailer.com/listing/2006-lexus-lx470-81/', NOW)
+        self.assertEqual(row['timing_belt_status'], 'Service reported')
+        self.assertEqual(row['rust_status'], 'Rust reported')
+        self.assertEqual(row['ahc_status'], '')
+        self.assertEqual(row['navigation_status'], '')
 
 
 if __name__ == '__main__':

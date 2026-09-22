@@ -153,6 +153,15 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .reported-extra { padding: 3px 6px; border: 1px solid var(--line); color: #d9dfda; font-size: 10px; }
 .reported-extras-source { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
 .reported-extras-source a { color: var(--warm); }
+.condition-records { margin-top: 10px; max-width: 360px; }
+.condition-records summary { width: max-content; max-width: 100%; color: var(--warm); font-size: 11px; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; cursor: pointer; }
+.condition-records-content { margin-top: 10px; border-top: 1px solid var(--line); }
+.condition-record { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 3px 10px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 11px; }
+.condition-label, .condition-unknown { color: var(--muted); }
+.condition-record strong { font-weight: 600; }
+.condition-evidence { grid-column: 2; margin: 0; color: var(--muted); line-height: 1.4; overflow-wrap: anywhere; }
+.condition-disclaimer { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
+.condition-disclaimer a { color: var(--warm); }
 .listing-state-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
 .sale-state { display: inline-block; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .deal-rating { display: inline-block; padding: 2px 7px; border: 1px solid; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; cursor: help; }

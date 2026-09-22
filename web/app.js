@@ -296,6 +296,35 @@ function reportedExtras(row) {
   return panel;
 }
 
+function conditionRecords(row) {
+  const topics = [
+    ["timing_belt", "Timing belt"], ["ahc", "AHC"], ["rust", "Rust"],
+    ["navigation", "Navigation"], ["service_records", "Service records"],
+    ["modifications", "Modifications"],
+  ];
+  const sourced = topics.filter(([key]) => row[`${key}_status`] && row[`${key}_evidence`]).length;
+  const panel = document.createElement("details");
+  panel.className = "condition-records";
+  panel.append(text("summary", "", `Maintenance & condition · ${sourced} of 6 sourced`));
+  const content = text("div", "condition-records-content", "");
+  for (const [key, label] of topics) {
+    const status = row[`${key}_status`] && row[`${key}_evidence`] ? row[`${key}_status`] : "Unknown";
+    const item = text("div", "condition-record", "");
+    item.append(text("span", "condition-label", label), text("strong", status === "Unknown" ? "condition-unknown" : "", status));
+    if (status !== "Unknown") item.append(text("p", "condition-evidence", row[`${key}_evidence`]));
+    content.append(item);
+  }
+  const source = text("p", "condition-disclaimer", "Statements from the listing, not an inspection. Confirm records and condition with the seller. ");
+  const link = text("a", "", "View source");
+  link.href = row.listing_url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  source.append(link);
+  content.append(source);
+  panel.append(content);
+  return panel;
+}
+
 function renderCard(row) {
   const card = document.createElement("article");
   card.className = "listing";
@@ -381,6 +410,7 @@ function renderCard(row) {
   identity.append(colors);
   const extras = reportedExtras(row);
   if (extras) identity.append(extras);
+  identity.append(conditionRecords(row));
   card.append(identity);
 
   const price = makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price");

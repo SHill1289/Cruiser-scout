@@ -17,6 +17,7 @@ import urllib.parse
 import urllib.request
 import urllib.robotparser
 from datetime import datetime, timedelta, timezone
+from html.parser import HTMLParser
 from pathlib import Path
 from statistics import median
 
@@ -29,6 +30,10 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing
           "reported_extras",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
+          "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
+          "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
+          "service_records_status", "service_records_evidence",
+          "modifications_status", "modifications_evidence",
           "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 STATUSES = {"active", "sold", "ended", "removed", "unknown"}
@@ -193,6 +198,11 @@ def normalize(raw):
     if row["category"] not in {"retail", "auction", "salvage"}:
         raise ValueError("Unsupported category")
     row["title_status"] = row["title_status"] or "unknown"
+    for topic in CONDITION_TOPICS:
+        status_key, evidence_key = f"{topic}_status", f"{topic}_evidence"
+        if not row[status_key] or not row[evidence_key]:
+            row[status_key] = ""
+            row[evidence_key] = ""
     row["currency"] = row["currency"] or "USD"
     for key in ("asking_price", "base_price", "current_bid", "sold_price", "mileage"):
         row[key] = number(row[key])
@@ -563,6 +573,103 @@ def plain(page):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", page))).strip()
 
 
+CONDITION_TOPICS = ("timing_belt", "ahc", "rust", "navigation", "service_records", "modifications")
+
+
+class ListingParagraphs(HTMLParser):
+    """Read only the auction narrative, excluding comments and surrounding page copy."""
+
+    def __init__(self, class_name):
+        super().__init__(convert_charrefs=True)
+        self.class_name = class_name
+        self.depth = 0
+        self.paragraph_depth = 0
+        self.current = []
+        self.paragraphs = []
+
+    def handle_starttag(self, tag, attrs):
+        classes = dict(attrs).get("class", "").split()
+        if not self.depth and self.class_name in classes:
+            self.depth = 1
+            return
+        if self.depth:
+            if tag not in {"area", "br", "hr", "img", "input", "meta", "source", "wbr"}:
+                self.depth += 1
+            if tag == "p":
+                self.paragraph_depth = self.depth
+                self.current = []
+
+    def handle_endtag(self, tag):
+        if not self.depth:
+            return
+        if tag == "p" and self.paragraph_depth:
+            paragraph = re.sub(r"\s+", " ", " ".join(self.current)).strip()
+            if paragraph:
+                self.paragraphs.append(paragraph)
+            self.paragraph_depth = 0
+            self.current = []
+        self.depth -= 1
+
+    def handle_data(self, data):
+        if self.paragraph_depth:
+            self.current.append(data)
+
+
+def condition_claims(paragraphs):
+    """Extract explicit listing claims; an absent or standard feature stays unknown."""
+    claims = {}
+    patterns = {
+        "timing_belt": [
+            (r"\b(?:timing belt|timing-belt)\b.{0,55}\b(?:due|overdue|needs|required)\b", "Service due per listing"),
+            (r"\b(?:timing belt|timing-belt)\b.{0,65}\b(?:replaced|changed|serviced|service was performed)\b|\b(?:replaced|changed|serviced)\b.{0,65}\b(?:timing belt|timing-belt)\b", "Service reported"),
+        ],
+        "ahc": [
+            (r"\b(?:AHC|active height control|adjustable height control)\b.{0,50}\b(?:not working|inoperative|failed|leak(?:ing|s)?)\b", "Issue reported"),
+            (r"\b(?:AHC|active height control|adjustable height control)\b.{0,50}\b(?:works|working|functions|operates)\b|\b(?:works|working|functions|operates)\b.{0,50}\bAHC\b", "Working per listing"),
+            (r"\b(?:AHC|active height control|adjustable height control)\b.{0,50}\b(?:deleted|removed|converted)\b", "Removed or converted"),
+        ],
+        "rust": [
+            (r"\b(?:no (?:concerning |significant |visible )?rust|rust[- ]free|no corrosion|clean undercarriage)\b", "No rust reported by listing"),
+            (r"\b(?:rust|corrosion)\b.{0,45}\b(?:visible|present|reported|on the underside|on the frame)\b|\b(?:visible|present)\b.{0,45}\b(?:rust|corrosion)\b", "Rust reported"),
+        ],
+        "navigation": [
+            (r"\b(?:navigation|nav system)\b.{0,45}\b(?:not working|inoperative|broken|failed)\b", "Issue reported"),
+            (r"\b(?:navigation|nav system)\b.{0,45}\b(?:works|working|functions|operates)\b", "Working per listing"),
+            (r"\b(?:equipped with|features|factory options include|optioned with)\b.{0,90}\b(?:navigation|nav system)\b", "Advertised; operation unknown"),
+        ],
+        "service_records": [
+            (r"\b(?:no service records|no maintenance records|records (?:are )?unavailable)\b", "No records reported"),
+            (r"\b(?:service records|maintenance records|service receipts|maintenance receipts|documented maintenance)\b", "Records mentioned"),
+        ],
+        "modifications": [
+            (r"\b(?:unmodified|no modifications|stock condition)\b", "Unmodified per listing"),
+            (r"\b(?:aftermarket|modified|modifications|lift kit|lifted suspension|AHC delete|AHC conversion)\b", "Modification reported"),
+        ],
+    }
+    for paragraph in paragraphs:
+        for sentence in re.split(r"(?<=[.!?])\s+", paragraph):
+            sentence = sentence.strip()
+            for topic in CONDITION_TOPICS:
+                if topic in claims:
+                    continue
+                for pattern, status in patterns[topic]:
+                    match = re.search(pattern, sentence, re.I)
+                    if match:
+                        start = max(0, match.start() - 55)
+                        end = min(len(sentence), match.end() + 55)
+                        evidence = sentence[start:end].strip()
+                        claims[f"{topic}_status"] = status
+                        claims[f"{topic}_evidence"] = ("…" if start else "") + evidence + ("…" if end < len(sentence) else "")
+                        break
+    return claims
+
+
+def cargurus_condition_claims(page):
+    # Only the seller's description; CarGurus' generic equipment panel is not evidence.
+    section = re.search(r"<h3\b[^>]*>Dealer(?:&#x27;|&#39;|['’])s description</h3>\s*<div\b[^>]*>(.*?)</div>", page, re.I | re.S)
+    return condition_claims([plain(section[1])]) if section else {}
+
+
 def parse_listing_photo(page):
     """Return a public lead-image URL from standard social metadata."""
     for tag in re.findall(r"<meta\b[^>]*>", page, re.I):
@@ -591,8 +698,6 @@ def listing_detail_url(row):
 
 def add_listing_photo(row, fetcher, browser_fetcher=None):
     """Add a source gallery where available, preserving a usable lead-photo fallback."""
-    if len(row.get("photo_urls") or []) > 1:
-        return ""
     url = listing_detail_url(row)
     if not url:
         return "listing URL unavailable"
@@ -602,6 +707,10 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
         page = fetcher.get(url)
     except Exception as error:
         plain_error = str(error)
+    if page and row.get("source") == "cargurus":
+        row.update(cargurus_condition_claims(page))
+    if len(row.get("photo_urls") or []) > 1:
+        return ""
     if page and row.get("source") in {"cargurus", "truecar"}:
         photos = gallery_urls_in_page(page, row["source"], row.get("photo_url", ""), row.get("vin", ""))
         print("Listing HTML gallery:", row["source"], row["source_listing_id"], len(photos))
@@ -657,6 +766,8 @@ def parse_bat(page, url, now):
     detail_items = [plain(item) for item in re.findall(r'<li\b[^>]*>(.*?)</li>', details[1], re.S)] if details else []
     excerpt = re.search(r'<div class="post-excerpt"[^>]*>(.*?)</div>', page, re.S)
     excerpt_text = plain(excerpt[1]) if excerpt else ""
+    narrative = ListingParagraphs("post-excerpt")
+    narrative.feed(page)
     vin = re.search(r"Chassis:\s*([A-HJ-NPR-Z0-9]{17})", details_text)
     miles = re.search(r"\b([\d,.]+)(k)? Miles\b", details_text, re.I)
     current = re.search(r"Current Bid:\s*(?:USD\s*)?\$([\d,]+)", text)
@@ -701,6 +812,7 @@ def parse_bat(page, url, now):
            "accident_history": accidents,
            "owners": "Unknown",
            "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."}
+    row.update(condition_claims(narrative.paragraphs))
     return normalize(row)
 
 
@@ -859,6 +971,11 @@ def update(state, rows, now, scopes=()):
             row["photo_url"] = previous["photo_url"]
         if previous and len(previous.get("photo_urls") or []) > len(row.get("photo_urls") or []):
             row["photo_urls"] = previous["photo_urls"]
+        if previous and previous.get("listing_url") == row["listing_url"]:
+            for topic in CONDITION_TOPICS:
+                if not row.get(f"{topic}_evidence") and previous.get(f"{topic}_evidence"):
+                    row[f"{topic}_status"] = previous[f"{topic}_status"]
+                    row[f"{topic}_evidence"] = previous[f"{topic}_evidence"]
         if not row["listed_at"]:
             if previous and previous.get("listed_at"):
                 row["listed_at"] = previous["listed_at"]
@@ -1069,6 +1186,10 @@ def save(root, state, health, changes, cache_photos=False):
         "seller", "seller_type", "photo_url", "photo_urls",
         "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
+        "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
+        "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
+        "service_records_status", "service_records_evidence",
+        "modifications_status", "modifications_evidence",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
         "rust_location",
