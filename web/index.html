@@ -64,16 +64,30 @@
         <label class="advanced-filter"><span>Accidents</span><select id="accidents"><option value="">All accident histories</option><option value="none">No reported accidents</option><option value="reported">Reported accident</option><option value="unavailable">History unavailable</option></select></label>
         <label class="advanced-filter"><span>Max price</span><select id="price"><option value="">Any price</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option><option value="30000">$30,000</option><option value="40000">$40,000</option></select></label>
         <label class="advanced-filter"><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
-        <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="newest">Recently found</option></select></label>
+        <label class="zip-field"><span>Your ZIP</span><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="5-digit ZIP" aria-describedby="distance-status"></label>
+        <label class="radius-field"><span>Within</span><select id="radius"><option value="">Any distance</option><option value="50">50 miles</option><option value="100">100 miles</option><option value="250">250 miles</option><option value="500">500 miles</option><option value="1000">1,000 miles</option></select></label>
+        <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="newest">Recently found</option><option value="distance-asc">Nearest first</option></select></label>
         <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters">More filters</button>
         <button class="reset" id="reset" type="reset">Reset filters</button>
       </form>
+      <p class="distance-status" id="distance-status" aria-live="polite">Enter a ZIP to see approximate straight-line distances.</p>
 
       <div class="summary-strip" id="summary-strip" hidden>
         <div><span>Median displayed price</span><strong id="median-price">&mdash;</strong></div>
         <div><span>Median mileage</span><strong id="median-mileage">&mdash;</strong></div>
         <div><span>No reported accidents</span><strong id="clean-count">&mdash;</strong></div>
       </div>
+
+      <section class="location-map" aria-labelledby="map-title">
+        <div class="map-heading"><h3 id="map-title">Where the listings are</h3><p id="map-status">Loading listing locations&hellip;</p></div>
+        <div class="map-viewport">
+          <svg id="listing-map" viewBox="0 0 1000 600" role="group" aria-label="United States map of filtered LX470 listings">
+            <image href="us-map.svg" width="1000" height="600"></image>
+            <g id="map-markers"></g>
+          </svg>
+        </div>
+        <p class="map-note">Pins show seller city or dealer ZIP area, not a street address. Distances are approximate straight-line miles from your ZIP area. Select a pin to jump to a listing; swipe to explore on mobile. <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html" target="_blank" rel="noopener noreferrer">Location data: US Census</a>.</p>
+      </section>
 
       <div class="listings" id="listings" aria-live="polite" aria-busy="true"></div>
       <div class="empty" id="empty" hidden>

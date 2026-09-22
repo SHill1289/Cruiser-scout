@@ -15,7 +15,9 @@ const ui = {
   photoDialog: document.querySelector("#photo-dialog"), photoLarge: document.querySelector("#photo-large"),
   photoError: document.querySelector("#photo-error"), photoCount: document.querySelector("#photo-count"),
   photoTitle: document.querySelector("#photo-title"), photoSource: document.querySelector("#photo-source"),
-  photoPrevious: document.querySelector("#photo-previous"), photoNext: document.querySelector("#photo-next")
+  photoPrevious: document.querySelector("#photo-previous"), photoNext: document.querySelector("#photo-next"),
+  distanceStatus: document.querySelector("#distance-status"), mapMarkers: document.querySelector("#map-markers"),
+  mapStatus: document.querySelector("#map-status"), mapViewport: document.querySelector(".map-viewport")
 };
 
 let inventory = [];
@@ -23,9 +25,12 @@ let marketSales = [];
 let colorReference = { exterior: [], interior_by_year: {} };
 let generatedAt = new Date();
 let activeGallery = null;
+let zipPoints = null;
+let zipLoad = null;
+let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "status", "color", "owners", "accidents", "price", "mileage", "sort"]
+const controls = ["search", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 
 function value(row, key) { return row[key] ?? ""; }
@@ -57,6 +62,55 @@ function median(numbers) {
   return values.length % 2 ? values[middle] : (values[middle - 1] + values[middle]) / 2;
 }
 function average(numbers) { return numbers.length ? numbers.reduce((total, number) => total + number, 0) / numbers.length : null; }
+function milesBetween(a, b) {
+  const radians = degrees => degrees * Math.PI / 180;
+  const dLat = radians(b[0] - a[0]);
+  const dLon = radians(b[1] - a[1]);
+  const term = Math.sin(dLat / 2) ** 2 + Math.cos(radians(a[0])) * Math.cos(radians(b[0])) * Math.sin(dLon / 2) ** 2;
+  return 3958.8 * 2 * Math.asin(Math.min(1, Math.sqrt(term)));
+}
+function rowPoint(row) {
+  return Number.isFinite(Number(row.latitude)) && Number.isFinite(Number(row.longitude)) &&
+    row.latitude != null && row.longitude != null ? [Number(row.latitude), Number(row.longitude)] : null;
+}
+function distanceTo(row) { const point = rowPoint(row); return origin && point ? milesBetween(origin, point) : null; }
+function mapPoint(lat, lon, state = "") {
+  if (state === "AK" || (lat > 50 && lon < -130)) return [38 + (lon + 170) * 4.1, 445 + (72 - lat) * 5.3];
+  if (state === "HI" || (lat < 25 && lon < -153)) return [222 + (lon + 161) * 11, 535 + (23 - lat) * 10];
+  return [38 + (lon + 125) * (924 / 59), 32 + (50 - lat) * (510 / 26)];
+}
+function svgNode(tag, attributes = {}) {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, String(value));
+  return node;
+}
+async function updateOrigin() {
+  const zip = controls.zip.value.replace(/\D/g, "").slice(0, 5);
+  if (zip !== controls.zip.value) controls.zip.value = zip;
+  origin = null;
+  ui.distanceStatus.classList.remove("error");
+  if (!zip) { ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances."; render(); return; }
+  if (zip.length < 5) { ui.distanceStatus.textContent = "Enter all five digits to calculate distances."; render(); return; }
+  ui.distanceStatus.textContent = "Looking up ZIP area…";
+  try {
+    if (!zipLoad) zipLoad = fetch("zip-centroids.json").then(response => {
+      if (!response.ok) throw new Error(`ZIP reference returned ${response.status}`);
+      return response.json();
+    });
+    zipPoints = await zipLoad;
+    if (controls.zip.value !== zip) return;
+    origin = zipPoints[zip] || null;
+    if (origin) ui.distanceStatus.textContent = `Approximate straight-line distance from ZIP ${zip}.`;
+    else { ui.distanceStatus.textContent = "That ZIP is not in the Census ZIP-area reference. Try a nearby ZIP."; ui.distanceStatus.classList.add("error"); }
+  } catch (error) {
+    if (controls.zip.value !== zip) return;
+    zipLoad = null;
+    ui.distanceStatus.textContent = "Distance lookup is unavailable right now. Listings remain visible.";
+    ui.distanceStatus.classList.add("error");
+    console.error(error);
+  }
+  render();
+}
 function text(tag, className, content) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -319,6 +373,8 @@ function renderCard(row) {
   identity.append(title);
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
+  const distance = distanceTo(row);
+  if (distance != null) identity.append(text("p", "vehicle-meta location-distance", `About ${integer.format(Math.round(distance))} mi from your ZIP · straight line`));
   identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
   const colors = text("div", "color-pair", "");
   colors.append(makeColorFact("exterior", row.exterior_color, row.year), makeColorFact("interior", row.interior_color, row.year));
@@ -370,7 +426,8 @@ function matches(row) {
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
-    && (!controls.mileage.value || (row.mileage != null && row.mileage <= Number(controls.mileage.value)));
+    && (!controls.mileage.value || (row.mileage != null && row.mileage <= Number(controls.mileage.value)))
+    && (!origin || !controls.radius.value || (distanceTo(row) != null && distanceTo(row) <= Number(controls.radius.value)));
 }
 
 function sortRows(rows) {
@@ -378,14 +435,60 @@ function sortRows(rows) {
   const strategies = {
     "price-asc": (a, b) => (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing),
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
-    "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen))
+    "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
+    "distance-asc": (a, b) => (distanceTo(a) ?? missing) - (distanceTo(b) ?? missing)
   };
-  return rows.sort(strategies[controls.sort.value]);
+  return rows.sort(strategies[controls.sort.value === "distance-asc" && !origin ? "price-asc" : controls.sort.value]);
+}
+
+function renderMap(rows, cards) {
+  const locations = [];
+  rows.forEach((row, index) => {
+    const point = rowPoint(row);
+    if (!point) return;
+    const xy = mapPoint(...point, row.state);
+    let location = locations.find(item => Math.hypot(item.xy[0] - xy[0], item.xy[1] - xy[1]) < 21);
+    if (!location) { location = { xy, rows: [], firstCard: cards[index] }; locations.push(location); }
+    location.rows.push(row);
+  });
+  const markers = [];
+  for (const location of locations) {
+    const [x, y] = location.xy;
+    if (x < 0 || x > 1000 || y < 0 || y > 600) continue;
+    const label = `${location.rows.length} listing${location.rows.length === 1 ? "" : "s"} near ${location.rows[0].city || "unknown city"}, ${location.rows[0].state || "unknown state"}. Jump to first listing.`;
+    const group = svgNode("g", { class: "map-marker", role: "button", tabindex: "0", "aria-label": label });
+    group.append(svgNode("circle", { cx: x, cy: y, r: location.rows.length > 1 ? 14 : 10 }));
+    if (location.rows.length > 1) {
+      const count = svgNode("text", { x, y });
+      count.textContent = location.rows.length;
+      group.append(count);
+    }
+    const title = svgNode("title"); title.textContent = label; group.append(title);
+    const jump = () => location.firstCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    group.addEventListener("click", jump);
+    group.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); jump(); } });
+    markers.push(group);
+  }
+  if (origin) {
+    const [x, y] = mapPoint(...origin);
+    markers.push(svgNode("circle", { class: "map-origin", cx: x, cy: y, r: 10 }),
+      svgNode("circle", { class: "map-origin-core", cx: x, cy: y, r: 3 }));
+  }
+  ui.mapMarkers.replaceChildren(...markers);
+  const mappedCount = locations.reduce((total, location) => total + location.rows.length, 0);
+  ui.mapStatus.textContent = `${mappedCount} of ${rows.length} filtered listing${rows.length === 1 ? "" : "s"} mapped${origin ? " · tan pin: your ZIP" : ""}`;
+  if (window.innerWidth < 760 && locations.length) {
+    const meanX = locations.reduce((total, location) => total + location.xy[0], 0) / locations.length;
+    const width = ui.mapViewport.scrollWidth;
+    ui.mapViewport.scrollLeft = Math.max(0, meanX / 1000 * width - ui.mapViewport.clientWidth / 2);
+  }
 }
 
 function render() {
   const rows = sortRows(inventory.filter(matches));
-  ui.listings.replaceChildren(...rows.map(renderCard));
+  const cards = rows.map(renderCard);
+  ui.listings.replaceChildren(...cards);
+  renderMap(rows, cards);
   ui.listings.setAttribute("aria-busy", "false");
   ui.listings.hidden = rows.length === 0;
   ui.empty.hidden = rows.length !== 0;
@@ -437,6 +540,9 @@ function renderMarket() {
 
 function reset() {
   ui.form.reset();
+  origin = null;
+  ui.distanceStatus.classList.remove("error");
+  ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
   updateFilterToggle();
   render();
 }
@@ -489,12 +595,18 @@ async function load() {
 }
 
 ui.form.addEventListener("input", () => { updateFilterToggle(); render(); });
+controls.zip.addEventListener("input", updateOrigin);
 ui.filterToggle.addEventListener("click", () => {
   ui.form.classList.toggle("filters-expanded");
   updateFilterToggle();
 });
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
-ui.form.addEventListener("reset", () => setTimeout(() => { updateFilterToggle(); render(); }, 0));
+ui.form.addEventListener("reset", () => setTimeout(() => {
+  origin = null;
+  ui.distanceStatus.classList.remove("error");
+  ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
+  updateFilterToggle(); render();
+}, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
 load();

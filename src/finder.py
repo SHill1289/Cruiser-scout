@@ -11,6 +11,7 @@ import re
 import shutil
 import sys
 import time
+import zipfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -23,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
 FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
-          "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state",
+          "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
           "seller", "seller_type", "photo_url", "photo_urls", "exterior_color", "interior_color", "title_status",
           "reported_extras",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
@@ -159,6 +160,8 @@ def normalize(raw):
     if not row["source"] or not row["source_listing_id"]:
         raise ValueError("Source and stable source listing ID are required")
     row["source_listing_id"] = str(row["source_listing_id"])
+    postal_code = str(row.get("postal_code") or "").strip()
+    row["postal_code"] = postal_code if re.fullmatch(r"\d{5}", postal_code) else ""
     parts = urllib.parse.urlsplit(row["listing_url"])
     if parts.scheme != "https" or not parts.hostname:
         raise ValueError("An HTTPS listing URL is required")
@@ -536,6 +539,7 @@ def parse_truecar(page, now):
             "mileage": vehicle.get("mileage", details.get("mileage")),
             "city": location.get("city", details.get("dealerCity", "")),
             "state": location.get("state", details.get("dealerState", "")),
+            "postal_code": location.get("postalCode", ""),
             "seller": dealer.get("name", ""), "seller_type": "dealer",
             "photo_url": photo, "photo_urls": photos,
             "exterior_color": details.get("exteriorColorName", vehicle.get("exteriorColor", "")),
@@ -1003,6 +1007,34 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
             row["photo_urls"] = saved
 
 
+def load_location_points():
+    """Read Census representative points; no live geocoding or map account needed."""
+    with zipfile.ZipFile(ROOT / "sources" / "gazetteer" / "places.zip") as archive:
+        filename = next(name for name in archive.namelist() if name.endswith(".txt"))
+        rows = csv.DictReader(io.TextIOWrapper(archive.open(filename), encoding="utf-8"), delimiter="|")
+        places = {}
+        for row in rows:
+            name = re.sub(r" (city|town|village|CDP|borough|municipality|balance|urban county)$", "", row["NAME"], flags=re.I)
+            key = (row["USPS"], name.casefold())
+            if key not in places or row["FUNCSTAT"] == "A":
+                places[key] = [float(row["INTPTLAT"]), float(row["INTPTLONG"])]
+    zips = json.loads((ROOT / "web" / "zip-centroids.json").read_text(encoding="utf-8"))
+    return places, zips
+
+
+def listing_coordinates(row, places, zips):
+    """Prefer a dealer ZIP area; otherwise use the advertised city reference point."""
+    postal_code = str(row.get("postal_code") or "")
+    point = zips.get(postal_code) if re.fullmatch(r"\d{5}", postal_code) else None
+    precision = "ZIP area" if point else ""
+    if not point:
+        point = places.get((str(row.get("state") or "").upper(), str(row.get("city") or "").casefold()))
+        precision = "city area" if point else ""
+    return {"latitude": point[0] if point else None,
+            "longitude": point[1] if point else None,
+            "location_precision": precision}
+
+
 def save(root, state, health, changes, cache_photos=False):
     data = root / "data"
     data.mkdir(parents=True, exist_ok=True)
@@ -1033,7 +1065,8 @@ def save(root, state, health, changes, cache_photos=False):
     public_fields = [
         "listing_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
-        "mileage_is_approximate", "city", "state", "seller", "seller_type", "photo_url", "photo_urls",
+        "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
+        "seller", "seller_type", "photo_url", "photo_urls",
         "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
@@ -1046,6 +1079,8 @@ def save(root, state, health, changes, cache_photos=False):
     public_rows = [{**row, **deal_rating(row, public_sales),
                     "accident_category": accident_category(row.get("accident_history")),
                     "rust_location": rust_location_evidence(row, state)} for row in public_rows]
+    places, zips = load_location_points()
+    public_rows = [{**row, **listing_coordinates(row, places, zips)} for row in public_rows]
     if cache_photos:
         cache_public_photos(root, public_rows)
     public_inventory = {

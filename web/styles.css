@@ -84,7 +84,8 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
 .section-heading h2, .method h2 { margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: 1.04; letter-spacing: -.022em; font-weight: 700; font-kerning: normal; }
 .result-count { margin: 0; color: var(--muted); font-size: 14px; }
-.filters { display: grid; grid-template-columns: 1.6fr repeat(7, minmax(110px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.filters { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.search-field { grid-column: span 2; }
 .filters label { display: flex; flex-direction: column; min-width: 0; padding: 11px 14px; background: var(--panel); }
 .filters label span { margin-bottom: 4px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .filters input, .filters select { width: 100%; padding: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; }
@@ -94,11 +95,28 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .filter-toggle { display: none; }
 .reset { grid-column: 1 / -1; padding: 10px 16px; border: 0; border-top: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; text-align: right; font-size: 12px; }
 .reset:hover { color: var(--accent); }
+.distance-status { min-height: 20px; margin: 10px 2px 0; color: var(--muted); font-size: 12px; }
+.distance-status.error { color: #efae8d; }
 .summary-strip { display: grid; grid-template-columns: repeat(3, 1fr); margin: 24px 0; border-block: 1px solid var(--line); }
 .summary-strip div { display: flex; justify-content: space-between; gap: 12px; padding: 17px 20px; border-right: 1px solid var(--line); }
 .summary-strip div:last-child { border-right: 0; }
 .summary-strip span { color: var(--muted); font-size: 13px; }
 .summary-strip strong { color: var(--warm); }
+.location-map { margin: 27px 0 42px; border: 1px solid var(--line); background: #111b17; }
+.map-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 17px 20px; }
+.map-heading h3 { margin: 0; font-size: 18px; }
+.map-heading p { margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+.map-viewport { overflow-x: auto; border-block: 1px solid var(--line); }
+#listing-map { display: block; width: 100%; height: auto; min-width: 650px; background: #111b17; }
+.map-marker { cursor: pointer; }
+.map-marker circle { fill: var(--accent); stroke: #0e1512; stroke-width: 3; }
+.map-marker:hover circle, .map-marker:focus-visible circle { fill: #fff; stroke: var(--accent); stroke-width: 4; }
+.map-marker text { fill: #14200d; font-size: 14px; font-weight: 800; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.map-origin { fill: var(--warm); stroke: #111b17; stroke-width: 3; }
+.map-origin-core { fill: #111b17; pointer-events: none; }
+.map-note { margin: 0; padding: 13px 20px; color: var(--muted); font-size: 12px; }
+.map-note a { color: var(--warm); }
+.location-distance { color: var(--warm); }
 .listings { margin-top: 24px; }
 .listing { display: grid; grid-template-columns: 142px minmax(190px, 1.25fr) minmax(125px, .75fr) minmax(120px, .7fr) minmax(145px, .9fr) minmax(125px, .75fr) 46px; align-items: center; gap: 16px; padding: 24px 14px; border-bottom: 1px solid var(--line); transition: background .18s ease; }
 .listing:first-child { border-top: 1px solid var(--line); }
@@ -254,6 +272,8 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   .summary-strip { grid-template-columns: 1fr; }
   .summary-strip div { border-right: 0; border-bottom: 1px solid var(--line); }
   .summary-strip div:last-child { border-bottom: 0; }
+  .map-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .map-heading p { text-align: left; }
   .listing { grid-template-columns: 112px 1fr 44px; gap: 14px; padding: 22px 8px; }
   .listing .metric { grid-column: 2; }
   .listing .listing-dates { grid-column: 2; flex-direction: column; gap: 9px; }

@@ -16,7 +16,7 @@ from finder import (accident_category, add_listing_photo, cache_public_photos, c
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
                     clean_title_candidate, csv_text, deal_rating, listing_extras,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
-                    run, rust_location_evidence, valid_vin)
+                    run, rust_location_evidence, valid_vin, load_location_points, listing_coordinates)
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -343,7 +343,7 @@ class ParserTests(unittest.TestCase):
         state = {
             'ROOT_QUERY': {search_key: {'totalCount': 1, 'edges': [{'node': {'__ref': listing_ref}}],
                                        'pageInfo': {'hasNextPage': False}}},
-            dealer_ref: {'name': 'Master Auto Group', 'location': {'geolocation': {'city': 'Raleigh', 'state': 'NC'}}},
+            dealer_ref: {'name': 'Master Auto Group', 'location': {'geolocation': {'city': 'Raleigh', 'state': 'NC', 'postalCode': '27604'}}},
             listing_ref: {
                 'pricing': {'listPrice': 21245}, 'dealership': {'__ref': dealer_ref},
                 'galleryImages({"galleryImagesCount":2})': {'edges': [
@@ -363,10 +363,12 @@ class ParserTests(unittest.TestCase):
         self.assertTrue(complete)
         self.assertEqual(total, 1)
         self.assertEqual(rows[0]['vin'], vin)
+        self.assertEqual(rows[0]['postal_code'], '27604')
         self.assertEqual(rows[0]['owners'], '3')
         self.assertEqual(rows[0]['accident_history'], '1 reported accident')
         self.assertEqual(rows[0]['exterior_color'], 'Crystal White')
         self.assertEqual(rows[0]['listed_at'], '2026-09-16T00:45:00.000Z')
+
         self.assertEqual(rows[0]['reported_extras'], 'Night View')
         self.assertEqual(rows[0]['photo_urls'], ['https://images.example.com/lx.jpg',
                                                  'https://images.example.com/rear.jpg'])
@@ -384,6 +386,16 @@ class ParserTests(unittest.TestCase):
             {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
         with self.assertRaises(ValueError):
             parse_truecar(page, NOW)
+
+    def test_location_points_prefer_dealer_zip_then_city_and_keep_unknown_unmapped(self):
+        places, zips = load_location_points()
+        city = listing_coordinates({'city': 'Marietta', 'state': 'GA'}, places, zips)
+        self.assertEqual(city['location_precision'], 'city area')
+        self.assertAlmostEqual(city['latitude'], 33.95356, places=4)
+        zip_area = listing_coordinates({'city': 'Marietta', 'state': 'GA', 'postal_code': '27604'}, places, zips)
+        self.assertEqual(zip_area['location_precision'], 'ZIP area')
+        self.assertNotEqual(zip_area['latitude'], city['latitude'])
+        self.assertIsNone(listing_coordinates({'city': 'Unknown Place', 'state': 'GA'}, places, zips)['latitude'])
 
     def test_social_photo_metadata(self):
         page = '<meta property="og:image" content="https://images.example.com/lx470.jpg?size=large&amp;crop=1">'
