@@ -350,6 +350,8 @@ function otherListings(group) {
   const categories = new Set(group.listings.map(accidentGroup));
   if (categories.has("reported") && categories.has("none"))
     content.append(text("p", "duplicate-conflict", "Accident history differs between sources. Check both reports."));
+  else if (categories.has("reported"))
+    content.append(text("p", "duplicate-conflict", "An accident is reported by one source. Check its history report."));
   for (const listing of group.listings) {
     const offer = text("div", "duplicate-offer", "");
     const facts = text("div", "duplicate-offer-facts", "");
@@ -434,6 +436,8 @@ function renderCard(row, group) {
   const accidentReports = new Set(group.listings.map(accidentGroup));
   if (accidentReports.has("reported") && accidentReports.has("none"))
     stateRow.append(text("span", "duplicate-conflict-badge", "History differs by source"));
+  else if (accidentReports.has("reported") && accidentGroup(row) !== "reported")
+    stateRow.append(text("span", "duplicate-conflict-badge", "Accident reported on another source"));
   const rating = dealBadge(row);
   if (rating) stateRow.append(rating);
   const rustLocation = rustLocationBadge(row);
@@ -467,15 +471,18 @@ function renderCard(row, group) {
   card.append(listingDates(row));
 
   const history = text("div", "history", "");
-  const ownerTag = text("span", ownerGroup(row) === "1" ? "tag good" : "tag", ownerLabel(row));
-  if (ownerGroup(row) !== "unknown" && row.owners_verified_at) {
-    ownerTag.title = `Verified ${row.owners_verified_at}${row.owners_source ? ` via ${row.owners_source}` : ""}`;
+  const ownerRow = group.listings.find(listing => ownerGroup(listing) !== "unknown" && listing.owners_verified_at) || row;
+  const ownerTag = text("span", ownerGroup(ownerRow) === "1" ? "tag good" : "tag", ownerLabel(ownerRow));
+  if (ownerGroup(ownerRow) !== "unknown" && ownerRow.owners_verified_at) {
+    ownerTag.title = `Verified ${ownerRow.owners_verified_at}${ownerRow.owners_source ? ` via ${ownerRow.owners_source}` : ""}`;
   }
   history.append(ownerTag);
-  const accident = accidentGroup(row);
+  const accidentRow = group.listings.find(listing => accidentGroup(listing) === "reported") || row;
+  const accident = accidentGroup(accidentRow);
   const accidentTag = text("span", accident === "none" ? "tag good" : accident === "reported" ? "tag alert" : "tag",
-    accident === "unavailable" ? "History unavailable" : row.accident_history);
-  if (accident === "reported" && row.accident_history) accidentTag.title = row.accident_history;
+    accident === "unavailable" ? "History unavailable" : accidentRow.accident_history);
+  if (accident === "reported" && accidentRow.accident_history)
+    accidentTag.title = `${accidentRow.accident_history} · ${accidentRow.source}`;
   history.append(accidentTag);
   card.append(history);
 
@@ -570,6 +577,7 @@ function renderMap(rows, cards) {
 
 function render() {
   const groups = vehicles.map(group => ({ ...group, matched: group.listings.filter(matches) }))
+    .filter(group => controls.accidents.value !== "none" || !group.listings.some(listing => accidentGroup(listing) === "reported"))
     .filter(group => group.matched.length);
   for (const group of groups) group.primary = sortRows(group.matched)[0];
   const rows = sortRows(groups.map(group => group.primary));
@@ -587,7 +595,8 @@ function render() {
   const mileage = median(rows.map(row => row.mileage));
   ui.medianPrice.textContent = price == null ? "\u2014" : money.format(price);
   ui.medianMileage.textContent = mileage == null ? "\u2014" : `${integer.format(mileage)} mi`;
-  ui.cleanCount.textContent = String(rows.filter(row => accidentGroup(row) === "none").length);
+  ui.cleanCount.textContent = String(rows.filter(row => accidentGroup(row) === "none" &&
+    !byPrimary.get(row.listing_key).listings.some(listing => accidentGroup(listing) === "reported")).length);
 }
 
 function renderMarket() {
