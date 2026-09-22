@@ -162,6 +162,16 @@ h1 { margin: 0; font-size: clamp(64px, 9vw, 126px); line-height: .86; letter-spa
 .condition-evidence { grid-column: 2; margin: 0; color: var(--muted); line-height: 1.4; overflow-wrap: anywhere; }
 .condition-disclaimer { margin: 9px 0 0; color: var(--muted); font-size: 10px; line-height: 1.45; }
 .condition-disclaimer a { color: var(--warm); }
+.duplicate-badge { display: inline-block; padding: 2px 7px; border: 1px solid #8a7551; color: var(--warm); font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.duplicate-conflict-badge { display: inline-block; padding: 2px 7px; border: 1px solid #955d55; color: #e2a099; font-size: 9px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.duplicate-listings { grid-column: 1 / -1; margin: 0; padding: 14px 16px; border: 1px solid var(--line); background: #17201c; }
+.duplicate-listings summary { color: var(--warm); font-size: 12px; font-weight: 700; cursor: pointer; }
+.duplicate-listings-content { margin-top: 10px; }
+.duplicate-offer { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
+.duplicate-offer-facts { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 13px; min-width: 0; font-size: 12px; }
+.duplicate-offer-facts small { flex-basis: 100%; color: var(--muted); font-size: 10px; line-height: 1.4; }
+.duplicate-offer a { flex: 0 0 auto; color: var(--accent); font-size: 11px; }
+.duplicate-conflict { margin: 0 0 9px; color: #e2a099; font-size: 11px; }
 .listing-state-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
 .sale-state { display: inline-block; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .deal-rating { display: inline-block; padding: 2px 7px; border: 1px solid; font-size: 9px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; cursor: help; }
@@ -288,6 +298,8 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   .listing .listing-dates { grid-column: 2; flex-direction: column; gap: 9px; }
   .listing .history { grid-column: 2; flex-direction: row; flex-wrap: wrap; }
   .listing .open-link { grid-column: 3; grid-row: 1 / 3; }
+  .duplicate-listings { padding: 12px; }
+  .duplicate-offer { align-items: flex-start; flex-direction: column; gap: 7px; }
   .market { padding: 70px 0; }
   .market-controls { grid-template-columns: 1fr; width: 100%; }
   .market-controls select { min-width: 0; }

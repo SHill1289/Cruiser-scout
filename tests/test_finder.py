@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (accident_category, add_listing_photo, cache_public_photos, correct_ambiguous_accident_history,
                     cargurus_condition_claims, condition_claims,
                     gallery_image_urls, gallery_urls_in_page,
-                    normalize, update, master_rows, parse_cargurus, parse_bat,
+                    normalize, update, master_rows, merge_public_listings, parse_cargurus, parse_bat,
                     backfill_listing_dates,
                     apply_vehicle_history_overrides, bat_listing_urls, bat_sale_date,
                     cargurus_listing_ids, cargurus_photo, parse_historical_sale,
@@ -202,6 +202,20 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(self.state['history'][0]['asking_price'], 22000)
         self.assertEqual(self.state['history'][-1]['asking_price'], 21000)
 
+    def test_public_merge_requires_valid_vin_and_preserves_source_ids(self):
+        same = normalize({**self.row, 'source': 'another', 'source_listing_id': '2',
+                          'listing_url': 'https://example.com/car/2'})
+        unknown_a = normalize({**self.row, 'vin': '', 'source_listing_id': '3',
+                               'listing_url': 'https://example.com/car/3'})
+        unknown_b = normalize({**self.row, 'vin': '', 'source_listing_id': '4',
+                               'listing_url': 'https://example.com/car/4'})
+        merged = merge_public_listings([self.row, same, unknown_a, unknown_b])
+        self.assertEqual(len(merged), 3)
+        pair = next(group for group in merged if group['listing_count'] == 2)
+        self.assertEqual(pair['listing_keys'], ['another:2', 'test:1'])
+        self.assertEqual(pair['sources'], ['another', 'test'])
+        self.assertEqual(sum(group['listing_count'] for group in merged), 4)
+
     def test_rust_location_tracks_current_and_prior_vin_observations(self):
         update(self.state, [{**self.row, 'state': 'New York'}], NOW)
         update(self.state, [{**self.row, 'state': 'GA'}], '2026-09-16T22:00:00+00:00')
@@ -320,6 +334,8 @@ class DatabaseTests(unittest.TestCase):
             run(root, live=False)
             public = json.loads((root / 'web/inventory.json').read_text())
             self.assertEqual(public['summary']['active_listings'], 1)
+            self.assertEqual(public['summary']['visible_vehicles'], 1)
+            self.assertEqual(public['vehicles'][0]['listing_count'], 3)
             self.assertEqual({row['listing_key'] for row in public['listings']},
                              {'test:clean', 'test:sold', 'test:ended'})
             self.assertEqual(public['summary']['sold'], 1)

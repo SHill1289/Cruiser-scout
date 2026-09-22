@@ -21,6 +21,7 @@ const ui = {
 };
 
 let inventory = [];
+let vehicles = [];
 let marketSales = [];
 let colorReference = { exterior: [], interior_by_year: {} };
 let generatedAt = new Date();
@@ -325,7 +326,48 @@ function conditionRecords(row) {
   return panel;
 }
 
-function renderCard(row) {
+function listingGroups(rows, indexed = []) {
+  const byKey = new Map(rows.map(row => [row.listing_key, row]));
+  if (indexed.length) return indexed.map(group => ({
+    vehicleKey: group.vehicle_key,
+    listings: group.listing_keys.map(key => byKey.get(key)).filter(Boolean),
+  })).filter(group => group.listings.length);
+  const groups = new Map();
+  for (const row of rows) {
+    const key = row.vehicle_key || `listing:${row.listing_key}`;
+    if (!groups.has(key)) groups.set(key, { vehicleKey: key, listings: [] });
+    groups.get(key).listings.push(row);
+  }
+  return [...groups.values()];
+}
+
+function otherListings(group) {
+  if (group.listings.length < 2) return null;
+  const panel = document.createElement("details");
+  panel.className = "duplicate-listings";
+  panel.append(text("summary", "", `${group.listings.length} listings for this truck · VIN match`));
+  const content = text("div", "duplicate-listings-content", "");
+  const categories = new Set(group.listings.map(accidentGroup));
+  if (categories.has("reported") && categories.has("none"))
+    content.append(text("p", "duplicate-conflict", "Accident history differs between sources. Check both reports."));
+  for (const listing of group.listings) {
+    const offer = text("div", "duplicate-offer", "");
+    const facts = text("div", "duplicate-offer-facts", "");
+    facts.append(text("strong", "", `${listing.source} · ${saleStateLabel(listing)}`),
+      text("span", "", `${priceLabel(listing)} · ${listing.mileage == null ? "Mileage unknown" : `${integer.format(listing.mileage)} mi`}`),
+      text("small", "", `${[listing.city, listing.state].filter(Boolean).join(", ") || "Location unknown"} · ${ownerLabel(listing)} · ${listing.accident_history || "History unavailable"}`));
+    const link = text("a", "", "View source ↗");
+    link.href = listing.listing_url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    offer.append(facts, link);
+    content.append(offer);
+  }
+  panel.append(content);
+  return panel;
+}
+
+function renderCard(row, group) {
   const card = document.createElement("article");
   card.className = "listing";
   const photos = galleryUrls(row);
@@ -388,6 +430,10 @@ function renderCard(row) {
   const identity = text("div", "identity", "");
   const stateRow = text("div", "listing-state-row", "");
   stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
+  if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
+  const accidentReports = new Set(group.listings.map(accidentGroup));
+  if (accidentReports.has("reported") && accidentReports.has("none"))
+    stateRow.append(text("span", "duplicate-conflict-badge", "History differs by source"));
   const rating = dealBadge(row);
   if (rating) stateRow.append(rating);
   const rustLocation = rustLocationBadge(row);
@@ -440,6 +486,8 @@ function renderCard(row) {
   link.rel = "noopener noreferrer";
   link.setAttribute("aria-label", `Open ${row.year} LX470 listing on ${row.source}`);
   card.append(link);
+  const others = otherListings(group);
+  if (others) card.append(others);
   return card;
 }
 
@@ -490,7 +538,7 @@ function renderMap(rows, cards) {
   const markers = [];
   for (const location of locations) {
     const [x, y] = location.xy;
-    const label = `${location.rows.length} listing${location.rows.length === 1 ? "" : "s"} near ${location.rows[0].city || "unknown city"}, ${location.rows[0].state || "unknown state"}. Jump to first listing.`;
+    const label = `${location.rows.length} truck${location.rows.length === 1 ? "" : "s"} near ${location.rows[0].city || "unknown city"}, ${location.rows[0].state || "unknown state"}. Jump to first truck.`;
     const group = svgNode("g", { class: "map-marker", role: "button", tabindex: "0", "aria-label": label });
     group.append(svgNode("circle", { cx: x, cy: y, r: location.rows.length > 1 ? 14 : 10 }));
     if (location.rows.length > 1) {
@@ -512,7 +560,7 @@ function renderMap(rows, cards) {
   }
   ui.mapMarkers.replaceChildren(...markers);
   const mappedCount = locations.reduce((total, location) => total + location.rows.length, 0);
-  ui.mapStatus.textContent = `${mappedCount} of ${rows.length} filtered listing${rows.length === 1 ? "" : "s"} mapped${originPoint ? " · tan pin: your ZIP" : ""}`;
+  ui.mapStatus.textContent = `${mappedCount} of ${rows.length} filtered truck${rows.length === 1 ? "" : "s"} mapped${originPoint ? " · tan pin: your ZIP" : ""}`;
   if (window.innerWidth < 760 && locations.length) {
     const meanX = locations.reduce((total, location) => total + location.xy[0], 0) / locations.length;
     const width = ui.mapViewport.scrollWidth;
@@ -521,14 +569,19 @@ function renderMap(rows, cards) {
 }
 
 function render() {
-  const rows = sortRows(inventory.filter(matches));
-  const cards = rows.map(renderCard);
+  const groups = vehicles.map(group => ({ ...group, matched: group.listings.filter(matches) }))
+    .filter(group => group.matched.length);
+  for (const group of groups) group.primary = sortRows(group.matched)[0];
+  const rows = sortRows(groups.map(group => group.primary));
+  const byPrimary = new Map(groups.map(group => [group.primary.listing_key, group]));
+  const cards = rows.map(row => renderCard(row, byPrimary.get(row.listing_key)));
   ui.listings.replaceChildren(...cards);
   renderMap(rows, cards);
   ui.listings.setAttribute("aria-busy", "false");
   ui.listings.hidden = rows.length === 0;
   ui.empty.hidden = rows.length !== 0;
-  ui.resultCount.textContent = `${rows.length} of ${inventory.length} listing${inventory.length === 1 ? "" : "s"}`;
+  const matchedListings = groups.reduce((count, group) => count + group.matched.length, 0);
+  ui.resultCount.textContent = `${rows.length} of ${vehicles.length} truck${vehicles.length === 1 ? "" : "s"} · ${matchedListings} listing${matchedListings === 1 ? "" : "s"}`;
   ui.summary.hidden = rows.length === 0;
   const price = median(rows.map(listingPrice));
   const mileage = median(rows.map(row => row.mileage));
@@ -603,6 +656,7 @@ async function load() {
       console.warn("Factory color reference unavailable", colorError);
     }
     inventory = Array.isArray(data.listings) ? data.listings : [];
+    vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
     generatedAt = new Date(data.generated_at || Date.now());
     ui.marketSource.textContent = data.market_history?.source || "Completed auction results";

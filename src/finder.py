@@ -1080,6 +1080,20 @@ def master_rows(state):
     return result
 
 
+def merge_public_listings(rows):
+    """Index public listings by validated VIN without discarding source records."""
+    groups = {}
+    for row in rows:
+        key = row.get("vehicle_key") or "listing:" + row["listing_key"]
+        groups.setdefault(key, []).append(row)
+    return [{"vehicle_key": key,
+             "vin": listings[0].get("vin", "") if key.startswith("vin:") else "",
+             "listing_keys": sorted(row["listing_key"] for row in listings),
+             "listing_count": len(listings),
+             "sources": sorted({row["source"] for row in listings})}
+            for key, listings in sorted(groups.items())]
+
+
 RUST_CHECK_STATES = {
     "MI": "Michigan", "NY": "New York", "OH": "Ohio", "WI": "Wisconsin",
     "PA": "Pennsylvania", "MN": "Minnesota", "MA": "Massachusetts",
@@ -1214,7 +1228,7 @@ def save(root, state, health, changes, cache_photos=False):
         temp.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         temp.replace(data / filename)
     public_fields = [
-        "listing_key", "vin", "year", "source", "listing_url", "status", "category",
+        "listing_key", "vehicle_key", "vin", "year", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
         "seller", "seller_type", "photo_url", "photo_urls",
@@ -1238,11 +1252,13 @@ def save(root, state, health, changes, cache_photos=False):
     public_rows = [{**row, **listing_coordinates(row, places, zips)} for row in public_rows]
     if cache_photos:
         cache_public_photos(root, public_rows)
+    public_vehicles = merge_public_listings(public_rows)
     public_inventory = {
         "generated_at": state["updated_at"],
         "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
         "summary": {
             "vehicles": len(master),
+            "visible_vehicles": len(public_vehicles),
             "active_listings": len(active),
             "retail": sum(r["category"] == "retail" for r in active),
             "auctions": sum(r["category"] != "retail" for r in active),
@@ -1256,6 +1272,7 @@ def save(root, state, health, changes, cache_photos=False):
             "sales": public_sales,
         },
         "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
+        "vehicles": public_vehicles,
     }
     temp = web / "inventory.json.tmp"
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
