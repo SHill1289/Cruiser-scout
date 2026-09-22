@@ -167,7 +167,7 @@ class DatabaseTests(unittest.TestCase):
             def description(self, url):
                 return 'The timing belt was replaced in 2021. AHC is working.'
         row = {**self.row, 'source': 'cargurus', 'source_listing_id': '1',
-               'photo_url': 'https://static.cargurus.com/images/forsale/one.jpg',
+               'photo_url': '',
                'photo_urls': ['https://static.cargurus.com/images/forsale/one.jpg',
                               'https://static.cargurus.com/images/forsale/two.jpg']}
         self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')

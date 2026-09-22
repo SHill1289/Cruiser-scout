@@ -732,7 +732,7 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
         plain_error = str(error)
     if page and row.get("source") == "cargurus":
         row.update(cargurus_condition_claims(page))
-    if row.get("source") == "cargurus" and browser_fetcher is not None:
+    if row.get("source") == "cargurus" and browser_fetcher is not None and not row.get("photo_url"):
         description = browser_fetcher.description(url)
         if description:
             row.update(condition_claims([description]))
@@ -1307,7 +1307,11 @@ def run(root=ROOT, live=True):
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = bat_listing_urls(page)
-                    urls.update(r["listing_url"] for r in state["listings"].values() if r["source"] == "bringatrailer" and r["status"] in {"active", "unknown"})
+                    urls.update(r["listing_url"] for r in state["listings"].values()
+                                if r["source"] == "bringatrailer" and
+                                (r["status"] in {"active", "unknown"} or
+                                 (r["status"] in {"sold", "ended"} and
+                                  not any(r.get(f"{topic}_evidence") for topic in CONDITION_TOPICS))))
                     if "listing" not in page or not re.search(r"LX\s?470", page, re.I):
                         raise ValueError("Auction index format changed")
                     errors = []
