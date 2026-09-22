@@ -622,6 +622,13 @@ class ListingParagraphs(HTMLParser):
                 self.paragraph_depth = self.depth
                 self.current = []
 
+    def handle_startendtag(self, tag, attrs):
+        # Auction photo tags are often XHTML-style <img /> elements.
+        # They must not close the narrative container's depth.
+        self.handle_starttag(tag, attrs)
+        if tag not in {"area", "br", "hr", "img", "input", "meta", "source", "wbr"}:
+            self.handle_endtag(tag)
+
     def handle_endtag(self, tag):
         if not self.depth:
             return

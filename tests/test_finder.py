@@ -569,6 +569,7 @@ class ParserTests(unittest.TestCase):
     def test_auction_condition_only_uses_listing_narrative(self):
         page = ('<h1>2006 Lexus LX470</h1><div class="listing-intro">Sold for USD $25,000'
                 '<div class="listing-actions-stats"></div><div class="post-excerpt">'
+                '<p>Factory AHC is standard equipment.</p><p><img src="photo.jpg" /></p>'
                 '<p>A timing belt service was performed in April 2022.</p>'
                 '<p>Corrosion is visible on the underside.</p></div>'
                 '<div class="comments"><p>AHC works and navigation is broken.</p></div>')
