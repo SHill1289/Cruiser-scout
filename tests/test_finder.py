@@ -159,6 +159,23 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
         self.assertEqual(self.state['listings']['test:1']['rust_evidence'], claims['rust_evidence'])
 
+    def test_browser_dealer_description_is_collected_with_existing_gallery(self):
+        class Fetcher:
+            def get(self, url):
+                return '<html><body>Navigation System</body></html>'
+        class Browser:
+            def description(self, url):
+                return 'The timing belt was replaced in 2021. AHC is working.'
+        row = {**self.row, 'source': 'cargurus', 'source_listing_id': '1',
+               'photo_url': 'https://static.cargurus.com/images/forsale/one.jpg',
+               'photo_urls': ['https://static.cargurus.com/images/forsale/one.jpg',
+                              'https://static.cargurus.com/images/forsale/two.jpg']}
+        self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
+        self.assertEqual(len(row['photo_urls']), 2)
+        self.assertEqual(row['timing_belt_status'], 'Service reported')
+        self.assertEqual(row['ahc_status'], 'Working per listing')
+        self.assertEqual(row['navigation_status'], '')
+
     def test_truecar_gallery_photos_are_served_locally(self):
         base = 'https://listings-prod.tcimg.net/listings/123/45/JTJHT00W074027827/'
         rows = [{'source': 'truecar', 'source_listing_id': 'JTJHT00W074027827',

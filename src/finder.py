@@ -307,6 +307,7 @@ class BrowserPhotoFetcher:
     def __init__(self):
         self.driver = None
         self.galleries = {}
+        self.descriptions = {}
         self.errors = {}
         self.last = 0
 
@@ -355,6 +356,14 @@ class BrowserPhotoFetcher:
                 return null;
             """
             raw = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script(gallery_script))
+            if urllib.parse.urlsplit(url).hostname == "www.cargurus.com":
+                description_script = """
+                    const section = document.querySelector('[data-testid="dealer-section"]');
+                    const heading = [...(section?.querySelectorAll('h3') || [])]
+                        .find(node => node.textContent.trim() === "Dealer's description");
+                    return heading?.nextElementSibling?.innerText || '';
+                """
+                self.descriptions[url] = self.driver.execute_script(description_script) or ""
             # Galleries often render the first thumbnail before the rest. Give
             # lazy thumbnails a moment to appear before saving this listing.
             for _ in range(6):
@@ -366,11 +375,25 @@ class BrowserPhotoFetcher:
                     break
             self.galleries[url] = gallery_image_urls(raw)
         except Exception as error:
+            if self.driver is not None and urllib.parse.urlsplit(url).hostname == "www.cargurus.com":
+                try:
+                    self.descriptions[url] = self.driver.execute_script("""
+                        const section = document.querySelector('[data-testid="dealer-section"]');
+                        const heading = [...(section?.querySelectorAll('h3') || [])]
+                            .find(node => node.textContent.trim() === "Dealer's description");
+                        return heading?.nextElementSibling?.innerText || '';
+                    """) or ""
+                except Exception:
+                    pass
             self.errors[url] = f"{type(error).__name__}: {error}".replace("\n", " ")[:500]
         return self.galleries[url]
 
     def photo(self, url):
         return next(iter(self.gallery(url)), "")
+
+    def description(self, url):
+        self.gallery(url)
+        return self.descriptions.get(url, "")
 
     def error(self, url):
         return self.errors.get(url, "gallery photos unavailable")
@@ -709,6 +732,10 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
         plain_error = str(error)
     if page and row.get("source") == "cargurus":
         row.update(cargurus_condition_claims(page))
+    if row.get("source") == "cargurus" and browser_fetcher is not None:
+        description = browser_fetcher.description(url)
+        if description:
+            row.update(condition_claims([description]))
     if len(row.get("photo_urls") or []) > 1:
         return ""
     if page and row.get("source") in {"cargurus", "truecar"}:
