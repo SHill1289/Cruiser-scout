@@ -75,9 +75,9 @@ function rowPoint(row) {
 }
 function distanceTo(row) { const point = rowPoint(row); return origin && point ? milesBetween(origin, point) : null; }
 function mapPoint(lat, lon, state = "") {
-  if (state === "AK" || (lat > 50 && lon < -130)) return [38 + (lon + 170) * 4.1, 445 + (72 - lat) * 5.3];
-  if (state === "HI" || (lat < 25 && lon < -153)) return [222 + (lon + 161) * 11, 535 + (23 - lat) * 10];
-  return [38 + (lon + 125) * (924 / 59), 32 + (50 - lat) * (510 / 26)];
+  if (state === "AK" || state === "HI") return null;
+  const point = [38 + (lon + 125) * (924 / 59), 32 + (50 - lat) * (510 / 26)];
+  return point[0] >= 0 && point[0] <= 1000 && point[1] >= 0 && point[1] <= 550 ? point : null;
 }
 function svgNode(tag, attributes = {}) {
   const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -432,9 +432,14 @@ function matches(row) {
 
 function sortRows(rows) {
   const missing = Number.MAX_SAFE_INTEGER;
+  const listedTime = row => {
+    const time = Date.parse(String(row.listed_at || ""));
+    return Number.isFinite(time) ? time : -Infinity;
+  };
   const strategies = {
     "price-asc": (a, b) => (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing),
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
+    "listed-newest": (a, b) => listedTime(b) - listedTime(a) || String(b.first_seen || "").localeCompare(String(a.first_seen || "")),
     "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
     "distance-asc": (a, b) => (distanceTo(a) ?? missing) - (distanceTo(b) ?? missing)
   };
@@ -447,6 +452,7 @@ function renderMap(rows, cards) {
     const point = rowPoint(row);
     if (!point) return;
     const xy = mapPoint(...point, row.state);
+    if (!xy) return;
     let location = locations.find(item => Math.hypot(item.xy[0] - xy[0], item.xy[1] - xy[1]) < 21);
     if (!location) { location = { xy, rows: [], firstCard: cards[index] }; locations.push(location); }
     location.rows.push(row);
@@ -454,7 +460,6 @@ function renderMap(rows, cards) {
   const markers = [];
   for (const location of locations) {
     const [x, y] = location.xy;
-    if (x < 0 || x > 1000 || y < 0 || y > 600) continue;
     const label = `${location.rows.length} listing${location.rows.length === 1 ? "" : "s"} near ${location.rows[0].city || "unknown city"}, ${location.rows[0].state || "unknown state"}. Jump to first listing.`;
     const group = svgNode("g", { class: "map-marker", role: "button", tabindex: "0", "aria-label": label });
     group.append(svgNode("circle", { cx: x, cy: y, r: location.rows.length > 1 ? 14 : 10 }));
@@ -469,14 +474,15 @@ function renderMap(rows, cards) {
     group.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); jump(); } });
     markers.push(group);
   }
-  if (origin) {
-    const [x, y] = mapPoint(...origin);
+  const originPoint = origin && mapPoint(...origin);
+  if (originPoint) {
+    const [x, y] = originPoint;
     markers.push(svgNode("circle", { class: "map-origin", cx: x, cy: y, r: 10 }),
       svgNode("circle", { class: "map-origin-core", cx: x, cy: y, r: 3 }));
   }
   ui.mapMarkers.replaceChildren(...markers);
   const mappedCount = locations.reduce((total, location) => total + location.rows.length, 0);
-  ui.mapStatus.textContent = `${mappedCount} of ${rows.length} filtered listing${rows.length === 1 ? "" : "s"} mapped${origin ? " · tan pin: your ZIP" : ""}`;
+  ui.mapStatus.textContent = `${mappedCount} of ${rows.length} filtered listing${rows.length === 1 ? "" : "s"} mapped${originPoint ? " · tan pin: your ZIP" : ""}`;
   if (window.innerWidth < 760 && locations.length) {
     const meanX = locations.reduce((total, location) => total + location.xy[0], 0) / locations.length;
     const width = ui.mapViewport.scrollWidth;
