@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T21:24:02+00:00",
+  "generated_at": "2026-09-28T05:29:27+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
     "vehicles": 25,
@@ -14,74 +14,74 @@
     {
       "source": "cargurus-2006",
       "status": "ok",
-      "detail": "19 parsed of 19; 18 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "detail": "18 parsed of 18; 17 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
-      "detail": "5 parsed of 5; 5 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "detail": "4 parsed of 4; 4 photos found; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "truecar",
       "status": "error",
       "detail": "TrueCar did not apply nationwide 2006-2007 LX 470 filters: {\"condition\":\"USED\",\"fallbackStrategy\":\"SIMPLE\",\"makeModelTrim\":[{\"makeSlug\":\"lexus\",\"modelSlug\":\"lx\",\"trimSlugs\":[\"lx-470\"]}],\"year\":{\"max\":2007,\"min\":2006}}",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "historical sales",
       "status": "warning",
       "detail": "50 completed sales retained from 51 discovered or seeded auctions. 1 records unavailable; first error: https://bringatrailer.com/listing/2007-lexus-lx470-58/: Auction did not record a completed sale",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:459755012: TimeoutException: Message:  ",
-      "checked_at": "2026-09-27T21:24:02+00:00"
+      "checked_at": "2026-09-28T05:29:27+00:00"
     }
   ],
   "market_history": {
@@ -700,11 +700,11 @@
       "modifications_status": "",
       "modifications_evidence": "",
       "auction_ends_at": "2026-09-29T18:17:00+00:00",
-      "bid_observed_at": "2026-09-27T21:24:02+00:00",
+      "bid_observed_at": "2026-09-28T05:29:27+00:00",
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-22T23:14:48+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -772,7 +772,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -840,7 +840,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 49,
@@ -908,7 +908,7 @@
       "listed_at": "2026-03-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -976,7 +976,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -1044,7 +1044,7 @@
       "listed_at": "2026-05-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1112,7 +1112,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -1180,7 +1180,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 4,
@@ -1248,7 +1248,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
@@ -1316,7 +1316,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 36,
@@ -1384,7 +1384,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -28,
@@ -1588,7 +1588,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 59,
@@ -1656,7 +1656,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 5,
@@ -1724,7 +1724,7 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 20,
@@ -1792,7 +1792,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -22,
@@ -1860,7 +1860,7 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
@@ -1928,7 +1928,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 12,
@@ -1996,7 +1996,7 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -2064,7 +2064,7 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-21T19:08:12+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -24,
@@ -2132,7 +2132,7 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-22T05:02:58+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -2198,7 +2198,7 @@
       "listed_at": "2026-09-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-24T04:57:27+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -2263,10 +2263,10 @@
       "modifications_evidence": "",
       "auction_ends_at": "",
       "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
+      "listed_at": "2026-09-27",
+      "listed_at_is_estimated": true,
       "first_seen": "2026-09-27T05:23:03+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 30,
@@ -2334,7 +2334,7 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-09-27T21:24:02+00:00",
+      "last_seen": "2026-09-28T05:29:27+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -1,
