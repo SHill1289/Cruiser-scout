@@ -3,72 +3,72 @@
     "source": "cargurus-2006",
     "status": "ok",
     "detail": "21 parsed of 21; 20 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "cargurus-2007",
     "status": "error",
     "detail": "Unexpected mileage units",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "truecar",
     "status": "ok",
     "detail": "5 clean-title listings parsed of 5; nationwide. 5 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "bringatrailer",
     "status": "ok",
     "detail": "3 auction pages parsed. Index coverage only; not a complete auction archive. ",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "historical sales",
     "status": "warning",
     "detail": "50 completed sales retained from 52 discovered or seeded auctions. 2 records unavailable; first error: https://bringatrailer.com/listing/2006-lexus-lx470-84/: Auction did not record a completed sale",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "carfax",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "cars.com",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "edmunds",
     "status": "manual_only",
     "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "autotrader",
     "status": "manual_only",
     "detail": "No validated collector yet; manual imports supported.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "copart",
     "status": "manual_only",
     "detail": "No validated collector yet; manual auction/salvage imports supported.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "iseecars",
     "status": "manual_only",
     "detail": "No validated collector yet; manual imports supported.",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "checked_at": "2026-10-06T06:26:52+00:00"
   },
   {
     "source": "listing photos",
     "status": "warning",
-    "detail": "3 existing listing photos were unavailable; placeholders remain. First error: cargurus:460265515: TimeoutException: Message:  ",
-    "checked_at": "2026-10-06T00:06:28+00:00"
+    "detail": "2 existing listing photos were unavailable; placeholders remain. First error: cargurus:460265515: TimeoutException: Message:  ",
+    "checked_at": "2026-10-06T06:26:52+00:00"
   }
 ]
