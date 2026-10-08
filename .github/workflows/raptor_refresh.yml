@@ -1,0 +1,45 @@
+name: Raptor scheduled refresh
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: raptor-scheduled-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: raptor-finder
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the Raptor app
+        run: |
+          python -m unittest discover -s tests -v
+          node --check web/app.js
+      - name: Collect Raptor listings
+        id: collect
+        continue-on-error: true
+        run: python src/finder.py
+      - name: Save Raptor inventory
+        if: always() && steps.collect.outcome != 'skipped'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/ web/inventory.json web/photos/ INVENTORY.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh Raptor listings and source health'
+            git push origin HEAD:raptor-finder
+          fi
+      - name: Publish Raptor summary
+        if: always()
+        run: cat INVENTORY.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Report incomplete coverage
+        if: steps.collect.outcome == 'failure'
+        run: exit 1
