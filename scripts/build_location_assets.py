@@ -48,8 +48,8 @@ def main():
         if pieces:
             paths.append(f'<path d="{" ".join(pieces)}"/>')
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550" aria-hidden="true">'
-           '<rect width="1000" height="550" fill="#111b17"/>'
-           '<g fill="#23332a" stroke="#50614d" stroke-width="1.1" stroke-linejoin="round">'
+           '<rect width="1000" height="550" fill="#132130"/>'
+           '<g fill="#243c51" stroke="#4a6680" stroke-width="1.1" stroke-linejoin="round">'
            + "".join(paths) + '</g></svg>')
     (WEB / "us-map.svg").write_text(svg, encoding="utf-8")
     print(f"Built {len(zips)} ZIP area reference points and {len(paths)} state shapes")
