@@ -1,20 +1,20 @@
 [
   {
     "source": "TrueCar",
-    "status": "ok",
-    "detail": "63 of 63 nationwide Raptor listings below the source's $30,000 maximum checked. Dashboard applies a strict below-$30,000 asking-price rule, clean title and zero reported accidents.",
-    "checked_at": "2026-10-08T18:11:18+00:00"
+    "status": "error",
+    "detail": "TrueCar did not apply nationwide F-150 Raptor and price filters: {\"condition\":\"USED\",\"fallbackStrategy\":\"SIMPLE\",\"makeModelTrim\":[{\"makeSlug\":\"ford\",\"modelSlug\":\"f-150\",\"trimSlugs\":[\"raptor\"]}],\"price\":{\"max\":30000},\"withinRadius\":{\"distance\":75,\"postalCode\":\"20189\"}}",
+    "checked_at": "2026-10-08T18:36:33+00:00"
   },
   {
     "source": "CarGurus",
     "status": "manual_only",
     "detail": "Raptor collector not validated; checked manual imports supported.",
-    "checked_at": "2026-10-08T18:11:18+00:00"
+    "checked_at": "2026-10-08T18:36:33+00:00"
   },
   {
     "source": "CARFAX / Cars.com / Autotrader",
     "status": "manual_only",
     "detail": "No validated automatic Raptor collector; checked manual imports supported.",
-    "checked_at": "2026-10-08T18:11:18+00:00"
+    "checked_at": "2026-10-08T18:36:33+00:00"
   }
 ]
