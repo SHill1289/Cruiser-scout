@@ -477,6 +477,9 @@ def parse_cargurus(page, year, no_accident_ids=None):
         if int(ontology.get("carYear", 0)) != year or ontology.get("makeName") != "Lexus" or ontology.get("modelName") != "LX" or not ontology.get("trimName", "").startswith("470"):
             continue
         seller, price = d.get("sellerData", {}), d.get("priceData", {})
+        mileage = d.get("mileageData") or {}
+        if mileage.get("value") not in (None, "") and mileage.get("unit") != "MILES":
+            raise ValueError(f"Unexpected mileage units for CarGurus listing {d['id']}: {mileage.get('unit')!r}")
         listing_id = str(d["id"])
         rows[listing_id] = normalize({
             "source": "cargurus", "source_listing_id": d["id"], "year": year,
@@ -484,7 +487,7 @@ def parse_cargurus(page, year, no_accident_ids=None):
             "listing_url": f'https://www.cargurus.com/details/{d["id"]}',
             "asking_price": price.get("pricePlusFees", price.get("totalPrice", price.get("current"))),
             "base_price": price.get("basePrice", price.get("current")),
-            "mileage": d.get("mileageData", {}).get("value"),
+            "mileage": mileage.get("value"),
             "city": seller.get("city", ""), "state": seller.get("region", ""),
             "seller": seller.get("serviceProviderName", ""),
             "seller_type": "dealer" if seller.get("serviceProviderId") else "unknown",
@@ -498,8 +501,6 @@ def parse_cargurus(page, year, no_accident_ids=None):
             "source_days_on_market": d.get("daysOnMarket", ""),
             "notes": "CarGurus clean-history filters exclude reported salvage, lemon, frame-damage and theft history. Absence from the separate no-accident results does not prove an accident. This is a clean-title candidate, not a legal title guarantee; verify through NMVTIS/CARFAX and the physical title. Asking price includes listed fees when supplied; taxes/shipping may be extra.",
         })
-        if d.get("mileageData", {}).get("unit") != "MILES":
-            raise ValueError("Unexpected mileage units")
     complete = search.get("pageCount") == 1 and len(rows) == search.get("totalListings")
     if not rows and search.get("totalListings") != 0:
         raise ValueError("No valid listings parsed from nonempty results")
@@ -526,7 +527,9 @@ def parse_truecar(page, now):
         scope_ok = (
             search_args.get("offset") == 0 and filters.get("condition") == "USED" and
             filters.get("makeModelTrim") == [{"makeSlug": "lexus", "modelSlug": "lx", "trimSlugs": ["lx-470"]}] and
-            filters.get("withinRadius", {}).get("distance") == 5000 and
+            # TrueCar omits withinRadius for unrestricted nationwide searches.
+            ("withinRadius" not in filters or
+             filters.get("withinRadius", {}).get("distance") == 5000) and
             filters.get("year") == {"min": 2006, "max": 2007} and
             set(filters) <= {"condition", "fallbackStrategy", "makeModelTrim", "withinRadius", "year"}
         )
