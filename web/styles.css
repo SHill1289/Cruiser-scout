@@ -370,13 +370,12 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
 .section-heading h2 { font-size:36px; }
 .notice { padding:16px 20px; }
 
-+/* Original supplied Raptor artwork: CSS crops its white margin without altering the asset. */
-+.model-wordmark { background:transparent url("raptor-logo.jpg") center / 100% auto no-repeat; -webkit-mask:none; mask:none; filter:invert(1); mix-blend-mode:screen; width:5.2em; height:1em; }
-+.wordmark-nav { width:5.2em; height:1em; }
-+.wordmark-hero { width:5.2em; max-width:100%; height:1em; vertical-align:middle; }
-+.brand-mark { width:66px; height:30px; background:none; }
-+.brand-mark img { width:100%; height:100%; object-fit:contain; opacity:.88; }
-+.hero::before { background:url("ford-oval.svg") center / contain no-repeat; width:260px; height:110px; right:10%; top:105px; opacity:.025; filter:grayscale(1) brightness(0) invert(1); }
-+.hero::after { background:url("raptor-logo.jpg") center / 100% auto no-repeat; -webkit-mask:none; mask:none; width:440px; height:95px; right:4%; bottom:18px; opacity:.035; filter:invert(1); mix-blend-mode:screen; }
-+@media(max-width:700px) { .brand-mark { width:54px; height:24px; } .hero::after { width:280px; height:65px; right:2%; bottom:12px; } .wordmark-hero { width:5.2em; } }
-+
+/* Original supplied Raptor artwork: CSS crops its white margin without altering the asset. */
+.model-wordmark { background:transparent url("raptor-logo.jpg") center / 100% auto no-repeat; -webkit-mask:none; mask:none; filter:invert(1); mix-blend-mode:screen; width:5.2em; height:1em; }
+.wordmark-nav { width:5.2em; height:1em; }
+.wordmark-hero { width:5.2em; max-width:100%; height:1em; vertical-align:middle; }
+.brand-mark { width:66px; height:30px; background:none; }
+.brand-mark img { width:100%; height:100%; object-fit:contain; opacity:.88; }
+.hero::before { background:url("ford-oval.svg") center / contain no-repeat; width:260px; height:110px; right:10%; top:105px; opacity:.025; filter:grayscale(1) brightness(0) invert(1); }
+.hero::after { background:url("raptor-logo.jpg") center / 100% auto no-repeat; -webkit-mask:none; mask:none; width:440px; height:95px; right:4%; bottom:18px; opacity:.035; filter:invert(1); mix-blend-mode:screen; }
+@media(max-width:700px) { .brand-mark { width:54px; height:24px; } .hero::after { width:280px; height:65px; right:2%; bottom:12px; } .wordmark-hero { width:5.2em; } }

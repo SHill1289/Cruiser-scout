@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/ web/inventory.json INVENTORY.md
+          git add data/ web/inventory.json web/photos/ INVENTORY.md
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh Raptor listings and source health'
             git push origin HEAD:raptor-finder

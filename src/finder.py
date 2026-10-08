@@ -1121,7 +1121,7 @@ def run(root=ROOT, live=True):
     changes = update(state, rows, now, scopes)
     if not live and (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text())
-    save(root, state, health, changes, cache_photos=False)
+    save(root, state, health, changes, cache_photos=live)
     print(json.dumps({"observations": len(state["listings"]), "changes": len(changes), "sources": health}, indent=2))
     return 1 if any(item["status"] in {"error", "partial"} for item in health) else 0
 
