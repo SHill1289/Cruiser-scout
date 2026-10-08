@@ -94,5 +94,14 @@ jobs:
       - name: Report incomplete collection
         if: steps.collect.outcome == 'failure'
         run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('data/source_health.json')
+          if path.exists():
+              for source in json.loads(path.read_text()):
+                  if source['status'] in {'error', 'partial'}:
+                      print(f"{source['source']} ({source['status']}): {source['detail']}")
+          PY
           echo 'A source failed or returned incomplete results. See data/source_health.json. Existing listings were preserved.'
           exit 1

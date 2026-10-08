@@ -397,6 +397,30 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['reported_extras'], 'CarPlay;Rear-seat DVD')
         self.assertTrue(clean_title_candidate(target))
 
+    def test_cargurus_missing_mileage_keeps_complete_listing_batch(self):
+        for mileage in (None, {}, {'value': None, 'unit': 'MILES'}, {'value': ''}):
+            with self.subTest(mileage=mileage):
+                context = self.clean_fixture()
+                data = context['state']['loaderData']['route']['search']['tiles'][0]['data']
+                data['mileageData'] = mileage
+                rows, complete, total = parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+                self.assertTrue(complete)
+                self.assertEqual(len(rows), total)
+                self.assertIsNone(rows[0]['mileage'])
+        del data['mileageData']
+        rows, complete, _ = parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+        self.assertTrue(complete)
+        self.assertIsNone(rows[0]['mileage'])
+
+    def test_cargurus_populated_mileage_requires_miles(self):
+        for unit in ('KILOMETERS', None):
+            with self.subTest(unit=unit):
+                context = self.clean_fixture()
+                data = context['state']['loaderData']['route']['search']['tiles'][0]['data']
+                data['mileageData'] = {'value': 100000, 'unit': unit}
+                with self.assertRaisesRegex(ValueError, 'Unexpected mileage units.*458480534'):
+                    parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+
     def test_truecar_clean_title_listing(self):
         vin = 'JTJHT00W074027827'
         listing_ref = 'ConsumerSummaryListing:test'
@@ -452,6 +476,24 @@ class ParserTests(unittest.TestCase):
             {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
         with self.assertRaises(ValueError):
             parse_truecar(page, NOW)
+
+        nationwide = json.loads(reordered[len('marketplaceListingSearch('):-1])
+        del nationwide['filters']['withinRadius']
+        nationwide['filters']['fallbackStrategy'] = 'SIMPLE'
+        result = state['ROOT_QUERY'][next(iter(state['ROOT_QUERY']))]
+        def page_for(args, search_result=result):
+            state['ROOT_QUERY'] = {'marketplaceListingSearch(' + json.dumps(args) + ')': search_result}
+            return '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+                {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+        rows, complete, total = parse_truecar(page_for(nationwide), NOW)
+        self.assertTrue(complete)
+        self.assertEqual(rows[0]['vin'], vin)
+        for extra in ({'withinRadius': None}, {'withinRadius': {}}, {'postalCode': '27106'},
+                      {'year': {'min': 2005, 'max': 2007}}, {'makeModelTrim': []}):
+            with self.subTest(extra=extra), self.assertRaises(ValueError):
+                parse_truecar(page_for({**nationwide, 'filters': {**nationwide['filters'], **extra}}), NOW)
+        self.assertFalse(parse_truecar(page_for(nationwide, {**result,
+            'pageInfo': {'hasNextPage': True}}), NOW)[1])
 
     def test_location_points_prefer_dealer_zip_then_city_and_keep_unknown_unmapped(self):
         places, zips = load_location_points()
