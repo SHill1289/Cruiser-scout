@@ -4,7 +4,7 @@
       "id": "truecar",
       "type": "truecar",
       "enabled": true,
-      "url": "https://www.truecar.com/used-cars-for-sale/listings/ford/f-150/price-below-30000/?trim=raptor&sort[]=price_asc"
+      "url": "https://www.truecar.com/used-cars-for-sale/listings/ford/f-150/price-below-30000/?trim=raptor&sort[]=price_asc&searchRadius=5000"
     },
     {
       "id": "CarGurus",

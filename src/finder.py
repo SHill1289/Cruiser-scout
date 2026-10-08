@@ -430,7 +430,8 @@ def parse_truecar(page, now, expected_offset=0):
             and filters.get("condition") == "USED"
             and filters.get("makeModelTrim") == [{"makeSlug": "ford", "modelSlug": "f-150", "trimSlugs": ["raptor"]}]
             and filters.get("price") == {"max": 30000}
-            and set(filters) <= {"condition", "fallbackStrategy", "makeModelTrim", "price"}
+            and ("withinRadius" not in filters or filters["withinRadius"].get("distance", 0) >= 5000)
+            and set(filters) <= {"condition", "fallbackStrategy", "makeModelTrim", "price", "withinRadius"}
         )
     except (ValueError, KeyError, TypeError, AttributeError) as error:
         raise ValueError("TrueCar search filters could not be read") from error

@@ -379,3 +379,6 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
 .hero::before { background:url("ford-oval.svg") center / contain no-repeat; width:260px; height:110px; right:10%; top:105px; opacity:.025; filter:grayscale(1) brightness(0) invert(1); }
 .hero::after { background:url("raptor-logo.jpg") center / 100% auto no-repeat; -webkit-mask:none; mask:none; width:440px; height:95px; right:4%; bottom:18px; opacity:.035; filter:invert(1); mix-blend-mode:screen; }
 @media(max-width:700px) { .brand-mark { width:54px; height:24px; } .hero::after { width:280px; height:65px; right:2%; bottom:12px; } .wordmark-hero { width:5.2em; } }
+
+.model-wordmark { background:currentColor; filter:none; mix-blend-mode:normal; mask-image:linear-gradient(#fff,#fff),url("raptor-logo.jpg"); mask-mode:luminance,luminance; mask-size:100% 100%,100% auto; mask-position:center,center; mask-repeat:no-repeat,no-repeat; mask-composite:subtract; }
+.hero::after { background:currentColor; color:var(--warm); filter:none; mix-blend-mode:normal; mask-image:linear-gradient(#fff,#fff),url("raptor-logo.jpg"); mask-mode:luminance,luminance; mask-size:100% 100%,100% auto; mask-position:center,center; mask-repeat:no-repeat,no-repeat; mask-composite:subtract; }
