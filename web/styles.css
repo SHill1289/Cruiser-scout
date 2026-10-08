@@ -474,3 +474,13 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   .brand-title .finder-wordmark { width: 96px; height: 22px; }
   .f150-nav { width: 46px; height: 11px; }
 }
+
+/* One lettering system, shared scale and outline for both title words. */
+.raptor-wordmark { display:block; flex:0 0 auto; object-fit:contain; }
+.brand-title .raptor-wordmark, .brand-title .finder-wordmark { width:auto; height:24px; opacity:.78; }
+.brand-title { gap:8px; }
+.hero-title .hero-raptor { width:auto; height:.69em; opacity:.9; }
+.footer-wordmark .raptor-wordmark, .footer-wordmark .finder-wordmark { width:auto; height:19px; opacity:.65; }
+@media(max-width:760px) {
+  .brand-title .raptor-wordmark, .brand-title .finder-wordmark { width:auto; height:22px; }
+}
