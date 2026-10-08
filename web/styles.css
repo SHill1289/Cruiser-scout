@@ -462,3 +462,15 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   .brand-raptor { width: 94px; height: 18px; }
   .brand-title { gap: 8px; }
 }
+
+/* Badge lettering and matching angular Finder title artwork. */
+.f150-wordmark, .finder-wordmark { display: block; flex: 0 0 auto; object-fit: contain; }
+.f150-nav { width: 51px; height: 12px; opacity: .72; }
+.hero-title .f150-hero { width: 2.95em; height: .69em; opacity: .9; }
+.brand-title .finder-wordmark { width: 105px; height: 24px; opacity: .78; }
+.footer-wordmark .finder-wordmark { width: 82px; height: 19px; opacity: .65; }
+.brand-title { gap: 7px; }
+@media (max-width:760px) {
+  .brand-title .finder-wordmark { width: 96px; height: 22px; }
+  .f150-nav { width: 46px; height: 11px; }
+}
