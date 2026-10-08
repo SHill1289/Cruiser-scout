@@ -444,11 +444,7 @@ function renderCard(row, group) {
   if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
-  const title = text("h3", "vehicle-title", `${exterior.name === "Unknown" ? "Color unknown" : exterior.name} Lexus `);
-  const wordmark = text("span", "model-wordmark", "");
-  wordmark.setAttribute("role", "img");
-  wordmark.setAttribute("aria-label", "LX470");
-  title.append(wordmark);
+  const title = text("h3", "vehicle-title", exterior.name === "Unknown" ? "Color unknown" : exterior.name);
   identity.append(title);
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
