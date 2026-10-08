@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nationwide Ford F-150 Raptor listings below $30,000 with clean-title evidence and no reported accidents.">
+  <meta name="theme-color" content="#101714">
+  <title>Raptor Finder</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="shell nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Raptor Finder home">
+        <span class="brand-mark" aria-hidden="true"><img src="ford-oval.svg" alt=""></span>
+        <span><span class="model-wordmark wordmark-nav" role="img" aria-label="Raptor"></span> Finder</span>
+      </a>
+      <a class="nav-link" href="#method">How screening works</a>
+    </nav>
+    <div class="shell hero-grid" id="top">
+      <div>
+        <p class="eyebrow">Nationwide listing tracker</p>
+        <h1>F-150 <span class="model-wordmark wordmark-hero" role="img" aria-label="Raptor"></span></h1>
+      </div>
+      <div class="hero-panel" aria-label="Inventory update status">
+        <div class="status-line"><span class="pulse" aria-hidden="true"></span> Nationwide • Below $30,000</div>
+        <p class="updated" id="updated">Loading latest inventory&hellip;</p>
+        <div class="hero-stats">
+          <div><strong id="total-count">&mdash;</strong><span>Listings</span></div>
+          <div><strong id="year-count">&mdash;</strong><span>Model years</span></div>
+          <div><strong id="source-count">&mdash;</strong><span>Sources</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="notice" aria-labelledby="notice-title">
+      <span class="shield" aria-hidden="true">&#10003;</span>
+      <div>
+        <h2 id="notice-title">Below $30k. No reported accidents.</h2>
+        <p id="disclaimer">Listings are screened for title-history signals. Always verify the title before purchasing.</p>
+      </div>
+    </section>
+
+    <section class="inventory" aria-labelledby="inventory-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Tracked inventory</p>
+          <h2 id="inventory-title">Raptors for sale</h2>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite">Loading&hellip;</p>
+      </div>
+
+      <form class="filters" id="filters" aria-label="Filter inventory">
+        <label class="search-field">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="City, seller, VIN&hellip;" autocomplete="off">
+        </label>
+        <label><span>Status</span><select id="status"><option value="">For sale only</option></select></label>
+        <label class="advanced-filter"><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
+        <label class="advanced-filter"><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">Verified one owner</option><option value="multiple">Verified 2+ owners</option><option value="unknown">Unverified</option></select></label>
+        <label class="advanced-filter"><span>Accidents</span><select id="accidents"><option value="">No reported accidents only</option></select></label>
+        <label class="advanced-filter"><span>Max price</span><select id="price"><option value="">Below $30,000</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option></select></label>
+        <label class="advanced-filter"><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
+        <label class="zip-field"><span>Your ZIP</span><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="5-digit ZIP" aria-describedby="distance-status"></label>
+        <label class="radius-field"><span>Within</span><select id="radius"><option value="">Any distance</option><option value="50">50 miles</option><option value="100">100 miles</option><option value="250">250 miles</option><option value="500">500 miles</option><option value="1000">1,000 miles</option></select></label>
+        <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="listed-newest">Newest listed</option><option value="newest">Recently added to Finder</option><option value="distance-asc">Nearest first</option></select></label>
+        <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters">More filters</button>
+        <button class="reset" id="reset" type="reset">Reset filters</button>
+      </form>
+      <p class="distance-status" id="distance-status" aria-live="polite">Enter a ZIP to see approximate straight-line distances.</p>
+
+      <div class="summary-strip" id="summary-strip" hidden>
+        <div><span>Median displayed price</span><strong id="median-price">&mdash;</strong></div>
+        <div><span>Median mileage</span><strong id="median-mileage">&mdash;</strong></div>
+        <div><span>No reported accidents</span><strong id="clean-count">&mdash;</strong></div>
+      </div>
+
+
+
+      <div class="listings" id="listings" aria-live="polite" aria-busy="true"></div>
+      <div class="empty" id="empty" hidden>
+        <h3>No listings match those filters.</h3>
+        <p>Try clearing your search, mileage or distance filters. The below-$30k and no-reported-accidents requirements always apply.</p>
+        <button type="button" id="empty-reset">Show all listings</button>
+      </div>
+      <section class="location-map" aria-labelledby="map-title">
+        <div class="map-heading"><h3 id="map-title">Where the trucks are</h3><p id="map-status">Loading truck locations&hellip;</p></div>
+        <div class="map-viewport">
+          <svg id="listing-map" viewBox="0 0 1000 550" role="group" aria-label="Map of filtered Raptor trucks in the contiguous United States">
+            <image href="us-map.svg" width="1000" height="550"></image>
+            <g id="map-markers"></g>
+          </svg>
+        </div>
+        <p class="map-note">Map covers the contiguous United States. Pins show seller city or dealer ZIP area, not a street address. Distances are approximate straight-line miles from your ZIP area. Select a pin to jump to a listing; swipe to explore on mobile. <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html" target="_blank" rel="noopener noreferrer">Location data: US Census</a>.</p>
+      </section>
+    </section>
+
+    <section hidden class="market" id="market" aria-labelledby="market-title">
+      <div class="section-heading market-heading">
+        <div>
+          <p class="eyebrow">Two-year auction history</p>
+          <h2 id="market-title">What mileage has sold for.</h2>
+        </div>
+        <p class="result-count" id="market-count">Loading completed sales&hellip;</p>
+      </div>
+      <div class="market-controls" aria-label="Historical sales filters">
+        <label><span>Period</span><select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
+        <label><span>Model year</span><select id="market-year"><option value="">All Raptor years</option></select></label>
+      </div>
+      <div class="market-bands" id="market-bands" aria-live="polite"></div>
+      <p class="market-note"><span id="market-source">Completed auction results</span>. Average and median exclude bids that did not meet reserve. Deal labels compare an asking price with the median sale in the same mileage range: 15% or more below is Great, within 15% is Fair, and more than 15% above is Bad. Prices exclude buyer fees; condition, maintenance and modifications vary, so open individual sales before using a band as a valuation.</p>
+    </section>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div>
+        <p class="eyebrow">Buyer due diligence</p>
+        <h2 id="method-title">Screened carefully.<br>Verified by you.</h2>
+      </div>
+      <div class="method-copy">
+        <p>Only source-identified Ford F-150 Raptors with an asking price below $30,000, clean-title evidence and zero reported accidents appear here. Missing history and conflicting accident reports exclude a truck. A history report cannot rule out an unreported accident. Asking prices may exclude dealer fees, taxes and shipping. Check the original listing, inspect the frame and shocks, and review service records before buying.</p>
+        <ol>
+          <li><span>01</span>Open the original listing and confirm it is still available.</li>
+          <li><span>02</span>Run the VIN through NMVTIS or CARFAX.</li>
+          <li><span>03</span>Match the report to the physical title and arrange an inspection.</li>
+        </ol>
+        <details>
+          <summary>View source status</summary>
+          <div id="source-health" class="source-health"></div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div class="footer-brand">
+      <p><span class="model-wordmark wordmark-inline" role="img" aria-label="Raptor"></span> Finder</p>
+      <p class="credit">Made by Alex</p>
+    </div>
+    <p>Research aid only &middot; Latest check shown above</p>
+  </footer>
+  <dialog class="photo-dialog" id="photo-dialog" aria-label="Vehicle photo gallery">
+    <div class="photo-dialog-header">
+      <strong id="photo-title">Listing photos</strong>
+      <button type="button" id="photo-close" aria-label="Close photo gallery">Close &times;</button>
+    </div>
+    <div class="photo-stage">
+      <button type="button" id="photo-previous" aria-label="Previous photo">&#8249;</button>
+      <img id="photo-large" alt="">
+      <p id="photo-error" hidden>That photo is unavailable. Try another image or open the original listing.</p>
+      <button type="button" id="photo-next" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div class="photo-dialog-footer">
+      <span id="photo-count"></span>
+      <a id="photo-source" target="_blank" rel="noopener noreferrer">Open original listing &#8599;</a>
+    </div>
+  </dialog>
+  <script src="app.js" defer></script>
+</body>
+</html>
+

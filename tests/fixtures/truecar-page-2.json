@@ -1,0 +1,5646 @@
+{
+  "ROOT_QUERY": {
+    "marketplaceListingSearch({\"filters\":{\"condition\":\"USED\",\"fallbackStrategy\":\"SIMPLE\",\"makeModelTrim\":[{\"makeSlug\":\"ford\",\"modelSlug\":\"f-150\",\"trimSlugs\":[\"raptor\"]}],\"price\":{\"max\":30000}},\"first\":30,\"offset\":30,\"sort\":\"PRICE_ASC\"})": {
+      "__typename": "MarketplaceSearchConnection",
+      "inlineAggregations": {
+        "__typename": "InlineAggregations",
+        "price": {
+          "__typename": "ListingAggregationsRangeOption",
+          "min": 10893.99,
+          "max": 29991
+        },
+        "years": {
+          "__typename": "ListingAggregationsRangeOption",
+          "min": 2010,
+          "max": 2019
+        }
+      },
+      "paymentAffordability": null,
+      "pageInfo": {
+        "__typename": "PageInfo",
+        "endCursor": "NjA",
+        "hasNextPage": true
+      },
+      "edges": [
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzE",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhERkI1NjY4NA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzI",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM1MzczMg=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzM",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFNjVBRkM3ODg4MQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzQ",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM5NDQ3NA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzU",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzhKRkEwMzk5Mw=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "MzY",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzVIRkE0NTYwNQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "Mzc",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNDRkI3MzE4MA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "Mzg",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFVjRBRkI1NjIwMA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "Mzk",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjVERkM4MjU3OA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDA",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJIRkI5ODg5NA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDE",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzRIRkI2NjE1MQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDI",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdKRkQ4MTA1Mg=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDM",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2NDY5OQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDQ",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2Mzk0Mg=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDU",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkI4NjQ3OQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDY",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkUwMjU2MA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDc",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhFRkEyODg1Mg=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDg",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjBFRkQxMjQwOQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NDk",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjZFRkI4MzY4Nw=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTA",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzJLRkI2ODE2NA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTE",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjRERkE4NTAzMQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTI",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNKRkM1MjIwOA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTM",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkQxMjEyOA=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTQ",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzBIRkEyMTUyMQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTU",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzZIRkMwMDcxMw=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTY",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkQ1MzIxNQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTc",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjhFRkMzNTMwNQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTg",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE0NTMyOQ=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NTk",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": "# $526.77/mo\n$2,920.50 due at signing \u2022 60 mo\n\n---\n\nThis pre-qualified finance estimate is based off a 60 month term and $2,920.50 down payment, and includes estimated taxes and fees. Additional taxes, finance charges, and fees may apply and may increase the price shown in this tool and the final due at signing amount. Rebate availability is subject to your qualifying for credit. A dealer, manufacturer, or third-party may offer rebates or offers not included in this illustration's price, which may be offered when you enter into the finance agreement at the dealership. The terms of these rebates may vary, and may impact the price and your financing. This tool should be used as a guide, and all finance terms must be verified before a sale is complete. The actual rate you receive and down payment amount will be based upon multiple factors. Valid for VIN 1FTFW1RG3HFC10907 on the day that you access this tool. Price may vary by vehicle. The information provided is for illustrative purposes only, and is not an offer to lend. Consumer must qualify for credit from dealer/lender. See your dealer/lender for details, including actual offers, if any, that may be available to you.\""
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNIRkMxMDkwNw=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NjA",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw=="
+          }
+        }
+      ],
+      "isFallback": false,
+      "totalCount": 63
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhERkI1NjY4NA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhERkI1NjY4NA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/161995/84/66/1FTFW1R6XDFB56684/001_2026083005.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 25999,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTYxOTk1"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R6XDFB56684",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 118970,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R6XDFB56684",
+        "stockNumber": "AB-56684",
+        "listedAt": "2026-08-30T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 118970,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Tuxedo Black Metallic",
+        "exteriorColorHex": "010101",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Buford",
+        "dealerState": "GA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTYxOTk1": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTYxOTk1",
+    "databaseId": "161995",
+    "name": "Gwinnett Luxury Motors",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3087 McEver Rd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Buford",
+        "state": "GA",
+        "postalCode": "30518"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM1MzczMg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM1MzczMg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 480,
+            "width": 640,
+            "url": "https://listings-prod.tcimg.net/listings/135234/32/37/1FTFW1R69DFC53732/001_2026091005.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 25798,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTM1MjM0"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Unknown",
+      "interiorColor": "Unknown",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R69DFC53732",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 134784,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R69DFC53732",
+        "stockNumber": "C53732",
+        "listedAt": "2026-07-24T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 134784,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Unknown",
+        "exteriorColorHex": null,
+        "interiorColorName": "Unknown",
+        "interiorColorHex": null,
+        "dealerCity": "Capitol Heights",
+        "dealerState": "MD",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 2,
+      "ownerCount": 1,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTM1MjM0": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTM1MjM0",
+    "databaseId": "135234",
+    "name": "Carma Auto",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "208 W Hampton Avenue",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Capitol Heights",
+        "state": "MD",
+        "postalCode": "20743"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFNjVBRkM3ODg4MQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFNjVBRkM3ODg4MQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/2188/81/88/1FTEX1E65AFC78881/001_2026100304.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 25691,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjE4OA=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTEX1E65AFC78881",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Bluetooth"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 15,
+        "city": 14,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "5478",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2010,
+      "mileage": 127378,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCab 5.5' Box 4WD",
+        "databaseId": "31462",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTEX1E65AFC78881",
+        "stockNumber": "H260545A",
+        "listedAt": "2026-09-09T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 127378,
+        "mpgCity": 14,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Tuxedo Black",
+        "exteriorColorHex": "010101",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Lynnwood",
+        "dealerState": "WA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjE4OA==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMjE4OA==",
+    "databaseId": "2188",
+    "name": "Pierre Ford Lincoln of Lynnwood",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "20006 64th Avenue W",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Lynnwood",
+        "state": "WA",
+        "postalCode": "98036"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM5NDQ3NA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjlERkM5NDQ3NA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/31094/74/44/1FTFW1R69DFC94474/001_2026090108.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 25994,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzEwOTQ="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Unknown",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R69DFC94474",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 129221,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R69DFC94474",
+        "stockNumber": "4474EHA",
+        "listedAt": "2026-09-01T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 129221,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Cream",
+        "exteriorColorHex": null,
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Snellville",
+        "dealerState": "GA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 6,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzEwOTQ=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMzEwOTQ=",
+    "databaseId": "31094",
+    "name": "North Georgia Auto Brokers",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3515 Stone Mountain Highway",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Snellville",
+        "state": "GA",
+        "postalCode": "30078"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzhKRkEwMzk5Mw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzhKRkEwMzk5Mw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/418226/93/39/1FTEX1RG8JFA03993/001_2026091904.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 26543,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDE4MjI2"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTEX1RG8JFA03993",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Audio",
+        "Navigation",
+        "Apple CarPlay",
+        "Android Auto",
+        "Premium Seat Material",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Blind Spot System",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 169600,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCab 5.5' Box 4WD",
+        "databaseId": "58438",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTEX1RG8JFA03993",
+        "stockNumber": "GMB12A",
+        "listedAt": "2026-09-12T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 169600,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Lead Foot",
+        "exteriorColorHex": "2C2B2B",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Fayetteville",
+        "dealerState": "TN",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Apple CarPlay"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Android Auto"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDE4MjI2": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNDE4MjI2",
+    "databaseId": "418226",
+    "name": "Valley Chevrolet Buick GMC",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "1600 Huntsville Hwy",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Fayetteville",
+        "state": "TN",
+        "postalCode": "37334"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzVIRkE0NTYwNQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzVIRkE0NTYwNQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1536,
+            "width": 2048,
+            "url": "https://listings-prod.tcimg.net/listings/564814/05/56/1FTFW1RG5HFA45605/001_2026100705.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 26776,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTY0ODE0"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Red",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG5HFA45605",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 168968,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG5HFA45605",
+        "stockNumber": "FP244B",
+        "listedAt": "2026-09-25T12:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 168968,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Ruby Red Metallic Tinted Clearcoat",
+        "exteriorColorHex": "570512",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Manhattan",
+        "dealerState": "KS",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTY0ODE0": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTY0ODE0",
+    "databaseId": "564814",
+    "name": "Manhattan Ford",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "7920 E Highway US 24",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Manhattan",
+        "state": "KS",
+        "postalCode": "66502"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNDRkI3MzE4MA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNDRkI3MzE4MA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1080,
+            "width": 1440,
+            "url": "https://listings-prod.tcimg.net/listings/82741/80/31/1FTFW1R63CFB73180/001_2026070903.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 26078,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODI3NDE="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Unknown",
+      "interiorColor": "Unknown",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R63CFB73180",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "6521",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2012,
+      "mileage": 164785,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "38980",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R63CFB73180",
+        "stockNumber": "16589",
+        "listedAt": "2026-07-09T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 164785,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Unknown",
+        "exteriorColorHex": null,
+        "interiorColorName": "Unknown",
+        "interiorColorHex": null,
+        "dealerCity": "Sacramento",
+        "dealerState": "CA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODI3NDE=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtODI3NDE=",
+    "databaseId": "82741",
+    "name": "Abe's Motorsports",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2400 Princeton Street",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Sacramento",
+        "state": "CA",
+        "postalCode": "95815"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFVjRBRkI1NjIwMA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFFVjRBRkI1NjIwMA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/165011/00/62/1FTEX1EV4AFB56200/001_2026090405.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 26149,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTY1MDEx"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Orange",
+      "interiorColor": "Black",
+      "engine": "5.4L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTEX1EV4AFB56200",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Bluetooth"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 15,
+        "city": 14,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "5478",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2010,
+      "mileage": 95835,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCab 5.5' Box 4WD",
+        "databaseId": "31462",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTEX1EV4AFB56200",
+        "stockNumber": null,
+        "listedAt": "2026-08-23T12:45:00.000Z",
+        "condition": "USED",
+        "engine": "5.4L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 95835,
+        "mpgCity": 14,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Molten Orange Tri-Coat",
+        "exteriorColorHex": "F1612C",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Everett",
+        "dealerState": "WA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTY1MDEx": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTY1MDEx",
+    "databaseId": "165011",
+    "name": "Real Deal Cars",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "9326 Evergreen Way",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Everett",
+        "state": "WA",
+        "postalCode": "98204"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjVERkM4MjU3OA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjVERkM4MjU3OA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 720,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/598419/78/25/1FTFW1R65DFC82578/001_2026062510.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 26223,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTk4NDE5"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R65DFC82578",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 152414,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R65DFC82578",
+        "stockNumber": "2578",
+        "listedAt": "2026-06-25T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 152414,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Tuxedo Black Metallic",
+        "exteriorColorHex": "010101",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Newport Beach",
+        "dealerState": "CA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTk4NDE5": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTk4NDE5",
+    "databaseId": "598419",
+    "name": "SNB AUTO GROUP LLC",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2082 SE Bristol St STE 200",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Newport Beach",
+        "state": "CA",
+        "postalCode": "92660"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJIRkI5ODg5NA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJIRkI5ODg5NA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/518903/94/88/1FTFW1RG2HFB98894/001_2026082314.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 27393,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTE4OTAz"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG2HFB98894",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 155890,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG2HFB98894",
+        "stockNumber": null,
+        "listedAt": "2026-08-23T12:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 155890,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Magnetic Metallic",
+        "exteriorColorHex": "454744",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Commerce",
+        "dealerState": "GA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 4,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTE4OTAz": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTE4OTAz",
+    "databaseId": "518903",
+    "name": "Prestige Prime Motors LLC",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "92 King Rd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Commerce",
+        "state": "GA",
+        "postalCode": "30529"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzRIRkI2NjE1MQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzRIRkI2NjE1MQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 678,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/125931/51/61/1FTEX1RG4HFB66151/001_2026062510.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 27349,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTI1OTMx"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTEX1RG4HFB66151",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Blind Spot System",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 139586,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCab 5.5' Box 4WD",
+        "databaseId": "56431",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTEX1RG4HFB66151",
+        "stockNumber": "3932",
+        "listedAt": "2026-06-25T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 139586,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Avalanche",
+        "exteriorColorHex": "7C7C7A",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Lawrenceville",
+        "dealerState": "GA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 2,
+      "ownerCount": 4,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTI1OTMx": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTI1OTMx",
+    "databaseId": "125931",
+    "name": "Atlanta Car Cruiser",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "202 Buford Drive",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Lawrenceville",
+        "state": "GA",
+        "postalCode": "30046"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdKRkQ4MTA1Mg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdKRkQ4MTA1Mg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/458881/52/10/1FTFW1RG7JFD81052/001_2026091807.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 27897,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "EXCELLENT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDU4ODgx"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "White",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG7JFD81052",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 147411,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "58439",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG7JFD81052",
+        "stockNumber": "DHA-D81052",
+        "listedAt": "2026-09-13T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 147411,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Oxford White",
+        "exteriorColorHex": "E7E7E5",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Stafford",
+        "dealerState": "VA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 1,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDU4ODgx": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNDU4ODgx",
+    "databaseId": "458881",
+    "name": "DealHunter Autos",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3902 Richmond Hwy",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Stafford",
+        "state": "VA",
+        "postalCode": "22554"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2NDY5OQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2NDY5OQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 771,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/79575/99/46/1FTFW1RG2JFB64699/001_2026100204.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28900,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "EXCELLENT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNzk1NzU="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG2JFB64699",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Apple CarPlay",
+        "Android Auto",
+        "Premium Seat Material",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 122453,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "58439",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG2JFB64699",
+        "stockNumber": "APTB64699",
+        "listedAt": "2026-10-02T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 122453,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Magnetic Metallic",
+        "exteriorColorHex": "454744",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Lake Park",
+        "dealerState": "FL",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Apple CarPlay"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Android Auto"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 2,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNzk1NzU=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNzk1NzU=",
+    "databaseId": "79575",
+    "name": "Napleton's Northlake Chrysler Dodge Jeep Ram",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3701 Northlake Blvd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Lake Park",
+        "state": "FL",
+        "postalCode": "33403"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2Mzk0Mg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzJKRkI2Mzk0Mg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/40849/42/39/1FTFW1RG2JFB63942/001_2026092921.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28397,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDA4NDk="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG2JFB63942",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Apple CarPlay",
+        "Android Auto",
+        "Premium Seat Material",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 176078,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "58439",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG2JFB63942",
+        "stockNumber": "8624812A",
+        "listedAt": "2026-09-29T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 176078,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Lead Foot",
+        "exteriorColorHex": "2C2B2B",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Parsons",
+        "dealerState": "TN",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Apple CarPlay"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Android Auto"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDA4NDk=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNDA4NDk=",
+    "databaseId": "40849",
+    "name": "Golden Circle Ford Parsons LLC",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "50 East Main Street",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Parsons",
+        "state": "TN",
+        "postalCode": "38363"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkI4NjQ3OQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkI4NjQ3OQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1080,
+            "width": 1440,
+            "url": "https://listings-prod.tcimg.net/listings/624456/79/64/1FTFW1R63EFB86479/001_2026092410.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28299,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNjI0NDU2"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Red",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R63EFB86479",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 137610,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R63EFB86479",
+        "stockNumber": "5084",
+        "listedAt": "2026-09-24T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 137610,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Ruby Red Metallic Tinted Clearcoat",
+        "exteriorColorHex": "8F1C29",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Las Vegas",
+        "dealerState": "NV",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 5,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNjI0NDU2": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNjI0NDU2",
+    "databaseId": "624456",
+    "name": "Vegas Motorcars",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2570 S Eastern Ave",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Las Vegas",
+        "state": "NV",
+        "postalCode": "89169"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkUwMjU2MA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkUwMjU2MA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 2880,
+            "width": 3840,
+            "url": "https://listings-prod.tcimg.net/listings/165756/60/25/1FTFW1R67DFE02560/001_2026092808.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28041,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTY1NzU2"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Blue",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R67DFE02560",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 139441,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R67DFE02560",
+        "stockNumber": "E02560",
+        "listedAt": "2026-09-12T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 139441,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Blue Flame Metallic",
+        "exteriorColorHex": "0073C6",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "El Paso",
+        "dealerState": "TX",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTY1NzU2": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTY1NzU2",
+    "databaseId": "165756",
+    "name": "Moving Rides",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "1710 Joe Battle Blvd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "El Paso",
+        "state": "TX",
+        "postalCode": "79936"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhFRkEyODg1Mg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNlhFRkEyODg1Mg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/75717/52/88/1FTFW1R6XEFA28852/001_2026092310.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28194,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNzU3MTc="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Red",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R6XEFA28852",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 177947,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R6XEFA28852",
+        "stockNumber": null,
+        "listedAt": "2026-09-22T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 177947,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Ruby Red Metallic Tinted Clearcoat",
+        "exteriorColorHex": "8F1C29",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Houston",
+        "dealerState": "TX",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 4,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNzU3MTc=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNzU3MTc=",
+    "databaseId": "75717",
+    "name": "Houston Auto Credit",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3221 Jeanetta",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Houston",
+        "state": "TX",
+        "postalCode": "77063"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjBFRkQxMjQwOQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjBFRkQxMjQwOQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1080,
+            "width": 1440,
+            "url": "https://listings-prod.tcimg.net/listings/414149/09/24/1FTFW1R60EFD12409/001_2026100710.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28922,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDE0MTQ5"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R60EFD12409",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 149129,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R60EFD12409",
+        "stockNumber": "D12409",
+        "listedAt": "2026-10-07T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 149129,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Tuxedo Black Metallic",
+        "exteriorColorHex": "040404",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Addison",
+        "dealerState": "TX",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNDE0MTQ5": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNDE0MTQ5",
+    "databaseId": "414149",
+    "name": "Dallas I Car",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "15510 Midway Road",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Addison",
+        "state": "TX",
+        "postalCode": "75001"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjZFRkI4MzY4Nw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjZFRkI4MzY4Nw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": "EXTERIOR",
+            "height": 700,
+            "width": 1400,
+            "url": "https://static.tcimg.net/vehicles/primary/7a5269b04cd5c3fe/2014-Ford-F-150-black-full_color-driver_side_front_quarter.png",
+            "metadata": [
+              "TRANSPARENT",
+              "FULL_SUBJECT",
+              "NO_PADDING"
+            ]
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28398,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTQ0MDk="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Unknown",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R66EFB83687",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 112343,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R66EFB83687",
+        "stockNumber": "B83687",
+        "listedAt": "2026-07-17T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 112343,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Tuxedo Black Metallic",
+        "exteriorColorHex": "040404",
+        "interiorColorName": "Unknown",
+        "interiorColorHex": null,
+        "dealerCity": "Smyrna",
+        "dealerState": "GA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMTQ0MDk=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMTQ0MDk=",
+    "databaseId": "14409",
+    "name": "1st Choice Autos",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2966 South Cobb Drive",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Smyrna",
+        "state": "GA",
+        "postalCode": "30080"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzJLRkI2ODE2NA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRFWDFSRzJLRkI2ODE2NA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 960,
+            "width": 1280,
+            "url": "https://listings-prod.tcimg.net/listings/80301/64/81/1FTEX1RG2KFB68164/001_2026091717.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28366,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODAzMDE="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "White",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTEX1RG2KFB68164",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Audio",
+        "Apple CarPlay",
+        "Android Auto",
+        "Remote Engine Start",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "8230",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2019,
+      "mileage": 150479,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCab 5.5' Box 4WD",
+        "databaseId": "63481",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTEX1RG2KFB68164",
+        "stockNumber": "WYC-B68164",
+        "listedAt": "2026-09-17T12:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 150479,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Oxford White",
+        "exteriorColorHex": "E7E7E5",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Waukegan",
+        "dealerState": "IL",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Apple CarPlay"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Android Auto"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 3,
+      "ownerCount": 4,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODAzMDE=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtODAzMDE=",
+    "databaseId": "80301",
+    "name": "Your Choice Autos (Waukegan)",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2741 Belvidere Rd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Waukegan",
+        "state": "IL",
+        "postalCode": "60085"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjRERkE4NTAzMQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjRERkE4NTAzMQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1200,
+            "width": 1600,
+            "url": "https://listings-prod.tcimg.net/listings/8436/31/50/1FTFW1R64DFA85031/001_2026100603.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28998,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODQzNg=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Silver",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R64DFA85031",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 103402,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R64DFA85031",
+        "stockNumber": "GJ5888A",
+        "listedAt": "2026-10-06T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 103402,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Ingot Silver Metallic",
+        "exteriorColorHex": "D0E1DD",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Springfield",
+        "dealerState": "VA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODQzNg==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtODQzNg==",
+    "databaseId": "8436",
+    "name": "Sheehy Ford of Springfield",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "6727 Loisdale Road",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Springfield",
+        "state": "VA",
+        "postalCode": "22150"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNKRkM1MjIwOA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNKRkM1MjIwOA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/22285/08/22/1FTFW1RG3JFC52208/001_2026082604.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28000,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "EXCELLENT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjIyODU="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG3JFC52208",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 154888,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "58439",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG3JFC52208",
+        "stockNumber": "C52208",
+        "listedAt": "2026-08-06T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 154888,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Shadow Black",
+        "exteriorColorHex": "0A0A0C",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "New Smyrna Beach",
+        "dealerState": "FL",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjIyODU=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMjIyODU=",
+    "databaseId": "22285",
+    "name": "Mullinax Ford of New Smyrna Beach",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "2317 S.R. 44",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "New Smyrna Beach",
+        "state": "FL",
+        "postalCode": "32168"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkQxMjEyOA==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjNFRkQxMjEyOA==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1080,
+            "width": 1440,
+            "url": "https://listings-prod.tcimg.net/listings/82741/28/21/1FTFW1R63EFD12128/001_2026100403.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28274,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtODI3NDE="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Unknown",
+      "interiorColor": "Unknown",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R63EFD12128",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 154368,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R63EFD12128",
+        "stockNumber": "16752",
+        "listedAt": "2026-10-04T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 154368,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Unknown",
+        "exteriorColorHex": null,
+        "interiorColorName": "Unknown",
+        "interiorColorHex": null,
+        "dealerCity": "Sacramento",
+        "dealerState": "CA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 1,
+      "isCleanTitle": true
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzBIRkEyMTUyMQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzBIRkEyMTUyMQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1080,
+            "width": 1551,
+            "url": "https://listings-prod.tcimg.net/listings/23160/21/15/1FTFW1RG0HFA21521/001_2026073005.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29568,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjMxNjA="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "White",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG0HFA21521",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 121456,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG0HFA21521",
+        "stockNumber": "7398",
+        "listedAt": "2026-07-29T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 121456,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Oxford White",
+        "exteriorColorHex": "E7E7E5",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Arlington",
+        "dealerState": "VA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 6,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjMxNjA=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMjMxNjA=",
+    "databaseId": "23160",
+    "name": "Eagle Automotives Inc",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "3700 Columbia Pike",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Arlington",
+        "state": "VA",
+        "postalCode": "22204"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzZIRkMwMDcxMw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzZIRkMwMDcxMw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/32131/13/07/1FTFW1RG6HFC00713/001_2026100204.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 28643,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzIxMzE="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG6HFC00713",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 141143,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG6HFC00713",
+        "stockNumber": "64641",
+        "listedAt": "2026-09-30T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 141143,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Magnetic Metallic",
+        "exteriorColorHex": "454744",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Grove City",
+        "dealerState": "OH",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzIxMzE=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMzIxMzE=",
+    "databaseId": "32131",
+    "name": "Car Source LLC",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "1200 Stringtown Road",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Grove City",
+        "state": "OH",
+        "postalCode": "43123"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkQ1MzIxNQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjdERkQ1MzIxNQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1200,
+            "width": 1600,
+            "url": "https://listings-prod.tcimg.net/listings/2202/15/32/1FTFW1R67DFD53215/001_2026100803.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29539,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjIwMg=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Silver",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R67DFD53215",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "3059",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2013,
+      "mileage": 145589,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "41609",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R67DFD53215",
+        "stockNumber": "DT27655A",
+        "listedAt": "2026-10-08T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 145589,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Ingot Silver Metallic",
+        "exteriorColorHex": "D0E1DD",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Franklin",
+        "dealerState": "TN",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjIwMg==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMjIwMg==",
+    "databaseId": "2202",
+    "name": "Darrell Waltrip Honda",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "1430 Murfreesboro Road",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Franklin",
+        "state": "TN",
+        "postalCode": "37067"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjhFRkMzNTMwNQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSNjhFRkMzNTMwNQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 768,
+            "width": 1024,
+            "url": "https://listings-prod.tcimg.net/listings/590348/05/53/1FTFW1R68EFC35305/001_2026100404.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29154.63,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTkwMzQ4"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "White",
+      "interiorColor": "Black",
+      "engine": "6.2L V-8 Gas",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1R68EFC35305",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 13,
+        "city": 11,
+        "highway": 16
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2308",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2014,
+      "mileage": 120396,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "SVT Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "45652",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1R68EFC35305",
+        "stockNumber": "TC35305",
+        "listedAt": "2026-09-22T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "6.2L V-8 Gas",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 120396,
+        "mpgCity": 11,
+        "mpgHighway": 16,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Oxford White",
+        "exteriorColorHex": "F7F7F5",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Bensenville",
+        "dealerState": "IL",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 7,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTkwMzQ4": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTkwMzQ4",
+    "databaseId": "590348",
+    "name": "Elmhurst Ford",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "333 West Grand Ave",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Bensenville",
+        "state": "IL",
+        "postalCode": "60106"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE0NTMyOQ==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE0NTMyOQ==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 272,
+            "width": 400,
+            "url": "https://listings-prod.tcimg.net/listings/59808/29/53/1FTFW1RG7HFA45329/001_2026090910.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29129,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "HIGH"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTk4MDg="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG7HFA45329",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 165113,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG7HFA45329",
+        "stockNumber": "P3926",
+        "listedAt": "2026-09-09T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 165113,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Shadow Black",
+        "exteriorColorHex": "0A0A0C",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Fort Worth",
+        "dealerState": "TX",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTk4MDg=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTk4MDg=",
+    "databaseId": "59808",
+    "name": "ADL Auto",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "8312 camp bowie w blvd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Fort Worth",
+        "state": "TX",
+        "postalCode": "76116"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNIRkMxMDkwNw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzNIRkMxMDkwNw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1200,
+            "width": 1600,
+            "url": "https://listings-prod.tcimg.net/listings/35682/07/09/1FTFW1RG3HFC10907/001_2026080703.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29380,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "EXCELLENT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzU2ODI="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG3HFC10907",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 96015,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG3HFC10907",
+        "stockNumber": "HFC10907A",
+        "listedAt": "2026-07-29T07:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 96015,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Shadow Black",
+        "exteriorColorHex": "0A0A0C",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Troy",
+        "dealerState": "NY",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzU2ODI=": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMzU2ODI=",
+    "databaseId": "35682",
+    "name": "Subaru of Troy",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "800 Hoosick Rd",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Troy",
+        "state": "NY",
+        "postalCode": "12180"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 480,
+            "width": 640,
+            "url": "https://listings-prod.tcimg.net/listings/5290/07/46/1FTFW1RG7HFB74607/001_2026100803.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29799,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG7HFB74607",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 137274,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG7HFB74607",
+        "stockNumber": "3B74607",
+        "listedAt": "2026-10-08T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 137274,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Shadow Black",
+        "exteriorColorHex": "0A0A0C",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Bellevue",
+        "dealerState": "NE",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA==",
+    "databaseId": "5290",
+    "name": "Corwin Toyota of Bellevue",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "7851 S 19th Circle",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Bellevue",
+        "state": "NE",
+        "postalCode": "68147"
+      }
+    }
+  }
+}

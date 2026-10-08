@@ -1,0 +1,606 @@
+{
+  "ROOT_QUERY": {
+    "marketplaceListingSearch({\"filters\":{\"condition\":\"USED\",\"fallbackStrategy\":\"SIMPLE\",\"makeModelTrim\":[{\"makeSlug\":\"ford\",\"modelSlug\":\"f-150\",\"trimSlugs\":[\"raptor\"]}],\"price\":{\"max\":30000}},\"first\":30,\"offset\":60,\"sort\":\"PRICE_ASC\"})": {
+      "__typename": "MarketplaceSearchConnection",
+      "inlineAggregations": {
+        "__typename": "InlineAggregations",
+        "price": {
+          "__typename": "ListingAggregationsRangeOption",
+          "min": 10893.99,
+          "max": 29991
+        },
+        "years": {
+          "__typename": "ListingAggregationsRangeOption",
+          "min": 2010,
+          "max": 2019
+        }
+      },
+      "paymentAffordability": null,
+      "pageInfo": {
+        "__typename": "PageInfo",
+        "endCursor": "NjM",
+        "hasNextPage": false
+      },
+      "edges": [
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NjE",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NjI",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzhKRkE0NzkyMg=="
+          }
+        },
+        {
+          "__typename": "MarketplaceSearchEdge",
+          "cursor": "NjM",
+          "distance": null,
+          "estimatedPayments": [],
+          "preprospectDisclaimers": {
+            "__typename": "ConsumerSummaryPreprospectDisclaimers",
+            "lease": null,
+            "loan": null
+          },
+          "estimatedMonthlyPaymentDetails": null,
+          "node": {
+            "__ref": "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE5OTA1Mg=="
+          }
+        }
+      ],
+      "isFallback": false,
+      "totalCount": 63
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkI3NDYwNw==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 480,
+            "width": 640,
+            "url": "https://listings-prod.tcimg.net/listings/5290/07/46/1FTFW1RG7HFB74607/001_2026100803.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29799,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Black",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG7HFB74607",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Moonroof",
+        "Premium Audio",
+        "Navigation",
+        "Premium Seat Material",
+        "Front Heated Seats",
+        "Front Cooled Seats",
+        "Remote Engine Start",
+        "Multi-Zone Climate Control",
+        "Adaptive Cruise Control",
+        "Blind Spot System",
+        "Lane Keep Assist",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 137274,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG7HFB74607",
+        "stockNumber": "3B74607",
+        "listedAt": "2026-10-08T00:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 137274,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Shadow Black",
+        "exteriorColorHex": "0A0A0C",
+        "interiorColorName": "Black",
+        "interiorColorHex": null,
+        "dealerCity": "Bellevue",
+        "dealerState": "NE",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Moonroof"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Audio"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Navigation"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Heated Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Front Cooled Seats"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Remote Engine Start"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Multi-Zone Climate Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Adaptive Cruise Control"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Blind Spot System"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Lane Keep Assist"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 3,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtNTI5MA==",
+    "databaseId": "5290",
+    "name": "Corwin Toyota of Bellevue",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "7851 S 19th Circle",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Bellevue",
+        "state": "NE",
+        "postalCode": "68147"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzhKRkE0NzkyMg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzhKRkE0NzkyMg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 1200,
+            "width": 1600,
+            "url": "https://listings-prod.tcimg.net/listings/2695/22/79/1FTFW1RG8JFA47922/001_2026093004.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29991,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "GREAT"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjY5NQ=="
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Orange",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG8JFA47922",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "104",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2018,
+      "mileage": 151479,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "58439",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG8JFA47922",
+        "stockNumber": "JFA47922",
+        "listedAt": "2026-09-25T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 151479,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Lead Foot",
+        "exteriorColorHex": "2C2B2B",
+        "interiorColorName": "Orange Accent",
+        "interiorColorHex": "CD5A31",
+        "dealerCity": "Austin",
+        "dealerState": "TX",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 1,
+      "ownerCount": 2,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMjY5NQ==": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMjY5NQ==",
+    "databaseId": "2695",
+    "name": "AutoNation Toyota South Austin",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "4800 IH 35 South",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78745"
+      }
+    }
+  },
+  "ConsumerSummaryListing:Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE5OTA1Mg==": {
+    "__typename": "ConsumerSummaryListing",
+    "id": "Q29uc3VtZXJTdW1tYXJ5TGlzdGluZy0xRlRGVzFSRzdIRkE5OTA1Mg==",
+    "isMultiLocation": false,
+    "distanceRetailing": false,
+    "saved": false,
+    "galleryImages({\"galleryImagesCount\":1})": {
+      "__typename": "ListingImageConnection",
+      "edges": [
+        {
+          "__typename": "ListingImageEdge",
+          "cursor": "MQ",
+          "node": {
+            "__typename": "Image",
+            "category": null,
+            "height": 430,
+            "width": 640,
+            "url": "https://listings-prod.tcimg.net/listings/398561/52/90/1FTFW1RG7HFA99052/001_2026100506.jpg",
+            "metadata": []
+          }
+        }
+      ]
+    },
+    "prospectState": null,
+    "pricing": {
+      "__typename": "ConsumerSummaryListingPricing",
+      "listPrice": 29991,
+      "baseMsrp": null,
+      "totalMsrp": null,
+      "exclusion": "NO_EXCLUSION",
+      "discountLabel": null,
+      "transferFee": null
+    },
+    "precalculatedLease": null,
+    "marketAnalysis": {
+      "__typename": "ConsumerSummaryMarketAnalysis",
+      "priceQuality": "FAIR"
+    },
+    "dealership": {
+      "__ref": "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzk4NTYx"
+    },
+    "vehicle": {
+      "__typename": "ListingVehicle",
+      "condition": "USED",
+      "exteriorColor": "Gray",
+      "interiorColor": "Black",
+      "engine": "3.5L V-6 Gas Turbocharged",
+      "bodyStyle": "TRUCK",
+      "certifiedPreOwned": false,
+      "fuelType": "Gas",
+      "transmission": "Automatic",
+      "vin": "1FTFW1RG7HFA99052",
+      "keyFeatures": [
+        "Premium Wheels",
+        "Premium Seat Material",
+        "Backup Camera",
+        "Parking Sensors",
+        "Bluetooth",
+        "Tow Hitch"
+      ],
+      "mpg": {
+        "__typename": "FuelEconomy",
+        "combined": 16,
+        "city": 15,
+        "highway": 18
+      },
+      "make": {
+        "__typename": "ListingMake",
+        "databaseId": "21",
+        "name": "Ford",
+        "slug": "ford"
+      },
+      "model": {
+        "__typename": "ListingModel",
+        "databaseId": "2856",
+        "name": "F-150",
+        "slug": "f-150"
+      },
+      "year": 2017,
+      "mileage": 142848,
+      "style": {
+        "__typename": "ListingStyle",
+        "name": "Raptor SuperCrew 5.5' Box 4WD",
+        "databaseId": "56432",
+        "trimName": "Raptor",
+        "driveType": "FOUR_WHEEL_DRIVE",
+        "electricRange": null
+      },
+      "details": {
+        "__typename": "ListingVehicleDetailsOverview",
+        "vin": "1FTFW1RG7HFA99052",
+        "stockNumber": "9A99052",
+        "listedAt": "2026-09-01T18:45:00.000Z",
+        "condition": "USED",
+        "engine": "3.5L V-6 Gas Turbocharged",
+        "fuelType": "Gas",
+        "transmission": "Automatic",
+        "mileage": 142848,
+        "mpgCity": 15,
+        "mpgHighway": 18,
+        "driveTypeAcronym": "4WD",
+        "electricRange": null,
+        "exteriorColorName": "Avalanche",
+        "exteriorColorHex": "7C7C7A",
+        "interiorColorName": "Black",
+        "interiorColorHex": "1B1C20",
+        "dealerCity": "Spokane",
+        "dealerState": "WA",
+        "dealerDistanceMiles": null,
+        "keyFeatures": [
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Wheels"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Premium Seat Material"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Backup Camera"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Parking Sensors"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Bluetooth"
+          },
+          {
+            "__typename": "ListingKeyFeature",
+            "name": "Tow Hitch"
+          }
+        ]
+      }
+    },
+    "conditionHistory": {
+      "__typename": "ConsumerSummaryConditionHistory",
+      "accidentCount": 0,
+      "ownerCount": 4,
+      "isCleanTitle": true
+    }
+  },
+  "ListingDealership:TGlzdGluZ0RlYWxlcnNoaXAtMzk4NTYx": {
+    "__typename": "ListingDealership",
+    "id": "TGlzdGluZ0RlYWxlcnNoaXAtMzk4NTYx",
+    "databaseId": "398561",
+    "name": "Corwin Ford",
+    "parentDealershipName": null,
+    "location": {
+      "__typename": "ListingDealershipLocation",
+      "address1": "8300 E Sprague Ave",
+      "address2": null,
+      "geolocation": {
+        "__typename": "ListingGeolocation",
+        "city": "Spokane",
+        "state": "WA",
+        "postalCode": "99212"
+      }
+    }
+  }
+}
