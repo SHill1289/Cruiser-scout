@@ -4,7 +4,7 @@ on:
     - cron: '17 */6 * * *'
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [raptor-finder]
     paths: ['src/**', 'sources/config.json', 'tests/**', 'imports/**', '.github/workflows/**']
   pull_request:
     paths: ['src/**', 'tests/**', 'sources/config.json', 'imports/**']
@@ -25,7 +25,7 @@ jobs:
       - run: node --check web/app.js
   refresh:
     needs: test
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/raptor-finder'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -47,7 +47,7 @@ jobs:
           git add data/ web/inventory.json INVENTORY.md
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh Raptor listings and source health'
-            git push origin HEAD:main
+            git push origin HEAD:raptor-finder
           fi
       - name: Publish summary
         if: always()

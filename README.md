@@ -4,9 +4,9 @@ A clone of SHill1289/lx470-finder for nationwide Ford F-150 Raptors with asking 
 
 ## Deploy on Vercel
 
-Import this repository at https://vercel.com/new. Keep the framework as **Other** and leave the root directory at the repository root. The included `vercel.json` sets the output directory to `web`; no build command, API keys or external database are required. The GitHub repository may stay private. Choose your Vercel deployment access settings before sharing the app.
+The app is isolated on the `raptor-finder` branch of `SHill1289/lx470-finder`; the original LX app remains on `main`. Deploy it as a separate Vercel project, using `raptor-finder` as the production branch. Do not merge this standalone app branch into the LX app. Import the repository at https://vercel.com/new, then choose the `raptor-finder` Git branch in the project configuration. Keep the framework as **Other** and leave the root directory at the repository root. The included `vercel.json` sets the output directory to `web`; no build command, API keys or external database are required. The GitHub repository may stay private. Choose your Vercel deployment access settings before sharing the app.
 
-GitHub Actions refreshes every six hours (00:17, 06:17, 12:17 and 18:17 UTC), commits the new inventory and triggers Vercel's normal Git deployment after the project is imported. You can also run **Raptor database refresh → Run workflow**. Schedules may be delayed. The workflow visibly fails on incomplete collection while preserving source status and successful observations.
+GitHub Actions refreshes every six hours (00:17, 06:17, 12:17 and 18:17 UTC), commits the new inventory and triggers Vercel's normal Git deployment after the project is imported. You can also run **Raptor database refresh → Run workflow → raptor-finder**. Schedules may be delayed. The workflow visibly fails on incomplete collection while preserving source status and successful observations.
 
 ## What qualifies
 
@@ -76,3 +76,5 @@ Create a JSON array under `imports/` with checked listing evidence. Unchanged im
 ```
 
 This example is not inventory and cannot qualify without real price/title/history evidence.
+
+Brand assets: the Raptor image is the user-supplied artwork, displayed with CSS cropping of its white margin. The standard Ford oval comes from Wikimedia Commons (`Ford_logo_flat.svg`). Neither logo implies dealer affiliation.
