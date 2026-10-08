@@ -446,3 +446,19 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   .brand-eyebrow { font-size: 9px; }
   .filters input, .filters select, .market-controls select { font-size: 16px; }
 }
+
+/* Official Ford and Raptor artwork, with serif supporting text. */
+.brand-copy { gap: 7px; }
+.brand-eyebrow { display: flex; align-items: center; gap: 8px; }
+.brand-ford { display: block; width: 39px; height: 16px; object-fit: contain; filter: grayscale(1); opacity: .65; }
+.brand-title { display: flex; align-items: center; gap: 10px; }
+.brand-raptor { flex: 0 0 auto; width: 102px; height: 20px; opacity: .78; }
+.hero-title { display: flex; align-items: center; flex-wrap: wrap; gap: .28em; }
+.hero-title .hero-raptor { width: 4.2em; height: .86em; opacity: .86; }
+.footer-wordmark { display: flex; align-items: center; gap: 8px; }
+.footer-raptor { width: 82px; height: 16px; opacity: .65; }
+@media (max-width: 760px) {
+  .brand-ford { width: 34px; height: 14px; }
+  .brand-raptor { width: 94px; height: 18px; }
+  .brand-title { gap: 8px; }
+}
