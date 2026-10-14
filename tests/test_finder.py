@@ -11,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (accident_category, add_listing_photo, cache_public_photos, correct_ambiguous_accident_history,
                     cargurus_condition_claims, condition_claims, collect_cargurus, collect_truecar,
+                    collect_ksl, ksl_listing_urls, parse_ksl, expire_unrefreshed_observations,
                     gallery_image_urls, gallery_urls_in_page,
                     normalize, update, master_rows, merge_public_listings, parse_cargurus, parse_bat,
                     backfill_listing_dates,
@@ -43,6 +44,25 @@ def listing(**changes):
 
 
 class DatabaseTests(unittest.TestCase):
+    def test_unrefreshed_ksl_sighting_expires_without_claiming_sale(self):
+        row = normalize({"source": "ksl", "source_listing_id": "10614401",
+                         "year": 2006, "make": "Lexus", "model": "LX470",
+                         "vin": "JTJHT00W264012941",
+                         "listing_url": "https://cars.ksl.com/listing/10614401",
+                         "status": "active", "title_status": "clean title"})
+        row["last_seen"] = "2026-10-01T00:00:00+00:00"
+        state = {"listings": {row["listing_key"]: row}, "history": []}
+        changes = []
+        expire_unrefreshed_observations(state, "2026-10-14T00:00:00+00:00", changes)
+        self.assertEqual(row["status"], "unknown")
+        self.assertEqual(changes[0]["event"], "stale")
+        expire_unrefreshed_observations(state, "2026-10-15T00:00:00+00:00", changes)
+        self.assertEqual(len(changes), 1)
+        dealer = dict(row, source="bypex", listing_key="bypex:020647", status="active")
+        state["listings"][dealer["listing_key"]] = dealer
+        expire_unrefreshed_observations(state, "2026-10-15T00:00:00+00:00", changes)
+        self.assertEqual(dealer["status"], "unknown")
+
     def setUp(self):
         self.state = {'listings': {}, 'history': [], 'imports': []}
         self.row = listing()
@@ -420,6 +440,43 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(saved['owner_evidence_url'], self.row['listing_url'])
 
 class ParserTests(unittest.TestCase):
+    def test_ksl_clean_title_requires_per_listing_evidence(self):
+        url = 'https://cars.ksl.com/listing/10614401'
+        car = {
+            '@type': 'Car', 'url': url, 'modelDate': 2006,
+            'vehicleIdentificationNumber': 'JTJHT00W264012941',
+            'brand': {'name': 'Lexus'}, 'color': 'Silver',
+            'vehicleInteriorColor': 'Gray',
+            'mileageFromOdometer': {'value': 274010},
+            'image': {'url': 'https://image.ksldigital.com/car.jpg'},
+            'offers': {'availability': 'https://schema.org/InStock', 'price': 11995,
+                       'seller': {'@type': 'Organization', 'name': 'Test Dealer',
+                                  'address': {'postalCode': '84115'}}},
+        }
+        def page(title):
+            return (f'<title>2006 Lexus LX Base in Salt Lake City, UT | KSL Cars</title>'
+                    f'<p>Title</p></div><div>{title}</div>'
+                    f'<script type="application/ld+json">{json.dumps(car)}</script>')
+        row = parse_ksl(page('Clean Title'), url)
+        self.assertEqual((row['model'], row['vin'], row['asking_price']),
+                         ('LX470', 'JTJHT00W264012941', 11995))
+        self.assertEqual((row['city'], row['state'], row['title_status']),
+                         ('Salt Lake City', 'UT', 'clean title'))
+        self.assertIsNone(parse_ksl(page('Rebuilt Title'), url))
+        with self.assertRaises(ValueError):
+            parse_ksl(page('No title reported').replace('<p>Title</p>', '<p>History</p>'), url)
+
+    def test_ksl_search_targets_only_supported_cards(self):
+        cards = ('<title>KSL Cars</title>'
+                 '<a aria-label="2006 Lexus LX Base" data-item-id="11"></a>'
+                 '<a aria-label="2015 Lexus LX 570" data-item-id="12"></a>'
+                 '<a aria-label="2007 Toyota Land Cruiser Base" data-item-id="13"></a>'
+                 '<a aria-label="2024 Toyota Land Cruiser Base" data-item-id="14"></a>')
+        self.assertEqual(ksl_listing_urls(cards, 'Lexus'),
+                         ['https://cars.ksl.com/listing/11', 'https://cars.ksl.com/listing/12'])
+        self.assertEqual(ksl_listing_urls(cards, 'Toyota'),
+                         ['https://cars.ksl.com/listing/13'])
+
     def clean_fixture(self):
         context = json.loads((Path(__file__).parent / 'fixtures/cargurus.json').read_text())
         criteria = context['state']['loaderData']['route']['search']['appliedFilterCriteria']
