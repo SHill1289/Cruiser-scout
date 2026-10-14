@@ -40,6 +40,18 @@ button, input, select { font: inherit; }
   transform: rotate(-4deg);
   pointer-events: none;
 }
+.hero::after {
+  content: "";
+  position: absolute;
+  width: clamp(250px, 28vw, 430px);
+  aspect-ratio: 5 / 3;
+  right: 35%;
+  top: 210px;
+  background: url("toyota-emblem.svg") center / contain no-repeat;
+  opacity: .018;
+  transform: rotate(4deg);
+  pointer-events: none;
+}
 .nav { height: 86px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(237,242,236,.13); }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 720; text-decoration: none; letter-spacing: -.02em; }
 .brand-marks { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
@@ -256,6 +268,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   .shell { width: min(100% - 28px, 1180px); }
   .hero { min-height: auto; }
   .hero::before { width: 240px; right: -55px; top: 100px; opacity: .014; }
+  .hero::after { width: 240px; left: -55px; right: auto; top: 210px; opacity: .014; }
   .nav { height: 72px; }
   .nav-link { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 32px; min-height: auto; padding: 54px 0 44px; }
