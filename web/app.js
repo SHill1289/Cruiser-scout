@@ -168,7 +168,7 @@ function normalizedColorName(raw) {
 }
 function resolveFactoryColor(kind, raw, year, model = "LX470") {
   const reported = normalizedColorName(raw);
-  const entries = model === "Land Cruiser" ? [] : kind === "exterior"
+  const entries = model !== "LX470" ? [] : kind === "exterior"
     ? colorReference.exterior || []
     : colorReference.interior_by_year?.[String(year)] || [];
   if (!reported) return { name: "Unknown", swatch: "", code: "", factory: false, reported: "" };
@@ -401,7 +401,7 @@ function renderCard(row, group) {
       else {
         trigger.remove();
         media.classList.add("photo-missing");
-        media.prepend(text("span", "photo-placeholder", row.model === "Land Cruiser" ? "LC" : "LX"));
+        media.prepend(text("span", "photo-placeholder", row.model || "LX470"));
         counter.remove();
         media.querySelectorAll(".photo-step").forEach(button => button.remove());
       }
@@ -426,13 +426,14 @@ function renderCard(row, group) {
     }
     show(0);
   } else {
-    media.append(text("span", "photo-placeholder", row.model === "Land Cruiser" ? "LC" : "LX"));
+    media.append(text("span", "photo-placeholder", row.model || "LX470"));
   }
   media.append(text("span", "year-badge", String(row.year)));
   card.append(media);
 
   const identity = text("div", "identity", "");
   const stateRow = text("div", "listing-state-row", "");
+  stateRow.append(text("span", "model-tag", row.model || "LX470"));
   stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
   if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
   const accidentReports = new Set(group.listings.map(accidentGroup));

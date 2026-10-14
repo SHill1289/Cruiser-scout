@@ -1,3 +1,4 @@
+import copy
 import contextlib
 import io
 import json
@@ -9,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from finder import (accident_category, add_listing_photo, cache_public_photos, correct_ambiguous_accident_history,
-                    cargurus_condition_claims, condition_claims,
+                    cargurus_condition_claims, condition_claims, collect_cargurus, collect_truecar,
                     gallery_image_urls, gallery_urls_in_page,
                     normalize, update, master_rows, merge_public_listings, parse_cargurus, parse_bat,
                     backfill_listing_dates,
@@ -51,6 +52,26 @@ class DatabaseTests(unittest.TestCase):
         self.assertFalse(valid_vin('JTJHT00W464018100'))
         bad = normalize({**self.row, 'vin': 'JTJHT00W464018100'})
         self.assertTrue(bad['vehicle_key'].startswith('listing:'))
+
+    def test_lx570_years_and_vin(self):
+        row = normalize({**self.row, 'model': 'LX570', 'year': 2016, 'vin': 'JTJHY7AX2G4189718'})
+        self.assertEqual(row['vehicle_key'], 'vin:JTJHY7AX2G4189718')
+        early = normalize({**row, 'year': 2011, 'vin': 'JTJHY7AXXB4080657'})
+        self.assertNotIn('vin_model_or_year_conflict', early['quality_flags'])
+        self.assertIn('vin_model_or_year_conflict', normalize({**row, 'year': 2015})['quality_flags'])
+        for model, year in [('LX570', 2010), ('LX570', 2017), ('LX470', 2011), ('Land Cruiser', 2016)]:
+            with self.subTest(model=model, year=year), self.assertRaises(ValueError):
+                normalize({**self.row, 'model': model, 'make': 'Toyota' if model == 'Land Cruiser' else 'Lexus', 'year': year})
+
+    def test_lx570_scope_does_not_remove_older_models(self):
+        lc = {**self.row, 'source_listing_id': 'lc', 'make': 'Toyota', 'model': 'Land Cruiser', 'vin': 'JTEHT05J862085738'}
+        lx = {**self.row, 'source_listing_id': '570', 'model': 'LX570', 'year': 2016, 'vin': 'JTJHY7AX2G4189718'}
+        update(self.state, [self.row, lc, lx], NOW)
+        for _ in range(3):
+            update(self.state, [], NOW, [('test', 2016, 'LX570')])
+        self.assertEqual(self.state['listings']['test:570']['status'], 'removed')
+        self.assertEqual(self.state['listings']['test:lc']['missing_checks'], 0)
+        self.assertEqual(self.state['listings']['test:1']['missing_checks'], 0)
 
     def test_land_cruiser_identity_and_vin(self):
         row = normalize({**self.row, 'make': 'Toyota', 'model': 'Land Cruiser', 'vin': 'JTEHT05J862085738'})
@@ -425,6 +446,89 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(without_clear_history['accident_history'], 'History unavailable')
         self.assertEqual(target['reported_extras'], 'CarPlay;Rear-seat DVD')
         self.assertTrue(clean_title_candidate(target))
+
+    def lx570_cargurus_context(self):
+        context = self.clean_fixture()
+        search = context['state']['loaderData']['route']['search']
+        search['appliedFilterCriteria'].update(startYear=2016, endYear=2016)
+        search['tiles'] = search['tiles'][:3]
+        for i, tile in enumerate(search['tiles']):
+            tile['data']['ontologyData'].update(carYear='2016', trimName='570 4WD')
+            tile['data']['vin'] = ''
+        search.update(totalListings=3, pageCount=2, pageNumber=1, pageReceipt='receipt', pageAlignment='alignment')
+        return context
+
+    def test_cargurus_pagination_and_incomplete_snapshot(self):
+        context = self.lx570_cargurus_context()
+        search = context['state']['loaderData']['route']['search']
+        second = copy.deepcopy(context)
+        second['state']['loaderData']['route']['search'].update(tiles=search['tiles'][2:], pageNumber=2)
+        search['tiles'] = search['tiles'][:2]
+        calls = []
+        class FakeFetcher:
+            def get(self, url):
+                calls.append(url)
+                return 'window.__remixContext = ' + json.dumps(second if 'page=2' in url else context)
+        rows, complete, total = collect_cargurus(FakeFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570')
+        self.assertTrue(complete)
+        self.assertEqual(len(rows), total)
+        self.assertTrue(all(row['model'] == 'LX570' for row in rows))
+        self.assertIn('pageReceipt=receipt', calls[-1])
+        second['state']['loaderData']['route']['search']['tiles'] = search['tiles']
+        self.assertFalse(collect_cargurus(FakeFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570')[1])
+        second['state']['loaderData']['route']['search']['pageNumber'] = 1
+        with self.assertRaisesRegex(ValueError, 'wrong result page'):
+            collect_cargurus(FakeFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570')
+
+    def test_cargurus_empty_results_and_changing_totals(self):
+        context = self.lx570_cargurus_context()
+        search = context['state']['loaderData']['route']['search']
+        search.update(totalListings=0, pageCount=0, tiles=[])
+        class FakeFetcher:
+            def get(self, url): return 'window.__remixContext = ' + json.dumps(context)
+        self.assertEqual(collect_cargurus(FakeFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570'), ([], True, 0))
+        context = self.lx570_cargurus_context()
+        second = copy.deepcopy(context)
+        second['state']['loaderData']['route']['search'].update(pageNumber=2, totalListings=4)
+        class ChangingFetcher:
+            def get(self, url): return 'window.__remixContext = ' + json.dumps(second if 'page=2' in url else context)
+        self.assertFalse(collect_cargurus(ChangingFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570')[1])
+
+    def truecar_lx570_page(self, offset, refs, total=3, has_next=False, clean=True):
+        args = {'offset': offset, 'first': 2, 'filters': {'condition': 'USED',
+            'year': {'min': 2011, 'max': 2016}, 'makeModelTrim': [{'makeSlug': 'lexus', 'modelSlug': 'lx', 'trimSlugs': ['lx-570']}]}}
+        state = {'ROOT_QUERY': {'marketplaceListingSearch(' + json.dumps(args) + ')': {
+            'totalCount': total, 'edges': [{'node': {'__ref': ref}} for ref in refs], 'pageInfo': {'hasNextPage': has_next}}}}
+        for ref in refs:
+            state[ref] = {'conditionHistory': {'isCleanTitle': clean}, 'vehicle': {
+                'vin': ref, 'year': 2016, 'make': {'name': 'Lexus'}, 'style': {'trimName': 'LX 570'}}}
+        return '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+            {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+
+    def test_truecar_lx570_pagination_and_clean_title_exclusions(self):
+        first = self.truecar_lx570_page(0, ['a', 'b'], has_next=True)
+        second = self.truecar_lx570_page(2, ['c'], clean=False)
+        class FakeFetcher:
+            def get(self, url): return second if 'page=2' in url else first
+        rows, complete, total = collect_truecar(FakeFetcher(), 'https://www.truecar.com/test', NOW, 'LX570')
+        self.assertTrue(complete)
+        self.assertEqual(total, 3)
+        self.assertEqual(len(rows), 2)
+        self.assertTrue(all(row['model'] == 'LX570' for row in rows))
+        second = self.truecar_lx570_page(2, ['a'])
+        self.assertFalse(collect_truecar(FakeFetcher(), 'https://www.truecar.com/test', NOW, 'LX570')[1])
+        second = self.truecar_lx570_page(0, ['c'])
+        with self.assertRaises(ValueError):
+            collect_truecar(FakeFetcher(), 'https://www.truecar.com/test', NOW, 'LX570')
+
+    def test_lx570_auction_and_discovery(self):
+        url = 'https://bringatrailer.com/listing/2011-lexus-lx570-1/'
+        page = '<h1>2011 Lexus LX570</h1><div class="listing-intro">Bid to USD $25,000 Reserve not met<div class="listing-actions-stats">'
+        row = parse_bat(page, url, NOW)
+        self.assertEqual(row['model'], 'LX570')
+        self.assertEqual(row['year'], 2011)
+        self.assertEqual(bat_listing_urls('<a href="/listing/2011-lexus-lx570-1/">LX570</a>'
+            '<a href="/listing/2017-lexus-lx570-1/">wrong year</a>'), {url})
 
     def test_cargurus_land_cruiser(self):
         context = self.clean_fixture()

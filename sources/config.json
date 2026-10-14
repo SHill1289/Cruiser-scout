@@ -61,6 +61,76 @@
       "url": "https://bringatrailer.com/toyota/land-cruiser-100-series/"
     },
     {
+      "id": "cargurus-lx570-2011",
+      "type": "cargurus",
+      "enabled": true,
+      "model": "LX570",
+      "year": 2011,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2011&endYear=2011&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2011&endYear=2011&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC"
+    },
+    {
+      "id": "cargurus-lx570-2012",
+      "type": "cargurus",
+      "enabled": false,
+      "model": "LX570",
+      "year": 2012,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2012&endYear=2012&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2012&endYear=2012&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC",
+      "status": "not_applicable",
+      "reason": "The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled."
+    },
+    {
+      "id": "cargurus-lx570-2013",
+      "type": "cargurus",
+      "enabled": true,
+      "model": "LX570",
+      "year": 2013,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2013&endYear=2013&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2013&endYear=2013&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC"
+    },
+    {
+      "id": "cargurus-lx570-2014",
+      "type": "cargurus",
+      "enabled": true,
+      "model": "LX570",
+      "year": 2014,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2014&endYear=2014&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2014&endYear=2014&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC"
+    },
+    {
+      "id": "cargurus-lx570-2015",
+      "type": "cargurus",
+      "enabled": true,
+      "model": "LX570",
+      "year": 2015,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2015&endYear=2015&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2015&endYear=2015&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC"
+    },
+    {
+      "id": "cargurus-lx570-2016",
+      "type": "cargurus",
+      "enabled": true,
+      "model": "LX570",
+      "year": 2016,
+      "url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2016&endYear=2016&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&sortType=PRICE&sortDirection=ASC",
+      "no_accidents_url": "https://www.cargurus.com/Cars/l-Used-Lexus-LX-d3042?startYear=2016&endYear=2016&distance=50000&zip=27101&hideLemon=true&hideFrameDamaged=true&hideSalvage=true&hideTheft=true&maxAccidents=0&sortType=PRICE&sortDirection=ASC"
+    },
+    {
+      "id": "truecar-lx570",
+      "type": "truecar",
+      "enabled": true,
+      "model": "LX570",
+      "url": "https://www.truecar.com/used-cars-for-sale/listings/lexus/lx/year-2011-2016/?trim=lx-570&searchRadius=5000"
+    },
+    {
+      "id": "bringatrailer-lx570",
+      "type": "bringatrailer",
+      "enabled": true,
+      "model": "LX570",
+      "url": "https://bringatrailer.com/lexus/lx570/"
+    },
+    {
       "id": "carfax",
       "enabled": false,
       "reason": "Direct automated request returned HTTP 403 during setup. Import verified observations manually."
@@ -93,7 +163,7 @@
     {
       "id": "autotempest",
       "enabled": false,
-      "reason": "Search links available for both models. Automated imports require written authorization from AutoTempest; no authorized feed configured."
+      "reason": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured."
     }
   ]
 }
