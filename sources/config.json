@@ -119,9 +119,10 @@
     {
       "id": "truecar-lx570",
       "type": "truecar",
-      "enabled": true,
+      "enabled": false,
       "model": "LX570",
-      "url": "https://www.truecar.com/used-cars-for-sale/listings/lexus/lx/year-2011-2016/?trim=lx-570&searchRadius=5000"
+      "url": "https://www.truecar.com/used-cars-for-sale/listings/lexus/lx/year-2011-2016/?trim=lx-570&searchRadius=5000",
+      "reason": "GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically."
     },
     {
       "id": "bringatrailer-lx570",
