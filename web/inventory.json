@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-14T11:59:07+00:00",
+  "generated_at": "2026-10-14T13:09:35+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
-    "vehicles": 26,
-    "visible_vehicles": 30,
-    "active_listings": 31,
-    "retail": 30,
+    "vehicles": 38,
+    "visible_vehicles": 42,
+    "active_listings": 44,
+    "retail": 43,
     "auctions": 1,
     "sold": 4,
     "ended_auctions": 0
@@ -15,73 +15,109 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "18 parsed of 18; 17 photos found; nationwide. Additional pages are not crawled. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "7 parsed of 7; 7 photos found; nationwide. Additional pages are not crawled.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "5 clean-title listings parsed of 5; nationwide. 5 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "2 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "historical sales",
       "status": "warning",
       "detail": "51 completed sales retained from 51 discovered or seeded auctions. 1 records unavailable; first error: https://bringatrailer.com/listing/2006-lexus-lx470-88/: Auction did not record a completed sale",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "cargurus-land-cruiser-2006",
+      "status": "ok",
+      "detail": "8 parsed of 8; 8 photos found; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "cargurus-land-cruiser-2007",
+      "status": "ok",
+      "detail": "3 parsed of 3; 3 photos found; nationwide. Additional pages are not crawled.",
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "truecar-land-cruiser",
+      "status": "ok",
+      "detail": "2 clean-title listings parsed of 2; nationwide. 2 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "bringatrailer-land-cruiser",
+      "status": "ok",
+      "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "historical sales - Land Cruiser",
+      "status": "ok",
+      "detail": "51 completed sales retained from 50 discovered or seeded auctions.",
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
+    },
+    {
+      "source": "autotempest",
+      "status": "manual_only",
+      "detail": "Search links available for both models. Automated imports require written authorization from AutoTempest; no authorized feed configured.",
+      "checked_at": "2026-10-14T13:09:35+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
       "detail": "1 existing listing photos were unavailable; placeholders remain. First error: cargurus:461385210: TimeoutException: Message:  ",
-      "checked_at": "2026-10-14T11:59:07+00:00"
+      "checked_at": "2026-10-14T13:09:35+00:00"
     }
   ],
   "market_history": {
@@ -96,7 +132,9 @@
         "sold_at": "2026-10-06",
         "sale_price": 30000,
         "mileage": 129000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -106,7 +144,9 @@
         "sold_at": "2026-09-16",
         "sale_price": 13500,
         "mileage": 209000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -116,7 +156,9 @@
         "sold_at": "2026-09-08",
         "sale_price": 17750,
         "mileage": 190000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -126,7 +168,9 @@
         "sold_at": "2026-09-03",
         "sale_price": 14000,
         "mileage": 198000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -136,7 +180,9 @@
         "sold_at": "2026-08-24",
         "sale_price": 18888,
         "mileage": 198000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -146,7 +192,9 @@
         "sold_at": "2026-08-19",
         "sale_price": 28250,
         "mileage": 155000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -156,7 +204,9 @@
         "sold_at": "2026-08-08",
         "sale_price": 44000,
         "mileage": 115000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -166,7 +216,9 @@
         "sold_at": "2026-08-06",
         "sale_price": 20500,
         "mileage": 163000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -176,7 +228,9 @@
         "sold_at": "2026-06-29",
         "sale_price": 28500,
         "mileage": 190000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -186,7 +240,9 @@
         "sold_at": "2026-06-26",
         "sale_price": 46000,
         "mileage": 133000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -196,7 +252,9 @@
         "sold_at": "2026-05-18",
         "sale_price": 44500,
         "mileage": 98000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -206,7 +264,9 @@
         "sold_at": "2026-05-13",
         "sale_price": 30500,
         "mileage": 117000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -216,7 +276,9 @@
         "sold_at": "2026-04-19",
         "sale_price": 30250,
         "mileage": 184000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -226,7 +288,9 @@
         "sold_at": "2026-03-21",
         "sale_price": 38750,
         "mileage": 91000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -236,7 +300,9 @@
         "sold_at": "2026-02-19",
         "sale_price": 15238,
         "mileage": 223000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -246,7 +312,9 @@
         "sold_at": "2026-02-15",
         "sale_price": 22750,
         "mileage": 163000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -256,7 +324,9 @@
         "sold_at": "2026-01-27",
         "sale_price": 40500,
         "mileage": 151000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -266,7 +336,9 @@
         "sold_at": "2026-01-07",
         "sale_price": 16500,
         "mileage": 226000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -276,7 +348,9 @@
         "sold_at": "2025-12-26",
         "sale_price": 16000,
         "mileage": 178000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -286,7 +360,9 @@
         "sold_at": "2025-12-12",
         "sale_price": 53000,
         "mileage": 51000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -296,7 +372,9 @@
         "sold_at": "2025-12-08",
         "sale_price": 28000,
         "mileage": 152000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -306,7 +384,9 @@
         "sold_at": "2025-11-28",
         "sale_price": 26250,
         "mileage": 153000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -316,7 +396,9 @@
         "sold_at": "2025-11-16",
         "sale_price": 55500,
         "mileage": 129000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -326,7 +408,9 @@
         "sold_at": "2025-11-11",
         "sale_price": 60500,
         "mileage": 68000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -336,7 +420,9 @@
         "sold_at": "2025-10-17",
         "sale_price": 12850,
         "mileage": 233000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -346,7 +432,9 @@
         "sold_at": "2025-10-16",
         "sale_price": 120000,
         "mileage": 18000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -356,7 +444,9 @@
         "sold_at": "2025-10-09",
         "sale_price": 32000,
         "mileage": 111000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -366,7 +456,9 @@
         "sold_at": "2025-10-05",
         "sale_price": 34500,
         "mileage": 99000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -376,7 +468,9 @@
         "sold_at": "2025-09-11",
         "sale_price": 18200,
         "mileage": 204000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -386,7 +480,9 @@
         "sold_at": "2025-07-27",
         "sale_price": 11500,
         "mileage": 218000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -396,7 +492,9 @@
         "sold_at": "2025-07-15",
         "sale_price": 24000,
         "mileage": 133000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -406,7 +504,9 @@
         "sold_at": "2025-07-03",
         "sale_price": 44750,
         "mileage": 87000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -416,7 +516,9 @@
         "sold_at": "2025-06-30",
         "sale_price": 21500,
         "mileage": 184000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -426,7 +528,9 @@
         "sold_at": "2025-06-24",
         "sale_price": 29500,
         "mileage": 115000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -436,7 +540,9 @@
         "sold_at": "2025-06-17",
         "sale_price": 23250,
         "mileage": 111000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -446,7 +552,9 @@
         "sold_at": "2025-05-13",
         "sale_price": 18750,
         "mileage": 111000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -456,7 +564,9 @@
         "sold_at": "2025-05-07",
         "sale_price": 14750,
         "mileage": 202000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -466,7 +576,9 @@
         "sold_at": "2025-04-24",
         "sale_price": 35000,
         "mileage": 91000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -476,7 +588,9 @@
         "sold_at": "2025-04-07",
         "sale_price": 22000,
         "mileage": 177000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -486,7 +600,9 @@
         "sold_at": "2025-03-25",
         "sale_price": 15000,
         "mileage": 180000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -496,7 +612,9 @@
         "sold_at": "2025-03-16",
         "sale_price": 20250,
         "mileage": 259000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -506,7 +624,9 @@
         "sold_at": "2025-03-06",
         "sale_price": 19103,
         "mileage": 180000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -516,7 +636,9 @@
         "sold_at": "2025-02-11",
         "sale_price": 15250,
         "mileage": 207000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -526,7 +648,9 @@
         "sold_at": "2025-01-30",
         "sale_price": 16751,
         "mileage": 248000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -536,7 +660,9 @@
         "sold_at": "2025-01-29",
         "sale_price": 23250,
         "mileage": 185000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -546,7 +672,9 @@
         "sold_at": "2024-12-30",
         "sale_price": 35250,
         "mileage": 76000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -556,7 +684,9 @@
         "sold_at": "2024-12-21",
         "sale_price": 23750,
         "mileage": 158000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -566,7 +696,9 @@
         "sold_at": "2024-12-17",
         "sale_price": 25999,
         "mileage": 137000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -576,7 +708,9 @@
         "sold_at": "2024-11-09",
         "sale_price": 27500,
         "mileage": 169000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       },
       {
         "source": "Bring a Trailer",
@@ -586,7 +720,9 @@
         "sold_at": "2024-10-21",
         "sale_price": 17500,
         "mileage": 105000,
-        "mileage_is_approximate": true
+        "mileage_is_approximate": true,
+        "make": "Lexus",
+        "model": "LX470"
       }
     ]
   },
@@ -596,6 +732,8 @@
       "vehicle_key": "vin:JTJHT00W964015853",
       "vin": "JTJHT00W964015853",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "bringatrailer",
       "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-81/",
       "status": "sold",
@@ -664,6 +802,8 @@
       "vehicle_key": "vin:JTJHT00W664007130",
       "vin": "JTJHT00W664007130",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "bringatrailer",
       "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-84/",
       "status": "sold",
@@ -732,6 +872,8 @@
       "vehicle_key": "vin:JTJHT00W664010920",
       "vin": "JTJHT00W664010920",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "bringatrailer",
       "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-85/",
       "status": "sold",
@@ -800,6 +942,8 @@
       "vehicle_key": "vin:JTJHT00W864011289",
       "vin": "JTJHT00W864011289",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "bringatrailer",
       "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-88/",
       "status": "active",
@@ -846,11 +990,11 @@
       "modifications_status": "",
       "modifications_evidence": "",
       "auction_ends_at": "2026-10-19T23:04:00+00:00",
-      "bid_observed_at": "2026-10-14T11:59:07+00:00",
+      "bid_observed_at": "2026-10-14T13:09:35+00:00",
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-13T00:46:00+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -868,6 +1012,8 @@
       "vehicle_key": "vin:JTJHT00W574025684",
       "vin": "JTJHT00W574025684",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "bringatrailer",
       "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-58/",
       "status": "sold",
@@ -918,7 +1064,7 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-22T23:14:48+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -932,10 +1078,82 @@
       }
     },
     {
+      "listing_key": "cargurus:399761178",
+      "vehicle_key": "vin:JTEHT05J072110570",
+      "vin": "JTEHT05J072110570",
+      "year": 2007,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/399761178",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 18200,
+      "base_price": 18200,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 182289,
+      "mileage_is_approximate": "",
+      "city": "Jeffersonville",
+      "state": "IN",
+      "postal_code": "",
+      "latitude": 38.33583,
+      "longitude": -85.698968,
+      "location_precision": "city area",
+      "seller": "Driving Xcellence",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2024/10/29/09/11/2007_toyota_land_cruiser-pic-8723947328853199058-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2024/10/29/09/11/2007_toyota_land_cruiser-pic-8723947328853199058-1024x768.jpeg"
+      ],
+      "exterior_color": "Silver Metallic",
+      "interior_color": "Gray Leather",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "History unavailable",
+      "accident_category": "unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2024-10-29",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "IN",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:436324031",
       "vehicle_key": "vin:JTJHT00W764019528",
       "vin": "JTJHT00W764019528",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/436324031",
       "status": "active",
@@ -986,7 +1204,7 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1004,6 +1222,8 @@
       "vehicle_key": "vin:JTJHT00W264008291",
       "vin": "JTJHT00W264008291",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/440552873",
       "status": "active",
@@ -1054,7 +1274,7 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 49,
@@ -1068,10 +1288,82 @@
       }
     },
     {
+      "listing_key": "cargurus:447090235",
+      "vehicle_key": "vin:JTEHT05JX62084588",
+      "vin": "JTEHT05JX62084588",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/447090235",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 15890,
+      "base_price": 15890,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 250158,
+      "mileage_is_approximate": "",
+      "city": "Houston",
+      "state": "TX",
+      "postal_code": "",
+      "latitude": 29.785743,
+      "longitude": -95.388806,
+      "location_precision": "city area",
+      "seller": "RK Motors",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/05/02/20/51/2006_toyota_land_cruiser-pic-1937945832355162967-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/05/02/20/51/2006_toyota_land_cruiser-pic-1937945832355162967-1024x768.jpeg"
+      ],
+      "exterior_color": "White",
+      "interior_color": "Brown (Beige)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-05-03",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:449010562",
       "vehicle_key": "vin:JTJHT00W164008900",
       "vin": "JTJHT00W164008900",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/449010562",
       "status": "active",
@@ -1122,7 +1414,7 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -1140,6 +1432,8 @@
       "vehicle_key": "vin:JTJHT00W564016238",
       "vin": "JTJHT00W564016238",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/450232382",
       "status": "active",
@@ -1190,7 +1484,7 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 28,
@@ -1204,10 +1498,82 @@
       }
     },
     {
+      "listing_key": "cargurus:453847393",
+      "vehicle_key": "vin:JTEHT05J062101558",
+      "vin": "JTEHT05J062101558",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/453847393",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 29249,
+      "base_price": 28950,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 199149,
+      "mileage_is_approximate": "",
+      "city": "Marietta",
+      "state": "GA",
+      "postal_code": "",
+      "latitude": 33.953561,
+      "longitude": -84.542463,
+      "location_precision": "city area",
+      "seller": "Persichetti Motorsports",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/08/06/08/04/2006_toyota_land_cruiser-pic-5505812350238113177-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/08/06/08/04/2006_toyota_land_cruiser-pic-5505812350238113177-1024x768.jpeg"
+      ],
+      "exterior_color": "Beige",
+      "interior_color": "Brown (Beige)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "History unavailable",
+      "accident_category": "unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-07-19",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:454578510",
       "vehicle_key": "vin:JTJHT00WX64009804",
       "vin": "JTJHT00WX64009804",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/454578510",
       "status": "active",
@@ -1258,7 +1624,7 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -3,
@@ -1276,6 +1642,8 @@
       "vehicle_key": "vin:JTJHT00W874022441",
       "vin": "JTJHT00W874022441",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/454664523",
       "status": "active",
@@ -1326,7 +1694,7 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 11,
@@ -1344,6 +1712,8 @@
       "vehicle_key": "vin:JTJHT00W364005108",
       "vin": "JTJHT00W364005108",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/455377530",
       "status": "active",
@@ -1394,7 +1764,7 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 35,
@@ -1412,6 +1782,8 @@
       "vehicle_key": "vin:JTJHT00W964005131",
       "vin": "JTJHT00W964005131",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/455935117",
       "status": "active",
@@ -1462,7 +1834,7 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -33,
@@ -1476,10 +1848,82 @@
       }
     },
     {
+      "listing_key": "cargurus:456839853",
+      "vehicle_key": "vin:JTEHT05J362091544",
+      "vin": "JTEHT05J362091544",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/456839853",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 20694,
+      "base_price": 19995,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 225669,
+      "mileage_is_approximate": "",
+      "city": "Mesa",
+      "state": "AZ",
+      "postal_code": "",
+      "latitude": 33.399355,
+      "longitude": -111.715968,
+      "location_precision": "city area",
+      "seller": "Ultimate Autos",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/01/20/37/2006_toyota_land_cruiser-pic-1791210082769057906-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/10/01/20/37/2006_toyota_land_cruiser-pic-1791210082769057906-1024x768.jpeg"
+      ],
+      "exterior_color": "Silver",
+      "interior_color": "Gray",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-08-22",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:457613100",
       "vehicle_key": "vin:JTJHT00WX74025471",
       "vin": "JTJHT00WX74025471",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/457613100",
       "status": "active",
@@ -1530,7 +1974,7 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 59,
@@ -1548,6 +1992,8 @@
       "vehicle_key": "vin:JTJHT00W774020647",
       "vin": "JTJHT00W774020647",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/457621994",
       "status": "active",
@@ -1598,7 +2044,7 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 3,
@@ -1612,10 +2058,152 @@
       }
     },
     {
+      "listing_key": "cargurus:457685480",
+      "vehicle_key": "vin:JTEHT05J862085738",
+      "vin": "JTEHT05J862085738",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/457685480",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 15175,
+      "base_price": 14995,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 206678,
+      "mileage_is_approximate": "",
+      "city": "Des Moines",
+      "state": "IA",
+      "postal_code": "",
+      "latitude": 41.57259,
+      "longitude": -93.610243,
+      "location_precision": "city area",
+      "seller": "Tom's Auto Sales Group",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/09/01/00/11/2006_toyota_land_cruiser-pic-3465439807183421311-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/01/00/11/2006_toyota_land_cruiser-pic-3465439807183421311-1024x768.jpeg"
+      ],
+      "exterior_color": "Galactic Gray Mica",
+      "interior_color": "Stone",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-01",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "IA",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:458338452",
+      "vehicle_key": "vin:JTEHT05J262085332",
+      "vin": "JTEHT05J262085332",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/458338452",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 21995,
+      "base_price": 21995,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 215066,
+      "mileage_is_approximate": "",
+      "city": "Kirkland",
+      "state": "WA",
+      "postal_code": "",
+      "latitude": 47.69702,
+      "longitude": -122.203694,
+      "location_precision": "city area",
+      "seller": "Eastlake Auto Brokers",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/09/11/07/29/2006_toyota_land_cruiser-pic-3361719464629240934-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/11/07/29/2006_toyota_land_cruiser-pic-3361719464629240934-1024x768.jpeg"
+      ],
+      "exterior_color": "Tan",
+      "interior_color": "Brown (Tan)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-08",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:458809207",
       "vehicle_key": "vin:JTJHT00W464010351",
       "vin": "JTJHT00W464010351",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/458809207",
       "status": "active",
@@ -1666,7 +2254,7 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 1,
@@ -1680,10 +2268,82 @@
       }
     },
     {
+      "listing_key": "cargurus:459000534",
+      "vehicle_key": "vin:JTEHT05J062096670",
+      "vin": "JTEHT05J062096670",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/459000534",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 19995,
+      "base_price": 19500,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 249547,
+      "mileage_is_approximate": "",
+      "city": "Raleigh",
+      "state": "NC",
+      "postal_code": "",
+      "latitude": 35.831456,
+      "longitude": -78.639558,
+      "location_precision": "city area",
+      "seller": "Master Auto Group",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/06/11/25/2006_toyota_land_cruiser-pic-1171169112889900586-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/10/06/11/25/2006_toyota_land_cruiser-pic-1171169112889900586-1024x768.jpeg"
+      ],
+      "exterior_color": "White",
+      "interior_color": "Brown (Beige)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-16",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "cargurus:459000535",
       "vehicle_key": "vin:JTJHT00W074027827",
       "vin": "JTJHT00W074027827",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/459000535",
       "status": "active",
@@ -1734,7 +2394,7 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 12,
@@ -1752,6 +2412,8 @@
       "vehicle_key": "vin:JTJHT00W764006987",
       "vin": "JTJHT00W764006987",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/459345660",
       "status": "active",
@@ -1802,7 +2464,7 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1820,6 +2482,8 @@
       "vehicle_key": "vin:JTJHT00W664011131",
       "vin": "JTJHT00W664011131",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/459454421",
       "status": "active",
@@ -1870,7 +2534,7 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1888,6 +2552,8 @@
       "vehicle_key": "vin:JTJHT00W964005615",
       "vin": "JTJHT00W964005615",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/459519124",
       "status": "active",
@@ -1938,7 +2604,147 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-22T05:02:58+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:459780963",
+      "vehicle_key": "vin:JTEHT05J472103508",
+      "vin": "JTEHT05J472103508",
+      "year": 2007,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/459780963",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 27599,
+      "base_price": 27000,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 165903,
+      "mileage_is_approximate": "",
+      "city": "Norman",
+      "state": "OK",
+      "postal_code": "",
+      "latitude": 35.240569,
+      "longitude": -97.345299,
+      "location_precision": "city area",
+      "seller": "Fowler Honda",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/09/24/05/28/2007_toyota_land_cruiser-pic-4720634149436811218-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/24/05/28/2007_toyota_land_cruiser-pic-4720634149436811218-1024x768.jpeg"
+      ],
+      "exterior_color": "Sonora Gold Pearl",
+      "interior_color": "White (Ivory)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "History unavailable",
+      "accident_category": "unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-25",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:460082041",
+      "vehicle_key": "vin:JTEHT05J272116063",
+      "vin": "JTEHT05J272116063",
+      "year": 2007,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/460082041",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 39900,
+      "base_price": 39900,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 144000,
+      "mileage_is_approximate": "",
+      "city": "Jacksonville",
+      "state": "FL",
+      "postal_code": "",
+      "latitude": 30.335914,
+      "longitude": -81.661762,
+      "location_precision": "city area",
+      "seller": "King's Chariot",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/09/26/22/16/2007_toyota_land_cruiser-pic-9208667479911923058-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/09/26/22/16/2007_toyota_land_cruiser-pic-9208667479911923058-1024x768.jpeg"
+      ],
+      "exterior_color": "Natural White",
+      "interior_color": "White (Ivory)",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-27",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -1956,6 +2762,8 @@
       "vehicle_key": "vin:JTJHT00W264007335",
       "vin": "JTJHT00W264007335",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/460099310",
       "status": "active",
@@ -2006,7 +2814,7 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -1,
@@ -2024,6 +2832,8 @@
       "vehicle_key": "vin:JTJHT00W464018725",
       "vin": "JTJHT00W464018725",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/460265515",
       "status": "active",
@@ -2074,7 +2884,7 @@
       "listed_at": "2026-09-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 6,
@@ -2092,6 +2902,8 @@
       "vehicle_key": "vin:JTJHT00W764015124",
       "vin": "JTJHT00W764015124",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/460538301",
       "status": "active",
@@ -2142,7 +2954,7 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-02T05:44:42+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 54,
@@ -2160,6 +2972,8 @@
       "vehicle_key": "vin:JTJHT00W074027293",
       "vin": "JTJHT00W074027293",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/460792357",
       "status": "active",
@@ -2210,7 +3024,147 @@
       "listed_at": "2026-10-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-08T18:11:11+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:460814201",
+      "vehicle_key": "vin:JTEHT05JX62084607",
+      "vin": "JTEHT05JX62084607",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/460814201",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 16900,
+      "base_price": 16900,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 254000,
+      "mileage_is_approximate": "",
+      "city": "Silvis",
+      "state": "IL",
+      "postal_code": "",
+      "latitude": 41.497646,
+      "longitude": -90.41014,
+      "location_precision": "city area",
+      "seller": "Premier 1 Auto",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/05/19/57/2006_toyota_land_cruiser-pic-7938813360473514027-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/10/05/19/57/2006_toyota_land_cruiser-pic-7938813360473514027-1024x768.jpeg"
+      ],
+      "exterior_color": "",
+      "interior_color": "",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-10-06",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "IL",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "cargurus:460928678",
+      "vehicle_key": "vin:JTEHT05J062090822",
+      "vin": "JTEHT05J062090822",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/460928678",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 27995,
+      "base_price": 27995,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 182116,
+      "mileage_is_approximate": "",
+      "city": "Phoenix",
+      "state": "AZ",
+      "postal_code": "",
+      "latitude": 33.572154,
+      "longitude": -112.090132,
+      "location_precision": "city area",
+      "seller": "George & Sons Motors ",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/06/22/00/2006_toyota_land_cruiser-pic-3542136659817694267-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/10/06/22/00/2006_toyota_land_cruiser-pic-3542136659817694267-1024x768.jpeg"
+      ],
+      "exterior_color": "Gray",
+      "interior_color": "Gray",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-10-07",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -2228,6 +3182,8 @@
       "vehicle_key": "vin:JTJHT00W274022502",
       "vin": "JTJHT00W274022502",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461002388",
       "status": "active",
@@ -2278,7 +3234,7 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-08T18:11:11+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -2296,6 +3252,8 @@
       "vehicle_key": "vin:JTJHT00W964017294",
       "vin": "JTJHT00W964017294",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461148174",
       "status": "active",
@@ -2346,7 +3304,7 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-09T06:14:48+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 5,
@@ -2364,6 +3322,8 @@
       "vehicle_key": "vin:JTJHT00W864010904",
       "vin": "JTJHT00W864010904",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461194793",
       "status": "active",
@@ -2414,7 +3374,7 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-09T13:26:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 38,
@@ -2432,6 +3392,8 @@
       "vehicle_key": "vin:JTJHT00W474022629",
       "vin": "JTJHT00W474022629",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461352356",
       "status": "active",
@@ -2482,7 +3444,7 @@
       "listed_at": "2026-10-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-11T12:56:46+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -22,
@@ -2500,6 +3462,8 @@
       "vehicle_key": "vin:JTJHT00W664006477",
       "vin": "JTJHT00W664006477",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461385210",
       "status": "active",
@@ -2548,7 +3512,7 @@
       "listed_at": "2026-10-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-12T06:04:35+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -4,
@@ -2566,6 +3530,8 @@
       "vehicle_key": "vin:JTJHT00W064016857",
       "vin": "JTJHT00W064016857",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "cargurus",
       "listing_url": "https://www.cargurus.com/details/461443316",
       "status": "active",
@@ -2613,10 +3579,10 @@
       "modifications_evidence": "",
       "auction_ends_at": "",
       "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
+      "listed_at": "2026-10-13",
+      "listed_at_is_estimated": true,
       "first_seen": "2026-10-13T14:17:27+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -46,
@@ -2630,10 +3596,160 @@
       }
     },
     {
+      "listing_key": "truecar:JTEHT05J062096670",
+      "vehicle_key": "vin:JTEHT05J062096670",
+      "vin": "JTEHT05J062096670",
+      "year": 2006,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "truecar",
+      "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J062096670/",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 19995,
+      "base_price": null,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 249547,
+      "mileage_is_approximate": "",
+      "city": "Raleigh",
+      "state": "NC",
+      "postal_code": "27604",
+      "latitude": 35.82242,
+      "longitude": -78.56261,
+      "location_precision": "ZIP area",
+      "seller": "Master Auto Group",
+      "seller_type": "dealer",
+      "photo_url": "photos/d23d7828bf07f99a840c.jpg",
+      "photo_urls": [
+        "photos/d23d7828bf07f99a840c.jpg",
+        "photos/39e392cef0b92eadf906.jpg",
+        "photos/bd68892651113eb52b73.jpg",
+        "photos/42dd2f1024595c71a33e.jpg",
+        "photos/d1be90cf0a98e7b2e1cf.jpg"
+      ],
+      "exterior_color": "Natural White",
+      "interior_color": "Beige",
+      "reported_extras": "",
+      "title_status": "clean title",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "2",
+      "owners_source": "TrueCar / Experian AutoCheck",
+      "owners_verified_at": "2026-10-14",
+      "owner_evidence_url": "https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J062096670/",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-09-16T00:45:00.000Z",
+      "listed_at_is_estimated": false,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
+      "listing_key": "truecar:JTEHT05J672109214",
+      "vehicle_key": "vin:JTEHT05J672109214",
+      "vin": "JTEHT05J672109214",
+      "year": 2007,
+      "make": "Toyota",
+      "model": "Land Cruiser",
+      "source": "truecar",
+      "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J672109214/",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 27040,
+      "base_price": null,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 128849,
+      "mileage_is_approximate": "",
+      "city": "Costa Mesa",
+      "state": "CA",
+      "postal_code": "92627",
+      "latitude": 33.64811,
+      "longitude": -117.9212,
+      "location_precision": "ZIP area",
+      "seller": "Supreme Motors (CA)",
+      "seller_type": "dealer",
+      "photo_url": "photos/fafe4cd7e7fc3dedc91b.jpg",
+      "photo_urls": [
+        "photos/fafe4cd7e7fc3dedc91b.jpg",
+        "photos/949a05c089e840df3751.jpg",
+        "photos/8f977df821c3eeb50115.jpg",
+        "photos/3936de1c6222a230a55a.jpg",
+        "photos/becb9488b8bac0710d1e.jpg"
+      ],
+      "exterior_color": "Black",
+      "interior_color": "Beige",
+      "reported_extras": "",
+      "title_status": "clean title",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "2",
+      "owners_source": "TrueCar / Experian AutoCheck",
+      "owners_verified_at": "2026-10-14",
+      "owner_evidence_url": "https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J672109214/",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-07-13T00:45:00.000Z",
+      "listed_at_is_estimated": false,
+      "first_seen": "2026-10-14T13:09:35+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      }
+    },
+    {
       "listing_key": "truecar:JTJHT00W074027827",
       "vehicle_key": "vin:JTJHT00W074027827",
       "vin": "JTJHT00W074027827",
       "year": 2007,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "truecar",
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W074027827/",
       "status": "active",
@@ -2688,7 +3804,7 @@
       "listed_at": "2026-09-16T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 12,
@@ -2706,6 +3822,8 @@
       "vehicle_key": "vin:JTJHT00W264007335",
       "vin": "JTJHT00W264007335",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "truecar",
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W264007335/",
       "status": "active",
@@ -2760,7 +3878,7 @@
       "listed_at": "2026-09-27T07:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -1,
@@ -2778,6 +3896,8 @@
       "vehicle_key": "vin:JTJHT00W464018725",
       "vin": "JTJHT00W464018725",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "truecar",
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W464018725/",
       "status": "active",
@@ -2828,7 +3948,7 @@
       "listed_at": "2026-10-11T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 8,
@@ -2846,6 +3966,8 @@
       "vehicle_key": "vin:JTJHT00W864010904",
       "vin": "JTJHT00W864010904",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "truecar",
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W864010904/",
       "status": "active",
@@ -2900,7 +4022,7 @@
       "listed_at": "2026-10-09T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "bad",
       "deal_percent_vs_median": 38,
@@ -2918,6 +4040,8 @@
       "vehicle_key": "vin:JTJHT00W964017294",
       "vin": "JTJHT00W964017294",
       "year": 2006,
+      "make": "Lexus",
+      "model": "LX470",
       "source": "truecar",
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W964017294/",
       "status": "active",
@@ -2972,7 +4096,7 @@
       "listed_at": "2026-10-09T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T13:26:45+00:00",
-      "last_seen": "2026-10-14T11:59:07+00:00",
+      "last_seen": "2026-10-14T13:09:35+00:00",
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": 7,
@@ -2987,6 +4111,140 @@
     }
   ],
   "vehicles": [
+    {
+      "vehicle_key": "vin:JTEHT05J062090822",
+      "vin": "JTEHT05J062090822",
+      "listing_keys": [
+        "cargurus:460928678"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J062096670",
+      "vin": "JTEHT05J062096670",
+      "listing_keys": [
+        "cargurus:459000534",
+        "truecar:JTEHT05J062096670"
+      ],
+      "listing_count": 2,
+      "sources": [
+        "cargurus",
+        "truecar"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J062101558",
+      "vin": "JTEHT05J062101558",
+      "listing_keys": [
+        "cargurus:453847393"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J072110570",
+      "vin": "JTEHT05J072110570",
+      "listing_keys": [
+        "cargurus:399761178"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J262085332",
+      "vin": "JTEHT05J262085332",
+      "listing_keys": [
+        "cargurus:458338452"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J272116063",
+      "vin": "JTEHT05J272116063",
+      "listing_keys": [
+        "cargurus:460082041"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J362091544",
+      "vin": "JTEHT05J362091544",
+      "listing_keys": [
+        "cargurus:456839853"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J472103508",
+      "vin": "JTEHT05J472103508",
+      "listing_keys": [
+        "cargurus:459780963"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J672109214",
+      "vin": "JTEHT05J672109214",
+      "listing_keys": [
+        "truecar:JTEHT05J672109214"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "truecar"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05J862085738",
+      "vin": "JTEHT05J862085738",
+      "listing_keys": [
+        "cargurus:457685480"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05JX62084588",
+      "vin": "JTEHT05JX62084588",
+      "listing_keys": [
+        "cargurus:447090235"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTEHT05JX62084607",
+      "vin": "JTEHT05JX62084607",
+      "listing_keys": [
+        "cargurus:460814201"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
     {
       "vehicle_key": "vin:JTJHT00W064016857",
       "vin": "JTJHT00W064016857",
