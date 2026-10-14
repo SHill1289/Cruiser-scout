@@ -10,6 +10,7 @@ const ui = {
   cleanCount: document.querySelector("#clean-count"), sourceHealth: document.querySelector("#source-health"),
   marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
   marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
+  marketModel: document.querySelector("#market-model"),
   marketSource: document.querySelector("#market-source"),
   form: document.querySelector("#filters"), filterToggle: document.querySelector("#filter-toggle"),
   photoDialog: document.querySelector("#photo-dialog"), photoLarge: document.querySelector("#photo-large"),
@@ -31,9 +32,10 @@ let zipLoad = null;
 let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "sort"]
+const controls = ["search", "model", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 
+function vehicleName(row) { return `${row.make || "Lexus"} ${row.model || "LX470"}`; }
 function value(row, key) { return row[key] ?? ""; }
 function saleState(row) {
   if (row.status === "sold") return "sold";
@@ -128,9 +130,9 @@ function showLargePhoto() {
   ui.photoLarge.hidden = false;
   ui.photoError.hidden = true;
   ui.photoLarge.src = urls[index];
-  ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " Lexus LX470";
+  ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " " + vehicleName(row);
   ui.photoCount.textContent = (index + 1) + " of " + urls.length;
-  ui.photoTitle.textContent = row.year + " Lexus LX470 · " + (row.seller || row.source);
+  ui.photoTitle.textContent = row.year + " " + vehicleName(row) + " · " + (row.seller || row.source);
   ui.photoSource.href = row.listing_url;
   ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
 }
@@ -164,9 +166,9 @@ function makeMetric(main, label) {
 function normalizedColorName(raw) {
   return String(raw || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
-function resolveFactoryColor(kind, raw, year) {
+function resolveFactoryColor(kind, raw, year, model = "LX470") {
   const reported = normalizedColorName(raw);
-  const entries = kind === "exterior"
+  const entries = model === "Land Cruiser" ? [] : kind === "exterior"
     ? colorReference.exterior || []
     : colorReference.interior_by_year?.[String(year)] || [];
   if (!reported) return { name: "Unknown", swatch: "", code: "", factory: false, reported: "" };
@@ -175,8 +177,8 @@ function resolveFactoryColor(kind, raw, year) {
   return match ? { ...match, factory: true, reported: raw }
     : { name: raw, swatch: "", code: "", factory: false, reported: raw };
 }
-function makeColorFact(kind, raw, year) {
-  const color = resolveFactoryColor(kind, raw, year);
+function makeColorFact(kind, raw, year, model = "LX470") {
+  const color = resolveFactoryColor(kind, raw, year, model);
   const fact = text("span", "color-fact", "");
   const swatch = text("span", color.swatch ? "color-swatch" : "color-swatch color-unknown", "");
   if (color.swatch) swatch.style.background = color.swatch;
@@ -188,7 +190,7 @@ function makeColorFact(kind, raw, year) {
   fact.append(swatch, detail);
   fact.title = color.factory
     ? `Lexus factory color${color.code ? `, paint code ${color.code}` : ""}. Swatch is a screen approximation.${color.reported && normalizedColorName(color.reported) !== normalizedColorName(color.name) ? ` Listing reported ${color.reported}.` : ""}`
-    : color.reported ? `Marketplace color: ${color.reported}. Exact Lexus factory color is not verified.` : `${label} color unavailable.`;
+    : color.reported ? `Marketplace color: ${color.reported}. Exact factory color is not verified.` : `${label} color unavailable.`;
   return fact;
 }
 function ownerGroup(row) {
@@ -379,9 +381,9 @@ function renderCard(row, group) {
     const failed = new Set();
     const trigger = text("button", "photo-viewer", "");
     trigger.type = "button";
-    trigger.setAttribute("aria-label", "View photos for " + row.year + " Lexus LX470 on " + row.source);
+    trigger.setAttribute("aria-label", "View photos for " + row.year + " " + vehicleName(row) + " on " + row.source);
     const photo = document.createElement("img");
-    photo.alt = `${row.year} ${row.exterior_color || ""} Lexus LX470`.replace(/\s+/g, " ").trim();
+    photo.alt = `${row.year} ${row.exterior_color || ""} ${vehicleName(row)}`.replace(/\s+/g, " ").trim();
     photo.loading = "lazy";
     photo.decoding = "async";
     photo.referrerPolicy = "no-referrer";
@@ -399,7 +401,7 @@ function renderCard(row, group) {
       else {
         trigger.remove();
         media.classList.add("photo-missing");
-        media.prepend(text("span", "photo-placeholder", "LX"));
+        media.prepend(text("span", "photo-placeholder", row.model === "Land Cruiser" ? "LC" : "LX"));
         counter.remove();
         media.querySelectorAll(".photo-step").forEach(button => button.remove());
       }
@@ -414,7 +416,7 @@ function renderCard(row, group) {
       const step = (direction, label) => {
         const button = text("button", "photo-step photo-" + label, direction < 0 ? "‹" : "›");
         button.type = "button";
-        button.setAttribute("aria-label", (direction < 0 ? "Previous" : "Next") + " photo for " + row.year + " Lexus LX470");
+        button.setAttribute("aria-label", (direction < 0 ? "Previous" : "Next") + " photo for " + row.year + " " + vehicleName(row));
         button.addEventListener("click", () => show(index + direction));
         media.append(button);
       };
@@ -424,7 +426,7 @@ function renderCard(row, group) {
     }
     show(0);
   } else {
-    media.append(text("span", "photo-placeholder", "LX"));
+    media.append(text("span", "photo-placeholder", row.model === "Land Cruiser" ? "LC" : "LX"));
   }
   media.append(text("span", "year-badge", String(row.year)));
   card.append(media);
@@ -443,8 +445,8 @@ function renderCard(row, group) {
   const rustLocation = rustLocationBadge(row);
   if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
-  const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
-  const title = text("h3", "vehicle-title", exterior.name === "Unknown" ? "Color unknown" : exterior.name);
+  const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
+  const title = text("h3", "vehicle-title", vehicleName(row));
   identity.append(title);
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
@@ -452,7 +454,7 @@ function renderCard(row, group) {
   if (distance != null) identity.append(text("p", "vehicle-meta location-distance", `About ${integer.format(Math.round(distance))} mi from your ZIP · straight line`));
   identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
   const colors = text("div", "color-pair", "");
-  colors.append(makeColorFact("exterior", row.exterior_color, row.year), makeColorFact("interior", row.interior_color, row.year));
+  colors.append(makeColorFact("exterior", row.exterior_color, row.year, row.model), makeColorFact("interior", row.interior_color, row.year, row.model));
   identity.append(colors);
   const extras = reportedExtras(row);
   if (extras) identity.append(extras);
@@ -487,7 +489,7 @@ function renderCard(row, group) {
   link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  link.setAttribute("aria-label", `Open ${row.year} LX470 listing on ${row.source}`);
+  link.setAttribute("aria-label", `Open ${row.year} ${vehicleName(row)} listing on ${row.source}`);
   card.append(link);
   const others = otherListings(group);
   if (others) card.append(others);
@@ -496,12 +498,13 @@ function renderCard(row, group) {
 
 function matches(row) {
   const query = controls.search.value.trim().toLowerCase();
-  const factoryExterior = resolveFactoryColor("exterior", row.exterior_color, row.year);
-  const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year);
-  const haystack = [row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
+  const factoryExterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
+  const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year, row.model);
+  const haystack = [vehicleName(row), row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
     factoryExterior.name, factoryInterior.name, row.source].join(" ").toLowerCase();
   const amount = listingPrice(row);
   return (!query || haystack.includes(query))
+    && (!controls.model.value || (row.model || "LX470") === controls.model.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
     && (!controls.color.value || factoryExterior.name === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
@@ -600,7 +603,8 @@ function renderMarket() {
   const cutoff = new Date(generatedAt);
   cutoff.setUTCMonth(cutoff.getUTCMonth() - months);
   const year = ui.marketYear.value;
-  const sales = marketSales.filter(sale => (!year || String(sale.year) === year)
+  const model = ui.marketModel.value;
+  const sales = marketSales.filter(sale => (!model || (sale.model || "LX470") === model) && (!year || String(sale.year) === year)
     && new Date(`${sale.sold_at}T23:59:59Z`) >= cutoff
     && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
   const bands = [
@@ -671,7 +675,7 @@ async function load() {
     ui.years.textContent = new Set(inventory.map(row => row.year)).size;
     ui.sources.textContent = new Set(inventory.map(row => row.source)).size;
 
-    [...new Set(inventory.map(row => resolveFactoryColor("exterior", row.exterior_color, row.year).name)
+    [...new Set(inventory.map(row => resolveFactoryColor("exterior", row.exterior_color, row.year, row.model).name)
       .filter(name => name && name !== "Unknown"))].sort()
       .forEach(color => ui.color.add(new Option(color, color)));
     (data.source_health || []).forEach(source => {
@@ -697,6 +701,7 @@ ui.filterToggle.addEventListener("click", () => {
 });
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
+ui.marketModel.addEventListener("input", renderMarket);
 ui.form.addEventListener("reset", () => setTimeout(() => {
   origin = null;
   ui.distanceStatus.classList.remove("error");

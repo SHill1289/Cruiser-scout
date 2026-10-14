@@ -23,7 +23,7 @@ from statistics import median
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
-FIELDS = ["listing_key", "vehicle_key", "vin", "year", "source", "source_listing_id",
+FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
           "seller", "seller_type", "photo_url", "photo_urls", "exterior_color", "interior_color", "title_status",
@@ -158,10 +158,13 @@ def normalize(raw):
     row["year"] = int(raw["year"])
     if row["year"] not in (2006, 2007):
         raise ValueError("Only 2006â€“2007 vehicles are accepted")
-    if re.sub(r"[^a-z0-9]", "", str(raw.get("make", "Lexus")).lower()) != "lexus":
-        raise ValueError("Wrong make")
-    if re.sub(r"[^a-z0-9]", "", str(raw.get("model", "LX470")).lower()) != "lx470":
-        raise ValueError("Wrong model")
+    make = re.sub(r"[^a-z0-9]", "", str(raw.get("make") or "Lexus").lower())
+    model = re.sub(r"[^a-z0-9]", "", str(raw.get("model") or "LX470").lower())
+    identities = {("lexus", "lx470"): ("Lexus", "LX470"),
+                  ("toyota", "landcruiser"): ("Toyota", "Land Cruiser")}
+    if (make, model) not in identities:
+        raise ValueError("Unsupported make/model")
+    row["make"], row["model"] = identities[make, model]
     if not row["source"] or not row["source_listing_id"]:
         raise ValueError("Source and stable source listing ID are required")
     row["source_listing_id"] = str(row["source_listing_id"])
@@ -185,7 +188,7 @@ def normalize(raw):
     vin_ok = valid_vin(row["vin"])
     if row["vin"] and not vin_ok:
         flags.add("invalid_vin")
-    if vin_ok and (not row["vin"].startswith("JTJHT00W") or row["vin"][9] != str(row["year"])[-1]):
+    if vin_ok and (not row["vin"].startswith("JTEHT05J" if row["model"] == "Land Cruiser" else "JTJHT00W") or row["vin"][9] != str(row["year"])[-1]):
         flags.add("vin_model_or_year_conflict")
         vin_ok = False
     if not row["vin"]:
@@ -465,7 +468,7 @@ def cargurus_photo(value):
     return max(candidates, default=(0, ""))[1]
 
 
-def parse_cargurus(page, year, no_accident_ids=None):
+def parse_cargurus(page, year, no_accident_ids=None, model="LX470"):
     search = cargurus_search(page, year)
     no_accident_ids = no_accident_ids or set()
     rows = {}
@@ -474,7 +477,10 @@ def parse_cargurus(page, year, no_accident_ids=None):
             continue
         d = tile["data"]
         ontology = d.get("ontologyData", {})
-        if int(ontology.get("carYear", 0)) != year or ontology.get("makeName") != "Lexus" or ontology.get("modelName") != "LX" or not ontology.get("trimName", "").startswith("470"):
+        identity_ok = (ontology.get("makeName") == "Toyota" and ontology.get("modelName") == "Land Cruiser"
+                       if model == "Land Cruiser" else
+                       ontology.get("makeName") == "Lexus" and ontology.get("modelName") == "LX" and ontology.get("trimName", "").startswith("470"))
+        if int(ontology.get("carYear", 0)) != year or not identity_ok:
             continue
         seller, price = d.get("sellerData", {}), d.get("priceData", {})
         mileage = d.get("mileageData") or {}
@@ -483,6 +489,7 @@ def parse_cargurus(page, year, no_accident_ids=None):
         listing_id = str(d["id"])
         rows[listing_id] = normalize({
             "source": "cargurus", "source_listing_id": d["id"], "year": year,
+            "make": "Toyota" if model == "Land Cruiser" else "Lexus", "model": model,
             "vin": d.get("vin", ""), "status": "active", "category": "retail",
             "listing_url": f'https://www.cargurus.com/details/{d["id"]}',
             "asking_price": price.get("pricePlusFees", price.get("totalPrice", price.get("current"))),
@@ -507,8 +514,9 @@ def parse_cargurus(page, year, no_accident_ids=None):
     return list(rows.values()), complete, search.get("totalListings")
 
 
-def parse_truecar(page, now):
-    """Parse nationwide clean-title LX470 listings from TrueCar's public search page."""
+def parse_truecar(page, now, model="LX470"):
+    """Parse nationwide clean-title listings for the requested model from TrueCar's public search page."""
+    expected = [{"makeSlug": "toyota", "modelSlug": "land-cruiser"}] if model == "Land Cruiser" else [{"makeSlug": "lexus", "modelSlug": "lx", "trimSlugs": ["lx-470"]}]
     match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page, re.S)
     if not match:
         raise ValueError("TrueCar structured data missing; page may be blocked or its format changed")
@@ -526,7 +534,7 @@ def parse_truecar(page, now):
         filters = search_args["filters"]
         scope_ok = (
             search_args.get("offset") == 0 and filters.get("condition") == "USED" and
-            filters.get("makeModelTrim") == [{"makeSlug": "lexus", "modelSlug": "lx", "trimSlugs": ["lx-470"]}] and
+            filters.get("makeModelTrim") == expected and
             # TrueCar omits withinRadius for unrestricted nationwide searches.
             ("withinRadius" not in filters or
              filters.get("withinRadius", {}).get("distance") == 5000) and
@@ -537,7 +545,7 @@ def parse_truecar(page, now):
         raise ValueError("TrueCar search filters could not be read") from error
     if not scope_ok:
         detail = json.dumps(filters, sort_keys=True, separators=(",", ":"))[:350]
-        raise ValueError("TrueCar did not apply nationwide 2006-2007 LX 470 filters: " + detail)
+        raise ValueError("TrueCar did not apply required nationwide 2006-2007 model filters: " + detail)
     edges = search.get("edges", [])
     total = search.get("totalCount")
     complete = not search.get("pageInfo", {}).get("hasNextPage") and total == len(edges)
@@ -549,7 +557,10 @@ def parse_truecar(page, now):
         style = vehicle.get("style", {}) or {}
         year = vehicle.get("year")
         vin = str(vehicle.get("vin", "")).upper()
-        if year not in (2006, 2007) or vehicle.get("make", {}).get("name") != "Lexus" or style.get("trimName") != "LX 470":
+        identity_ok = (vehicle.get("make", {}).get("name") == "Toyota" and vehicle.get("model", {}).get("name") == "Land Cruiser"
+                       if model == "Land Cruiser" else
+                       vehicle.get("make", {}).get("name") == "Lexus" and style.get("trimName") == "LX 470")
+        if year not in (2006, 2007) or not identity_ok:
             continue
         history = listing.get("conditionHistory", {}) or {}
         if history.get("isCleanTitle") is not True:
@@ -570,6 +581,7 @@ def parse_truecar(page, now):
         listing_url = f"https://www.truecar.com/used-cars-for-sale/listing/{vin}/"
         rows.append(normalize({
             "source": "truecar", "source_listing_id": vin, "year": year, "vin": vin,
+            "make": "Toyota" if model == "Land Cruiser" else "Lexus", "model": model,
             "listing_url": listing_url, "status": "active", "category": "retail",
             "asking_price": listing.get("pricing", {}).get("listPrice"),
             "mileage": vehicle.get("mileage", details.get("mileage")),
@@ -789,9 +801,9 @@ def backfill_listing_photos(state, fetcher, browser_fetcher=None):
 def parse_bat(page, url, now):
     title_match = re.search(r'<h1\b[^>]*>(.*?)</h1>', page, re.S)
     title = plain(title_match[1]) if title_match else ""
-    match = re.search(r"\b(2006|2007) Lexus LX\s?470\b", title, re.I)
+    match = re.search(r"\b(2006|2007) (Lexus LX\s?470|Toyota Land Cruiser)\b", title, re.I)
     if not match:
-        raise ValueError("Not a 2006â€“2007 LX470 auction")
+        raise ValueError("Not a 2006-2007 LX470 or Land Cruiser auction")
     # Limit extraction to the listing summary, never site strings or user comments.
     intro = re.search(r'<div class="listing-intro[\s\S]*', page)
     if not intro:
@@ -834,7 +846,8 @@ def parse_bat(page, url, now):
     else:
         accidents = "History unavailable"
     row = {"source": "bringatrailer", "source_listing_id": url.rstrip('/').split('/')[-1],
-           "year": int(match[1]), "listing_url": url, "vin": vin[1] if vin else "",
+           "year": int(match[1]), "make": "Toyota" if match[2].lower().startswith("toyota") else "Lexus",
+           "model": "Land Cruiser" if match[2].lower().startswith("toyota") else "LX470", "listing_url": url, "vin": vin[1] if vin else "",
            "category": "auction", "status": status,
            "current_bid": (current or ended_bid)[1] if (current or ended_bid) and not sold else None,
            "sold_price": sold[1] if sold else None, "auction_ends_at": ends_at,
@@ -887,7 +900,7 @@ def parse_historical_sale(page, url, now):
         raise ValueError("Completed sale date unavailable")
     return {
         "source": "Bring a Trailer", "source_listing_id": row["source_listing_id"],
-        "listing_url": url, "year": row["year"], "sold_at": sold_at,
+        "listing_url": url, "year": row["year"], "make": row["make"], "model": row["model"], "sold_at": sold_at,
         "sale_price": row["sold_price"], "mileage": row["mileage"],
         "mileage_is_approximate": row["mileage_is_approximate"],
     }
@@ -895,8 +908,8 @@ def parse_historical_sale(page, url, now):
 
 def bat_listing_urls(page):
     """Discover 2006-2007 listing links in the public BaT model archive."""
-    paths = re.findall(r'''href=["'](?:https://bringatrailer\.com)?(/listing/200[67]-lexus-lx-?470[^"'?#]*/)["']''', page, re.I)
-    absolute = re.findall(r'''https://bringatrailer\.com/listing/200[67]-lexus-lx-?470[^\s"'<>?#]*/''', page, re.I)
+    paths = re.findall(r'''href=["'](?:https://bringatrailer\.com)?(/listing/200[67]-(?:lexus-lx-?470|toyota-land-cruiser)[^"'?#]*/)["']''', page, re.I)
+    absolute = re.findall(r'''https://bringatrailer\.com/listing/200[67]-(?:lexus-lx-?470|toyota-land-cruiser)[^\s"'<>?#]*/''', page, re.I)
     return {"https://bringatrailer.com" + path for path in paths} | set(absolute)
 
 
@@ -936,7 +949,8 @@ def deal_rating(row, sales, minimum_comparables=3):
     else:
         label, includes = "250k+", lambda value: value >= 250_000
     prices = [sale.get("sale_price") for sale in sales
-              if isinstance(sale.get("mileage"), (int, float)) and includes(sale["mileage"])
+              if sale.get("model", "LX470") == row.get("model", "LX470")
+              and isinstance(sale.get("mileage"), (int, float)) and includes(sale["mileage"])
               and isinstance(sale.get("sale_price"), (int, float))]
     if len(prices) < minimum_comparables:
         return {}
@@ -1039,9 +1053,11 @@ def update(state, rows, now, scopes=()):
             history.append(observation)
             changes.append(observation)
     # Missing != sold. Only fully parsed nationwide snapshots count as absence evidence.
-    for source, year in scopes:
+    for scope in scopes:
+        source, year = scope[:2]
+        model = scope[2] if len(scope) == 3 else "LX470"
         for key, row in listings.items():
-            if key in seen or row["source"] != source or row["year"] != year or row["status"] != "active":
+            if key in seen or row["source"] != source or row["year"] != year or row.get("model", "LX470") != model or row["status"] != "active":
                 continue
             row["last_checked"] = now
             row["missing_checks"] = int(row.get("missing_checks", 0)) + 1
@@ -1218,7 +1234,7 @@ def save(root, state, health, changes, cache_photos=False):
                "sold_listings.csv": [r for r in rows if r["status"] == "sold"]}
     for filename, items in outputs.items():
         (data / filename).write_text(csv_text(items, FIELDS), encoding="utf-8")
-    sale_fields = ["source", "source_listing_id", "listing_url", "year", "sold_at", "sale_price", "mileage", "mileage_is_approximate"]
+    sale_fields = ["source", "source_listing_id", "listing_url", "year", "make", "model", "sold_at", "sale_price", "mileage", "mileage_is_approximate"]
     historical_sales = state.get("historical_sales", [])
     (data / "historical_sales.csv").write_text(csv_text(historical_sales, sale_fields), encoding="utf-8")
     (data / "historical_sales.json").write_text(json.dumps(historical_sales, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -1231,7 +1247,7 @@ def save(root, state, health, changes, cache_photos=False):
         temp.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         temp.replace(data / filename)
     public_fields = [
-        "listing_key", "vehicle_key", "vin", "year", "source", "listing_url", "status", "category",
+        "listing_key", "vehicle_key", "vin", "year", "make", "model", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
         "seller", "seller_type", "photo_url", "photo_urls",
@@ -1280,19 +1296,19 @@ def save(root, state, health, changes, cache_photos=False):
     temp = web / "inventory.json.tmp"
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     temp.replace(web / "inventory.json")
-    report = ["# LX470 inventory", "", f"Last run: {state['updated_at']}", "",
+    report = ["# LX470 and Land Cruiser inventory", "", f"Last run: {state['updated_at']}", "",
               f"**{len(master)} distinct vehicles Â· {len(outputs['active_listings.csv'])} active listings Â· {len(changes)} changes this run**", "",
               "Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.", "",
               "## Source health", "", "| Source | Result | Detail |", "|---|---|---|"]
     escape = lambda v: html.escape(str(v or "")).replace("|", "&#124;").replace("\n", " ")
     for source in health:
         report.append(f"| {escape(source['source'])} | {escape(source['status'])} | {escape(source.get('detail', ''))} |")
-    report += ["", "## Advertised retail listings", "", "| Year | Asking USD | Miles | Exterior | Interior | Owners | Accidents | Title screen | Location | Seller | VIN | Last seen | Listing |", "|---|---:|---:|---|---|---|---|---|---|---|---|---|---|"]
+    report += ["", "## Advertised retail listings", "", "| Year | Make | Model | Asking USD | Miles | Exterior | Interior | Owners | Accidents | Title screen | Location | Seller | VIN | Last seen | Listing |", "|---|---|---|---:|---:|---|---|---|---|---|---|---|---|---|---|"]
     for row in sorted(outputs["retail_listings.csv"], key=lambda r: r["asking_price"] if r["asking_price"] is not None else float('inf')):
-        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "asking_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status"]) + f" | {escape(row['city'])}, {escape(row['state'])} | {escape(row['seller'])} | {escape(row['vin'])} | {escape(row['last_seen'])} | [Open]({row['listing_url']}) |")
-    report += ["", "## Auctions and salvage", "", "| Year | Status | Current bid USD | Sold price USD | Miles | Exterior | Interior | Owners | Accidents | Title | VIN | Listing |", "|---|---|---:|---:|---:|---|---|---|---|---|---|---|"]
+        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "make", "model", "asking_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status"]) + f" | {escape(row['city'])}, {escape(row['state'])} | {escape(row['seller'])} | {escape(row['vin'])} | {escape(row['last_seen'])} | [Open]({row['listing_url']}) |")
+    report += ["", "## Auctions and salvage", "", "| Year | Make | Model | Status | Current bid USD | Sold price USD | Miles | Exterior | Interior | Owners | Accidents | Title | VIN | Listing |", "|---|---|---|---|---:|---:|---:|---|---|---|---|---|---|---|"]
     for row in outputs["auction_salvage_listings.csv"]:
-        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "status", "current_bid", "sold_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status", "vin"]) + f" | [Open]({row['listing_url']}) |")
+        report.append("| " + " | ".join(escape(row[k]) for k in ["year", "make", "model", "status", "current_bid", "sold_price", "mileage", "exterior_color", "interior_color", "owners", "accident_history", "title_status", "vin"]) + f" | [Open]({row['listing_url']}) |")
     report += ["", f"{len(excluded)} active listings are retained for audit but excluded because clean-title eligibility was not established. See `data/excluded_listings.csv`."]
     (root / "INVENTORY.md").write_text("\n".join(report) + "\n", encoding="utf-8")
 
@@ -1300,6 +1316,9 @@ def save(root, state, health, changes, cache_photos=False):
 def run(root=ROOT, live=True):
     path = root / "data/database.json"
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"version": 1, "listings": {}, "history": [], "imports": []}
+    for row in list(state.get("listings", {}).values()) + state.get("history", []) + state.get("historical_sales", []):
+        row.setdefault("make", "Lexus")
+        row.setdefault("model", "LX470")
     backfill_listing_dates(state)
     correct_ambiguous_accident_history(state)
     remove_unverified_cargurus_owner_inferences(state)
@@ -1316,30 +1335,30 @@ def run(root=ROOT, live=True):
             try:
                 if source["type"] == "cargurus":
                     no_accident_ids = cargurus_listing_ids(fetcher.get(source["no_accidents_url"]), source["year"], {"maxAccidents": 0})
-                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], no_accident_ids)
+                    batch, complete, total = parse_cargurus(fetcher.get(source["url"]), source["year"], no_accident_ids, source.get("model", "LX470"))
                     photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
-                        scopes.append(("cargurus", source["year"]))
+                        scopes.append(("cargurus", source["year"], source.get("model", "LX470")))
                     photo_note = f" First photo error: {photo_errors[0]}" if photo_errors else ""
                     health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide. Additional pages are not crawled.{photo_note}"})
                 elif source["type"] == "truecar":
-                    batch, complete, total = parse_truecar(fetcher.get(source["url"]), now)
+                    batch, complete, total = parse_truecar(fetcher.get(source["url"]), now, source.get("model", "LX470"))
                     photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
-                        scopes.extend(("truecar", year) for year in (2006, 2007))
+                        scopes.extend(("truecar", year, source.get("model", "LX470")) for year in (2006, 2007))
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
                                    "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck."})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = bat_listing_urls(page)
                     urls.update(r["listing_url"] for r in state["listings"].values()
-                                if r["source"] == "bringatrailer" and
+                                if r["source"] == "bringatrailer" and r.get("model", "LX470") == source.get("model", "LX470") and
                                 (r["status"] in {"active", "unknown"} or
                                  (r["status"] in {"sold", "ended"} and
                                   not any(r.get(f"{topic}_evidence") for topic in CONDITION_TOPICS))))
-                    if "listing" not in page or not re.search(r"LX\s?470", page, re.I):
+                    if "listing" not in page or not re.search(r"Land Cruiser" if source.get("model") == "Land Cruiser" else r"LX\s?470", page, re.I):
                         raise ValueError("Auction index format changed")
                     errors = []
                     for url in sorted(urls)[:30]:
@@ -1352,7 +1371,7 @@ def run(root=ROOT, live=True):
                     detail = f"{len(state['historical_sales'])} completed sales retained from {sale_candidates} discovered or seeded auctions."
                     if sale_errors:
                         detail += f" {len(sale_errors)} records unavailable; first error: {sale_errors[0]}"
-                    health.append({"source": "historical sales", "status": "warning" if sale_errors else "ok", "detail": detail})
+                    health.append({"source": "historical sales" + (" - Land Cruiser" if source.get("model") == "Land Cruiser" else ""), "status": "warning" if sale_errors else "ok", "detail": detail})
             except Exception as e:
                 health.append({"source": source["id"], "status": "error", "detail": str(e)})
     # An edited import file is a new observation; unchanged files do not refresh last_seen.
