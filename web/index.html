@@ -1,177 +1,566 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Current 2006&ndash;2007 Lexus LX470 and Toyota Land Cruiser, plus 2011&ndash;2016 Lexus LX570 clean-title candidates from nationwide listing searches.">
-  <meta name="theme-color" content="#101714">
-  <title>Cruiser Scout</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="hero">
-    <nav class="shell nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Cruiser Scout home">
-        <span class="brand-marks" aria-hidden="true">
-          <span class="brand-mark"><img src="lexus-emblem.png" alt=""></span>
-          <span class="brand-mark"><img src="toyota-emblem.svg" alt=""></span>
-        </span>
-        <span class="brand-copy">
-          <span class="brand-name">Cruiser Scout</span>
-          <span class="brand-subtitle">Toyota Land Cruiser &amp; Lexus LX Listings.</span>
-        </span>
-      </a>
-      <a class="nav-link" href="#method">How screening works</a>
-    </nav>
-    <div class="shell hero-grid" id="top">
-      <div>
-        <p class="eyebrow">Nationwide listing tracker</p>
-        <h1>Find the right<br><span class="hero-title-accent">Cruiser</span></h1>
-      </div>
-      <div class="hero-panel" aria-label="Inventory update status">
-        <div class="status-line"><span class="pulse" aria-hidden="true"></span> Search runs every 6 hours</div>
-        <p class="updated" id="updated">Loading latest inventory&hellip;</p>
-        <div class="hero-stats">
-          <div><strong id="total-count">&mdash;</strong><span>Listings</span></div>
-          <div><strong id="year-count">&mdash;</strong><span>Model years</span></div>
-          <div><strong id="source-count">&mdash;</strong><span>Sources</span></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Cruiser Scout tracks Land Cruiser and Lexus LX listings, auction sales, and vehicle history signals."
+    />
+    <meta name="theme-color" content="#172622" />
+    <title>Cruiser Scout — Vehicle intelligence</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to content</a>
+    <div class="app-shell">
+      <aside
+        class="app-sidebar"
+        id="app-sidebar"
+        aria-label="Primary navigation"
+      >
+        <a class="brand" href="#inventory" aria-label="Cruiser Scout inventory"
+          ><span class="brand-symbol" aria-hidden="true">CS</span
+          ><span
+            ><strong>Cruiser Scout</strong
+            ><small>VEHICLE INTELLIGENCE</small></span
+          ></a
+        >
+        <nav class="primary-nav" aria-label="Workspaces">
+          <a href="#inventory" data-view-link="inventory" aria-label="Inventory"
+            >▦ <span>Inventory</span></a
+          >
+          <a
+            href="#market"
+            data-view-link="market"
+            aria-label="Market Intelligence"
+            >◫ <span>Market Intelligence</span></a
+          >
+          <a href="#watchlist" data-view-link="watchlist" aria-label="Watchlist"
+            >☆ <span>Watchlist</span>
+            <span class="nav-count" id="watchlist-nav-count"></span
+          ></a>
+          <a href="#alerts" data-view-link="alerts" aria-label="Alerts"
+            >◉ <span>Alerts</span></a
+          >
+          <a
+            href="#sources"
+            data-view-link="sources"
+            aria-label="Sources and Coverage"
+            >⌁ <span>Sources &amp; Coverage</span></a
+          >
+        </nav>
+        <div class="sidebar-foot">
+          <span class="status-dot"></span> Automated search every 6 hours<br /><small
+            id="sidebar-updated"
+            >Checking latest inventory…</small
+          >
         </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="shell">
-    <section class="notice" aria-labelledby="notice-title">
-      <span class="shield" aria-hidden="true">&#10003;</span>
-      <div>
-        <h2 id="notice-title">Clean-title candidates</h2>
-        <p id="disclaimer">Listings are screened for title-history signals. Always verify the title before purchasing.</p>
-      </div>
-    </section>
-
-    <section class="inventory" aria-labelledby="inventory-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Tracked inventory</p>
-          <h2 id="inventory-title">Current and completed trucks</h2>
-        </div>
-        <p class="result-count" id="result-count" aria-live="polite">Loading&hellip;</p>
-      </div>
-
-      <form class="filters" id="filters" aria-label="Filter inventory">
-        <label class="search-field">
-          <span>Search</span>
-          <input id="search" type="search" placeholder="Model, city, seller, VIN&hellip;" autocomplete="off">
-        </label>
-        <label><span>Model</span><select id="model"><option value="">All models</option><option value="LX470">Lexus LX470</option><option value="LX570">Lexus LX570</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
-        <label><span>Status</span><select id="status"><option value="">All statuses</option><option value="for-sale">For sale</option><option value="live-auction">Live auction</option><option value="sold">Sold</option><option value="bid-not-met">Bid not met</option><option value="auction-ended">Auction ended</option></select></label>
-        <label class="advanced-filter"><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
-        <label class="advanced-filter"><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">Verified one owner</option><option value="multiple">Verified 2+ owners</option><option value="unknown">Unverified</option></select></label>
-        <label class="advanced-filter"><span>Accidents</span><select id="accidents"><option value="">All accident histories</option><option value="none">No reported accidents</option><option value="reported">Reported accident</option><option value="unavailable">History unavailable</option></select></label>
-        <label class="advanced-filter"><span>Max price</span><select id="price"><option value="">Any price</option><option value="15000">$15,000</option><option value="20000">$20,000</option><option value="25000">$25,000</option><option value="30000">$30,000</option><option value="40000">$40,000</option></select></label>
-        <label class="advanced-filter"><span>Max mileage</span><select id="mileage"><option value="">Any mileage</option><option value="100000">100,000</option><option value="150000">150,000</option><option value="200000">200,000</option><option value="250000">250,000</option></select></label>
-        <label class="zip-field"><span>Your ZIP</span><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="5-digit ZIP" aria-describedby="distance-status"></label>
-        <label class="radius-field"><span>Within</span><select id="radius"><option value="">Any distance</option><option value="50">50 miles</option><option value="100">100 miles</option><option value="250">250 miles</option><option value="500">500 miles</option><option value="1000">1,000 miles</option></select></label>
-        <label><span>Sort by</span><select id="sort"><option value="price-asc">Price: low to high</option><option value="mileage-asc">Mileage: low to high</option><option value="listed-newest">Newest listed</option><option value="newest">Recently added to Finder</option><option value="distance-asc">Nearest first</option></select></label>
-        <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters">More filters</button>
-        <button class="reset" id="reset" type="reset">Reset filters</button>
-      </form>
-      <p class="distance-status" id="distance-status" aria-live="polite">Enter a ZIP to see approximate straight-line distances.</p>
-
-      <aside class="external-searches" aria-label="Search more marketplaces">
-        <strong>Broaden your search</strong>
-        <p>Browse aggregated results for each model and its tracked years. These external results are not included in the tracked inventory or title screening.</p>
-        <a href="https://www.autotempest.com/results?make=lexus&amp;model=lx470&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007" target="_blank" rel="noopener noreferrer">Search LX470 on AutoTempest ↗</a>
-        <a href="https://www.autotempest.com/results?make=lexus&amp;model=lx570&amp;zip=27101&amp;radius=any&amp;minyear=2011&amp;maxyear=2016" target="_blank" rel="noopener noreferrer">Search LX570 on AutoTempest ↗</a>
-        <a href="https://www.autotempest.com/results?make=toyota&amp;model=landcruiser&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007" target="_blank" rel="noopener noreferrer">Search Land Cruiser on AutoTempest ↗</a>
-        <a href="https://www.truecar.com/used-cars-for-sale/listings/lexus/lx/year-2011-2016/?trim=lx-570&amp;searchRadius=5000" target="_blank" rel="noopener noreferrer">Search LX570 on TrueCar ↗</a>
       </aside>
-      <div class="summary-strip" id="summary-strip" hidden>
-        <div><span>Median displayed price</span><strong id="median-price">&mdash;</strong></div>
-        <div><span>Median mileage</span><strong id="median-mileage">&mdash;</strong></div>
-        <div><span>No reported accidents</span><strong id="clean-count">&mdash;</strong></div>
+      <div class="app-column">
+        <header class="topbar">
+          <button
+            class="mobile-menu"
+            id="mobile-menu"
+            type="button"
+            aria-label="Open navigation"
+            aria-controls="app-sidebar"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <div class="topbar-breadcrumb">
+            <span>CRUISER SCOUT</span><span aria-hidden="true">/</span
+            ><strong id="current-view-label">Inventory</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="live-indicator"
+              ><span class="status-dot"></span> LIVE DATA</span
+            ><span id="updated">Loading latest inventory…</span>
+          </div>
+        </header>
+        <main class="workspace" id="workspace">
+          <section
+            id="inventory-view"
+            class="view"
+            aria-labelledby="inventory-title"
+          >
+            <div class="page-intro">
+              <div>
+                <p class="eyebrow">THE EXPLORER</p>
+                <h1 id="inventory-title">Inventory</h1>
+                <p>
+                  Current and completed Land Cruiser and Lexus LX listings,
+                  grouped by vehicle.
+                </p>
+              </div>
+              <span class="update-badge">Updated every 6 hours</span>
+            </div>
+            <div class="metric-grid" id="summary-strip">
+              <div class="metric-card">
+                <span>Tracked listings</span><strong id="total-count">—</strong
+                ><small id="vehicle-count">Vehicles</small>
+              </div>
+              <div class="metric-card">
+                <span>Median asking price</span
+                ><strong id="median-price">—</strong
+                ><small>Active retail listings</small>
+              </div>
+              <div class="metric-card">
+                <span>Median mileage</span><strong id="median-mileage">—</strong
+                ><small>Current selection</small>
+              </div>
+              <div class="metric-card">
+                <span>Reporting sources</span
+                ><strong id="source-count">—</strong
+                ><small
+                  ><span id="year-count">—</span> model years tracked</small
+                >
+              </div>
+            </div>
+            <div class="inventory-toolbar">
+              <div>
+                <h2>Explore vehicles</h2>
+                <p id="result-count" aria-live="polite">Loading inventory…</p>
+              </div>
+              <div class="toolbar-actions">
+                <button
+                  id="filter-toggle"
+                  class="secondary-button"
+                  type="button"
+                  aria-controls="filters"
+                  aria-expanded="true"
+                >
+                  Filters
+                </button>
+                <div class="segmented" role="group" aria-label="Listing view">
+                  <button id="card-view" type="button" aria-pressed="true">
+                    Cards</button
+                  ><button id="table-view" type="button" aria-pressed="false">
+                    Table
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="explorer-layout" id="explorer-layout">
+              <form class="filters" id="filters" aria-label="Filter inventory">
+                <div class="filter-head">
+                  <strong>Filters</strong
+                  ><button class="reset" id="reset" type="reset">
+                    Reset all
+                  </button>
+                </div>
+                <label
+                  ><span>Search</span
+                  ><input
+                    id="search"
+                    type="search"
+                    placeholder="Model, city, seller, VIN"
+                    autocomplete="off"
+                /></label>
+                <label
+                  ><span>Model</span
+                  ><select id="model">
+                    <option value="">All models</option>
+                    <option value="LX470">Lexus LX470</option>
+                    <option value="LX570">Lexus LX570</option>
+                    <option value="Land Cruiser">Toyota Land Cruiser</option>
+                  </select></label
+                >
+                <label
+                  ><span>Status</span
+                  ><select id="status">
+                    <option value="">All statuses</option>
+                    <option value="for-sale">For sale</option>
+                    <option value="live-auction">Live auction</option>
+                    <option value="sold">Sold</option>
+                    <option value="bid-not-met">Bid not met</option>
+                    <option value="auction-ended">Auction ended</option>
+                  </select></label
+                >
+                <label
+                  ><span>Exterior</span
+                  ><select id="color">
+                    <option value="">All colors</option>
+                  </select></label
+                >
+                <label
+                  ><span>Owners</span
+                  ><select id="owners">
+                    <option value="">All owner histories</option>
+                    <option value="1">Verified one owner</option>
+                    <option value="multiple">Verified 2+ owners</option>
+                    <option value="unknown">Unverified</option>
+                  </select></label
+                >
+                <label
+                  ><span>Accidents</span
+                  ><select id="accidents">
+                    <option value="">All accident histories</option>
+                    <option value="none">No reported accidents</option>
+                    <option value="reported">Reported accident</option>
+                    <option value="unavailable">History unavailable</option>
+                  </select></label
+                >
+                <label
+                  ><span>Max price</span
+                  ><select id="price">
+                    <option value="">Any price</option>
+                    <option value="15000">$15,000</option>
+                    <option value="20000">$20,000</option>
+                    <option value="25000">$25,000</option>
+                    <option value="30000">$30,000</option>
+                    <option value="40000">$40,000</option>
+                    <option value="60000">$60,000</option>
+                    <option value="80000">$80,000</option>
+                  </select></label
+                >
+                <label
+                  ><span>Max mileage</span
+                  ><select id="mileage">
+                    <option value="">Any mileage</option>
+                    <option value="100000">100,000</option>
+                    <option value="150000">150,000</option>
+                    <option value="200000">200,000</option>
+                    <option value="250000">250,000</option>
+                  </select></label
+                >
+                <label
+                  ><span>Your ZIP</span
+                  ><input
+                    id="zip"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="postal-code"
+                    maxlength="5"
+                    placeholder="5-digit ZIP"
+                    aria-describedby="distance-status"
+                /></label>
+                <label
+                  ><span>Within</span
+                  ><select id="radius">
+                    <option value="">Any distance</option>
+                    <option value="50">50 miles</option>
+                    <option value="100">100 miles</option>
+                    <option value="250">250 miles</option>
+                    <option value="500">500 miles</option>
+                    <option value="1000">1,000 miles</option>
+                  </select></label
+                >
+                <label
+                  ><span>Marketplace</span
+                  ><select id="source">
+                    <option value="">All sources</option>
+                  </select></label
+                >
+                <label
+                  ><span>Sort by</span
+                  ><select id="sort">
+                    <option value="listed-newest">Newest listed</option>
+                    <option value="newest">Recently added</option>
+                    <option value="price-asc">Price: low to high</option>
+                    <option value="price-desc">Price: high to low</option>
+                    <option value="mileage-asc">Mileage: low to high</option>
+                    <option value="distance-asc">Nearest first</option>
+                  </select></label
+                >
+                <p
+                  class="distance-status"
+                  id="distance-status"
+                  aria-live="polite"
+                >
+                  Enter a ZIP for approximate straight-line distance.
+                </p>
+              </form>
+              <div class="explorer-results">
+                <div
+                  id="active-filters"
+                  class="active-filters"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="listings"
+                  id="listings"
+                  aria-live="polite"
+                  aria-busy="true"
+                ></div>
+                <div class="empty" id="empty" hidden>
+                  <h3>No matching vehicles</h3>
+                  <p>Try widening your price, mileage, or history filters.</p>
+                  <button type="button" id="empty-reset">
+                    Show all listings
+                  </button>
+                </div>
+                <details class="map-disclosure">
+                  <summary>
+                    Map of filtered vehicles
+                    <span id="map-status">Loading locations…</span>
+                  </summary>
+                  <section class="location-map" aria-labelledby="map-title">
+                    <h3 id="map-title">Seller locations</h3>
+                    <div class="map-viewport">
+                      <svg
+                        id="listing-map"
+                        viewBox="0 0 1000 550"
+                        role="group"
+                        aria-label="Map of filtered vehicles in the contiguous United States"
+                      >
+                        <image
+                          href="us-map.svg"
+                          width="1000"
+                          height="550"
+                        ></image>
+                        <g id="map-markers"></g>
+                      </svg>
+                    </div>
+                    <p>
+                      Seller city or dealer ZIP area, not street addresses.
+                      Distances are approximate straight-line miles.
+                      <a
+                        href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Location data: US Census</a
+                      >.
+                    </p>
+                  </section>
+                </details>
+              </div>
+            </div>
+          </section>
+          <section
+            id="market-view"
+            class="view"
+            aria-labelledby="market-title"
+            hidden
+          >
+            <div class="page-intro">
+              <div>
+                <p class="eyebrow">MARKET INTELLIGENCE</p>
+                <h1 id="market-title">The market, in context</h1>
+                <p>
+                  Live asking prices and completed auction sales are measured
+                  separately.
+                </p>
+              </div>
+            </div>
+            <div class="metric-grid" id="market-metrics"></div>
+            <div class="panel market-controls">
+              <div>
+                <h2>Completed auction sales</h2>
+                <p id="market-count">Loading completed sales…</p>
+              </div>
+              <label
+                >Period<select id="market-period">
+                  <option value="24">Last 24 months</option>
+                  <option value="12">Last 12 months</option>
+                </select></label
+              ><label
+                >Model<select id="market-model">
+                  <option value="LX470">Lexus LX470</option>
+                  <option value="LX570">Lexus LX570</option>
+                  <option value="Land Cruiser">Toyota Land Cruiser</option>
+                </select></label
+              ><label
+                >Model year<select id="market-year">
+                  <option value="">All tracked years</option>
+                  <option value="2006">2006</option>
+                  <option value="2007">2007</option>
+                  <option value="2011">2011</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                </select></label
+              >
+            </div>
+            <div
+              class="market-bands"
+              id="market-bands"
+              aria-live="polite"
+            ></div>
+            <div class="chart-grid">
+              <section class="panel">
+                <h2>Asking price distribution</h2>
+                <p>Active retail listings</p>
+                <div id="price-distribution" class="bar-chart"></div>
+              </section>
+              <section class="panel">
+                <h2>Asking price vs. mileage</h2>
+                <p>Active listings with both values available</p>
+                <div id="price-mileage-chart" class="scatter-chart"></div>
+              </section>
+              <section class="panel">
+                <h2>Model-year comparison</h2>
+                <p>Median active asking price by model year</p>
+                <div id="year-comparison" class="bar-chart"></div>
+              </section>
+              <section class="panel">
+                <h2>Source freshness</h2>
+                <div id="market-sources"></div>
+              </section>
+            </div>
+            <p class="market-note">
+              <span id="market-source">Completed auction results</span>.
+              Averages and medians exclude bids that did not meet reserve. Deal
+              labels compare asking price with the median completed sale in the
+              same mileage band (15% below: Great; within 15%: Fair; 15% above:
+              Bad). Prices exclude buyer fees and do not account for condition,
+              maintenance, or modifications.
+            </p>
+          </section>
+          <section
+            id="watchlist-view"
+            class="view"
+            aria-labelledby="watchlist-title"
+            hidden
+          >
+            <div class="page-intro">
+              <div>
+                <p class="eyebrow">YOUR SHORTLIST</p>
+                <h1 id="watchlist-title">Watchlist</h1>
+                <p>Saved vehicles stay on this browser between visits.</p>
+              </div>
+            </div>
+            <div id="watchlist-content"></div>
+          </section>
+          <section
+            id="alerts-view"
+            class="view"
+            aria-labelledby="alerts-title"
+            hidden
+          >
+            <div class="page-intro">
+              <div>
+                <p class="eyebrow">IN-APP TRACKING</p>
+                <h1 id="alerts-title">Alerts</h1>
+                <p>Recent listing changes recorded by the latest collection.</p>
+              </div>
+            </div>
+            <div class="info-banner">
+              These are in-app updates from the available data. Email and push
+              delivery are not configured.
+            </div>
+            <div class="metric-grid" id="alert-metrics"></div>
+            <div id="alerts-content" class="panel"></div>
+          </section>
+          <section
+            id="sources-view"
+            class="view"
+            aria-labelledby="sources-title"
+            hidden
+          >
+            <div class="page-intro">
+              <div>
+                <p class="eyebrow">DATA TRANSPARENCY</p>
+                <h1 id="sources-title">Sources &amp; Coverage</h1>
+                <p>
+                  Collection health and coverage limits, as reported by each
+                  source.
+                </p>
+              </div>
+            </div>
+            <div class="info-banner" id="disclaimer">
+              Listings are screened for title-history signals. Verify the
+              physical title and independent history before purchase.
+            </div>
+            <div class="panel">
+              <h2>Source status</h2>
+              <div id="source-health" class="source-health"></div>
+            </div>
+            <div class="panel external-searches">
+              <h2>Broaden your search</h2>
+              <p>
+                External results are not included in tracked inventory or
+                screening.
+              </p>
+              <a
+                href="https://www.autotempest.com/results?make=lexus&amp;model=lx470&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LX470 on AutoTempest ↗</a
+              ><a
+                href="https://www.autotempest.com/results?make=lexus&amp;model=lx570&amp;zip=27101&amp;radius=any&amp;minyear=2011&amp;maxyear=2016"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LX570 on AutoTempest ↗</a
+              ><a
+                href="https://www.autotempest.com/results?make=toyota&amp;model=landcruiser&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Land Cruiser on AutoTempest ↗</a
+              >
+            </div>
+            <section class="panel method" id="method">
+              <h2>Buyer due diligence</h2>
+              <p>
+                Owner counts and accidents appear only when supported by a
+                source. Listing claims and location-based rust markers are not
+                inspection results. Check the original listing, run the VIN
+                through NMVTIS or CARFAX, match the report to the physical
+                title, and arrange an inspection.
+              </p>
+            </section>
+          </section>
+          <footer>
+            Research aid only · Marketplace claims require verification
+            <span>Made by Alex</span>
+          </footer>
+        </main>
       </div>
-
-      <section class="location-map" aria-labelledby="map-title">
-        <div class="map-heading"><h3 id="map-title">Where the trucks are</h3><p id="map-status">Loading truck locations&hellip;</p></div>
-        <div class="map-viewport">
-          <svg id="listing-map" viewBox="0 0 1000 550" role="group" aria-label="Map of filtered LX470, LX570 and Land Cruiser trucks in the contiguous United States">
-            <image href="us-map.svg" width="1000" height="550"></image>
-            <g id="map-markers"></g>
-          </svg>
-        </div>
-        <p class="map-note">Map covers the contiguous United States. Pins show seller city or dealer ZIP area, not a street address. Distances are approximate straight-line miles from your ZIP area. Select a pin to jump to a listing; swipe to explore on mobile. <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html" target="_blank" rel="noopener noreferrer">Location data: US Census</a>.</p>
-      </section>
-
-      <div class="listings" id="listings" aria-live="polite" aria-busy="true"></div>
-      <div class="empty" id="empty" hidden>
-        <h3>No listings match those filters.</h3>
-        <p>Try widening the price, mileage or history selections.</p>
-        <button type="button" id="empty-reset">Show all listings</button>
+    </div>
+    <dialog
+      class="photo-dialog"
+      id="photo-dialog"
+      aria-label="Vehicle photo gallery"
+    >
+      <div class="photo-dialog-header">
+        <strong id="photo-title">Listing photos</strong
+        ><button
+          type="button"
+          id="photo-close"
+          aria-label="Close photo gallery"
+        >
+          Close ×
+        </button>
       </div>
-    </section>
-
-    <section class="market" id="market" aria-labelledby="market-title">
-      <div class="section-heading market-heading">
+      <div class="photo-stage">
+        <button type="button" id="photo-previous" aria-label="Previous photo">
+          ‹</button
+        ><img id="photo-large" alt="" />
+        <p id="photo-error" hidden>
+          Photo unavailable. Try another image or open the original listing.
+        </p>
+        <button type="button" id="photo-next" aria-label="Next photo">›</button>
+      </div>
+      <div class="photo-dialog-footer">
+        <span id="photo-count"></span
+        ><a id="photo-source" target="_blank" rel="noopener noreferrer"
+          >Open original listing ↗</a
+        >
+      </div>
+    </dialog>
+    <dialog
+      class="research-dialog"
+      id="research-dialog"
+      aria-labelledby="research-title"
+    >
+      <div class="research-head">
         <div>
-          <p class="eyebrow">Two-year auction history</p>
-          <h2 id="market-title">What mileage has sold for.</h2>
+          <p class="eyebrow">VEHICLE RESEARCH</p>
+          <h2 id="research-title">Vehicle</h2>
         </div>
-        <p class="result-count" id="market-count">Loading completed sales&hellip;</p>
+        <button
+          type="button"
+          id="research-close"
+          aria-label="Close vehicle research"
+        >
+          Close ×
+        </button>
       </div>
-      <div class="market-controls" aria-label="Historical sales filters">
-        <label><span>Period</span><select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
-        <label><span>Model</span><select id="market-model"><option value="LX470">Lexus LX470</option><option value="LX570">Lexus LX570</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
-        <label><span>Model year</span><select id="market-year"><option value="">All tracked years</option><option value="2006">2006 only</option><option value="2007">2007 only</option><option value="2011">2011 only</option><option value="2012">2012 only</option><option value="2013">2013 only</option><option value="2014">2014 only</option><option value="2015">2015 only</option><option value="2016">2016 only</option></select></label>
-      </div>
-      <div class="market-bands" id="market-bands" aria-live="polite"></div>
-      <p class="market-note"><span id="market-source">Completed auction results</span>. Average and median exclude bids that did not meet reserve. Deal labels compare an asking price with the median sale in the same mileage range: 15% or more below is Great, within 15% is Fair, and more than 15% above is Bad. Prices exclude buyer fees; condition, maintenance and modifications vary, so open individual sales before using a band as a valuation.</p>
-    </section>
-
-    <section class="method" id="method" aria-labelledby="method-title">
-      <div>
-        <p class="eyebrow">Buyer due diligence</p>
-        <h2 id="method-title">Screened carefully.<br>Verified by you.</h2>
-      </div>
-      <div class="method-copy">
-        <p>The tracker excludes listings with reported salvage, lemon, frame-damage or theft history. Owner counts appear only when explicitly supported; CarGurus search-filter matches are labeled unverified. Accident reported requires an explicit source statement or count; a missing history result is labeled History unavailable. Reported extras are marketplace claims, not VIN-decoded factory options. A rust-check marker means a truck is or was advertised in one of the selected states; it does not prove where it was registered or whether it has rust. No marker does not mean rust-free.</p>
-        <ol>
-          <li><span>01</span>Open the original listing and confirm it is still available.</li>
-          <li><span>02</span>Run the VIN through NMVTIS or CARFAX.</li>
-          <li><span>03</span>Match the report to the physical title and arrange an inspection.</li>
-        </ol>
-        <details>
-          <summary>View source status</summary>
-          <div id="source-health" class="source-health"></div>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="shell">
-    <div class="footer-brand">
-      <p>Cruiser Scout</p>
-      <p class="credit">Made by Alex</p>
-    </div>
-    <p>Research aid only &middot; Updated automatically every six hours</p>
-  </footer>
-  <dialog class="photo-dialog" id="photo-dialog" aria-label="Vehicle photo gallery">
-    <div class="photo-dialog-header">
-      <strong id="photo-title">Listing photos</strong>
-      <button type="button" id="photo-close" aria-label="Close photo gallery">Close &times;</button>
-    </div>
-    <div class="photo-stage">
-      <button type="button" id="photo-previous" aria-label="Previous photo">&#8249;</button>
-      <img id="photo-large" alt="">
-      <p id="photo-error" hidden>That photo is unavailable. Try another image or open the original listing.</p>
-      <button type="button" id="photo-next" aria-label="Next photo">&#8250;</button>
-    </div>
-    <div class="photo-dialog-footer">
-      <span id="photo-count"></span>
-      <a id="photo-source" target="_blank" rel="noopener noreferrer">Open original listing &#8599;</a>
-    </div>
-  </dialog>
-  <script src="app.js" defer></script>
-</body>
+      <div id="research-content"></div>
+    </dialog>
+    <script src="app.js" defer></script>
+  </body>
 </html>

@@ -7,7 +7,7 @@ const ui = {
   sources: document.querySelector("#source-count"), disclaimer: document.querySelector("#disclaimer"),
   color: document.querySelector("#color"), summary: document.querySelector("#summary-strip"),
   medianPrice: document.querySelector("#median-price"), medianMileage: document.querySelector("#median-mileage"),
-  cleanCount: document.querySelector("#clean-count"), sourceHealth: document.querySelector("#source-health"),
+  sourceHealth: document.querySelector("#source-health"),
   marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
   marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
   marketModel: document.querySelector("#market-model"),
@@ -32,8 +32,15 @@ let zipLoad = null;
 let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "model", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "sort"]
+const controls = ["search", "model", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
+let sourceHealth = [];
+let latestChanges = [];
+let viewMode = localStorage.getItem("cruiser-scout-view") === "table" ? "table" : "cards";
+const watchlistKey = "cruiser-scout-watchlist-v1";
+let savedVehicles = new Set();
+try { savedVehicles = new Set(JSON.parse(localStorage.getItem(watchlistKey) || "[]")); } catch { savedVehicles = new Set(); }
+let mobileFilterLayout = window.matchMedia("(max-width: 700px)").matches;
 
 function vehicleName(row) { return `${row.make || "Lexus"} ${row.model || "LX470"}`; }
 function value(row, key) { return row[key] ?? ""; }
@@ -374,6 +381,7 @@ function otherListings(group) {
 function renderCard(row, group) {
   const card = document.createElement("article");
   card.className = "listing";
+  card.id = "vehicle-" + String(group.vehicleKey).replace(/[^a-zA-Z0-9_-]/g, "-");
   const photos = galleryUrls(row);
   const media = text("div", photos.length ? "listing-media" : "listing-media photo-missing", "");
   if (photos.length) {
@@ -447,10 +455,10 @@ function renderCard(row, group) {
   if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
-  const title = text("h3", "vehicle-title", vehicleName(row));
+  const title = text("h3", "vehicle-title", `${row.year} ${vehicleName(row)}${row.trim ? ` ${row.trim}` : ""}`);
   identity.append(title);
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
-  identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || row.source}`));
+  identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || "Seller unknown"} · ${row.source}`));
   const distance = distanceTo(row);
   if (distance != null) identity.append(text("p", "vehicle-meta location-distance", `About ${integer.format(Math.round(distance))} mi from your ZIP · straight line`));
   identity.append(text("p", "vehicle-meta timing", statusTiming(row)));
@@ -491,7 +499,17 @@ function renderCard(row, group) {
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   link.setAttribute("aria-label", `Open ${row.year} ${vehicleName(row)} listing on ${row.source}`);
-  card.append(link);
+  const actions = text("div", "listing-actions", "");
+  const research = text("button", "research-button", "Research");
+  research.type = "button";
+  research.addEventListener("click", () => openResearch(group));
+  const save = text("button", "save-button", savedVehicles.has(group.vehicleKey) ? "★ Saved" : "☆ Save");
+  save.type = "button";
+  save.setAttribute("aria-pressed", String(savedVehicles.has(group.vehicleKey)));
+  save.setAttribute("aria-label", (savedVehicles.has(group.vehicleKey) ? "Remove from" : "Save to") + " watchlist: " + row.year + " " + vehicleName(row));
+  save.addEventListener("click", () => toggleSaved(group.vehicleKey));
+  actions.append(research, save, link);
+  card.append(actions);
   const others = otherListings(group);
   if (others) card.append(others);
   return card;
@@ -506,6 +524,7 @@ function matches(row) {
   const amount = listingPrice(row);
   return (!query || haystack.includes(query))
     && (!controls.model.value || (row.model || "LX470") === controls.model.value)
+    && (!controls.source.value || row.source === controls.source.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
     && (!controls.color.value || factoryExterior.name === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
@@ -523,6 +542,7 @@ function sortRows(rows) {
   };
   const strategies = {
     "price-asc": (a, b) => (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing),
+    "price-desc": (a, b) => (listingPrice(b) ?? -1) - (listingPrice(a) ?? -1),
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
     "listed-newest": (a, b) => listedTime(b) - listedTime(a) || String(b.first_seen || "").localeCompare(String(a.first_seen || "")),
     "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
@@ -584,19 +604,20 @@ function render() {
   const byPrimary = new Map(groups.map(group => [group.primary.listing_key, group]));
   const cards = rows.map(row => renderCard(row, byPrimary.get(row.listing_key)));
   ui.listings.replaceChildren(...cards);
+  ui.listings.classList.toggle("table-view", viewMode === "table");
   renderMap(rows, cards);
   ui.listings.setAttribute("aria-busy", "false");
   ui.listings.hidden = rows.length === 0;
   ui.empty.hidden = rows.length !== 0;
   const matchedListings = groups.reduce((count, group) => count + group.matched.length, 0);
   ui.resultCount.textContent = `${rows.length} of ${vehicles.length} truck${vehicles.length === 1 ? "" : "s"} · ${matchedListings} listing${matchedListings === 1 ? "" : "s"}`;
-  ui.summary.hidden = rows.length === 0;
-  const price = median(rows.map(listingPrice));
+  ui.summary.hidden = false;
+  const price = median(rows.filter(row => row.status === "active" && row.category !== "auction").map(row => row.asking_price));
   const mileage = median(rows.map(row => row.mileage));
   ui.medianPrice.textContent = price == null ? "\u2014" : money.format(price);
   ui.medianMileage.textContent = mileage == null ? "\u2014" : `${integer.format(mileage)} mi`;
-  ui.cleanCount.textContent = String(rows.filter(row => accidentGroup(row) === "none" &&
-    !byPrimary.get(row.listing_key).listings.some(listing => accidentGroup(listing) === "reported")).length);
+  renderActiveFilters();
+  if (currentView() === "watchlist") renderWatchlist();
 }
 
 function renderMarket() {
@@ -644,13 +665,14 @@ function reset() {
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
   updateFilterToggle();
   render();
+  syncFilters();
 }
 
 function updateFilterToggle() {
-  const active = ["color", "owners", "accidents", "price", "mileage"]
-    .filter(id => controls[id].value).length;
-  const expanded = ui.form.classList.contains("filters-expanded");
-  ui.filterToggle.textContent = `${expanded ? "Hide" : "More"} filters${active ? ` (${active})` : ""}`;
+  const active = Object.entries(controls).filter(([id, control]) =>
+    control.value && !(id === "sort" && control.value === "listed-newest")).length;
+  const expanded = !ui.form.classList.contains("is-hidden");
+  ui.filterToggle.textContent = `Filters${active ? ` (${active})` : ""}`;
   ui.filterToggle.setAttribute("aria-expanded", String(expanded));
 }
 
@@ -668,37 +690,60 @@ async function load() {
     inventory = Array.isArray(data.listings) ? data.listings : [];
     vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
+    sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
     ui.marketSource.textContent = data.market_history?.source || "Completed auction results";
     ui.updated.textContent = formatDate(data.generated_at);
-    ui.disclaimer.textContent = data.disclaimer;
+    document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);
+    ui.disclaimer.textContent = data.disclaimer || ui.disclaimer.textContent;
     ui.total.textContent = integer.format(inventory.length);
     ui.years.textContent = new Set(inventory.map(row => row.year)).size;
     ui.sources.textContent = new Set(inventory.map(row => row.source)).size;
+    document.querySelector("#vehicle-count").textContent = `${integer.format(vehicles.length)} unique vehicles`;
+    [...new Set(inventory.map(row => row.source).filter(Boolean))].sort()
+      .forEach(source => controls.source.add(new Option(source, source)));
 
     [...new Set(inventory.map(row => resolveFactoryColor("exterior", row.exterior_color, row.year, row.model).name)
       .filter(name => name && name !== "Unknown"))].sort()
       .forEach(color => ui.color.add(new Option(color, color)));
-    (data.source_health || []).forEach(source => {
+    sourceHealth.forEach(source => {
       const row = text("div", "health-row", "");
-      row.append(text("strong", "", source.source || "Source"), text("span", "", source.status || "Unknown"));
+      row.append(text("strong", "", source.source || "Source"),
+        text("span", source.status || "", String(source.status || "Unknown").replaceAll("_", " ")),
+        text("span", "", source.detail || "No details reported"),
+        text("small", "", `Checked ${formatDay(source.checked_at)}`));
       ui.sourceHealth.append(row);
     });
+    restoreFilters();
+    syncFilterLayout(true);
+    updateFilterToggle();
     render();
     renderMarket();
+    renderMarketOverview();
+    renderAlerts();
+    renderSourceOverview();
+    renderWatchlist();
+    routeView();
   } catch (error) {
     ui.listings.setAttribute("aria-busy", "false");
     ui.listings.replaceChildren(text("p", "loading", "The inventory could not be loaded. Please refresh in a moment."));
     ui.resultCount.textContent = "Inventory unavailable";
+    ui.updated.textContent = "Inventory unavailable";
+    ui.marketCount.textContent = "Market data unavailable";
+    ui.marketBands.replaceChildren(text("p", "empty", "Completed auction data could not be loaded."));
+    ui.sourceHealth.replaceChildren(text("p", "empty", "Source status is unavailable."));
+    document.querySelector("#watchlist-content").replaceChildren(text("p", "empty", "Saved vehicles cannot be shown until inventory loads."));
+    document.querySelector("#alerts-content").textContent = "Inventory unavailable.";
     console.error(error);
   }
 }
 
-ui.form.addEventListener("input", () => { updateFilterToggle(); render(); });
+ui.form.addEventListener("input", () => { updateFilterToggle(); render(); syncFilters(); });
 controls.zip.addEventListener("input", updateOrigin);
 ui.filterToggle.addEventListener("click", () => {
-  ui.form.classList.toggle("filters-expanded");
-  updateFilterToggle();
+  const hidden = ui.form.classList.toggle("is-hidden");
+  document.querySelector("#explorer-layout").classList.toggle("filters-collapsed", hidden);
+  ui.filterToggle.setAttribute("aria-expanded", String(!hidden));
 });
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
@@ -707,7 +752,268 @@ ui.form.addEventListener("reset", () => setTimeout(() => {
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
-  updateFilterToggle(); render();
+  updateFilterToggle(); render(); syncFilters();
 }, 0));
 document.querySelector("#empty-reset").addEventListener("click", reset);
+document.querySelector("#card-view").addEventListener("click", () => setViewMode("cards"));
+document.querySelector("#table-view").addEventListener("click", () => setViewMode("table"));
+document.querySelector("#mobile-menu").addEventListener("click", () => {
+  const open = document.querySelector("#app-sidebar").classList.toggle("is-open");
+  document.querySelector("#mobile-menu").setAttribute("aria-expanded", String(open));
+  syncNavigationLayout();
+});
+window.addEventListener("hashchange", routeView);
+window.addEventListener("resize", () => { syncFilterLayout(); syncNavigationLayout(); });
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && document.querySelector("#app-sidebar").classList.contains("is-open")) {
+    document.querySelector("#app-sidebar").classList.remove("is-open");
+    document.querySelector("#mobile-menu").setAttribute("aria-expanded", "false");
+    syncNavigationLayout();
+    document.querySelector("#mobile-menu").focus();
+  }
+});
+document.querySelector("#research-close").addEventListener("click", () => document.querySelector("#research-dialog").close());
+document.querySelector("#research-dialog").addEventListener("click", event => {
+  if (event.target.id === "research-dialog") event.target.close();
+});
+function currentView() {
+  const name = location.hash.slice(1).split("?")[0];
+  return ["inventory", "market", "watchlist", "alerts", "sources"].includes(name) ? name : "inventory";
+}
+function syncNavigationLayout() {
+  const sidebar = document.querySelector("#app-sidebar");
+  sidebar.inert = window.matchMedia("(max-width: 700px)").matches && !sidebar.classList.contains("is-open");
+}
+function syncFilterLayout(force = false) {
+  const mobile = window.matchMedia("(max-width: 700px)").matches;
+  if (!force && mobile === mobileFilterLayout) return;
+  mobileFilterLayout = mobile;
+  ui.form.classList.toggle("is-hidden", mobile);
+  document.querySelector("#explorer-layout").classList.toggle("filters-collapsed", mobile);
+  updateFilterToggle();
+}
+function routeView() {
+  const active = currentView();
+  for (const name of ["inventory", "market", "watchlist", "alerts", "sources"]) {
+    document.querySelector(`#${name}-view`).hidden = name !== active;
+    const link = document.querySelector(`[data-view-link="${name}"]`);
+    if (name === active) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+  document.querySelector("#current-view-label").textContent =
+    ({ inventory: "Inventory", market: "Market Intelligence", watchlist: "Watchlist", alerts: "Alerts", sources: "Sources & Coverage" })[active];
+  document.querySelector("#app-sidebar").classList.remove("is-open");
+  document.querySelector("#mobile-menu").setAttribute("aria-expanded", "false");
+  syncNavigationLayout();
+  if (active === "watchlist") renderWatchlist();
+  window.scrollTo(0, 0);
+}
+function setViewMode(mode) {
+  viewMode = mode;
+  try { localStorage.setItem("cruiser-scout-view", mode); } catch { /* Private browsing can block storage. */ }
+  ui.listings.classList.toggle("table-view", mode === "table");
+  for (const name of ["card", "table"]) document.querySelector(`#${name}-view`).setAttribute("aria-pressed", String(name === mode));
+}
+function syncFilters() {
+  const params = new URLSearchParams();
+  for (const [name, control] of Object.entries(controls)) {
+    if (control.value && !(name === "sort" && control.value === "listed-newest")) params.set(name, control.value);
+  }
+  const path = currentView();
+  history.replaceState(null, "", `#${path}${params.size ? "?" + params : ""}`);
+}
+function restoreFilters() {
+  const params = new URLSearchParams(location.hash.split("?")[1] || "");
+  for (const [name, control] of Object.entries(controls)) {
+    const desired = params.get(name);
+    if (desired != null && [...control.options || []].some(option => option.value === desired) || (control.tagName === "INPUT" && desired != null)) control.value = desired;
+  }
+  if (controls.zip.value) updateOrigin();
+  setViewMode(viewMode);
+}
+function renderActiveFilters() {
+  const holder = document.querySelector("#active-filters");
+  const active = Object.entries(controls).filter(([name, control]) =>
+    control.value && !(name === "sort" && control.value === "listed-newest"));
+  holder.replaceChildren(...active.map(([name, control]) => {
+    const label = control.selectedOptions?.[0]?.textContent || control.value;
+    const chip = text("button", "filter-chip", `${name}: ${label} ×`);
+    chip.type = "button";
+    chip.setAttribute("aria-label", `Remove ${name} filter`);
+    chip.addEventListener("click", () => {
+      control.value = name === "sort" ? "listed-newest" : "";
+      if (name === "zip") origin = null;
+      render(); syncFilters();
+    });
+    return chip;
+  }));
+}
+function toggleSaved(key) {
+  if (savedVehicles.has(key)) savedVehicles.delete(key);
+  else savedVehicles.add(key);
+  try { localStorage.setItem(watchlistKey, JSON.stringify([...savedVehicles])); }
+  catch { /* Browser storage is optional. */ }
+  document.querySelector("#watchlist-nav-count").textContent = savedVehicles.size || "";
+  render();
+  renderWatchlist();
+}
+function renderWatchlist() {
+  const holder = document.querySelector("#watchlist-content");
+  document.querySelector("#watchlist-nav-count").textContent = savedVehicles.size || "";
+  if (!vehicles.length) return;
+  const groups = vehicles.filter(group => savedVehicles.has(group.vehicleKey));
+  if (!groups.length) {
+    holder.replaceChildren(text("div", "empty", "No saved vehicles yet. Save a truck from Inventory to compare it here."));
+    return;
+  }
+  const grid = text("div", "watchlist-grid", "");
+  grid.append(...groups.map(group => renderCard(sortRows([...group.listings])[0], group)));
+  holder.replaceChildren(grid);
+}
+function researchFact(label, content) {
+  const fact = text("div", "research-fact", "");
+  fact.append(text("small", "", label), text("strong", "", String(content || "Unknown")));
+  return fact;
+}
+function openResearch(group) {
+  const row = sortRows([...group.listings])[0];
+  const dialog = document.querySelector("#research-dialog");
+  document.querySelector("#research-title").textContent = `${row.year} ${vehicleName(row)}`;
+  const body = text("div", "research-body", "");
+  const layout = text("div", "research-layout", "");
+  const media = text("div", "", "");
+  const urls = galleryUrls(row);
+  if (urls.length) {
+    const photo = document.createElement("img");
+    photo.src = urls[0]; photo.alt = `${row.year} ${vehicleName(row)}`; photo.className = "research-photo";
+    photo.referrerPolicy = "no-referrer";
+    photo.addEventListener("error", () => photo.replaceWith(text("div", "research-photo photo-placeholder", row.model || "Vehicle")));
+    media.append(photo);
+    const gallery = text("button", "secondary-button", `Browse ${urls.length} photo${urls.length === 1 ? "" : "s"}`);
+    gallery.type = "button";
+    gallery.addEventListener("click", () => { dialog.close(); openGallery(row, urls, 0); });
+    media.append(gallery);
+  } else media.append(text("div", "research-photo photo-placeholder", row.model || "Vehicle"));
+  const facts = text("div", "research-facts", "");
+  facts.append(
+    researchFact(row.status === "sold" ? "Recorded sale" : row.category === "auction" ? "Auction bid" : "Asking price", priceLabel(row)),
+    researchFact("Mileage", row.mileage == null ? "Unknown" : `${integer.format(row.mileage)} mi`),
+    researchFact("VIN", row.vin || "Unavailable"),
+    researchFact("Location", [row.city, row.state].filter(Boolean).join(", ") || "Unknown"),
+    researchFact("Seller", row.seller || "Unknown"),
+    researchFact("Listing date", row.listed_at ? formatDay(row.listed_at) + (row.listed_at_is_estimated ? " (estimated)" : "") : "Unknown"),
+    researchFact("Added to Scout", formatDay(row.first_seen)),
+    researchFact("Title indicator", row.title_status || "Unknown"),
+    researchFact("Ownership", ownerLabel(row)),
+    researchFact("Accident history", accidentGroup(row) === "unavailable" ? "History unavailable" : row.accident_history),
+    researchFact("Exterior", row.exterior_color || "Unknown"),
+    researchFact("Interior", row.interior_color || "Unknown")
+  );
+  layout.append(media, facts); body.append(layout);
+  const more = text("section", "research-section", "");
+  more.append(text("h3", "", "Source records"));
+  const sources = otherListings(group);
+  if (sources) more.append(sources);
+  else {
+    const link = text("a", "", `Open original listing on ${row.source} ↗`);
+    link.href = row.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer"; more.append(link);
+  }
+  body.append(more);
+  const condition = text("section", "research-section", "");
+  condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row));
+  const extras = reportedExtras(row);
+  if (extras) condition.append(extras);
+  body.append(condition);
+  const history = text("section", "research-section", "");
+  history.append(text("h3", "", "Price & auction context"));
+  history.append(text("p", "", row.deal_quality && row.deal_median_price
+    ? `${row.deal_quality} deal against ${row.deal_comparable_count} completed sales in the ${row.deal_mileage_band} mileage band; median ${money.format(row.deal_median_price)}. Condition is not accounted for.`
+    : "No supported auction comparison for this listing."));
+  history.append(text("p", "", "A listing-level price history is not published in the current inventory feed."));
+  body.append(history);
+  document.querySelector("#research-content").replaceChildren(body);
+  dialog.showModal();
+}
+function marketMetric(label, value, note) {
+  const node = text("div", "metric-card", "");
+  node.append(text("span", "", label), text("strong", "", value), text("small", "", note));
+  return node;
+}
+function chartRow(label, amount, max, valueLabel) {
+  const row = text("div", "chart-row", "");
+  const track = text("div", "chart-track", "");
+  const fill = text("div", "chart-fill", "");
+  fill.style.width = `${max ? Math.max(2, amount / max * 100) : 0}%`;
+  track.append(fill);
+  row.append(text("span", "", label), track, text("strong", "", valueLabel));
+  return row;
+}
+function renderMarketOverview() {
+  const active = inventory.filter(row => row.status === "active" && row.category !== "auction" && Number.isFinite(row.asking_price));
+  const newCount = inventory.filter(row => Date.parse(row.first_seen) >= generatedAt.getTime() - 7 * 864e5).length;
+  const metrics = document.querySelector("#market-metrics");
+  metrics.replaceChildren(
+    marketMetric("Active retail listings", integer.format(active.length), "Asking prices, not sales"),
+    marketMetric("Median asking price", active.length ? money.format(median(active.map(row => row.asking_price))) : "—", "Active retail listings"),
+    marketMetric("Added in 7 days", integer.format(newCount), "Based on first seen"),
+    marketMetric("Completed auction sales", integer.format(marketSales.length), "Historical feed")
+  );
+  const bins = [[0,20000],[20000,30000],[30000,40000],[40000,50000],[50000,75000],[75000,Infinity]];
+  const distribution = bins.map(([min,max]) => active.filter(row => row.asking_price >= min && row.asking_price < max).length);
+  document.querySelector("#price-distribution").replaceChildren(...distribution.map((count,index) =>
+    chartRow(index === 0 ? "<$20k" : index === 5 ? "$75k+" : `$${bins[index][0]/1000}–${bins[index][1]/1000}k`, count, Math.max(...distribution), String(count))));
+  const scatter = document.querySelector("#price-mileage-chart");
+  scatter.replaceChildren();
+  const withMiles = active.filter(row => Number.isFinite(row.mileage));
+  const maxPrice = Math.max(...withMiles.map(row => row.asking_price), 1);
+  const maxMiles = Math.max(...withMiles.map(row => row.mileage), 1);
+  withMiles.forEach(row => {
+    const dot = text("span", "scatter-point", "");
+    dot.style.left = `${row.mileage / maxMiles * 100}%`;
+    dot.style.bottom = `${row.asking_price / maxPrice * 100}%`;
+    dot.title = `${row.year} ${vehicleName(row)} · ${integer.format(row.mileage)} mi · ${money.format(row.asking_price)}`;
+    scatter.append(dot);
+  });
+  scatter.append(text("span", "chart-axis x", `0–${integer.format(maxMiles)} mi`), text("span", "chart-axis y", `0–${money.format(maxPrice)}`));
+  const years = [...new Set(active.map(row => row.year))].sort();
+  const values = years.map(year => median(active.filter(row => row.year === year).map(row => row.asking_price)));
+  document.querySelector("#year-comparison").replaceChildren(...years.map((year,index) =>
+    chartRow(String(year), values[index], Math.max(...values), money.format(values[index]))));
+  const sources = document.querySelector("#market-sources");
+  sources.replaceChildren(...sourceHealth.filter(source => source.status !== "not_applicable").slice(0, 8).map(source => {
+    const item = text("div", "event-row", "");
+    item.append(text("strong", "", source.source), text("span", "", source.status.replaceAll("_", " ")),
+      text("small", "", formatDay(source.checked_at)));
+    return item;
+  }));
+}
+function renderAlerts() {
+  const cutoff = generatedAt.getTime() - 7 * 864e5;
+  const recent = inventory.filter(row => Date.parse(row.first_seen) >= cutoff)
+    .sort((a,b) => String(b.first_seen).localeCompare(String(a.first_seen)));
+  document.querySelector("#alert-metrics").replaceChildren(
+    marketMetric("New source listings", integer.format(recent.length), "Added in the last 7 days"),
+    marketMetric("Price changes", "Unavailable", "No published change feed for this view"),
+    marketMetric("Last collection", formatDay(generatedAt.toISOString()), "Inventory snapshot")
+  );
+  const holder = document.querySelector("#alerts-content");
+  holder.replaceChildren(text("h2", "", "Recently discovered"));
+  if (!recent.length) holder.append(text("p", "", "No listings were first seen in the last 7 days."));
+  else holder.append(...recent.slice(0, 50).map(row => {
+    const item = text("div", "event-row", "");
+    item.append(text("strong", "", formatDay(row.first_seen)));
+    const link = text("a", "", `${row.year} ${vehicleName(row)} · ${priceLabel(row)} · ${row.source}`);
+    link.href = row.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+    item.append(link, text("small", "", row.state || "Location unknown"));
+    return item;
+  }));
+}
+function renderSourceOverview() {
+  const counts = [...new Set(inventory.map(row => row.source).filter(Boolean))].sort();
+  const grid = text("div", "metric-grid", "");
+  grid.append(...counts.map(source => marketMetric(source,
+    integer.format(inventory.filter(row => row.source === source).length), "Current source listings")));
+  ui.sourceHealth.parentElement.before(grid);
+}
+syncNavigationLayout();
 load();
