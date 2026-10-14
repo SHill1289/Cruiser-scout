@@ -52,6 +52,35 @@ class DatabaseTests(unittest.TestCase):
         bad = normalize({**self.row, 'vin': 'JTJHT00W464018100'})
         self.assertTrue(bad['vehicle_key'].startswith('listing:'))
 
+    def test_land_cruiser_identity_and_vin(self):
+        row = normalize({**self.row, 'make': 'Toyota', 'model': 'Land Cruiser', 'vin': 'JTEHT05J862085738'})
+        self.assertEqual(row['model'], 'Land Cruiser')
+        self.assertEqual(row['vehicle_key'], 'vin:JTEHT05J862085738')
+        self.assertNotIn('vin_model_or_year_conflict', row['quality_flags'])
+        wrong = normalize({**row, 'vin': self.row['vin']})
+        self.assertIn('vin_model_or_year_conflict', wrong['quality_flags'])
+        with self.assertRaises(ValueError):
+            normalize({**row, 'model': '4Runner'})
+
+    def test_model_scopes_do_not_remove_other_model(self):
+        lc = {**self.row, 'make': 'Toyota', 'model': 'Land Cruiser',
+              'vin': 'JTEHT05J862085738', 'source_listing_id': 'lc'}
+        update(self.state, [self.row, lc], NOW)
+        for _ in range(3):
+            update(self.state, [], NOW, [('test', 2006, 'Land Cruiser')])
+        self.assertEqual(self.state['listings']['test:lc']['status'], 'removed')
+        self.assertEqual(self.state['listings']['test:1']['missing_checks'], 0)
+        update(self.state, [], NOW, [('test', 2006, 'LX470')])
+        self.assertEqual(self.state['listings']['test:1']['missing_checks'], 1)
+
+    def test_deal_rating_keeps_models_separate(self):
+        sales = [{'mileage': 180000, 'sale_price': 20000} for _ in range(3)]
+        lc = {**self.row, 'model': 'Land Cruiser', 'mileage': 180000}
+        self.assertEqual(deal_rating(lc, sales), {})
+        sales += [{'model': 'Land Cruiser', 'mileage': 180000, 'sale_price': 30000} for _ in range(3)]
+        self.assertEqual(deal_rating(lc, sales)['deal_median_price'], 30000)
+        self.assertEqual(deal_rating({**self.row, 'mileage': 180000}, sales)['deal_median_price'], 20000)
+
     def test_listing_extras_excludes_standard_and_generic_features(self):
         features = ['Navigation System', 'Backup Camera', 'Leather Seats',
                     'DVD Entertainment System', 'CarPlay', 'Remote Start',
@@ -397,6 +426,32 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(target['reported_extras'], 'CarPlay;Rear-seat DVD')
         self.assertTrue(clean_title_candidate(target))
 
+    def test_cargurus_land_cruiser(self):
+        context = self.clean_fixture()
+        search = context['state']['loaderData']['route']['search']
+        search['tiles'] = search['tiles'][:1]
+        search['totalListings'] = 1
+        data = search['tiles'][0]['data']
+        data['ontologyData'].update(makeName='Toyota', modelName='Land Cruiser', trimName='4WD')
+        data['vin'] = 'JTEHT05J862085738'
+        page = 'window.__remixContext = ' + json.dumps(context)
+        rows, complete, _ = parse_cargurus(page, 2006, model='Land Cruiser')
+        self.assertTrue(complete)
+        self.assertEqual(rows[0]['make'], 'Toyota')
+        with self.assertRaises(ValueError):
+            parse_cargurus(page, 2006)
+
+    def test_land_cruiser_auction_and_archive(self):
+        url = 'https://bringatrailer.com/listing/2006-toyota-land-cruiser-100/'
+        page = ('<title>2006 Toyota Land Cruiser sold for $25,000 on May 13, 2026</title>'
+                '<h1>2006 Toyota Land Cruiser UZJ100</h1><div class="listing-intro">Sold for USD $25,000'
+                '<li>Chassis: JTEHT05J862085738</li><li>180k Miles</li><div class="listing-actions-stats">')
+        row = parse_bat(page, url, NOW)
+        self.assertEqual(row['model'], 'Land Cruiser')
+        self.assertEqual(parse_historical_sale(page, url, NOW)['model'], 'Land Cruiser')
+        self.assertEqual(bat_listing_urls('<a href="/listing/2006-toyota-land-cruiser-100/">LC</a>'
+                         '<a href="/listing/2005-toyota-land-cruiser/">wrong year</a>'), {url})
+
     def test_cargurus_missing_mileage_keeps_complete_listing_batch(self):
         for mileage in (None, {}, {'value': None, 'unit': 'MILES'}, {'value': ''}):
             with self.subTest(mileage=mileage):
@@ -494,6 +549,24 @@ class ParserTests(unittest.TestCase):
                 parse_truecar(page_for({**nationwide, 'filters': {**nationwide['filters'], **extra}}), NOW)
         self.assertFalse(parse_truecar(page_for(nationwide, {**result,
             'pageInfo': {'hasNextPage': True}}), NOW)[1])
+
+    def test_truecar_land_cruiser(self):
+        filters = {'condition': 'USED', 'makeModelTrim': [{'makeSlug': 'toyota', 'modelSlug': 'land-cruiser'}],
+                   'year': {'min': 2006, 'max': 2007}}
+        args = {'filters': filters, 'offset': 0, 'first': 30}
+        state = {'ROOT_QUERY': {'marketplaceListingSearch(' + json.dumps(args) + ')': {
+            'totalCount': 1, 'edges': [{'node': {'__ref': 'listing'}}], 'pageInfo': {'hasNextPage': False}}},
+            'listing': {'conditionHistory': {'isCleanTitle': True}, 'vehicle': {
+                'year': 2006, 'vin': 'JTEHT05J862085738', 'make': {'name': 'Toyota'},
+                'model': {'name': 'Land Cruiser'}, 'mileage': 180000}}}
+        page = '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(
+            {'props': {'pageProps': {'__APOLLO_STATE__': state}}}) + '</script>'
+        rows, complete, total = parse_truecar(page, NOW, model='Land Cruiser')
+        self.assertTrue(complete)
+        self.assertEqual(total, 1)
+        self.assertEqual(rows[0]['model'], 'Land Cruiser')
+        with self.assertRaises(ValueError):
+            parse_truecar(page, NOW)
 
     def test_location_points_prefer_dealer_zip_then_city_and_keep_unknown_unmapped(self):
         places, zips = load_location_points()

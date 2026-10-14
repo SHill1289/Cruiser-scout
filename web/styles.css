@@ -344,3 +344,8 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px
   .listing .listing-dates { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+.land-cruiser-heading { font-size: .5em; letter-spacing: -.02em; }
+.external-searches { padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.external-searches p { color: var(--muted); margin: 8px 0 12px; }
+.external-searches a { display: inline-block; margin: 0 24px 8px 0; text-decoration: underline; text-underline-offset: 3px; }

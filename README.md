@@ -1,6 +1,6 @@
 # LX470 Finder
 
-A private, automated US listing database for **2006–2007 Lexus LX470s**, continued from the LX470 Finder conversations.
+A private, automated US listing database for **2006–2007 Lexus LX470s and Toyota Land Cruisers**, continued from the LX470 Finder conversations.
 
 ## Start here
 
@@ -112,3 +112,11 @@ When a listing page displays an owner count, open **Actions → Verify owner cou
 This is intentionally evidence based. Free government VIN services provide specifications, recalls and limited theft/salvage checks, but do not provide an exact previous-owner count. Listings without visible owner-count evidence remain `Unverified` rather than receiving a guess.
 
 This repository does not contact sellers, send messages, or place bids.
+
+## Land Cruiser searches and AutoTempest
+
+The finder also collects 2006–2007 Toyota Land Cruiser listings from nationwide CarGurus and TrueCar searches, plus matching Bring a Trailer auctions from the 100-Series archive. Both models appear by default; use the Model filter or search a model name to narrow the results. Photo labels, VIN validation, CSV exports, missing-listing checks, and auction-price comparisons distinguish the two models. Existing records without model fields are migrated as Lexus LX470 records. Land Cruiser colors retain the marketplace description rather than using the Lexus factory-color reference.
+
+Manual Land Cruiser imports must include `"make": "Toyota"` and `"model": "Land Cruiser"`. The existing year and clean-title screening rules still apply. Auction history covers discovered or seeded auctions, not a complete archive; price badges require enough completed sales for the same model and mileage band.
+
+Prefilled nationwide AutoTempest links for both models are available below the inventory filters. These open external searches and do not import results into the tracked database or apply our title screening. [AutoTempest's terms](https://www.autotempest.com/legal) require written authorization for automated extraction; an authorized feed is not configured.

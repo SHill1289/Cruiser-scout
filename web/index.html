@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Current 2006&ndash;2007 Lexus LX470 clean-title candidates from nationwide listing searches.">
+  <meta name="description" content="Current 2006&ndash;2007 Lexus LX470 and Toyota Land Cruiser clean-title candidates from nationwide listing searches.">
   <meta name="theme-color" content="#101714">
   <title>LX470 Finder</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -21,7 +21,7 @@
     <div class="shell hero-grid" id="top">
       <div>
         <p class="eyebrow">Nationwide listing tracker</p>
-        <h1>Find the right<br><span class="model-wordmark wordmark-hero" role="img" aria-label="LX470"></span></h1>
+        <h1>Find the right<br><span class="model-wordmark wordmark-hero" role="img" aria-label="LX470"></span><br><span class="land-cruiser-heading">or Land Cruiser</span></h1>
       </div>
       <div class="hero-panel" aria-label="Inventory update status">
         <div class="status-line"><span class="pulse" aria-hidden="true"></span> Search runs every 6 hours</div>
@@ -56,8 +56,9 @@
       <form class="filters" id="filters" aria-label="Filter inventory">
         <label class="search-field">
           <span>Search</span>
-          <input id="search" type="search" placeholder="City, seller, VIN&hellip;" autocomplete="off">
+          <input id="search" type="search" placeholder="Model, city, seller, VIN&hellip;" autocomplete="off">
         </label>
+        <label><span>Model</span><select id="model"><option value="">Both models</option><option value="LX470">Lexus LX470</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
         <label><span>Status</span><select id="status"><option value="">All statuses</option><option value="for-sale">For sale</option><option value="live-auction">Live auction</option><option value="sold">Sold</option><option value="bid-not-met">Bid not met</option><option value="auction-ended">Auction ended</option></select></label>
         <label class="advanced-filter"><span>Exterior</span><select id="color"><option value="">All colors</option></select></label>
         <label class="advanced-filter"><span>Owners</span><select id="owners"><option value="">All owner histories</option><option value="1">Verified one owner</option><option value="multiple">Verified 2+ owners</option><option value="unknown">Unverified</option></select></label>
@@ -72,6 +73,12 @@
       </form>
       <p class="distance-status" id="distance-status" aria-live="polite">Enter a ZIP to see approximate straight-line distances.</p>
 
+      <aside class="external-searches" aria-label="Search more marketplaces">
+        <strong>Broaden your search with AutoTempest</strong>
+        <p>Browse aggregated results for 2006–2007 trucks. These external results are not included in the tracked inventory or title screening.</p>
+        <a href="https://www.autotempest.com/results?make=lexus&amp;model=lx470&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007" target="_blank" rel="noopener noreferrer">Search LX470 on AutoTempest ↗</a>
+        <a href="https://www.autotempest.com/results?make=toyota&amp;model=landcruiser&amp;zip=27101&amp;radius=any&amp;minyear=2006&amp;maxyear=2007" target="_blank" rel="noopener noreferrer">Search Land Cruiser on AutoTempest ↗</a>
+      </aside>
       <div class="summary-strip" id="summary-strip" hidden>
         <div><span>Median displayed price</span><strong id="median-price">&mdash;</strong></div>
         <div><span>Median mileage</span><strong id="median-mileage">&mdash;</strong></div>
@@ -81,7 +88,7 @@
       <section class="location-map" aria-labelledby="map-title">
         <div class="map-heading"><h3 id="map-title">Where the trucks are</h3><p id="map-status">Loading truck locations&hellip;</p></div>
         <div class="map-viewport">
-          <svg id="listing-map" viewBox="0 0 1000 550" role="group" aria-label="Map of filtered LX470 trucks in the contiguous United States">
+          <svg id="listing-map" viewBox="0 0 1000 550" role="group" aria-label="Map of filtered LX470 and Land Cruiser trucks in the contiguous United States">
             <image href="us-map.svg" width="1000" height="550"></image>
             <g id="map-markers"></g>
           </svg>
@@ -107,6 +114,7 @@
       </div>
       <div class="market-controls" aria-label="Historical sales filters">
         <label><span>Period</span><select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
+        <label><span>Model</span><select id="market-model"><option value="LX470">Lexus LX470</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
         <label><span>Model year</span><select id="market-year"><option value="">2006 &amp; 2007</option><option value="2006">2006 only</option><option value="2007">2007 only</option></select></label>
       </div>
       <div class="market-bands" id="market-bands" aria-live="polite"></div>
