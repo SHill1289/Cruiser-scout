@@ -1,5 +1,5 @@
 {
-  "description": "Factory color names for US-market 2006-2007 Lexus LX 470s. Paint codes identify the finish; CSS swatches are screen approximations and cannot reproduce metallic or pearl paint exactly.",
+  "description": "US-market factory palette references by model and year. Marketplace colors are grouped for browsing, not verified against an individual vehicle's paint code. CSS swatches are approximations.",
   "sources": [
     {
       "name": "Lexus Canada 2006 LX 470 specifications",
@@ -12,42 +12,70 @@
     {
       "name": "2007 Toyota/Lexus Color Compatibility Guide",
       "url": "https://industrial.sherwin-williams.com/content/dam/pcg/sherwin-williams/automotive/emeai/nl/nl-nl/pdfs/swaf-2007_toyota_lexus_ccg.pdf"
+    },
+    {
+      "name": "2006 Lexus LX US brochure",
+      "url": "https://directechs.blob.core.windows.net/directwirebrochures/brochure1946_0.pdf"
+    },
+    {
+      "name": "2007 Toyota Land Cruiser US brochure",
+      "url": "https://cdn.dealereprocess.org/cdn/brochures/toyota/2007-landcruiser.pdf"
+    },
+    {
+      "name": "2014 Lexus LX US brochure",
+      "url": "https://www.lexus.com/lexus-share/v2/img/PDF/Lexus-LX-Brochure.pdf"
+    },
+    {
+      "name": "2015 Lexus LX US brochure",
+      "url": "https://www.lexus.com/content/dam/lexus/documents/brochures/models/2015/Lexus-LX-Brochure.pdf"
+    },
+    {
+      "name": "2016 Lexus LX US brochure",
+      "url": "https://www.lexus.com/content/dam/lexus/documents/brochures/models/2016/MY16-Lexus-LX-Brochure.pdf"
     }
   ],
   "exterior": [
     {
       "name": "Black Onyx",
       "code": "202",
+      "filter_key": "Black Onyx",
+      "filter_label": "Black Onyx / Black",
+      "family": "black",
       "swatch": "linear-gradient(145deg, #252a29, #050606 68%)",
       "aliases": ["Black", "Onyx Black"]
     },
     {
       "name": "Classic Silver Metallic",
       "code": "1F7",
+      "family": "silver",
       "swatch": "linear-gradient(145deg, #d2d5d4, #858c8f 68%)",
       "aliases": ["Silver", "Classic Silver"]
     },
     {
       "name": "Crystal White",
       "code": "062",
+      "family": "white",
       "swatch": "linear-gradient(145deg, #fffdf4, #d9ddd8 68%)",
       "aliases": ["White", "Crystal White Pearl"]
     },
     {
       "name": "Cypress Pearl",
       "code": "6T7",
+      "family": "green",
       "swatch": "linear-gradient(145deg, #7c8b7c, #4f6256 68%)",
       "aliases": ["Green", "Cypress Mica"]
     },
     {
       "name": "Galactic Gray Mica",
       "code": "1E9",
+      "family": "gray",
       "swatch": "linear-gradient(145deg, #73797a, #434a4d 68%)",
       "aliases": ["Gray", "Grey", "Galactic Grey Mica"]
     },
     {
       "name": "Sand Dollar Pearl",
       "code": "4R2",
+      "family": "gold",
       "swatch": "linear-gradient(145deg, #d8c9ab, #aa997c 68%)",
       "aliases": ["Beige", "Gold", "Tan"]
     }
@@ -57,26 +85,57 @@
       {
         "name": "Ivory",
         "swatch": "linear-gradient(145deg, #e8ddc8, #bdae93 68%)",
-        "aliases": ["Ivory Leather", "White (Ivory leather)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
+        "aliases": ["Ivory Leather", "White (Ivory leather)", "White (Ivory)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
       },
       {
         "name": "Gray",
         "swatch": "linear-gradient(145deg, #aaa9a4, #706f6b 68%)",
-        "aliases": ["Grey", "Stone"]
+        "aliases": ["Grey", "Stone", "Gray Leather"]
       }
     ],
     "2007": [
       {
         "name": "Ivory",
         "swatch": "linear-gradient(145deg, #e8ddc8, #bdae93 68%)",
-        "aliases": ["Ivory Leather", "White (Ivory leather)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
+        "aliases": ["Ivory Leather", "White (Ivory leather)", "White (Ivory)", "Off-white", "Beige", "Tan", "Brown (Beige)", "Brown (Tan)"]
       },
       {
         "name": "Stone",
         "swatch": "linear-gradient(145deg, #aaa79f, #74726c 68%)",
-        "aliases": ["Gray", "Grey", "Stone Leather"]
+        "aliases": ["Gray", "Grey", "Gray Leather", "Stone Leather"]
       }
     ]
+  },
+  "models": {
+    "LX570": {
+      "exterior": [
+        { "name": "Black Onyx", "code": "202", "filter_key": "Black Onyx", "filter_label": "Black Onyx / Black", "family": "black", "years": [2011, 2013, 2014, 2015, 2016], "aliases": ["Onyx Black"], "swatch": "#171b1a" },
+        { "name": "Starfire Pearl", "code": "077", "family": "white", "years": [2011, 2013, 2014, 2015, 2016], "aliases": ["Pearl White"], "swatch": "#f1eee4" },
+        { "name": "Mercury Metallic", "family": "silver", "years": [2011, 2013], "swatch": "#afb5b7" },
+        { "name": "Twilight Gray Metallic", "family": "gray", "years": [2011], "swatch": "#6c7477" },
+        { "name": "Golden Almond Metallic", "family": "gold", "years": [2011], "swatch": "#b2a486" },
+        { "name": "Noble Spinel Mica", "family": "red", "years": [2011, 2013], "aliases": ["Nobel Spinel Mica"], "swatch": "#5e3639" },
+        { "name": "Nebula Gray Pearl", "family": "gray", "years": [2013, 2014, 2015, 2016], "aliases": ["Gray Pearl", "Grey Pearl", "Medium Nebula Gray Pearl"], "swatch": "#666c6d" },
+        { "name": "Satin Cashmere Metallic", "family": "gold", "years": [2013, 2014, 2015, 2016], "aliases": ["Cashmere Metallic"], "swatch": "#b5aa95" },
+        { "name": "Silver Lining Metallic", "family": "silver", "years": [2014, 2015], "swatch": "#bbc0c0" },
+        { "name": "Claret Mica", "family": "red", "years": [2014], "swatch": "#683f44" },
+        { "name": "Atomic Silver", "family": "silver", "years": [2016], "swatch": "#aaa9a2" },
+        { "name": "Nightfall Mica", "family": "blue", "years": [2016], "swatch": "#303b50" }
+      ]
+    },
+    "Land Cruiser": {
+      "exterior": [
+        { "name": "Natural White", "code": "056", "family": "white", "years": [2006, 2007], "swatch": "#f3f2e9" },
+        { "name": "Classic Silver Metallic", "code": "1F7", "family": "silver", "years": [2006, 2007], "aliases": ["Silver Metallic"], "swatch": "#aeb4b5" },
+        { "name": "Black", "code": "202", "filter_key": "Black Onyx", "filter_label": "Black Onyx / Black", "family": "black", "years": [2006, 2007], "swatch": "#171b1a" },
+        { "name": "Galactic Gray Mica", "code": "1E9", "family": "gray", "years": [2006, 2007], "aliases": ["Galactic Grey Mica"], "swatch": "#60686a" },
+        { "name": "Thunder Cloud Metallic", "code": "1D2", "family": "gray", "years": [2006, 2007], "swatch": "#858b8c" },
+        { "name": "Black Garnet Pearl", "code": "3Q2", "family": "red", "years": [2006, 2007], "swatch": "#392b32" },
+        { "name": "Sonora Gold Pearl", "code": "4R3", "family": "gold", "years": [2006, 2007], "swatch": "#b4a17f" },
+        { "name": "Pacific Blue Metallic", "code": "8R3", "family": "blue", "years": [2007], "swatch": "#344c61" },
+        { "name": "Grayish Blue Metallic", "family": "blue", "years": [2006], "swatch": "#4b6470" }
+      ]
+    }
   }
 }
 
