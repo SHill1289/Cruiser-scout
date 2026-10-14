@@ -1,6 +1,6 @@
 # LX470 Finder
 
-A private, automated US listing database for **2006–2007 Lexus LX470s and Toyota Land Cruisers**, continued from the LX470 Finder conversations.
+A private, automated US listing database for **2006–2007 Lexus LX470s and Toyota Land Cruisers, plus 2011–2016 Lexus LX570s**, continued from the LX470 Finder conversations.
 
 ## Start here
 
@@ -120,3 +120,9 @@ The finder also collects 2006–2007 Toyota Land Cruiser listings from nationwid
 Manual Land Cruiser imports must include `"make": "Toyota"` and `"model": "Land Cruiser"`. The existing year and clean-title screening rules still apply. Auction history covers discovered or seeded auctions, not a complete archive; price badges require enough completed sales for the same model and mileage band.
 
 Prefilled nationwide AutoTempest links for both models are available below the inventory filters. These open external searches and do not import results into the tracked database or apply our title screening. [AutoTempest's terms](https://www.autotempest.com/legal) require written authorization for automated extraction; an authorized feed is not configured.
+
+## LX570 inventory
+
+2011-2016 Lexus LX570s are collected from nationwide CarGurus and TrueCar searches and matching Bring a Trailer auctions. All result pages are checked, with stable price ordering and pagination state for CarGurus. Inconsistent or incomplete collections preserve existing listings. Model tags identify LX470, LX570, and Land Cruiser results. LX570 imports must include `"make": "Lexus"` and `"model": "LX570"`; the supported year range is validated per model. LX570 VINs use their own prefix and year codes. Color descriptions are marketplace-reported rather than matched to the LX470 factory reference. Market-history comparisons stay within the same model. AutoTempest also has a prefilled 2011-2016 LX570 link.
+
+The US model skipped 2012 (the 2013 model arrived in early 2012). CarGurus returns unrelated years for a 2012-only search, so that query is marked not applicable. TrueCar and AutoTempest retain the requested 2011-2016 range. See [Lexus's 2013 pricing announcement](https://pressroom.lexus.com/lexus-announces-pricing-2013-lx-570/) and [Cars.com model-year history](https://www.cars.com/research/lexus-lx_570/).
