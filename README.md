@@ -37,9 +37,11 @@ The dashboard builds model, marketplace, and exterior-color filters from the cur
 |---|---|
 | CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. A supplemental search identifies no-reported-accident candidates. Owner counts remain unverified because search-result data does not include the count. |
 | TrueCar | Nationwide 2006-2007 LX 470 search. Only vehicles explicitly marked clean title are included. VIN, price, mileage, listing date, dealer, photos, exact color names, owner count and accident count are collected when supplied; vehicle-history fields are reported by TrueCar from Experian AutoCheck. |
+| KSL Cars | Four regional Lexus LX listings were checked on 2026-10-14 and imported with explicit per-listing Clean Title claims. Automated collection is paused because repeat listing requests returned HTTP 403/503. These one-time observations become unknown after seven days without a fresh check, so they do not remain advertised as current indefinitely. No matching 2006–2007 Land Cruiser appeared in the regional search. |
+| Bypex LLC | One 2007 LX 470 dealer listing was checked on 2026-10-14 and imported with its explicit clean-title, owner, and accident claims. It is a one-time observation and also expires from active inventory after seven days without a fresh check. |
 | Bring a Trailer | Matching auctions exposed on the LX470 index, plus rechecks of previously tracked active/unknown auctions. Only listings that explicitly say the title is clean appear in current inventory. A seeded two-year set of completed 2006?2007 sales is retained for market statistics, and newly exposed completed auctions are added automatically. |
 | CARFAX, Cars.com, Edmunds | Direct requests returned HTTP 403 during setup; manual imports supported. |
-| Autotrader, iSeeCars, Copart | Manual imports supported; no validated automatic collector yet. |
+| Autotrader, iSeeCars, Copart | Manual imports supported; no validated automatic collector yet. Autotrader's public search rendered in a browser, but a direct automated request returned a block page during validation. |
 
 This is not every LX470 for sale nationwide. CarGurus pagination is deliberately not crawled: multi-page or count-mismatched responses are reported as partial and cannot remove vehicles. Collectors respect robots.txt, use an identifiable user agent, wait between requests and do not bypass access blocks. A source can behave differently on GitHub's servers; check the first Actions run and source health.
 

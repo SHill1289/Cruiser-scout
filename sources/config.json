@@ -132,6 +132,27 @@
       "url": "https://bringatrailer.com/lexus/lx570/"
     },
     {
+      "id": "ksl-lexus-lx",
+      "type": "ksl",
+      "enabled": false,
+      "make": "Lexus",
+      "reason": "Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable.",
+      "url": "https://cars.ksl.com/search/make/Lexus/model/LX/newUsed/Used"
+    },
+    {
+      "id": "ksl-toyota-land-cruiser",
+      "type": "ksl",
+      "enabled": false,
+      "make": "Toyota",
+      "reason": "No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation.",
+      "url": "https://cars.ksl.com/search/make/Toyota/model/Land%20Cruiser/newUsed/Used"
+    },
+    {
+      "id": "bypex",
+      "enabled": false,
+      "reason": "One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured."
+    },
+    {
       "id": "carfax",
       "enabled": false,
       "reason": "Direct automated request returned HTTP 403 during setup. Import verified observations manually."

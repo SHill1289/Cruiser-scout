@@ -23,6 +23,7 @@ from statistics import median
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
+KSL_UA = "Mozilla/5.0 (compatible; CruiserScout/1.0; +https://github.com/SHill1289/Cruiser-scout)"
 FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
@@ -278,7 +279,8 @@ class Fetcher:
         self.pages = {}
 
     def request(self, url):
-        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html"})
+        agent = KSL_UA if urllib.parse.urlsplit(url).hostname == "cars.ksl.com" else UA
+        req = urllib.request.Request(url, headers={"User-Agent": agent, "Accept": "text/html"})
         with urllib.request.urlopen(req, timeout=30) as response:
             data = response.read(8_000_001)
             if len(data) > 8_000_000:
@@ -290,7 +292,7 @@ class Fetcher:
             return self.pages[url]
         parts = urllib.parse.urlsplit(url)
         host = parts.netloc
-        if parts.scheme != "https" or host not in {"www.cargurus.com", "bringatrailer.com", "www.truecar.com"}:
+        if parts.scheme != "https" or host not in {"www.cargurus.com", "bringatrailer.com", "www.truecar.com", "cars.ksl.com"}:
             raise ValueError("Collector host is not allowlisted")
         if host not in self.robots:
             parser = urllib.robotparser.RobotFileParser()
@@ -299,7 +301,7 @@ class Fetcher:
         parser = self.robots[host]
         if not parser.can_fetch(UA, url):
             raise ValueError("Disallowed by robots.txt")
-        delay = max(2, parser.crawl_delay(UA) or 0)
+        delay = max(8 if host == "cars.ksl.com" else 2, parser.crawl_delay(UA) or 0)
         time.sleep(max(0, delay - (time.monotonic() - self.last.get(host, 0))))
         try:
             page = self.request(url)
@@ -612,6 +614,92 @@ def parse_truecar(page, now, model="LX470", page_offset=0, paginated=False):
     elif parsed_edges != len(edges):
         complete = False
     return rows, complete, total
+
+
+def ksl_listing_urls(page, make):
+    """Find only matching cards in KSL's public search HTML."""
+    if 'data-item-id=' not in page or 'KSL Cars' not in page:
+        raise ValueError("KSL search cards missing; page may be blocked or its format changed")
+    pattern = r'aria-label="(\d{4}) (Lexus LX|Toyota Land Cruiser)[^\"]*" data-item-id="(\d+)"'
+    urls = set()
+    for year_text, label, listing_id in re.findall(pattern, page):
+        year = int(year_text)
+        if ((make == "Lexus" and label == "Lexus LX" and
+             year in MODEL_YEARS["LX470"] + MODEL_YEARS["LX570"]) or
+            (make == "Toyota" and label == "Toyota Land Cruiser" and
+             year in MODEL_YEARS["Land Cruiser"])):
+            urls.add(f"https://cars.ksl.com/listing/{listing_id}")
+    return sorted(urls)
+
+
+def parse_ksl(page, url):
+    """Use KSL's per-listing title field and structured data; no inferred clean titles."""
+    listing_id = re.fullmatch(r"https://cars\.ksl\.com/listing/(\d+)", url)
+    if not listing_id:
+        raise ValueError("Unexpected KSL listing URL")
+    title = re.search(r'>Title</p></div><div[^>]*>([^<]+)</div>', page)
+    if not title:
+        raise ValueError("KSL title field missing")
+    if html.unescape(title[1]).strip().lower() != "clean title":
+        return None
+    car = None
+    for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S):
+        data = json.loads(html.unescape(raw))
+        if isinstance(data, dict) and data.get("@type") == "Car":
+            car = data
+            break
+    if not car or car.get("url") != url:
+        raise ValueError("KSL vehicle structured data missing or mismatched")
+    vin = str(car.get("vehicleIdentificationNumber") or "").upper()
+    year = int(car.get("modelDate") or 0)
+    brand = (car.get("brand") or {}).get("name")
+    if brand == "Toyota" and vin.startswith(VIN_PREFIXES["Land Cruiser"]):
+        model = "Land Cruiser"
+    elif brand == "Lexus" and vin.startswith(VIN_PREFIXES["LX470"]):
+        model = "LX470"
+    elif brand == "Lexus" and vin.startswith(VIN_PREFIXES["LX570"]):
+        model = "LX570"
+    else:
+        raise ValueError("KSL VIN does not identify a supported vehicle")
+    if year not in MODEL_YEARS[model] or not valid_vin(vin):
+        raise ValueError("KSL VIN or model year is invalid")
+    offers = car.get("offers") or {}
+    if offers.get("availability") != "https://schema.org/InStock":
+        return None
+    seller = offers.get("seller") or {}
+    location = re.search(r'<title>\d{4} [^<]+ in ([^,<]+), ([A-Z]{2}) \| KSL Cars</title>', page)
+    image = car.get("image") or {}
+    photo = image.get("url", "") if isinstance(image, dict) else ""
+    return normalize({
+        "source": "ksl", "source_listing_id": listing_id[1],
+        "year": year, "make": brand, "model": model, "vin": vin,
+        "listing_url": url, "status": "active", "category": "retail",
+        "asking_price": offers.get("price"),
+        "mileage": (car.get("mileageFromOdometer") or {}).get("value"),
+        "city": location[1] if location else "", "state": location[2] if location else "",
+        "postal_code": (seller.get("address") or {}).get("postalCode", ""),
+        "seller": seller.get("name", ""),
+        "seller_type": "dealer" if seller.get("@type") == "Organization" else "private",
+        "photo_url": photo,
+        "exterior_color": car.get("color", ""),
+        "interior_color": car.get("vehicleInteriorColor", ""),
+        "title_status": "clean title", "accident_history": "History unavailable",
+        "owners": "Unknown",
+        "notes": "KSL Cars advertises this vehicle with a Clean Title. This is a marketplace claim, not a DMV verification; confirm through NMVTIS/CARFAX and the physical title before purchase.",
+    })
+
+
+def collect_ksl(fetcher, url, make):
+    urls = ksl_listing_urls(fetcher.get(url), make)
+    rows, errors = [], []
+    for listing_url in urls:
+        try:
+            row = parse_ksl(fetcher.get(listing_url), listing_url)
+            if row:
+                rows.append(row)
+        except Exception as error:
+            errors.append(f"{listing_url}: {error}")
+    return rows, len(urls), errors
 
 
 def search_page_url(url, page):
@@ -1152,6 +1240,20 @@ def update(state, rows, now, scopes=()):
     return changes
 
 
+def expire_unrefreshed_observations(state, now, changes):
+    """One-time regional/dealer observations cannot advertise a truck indefinitely."""
+    cutoff = datetime.fromisoformat(now) - timedelta(days=7)
+    for row in state.get("listings", {}).values():
+        if row.get("source") not in {"ksl", "bypex"} or row.get("status") != "active":
+            continue
+        last_seen = row.get("last_seen")
+        if last_seen and datetime.fromisoformat(last_seen) < cutoff:
+            row["status"] = "unknown"
+            event = {"observed_at": now, "event": "stale", **row}
+            state.setdefault("history", []).append(event)
+            changes.append(event)
+
+
 def csv_text(rows, fields):
     buf = io.StringIO(newline="")
     writer = csv.DictWriter(buf, fields, extrasaction="ignore", lineterminator="\n")
@@ -1436,6 +1538,14 @@ def run(root=ROOT, live=True):
                         scopes.extend(("truecar", year, source.get("model", "LX470")) for year in MODEL_YEARS[source.get("model", "LX470")])
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
                                    "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck."})
+                elif source["type"] == "ksl":
+                    batch, candidates, errors = collect_ksl(fetcher, source["url"], source["make"])
+                    rows.extend(batch)
+                    detail = (f"{len(batch)} clean-title listings from {candidates} matching search cards; "
+                              "regional KSL coverage. Search-page snapshots do not establish removals.")
+                    if errors:
+                        detail += f" {len(errors)} listing pages unavailable; first error: {errors[0]}"
+                    health.append({"source": source["id"], "status": "partial" if errors else "ok", "detail": detail})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
                     urls = bat_listing_urls(page)
@@ -1481,6 +1591,7 @@ def run(root=ROOT, live=True):
         print("First photo gallery error by source:", json.dumps(errors, sort_keys=True))
         photo_browser.close()
     changes = update(state, rows, now, scopes)
+    expire_unrefreshed_observations(state, now, changes)
     apply_vehicle_history_overrides(root, state)
     if live:
         health = [{**h, "checked_at": now} for h in health]
