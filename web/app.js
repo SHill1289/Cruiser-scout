@@ -170,19 +170,8 @@ function makeMetric(main, label) {
   node.append(text("strong", "", main), text("span", "", label));
   return node;
 }
-function normalizedColorName(raw) {
-  return String(raw || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-}
 function resolveFactoryColor(kind, raw, year, model = "LX470") {
-  const reported = normalizedColorName(raw);
-  const entries = model !== "LX470" ? [] : kind === "exterior"
-    ? colorReference.exterior || []
-    : colorReference.interior_by_year?.[String(year)] || [];
-  if (!reported) return { name: "Unknown", swatch: "", code: "", factory: false, reported: "" };
-  const match = entries.find(entry => [entry.name, ...(entry.aliases || [])]
-    .map(normalizedColorName).includes(reported));
-  return match ? { ...match, factory: true, reported: raw }
-    : { name: raw, swatch: "", code: "", factory: false, reported: raw };
+  return CruiserFilters.color(colorReference, kind, raw, year, model);
 }
 function makeColorFact(kind, raw, year, model = "LX470") {
   const color = resolveFactoryColor(kind, raw, year, model);
@@ -196,8 +185,10 @@ function makeColorFact(kind, raw, year, model = "LX470") {
   if (color.code) detail.append(text("em", "", color.code));
   fact.append(swatch, detail);
   fact.title = color.factory
-    ? `Lexus factory color${color.code ? `, paint code ${color.code}` : ""}. Swatch is a screen approximation.${color.reported && normalizedColorName(color.reported) !== normalizedColorName(color.name) ? ` Listing reported ${color.reported}.` : ""}`
-    : color.reported ? `Marketplace color: ${color.reported}. Exact factory color is not verified.` : `${label} color unavailable.`;
+    ? color.confidence === "family"
+      ? `Marketplace reported ${color.reported}. Grouped with ${color.name} using the ${model} ${year} factory palette; the truck's exact paint is unverified. Swatch is approximate.`
+      : `Marketplace reported ${color.reported}. ${color.name} is a ${model} ${year} factory color${color.code ? ` (catalog code ${color.code})` : ""}; the truck's ${kind === "exterior" ? "paint code" : "interior color"} is unverified. Swatch is approximate.`
+    : color.reported ? `Marketplace color: ${color.reported}. No supported factory match; exact paint is unverified.` : `${label} color unavailable.`;
   return fact;
 }
 function ownerGroup(row) {
@@ -523,10 +514,10 @@ function matches(row) {
     factoryExterior.name, factoryInterior.name, row.source].join(" ").toLowerCase();
   const amount = listingPrice(row);
   return (!query || haystack.includes(query))
-    && (!controls.model.value || (row.model || "LX470") === controls.model.value)
-    && (!controls.source.value || row.source === controls.source.value)
+    && (!controls.model.value || CruiserFilters.model(row.model || "LX470") === controls.model.value)
+    && (!controls.source.value || CruiserFilters.source(row.source) === controls.source.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
-    && (!controls.color.value || factoryExterior.name === controls.color.value)
+    && (!controls.color.value || factoryExterior.key === controls.color.value)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
@@ -626,7 +617,7 @@ function renderMarket() {
   cutoff.setUTCMonth(cutoff.getUTCMonth() - months);
   const year = ui.marketYear.value;
   const model = ui.marketModel.value;
-  const sales = marketSales.filter(sale => (!model || (sale.model || "LX470") === model) && (!year || String(sale.year) === year)
+  const sales = marketSales.filter(sale => (!model || CruiserFilters.model(sale.model || "LX470") === model) && (!year || String(sale.year) === year)
     && new Date(`${sale.sold_at}T23:59:59Z`) >= cutoff
     && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
   const bands = [
@@ -698,14 +689,25 @@ async function load() {
     ui.disclaimer.textContent = data.disclaimer || ui.disclaimer.textContent;
     ui.total.textContent = integer.format(inventory.length);
     ui.years.textContent = new Set(inventory.map(row => row.year)).size;
-    ui.sources.textContent = new Set(inventory.map(row => row.source)).size;
+    ui.sources.textContent = new Set(inventory.map(row => CruiserFilters.source(row.source)).filter(Boolean)).size;
     document.querySelector("#vehicle-count").textContent = `${integer.format(vehicles.length)} unique vehicles`;
-    [...new Set(inventory.map(row => row.source).filter(Boolean))].sort()
-      .forEach(source => controls.source.add(new Option(source, source)));
-
-    [...new Set(inventory.map(row => resolveFactoryColor("exterior", row.exterior_color, row.year, row.model).name)
-      .filter(name => name && name !== "Unknown"))].sort()
-      .forEach(color => ui.color.add(new Option(color, color)));
+    controls.model.replaceChildren(new Option("All models", ""), ...CruiserFilters.facetOptions(
+      inventory.map(row => row.model || "LX470"), CruiserFilters.model, CruiserFilters.modelLabel)
+      .map(([key, label]) => new Option(label, key)));
+    controls.source.replaceChildren(new Option("All sources", ""), ...CruiserFilters.facetOptions(
+      inventory.map(row => row.source), CruiserFilters.source, CruiserFilters.sourceLabel)
+      .map(([key, label]) => new Option(label, key)));
+    ui.color.replaceChildren(new Option("All colors", ""), ...CruiserFilters.colorOptions(inventory, colorReference)
+      .map(([key, label]) => new Option(label, key)));
+    const selectedMarketModel = ui.marketModel.value;
+    ui.marketModel.replaceChildren(...CruiserFilters.facetOptions(
+      [...inventory.map(row => row.model || "LX470"), ...marketSales.map(sale => sale.model || "LX470")],
+      CruiserFilters.model, CruiserFilters.modelLabel)
+      .map(([key, label]) => new Option(label, key)));
+    if ([...ui.marketModel.options].some(option => option.value === selectedMarketModel)) ui.marketModel.value = selectedMarketModel;
+    ui.marketYear.replaceChildren(new Option("All tracked years", ""), ...[...new Set(
+      [...inventory.map(row => row.year), ...marketSales.map(sale => sale.year)].filter(Boolean).map(String))]
+      .sort().map(year => new Option(year, year)));
     sourceHealth.forEach(source => {
       const row = text("div", "health-row", "");
       row.append(text("strong", "", source.source || "Source"),
@@ -1009,10 +1011,10 @@ function renderAlerts() {
   }));
 }
 function renderSourceOverview() {
-  const counts = [...new Set(inventory.map(row => row.source).filter(Boolean))].sort();
+  const counts = [...new Set(inventory.map(row => CruiserFilters.source(row.source)).filter(Boolean))].sort();
   const grid = text("div", "metric-grid", "");
-  grid.append(...counts.map(source => marketMetric(source,
-    integer.format(inventory.filter(row => row.source === source).length), "Current source listings")));
+  grid.append(...counts.map(source => marketMetric(CruiserFilters.sourceLabel(source),
+    integer.format(inventory.filter(row => CruiserFilters.source(row.source) === source).length), "Current source listings")));
   ui.sourceHealth.parentElement.before(grid);
 }
 syncNavigationLayout();
