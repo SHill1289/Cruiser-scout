@@ -741,6 +741,28 @@ def collect_cargurus(fetcher, url, year, model, no_accident_ids=None, extra_crit
     return list(rows.values()), complete and len(rows) == total, total
 
 
+def retry_search(fetcher, collect, source_id):
+    """Retry one incomplete/failed search with uncached pages, without treating it as absence."""
+    partial = None
+    for attempt in range(2):
+        try:
+            result = collect()
+            if result[1]:
+                return result, attempt
+            if partial is None or len(result[0]) > len(partial[0]):
+                partial = result
+        except Exception:
+            if attempt:
+                if partial is not None:
+                    return partial, attempt
+                raise
+        if attempt == 0:
+            print(f"Retrying {source_id} search with fresh pages", file=sys.stderr)
+            if hasattr(fetcher, "pages"):
+                fetcher.pages.clear()
+    return partial, 1
+
+
 def truecar_search_metadata(page):
     match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page, re.S)
     if not match:
@@ -1441,7 +1463,7 @@ def save(root, state, health, changes, cache_photos=False):
         "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
         "service_records_status", "service_records_evidence",
         "modifications_status", "modifications_evidence",
-        "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "quality_flags",
+        "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
         "rust_location",
     ]
@@ -1519,25 +1541,29 @@ def run(root=ROOT, live=True):
             try:
                 if source["type"] == "cargurus":
                     model = source.get("model", "LX470")
-                    history_rows, history_complete, _ = collect_cargurus(fetcher, source["no_accidents_url"], source["year"], model, extra_criteria={"maxAccidents": 0})
+                    (history_rows, history_complete, _), history_retries = retry_search(fetcher,
+                        lambda: collect_cargurus(fetcher, source["no_accidents_url"], source["year"], model, extra_criteria={"maxAccidents": 0}), source["id"] + " history")
                     if not history_complete:
                         raise ValueError("Supplemental CarGurus history search was incomplete")
                     no_accident_ids = {row["source_listing_id"] for row in history_rows}
-                    batch, complete, total = collect_cargurus(fetcher, source["url"], source["year"], model, no_accident_ids)
+                    (batch, complete, total), search_retries = retry_search(fetcher,
+                        lambda: collect_cargurus(fetcher, source["url"], source["year"], model, no_accident_ids), source["id"])
                     photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"], source.get("model", "LX470")))
                     photo_note = f" First photo error: {photo_errors[0]}" if photo_errors else ""
-                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide; all result pages checked.{photo_note}"})
+                    retry_note = " Search recovered on retry." if history_retries or search_retries else ""
+                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide; {'all result pages checked' if complete else 'search incomplete after retry'}.{retry_note}{photo_note}"})
                 elif source["type"] == "truecar":
-                    batch, complete, total = collect_truecar(fetcher, source["url"], now, source.get("model", "LX470"))
+                    (batch, complete, total), search_retries = retry_search(fetcher,
+                        lambda: collect_truecar(fetcher, source["url"], now, source.get("model", "LX470")), source["id"])
                     photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
                         scopes.extend(("truecar", year, source.get("model", "LX470")) for year in MODEL_YEARS[source.get("model", "LX470")])
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
-                                   "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck."})
+                                   "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. {'Search recovered on retry. ' if search_retries and complete else 'Search incomplete after retry. ' if not complete else ''}Owner and accident counts are source-reported from Experian AutoCheck."})
                 elif source["type"] == "ksl":
                     batch, candidates, errors = collect_ksl(fetcher, source["url"], source["make"])
                     rows.extend(batch)

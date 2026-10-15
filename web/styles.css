@@ -207,6 +207,21 @@ a:hover {
   font-size: 10px;
   white-space: nowrap;
 }
+.live-indicator.partial {
+  color: #95662c;
+}
+.live-indicator.partial .status-dot {
+  background: var(--warn);
+}
+.collection-notice {
+  margin: 0 0 18px;
+  padding: 11px 14px;
+  border: 1px solid #ead9b9;
+  border-radius: 8px;
+  background: #faf2e5;
+  color: #75501f;
+  font-size: 12px;
+}
 .mobile-menu {
   display: none;
   border: 0;
@@ -515,6 +530,7 @@ a:hover {
 .duplicate-badge,
 .duplicate-conflict-badge,
 .rust-location,
+.freshness-badge,
 .tag {
   display: inline-block;
   border-radius: 4px;
@@ -524,6 +540,11 @@ a:hover {
   font-weight: 700;
   border: 1px solid var(--border);
   color: var(--muted);
+}
+.freshness-badge {
+  background: #faf2e5;
+  color: #95662c;
+  border-color: #ead9b9;
 }
 .model-tag {
   color: var(--green);
@@ -635,6 +656,7 @@ a:hover {
 }
 .listing-dates {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 8px 17px;
   border-top: 1px solid var(--border);
