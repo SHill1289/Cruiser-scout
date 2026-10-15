@@ -8,6 +8,8 @@ const ui = {
   color: document.querySelector("#color"), summary: document.querySelector("#summary-strip"),
   medianPrice: document.querySelector("#median-price"), medianMileage: document.querySelector("#median-mileage"),
   sourceHealth: document.querySelector("#source-health"),
+  collectionIndicator: document.querySelector("#collection-indicator"),
+  collectionNotice: document.querySelector("#collection-notice"),
   marketBands: document.querySelector("#market-bands"), marketCount: document.querySelector("#market-count"),
   marketPeriod: document.querySelector("#market-period"), marketYear: document.querySelector("#market-year"),
   marketModel: document.querySelector("#market-model"),
@@ -234,8 +236,19 @@ function listingDates(row) {
   if (row.listed_at && row.listed_at_is_estimated) listed.append(text("small", "", "Estimated from days on market"));
   const added = text("p", "date-fact", "");
   added.append(text("span", "", "Added to Finder"), text("strong", "", formatDay(row.first_seen)));
-  dates.append(listed, added);
+  const verified = text("p", "date-fact", "");
+  verified.append(text("span", "", row.status === "active" ? "Last verified for sale" : "Last observed"),
+    text("strong", "", formatMoment(row.last_seen)));
+  dates.append(listed, added, verified);
   return dates;
+}
+function freshnessLabel(row) {
+  if (row.status !== "active") return "";
+  if (Number(row.missing_checks || 0) > 0) return "Not found in latest search";
+  const seen = Date.parse(row.last_seen || "");
+  if (!Number.isFinite(seen)) return "Verification unknown";
+  if (Date.now() - seen > 24 * 60 * 60 * 1000) return "Stale listing";
+  return "";
 }
 function statusTiming(row) {
   if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} · bid observed ${formatMoment(row.bid_observed_at)}`;
@@ -434,6 +447,12 @@ function renderCard(row, group) {
   const stateRow = text("div", "listing-state-row", "");
   stateRow.append(text("span", "model-tag", row.model || "LX470"));
   stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
+  const freshness = freshnessLabel(row);
+  if (freshness) {
+    const badge = text("span", "freshness-badge", freshness);
+    badge.title = `Last verified for sale ${formatMoment(row.last_seen)}${row.last_checked ? `; source last checked ${formatMoment(row.last_checked)}` : ""}. Availability is not seller-confirmed.`;
+    stateRow.append(badge);
+  }
   if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
   const accidentReports = new Set(group.listings.map(accidentGroup));
   if (accidentReports.has("reported") && accidentReports.has("none"))
@@ -683,6 +702,11 @@ async function load() {
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
     sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
+    const incomplete = sourceHealth.filter(source => ["error", "partial"].includes(source.status));
+    document.querySelector("#collection-label").textContent = incomplete.length ? "PARTIAL REFRESH" : "INVENTORY SNAPSHOT";
+    ui.collectionIndicator.classList.toggle("partial", incomplete.length > 0);
+    ui.collectionNotice.hidden = incomplete.length === 0;
+    if (incomplete.length) ui.collectionNotice.textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
     ui.marketSource.textContent = data.market_history?.source || "Completed auction results";
     ui.updated.textContent = formatDate(data.generated_at);
     document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);

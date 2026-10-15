@@ -20,6 +20,7 @@ from finder import (accident_category, add_listing_photo, cache_public_photos, c
                     clean_title_candidate, csv_text, deal_rating, listing_extras,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
                     run, rust_location_evidence, valid_vin, load_location_points, listing_coordinates)
+from finder import retry_search
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -414,6 +415,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertEqual(ended_public['bid_observed_at'], NOW)
             self.assertIn('listed_at', public['listings'][0])
             self.assertIn('first_seen', public['listings'][0])
+            self.assertIn('last_checked', public['listings'][0])
+            self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['missing_checks'], 0)
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['reported_extras'], 'Rear-seat DVD')
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['timing_belt_status'], 'Service reported')
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['accident_category'], 'unavailable')
@@ -536,6 +539,22 @@ class ParserTests(unittest.TestCase):
         second['state']['loaderData']['route']['search']['pageNumber'] = 1
         with self.assertRaisesRegex(ValueError, 'wrong result page'):
             collect_cargurus(FakeFetcher(), 'https://www.cargurus.com/test', 2016, 'LX570')
+
+    def test_search_retry_refreshes_cache_and_does_not_claim_partial_complete(self):
+        class FakeFetcher:
+            def __init__(self): self.pages = {'cached': 'old'}
+        fetcher = FakeFetcher()
+        calls = []
+        def search():
+            calls.append(dict(fetcher.pages))
+            return (['listing'], len(calls) == 2, 1)
+        result, retries = retry_search(fetcher, search, 'example')
+        self.assertEqual(result, (['listing'], True, 1))
+        self.assertEqual(retries, 1)
+        self.assertEqual(calls, [{'cached': 'old'}, {}])
+        result, retries = retry_search(fetcher, lambda: (['listing'], False, 2), 'example')
+        self.assertEqual(result, (['listing'], False, 2))
+        self.assertEqual(retries, 1)
 
     def test_cargurus_empty_results_and_changing_totals(self):
         context = self.lx570_cargurus_context()

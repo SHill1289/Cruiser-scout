@@ -11,7 +11,7 @@ A private, automated US listing database for **2006–2007 Lexus LX470s and Toyo
 - **[Listing history](data/listing_history.csv)** — new listings, price/detail changes, removal and reappearance.
 - **[Completed-sale history](data/historical_sales.csv)** ? auditable 2006?2007 auction results used for mileage-band pricing.
 - **[Source health](data/source_health.json)** — shows errors and partial coverage.
-- **[Run the refresh](https://github.com/SHill1289/lx470-finder/actions/workflows/lx470_search.yml)** — choose **Run workflow** on GitHub.
+- **[Run the refresh](https://github.com/SHill1289/Cruiser-scout/actions/workflows/lx470_search.yml)** — choose **Run workflow** on GitHub.
 
 ## Automatic updates
 
@@ -58,6 +58,7 @@ This is not every LX470 for sale nationwide. CarGurus pagination is deliberately
 - Human-verified owner counts can be saved by VIN in `overrides/vehicle_history.json`. Each entry requires the count, evidence source, verification date and HTTPS evidence URL. These facts override the unverified search-result value on every refresh and remain auditable in Git.
 - Three complete CarGurus searches without a listing mark it `removed`, **never sold**. Failed/partial searches do not count as absence. Only explicit source/import evidence sets `sold`; an auction ending without a sale is `ended` or `unknown`.
 - `listed_at` is the marketplace listing date. When a source supplies only days on market, the Finder stores a stable estimated date and marks `listed_at_is_estimated` as true. `first_seen` is the separate timestamp when the Finder first discovered that listing.
+- Cards show when a listing was last seen advertised (`last_seen`). Active listings older than 24 hours are marked stale; listings missing from a complete search are labeled separately. `last_checked` is the last source check and may be newer than `last_seen` when a listing was absent. The collector retries incomplete CarGurus and TrueCar searches once with fresh pages. The site and Actions summary identify partial refreshes, and incomplete searches never count as removal evidence.
 - The map and ZIP-distance filter use [2026 Census Gazetteer places and ZIP Code Tabulation Areas](https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html) and [2025 Census state boundaries](https://www.census.gov/geographies/mapping-files/2025/geo/carto-boundary-file.html). The map shows the contiguous US; listings elsewhere remain in the inventory. TrueCar dealer ZIP areas take precedence; other listings use the advertised city reference point. Distances are straight-line estimates, not routes or exact dealer locations. Some postal ZIP codes have no matching Census ZCTA; the UI reports those as unavailable. The map and lookups are hosted with the site and require no paid API. Regenerate the static assets with `python scripts/build_location_assets.py` after updating `sources/gazetteer/`.
 - History records changes rather than duplicating identical daily observations. Current rows track daily last-seen times. Git commits preserve earlier database snapshots.
 - Unknown title, accident, service, owner and rust information stays unknown. An accident report does not by itself mean salvage title. Retail does not mean verified clean title. Auction membership does not mean salvage.

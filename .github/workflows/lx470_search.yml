@@ -91,6 +91,29 @@ jobs:
       - name: Publish inventory summary
         if: always()
         run: cat INVENTORY.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Summarize source coverage
+        if: always() && steps.collect.outcome != 'skipped'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          path = Path('data/source_health.json')
+          if not path.exists():
+              summary = '### Collection status: unavailable\n\nNo source-health file was produced.\n'
+          else:
+              sources = json.loads(path.read_text())
+              incomplete = [source for source in sources if source['status'] in {'error', 'partial'}]
+              summary = ('### Collection status: partial refresh\n\nPreviously verified listings were preserved.\n'
+                         if incomplete else '### Collection status: complete refresh\n')
+              if incomplete:
+                  summary += '\n| Incomplete source | Status | Detail |\n| --- | --- | --- |\n'
+                  for source in incomplete:
+                      detail = source['detail'].replace('|', '\\|').replace('\n', ' ')
+                      summary += f"| {source['source']} | {source['status']} | {detail} |\n"
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              output.write('\n' + summary + '\n')
+          PY
       - name: Report incomplete collection
         if: steps.collect.outcome == 'failure'
         run: |
@@ -103,5 +126,5 @@ jobs:
                   if source['status'] in {'error', 'partial'}:
                       print(f"{source['source']} ({source['status']}): {source['detail']}")
           PY
-          echo 'A source failed or returned incomplete results. See data/source_health.json. Existing listings were preserved.'
+          echo 'Partial refresh: one or more source searches were incomplete. Previously verified listings were preserved. See the source coverage summary.'
           exit 1

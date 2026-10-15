@@ -75,8 +75,8 @@
             ><strong id="current-view-label">Inventory</strong>
           </div>
           <div class="topbar-right">
-            <span class="live-indicator"
-              ><span class="status-dot"></span> LIVE DATA</span
+            <span class="live-indicator" id="collection-indicator"
+              ><span class="status-dot"></span><span id="collection-label">LOADING DATA</span></span
             ><span id="updated">Loading latest inventory…</span>
           </div>
         </header>
@@ -97,6 +97,7 @@
               </div>
               <span class="update-badge">Updated every 6 hours</span>
             </div>
+            <p id="collection-notice" class="collection-notice" role="status" hidden></p>
             <div class="metric-grid" id="summary-strip">
               <div class="metric-card">
                 <span>Tracked listings</span><strong id="total-count">—</strong
