@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-15T15:00:42+00:00",
+  "generated_at": "2026-10-15T15:27:41+00:00",
   "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
   "summary": {
-    "vehicles": 195,
-    "visible_vehicles": 199,
-    "active_listings": 204,
-    "retail": 203,
+    "vehicles": 193,
+    "visible_vehicles": 197,
+    "active_listings": 202,
+    "retail": 201,
     "auctions": 1,
     "sold": 4,
     "ended_auctions": 0
@@ -15,181 +15,181 @@
       "source": "cargurus-2006",
       "status": "ok",
       "detail": "19 parsed of 19; 18 photos found; nationwide; all result pages checked. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "7 parsed of 7; 7 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "5 clean-title listings parsed of 5; nationwide. 5 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "2 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "historical sales",
       "status": "warning",
       "detail": "51 completed sales retained from 51 discovered or seeded auctions. 1 records unavailable; first error: https://bringatrailer.com/listing/2006-lexus-lx470-88/: Auction did not record a completed sale",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2006",
       "status": "ok",
       "detail": "7 parsed of 7; 7 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2007",
       "status": "ok",
       "detail": "3 parsed of 3; 3 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "truecar-land-cruiser",
       "status": "ok",
       "detail": "1 clean-title listings parsed of 1; nationwide. 1 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "bringatrailer-land-cruiser",
       "status": "ok",
       "detail": "0 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "historical sales - Land Cruiser",
       "status": "ok",
       "detail": "51 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2011",
       "status": "ok",
       "detail": "26 parsed of 26; 26 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2012",
       "status": "not_applicable",
       "detail": "The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2013",
       "status": "ok",
       "detail": "41 parsed of 41; 40 photos found; nationwide; all result pages checked. First photo error: TimeoutException: Message:  ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2014",
       "status": "ok",
       "detail": "19 parsed of 19; 19 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2015",
       "status": "ok",
       "detail": "36 parsed of 36; 36 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cargurus-lx570-2016",
       "status": "ok",
       "detail": "32 parsed of 32; 32 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "truecar-lx570",
       "status": "manual_only",
       "detail": "GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "bringatrailer-lx570",
       "status": "ok",
       "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "historical sales - LX570",
       "status": "warning",
       "detail": "51 completed sales retained from 51 discovered or seeded auctions. 1 records unavailable; first error: https://bringatrailer.com/listing/2014-lexus-lx570-5/: Auction did not record a completed sale",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "ksl-lexus-lx",
       "status": "manual_only",
       "detail": "Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "ksl-toyota-land-cruiser",
       "status": "manual_only",
       "detail": "No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "bypex",
       "status": "manual_only",
       "detail": "One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "autotempest",
       "status": "manual_only",
       "detail": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured.",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "checked_at": "2026-10-15T15:27:41+00:00"
     },
     {
       "source": "listing photos",
       "status": "warning",
-      "detail": "3 existing listing photos were unavailable; placeholders remain. First error: cargurus:461385210: TimeoutException: Message:  ",
-      "checked_at": "2026-10-15T15:00:42+00:00"
+      "detail": "2 existing listing photos were unavailable; placeholders remain. First error: cargurus:461385210: TimeoutException: Message:  ",
+      "checked_at": "2026-10-15T15:27:41+00:00"
     }
   ],
   "market_history": {
@@ -869,7 +869,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-84",
@@ -941,7 +942,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-85",
@@ -1013,7 +1015,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-88",
@@ -1068,12 +1071,12 @@
       "modifications_status": "",
       "modifications_evidence": "",
       "auction_ends_at": "2026-10-19T23:04:00+00:00",
-      "bid_observed_at": "2026-10-15T15:00:42+00:00",
+      "bid_observed_at": "2026-10-15T15:27:41+00:00",
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-13T00:46:00+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1085,7 +1088,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "bringatrailer:2007-lexus-lx470-58",
@@ -1144,8 +1148,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-22T23:14:48+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1157,7 +1161,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "bypex:020647",
@@ -1229,7 +1234,13 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 19497
+        }
+      ]
     },
     {
       "listing_key": "cargurus:399761178",
@@ -1288,8 +1299,8 @@
       "listed_at": "2024-10-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1301,7 +1312,13 @@
         "current_state": "IN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 18200
+        }
+      ]
     },
     {
       "listing_key": "cargurus:428254358",
@@ -1360,8 +1377,8 @@
       "listed_at": "2025-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1373,7 +1390,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43000
+        }
+      ]
     },
     {
       "listing_key": "cargurus:435836953",
@@ -1432,8 +1455,8 @@
       "listed_at": "2025-12-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1445,7 +1468,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 21127
+        }
+      ]
     },
     {
       "listing_key": "cargurus:436324031",
@@ -1504,8 +1533,8 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1517,7 +1546,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 8900
+        }
+      ]
     },
     {
       "listing_key": "cargurus:440000905",
@@ -1576,8 +1611,8 @@
       "listed_at": "2026-02-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1589,7 +1624,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 26119
+        }
+      ]
     },
     {
       "listing_key": "cargurus:440552873",
@@ -1648,8 +1689,8 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -1661,7 +1702,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 28349
+        }
+      ]
     },
     {
       "listing_key": "cargurus:440632072",
@@ -1720,8 +1767,8 @@
       "listed_at": "2026-02-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1733,7 +1780,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 48407
+        }
+      ]
     },
     {
       "listing_key": "cargurus:441965374",
@@ -1792,8 +1845,8 @@
       "listed_at": "2026-03-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1805,7 +1858,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27376
+        }
+      ]
     },
     {
       "listing_key": "cargurus:442734579",
@@ -1864,8 +1923,8 @@
       "listed_at": "2026-03-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1877,7 +1936,13 @@
         "current_state": "MI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 25004
+        }
+      ]
     },
     {
       "listing_key": "cargurus:442945314",
@@ -1936,8 +2001,8 @@
       "listed_at": "2026-03-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -1949,7 +2014,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 37990
+        }
+      ]
     },
     {
       "listing_key": "cargurus:443152506",
@@ -2008,8 +2079,8 @@
       "listed_at": "2026-03-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2021,7 +2092,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29176.63
+        }
+      ]
     },
     {
       "listing_key": "cargurus:443339639",
@@ -2080,8 +2157,8 @@
       "listed_at": "2026-03-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2093,7 +2170,13 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 38385
+        }
+      ]
     },
     {
       "listing_key": "cargurus:443573717",
@@ -2152,8 +2235,8 @@
       "listed_at": "2026-03-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2165,7 +2248,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24248
+        }
+      ]
     },
     {
       "listing_key": "cargurus:444180234",
@@ -2224,8 +2313,8 @@
       "listed_at": "2026-04-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2237,7 +2326,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27999
+        }
+      ]
     },
     {
       "listing_key": "cargurus:445517059",
@@ -2296,8 +2391,8 @@
       "listed_at": "2026-04-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2309,7 +2404,13 @@
         "current_state": "IN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 25255
+        }
+      ]
     },
     {
       "listing_key": "cargurus:446103639",
@@ -2368,8 +2469,8 @@
       "listed_at": "2026-04-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2381,7 +2482,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 36813.45
+        }
+      ]
     },
     {
       "listing_key": "cargurus:446851939",
@@ -2440,8 +2547,8 @@
       "listed_at": "2026-05-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2453,7 +2560,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 38195
+        }
+      ]
     },
     {
       "listing_key": "cargurus:446910988",
@@ -2512,8 +2625,8 @@
       "listed_at": "2026-05-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2525,7 +2638,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 36559.25
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447035128",
@@ -2584,8 +2703,8 @@
       "listed_at": "2026-05-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2597,7 +2716,13 @@
         "current_state": "PA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 35995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447090235",
@@ -2656,8 +2781,8 @@
       "listed_at": "2026-05-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2669,7 +2794,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 15890
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447095309",
@@ -2728,8 +2859,8 @@
       "listed_at": "2026-05-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2741,7 +2872,13 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 38898
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447300156",
@@ -2800,8 +2937,8 @@
       "listed_at": "2026-05-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2813,7 +2950,17 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23898
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 24393
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447497159",
@@ -2872,8 +3019,8 @@
       "listed_at": "2026-05-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2885,7 +3032,13 @@
         "current_state": "PA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19994
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447507243",
@@ -2944,8 +3097,8 @@
       "listed_at": "2026-05-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -2957,7 +3110,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 45694
+        }
+      ]
     },
     {
       "listing_key": "cargurus:447749102",
@@ -3016,8 +3175,8 @@
       "listed_at": "2026-05-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3029,7 +3188,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24187
+        }
+      ]
     },
     {
       "listing_key": "cargurus:448175372",
@@ -3088,8 +3253,8 @@
       "listed_at": "2026-05-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3101,7 +3266,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19366
+        }
+      ]
     },
     {
       "listing_key": "cargurus:448235235",
@@ -3160,8 +3331,8 @@
       "listed_at": "2026-05-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3173,7 +3344,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 21999
+        }
+      ]
     },
     {
       "listing_key": "cargurus:448760395",
@@ -3232,8 +3409,8 @@
       "listed_at": "2026-05-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3245,7 +3422,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 28176
+        }
+      ]
     },
     {
       "listing_key": "cargurus:449010562",
@@ -3304,8 +3487,8 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -3317,7 +3500,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 24249
+        }
+      ]
     },
     {
       "listing_key": "cargurus:449460214",
@@ -3376,8 +3565,8 @@
       "listed_at": "2026-05-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3389,7 +3578,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 37137
+        }
+      ]
     },
     {
       "listing_key": "cargurus:449701574",
@@ -3448,8 +3643,8 @@
       "listed_at": "2026-06-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3461,7 +3656,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 22499
+        },
+        {
+          "observed_at": "2026-10-15T04:46:34+00:00",
+          "asking_price": 22099
+        }
+      ]
     },
     {
       "listing_key": "cargurus:449976884",
@@ -3520,8 +3725,8 @@
       "listed_at": "2026-06-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3533,7 +3738,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23265
+        }
+      ]
     },
     {
       "listing_key": "cargurus:450232382",
@@ -3592,8 +3803,8 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -3605,7 +3816,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 24394
+        }
+      ]
     },
     {
       "listing_key": "cargurus:450708829",
@@ -3664,8 +3881,8 @@
       "listed_at": "2026-06-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3677,7 +3894,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 31994
+        }
+      ]
     },
     {
       "listing_key": "cargurus:450753981",
@@ -3736,8 +3959,8 @@
       "listed_at": "2026-06-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3749,7 +3972,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24999
+        }
+      ]
     },
     {
       "listing_key": "cargurus:450862476",
@@ -3808,8 +4037,8 @@
       "listed_at": "2026-06-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3821,7 +4050,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 18900
+        }
+      ]
     },
     {
       "listing_key": "cargurus:450982654",
@@ -3880,8 +4115,8 @@
       "listed_at": "2026-06-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3893,7 +4128,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20144
+        }
+      ]
     },
     {
       "listing_key": "cargurus:451199677",
@@ -3952,8 +4193,8 @@
       "listed_at": "2026-06-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -3965,7 +4206,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29220
+        }
+      ]
     },
     {
       "listing_key": "cargurus:451252440",
@@ -4024,8 +4271,8 @@
       "listed_at": "2026-06-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4037,7 +4284,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 32894
+        }
+      ]
     },
     {
       "listing_key": "cargurus:451797930",
@@ -4096,8 +4349,8 @@
       "listed_at": "2026-06-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4109,7 +4362,13 @@
         "current_state": "NY",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34000
+        }
+      ]
     },
     {
       "listing_key": "cargurus:451998531",
@@ -4168,8 +4427,8 @@
       "listed_at": "2026-06-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4181,7 +4440,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24999.25
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452162394",
@@ -4240,8 +4505,8 @@
       "listed_at": "2026-06-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4253,7 +4518,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27028.78
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 26433.78
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452316376",
@@ -4312,8 +4587,8 @@
       "listed_at": "2026-07-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4325,7 +4600,13 @@
         "current_state": "NY",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 42165
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452318770",
@@ -4384,8 +4665,8 @@
       "listed_at": "2026-07-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4397,7 +4678,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 26499
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452411611",
@@ -4456,8 +4743,8 @@
       "listed_at": "2026-07-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4469,7 +4756,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 53167
+        },
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 52786
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452681295",
@@ -4528,8 +4825,8 @@
       "listed_at": "2026-07-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4541,7 +4838,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43880
+        }
+      ]
     },
     {
       "listing_key": "cargurus:452845882",
@@ -4600,8 +4903,8 @@
       "listed_at": "2026-07-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4613,7 +4916,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453353574",
@@ -4672,8 +4981,8 @@
       "listed_at": "2026-07-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4685,7 +4994,13 @@
         "current_state": "MI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 22820
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453554972",
@@ -4744,8 +5059,8 @@
       "listed_at": "2026-07-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4757,7 +5072,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19157
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453605814",
@@ -4816,8 +5137,8 @@
       "listed_at": "2026-07-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4829,7 +5150,13 @@
         "current_state": "MN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20090
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453631623",
@@ -4888,8 +5215,8 @@
       "listed_at": "2026-07-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4901,7 +5228,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 35226
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453847393",
@@ -4960,8 +5293,8 @@
       "listed_at": "2026-07-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -4973,7 +5306,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 29249
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453977256",
@@ -5032,8 +5371,8 @@
       "listed_at": "2026-07-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5045,7 +5384,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 38204
+        }
+      ]
     },
     {
       "listing_key": "cargurus:453977586",
@@ -5104,8 +5449,8 @@
       "listed_at": "2026-07-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5117,7 +5462,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30000
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454067461",
@@ -5176,8 +5527,8 @@
       "listed_at": "2026-07-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5189,7 +5540,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27099
+        },
+        {
+          "observed_at": "2026-10-15T04:46:34+00:00",
+          "asking_price": 26499
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454155682",
@@ -5248,8 +5609,8 @@
       "listed_at": "2026-07-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5261,7 +5622,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 45693
+        },
+        {
+          "observed_at": "2026-10-14T18:21:44+00:00",
+          "asking_price": 44193
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454412475",
@@ -5320,8 +5691,8 @@
       "listed_at": "2026-07-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5333,7 +5704,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 39490
+        },
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 38990
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454414101",
@@ -5392,8 +5773,8 @@
       "listed_at": "2026-07-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5405,7 +5786,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 15500
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454419049",
@@ -5464,8 +5851,8 @@
       "listed_at": "2026-07-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5477,7 +5864,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20638.25
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454458323",
@@ -5536,8 +5929,8 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T17:16:24+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5549,7 +5942,13 @@
         "current_state": "IA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T17:16:24+00:00",
+          "asking_price": 20175
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454578510",
@@ -5608,8 +6007,8 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -5621,7 +6020,29 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 31180
+        },
+        {
+          "observed_at": "2026-09-25T17:16:00+00:00",
+          "asking_price": 30585
+        },
+        {
+          "observed_at": "2026-09-30T12:40:42+00:00",
+          "asking_price": 29585
+        },
+        {
+          "observed_at": "2026-09-30T22:20:03+00:00",
+          "asking_price": 29785
+        },
+        {
+          "observed_at": "2026-10-10T05:57:52+00:00",
+          "asking_price": 28793
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454642393",
@@ -5680,8 +6101,8 @@
       "listed_at": "2026-07-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5693,7 +6114,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 45598
+        },
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 44998
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454664523",
@@ -5752,8 +6183,8 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -5765,7 +6196,13 @@
         "current_state": "NY",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 20995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454687686",
@@ -5824,8 +6261,8 @@
       "listed_at": "2026-07-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5837,7 +6274,17 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20795
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 20595
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454842665",
@@ -5896,8 +6343,8 @@
       "listed_at": "2026-07-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5909,7 +6356,13 @@
         "current_state": "MI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19170
+        }
+      ]
     },
     {
       "listing_key": "cargurus:454873879",
@@ -5968,8 +6421,8 @@
       "listed_at": "2026-07-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -5981,7 +6434,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 32818
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455142399",
@@ -6040,8 +6499,8 @@
       "listed_at": "2026-08-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6053,7 +6512,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24000
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455282432",
@@ -6112,8 +6577,8 @@
       "listed_at": "2026-08-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6125,7 +6590,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24876.73
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455282922",
@@ -6184,8 +6655,8 @@
       "listed_at": "2026-08-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6197,7 +6668,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 40491
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455377530",
@@ -6256,8 +6733,8 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -6269,7 +6746,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 40138.25
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455415225",
@@ -6328,8 +6811,8 @@
       "listed_at": "2026-08-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6341,7 +6824,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29210
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455479664",
@@ -6400,8 +6889,8 @@
       "listed_at": "2026-08-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6413,7 +6902,13 @@
         "current_state": "IN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29750
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455564879",
@@ -6472,8 +6967,8 @@
       "listed_at": "2026-08-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6485,7 +6980,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23993
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455642604",
@@ -6544,8 +7045,8 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6557,7 +7058,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 28164
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455670290",
@@ -6616,8 +7123,8 @@
       "listed_at": "2026-08-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6629,7 +7136,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 28223
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455671205",
@@ -6688,8 +7201,8 @@
       "listed_at": "2026-08-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6701,7 +7214,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 33216
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455745100",
@@ -6760,8 +7279,8 @@
       "listed_at": "2026-08-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6773,7 +7292,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 32947
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455765728",
@@ -6832,8 +7357,8 @@
       "listed_at": "2026-08-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6845,7 +7370,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20794
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455787327",
@@ -6904,8 +7435,8 @@
       "listed_at": "2026-08-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6917,7 +7448,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 42399
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455872000",
@@ -6976,8 +7513,8 @@
       "listed_at": "2026-08-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -6989,7 +7526,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 49420
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455935117",
@@ -7048,8 +7591,8 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -7061,7 +7604,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 13694
+        },
+        {
+          "observed_at": "2026-10-08T23:24:03+00:00",
+          "asking_price": 12694
+        }
+      ]
     },
     {
       "listing_key": "cargurus:455988941",
@@ -7120,8 +7673,8 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7133,7 +7686,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23988.25
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456579089",
@@ -7192,8 +7751,8 @@
       "listed_at": "2026-08-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7205,7 +7764,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24498
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456681005",
@@ -7264,8 +7829,8 @@
       "listed_at": "2026-08-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7277,7 +7842,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34169
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456722833",
@@ -7336,8 +7907,8 @@
       "listed_at": "2026-08-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7349,7 +7920,17 @@
         "current_state": "CT",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30255
+        },
+        {
+          "observed_at": "2026-10-14T18:21:44+00:00",
+          "asking_price": 29071
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456746540",
@@ -7408,8 +7989,8 @@
       "listed_at": "2026-08-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7421,7 +8002,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 44995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456810402",
@@ -7480,8 +8067,8 @@
       "listed_at": "2026-08-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7493,7 +8080,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 33794
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456839853",
@@ -7552,8 +8145,8 @@
       "listed_at": "2026-08-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7565,7 +8158,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 20694
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456866784",
@@ -7624,8 +8223,8 @@
       "listed_at": "2026-08-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7637,7 +8236,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 36100
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456892941",
@@ -7696,8 +8301,8 @@
       "listed_at": "2026-08-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7709,7 +8314,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 31710
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456920732",
@@ -7768,8 +8379,8 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7781,7 +8392,13 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 33583
+        }
+      ]
     },
     {
       "listing_key": "cargurus:456929153",
@@ -7840,8 +8457,8 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7853,7 +8470,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457132031",
@@ -7912,8 +8535,8 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7925,7 +8548,13 @@
         "current_state": "MN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 41777
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457339406",
@@ -7984,8 +8613,8 @@
       "listed_at": "2026-08-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -7997,7 +8626,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19199.99
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457393599",
@@ -8056,8 +8691,8 @@
       "listed_at": "2026-08-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8069,7 +8704,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 44269
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457446786",
@@ -8128,8 +8769,8 @@
       "listed_at": "2026-08-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8141,7 +8782,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30393
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457583426",
@@ -8200,8 +8847,8 @@
       "listed_at": "2026-08-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8213,7 +8860,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34767
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457613100",
@@ -8272,8 +8925,8 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -8285,7 +8938,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 30249
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457616422",
@@ -8344,8 +9003,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8357,7 +9016,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30540
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457621994",
@@ -8416,8 +9081,8 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -8429,7 +9094,17 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 19996
+        },
+        {
+          "observed_at": "2026-10-08T18:11:11+00:00",
+          "asking_price": 19497
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457629069",
@@ -8488,8 +9163,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8501,7 +9176,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 49134
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457639012",
@@ -8560,8 +9241,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8573,7 +9254,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27872
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457674606",
@@ -8632,8 +9319,8 @@
       "listed_at": "2026-09-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8645,7 +9332,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 19899
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457685480",
@@ -8704,8 +9397,8 @@
       "listed_at": "2026-09-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8717,7 +9410,13 @@
         "current_state": "IA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 15175
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457849943",
@@ -8776,8 +9475,8 @@
       "listed_at": "2026-09-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8789,7 +9488,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24212
+        }
+      ]
     },
     {
       "listing_key": "cargurus:457891185",
@@ -8848,8 +9553,8 @@
       "listed_at": "2026-09-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8861,7 +9566,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 36690
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458018190",
@@ -8920,8 +9631,8 @@
       "listed_at": "2026-09-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -8933,7 +9644,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 25194
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458027440",
@@ -8992,8 +9709,8 @@
       "listed_at": "2026-09-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9005,7 +9722,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 33987
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458115893",
@@ -9064,8 +9787,8 @@
       "listed_at": "2026-09-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9077,7 +9800,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24210
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458119267",
@@ -9136,8 +9865,8 @@
       "listed_at": "2026-09-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9149,7 +9878,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 59194
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458141954",
@@ -9208,8 +9943,8 @@
       "listed_at": "2026-09-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9221,7 +9956,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27900
+        },
+        {
+          "observed_at": "2026-10-14T21:45:07+00:00",
+          "asking_price": 27250
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458248914",
@@ -9280,8 +10025,8 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9293,7 +10038,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29698.5
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458249674",
@@ -9352,8 +10103,8 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9365,7 +10116,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 50407
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458303429",
@@ -9424,8 +10181,8 @@
       "listed_at": "2026-09-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9437,7 +10194,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23142
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458338451",
@@ -9496,8 +10259,8 @@
       "listed_at": "2026-09-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9509,7 +10272,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458338452",
@@ -9568,8 +10337,8 @@
       "listed_at": "2026-09-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9581,7 +10350,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 21995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458402410",
@@ -9640,8 +10415,8 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9653,7 +10428,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 28995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458442145",
@@ -9712,8 +10493,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9725,7 +10506,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27898
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458478772",
@@ -9784,8 +10571,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9797,7 +10584,13 @@
         "current_state": "MN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20699
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458511469",
@@ -9856,8 +10649,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9869,7 +10662,17 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 34912.63
+        },
+        {
+          "observed_at": "2026-10-14T21:45:07+00:00",
+          "asking_price": 33912.63
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458599349",
@@ -9928,8 +10731,8 @@
       "listed_at": "2026-09-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -9941,7 +10744,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 39908
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458747594",
@@ -10000,8 +10809,8 @@
       "listed_at": "2026-09-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10013,7 +10822,13 @@
         "current_state": "MN",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 22548
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458809207",
@@ -10072,8 +10887,8 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -10085,7 +10900,21 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 14746
+        },
+        {
+          "observed_at": "2026-09-28T23:19:31+00:00",
+          "asking_price": 15095
+        },
+        {
+          "observed_at": "2026-10-02T05:44:42+00:00",
+          "asking_price": 19240
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458911307",
@@ -10144,8 +10973,8 @@
       "listed_at": "2026-09-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10157,7 +10986,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 44749
+        }
+      ]
     },
     {
       "listing_key": "cargurus:458999123",
@@ -10216,8 +11051,8 @@
       "listed_at": "2026-09-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10229,7 +11064,13 @@
         "current_state": "MI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 21200
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459000535",
@@ -10288,8 +11129,8 @@
       "listed_at": "2026-09-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-16T13:00:38+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -10301,7 +11142,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-19T18:38:54+00:00",
+          "asking_price": 21245
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459080460",
@@ -10360,8 +11207,8 @@
       "listed_at": "2026-09-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10373,7 +11220,13 @@
         "current_state": "WI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 37507
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459345660",
@@ -10432,8 +11285,8 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10445,7 +11298,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-22T21:23:06+00:00",
+          "asking_price": 21093
+        },
+        {
+          "observed_at": "2026-09-22T23:10:29+00:00",
+          "asking_price": 20694
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459369237",
@@ -10504,8 +11367,8 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10517,7 +11380,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 42993
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459448413",
@@ -10576,8 +11445,8 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10589,7 +11458,13 @@
         "current_state": "MA",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 45497
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459454421",
@@ -10648,8 +11523,8 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10661,7 +11536,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-20T16:48:29+00:00",
+          "asking_price": 13995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459507676",
@@ -10720,8 +11601,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10733,7 +11614,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 18493
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459519124",
@@ -10792,8 +11679,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-22T05:02:58+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10805,7 +11692,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-22T05:02:58+00:00",
+          "asking_price": 12999
+        },
+        {
+          "observed_at": "2026-09-23T04:50:09+00:00",
+          "asking_price": 13224
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459529856",
@@ -10864,8 +11761,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10877,7 +11774,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 56549
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459554170",
@@ -10936,8 +11839,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -10949,7 +11852,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 35800
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459639403",
@@ -11008,8 +11917,8 @@
       "listed_at": "2026-09-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11021,7 +11930,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 44979
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459718081",
@@ -11080,8 +11995,8 @@
       "listed_at": "2026-09-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11093,7 +12008,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 48781.5
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459747871",
@@ -11152,8 +12073,8 @@
       "listed_at": "2026-09-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11165,7 +12086,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 23149
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459780963",
@@ -11224,8 +12151,8 @@
       "listed_at": "2026-09-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11237,7 +12164,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 27599
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 27594
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459934555",
@@ -11296,8 +12233,8 @@
       "listed_at": "2026-09-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11309,7 +12246,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 21898
+        }
+      ]
     },
     {
       "listing_key": "cargurus:459962710",
@@ -11368,8 +12311,8 @@
       "listed_at": "2026-09-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11381,7 +12324,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 38999
+        },
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 38699
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460032658",
@@ -11440,8 +12393,8 @@
       "listed_at": "2026-09-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11453,7 +12406,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 37524
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460036473",
@@ -11512,8 +12471,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11525,7 +12484,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 29376.73
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460082041",
@@ -11584,8 +12549,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11597,7 +12562,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 39900
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460082699",
@@ -11656,8 +12627,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11669,7 +12640,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43425
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460085292",
@@ -11728,8 +12705,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11741,7 +12718,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43202
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460099310",
@@ -11800,8 +12783,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -11813,7 +12796,33 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-27T12:08:20+00:00",
+          "asking_price": 18893.99
+        },
+        {
+          "observed_at": "2026-09-28T14:02:38+00:00",
+          "asking_price": 20398.99
+        },
+        {
+          "observed_at": "2026-10-01T22:44:11+00:00",
+          "asking_price": 19059.99
+        },
+        {
+          "observed_at": "2026-10-06T18:25:43+00:00",
+          "asking_price": 19046.99
+        },
+        {
+          "observed_at": "2026-10-07T13:30:36+00:00",
+          "asking_price": 18897.99
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 18798.99
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460144378",
@@ -11872,8 +12881,8 @@
       "listed_at": "2026-09-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -11885,7 +12894,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 20221
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460265515",
@@ -11944,8 +12959,8 @@
       "listed_at": "2026-09-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -11957,7 +12972,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-30T12:40:42+00:00",
+          "asking_price": 20104
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460277788",
@@ -12016,8 +13037,8 @@
       "listed_at": "2026-09-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12029,7 +13050,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 32991
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460447635",
@@ -12088,8 +13115,8 @@
       "listed_at": "2026-10-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12101,7 +13128,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 60240
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460471036",
@@ -12160,8 +13193,8 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12173,7 +13206,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 17988
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460538301",
@@ -12232,8 +13271,8 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-02T05:44:42+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -12245,7 +13284,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-02T22:17:56+00:00",
+          "asking_price": 29242
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460589317",
@@ -12304,8 +13349,8 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12317,7 +13362,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 47776
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460639637",
@@ -12376,8 +13427,8 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12389,7 +13440,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 49570
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460650737",
@@ -12448,8 +13505,8 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12461,7 +13518,13 @@
         "current_state": "WI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 39397
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460674090",
@@ -12520,8 +13583,8 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12533,7 +13596,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30142
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460724510",
@@ -12590,8 +13659,8 @@
       "listed_at": "2026-10-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12603,7 +13672,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 25892
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460761389",
@@ -12662,8 +13737,8 @@
       "listed_at": "2026-10-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12675,7 +13750,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "cargurus:460770167",
@@ -12734,8 +13810,8 @@
       "listed_at": "2026-10-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12747,7 +13823,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 59116
+        },
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 58317
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460792357",
@@ -12806,8 +13892,8 @@
       "listed_at": "2026-10-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-08T18:11:11+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12819,7 +13905,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-08T18:11:11+00:00",
+          "asking_price": 40060
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460814201",
@@ -12878,8 +13970,8 @@
       "listed_at": "2026-10-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -12891,151 +13983,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
-    },
-    {
-      "listing_key": "cargurus:460826111",
-      "vehicle_key": "vin:JTJHY7AX0G4199549",
-      "vin": "JTJHY7AX0G4199549",
-      "year": 2016,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/details/460826111",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 48998,
-      "base_price": 48998,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 77196,
-      "mileage_is_approximate": "",
-      "city": "Lynnwood",
-      "state": "WA",
-      "postal_code": "",
-      "latitude": 47.828979,
-      "longitude": -122.300672,
-      "location_precision": "city area",
-      "seller": "CarMax Lynnwood",
-      "seller_type": "dealer",
-      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/09/23/52/2016_lexus_lx-pic-2508347382651805614-1024x768.jpeg",
-      "photo_urls": [
-        "https://static.cargurus.com/images/forsale/2026/10/09/23/52/2016_lexus_lx-pic-2508347382651805614-1024x768.jpeg"
-      ],
-      "exterior_color": "Gray",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "clean-title candidate",
-      "accident_history": "No reported accidents",
-      "accident_category": "none",
-      "owners": "Unverified",
-      "owners_source": "",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "2026-10-06",
-      "listed_at_is_estimated": true,
-      "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-14T21:45:07+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
-      "missing_checks": 2,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      }
-    },
-    {
-      "listing_key": "cargurus:460831885",
-      "vehicle_key": "vin:JTJHY7AX5G4214305",
-      "vin": "JTJHY7AX5G4214305",
-      "year": 2016,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "cargurus",
-      "listing_url": "https://www.cargurus.com/details/460831885",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 50888,
-      "base_price": 50688,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 79098,
-      "mileage_is_approximate": "",
-      "city": "Bellevue",
-      "state": "WA",
-      "postal_code": "",
-      "latitude": 47.597425,
-      "longitude": -122.157467,
-      "location_precision": "city area",
-      "seller": "Honda Auto Center of Bellevue",
-      "seller_type": "dealer",
-      "photo_url": "https://static.cargurus.com/images/forsale/2026/10/08/12/20/2016_lexus_lx-pic-6582484652422310167-1024x768.jpeg",
-      "photo_urls": [
-        "https://static.cargurus.com/images/forsale/2026/10/08/12/20/2016_lexus_lx-pic-6582484652422310167-1024x768.jpeg"
-      ],
-      "exterior_color": "Silver",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "clean-title candidate",
-      "accident_history": "No reported accidents",
-      "accident_category": "none",
-      "owners": "Unverified",
-      "owners_source": "",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "2026-10-06",
-      "listed_at_is_estimated": true,
-      "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-14T21:45:07+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
-      "missing_checks": 2,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 16900
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460861699",
@@ -13094,8 +14048,8 @@
       "listed_at": "2026-10-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13107,7 +14061,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 39280
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460899179",
@@ -13166,8 +14126,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13179,7 +14139,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43300
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460904386",
@@ -13238,8 +14204,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "mileage_decreased",
       "deal_quality": null,
@@ -13251,7 +14217,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 43057
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460928678",
@@ -13310,8 +14282,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13323,7 +14295,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 27995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460940794",
@@ -13382,8 +14360,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13395,7 +14373,13 @@
         "current_state": "IL",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 32376.63
+        }
+      ]
     },
     {
       "listing_key": "cargurus:460941393",
@@ -13454,8 +14438,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13467,7 +14451,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 28798
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461002388",
@@ -13526,8 +14516,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-08T18:11:11+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13539,7 +14529,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-08T18:11:11+00:00",
+          "asking_price": 14095
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461031649",
@@ -13598,8 +14594,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13611,7 +14607,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 35995
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461048858",
@@ -13670,8 +14672,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13683,7 +14685,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30195
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461055620",
@@ -13742,8 +14750,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13755,7 +14763,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 31645
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461148174",
@@ -13814,8 +14828,8 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-09T06:14:48+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -13827,7 +14841,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-09T06:14:48+00:00",
+          "asking_price": 19999
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461170116",
@@ -13886,8 +14906,8 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13899,7 +14919,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 30485
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461183192",
@@ -13958,8 +14984,8 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -13971,7 +14997,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 47113
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461194793",
@@ -14030,8 +15062,8 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-09T13:26:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -14043,7 +15075,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-09T13:26:45+00:00",
+          "asking_price": 26249
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461203054",
@@ -14102,8 +15140,8 @@
       "listed_at": "2026-10-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14115,7 +15153,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 49695
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461338746",
@@ -14174,8 +15218,8 @@
       "listed_at": "2026-10-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14187,7 +15231,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 40654
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461352356",
@@ -14246,8 +15296,8 @@
       "listed_at": "2026-10-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-11T12:56:46+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -14259,7 +15309,13 @@
         "current_state": "MI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-13T00:46:00+00:00",
+          "asking_price": 14800
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461385210",
@@ -14316,8 +15372,8 @@
       "listed_at": "2026-10-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-12T06:04:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -14329,7 +15385,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-13T00:46:00+00:00",
+          "asking_price": 18199
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461443316",
@@ -14388,8 +15450,8 @@
       "listed_at": "2026-10-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-13T14:17:27+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -14401,7 +15463,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-13T14:17:27+00:00",
+          "asking_price": 10320
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461470912",
@@ -14460,8 +15528,8 @@
       "listed_at": "2026-10-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14473,7 +15541,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 42985
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461499240",
@@ -14532,8 +15606,8 @@
       "listed_at": "2026-10-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14545,7 +15619,13 @@
         "current_state": "WI",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 24711
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461529000",
@@ -14604,8 +15684,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14617,7 +15697,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T17:16:24+00:00",
+          "asking_price": 37494
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461529463",
@@ -14676,8 +15762,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14689,7 +15775,13 @@
         "current_state": "OH",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 25262
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461557926",
@@ -14748,8 +15840,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14761,7 +15853,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 22294
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461591720",
@@ -14820,8 +15918,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-14T19:15:08+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14833,7 +15931,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 49986
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461642520",
@@ -14892,8 +15996,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-15T11:35:48+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14905,7 +16009,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 33247
+        }
+      ]
     },
     {
       "listing_key": "cargurus:461652451",
@@ -14964,8 +16074,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-15T11:35:48+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -14977,7 +16087,8 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": []
     },
     {
       "listing_key": "cargurus:461669101",
@@ -15036,8 +16147,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-15T15:00:42+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -15049,7 +16160,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-15T15:00:42+00:00",
+          "asking_price": 41176
+        }
+      ]
     },
     {
       "listing_key": "ksl:10614401",
@@ -15121,7 +16238,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 11995
+        }
+      ]
     },
     {
       "listing_key": "ksl:10765309",
@@ -15193,7 +16316,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 33495
+        }
+      ]
     },
     {
       "listing_key": "ksl:10805184",
@@ -15265,7 +16394,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 39409
+        }
+      ]
     },
     {
       "listing_key": "ksl:10827120",
@@ -15337,7 +16472,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T19:15:08+00:00",
+          "asking_price": 37175
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTEHT05J672109214",
@@ -15350,7 +16491,7 @@
       "listing_url": "https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J672109214/",
       "status": "active",
       "category": "retail",
-      "asking_price": 27040,
+      "asking_price": 26970,
       "base_price": null,
       "current_bid": null,
       "sold_price": null,
@@ -15400,8 +16541,8 @@
       "listed_at": "2026-07-13T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -15413,7 +16554,17 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:09:35+00:00",
+          "asking_price": 27040
+        },
+        {
+          "observed_at": "2026-10-15T15:27:41+00:00",
+          "asking_price": 26970
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTJHT00W074027827",
@@ -15476,8 +16627,8 @@
       "listed_at": "2026-09-16T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -15489,7 +16640,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-20T20:50:44+00:00",
+          "asking_price": 21245
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTJHT00W264007335",
@@ -15552,8 +16709,8 @@
       "listed_at": "2026-09-27T07:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -15565,7 +16722,33 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-27T12:08:20+00:00",
+          "asking_price": 18893.99
+        },
+        {
+          "observed_at": "2026-09-28T14:02:38+00:00",
+          "asking_price": 20398.99
+        },
+        {
+          "observed_at": "2026-10-01T22:44:11+00:00",
+          "asking_price": 19059.99
+        },
+        {
+          "observed_at": "2026-10-07T06:05:50+00:00",
+          "asking_price": 19046.99
+        },
+        {
+          "observed_at": "2026-10-07T13:30:36+00:00",
+          "asking_price": 18897.99
+        },
+        {
+          "observed_at": "2026-10-15T11:35:48+00:00",
+          "asking_price": 18798.99
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTJHT00W464018725",
@@ -15628,8 +16811,8 @@
       "listed_at": "2026-10-11T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -15641,7 +16824,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-09-30T12:40:42+00:00",
+          "asking_price": 20583
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTJHT00W864010904",
@@ -15704,8 +16893,8 @@
       "listed_at": "2026-10-09T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -15717,7 +16906,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-09T22:42:00+00:00",
+          "asking_price": 26249
+        }
+      ]
     },
     {
       "listing_key": "truecar:JTJHT00W964017294",
@@ -15780,8 +16975,8 @@
       "listed_at": "2026-10-09T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T13:26:45+00:00",
-      "last_seen": "2026-10-15T15:00:42+00:00",
-      "last_checked": "2026-10-15T15:00:42+00:00",
+      "last_seen": "2026-10-15T15:27:41+00:00",
+      "last_checked": "2026-10-15T15:27:41+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -15793,7 +16988,13 @@
         "current_state": "",
         "also_listed_states": [],
         "previously_listed_states": []
-      }
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-09T13:26:45+00:00",
+          "asking_price": 20298
+        }
+      ]
     }
   ],
   "vehicles": [
@@ -16375,17 +17576,6 @@
       "vin": "JTJHY7AX0F4181714",
       "listing_keys": [
         "cargurus:461031649"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "cargurus"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX0G4199549",
-      "vin": "JTJHY7AX0G4199549",
-      "listing_keys": [
-        "cargurus:460826111"
       ],
       "listing_count": 1,
       "sources": [
@@ -17171,17 +18361,6 @@
       "vin": "JTJHY7AX5G4213820",
       "listing_keys": [
         "cargurus:458249674"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "cargurus"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX5G4214305",
-      "vin": "JTJHY7AX5G4214305",
-      "listing_keys": [
-        "cargurus:460831885"
       ],
       "listing_count": 1,
       "sources": [
