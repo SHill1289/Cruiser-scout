@@ -67,6 +67,23 @@ function priceLabel(row) {
   if (row.category === "auction") return `${money.format(amount)} current bid`;
   return money.format(amount);
 }
+function priceObservations(row) {
+  if (row.category !== "retail" || !Array.isArray(row.price_history)) return [];
+  return row.price_history.filter(point => Number.isFinite(point.asking_price) && Number.isFinite(Date.parse(point.observed_at)));
+}
+function priceDrops(row) {
+  const points = priceObservations(row);
+  return points.slice(1).flatMap((point, index) => point.asking_price < points[index].asking_price
+    ? [{ observedAt: point.observed_at, previous: points[index].asking_price, current: point.asking_price,
+      amount: points[index].asking_price - point.asking_price }] : []);
+}
+function latestReduction(row) {
+  if (row.status !== "active" || row.category !== "retail") return null;
+  const points = priceObservations(row);
+  const drops = priceDrops(row);
+  const latest = drops.at(-1);
+  return latest && points.at(-1).observed_at === latest.observedAt && row.asking_price === latest.current ? latest : null;
+}
 function median(numbers) {
   const values = numbers.filter(Number.isFinite).sort((a, b) => a - b);
   if (!values.length) return null;
@@ -461,6 +478,12 @@ function renderCard(row, group) {
     stateRow.append(text("span", "duplicate-conflict-badge", "Accident reported on another source"));
   const rating = dealBadge(row);
   if (rating) stateRow.append(rating);
+  const reduction = latestReduction(row);
+  if (reduction) {
+    const badge = text("span", "price-drop-badge", `Price down ${money.format(reduction.amount)}`);
+    badge.title = `Asking price observed at ${money.format(reduction.previous)} before ${money.format(reduction.current)} on ${formatMoment(reduction.observedAt)}. Change date is when Scout observed it.`;
+    stateRow.append(badge);
+  }
   const rustLocation = rustLocationBadge(row);
   if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
@@ -556,6 +579,8 @@ function sortRows(rows) {
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
     "listed-newest": (a, b) => listedTime(b) - listedTime(a) || String(b.first_seen || "").localeCompare(String(a.first_seen || "")),
     "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
+    "price-drop-newest": (a, b) => (Date.parse(latestReduction(b)?.observedAt || "") || 0) - (Date.parse(latestReduction(a)?.observedAt || "") || 0)
+      || listedTime(b) - listedTime(a),
     "distance-asc": (a, b) => (distanceTo(a) ?? missing) - (distanceTo(b) ?? missing)
   };
   return rows.sort(strategies[controls.sort.value === "distance-asc" && !origin ? "price-asc" : controls.sort.value]);
@@ -955,7 +980,23 @@ function openResearch(group) {
   history.append(text("p", "", row.deal_quality && row.deal_median_price
     ? `${row.deal_quality} deal against ${row.deal_comparable_count} completed sales in the ${row.deal_mileage_band} mileage band; median ${money.format(row.deal_median_price)}. Condition is not accounted for.`
     : "No supported auction comparison for this listing."));
-  history.append(text("p", "", "A listing-level price history is not published in the current inventory feed."));
+  const prices = priceObservations(row);
+  history.append(text("h4", "", "Observed asking prices"));
+  if (prices.length) {
+    history.append(text("p", "price-history-note", "Dates show when Scout observed each asking price. The seller may have changed it earlier. Auction bids and sold prices are separate."));
+    const timeline = text("ol", "price-timeline", "");
+    prices.forEach((point, index) => {
+      const item = text("li", "", "");
+      item.append(text("span", "", formatMoment(point.observed_at)), text("strong", "", money.format(point.asking_price)));
+      if (index) {
+        const difference = point.asking_price - prices[index - 1].asking_price;
+        item.append(text("small", difference < 0 ? "price-down" : "price-up",
+          `${difference < 0 ? "Down" : "Up"} ${money.format(Math.abs(difference))} from prior observation`));
+      } else item.append(text("small", "", "First recorded asking price"));
+      timeline.prepend(item);
+    });
+    history.append(timeline);
+  } else history.append(text("p", "", "No asking price observations are available for this listing."));
   body.append(history);
   document.querySelector("#research-content").replaceChildren(body);
   dialog.showModal();
@@ -1017,13 +1058,26 @@ function renderAlerts() {
   const cutoff = generatedAt.getTime() - 7 * 864e5;
   const recent = inventory.filter(row => Date.parse(row.first_seen) >= cutoff)
     .sort((a,b) => String(b.first_seen).localeCompare(String(a.first_seen)));
+  const reductions = inventory.filter(row => row.status === "active").flatMap(row => priceDrops(row)
+    .filter(drop => Date.parse(drop.observedAt) >= cutoff).map(drop => ({ row, ...drop })))
+    .sort((a, b) => Date.parse(b.observedAt) - Date.parse(a.observedAt));
   document.querySelector("#alert-metrics").replaceChildren(
     marketMetric("New source listings", integer.format(recent.length), "Added in the last 7 days"),
-    marketMetric("Price changes", "Unavailable", "No published change feed for this view"),
+    marketMetric("Observed price reductions", integer.format(reductions.length), "Active retail listings · last 7 days"),
     marketMetric("Last collection", formatDay(generatedAt.toISOString()), "Inventory snapshot")
   );
   const holder = document.querySelector("#alerts-content");
-  holder.replaceChildren(text("h2", "", "Recently discovered"));
+  holder.replaceChildren(text("h2", "", "Recent asking-price reductions"));
+  if (!reductions.length) holder.append(text("p", "", "No asking-price reductions were observed on active listings in the last 7 days."));
+  else holder.append(...reductions.slice(0, 30).map(change => {
+    const item = text("div", "event-row", "");
+    item.append(text("strong", "", formatDay(change.observedAt)));
+    const link = text("a", "", `${change.row.year} ${vehicleName(change.row)} · ${money.format(change.previous)} → ${money.format(change.current)} · ${change.row.source}`);
+    link.href = change.row.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+    item.append(link, text("small", "", `Down ${money.format(change.amount)} · observed by Scout`));
+    return item;
+  }));
+  holder.append(text("h2", "alerts-subheading", "Recently discovered"));
   if (!recent.length) holder.append(text("p", "", "No listings were first seen in the last 7 days."));
   else holder.append(...recent.slice(0, 50).map(row => {
     const item = text("div", "event-row", "");

@@ -1262,6 +1262,27 @@ def update(state, rows, now, scopes=()):
     return changes
 
 
+def asking_price_history(state, row):
+    """Return distinct, dated retail asking prices for this exact source listing."""
+    if row.get("category") != "retail":
+        return []
+    matching = sorted((event for event in state.get("history", [])
+                       if event.get("listing_key") == row.get("listing_key")
+                       and event.get("listing_url") == row.get("listing_url")
+                       and event.get("model", "LX470") == row.get("model", "LX470")
+                       and event.get("year") == row.get("year")
+                       and isinstance(event.get("asking_price"), (int, float))
+                       and not isinstance(event.get("asking_price"), bool)
+                       and event["asking_price"] > 0
+                       and event.get("observed_at")),
+                      key=lambda event: event["observed_at"])
+    prices = []
+    for event in matching:
+        if not prices or prices[-1]["asking_price"] != event["asking_price"]:
+            prices.append({"observed_at": event["observed_at"], "asking_price": event["asking_price"]})
+    return prices
+
+
 def expire_unrefreshed_observations(state, now, changes):
     """One-time regional/dealer observations cannot advertise a truck indefinitely."""
     cutoff = datetime.fromisoformat(now) - timedelta(days=7)
@@ -1465,14 +1486,15 @@ def save(root, state, health, changes, cache_photos=False):
         "modifications_status", "modifications_evidence",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
-        "rust_location",
+        "rust_location", "price_history",
     ]
     public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_rows = [{**row, **deal_rating(row, public_sales),
                     "accident_category": accident_category(row.get("accident_history")),
-                    "rust_location": rust_location_evidence(row, state)} for row in public_rows]
+                    "rust_location": rust_location_evidence(row, state),
+                    "price_history": asking_price_history(state, row)} for row in public_rows]
     places, zips = load_location_points()
     public_rows = [{**row, **listing_coordinates(row, places, zips)} for row in public_rows]
     if cache_photos:

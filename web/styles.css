@@ -531,6 +531,7 @@ a:hover {
 .duplicate-conflict-badge,
 .rust-location,
 .freshness-badge,
+.price-drop-badge,
 .tag {
   display: inline-block;
   border-radius: 4px;
@@ -540,6 +541,11 @@ a:hover {
   font-weight: 700;
   border: 1px solid var(--border);
   color: var(--muted);
+}
+.price-drop-badge {
+  background: #eaf3ed;
+  color: var(--good);
+  border-color: #c9e0d0;
 }
 .freshness-badge {
   background: #faf2e5;
@@ -1268,6 +1274,34 @@ footer {
 .research-section h3 {
   font-size: 14px;
 }
+.research-section h4 {
+  margin: 16px 0 5px;
+  font-size: 12px;
+}
+.price-history-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+.price-timeline {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+.price-timeline li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+}
+.price-timeline small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+}
+.price-timeline .price-down { color: var(--good); }
+.price-timeline .price-up { color: #95662c; }
+.alerts-subheading { margin-top: 24px; }
 .research-section .condition-records,
 .research-section .duplicate-listings,
 .research-section .reported-extras {
