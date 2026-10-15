@@ -52,3 +52,11 @@ test("current inventory yields unique canonical color and marketplace options", 
   const models = filters.facetOptions(["LX 470", "Lexus LX470", "Land Cruiser", "Toyota Land Cruiser"], filters.model, filters.modelLabel);
   assert.deepEqual(models, [["LX470", "Lexus LX470"], ["Land Cruiser", "Toyota Land Cruiser"]]);
 });
+
+test("multiple selected colors match any selected canonical color", () => {
+  const selected = new Set(["Black Onyx", "Classic Silver Metallic"]);
+  assert.equal(filters.matchesAnyColor(selected, "Black Onyx"), true);
+  assert.equal(filters.matchesAnyColor(selected, "Classic Silver Metallic"), true);
+  assert.equal(filters.matchesAnyColor(selected, "Cypress Pearl"), false);
+  assert.equal(filters.matchesAnyColor([], "Cypress Pearl"), true);
+});

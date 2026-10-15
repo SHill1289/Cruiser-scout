@@ -5,7 +5,7 @@ const ui = {
   resultCount: document.querySelector("#result-count"), updated: document.querySelector("#updated"),
   total: document.querySelector("#total-count"), years: document.querySelector("#year-count"),
   sources: document.querySelector("#source-count"), disclaimer: document.querySelector("#disclaimer"),
-  color: document.querySelector("#color"), summary: document.querySelector("#summary-strip"),
+  color: document.querySelector("#color"), colorOptions: document.querySelector("#color-options"), summary: document.querySelector("#summary-strip"),
   medianPrice: document.querySelector("#median-price"), medianMileage: document.querySelector("#median-mileage"),
   sourceHealth: document.querySelector("#source-health"),
   collectionIndicator: document.querySelector("#collection-indicator"),
@@ -34,7 +34,7 @@ let zipLoad = null;
 let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "model", "status", "color", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
+const controls = ["search", "model", "status", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 let sourceHealth = [];
 let latestChanges = [];
@@ -45,6 +45,9 @@ try { savedVehicles = new Set(JSON.parse(localStorage.getItem(watchlistKey) || "
 let mobileFilterLayout = window.matchMedia("(max-width: 700px)").matches;
 
 function vehicleName(row) { return `${row.make || "Lexus"} ${row.model || "LX470"}`; }
+function selectedColorKeys() {
+  return new Set([...ui.colorOptions.querySelectorAll("input:checked")].map(input => input.value));
+}
 function value(row, key) { return row[key] ?? ""; }
 function saleState(row) {
   if (row.status === "sold") return "sold";
@@ -550,6 +553,7 @@ function renderCard(row, group) {
 
 function matches(row) {
   const query = controls.search.value.trim().toLowerCase();
+  const selectedColors = selectedColorKeys();
   const factoryExterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
   const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year, row.model);
   const haystack = [vehicleName(row), row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
@@ -559,7 +563,7 @@ function matches(row) {
     && (!controls.model.value || CruiserFilters.model(row.model || "LX470") === controls.model.value)
     && (!controls.source.value || CruiserFilters.source(row.source) === controls.source.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
-    && (!controls.color.value || factoryExterior.key === controls.color.value)
+    && CruiserFilters.matchesAnyColor(selectedColors, factoryExterior.key)
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
@@ -705,7 +709,7 @@ function reset() {
 
 function updateFilterToggle() {
   const active = Object.entries(controls).filter(([id, control]) =>
-    control.value && !(id === "sort" && control.value === "listed-newest")).length;
+    control.value && !(id === "sort" && control.value === "listed-newest")).length + selectedColorKeys().size;
   const expanded = !ui.form.classList.contains("is-hidden");
   ui.filterToggle.textContent = `Filters${active ? ` (${active})` : ""}`;
   ui.filterToggle.setAttribute("aria-expanded", String(expanded));
@@ -746,8 +750,15 @@ async function load() {
     controls.source.replaceChildren(new Option("All sources", ""), ...CruiserFilters.facetOptions(
       inventory.map(row => row.source), CruiserFilters.source, CruiserFilters.sourceLabel)
       .map(([key, label]) => new Option(label, key)));
-    ui.color.replaceChildren(new Option("All colors", ""), ...CruiserFilters.colorOptions(inventory, colorReference)
-      .map(([key, label]) => new Option(label, key)));
+    ui.colorOptions.replaceChildren(...CruiserFilters.colorOptions(inventory, colorReference).map(([key, label]) => {
+      const option = text("label", "color-filter-option", "");
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.value = key;
+      input.name = "color";
+      option.append(input, text("span", "", label));
+      return option;
+    }));
     const selectedMarketModel = ui.marketModel.value;
     ui.marketModel.replaceChildren(...CruiserFilters.facetOptions(
       [...inventory.map(row => row.model || "LX470"), ...marketSales.map(sale => sale.model || "LX470")],
@@ -870,6 +881,7 @@ function syncFilters() {
   for (const [name, control] of Object.entries(controls)) {
     if (control.value && !(name === "sort" && control.value === "listed-newest")) params.set(name, control.value);
   }
+  selectedColorKeys().forEach(key => params.append("color", key));
   const path = currentView();
   history.replaceState(null, "", `#${path}${params.size ? "?" + params : ""}`);
 }
@@ -879,6 +891,8 @@ function restoreFilters() {
     const desired = params.get(name);
     if (desired != null && [...control.options || []].some(option => option.value === desired) || (control.tagName === "INPUT" && desired != null)) control.value = desired;
   }
+  const colorKeys = new Set(params.getAll("color"));
+  ui.colorOptions.querySelectorAll("input").forEach(input => { input.checked = colorKeys.has(input.value); });
   if (controls.zip.value) updateOrigin();
   setViewMode(viewMode);
 }
@@ -886,15 +900,17 @@ function renderActiveFilters() {
   const holder = document.querySelector("#active-filters");
   const active = Object.entries(controls).filter(([name, control]) =>
     control.value && !(name === "sort" && control.value === "listed-newest"));
-  holder.replaceChildren(...active.map(([name, control]) => {
-    const label = control.selectedOptions?.[0]?.textContent || control.value;
+  const colorFilters = [...ui.colorOptions.querySelectorAll("input:checked")].map(input => ["color", input]);
+  holder.replaceChildren(...[...active, ...colorFilters].map(([name, control]) => {
+    const label = name === "color" ? control.closest("label").textContent.trim() : control.selectedOptions?.[0]?.textContent || control.value;
     const chip = text("button", "filter-chip", `${name}: ${label} ×`);
     chip.type = "button";
     chip.setAttribute("aria-label", `Remove ${name} filter`);
     chip.addEventListener("click", () => {
-      control.value = name === "sort" ? "listed-newest" : "";
+      if (name === "color") control.checked = false;
+      else control.value = name === "sort" ? "listed-newest" : "";
       if (name === "zip") origin = null;
-      render(); syncFilters();
+      updateFilterToggle(); render(); syncFilters();
     });
     return chip;
   }));
