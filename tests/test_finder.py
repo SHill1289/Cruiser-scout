@@ -20,7 +20,7 @@ from finder import (accident_category, add_listing_photo, cache_public_photos, c
                     clean_title_candidate, csv_text, deal_rating, listing_extras,
                     parse_listing_photo, parse_truecar, remove_unverified_cargurus_owner_inferences,
                     run, rust_location_evidence, valid_vin, load_location_points, listing_coordinates)
-from finder import retry_search
+from finder import asking_price_history, retry_search
 
 NOW = '2026-09-15T22:00:00+00:00'
 
@@ -158,6 +158,19 @@ class DatabaseTests(unittest.TestCase):
         update(self.state, [self.row], '2026-09-16T22:00:00+00:00')
         self.assertEqual(len(self.state['history']), 1)
         self.assertEqual(len(self.state['listings']), 1)
+
+    def test_asking_price_history_uses_observed_retail_prices_only(self):
+        update(self.state, [self.row], NOW)
+        update(self.state, [{**self.row, 'asking_price': 21000}], '2026-09-16T22:00:00+00:00')
+        update(self.state, [{**self.row, 'asking_price': 21000}], '2026-09-17T22:00:00+00:00')
+        current = self.state['listings']['test:1']
+        self.state['history'].append({**current, 'observed_at': '2026-09-18T22:00:00+00:00',
+                                      'listing_url': 'https://example.com/another-car', 'asking_price': 1000})
+        self.assertEqual(asking_price_history(self.state, current), [
+            {'observed_at': NOW, 'asking_price': 22000},
+            {'observed_at': '2026-09-16T22:00:00+00:00', 'asking_price': 21000},
+        ])
+        self.assertEqual(asking_price_history(self.state, {**current, 'category': 'auction'}), [])
 
     def test_listing_and_finder_dates_are_kept_separate(self):
         row = {**self.row, 'source_days_on_market': 5}
@@ -416,6 +429,7 @@ class DatabaseTests(unittest.TestCase):
             self.assertIn('listed_at', public['listings'][0])
             self.assertIn('first_seen', public['listings'][0])
             self.assertIn('last_checked', public['listings'][0])
+            self.assertEqual(len(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['price_history']), 1)
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['missing_checks'], 0)
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['reported_extras'], 'Rear-seat DVD')
             self.assertEqual(next(row for row in public['listings'] if row['listing_key'] == 'test:clean')['timing_belt_status'], 'Service reported')
