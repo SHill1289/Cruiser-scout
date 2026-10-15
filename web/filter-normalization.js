@@ -108,7 +108,12 @@ const CruiserFilters = (() => {
     return options;
   }
 
-  return { OTHER_COLOR, MISSING_COLOR, token, model, modelLabel, source, sourceLabel, facetOptions, color, colorOptions };
+  function matchesAnyColor(selectedKeys, colorKey) {
+    const selected = selectedKeys instanceof Set ? selectedKeys : new Set(selectedKeys || []);
+    return !selected.size || selected.has(colorKey);
+  }
+
+  return { OTHER_COLOR, MISSING_COLOR, token, model, modelLabel, source, sourceLabel, facetOptions, color, colorOptions, matchesAnyColor };
 })();
 
 if (typeof module !== "undefined" && module.exports) module.exports = CruiserFilters;
