@@ -1,8 +1,8 @@
 # Raptor inventory
 
-Last run: 2026-10-18T04:37:00+00:00
+Last run: 2026-10-18T11:09:11+00:00
 
-**35 distinct vehicles Â· 35 active listings Â· 63 changes this run**
+**35 distinct vehicles Â· 35 active listings Â· 0 changes this run**
 
 Only active F-150 Raptors below $30,000 with clean-title evidence and no reported accidents appear below. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.
 
@@ -10,7 +10,7 @@ Only active F-150 Raptors below $30,000 with clean-title evidence and no reporte
 
 | Source | Result | Detail |
 |---|---|---|
-| TrueCar | ok | 63 of 63 nationwide Raptor listings below the source&#x27;s $30,000 maximum checked. Dashboard applies a strict below-$30,000 asking-price rule, clean title and zero reported accidents. |
+| TrueCar | error | HTTP Error 500: Internal Server Error |
 | CarGurus | manual_only | Raptor collector not validated; checked manual imports supported. |
 | CARFAX / Cars.com / Autotrader | manual_only | No validated automatic Raptor collector; checked manual imports supported. |
 
