@@ -1,6 +1,18 @@
 [
   {
     "source": "Bring a Trailer",
+    "source_listing_id": "2006-lexus-lx470-88",
+    "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-88/",
+    "year": 2006,
+    "make": "Lexus",
+    "model": "LX470",
+    "sold_at": "2026-10-19",
+    "sale_price": 35325,
+    "mileage": 72000,
+    "mileage_is_approximate": true
+  },
+  {
+    "source": "Bring a Trailer",
     "source_listing_id": "2006-lexus-lx470-84",
     "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-84/",
     "year": 2006,
