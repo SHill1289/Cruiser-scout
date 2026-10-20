@@ -92,7 +92,7 @@ const CruiserFilters = (() => {
       code: confidence === "family" ? "" : entry.code || "", factory: true, confidence, reported };
   }
 
-  function colorOptions(rows, reference) {
+  function colorOptions(rows, reference, selectedModel = "") {
     const names = new Map();
     let other = false;
     let missing = false;
@@ -102,7 +102,14 @@ const CruiserFilters = (() => {
       else if (result.key === MISSING_COLOR) missing = true;
       else names.set(result.key, result.filterLabel);
     }
-    const options = [...names].sort((a, b) => a[1].localeCompare(b[1], "en-US"));
+    // Restrict the inventory's color choices to the selected model's factory
+    // palette across its tracked years, rather than other active filters.
+    const allowed = selectedModel ? new Set(rows
+      .filter(row => model(row.model || "LX470") === model(selectedModel))
+      .flatMap(row => colorEntries(reference, "exterior", row.year, selectedModel))
+      .map(entry => entry.filter_key || entry.name)) : null;
+    const options = [...names].filter(([key]) => !allowed || allowed.has(key))
+      .sort((a, b) => a[1].localeCompare(b[1], "en-US"));
     if (other) options.push([OTHER_COLOR, "Other / unverified"]);
     if (missing) options.push([MISSING_COLOR, "Color not reported"]);
     return options;

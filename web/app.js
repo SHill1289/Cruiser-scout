@@ -548,6 +548,20 @@ function renderCard(row, group) {
   return card;
 }
 
+function renderColorOptions(selected = new Set(selectedColors().map(input => input.value))) {
+  document.querySelector("#color-options").replaceChildren(...CruiserFilters.colorOptions(inventory, colorReference, controls.model.value)
+    .map(([key, label]) => {
+      const option = text("label", "color-option", "");
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.name = "color";
+      input.value = key;
+      input.checked = selected.has(key);
+      option.append(input, text("span", "", label));
+      return option;
+    }));
+}
+
 function selectedColors() {
   return [...ui.color.querySelectorAll("input:checked")];
 }
@@ -699,6 +713,7 @@ function renderMarket() {
 
 function reset() {
   ui.form.reset();
+  renderColorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
@@ -753,16 +768,6 @@ async function load() {
     controls.source.replaceChildren(new Option("All sources", ""), ...CruiserFilters.facetOptions(
       inventory.map(row => row.source), CruiserFilters.source, CruiserFilters.sourceLabel)
       .map(([key, label]) => new Option(label, key)));
-    document.querySelector("#color-options").replaceChildren(...CruiserFilters.colorOptions(inventory, colorReference)
-      .map(([key, label]) => {
-        const option = text("label", "color-option", "");
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.name = "color";
-        input.value = key;
-        option.append(input, text("span", "", label));
-        return option;
-      }));
     const selectedMarketModel = ui.marketModel.value;
     ui.marketModel.replaceChildren(...CruiserFilters.facetOptions(
       [...inventory.map(row => row.model || "LX470"), ...marketSales.map(sale => sale.model || "LX470")],
@@ -804,7 +809,10 @@ async function load() {
   }
 }
 
-ui.form.addEventListener("input", () => { updateFilterToggle(); render(); syncFilters(); });
+ui.form.addEventListener("input", event => {
+  if (event.target === controls.model) renderColorOptions();
+  updateFilterToggle(); render(); syncFilters();
+});
 controls.zip.addEventListener("input", updateOrigin);
 ui.filterToggle.addEventListener("click", () => {
   const hidden = ui.form.classList.toggle("is-hidden");
@@ -815,6 +823,7 @@ ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
 ui.marketModel.addEventListener("input", renderMarket);
 ui.form.addEventListener("reset", () => setTimeout(() => {
+  renderColorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
@@ -892,11 +901,12 @@ function syncFilters() {
 function restoreFilters() {
   const params = new URLSearchParams(location.hash.split("?")[1] || "");
   const colors = new Set(params.getAll("color"));
-  ui.color.querySelectorAll("input").forEach(input => { input.checked = colors.has(input.value); });
   for (const [name, control] of Object.entries(controls)) {
     const desired = params.get(name);
     if (desired != null && [...control.options || []].some(option => option.value === desired) || (control.tagName === "INPUT" && desired != null)) control.value = desired;
   }
+  renderColorOptions(colors);
+  syncFilters();
   if (controls.zip.value) updateOrigin();
   setViewMode(viewMode);
 }
@@ -912,6 +922,7 @@ function renderActiveFilters() {
     chip.addEventListener("click", () => {
       control.value = name === "sort" ? "listed-newest" : "";
       if (name === "zip") origin = null;
+      if (name === "model") renderColorOptions();
       updateFilterToggle(); render(); syncFilters();
     });
     return chip;

@@ -6,6 +6,44 @@ const inventory = require("../web/inventory.json").listings;
 
 const exterior = (raw, year, model) => filters.color(catalogue, "exterior", raw, year, model);
 
+test("model color options exclude other palettes and retain unknown categories", () => {
+  const keys = model => filters.colorOptions(inventory, catalogue, model).map(([key]) => key);
+  const lx470 = keys("Lexus LX 470");
+  assert.ok(lx470.includes("Crystal White"));
+  assert.ok(!lx470.includes("Starfire Pearl"));
+  assert.ok(!lx470.includes("Natural White"));
+  const lx570 = keys("LX570");
+  assert.ok(lx570.includes("Starfire Pearl"));
+  assert.ok(!lx570.includes("Crystal White"));
+  const toyota = keys("Land Cruiser");
+  assert.ok(toyota.includes("Natural White"));
+  assert.ok(toyota.includes("Black Onyx"));
+  assert.ok(!toyota.includes("Crystal White"));
+  for (const choices of [lx470, lx570, toyota]) {
+    assert.ok(choices.includes(filters.OTHER_COLOR));
+    assert.ok(choices.includes(filters.MISSING_COLOR));
+  }
+  assert.deepEqual(keys(""), filters.colorOptions(inventory, catalogue).map(([key]) => key));
+});
+
+test("model color choices respect tracked years rather than colors of matching listings", () => {
+  const rows = [
+    { model: "LX570", year: 2011, exterior_color: "Black Onyx" },
+    { model: "LX570", year: 2016, exterior_color: "Atomic Silver" },
+    { model: "LX470", year: 2006, exterior_color: "Classic Silver Metallic" }
+  ];
+  assert.deepEqual(filters.colorOptions(rows, catalogue, "LX570").map(([key]) => key),
+    ["Atomic Silver", "Black Onyx"]);
+  const reference = { models: { Test: { exterior: [] }, test: { exterior: [
+    { name: "Shared", years: [2006] }, { name: "Future", years: [2007] }
+  ] } }, exterior: [{ name: "Shared" }, { name: "Future" }] };
+  const sample = [{ model: "test", year: 2006, exterior_color: "" },
+    { model: "LX470", year: 2006, exterior_color: "Shared" },
+    { model: "LX470", year: 2006, exterior_color: "Future" }];
+  assert.deepEqual(filters.colorOptions(sample, reference, "test").map(([key]) => key),
+    ["Shared", filters.MISSING_COLOR]);
+});
+
 test("factory names and marketplace aliases share one model-year facet", () => {
   assert.equal(exterior("WHITE", 2007, "LX470").key, "Crystal White");
   assert.equal(exterior("[077] Starfire Pearl", 2013, "LX 570").key, "Starfire Pearl");
