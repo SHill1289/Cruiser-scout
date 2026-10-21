@@ -543,6 +543,7 @@ function renderCard(row, group) {
   save.addEventListener("click", () => toggleSaved(group.vehicleKey));
   actions.append(research, save, link);
   card.append(actions);
+  card.append(comparisonButton(row, group));
   const others = otherListings(group);
   if (others) card.append(others);
   return card;
@@ -671,6 +672,7 @@ function render() {
   ui.medianMileage.textContent = mileage == null ? "\u2014" : `${integer.format(mileage)} mi`;
   renderActiveFilters();
   if (currentView() === "watchlist") renderWatchlist();
+  syncComparison();
 }
 
 function renderMarket() {
@@ -960,6 +962,7 @@ function renderWatchlist() {
   const grid = text("div", "watchlist-grid", "");
   grid.append(...groups.map(group => renderCard(sortRows([...group.listings])[0], group)));
   holder.replaceChildren(grid);
+  syncComparison();
 }
 function researchFact(label, content) {
   const fact = text("div", "research-fact", "");
