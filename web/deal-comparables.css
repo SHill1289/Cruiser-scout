@@ -1,0 +1,19 @@
+.deal-comparables-button { cursor: pointer; text-align: left; }
+.deal-comparables-button:hover { text-decoration: underline; }
+.deal-comparables-button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.comparables-dialog { width: min(1000px, calc(100vw - 24px)); max-width: none; }
+.comparables-dialog .research-head h2 { font-size: 18px; }
+.comparables-dialog .research-head form { flex-shrink: 0; }
+.comparables-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+#comparables-content > p { font-size: 13px; line-height: 1.6; }
+.comparables-method { color: var(--muted); }
+.comparables-scroll { overflow: auto; max-height: 55vh; }
+.comparables-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; }
+.comparables-table caption { text-align: left; padding: 10px 0; font-weight: 700; }
+.comparables-table th, .comparables-table td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.comparables-table thead th { position: sticky; top: 0; background: #f1f5f1; }
+.comparables-table tbody tr:nth-child(even) { background: #f8faf8; }
+@media (max-width: 700px) {
+  .comparables-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .comparables-dialog .research-body { padding: 12px; }
+}

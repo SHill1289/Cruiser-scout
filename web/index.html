@@ -12,6 +12,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="comparison.css" />
+    <link rel="stylesheet" href="deal-comparables.css" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">Skip to content</a>
@@ -587,6 +588,14 @@
       <p class="comparison-note">Listing claims are not an inspection. Unknown means not documented, not problem-free. Check linked sources for conflicting reports.</p>
       <div id="compare-content" class="comparison-scroll" role="region" aria-label="Vehicle comparison details" tabindex="0"></div>
     </dialog>
+    <dialog id="comparables-dialog" class="research-dialog comparables-dialog" aria-labelledby="comparables-title">
+      <div class="research-head">
+        <h2 id="comparables-title">Comparable sales</h2>
+        <form method="dialog"><button type="submit" aria-label="Close comparable sales" autofocus>Close ×</button></form>
+      </div>
+      <div id="comparables-content" class="research-body"></div>
+    </dialog>
+    <script src="deal-comparables.js" defer></script>
     <script src="filter-normalization.js" defer></script>
     <script src="comparison.js" defer></script>
     <script src="app.js" defer></script>

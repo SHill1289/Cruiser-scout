@@ -277,12 +277,72 @@ function statusTiming(row) {
 function dealBadge(row) {
   const labels = { great: "Great deal", fair: "Fair deal", bad: "Bad deal" };
   if (!labels[row.deal_quality]) return null;
-  const badge = text("span", `deal-rating deal-${row.deal_quality}`, labels[row.deal_quality]);
+  const badge = text("button", `deal-rating deal-${row.deal_quality} deal-comparables-button`, `${labels[row.deal_quality]} · View ${row.deal_comparable_count} sales`);
+  badge.type = "button";
+  badge.setAttribute("aria-haspopup", "dialog");
+  badge.addEventListener("click", () => openDealComparables(row));
   const difference = Number(row.deal_percent_vs_median);
   const comparison = difference === 0 ? "matches" : `${Math.abs(difference)}% ${difference < 0 ? "below" : "above"}`;
   badge.title = `Asking price ${comparison} the ${money.format(row.deal_median_price)} median of ${row.deal_comparable_count} completed sales in the ${row.deal_mileage_band} mileage range. Price comparison does not account for condition, maintenance or modifications.`;
-  badge.setAttribute("aria-label", `${labels[row.deal_quality]}. ${badge.title}`);
+  badge.setAttribute("aria-label", `View comparable sales for ${row.year} ${vehicleName(row)}. ${labels[row.deal_quality]}. ${badge.title}`);
   return badge;
+}
+
+function openDealComparables(row) {
+  const dialog = document.querySelector("#comparables-dialog");
+  const holder = document.querySelector("#comparables-content");
+  const sales = CruiserComparables.salesFor(row, marketSales);
+  document.querySelector("#comparables-title").textContent = `Comparable sales · ${row.year} ${vehicleName(row)}`;
+  const summary = text("div", "comparables-summary", "");
+  summary.append(researchFact("Asking price", money.format(row.asking_price)),
+    researchFact("Median sale price", money.format(row.deal_median_price)),
+    researchFact("Comparable sales", String(row.deal_comparable_count)),
+    researchFact("Mileage band", row.deal_mileage_band));
+  const difference = Number(row.deal_percent_vs_median);
+  const comparison = difference === 0 ? "matches the median" : `is ${Math.abs(difference)}% ${difference < 0 ? "below" : "above"} the median`;
+  const explanation = text("p", "", `This asking price ${comparison}. The rating uses completed ${row.model || "LX470"} sales in this mileage band from the two-year inventory snapshot, updated ${formatMoment(generatedAt)}. All tracked model years are included.`);
+  const method = text("p", "comparables-method", "Great: at least 15% below the median. Fair: less than 15% below through 15% above. Bad: more than 15% above. Percentages are rounded to whole numbers. At least three sales are required. This price comparison does not adjust for model year, condition, maintenance, modifications, or fees.");
+  holder.replaceChildren(summary, explanation, method);
+  if (sales.length !== row.deal_comparable_count || median(sales.map(sale => sale.sale_price)) !== row.deal_median_price) {
+    holder.append(text("p", "empty", "The sales data does not match this rating. Refresh the page to load a consistent inventory snapshot."));
+  } else {
+    const scroll = text("div", "comparables-scroll", "");
+    scroll.tabIndex = 0;
+    scroll.setAttribute("role", "region");
+    scroll.setAttribute("aria-label", "Comparable completed sales");
+    const table = document.createElement("table");
+    table.className = "comparables-table";
+    table.append(text("caption", "", "Sales used in this rating, newest first"));
+    const head = document.createElement("thead");
+    const headings = document.createElement("tr");
+    for (const label of ["Vehicle", "Sold", "Mileage", "Sale price", "Source"]) {
+      const cell = text("th", "", label);
+      cell.scope = "col";
+      headings.append(cell);
+    }
+    head.append(headings);
+    const body = document.createElement("tbody");
+    for (const sale of sales) {
+      const line = document.createElement("tr");
+      line.append(text("td", "", `${sale.year || "Year unknown"} ${vehicleName(sale)}`),
+        text("td", "", formatDay(sale.sold_at)),
+        text("td", "", `${sale.mileage_is_approximate ? "≈ " : ""}${integer.format(sale.mileage)} mi`),
+        text("td", "", money.format(sale.sale_price)));
+      const source = document.createElement("td");
+      const link = text("a", "", `View sale · ${sale.source || "Source"} ↗`);
+      link.href = sale.listing_url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `View ${sale.year} ${vehicleName(sale)} sale on ${sale.source || "source"}, ${formatDay(sale.sold_at)}`);
+      source.append(link);
+      line.append(source);
+      body.append(line);
+    }
+    table.append(head, body);
+    scroll.append(table);
+    holder.append(scroll);
+  }
+  dialog.showModal();
 }
 
 function rustLocationBadge(row) {
@@ -974,6 +1034,8 @@ function openResearch(group) {
   const dialog = document.querySelector("#research-dialog");
   document.querySelector("#research-title").textContent = `${row.year} ${vehicleName(row)}`;
   const body = text("div", "research-body", "");
+  const rating = dealBadge(row);
+  if (rating) body.append(rating);
   const layout = text("div", "research-layout", "");
   const media = text("div", "", "");
   const urls = galleryUrls(row);
