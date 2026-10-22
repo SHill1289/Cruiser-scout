@@ -748,6 +748,7 @@ function renderMap(rows, revealCard) {
 let searchTimer;
 function render(visibleCount = 24) {
   clearTimeout(searchTimer);
+  if (document.querySelector("#filter-drawer").open) return;
   filterQuery = controls.search.value.trim().toLowerCase();
   filterColors = new Set(selectedColors().map(input => input.value));
   const groups = vehicles.map(group => ({ ...group, matched: group.listings.filter(matches) }))
@@ -857,6 +858,7 @@ function updateFilterToggle() {
     ? `${colors.length} color${colors.length === 1 ? "" : "s"} selected` : "All colors";
   const expanded = !ui.form.classList.contains("is-hidden");
   ui.filterToggle.textContent = `Filters${active ? ` (${active})` : ""}`;
+  document.querySelector("#filter-apply").textContent = active ? `Apply filters (${active})` : "Show all vehicles";
   ui.filterToggle.setAttribute("aria-expanded", String(expanded));
 }
 
@@ -945,6 +947,7 @@ ui.form.addEventListener("input", event => {
 });
 controls.zip.addEventListener("input", updateOrigin);
 ui.filterToggle.addEventListener("click", () => {
+  if (window.matchMedia("(max-width: 700px)").matches) { openFilterDrawer(); return; }
   const hidden = ui.form.classList.toggle("is-hidden");
   document.querySelector("#explorer-layout").classList.toggle("filters-collapsed", hidden);
   ui.filterToggle.setAttribute("aria-expanded", String(!hidden));
@@ -952,13 +955,25 @@ ui.filterToggle.addEventListener("click", () => {
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
 ui.marketModel.addEventListener("input", renderMarket);
-ui.form.addEventListener("reset", () => setTimeout(() => {
+ui.form.addEventListener("reset", event => {
+  if (document.querySelector("#filter-drawer").open) {
+    event.preventDefault();
+    for (const [key, control] of Object.entries(controls)) control.value = key === "sort" ? "listed-newest" : "";
+    renderColorOptions(new Set());
+    origin = null;
+    ui.distanceStatus.classList.remove("error");
+    ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
+    updateFilterToggle();
+    return;
+  }
+  setTimeout(() => {
   renderColorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
   updateFilterToggle(); render(); syncFilters();
-}, 0));
+  }, 0);
+});
 document.querySelector("#empty-reset").addEventListener("click", reset);
 document.querySelector("#card-view").addEventListener("click", () => setViewMode("cards"));
 document.querySelector("#table-view").addEventListener("click", () => setViewMode("table"));
@@ -991,13 +1006,18 @@ function syncNavigationLayout() {
 }
 function syncFilterLayout(force = false) {
   const mobile = window.matchMedia("(max-width: 700px)").matches;
+  if (!mobile && document.querySelector("#filter-drawer").open) closeFilterDrawer(false);
   if (!force && mobile === mobileFilterLayout) return;
   mobileFilterLayout = mobile;
   ui.form.classList.toggle("is-hidden", mobile);
   document.querySelector("#explorer-layout").classList.toggle("filters-collapsed", mobile);
+  ui.filterToggle.setAttribute("aria-controls", mobile ? "filter-drawer" : "filters");
+  if (mobile) ui.filterToggle.setAttribute("aria-haspopup", "dialog");
+  else ui.filterToggle.removeAttribute("aria-haspopup");
   updateFilterToggle();
 }
 function routeView() {
+  if (document.querySelector("#filter-drawer").open) closeFilterDrawer(false);
   const active = currentView();
   for (const name of ["inventory", "market", "watchlist", "alerts", "sources"]) {
     document.querySelector(`#${name}-view`).hidden = name !== active;
@@ -1020,6 +1040,7 @@ function setViewMode(mode) {
   for (const name of ["card", "table"]) document.querySelector(`#${name}-view`).setAttribute("aria-pressed", String(name === mode));
 }
 function syncFilters() {
+  if (document.querySelector("#filter-drawer").open) return;
   const params = new URLSearchParams();
   selectedColors().forEach(input => params.append("color", input.value));
   for (const [name, control] of Object.entries(controls)) {
@@ -1270,3 +1291,58 @@ function renderSourceOverview() {
 }
 syncNavigationLayout();
 load();
+
+// Move the existing controls into a native modal so focus and field IDs stay consistent.
+const filterDrawer = document.querySelector("#filter-drawer");
+const filterHome = ui.form.parentElement;
+const filterNextSibling = ui.form.nextSibling;
+let filterSnapshot = null;
+let filterScrollY = 0;
+function openFilterDrawer() {
+  clearTimeout(searchTimer);
+  render(Math.max(24, ui.listings.children.length)); syncFilters();
+  filterSnapshot = {
+    values: Object.fromEntries(Object.entries(controls).map(([key, control]) => [key, control.value])),
+    colors: new Set(selectedColors().map(input => input.value)),
+    origin, status: ui.distanceStatus.textContent, error: ui.distanceStatus.classList.contains("error")
+  };
+  filterScrollY = window.scrollY;
+  document.querySelector("#filter-drawer-body").append(ui.form);
+  ui.form.classList.remove("is-hidden");
+  document.body.style.top = `-${filterScrollY}px`;
+  document.body.classList.add("filter-drawer-open");
+  filterDrawer.showModal();
+  ui.filterToggle.setAttribute("aria-expanded", "true");
+}
+function closeFilterDrawer(apply) {
+  if (!filterSnapshot) return;
+  clearTimeout(searchTimer);
+  if (!apply) {
+    for (const [key, value] of Object.entries(filterSnapshot.values)) controls[key].value = value;
+    renderColorOptions(filterSnapshot.colors);
+    origin = filterSnapshot.origin;
+    ui.distanceStatus.textContent = filterSnapshot.status;
+    ui.distanceStatus.classList.toggle("error", filterSnapshot.error);
+  }
+  filterSnapshot = null;
+  filterDrawer.close();
+  filterHome.insertBefore(ui.form, filterNextSibling);
+  const mobile = window.matchMedia("(max-width: 700px)").matches;
+  ui.form.classList.toggle("is-hidden", mobile);
+  document.body.classList.remove("filter-drawer-open");
+  document.body.style.top = "";
+  window.scrollTo(0, filterScrollY);
+  updateFilterToggle();
+  if (apply) { render(); syncFilters(); }
+  ui.filterToggle.focus({ preventScroll: true });
+}
+document.querySelector("#filter-cancel").addEventListener("click", () => closeFilterDrawer(false));
+document.querySelector("#filter-apply").addEventListener("click", () => closeFilterDrawer(true));
+document.querySelector("#filter-drawer-reset").addEventListener("click", () => HTMLFormElement.prototype.reset.call(ui.form));
+filterDrawer.addEventListener("cancel", event => { event.preventDefault(); closeFilterDrawer(false); });
+filterDrawer.addEventListener("click", event => { if (event.target === filterDrawer) closeFilterDrawer(false); });
+ui.form.addEventListener("submit", event => {
+  event.preventDefault();
+  if (filterDrawer.open) closeFilterDrawer(true);
+  else { render(); syncFilters(); }
+});
