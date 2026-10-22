@@ -655,18 +655,26 @@ function selectedColors() {
   return [...ui.color.querySelectorAll("input:checked")];
 }
 
+const searchIndex = new WeakMap();
+let filterQuery = "";
+let filterColors = new Set();
 function matches(row) {
-  const query = controls.search.value.trim().toLowerCase();
+  const query = filterQuery;
+  let indexed = searchIndex.get(row);
+  if (!indexed) {
   const factoryExterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
   const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year, row.model);
   const haystack = [vehicleName(row), row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
     factoryExterior.name, factoryInterior.name, row.source].join(" ").toLowerCase();
+  indexed = { haystack, color: factoryExterior.key };
+  searchIndex.set(row, indexed);
+  }
   const amount = listingPrice(row);
-  return (!query || haystack.includes(query))
+  return (!query || indexed.haystack.includes(query))
     && (!controls.model.value || CruiserFilters.model(row.model || "LX470") === controls.model.value)
     && (!controls.source.value || CruiserFilters.source(row.source) === controls.source.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
-    && (!selectedColors().length || selectedColors().some(input => input.value === factoryExterior.key))
+    && (!filterColors.size || filterColors.has(indexed.color))
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
     && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
@@ -693,7 +701,7 @@ function sortRows(rows) {
   return rows.sort(strategies[controls.sort.value === "distance-asc" && !origin ? "price-asc" : controls.sort.value]);
 }
 
-function renderMap(rows, cards) {
+function renderMap(rows, revealCard) {
   const locations = [];
   rows.forEach((row, index) => {
     const point = rowPoint(row);
@@ -701,7 +709,7 @@ function renderMap(rows, cards) {
     const xy = mapPoint(...point, row.state);
     if (!xy) return;
     let location = locations.find(item => Math.hypot(item.xy[0] - xy[0], item.xy[1] - xy[1]) < 21);
-    if (!location) { location = { xy, rows: [], firstCard: cards[index] }; locations.push(location); }
+    if (!location) { location = { xy, rows: [], firstIndex: index }; locations.push(location); }
     location.rows.push(row);
   });
   const markers = [];
@@ -716,7 +724,7 @@ function renderMap(rows, cards) {
       group.append(count);
     }
     const title = svgNode("title"); title.textContent = label; group.append(title);
-    const jump = () => location.firstCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    const jump = () => revealCard(location.firstIndex).scrollIntoView({ behavior: "smooth", block: "center" });
     group.addEventListener("click", jump);
     group.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); jump(); } });
     markers.push(group);
@@ -737,17 +745,46 @@ function renderMap(rows, cards) {
   }
 }
 
-function render() {
+let searchTimer;
+function render(visibleCount = 24) {
+  clearTimeout(searchTimer);
+  filterQuery = controls.search.value.trim().toLowerCase();
+  filterColors = new Set(selectedColors().map(input => input.value));
   const groups = vehicles.map(group => ({ ...group, matched: group.listings.filter(matches) }))
     .filter(group => controls.accidents.value !== "none" || !group.listings.some(listing => accidentGroup(listing) === "reported"))
     .filter(group => group.matched.length);
   for (const group of groups) group.primary = sortRows(group.matched)[0];
   const rows = sortRows(groups.map(group => group.primary));
   const byPrimary = new Map(groups.map(group => [group.primary.listing_key, group]));
-  const cards = rows.map(row => renderCard(row, byPrimary.get(row.listing_key)));
-  ui.listings.replaceChildren(...cards);
+  const cards = [];
+  ui.listings.replaceChildren();
+  const more = document.querySelector("#load-more");
+  const progress = document.querySelector("#browse-progress");
+  function appendCards(limit, focusNew = false) {
+    const start = cards.length;
+    const fragment = document.createDocumentFragment();
+    for (const row of rows.slice(start, limit)) {
+      const card = renderCard(row, byPrimary.get(row.listing_key));
+      cards.push(card);
+      fragment.append(card);
+    }
+    ui.listings.append(fragment);
+    more.hidden = cards.length >= rows.length;
+    more.textContent = `Show ${Math.min(24, rows.length - cards.length)} more vehicles`;
+    progress.textContent = rows.length ? `Showing ${cards.length} of ${rows.length} matching vehicles` : "";
+    if (focusNew && cards[start]) {
+      cards[start].tabIndex = -1;
+      cards[start].focus({ preventScroll: true });
+    }
+    syncComparison();
+  }
+  appendCards(visibleCount);
+  more.onclick = () => appendCards(cards.length + 24, true);
   ui.listings.classList.toggle("table-view", viewMode === "table");
-  renderMap(rows, cards);
+  renderMap(rows, index => {
+    if (!cards[index]) appendCards(index + 1);
+    return cards[index];
+  });
   ui.listings.setAttribute("aria-busy", "false");
   ui.listings.hidden = rows.length === 0;
   ui.empty.hidden = rows.length !== 0;
@@ -802,7 +839,7 @@ function renderMarket() {
 }
 
 function reset() {
-  ui.form.reset();
+  HTMLFormElement.prototype.reset.call(ui.form);
   renderColorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
@@ -825,11 +862,11 @@ function updateFilterToggle() {
 
 async function load() {
   try {
-    const response = await fetch("inventory.json", { cache: "no-store" });
+    const response = await fetch("inventory.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
     const data = await response.json();
     try {
-      const colorResponse = await fetch("factory-colors.json", { cache: "no-store" });
+      const colorResponse = await fetch("factory-colors.json", { cache: "no-cache" });
       if (colorResponse.ok) colorReference = await colorResponse.json();
     } catch (colorError) {
       console.warn("Factory color reference unavailable", colorError);
@@ -901,7 +938,10 @@ async function load() {
 
 ui.form.addEventListener("input", event => {
   if (event.target === controls.model) renderColorOptions();
-  updateFilterToggle(); render(); syncFilters();
+  clearTimeout(searchTimer);
+  if (event.target === controls.search) {
+    searchTimer = setTimeout(() => { updateFilterToggle(); render(); syncFilters(); }, 150);
+  } else { updateFilterToggle(); render(); syncFilters(); }
 });
 controls.zip.addEventListener("input", updateOrigin);
 ui.filterToggle.addEventListener("click", () => {
@@ -1035,7 +1075,7 @@ function toggleSaved(key) {
   try { localStorage.setItem(watchlistKey, JSON.stringify([...savedVehicles])); }
   catch { /* Browser storage is optional. */ }
   document.querySelector("#watchlist-nav-count").textContent = savedVehicles.size || "";
-  render();
+  render(Math.max(24, ui.listings.children.length));
   renderWatchlist();
 }
 function renderWatchlist() {

@@ -1543,3 +1543,8 @@ footer {
   font-size: 12px;
   white-space: nowrap;
 }
+
+.browse-controls { text-align: center; margin: 20px 0; }
+#browse-progress { color: var(--muted); font-size: 13px; }
+#load-more { min-height: 44px; padding: 10px 24px; }
+#load-more[hidden] { display: none; }
