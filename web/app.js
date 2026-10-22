@@ -157,7 +157,11 @@ function showLargePhoto() {
   ui.photoError.hidden = true;
   ui.photoLarge.src = urls[index];
   ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " " + vehicleName(row);
-  ui.photoCount.textContent = (index + 1) + " of " + urls.length;
+  ui.photoCount.textContent = "Photo " + (index + 1) + " of " + urls.length;
+  document.querySelector("#photo-hint").hidden = urls.length < 2;
+  document.querySelectorAll("#photo-thumbnails button").forEach((button, position) => {
+    button.setAttribute("aria-pressed", String(position === index));
+  });
   ui.photoTitle.textContent = row.year + " " + vehicleName(row) + " · " + (row.seller || row.source);
   ui.photoSource.href = row.listing_url;
   ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
@@ -168,10 +172,32 @@ function stepLargePhoto(step) {
   showLargePhoto();
 }
 function openGallery(row, urls, index) {
+  if (!urls.length) return;
   activeGallery = { row, urls, index };
+  const thumbnails = document.querySelector("#photo-thumbnails");
+  thumbnails.hidden = urls.length < 2;
+  thumbnails.replaceChildren(...urls.map((url, position) => {
+    const button = text("button", "photo-thumbnail", "");
+    button.type = "button";
+    button.setAttribute("aria-label", `Show photo ${position + 1} of ${urls.length}`);
+    const preview = document.createElement("img");
+    preview.src = url;
+    preview.alt = "";
+    preview.loading = "lazy";
+    preview.draggable = false;
+    preview.addEventListener("error", () => { preview.hidden = true; });
+    button.append(preview, text("span", "", String(position + 1)));
+    button.addEventListener("click", () => {
+      if (!activeGallery) return;
+      activeGallery.index = position;
+      showLargePhoto();
+    });
+    return button;
+  }));
   showLargePhoto();
   ui.photoDialog.showModal();
 }
+CruiserPhotos.bindSwipe(document.querySelector(".photo-stage"), stepLargePhoto);
 ui.photoPrevious.addEventListener("click", () => stepLargePhoto(-1));
 ui.photoNext.addEventListener("click", () => stepLargePhoto(1));
 document.querySelector("#photo-close").addEventListener("click", () => ui.photoDialog.close());
@@ -481,7 +507,7 @@ function renderCard(row, group) {
       index = (next + photos.length) % photos.length;
       photo.dataset.index = String(index);
       photo.src = photos[index];
-      counter.textContent = (index + 1) + " / " + photos.length;
+      counter.textContent = "Photo " + (index + 1) + " of " + photos.length;
     };
     photo.addEventListener("error", () => {
       failed.add(Number(photo.dataset.index));
@@ -500,6 +526,8 @@ function renderCard(row, group) {
       openGallery(row, available, Math.max(0, available.indexOf(photos[index])));
     });
     trigger.append(photo);
+    photo.draggable = false;
+    if (photos.length > 1) CruiserPhotos.bindSwipe(trigger, direction => show(index + direction));
     media.append(trigger);
     if (photos.length > 1) {
       const step = (direction, label) => {

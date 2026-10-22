@@ -1,0 +1,37 @@
+.photo-viewer, .photo-stage { touch-action: pan-y pinch-zoom; }
+.photo-step { width: 44px; height: 44px; font-size: 30px; }
+.photo-step:focus-visible, .photo-thumbnail:focus-visible, .photo-dialog button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.photo-counter { pointer-events: none; font-size: 11px; }
+.photo-dialog { max-height: calc(100dvh - 24px); overflow-y: auto; }
+.photo-dialog-header button, .photo-dialog-footer a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.photo-dialog-header button { flex-shrink: 0; padding: 8px 12px; }
+.photo-stage { grid-template-columns: 48px minmax(0, 1fr) 48px; min-height: 180px; }
+.photo-stage img, .photo-stage p { grid-column: 2; grid-row: 1; }
+#photo-previous { grid-column: 1; grid-row: 1; }
+#photo-next { grid-column: 3; grid-row: 1; }
+.photo-stage img { max-height: 55dvh; }
+.photo-stage > [hidden], #photo-thumbnails[hidden], #photo-hint[hidden], .photo-thumbnail img[hidden] { display: none; }
+#photo-hint { margin: 0; padding: 9px 16px 0; font-size: 12px; color: var(--muted); }
+#photo-thumbnails { display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px; }
+.photo-thumbnail { position: relative; flex: 0 0 72px; height: 58px; border: 3px solid transparent; border-radius: 6px; background: #263c32; padding: 0; overflow: hidden; }
+.photo-thumbnail[aria-pressed="true"] { border-color: var(--gold); }
+.photo-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+.photo-thumbnail span { position: absolute; bottom: 0; right: 0; padding: 2px 5px; background: #172622e8; color: white; font-size: 11px; }
+.photo-dialog-footer { flex-wrap: wrap; gap: 6px 16px; }
+#photo-count { font-size: 13px; font-weight: 700; }
+@media (max-width: 700px) {
+  .photo-dialog[open] { display: flex; flex-direction: column; width: 100%; max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; }
+  .photo-dialog-header { padding: max(8px, env(safe-area-inset-top)) 12px 8px; }
+  .photo-dialog-header strong { font-size: 14px; }
+  .photo-stage { flex: 1; min-height: 120px; overflow: hidden; }
+  .photo-stage img { width: 100%; height: 100%; min-height: 0; max-height: 100%; }
+  #photo-thumbnails, .photo-dialog-header, .photo-dialog-footer, #photo-hint { flex-shrink: 0; }
+  .photo-dialog-footer { padding: 4px 12px max(4px, env(safe-area-inset-bottom)); }
+}
+@media (pointer: coarse) {
+  .listing-actions button, .listing-actions a, .compare-select, .secondary-button, .deal-comparables-button,
+  .filter-chip, .reset, .research-head button, .segmented button { min-height: 44px; }
+  .listing-actions { flex-wrap: wrap; }
+  .filters input:not([type="checkbox"]), .filters select { min-height: 44px; font-size: 16px; }
+  .filters .color-option { min-height: 44px; }
+}

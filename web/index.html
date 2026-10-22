@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="comparison.css" />
     <link rel="stylesheet" href="deal-comparables.css" />
+    <link rel="stylesheet" href="photo-touch.css" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">Skip to content</a>
@@ -534,14 +535,16 @@
       <div class="photo-stage">
         <button type="button" id="photo-previous" aria-label="Previous photo">
           ‹</button
-        ><img id="photo-large" alt="" />
+        ><img id="photo-large" alt="" draggable="false" />
         <p id="photo-error" hidden>
           Photo unavailable. Try another image or open the original listing.
         </p>
         <button type="button" id="photo-next" aria-label="Next photo">›</button>
       </div>
+      <p id="photo-hint">Swipe photos or use the arrows. Tap a thumbnail to jump.</p>
+      <div id="photo-thumbnails" aria-label="Choose a photo"></div>
       <div class="photo-dialog-footer">
-        <span id="photo-count"></span
+        <span id="photo-count" role="status" aria-live="polite" aria-atomic="true"></span
         ><a id="photo-source" target="_blank" rel="noopener noreferrer"
           >Open original listing ↗</a
         >
@@ -595,6 +598,7 @@
       </div>
       <div id="comparables-content" class="research-body"></div>
     </dialog>
+    <script src="photo-touch.js" defer></script>
     <script src="deal-comparables.js" defer></script>
     <script src="filter-normalization.js" defer></script>
     <script src="comparison.js" defer></script>
