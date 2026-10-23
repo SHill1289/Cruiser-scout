@@ -160,7 +160,7 @@
     {
       "id": "cars.com",
       "enabled": false,
-      "reason": "Direct automated request returned HTTP 403 during setup. Import verified observations manually."
+      "reason": "Automated validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; manual imports supported."
     },
     {
       "id": "edmunds",
@@ -170,7 +170,7 @@
     {
       "id": "autotrader",
       "enabled": false,
-      "reason": "No validated collector yet; manual imports supported."
+      "reason": "Automated validation on 2026-10-23 returned an unavailable/block page, not inventory. Model search links are available in Sources & Coverage; manual imports supported."
     },
     {
       "id": "copart",
@@ -186,6 +186,11 @@
       "id": "autotempest",
       "enabled": false,
       "reason": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured."
+    },
+    {
+      "id": "carsandbids",
+      "enabled": false,
+      "reason": "Automated model-search validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; no automatic auction feed is configured."
     }
   ]
 }

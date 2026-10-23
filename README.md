@@ -33,6 +33,8 @@ The dashboard builds model, marketplace, and exterior-color filters from the cur
 
 ## Coverage
 
+Sources & Coverage provides manual model searches for Cars & Bids, AutoTrader, and Cars.com alongside AutoTempest. These links do not import inventory, monitor prices/status, or supply comparable sales. On 2026-10-23, direct collector requests returned HTTP 403 for Cars & Bids model searches and Cars.com, and an unavailable/block page for AutoTrader. Automatic collection remains disabled until a reliable permitted feed is validated. Select the desired model years on each external site.
+
 | Source | Automatic coverage |
 |---|---|
 | CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. A supplemental search identifies no-reported-accident candidates. Owner counts remain unverified because search-result data does not include the count. |
