@@ -578,6 +578,8 @@ function renderCard(row, group) {
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
   const title = text("h3", "vehicle-title", `${row.year} ${vehicleName(row)}${row.trim ? ` ${row.trim}` : ""}`);
   identity.append(title);
+  identity.append(text("p", "listing-mileage-summary", row.mileage == null
+    ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`));
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || "Seller unknown"} · ${row.source}`));
   const distance = distanceTo(row);

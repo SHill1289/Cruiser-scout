@@ -1594,3 +1594,13 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
   #toolbar-sort:focus-visible { outline: 3px solid #b6874c; outline-offset: 2px; }
   #listings .listing, #active-filters, #browse-progress { scroll-margin-top: calc(140px + env(safe-area-inset-top)); }
 }
+
+.listing-mileage-summary { display: none; }
+@media (max-width: 700px) {
+  .listing-mileage-summary { display: block; margin: 5px 0 8px; color: var(--text); font-size: 17px; font-weight: 800; }
+  .listing > .mileage-metric { display: none; }
+  .listing > .price-metric { width: 100%; }
+  .table-view .listing-mileage-summary { font-size: 14px; }
+  .listings.table-view .listing { grid-template-columns: 64px minmax(130px, 1fr) minmax(85px, .65fr) minmax(170px, 1.2fr); min-width: 550px; }
+  .table-view .listing-media { width: 64px; }
+}
