@@ -851,6 +851,7 @@ function reset() {
 }
 
 function updateFilterToggle() {
+  document.querySelector("#toolbar-sort").value = controls.sort.value;
   const active = Object.entries(controls).filter(([id, control]) =>
     control.value && !(id === "sort" && control.value === "listed-newest")).length + selectedColors().length;
   const colors = selectedColors();
@@ -951,6 +952,13 @@ ui.filterToggle.addEventListener("click", () => {
   const hidden = ui.form.classList.toggle("is-hidden");
   document.querySelector("#explorer-layout").classList.toggle("filters-collapsed", hidden);
   ui.filterToggle.setAttribute("aria-expanded", String(!hidden));
+});
+const toolbarSort = document.querySelector("#toolbar-sort");
+toolbarSort.replaceChildren(...[...controls.sort.options].map(option => new Option(option.text, option.value)));
+toolbarSort.addEventListener("change", () => {
+  controls.sort.value = toolbarSort.value;
+  updateFilterToggle(); render(); syncFilters();
+  document.querySelector(".inventory-toolbar").scrollIntoView({ block: "start" });
 });
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
