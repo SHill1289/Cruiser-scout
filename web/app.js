@@ -634,10 +634,27 @@ function renderCard(row, group) {
   if (rustLocation) stateRow.append(rustLocation);
   identity.append(stateRow);
   const exterior = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
-  const title = text("h3", "vehicle-title", `${row.year} ${vehicleName(row)}${row.trim ? ` ${row.trim}` : ""}`);
+  const showDetails = () => openResearch(group, row);
+  const title = text("h3", "vehicle-title", "");
+  const titleButton = text("button", "listing-details-title", `${row.year} ${vehicleName(row)}${row.trim ? ` ${row.trim}` : ""}`);
+  titleButton.type = "button";
+  titleButton.setAttribute("aria-haspopup", "dialog");
+  titleButton.addEventListener("click", showDetails);
+  title.append(titleButton);
   identity.append(title);
-  identity.append(text("p", "listing-mileage-summary", row.mileage == null
-    ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`));
+  const mileageButton = text("button", "listing-mileage-summary", row.mileage == null
+    ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`);
+  mileageButton.type = "button";
+  mileageButton.setAttribute("aria-label", `${mileageButton.textContent}. View details for ${row.year} ${vehicleName(row)}`);
+  mileageButton.setAttribute("aria-haspopup", "dialog");
+  mileageButton.addEventListener("click", showDetails);
+  identity.append(mileageButton);
+  card.addEventListener("click", event => {
+    if (!window.matchMedia("(max-width: 700px)").matches) return;
+    if (event.target.closest("button, a, input, select, label, details, [role='button']")) return;
+    if (window.getSelection()?.toString()) return;
+    showDetails();
+  });
   const place = [row.city, row.state].filter(Boolean).join(", ") || "Location unavailable";
   identity.append(text("p", "vehicle-meta", `${place} \u00b7 ${row.seller || "Seller unknown"} · ${row.source}`));
   const distance = distanceTo(row);
@@ -675,15 +692,16 @@ function renderCard(row, group) {
   card.append(history);
 
   const link = text("a", "open-link", "");
-  link.append(text("span", "open-link-label", "View listing"), text("span", "open-link-arrow", "\u2197"));
+  link.append(text("span", "open-link-label", "Source listing"), text("span", "open-link-arrow", "\u2197"));
   link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   link.setAttribute("aria-label", `Open ${row.year} ${vehicleName(row)} listing on ${row.source}`);
   const actions = text("div", "listing-actions", "");
-  const research = text("button", "research-button", "Research");
+  const research = text("button", "research-button", "View details");
   research.type = "button";
-  research.addEventListener("click", () => openResearch(group));
+  research.setAttribute("aria-haspopup", "dialog");
+  research.addEventListener("click", showDetails);
   const save = text("button", "save-button", savedVehicles.has(group.vehicleKey) ? "★ Saved" : "☆ Save");
   save.type = "button";
   save.setAttribute("aria-pressed", String(savedVehicles.has(group.vehicleKey)));
@@ -1194,11 +1212,16 @@ function researchFact(label, content) {
   fact.append(text("small", "", label), text("strong", "", String(content || "Unknown")));
   return fact;
 }
-function openResearch(group) {
-  const row = sortRows([...group.listings])[0];
+function openResearch(group, row = sortRows([...group.listings])[0]) {
+  rememberBrowsing();
   const dialog = document.querySelector("#research-dialog");
   document.querySelector("#research-title").textContent = `${row.year} ${vehicleName(row)}`;
   const body = text("div", "research-body", "");
+  const sourceLink = text("a", "details-source-link", `Open source listing on ${row.source} ↗`);
+  sourceLink.href = row.listing_url;
+  sourceLink.target = "_blank";
+  sourceLink.rel = "noopener noreferrer";
+  body.append(sourceLink);
   const rating = dealBadge(row);
   if (rating) body.append(rating);
   const layout = text("div", "research-layout", "");
