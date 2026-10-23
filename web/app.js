@@ -43,6 +43,64 @@ const watchlistKey = "cruiser-scout-watchlist-v1";
 let savedVehicles = new Set();
 try { savedVehicles = new Set(JSON.parse(localStorage.getItem(watchlistKey) || "[]")); } catch { savedVehicles = new Set(); }
 let mobileFilterLayout = window.matchMedia("(max-width: 700px)").matches;
+const browsingKey = "cruiser-scout-browsing-v1";
+let browsing = { positions: {}, shown: 24, hash: "" };
+try {
+  const saved = JSON.parse(sessionStorage.getItem(browsingKey) || "null");
+  if (saved && typeof saved.hash === "string" && saved.positions && typeof saved.positions === "object") {
+    browsing = saved;
+    browsing.shown = Math.max(24, Math.min(10000, Number(saved.shown) || 24));
+  }
+} catch { /* Session storage is optional. */ }
+if (!location.hash && /^#(inventory|watchlist|market|alerts|sources)(\?|$)/.test(browsing.hash)) {
+  history.replaceState(null, "", browsing.hash);
+}
+const resumeBrowsing = location.hash === browsing.hash;
+let displayedView = null;
+let browsingReady = false;
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+function rememberBrowsing() {
+  if (!browsingReady || !displayedView || document.querySelector("#filter-drawer").open) return;
+  const holder = document.querySelector(`#${displayedView}-view`);
+  const edge = displayedView === "inventory" && window.innerWidth <= 700
+    ? document.querySelector(".inventory-toolbar").getBoundingClientRect().bottom : 0;
+  const anchor = [...holder.querySelectorAll(".listing")].find(card => card.getBoundingClientRect().bottom > edge);
+  browsing.positions[displayedView] = {
+    y: window.scrollY, anchor: anchor?.id || null,
+    offset: anchor ? anchor.getBoundingClientRect().top : 0,
+    horizontal: displayedView === "inventory" ? ui.listings.scrollLeft : 0
+  };
+  browsing.shown = ui.listings.children.length;
+  browsing.hash = location.hash;
+  try { sessionStorage.setItem(browsingKey, JSON.stringify(browsing)); } catch { /* Optional. */ }
+}
+function restoreBrowsingPosition(view) {
+  const position = browsing.positions[view];
+  requestAnimationFrame(() => {
+    if (displayedView !== view) return;
+    const holder = document.querySelector(`#${view}-view`);
+    const anchor = position?.anchor && [...holder.querySelectorAll(".listing")].find(card => card.id === position.anchor);
+    const y = anchor ? window.scrollY + anchor.getBoundingClientRect().top - (Number(position.offset) || 0) : Number(position?.y) || 0;
+    window.scrollTo({ top: Math.max(0, y), behavior: "instant" });
+    if (view === "inventory") ui.listings.scrollLeft = Number(position?.horizontal) || 0;
+  });
+}
+let browsingSaveTimer;
+window.addEventListener("scroll", () => {
+  clearTimeout(browsingSaveTimer);
+  browsingSaveTimer = setTimeout(rememberBrowsing, 150);
+}, { passive: true });
+window.addEventListener("pagehide", rememberBrowsing);
+document.addEventListener("visibilitychange", () => { if (document.hidden) rememberBrowsing(); });
+document.addEventListener("click", event => {
+  if (event.target.closest("a[target='_blank']")) rememberBrowsing();
+});
+document.querySelectorAll("[data-view-link]").forEach(link => link.addEventListener("click", () => {
+  rememberBrowsing();
+  const query = location.hash.split("?")[1];
+  link.href = `#${link.dataset.viewLink}${query ? "?" + query : ""}`;
+}));
 
 function vehicleName(row) { return `${row.make || "Lexus"} ${row.model || "LX470"}`; }
 function value(row, key) { return row[key] ?? ""; }
@@ -918,14 +976,17 @@ async function load() {
       ui.sourceHealth.append(row);
     });
     restoreFilters();
+    if (controls.zip.value) await updateOrigin();
     syncFilterLayout(true);
     updateFilterToggle();
-    render();
+    render(resumeBrowsing ? browsing.shown : 24);
     renderMarket();
     renderMarketOverview();
     renderAlerts();
     renderSourceOverview();
     renderWatchlist();
+    if (!resumeBrowsing) browsing.positions = {};
+    browsingReady = true;
     routeView();
   } catch (error) {
     ui.listings.setAttribute("aria-busy", "false");
@@ -1029,6 +1090,10 @@ function syncFilterLayout(force = false) {
 function routeView() {
   if (document.querySelector("#filter-drawer").open) closeFilterDrawer(false);
   const active = currentView();
+  if (displayedView && displayedView !== active) {
+    // The URL already changed, but the outgoing view is still on screen.
+    rememberBrowsing();
+  }
   for (const name of ["inventory", "market", "watchlist", "alerts", "sources"]) {
     document.querySelector(`#${name}-view`).hidden = name !== active;
     const link = document.querySelector(`[data-view-link="${name}"]`);
@@ -1041,7 +1106,9 @@ function routeView() {
   document.querySelector("#mobile-menu").setAttribute("aria-expanded", "false");
   syncNavigationLayout();
   if (active === "watchlist") renderWatchlist();
-  window.scrollTo(0, 0);
+  displayedView = active;
+  syncFilters();
+  if (browsingReady) restoreBrowsingPosition(active);
 }
 function setViewMode(mode) {
   viewMode = mode;
@@ -1068,7 +1135,6 @@ function restoreFilters() {
   }
   renderColorOptions(colors);
   syncFilters();
-  if (controls.zip.value) updateOrigin();
   setViewMode(viewMode);
 }
 function renderActiveFilters() {
