@@ -189,8 +189,15 @@
     },
     {
       "id": "carsandbids",
+      "type": "carsandbids",
       "enabled": false,
-      "reason": "Automated model-search validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; no automatic auction feed is configured."
+      "url": "https://carsandbids.com/search/lexus/lx",
+      "reason": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available."
+    },
+    {
+      "id": "autodev",
+      "type": "autodev",
+      "enabled": true
     }
   ]
 }

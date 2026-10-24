@@ -176,7 +176,7 @@
   {
     "source": "carsandbids",
     "status": "manual_only",
-    "detail": "Automated model-search validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; no automatic auction feed is configured.",
+    "detail": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available.",
     "checked_at": "2026-10-24T11:08:22+00:00"
   },
   {
@@ -184,5 +184,11 @@
     "status": "warning",
     "detail": "4 existing listing photos were unavailable; placeholders remain. First error: cargurus:460724510: TimeoutException: Message:  ",
     "checked_at": "2026-10-24T11:08:22+00:00"
+  },
+  {
+    "source": "autodev",
+    "status": "warning",
+    "detail": "235 dealer observations; 14 API calls today, 29/900 monthly budget. Title history requires independent evidence. 20 incomplete or out-of-scope records excluded.",
+    "checked_at": "2026-10-24T12:36:46+00:00"
   }
 ]

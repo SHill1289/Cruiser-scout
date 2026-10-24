@@ -77,6 +77,8 @@ jobs:
       - name: Collect and update history
         id: collect
         continue-on-error: true
+        env:
+          AUTODEV_API_KEY: ${{ secrets.AUTODEV_API_KEY }}
         run: python src/finder.py
       - name: Save data and source health
         if: always() && steps.collect.outcome != 'skipped'

@@ -31,12 +31,18 @@ In Vercel, import this GitHub repository and click **Deploy**. The included `ver
 
 The dashboard builds model, marketplace, and exterior-color filters from the current inventory. `web/filter-normalization.js` applies the same canonical values when building options and matching listings, so spelling or spacing variants do not split a filter. Exterior names come from the model- and year-specific factory palette in `web/factory-colors.json`; a broad marketplace label such as “Silver” is grouped with a factory finish only when that model year has one silver option. Ambiguous, unsupported, and future colors stay under **Other / unverified** until the reference is extended. **Color not reported** is separate. A matched name or swatch does not verify the paint code on an individual truck. To add a future model year, add its documented palette, aliases, and source to `web/factory-colors.json`; do not edit generated inventory data.
 
-## Coverage
+## Auto.dev account connection
 
-Sources & Coverage provides manual model searches for Cars & Bids, AutoTrader, and Cars.com alongside AutoTempest. These links do not import inventory, monitor prices/status, or supply comparable sales. On 2026-10-23, direct collector requests returned HTTP 403 for Cars & Bids model searches and Cars.com, and an unavailable/block page for AutoTrader. Automatic collection remains disabled until a reliable permitted feed is validated. Select the desired model years on each external site.
+The optional Auto.dev collector reads `AUTODEV_API_KEY` from a GitHub Actions repository secret. Never put the key in source files, imports, public JSON, or Vercel's static web assets. The refresh workflow passes the secret only to the collector process.
+
+It runs at most once per UTC day, uses at most 28 API calls per day and 900 per calendar month, and persists usage in `data/database.json`. Failed requests count toward the budget. These are application limits, not a replacement for the provider's account-wide free-tier cap. Incomplete searches never establish removal. Auto.dev rows without title-history evidence appear with a clear **Title unverified** label and receive no deal rating. A dealer advertisement, accident count or Carfax link is not proof of clean title. Observations expire from active inventory after seven days without a fresh observation. The API key is stored as an encrypted repository secret.
+
+## Coverage
 
 | Source | Automatic coverage |
 |---|---|
+| Cars & Bids | Collector implemented but disabled: unattended Chrome encountered a Cloudflare verification page on 2026-10-23. Parser and failure handling are tested against a real rendered auction. No automatic coverage is claimed until unattended access is validated. |
+| Auto.dev | Free-tier API inventory for all three tracked models, refreshed daily. VIN-matched listings are grouped together; source-reported owner/accident counts are retained when supplied. Title remains unverified. Pages with missing or unsafe listing links are skipped and reported. |
 | CarGurus | Nationwide searches for each year, filtered to exclude reported salvage, lemon, frame-damage and theft history. A supplemental search identifies no-reported-accident candidates. Owner counts remain unverified because search-result data does not include the count. |
 | TrueCar | Nationwide 2006-2007 LX 470 search. Only vehicles explicitly marked clean title are included. VIN, price, mileage, listing date, dealer, photos, exact color names, owner count and accident count are collected when supplied; vehicle-history fields are reported by TrueCar from Experian AutoCheck. |
 | KSL Cars | Four regional Lexus LX listings were checked on 2026-10-14 and imported with explicit per-listing Clean Title claims. Automated collection is paused because repeat listing requests returned HTTP 403/503. These one-time observations become unknown after seven days without a fresh check, so they do not remain advertised as current indefinitely. No matching 2006–2007 Land Cruiser appeared in the regional search. |

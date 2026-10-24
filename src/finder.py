@@ -7,6 +7,7 @@ import hashlib
 import html
 import io
 import json
+import os
 import re
 import shutil
 import sys
@@ -763,6 +764,25 @@ def retry_search(fetcher, collect, source_id):
     return partial, 1
 
 
+def collect_cargurus_with_history(fetcher, source):
+    """Optional accident-history enrichment must not prevent inventory collection."""
+    model = source.get("model", "LX470")
+    ids, history_retries, warning = set(), 0, ""
+    try:
+        (history_rows, complete, _), history_retries = retry_search(fetcher,
+            lambda: collect_cargurus(fetcher, source["no_accidents_url"], source["year"], model,
+                                     extra_criteria={"maxAccidents": 0}), source["id"] + " history")
+        if complete:
+            ids = {row["source_listing_id"] for row in history_rows}
+        else:
+            warning = " Supplemental accident-history search incomplete; accident history unavailable."
+    except Exception as exc:
+        warning = f" Supplemental accident-history search unavailable ({type(exc).__name__}); accident history unavailable."
+    result, search_retries = retry_search(fetcher,
+        lambda: collect_cargurus(fetcher, source["url"], source["year"], model, ids), source["id"])
+    return result, bool(history_retries or search_retries), warning
+
+
 def truecar_search_metadata(page):
     match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', page, re.S)
     if not match:
@@ -1125,9 +1145,17 @@ def clean_title_candidate(row):
     return row.get("title_status") in {"clean-title candidate", "clean title"}
 
 
+def inventory_candidate(row):
+    """Include labeled Auto.dev unknown-title observations, never branded titles."""
+    return clean_title_candidate(row) or (row.get("source") == "autodev"
+        and row.get("title_status") == "unknown" and valid_vin(row.get("vin", ""))
+        and "vin_model_or_year_conflict" not in row.get("quality_flags", ""))
+
+
 def deal_rating(row, sales, minimum_comparables=3):
     """Compare a retail asking price with the median sale in its mileage band."""
-    if (row.get("status") != "active" or row.get("category") != "retail"
+    if (row.get("source") == "autodev" and not clean_title_candidate(row)
+            or row.get("status") != "active" or row.get("category") != "retail"
             or not isinstance(row.get("asking_price"), (int, float))
             or not isinstance(row.get("mileage"), (int, float))):
         return {}
@@ -1287,7 +1315,7 @@ def expire_unrefreshed_observations(state, now, changes):
     """One-time regional/dealer observations cannot advertise a truck indefinitely."""
     cutoff = datetime.fromisoformat(now) - timedelta(days=7)
     for row in state.get("listings", {}).values():
-        if row.get("source") not in {"ksl", "bypex"} or row.get("status") != "active":
+        if row.get("source") not in {"ksl", "bypex", "autodev", "carsandbids"} or row.get("status") != "active":
             continue
         last_seen = row.get("last_seen")
         if last_seen and datetime.fromisoformat(last_seen) < cutoff:
@@ -1452,8 +1480,8 @@ def save(root, state, health, changes, cache_photos=False):
     web = root / "web"
     web.mkdir(parents=True, exist_ok=True)
     rows = sorted(state["listings"].values(), key=lambda r: r["listing_key"])
-    active = [r for r in rows if r["status"] == "active" and clean_title_candidate(r)]
-    excluded = [r for r in rows if r["status"] == "active" and not clean_title_candidate(r)]
+    active = [r for r in rows if r["status"] == "active" and inventory_candidate(r)]
+    excluded = [r for r in rows if r["status"] == "active" and not inventory_candidate(r)]
     outputs = {"listings.csv": rows, "active_listings.csv": active,
                "excluded_listings.csv": excluded,
                "retail_listings.csv": [r for r in active if r["category"] == "retail"],
@@ -1488,7 +1516,7 @@ def save(root, state, health, changes, cache_photos=False):
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
         "rust_location", "price_history",
     ]
-    public_rows = [r for r in rows if clean_title_candidate(r) and r["status"] in {"active", "sold", "ended"}]
+    public_rows = [r for r in rows if inventory_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_rows = [{**row, **deal_rating(row, public_sales),
@@ -1502,7 +1530,7 @@ def save(root, state, health, changes, cache_photos=False):
     public_vehicles = merge_public_listings(public_rows)
     public_inventory = {
         "generated_at": state["updated_at"],
-        "disclaimer": "Marketplace screening identifies clean-title candidates, not a legal title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase.",
+        "disclaimer": "Inventory includes screened candidates and Auto.dev listings labeled Title unverified. Verify title and independent history before purchase.",
         "summary": {
             "vehicles": len(master),
             "visible_vehicles": len(public_vehicles),
@@ -1563,20 +1591,14 @@ def run(root=ROOT, live=True):
             try:
                 if source["type"] == "cargurus":
                     model = source.get("model", "LX470")
-                    (history_rows, history_complete, _), history_retries = retry_search(fetcher,
-                        lambda: collect_cargurus(fetcher, source["no_accidents_url"], source["year"], model, extra_criteria={"maxAccidents": 0}), source["id"] + " history")
-                    if not history_complete:
-                        raise ValueError("Supplemental CarGurus history search was incomplete")
-                    no_accident_ids = {row["source_listing_id"] for row in history_rows}
-                    (batch, complete, total), search_retries = retry_search(fetcher,
-                        lambda: collect_cargurus(fetcher, source["url"], source["year"], model, no_accident_ids), source["id"])
+                    (batch, complete, total), retried, history_warning = collect_cargurus_with_history(fetcher, source)
                     photo_errors = [error for row in batch if (error := add_listing_photo(row, fetcher, photo_browser))]
                     rows.extend(batch)
                     if complete:
                         scopes.append(("cargurus", source["year"], source.get("model", "LX470")))
                     photo_note = f" First photo error: {photo_errors[0]}" if photo_errors else ""
-                    retry_note = " Search recovered on retry." if history_retries or search_retries else ""
-                    health.append({"source": source["id"], "status": "ok" if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide; {'all result pages checked' if complete else 'search incomplete after retry'}.{retry_note}{photo_note}"})
+                    retry_note = " Search recovered on retry." if retried else ""
+                    health.append({"source": source["id"], "status": ("warning" if history_warning else "ok") if complete else "partial", "detail": f"{len(batch)} parsed of {total}; {len(batch)-len(photo_errors)} photos found; nationwide; {'all result pages checked' if complete else 'search incomplete after retry'}.{retry_note}{photo_note}{history_warning}"})
                 elif source["type"] == "truecar":
                     (batch, complete, total), search_retries = retry_search(fetcher,
                         lambda: collect_truecar(fetcher, source["url"], now, source.get("model", "LX470")), source["id"])
@@ -1586,6 +1608,30 @@ def run(root=ROOT, live=True):
                         scopes.extend(("truecar", year, source.get("model", "LX470")) for year in MODEL_YEARS[source.get("model", "LX470")])
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
                                    "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. {'Search recovered on retry. ' if search_retries and complete else 'Search incomplete after retry. ' if not complete else ''}Owner and accident counts are source-reported from Experian AutoCheck."})
+                elif source["type"] == "autodev":
+                    from autodev import Client, collect
+                    key = os.environ.get("AUTODEV_API_KEY", "")
+                    if not key:
+                        health.append({"source": source["id"], "status": "setup_required", "detail": "Auto.dev API key is not configured; no automatic coverage yet."})
+                        continue
+                    batch, result = collect(Client(key), state, now)
+                    for row in batch:
+                        try:
+                            rows.append(normalize(row))
+                        except (ValueError, TypeError):
+                            result["status"] = "partial"
+                            result["detail"] += " One listing failed validation."
+                    health.append({"source": source["id"], **result})
+                elif source["type"] == "carsandbids":
+                    from carsandbids import Collector
+                    collector = Collector()
+                    try:
+                        batch, errors = collector.collect(list(state["listings"].values()), now)
+                        rows.extend(normalize(row) for row in batch)
+                    finally:
+                        collector.close()
+                    health.append({"source": source["id"], "status": "partial" if errors else "ok",
+                                   "detail": f"{len(batch)} auction observations; {sum(r['status'] == 'active' for r in batch)} active matching auctions. Rendered model searches plus recent results; not a complete archive. Search absence never establishes removal. " + "; ".join(errors[:3])})
                 elif source["type"] == "ksl":
                     batch, candidates, errors = collect_ksl(fetcher, source["url"], source["make"])
                     rows.extend(batch)
@@ -1642,7 +1688,7 @@ def run(root=ROOT, live=True):
     expire_unrefreshed_observations(state, now, changes)
     apply_vehicle_history_overrides(root, state)
     if live:
-        health = [{**h, "checked_at": now} for h in health]
+        health = [{**h, "checked_at": h.get("checked_at", now)} for h in health]
         if photo_backfill_errors:
             health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain. First error: {photo_backfill_errors[0]}", "checked_at": now})
     elif (root / "data/source_health.json").exists():

@@ -31,7 +31,7 @@ const CruiserFilters = (() => {
   }
 
   function sourceLabel(value) {
-    return ({ cargurus: "CarGurus", truecar: "TrueCar", bringatrailer: "Bring a Trailer", ksl: "KSL Cars", bypex: "Bypex LLC" })[value] || value;
+    return ({ cargurus: "CarGurus", truecar: "TrueCar", bringatrailer: "Bring a Trailer", ksl: "KSL Cars", autodev: "Auto.dev", carsandbids: "Cars & Bids", bypex: "Bypex LLC" })[value] || value;
   }
 
   function facetOptions(values, canonical, label) {

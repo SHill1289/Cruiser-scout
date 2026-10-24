@@ -610,6 +610,7 @@ function renderCard(row, group) {
   const stateRow = text("div", "listing-state-row", "");
   stateRow.append(text("span", "model-tag", row.model || "LX470"));
   stateRow.append(text("span", `sale-state state-${saleState(row)}`, saleStateLabel(row)));
+  if (row.title_status === "unknown") stateRow.append(text("span", "title-unverified-badge", "Title unverified"));
   const freshness = freshnessLabel(row);
   if (freshness) {
     const badge = text("span", "freshness-badge", freshness);
@@ -1247,7 +1248,7 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     researchFact("Seller", row.seller || "Unknown"),
     researchFact("Listing date", row.listed_at ? formatDay(row.listed_at) + (row.listed_at_is_estimated ? " (estimated)" : "") : "Unknown"),
     researchFact("Added to Scout", formatDay(row.first_seen)),
-    researchFact("Title indicator", row.title_status || "Unknown"),
+    researchFact("Title indicator", row.title_status === "unknown" ? "Title unverified — not provided by this source" : row.title_status || "Unknown"),
     researchFact("Ownership", ownerLabel(row)),
     researchFact("Accident history", accidentGroup(row) === "unavailable" ? "History unavailable" : row.accident_history),
     researchFact("Exterior", row.exterior_color || "Unknown"),
