@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T16:05:48+00:00",
+  "generated_at": "2026-10-26T18:33:51+00:00",
   "disclaimer": "Inventory includes screened candidates and Auto.dev listings labeled Title unverified. Verify title and independent history before purchase.",
   "summary": {
     "vehicles": 251,
@@ -15,181 +15,181 @@
       "source": "cargurus-2006",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "4 clean-title listings parsed of 4; nationwide. 4 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "2 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "historical sales",
       "status": "ok",
       "detail": "52 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2006",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2007",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "truecar-land-cruiser",
       "status": "ok",
       "detail": "2 clean-title listings parsed of 2; nationwide. 2 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "bringatrailer-land-cruiser",
       "status": "ok",
       "detail": "1 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "historical sales - Land Cruiser",
       "status": "warning",
       "detail": "52 completed sales retained from 51 discovered or seeded auctions. 1 records unavailable; first error: https://bringatrailer.com/listing/2006-toyota-land-cruiser-114/: Auction did not record a completed sale",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2011",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2012",
       "status": "not_applicable",
       "detail": "The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2013",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2014",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2015",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cargurus-lx570-2016",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "truecar-lx570",
       "status": "manual_only",
       "detail": "GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "bringatrailer-lx570",
       "status": "ok",
       "detail": "2 auction pages parsed. Index coverage only; not a complete auction archive. ",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "historical sales - LX570",
       "status": "ok",
       "detail": "52 completed sales retained from 50 discovered or seeded auctions.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "ksl-lexus-lx",
       "status": "manual_only",
       "detail": "Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "ksl-toyota-land-cruiser",
       "status": "manual_only",
       "detail": "No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "bypex",
       "status": "manual_only",
       "detail": "One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned an unavailable/block page, not inventory. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "autotempest",
       "status": "manual_only",
       "detail": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "carsandbids",
       "status": "manual_only",
       "detail": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available.",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     },
     {
       "source": "autodev",
@@ -201,7 +201,7 @@
       "source": "listing photos",
       "status": "warning",
       "detail": "4 existing listing photos were unavailable; placeholders remain. First error: cargurus:460724510: TimeoutException: Message:  ",
-      "checked_at": "2026-10-26T16:05:48+00:00"
+      "checked_at": "2026-10-26T18:33:51+00:00"
     }
   ],
   "market_history": {
@@ -20809,8 +20809,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-13T00:46:00+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -20884,8 +20884,8 @@
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-22T23:14:48+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -20955,12 +20955,12 @@
       "modifications_status": "",
       "modifications_evidence": "",
       "auction_ends_at": "",
-      "bid_observed_at": "2026-10-26T16:05:48+00:00",
+      "bid_observed_at": "2026-10-26T18:33:51+00:00",
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-19T04:47:04+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -36822,8 +36822,8 @@
       "listed_at": "2026-10-23T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-23T17:12:57+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -36910,8 +36910,8 @@
       "listed_at": "2026-07-13T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -36998,8 +36998,8 @@
       "listed_at": "2026-09-16T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -37082,8 +37082,8 @@
       "listed_at": "2026-09-27T07:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -37190,8 +37190,8 @@
       "listed_at": "2026-10-11T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -37280,8 +37280,8 @@
       "listed_at": "2026-10-09T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-10-26T16:05:48+00:00",
-      "last_checked": "2026-10-26T16:05:48+00:00",
+      "last_seen": "2026-10-26T18:33:51+00:00",
+      "last_checked": "2026-10-26T18:33:51+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
