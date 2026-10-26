@@ -204,9 +204,14 @@ function text(tag, className, content) {
   node.textContent = content;
   return node;
 }
-function galleryUrls(row) {
-  return [...new Set([row.photo_url, ...(Array.isArray(row.photo_urls) ? row.photo_urls : [])]
-    .filter(url => typeof url === "string" && (/^https:\/\//.test(url) || /^photos\/[a-f0-9]{20}\.jpg$/.test(url))))].slice(0, 8);
+const unavailablePhotos = new Set();
+function photoEntries(row) {
+  return CruiserPhotoCoverage.entries(row, inventory).filter(entry => !unavailablePhotos.has(entry.url));
+}
+function galleryUrls(row) { return photoEntries(row).map(entry => entry.url); }
+function photoCredit(row, url) {
+  const entry = CruiserPhotoCoverage.entries(row, inventory).find(entry => entry.url === url);
+  return entry?.borrowed ? `Photo from ${entry.source} · same VIN` : `Photo from ${entry?.source || row.source}`;
 }
 function showLargePhoto() {
   if (!activeGallery) return;
@@ -221,7 +226,9 @@ function showLargePhoto() {
     button.setAttribute("aria-pressed", String(position === index));
   });
   ui.photoTitle.textContent = row.year + " " + vehicleName(row) + " · " + (row.seller || row.source);
-  ui.photoSource.href = row.listing_url;
+  const origin = CruiserPhotoCoverage.entries(row, inventory).find(entry => entry.url === urls[index]);
+  ui.photoSource.href = origin?.listing_url || row.listing_url;
+  ui.photoSource.textContent = photoCredit(row, urls[index]) + " ↗";
   ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
 }
 function stepLargePhoto(step) {
@@ -267,7 +274,15 @@ ui.photoDialog.addEventListener("keydown", event => {
     stepLargePhoto(event.key === "ArrowLeft" ? -1 : 1);
   }
 });
-ui.photoLarge.addEventListener("error", () => { ui.photoLarge.hidden = true; ui.photoError.hidden = false; });
+ui.photoLarge.addEventListener("error", () => {
+  if (activeGallery) {
+    const { row, urls, index } = activeGallery;
+    unavailablePhotos.add(urls[index]);
+    const remaining = urls.filter(url => !unavailablePhotos.has(url));
+    if (remaining.length) { openGallery(row, remaining, Math.min(index, remaining.length - 1)); return; }
+  }
+  ui.photoLarge.hidden = true; ui.photoError.hidden = false;
+});
 function makeMetric(main, label) {
   const node = text("div", "metric", "");
   node.append(text("strong", "", main), text("span", "", label));
@@ -561,13 +576,20 @@ function renderCard(row, group) {
     photo.decoding = "async";
     photo.referrerPolicy = "no-referrer";
     const counter = text("span", "photo-counter", "");
+    const credit = text("span", "photo-credit", "");
+    media.append(credit);
     const show = next => {
+      const direction = next < index ? -1 : 1;
       index = (next + photos.length) % photos.length;
+      for (let attempts = 0; failed.has(index) && attempts < photos.length; attempts++) index = (index + direction + photos.length) % photos.length;
       photo.dataset.index = String(index);
       photo.src = photos[index];
-      counter.textContent = "Photo " + (index + 1) + " of " + photos.length;
+      const available = photos.filter((_, position) => !failed.has(position));
+      counter.textContent = `Photo ${available.indexOf(photos[index]) + 1} of ${available.length}`;
+      credit.textContent = photoCredit(row, photos[index]);
     };
     photo.addEventListener("error", () => {
+      unavailablePhotos.add(photos[Number(photo.dataset.index)]);
       failed.add(Number(photo.dataset.index));
       const next = photos.findIndex((_, position) => !failed.has(position));
       if (next >= 0) show(next);
@@ -576,6 +598,7 @@ function renderCard(row, group) {
         media.classList.add("photo-missing");
         media.prepend(text("span", "photo-placeholder", row.model || "LX470"));
         counter.remove();
+        credit.textContent = "Photos unavailable";
         media.querySelectorAll(".photo-step").forEach(button => button.remove());
       }
     });
@@ -597,11 +620,13 @@ function renderCard(row, group) {
       };
       step(-1, "previous");
       step(1, "next");
-      media.append(counter);
+
     }
+    media.append(counter);
     show(0);
   } else {
     media.append(text("span", "photo-placeholder", row.model || "LX470"));
+    media.append(text("span", "photo-credit", "Photos unavailable"));
   }
   media.append(text("span", "year-badge", String(row.year)));
   card.append(media);
@@ -1232,11 +1257,25 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     const photo = document.createElement("img");
     photo.src = urls[0]; photo.alt = `${row.year} ${vehicleName(row)}`; photo.className = "research-photo";
     photo.referrerPolicy = "no-referrer";
-    photo.addEventListener("error", () => photo.replaceWith(text("div", "research-photo photo-placeholder", row.model || "Vehicle")));
-    media.append(photo);
+    let photoIndex = 0;
+    const credit = text("p", "photo-credit-details", photoCredit(row, urls[0]));
     const gallery = text("button", "secondary-button", `Browse ${urls.length} photo${urls.length === 1 ? "" : "s"}`);
+    photo.addEventListener("error", () => {
+      unavailablePhotos.add(urls[photoIndex]);
+      photoIndex++;
+      if (photoIndex < urls.length) {
+        photo.src = urls[photoIndex];
+        credit.textContent = photoCredit(row, urls[photoIndex]);
+        gallery.textContent = `Browse ${urls.length - photoIndex} photos`;
+      } else {
+        photo.replaceWith(text("div", "research-photo photo-placeholder", row.model || "Vehicle"));
+        credit.textContent = "Photos unavailable";
+        gallery.hidden = true;
+      }
+    });
+    media.append(photo, credit);
     gallery.type = "button";
-    gallery.addEventListener("click", () => { dialog.close(); openGallery(row, urls, 0); });
+    gallery.addEventListener("click", () => { dialog.close(); openGallery(row, galleryUrls(row), 0); });
     media.append(gallery);
   } else media.append(text("div", "research-photo photo-placeholder", row.model || "Vehicle"));
   const facts = text("div", "research-facts", "");
