@@ -102,9 +102,9 @@
                   grouped by vehicle.
                 </p>
               </div>
-              <span class="update-badge">Sources every 6h · Auto.dev daily</span>
+              <div class="refresh-tools"><span class="update-badge">Sources every 6h · Auto.dev daily</span><button id="refresh-open" class="secondary-button" type="button" aria-haspopup="dialog">Refresh inventory</button></div>
             </div>
-            <p id="collection-notice" class="collection-notice" role="status" hidden></p>
+            <div id="collection-notice" class="collection-notice" hidden><p id="collection-message" role="status"></p><button id="collection-dismiss" type="button" aria-label="Dismiss partial refresh notice">×</button></div>
             <div class="metric-grid" id="summary-strip">
               <div class="metric-card">
                 <span>Tracked listings</span><strong id="total-count">—</strong
@@ -624,6 +624,24 @@
         <button id="filter-apply" type="button">Apply filters</button>
       </footer>
     </dialog>
+    <dialog id="refresh-dialog" aria-labelledby="refresh-title">
+      <div class="refresh-heading"><h2 id="refresh-title">Refresh inventory</h2><button id="refresh-close" type="button" aria-label="Close refresh controls">Close ×</button></div>
+      <p>Run a fresh search without waiting for the schedule. Auto.dev keeps its daily limit. Collection and publishing can take several minutes.</p>
+      <p id="refresh-status" role="status">Checking refresh status…</p>
+      <div id="refresh-login" hidden>
+        <label for="refresh-key">Owner access code</label>
+        <input id="refresh-key" type="password" autocomplete="current-password" maxlength="200">
+        <button id="refresh-unlock" type="button">Unlock owner controls</button>
+      </div>
+      <div class="refresh-controls">
+        <button id="refresh-start" type="button" hidden>Start refresh</button>
+        <button id="refresh-check" type="button">Check status</button>
+        <button id="refresh-load" type="button" hidden>Load updated inventory</button>
+        <button id="refresh-lock" type="button" hidden>Lock owner controls</button>
+      </div>
+      <a id="refresh-run" href="https://github.com/SHill1289/Cruiser-scout/actions/workflows/lx470_search.yml" target="_blank" rel="noopener noreferrer">View refresh runs on GitHub ↗</a>
+    </dialog>
+    <script src="refresh.js" defer></script>
     <script src="photo-touch.js" defer></script>
     <script src="photo-coverage.js" defer></script>
     <script src="deal-comparables.js" defer></script>

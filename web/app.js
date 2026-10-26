@@ -996,7 +996,8 @@ async function load() {
     document.querySelector("#collection-label").textContent = incomplete.length ? "PARTIAL REFRESH" : "INVENTORY SNAPSHOT";
     ui.collectionIndicator.classList.toggle("partial", incomplete.length > 0);
     ui.collectionNotice.hidden = incomplete.length === 0;
-    if (incomplete.length) ui.collectionNotice.textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
+    if (incomplete.length) document.querySelector("#collection-message").textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
+    window.CruiserRefresh.notice(data.generated_at, incomplete.length > 0);
     ui.marketSource.textContent = data.market_history?.source || "Completed auction results";
     ui.updated.textContent = formatDate(data.generated_at);
     document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);

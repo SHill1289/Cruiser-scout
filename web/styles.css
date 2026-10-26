@@ -1692,3 +1692,24 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
   }
   .table-view .listing > .compare-select { grid-column: 1 / -1; min-height: 44px; margin: 0; }
 }
+
+/* Owner refresh controls and dismissible source coverage notice. */
+.refresh-tools { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end; }
+#refresh-open, #collection-dismiss, #refresh-dialog button { min-height:44px; cursor:pointer; }
+.collection-notice { position:relative; padding-right:58px; }
+.collection-notice p { margin:0; }
+#collection-dismiss { position:absolute; top:2px; right:4px; width:44px; border:0; background:transparent; color:inherit; font-size:24px; }
+#refresh-dialog { width:min(520px, calc(100% - 24px)); max-height:90dvh; overflow:auto; border:1px solid var(--border); border-radius:12px; padding:20px; color:var(--text); }
+#refresh-dialog::backdrop { background:#17262288; }
+.refresh-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.refresh-heading h2 { margin:0; font-size:21px; }
+#refresh-dialog p { font-size:14px; line-height:1.5; }
+#refresh-dialog button { padding:8px 12px; border:1px solid var(--border); border-radius:7px; background:white; color:var(--green); font:inherit; }
+#refresh-dialog button:disabled { opacity:.55; cursor:wait; }
+#refresh-dialog #refresh-start { background:var(--green); color:white; }
+#refresh-login label { display:block; margin:12px 0 6px; }
+#refresh-key { width:100%; min-height:44px; font-size:16px; margin-bottom:10px; padding:8px; border:1px solid var(--border); border-radius:6px; }
+.refresh-controls { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
+#refresh-status { background:var(--canvas); padding:12px; border-radius:6px; }
+#refresh-run { display:inline-block; font-size:13px; padding:10px 0; }
+@media(max-width:700px) { .page-intro { flex-wrap:wrap; } .refresh-tools { width:100%; justify-content:flex-start; } }
