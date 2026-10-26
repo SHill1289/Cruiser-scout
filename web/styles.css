@@ -1713,3 +1713,41 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
 #refresh-status { background:var(--canvas); padding:12px; border-radius:6px; }
 #refresh-run { display:inline-block; font-size:13px; padding:10px 0; }
 @media(max-width:700px) { .page-intro { flex-wrap:wrap; } .refresh-tools { width:100%; justify-content:flex-start; } }
+
+/* Auction explorer */
+#market-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;align-items:start}
+#market-controls>div:first-child{grid-column:1/-1}
+#market-controls label,.market-chart-heading label{display:grid;gap:6px;font-size:.85rem;font-weight:600;min-width:0}
+#market-controls input:not([type=checkbox]),#market-controls select,.market-chart-heading select{width:100%;min-height:44px;box-sizing:border-box}
+.market-picks{border:1px solid var(--border,#dce2db);border-radius:8px;padding:10px;background:#fff}
+.market-picks summary{min-height:24px;cursor:pointer;font-weight:600;font-size:.85rem}
+.market-picks summary span{display:block;color:#62746a;font-weight:400;padding-top:4px}
+.market-picks fieldset{border:0;padding:8px 0 0;margin:0;max-height:240px;overflow:auto}
+#market-controls .market-picks label{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:400}
+.market-picks input{width:18px;height:18px;accent-color:#204d3e}
+.market-explorer-panel{margin:20px 0}
+.market-chart-heading{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.market-legend,.market-method{color:#62746a;font-size:.85rem;line-height:1.6}
+.market-legend span{margin-right:16px}
+.market-plot{width:100%;min-width:0;min-height:240px}
+.market-plot svg{display:block;width:100%;height:auto;overflow:visible}
+.market-gridline{stroke:#e1e6df;stroke-width:1}
+.market-tick{fill:#617168;font-size:11px;font-family:inherit}
+.market-dot{cursor:pointer;outline:none}
+.market-dot-core{fill:#234f3e;stroke:#fff;stroke-width:1.2}
+.market-dot-core.unsold{fill:#fff;stroke:#71877a;stroke-width:1.5}
+.market-dot:focus .market-dot-core,.market-dot.selected .market-dot-core{stroke:#b77918;stroke-width:3;r:7}
+.market-point-detail{padding:16px;border:1px solid #dce2db;border-radius:10px;min-height:76px;background:#f7f8f4;color:#314b3f}
+.market-result p{margin:8px 0 0;color:#62746a;font-size:.875rem}
+.market-result a{display:block;line-height:1.6;min-height:44px;color:#234f3e;font-weight:650}
+.market-results-disclosure summary{cursor:pointer;padding:12px 0;min-height:44px}
+#market-results-list{max-height:480px;overflow:auto}
+#market-results-list .market-result{padding:14px 0;border-bottom:1px solid #dce2db}
+@media(max-width:600px){
+ #market-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #market-controls>button{grid-column:1/-1}
+ .market-explorer-panel{padding:14px}
+ .market-chart-heading{display:block}
+ .market-chart-heading label{margin:14px 0}
+ .market-legend span{margin-right:8px}
+}

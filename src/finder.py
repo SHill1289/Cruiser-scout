@@ -21,6 +21,7 @@ from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from statistics import median
+from bat_archive import archive_results as bat_archive_results, location as bat_location
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -36,7 +37,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source"
           "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
           "service_records_status", "service_records_evidence",
           "modifications_status", "modifications_evidence",
-          "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
+          "auction_result_at", "bat_details_version", "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 MODEL_YEARS = {"LX470": (2006, 2007), "Land Cruiser": (2006, 2007), "LX570": tuple(range(2011, 2017))}
 VIN_PREFIXES = {"LX470": ("JTJHT00W",), "Land Cruiser": ("JTEHT05J",), "LX570": ("JTJHY7AX",)}
@@ -1074,6 +1075,13 @@ def parse_bat(page, url, now):
            "accident_history": accidents,
            "owners": "Unknown",
            "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."}
+    row.update(bat_location(page))
+    row["auction_result_at"] = bat_sale_date(page) if status == "sold" else ""
+    row["bat_details_version"] = 2
+    if not row["exterior_color"]:
+        color = re.search(r"(?:finished|repainted) in ([^.]+?) (?:over|with|and is)", excerpt_text, re.I)
+        if color and len(color[1]) < 100:
+            row["exterior_color"] = color[1].strip()
     row.update(condition_claims(narrative.paragraphs))
     return normalize(row)
 
@@ -1115,6 +1123,7 @@ def parse_historical_sale(page, url, now):
         "listing_url": url, "year": row["year"], "make": row["make"], "model": row["model"], "sold_at": sold_at,
         "sale_price": row["sold_price"], "mileage": row["mileage"],
         "mileage_is_approximate": row["mileage_is_approximate"],
+        **{key: row.get(key, "") for key in ("city", "state", "postal_code", "exterior_color", "interior_color", "vin", "photo_url", "title_status")},
     }
 
 
@@ -1139,6 +1148,40 @@ def collect_historical_sales(root, state, fetcher, archive_page, now):
             errors.append(f"{url}: {error}")
     state["historical_sales"] = sorted(existing.values(), key=lambda row: (row["sold_at"], row["listing_url"]), reverse=True)
     return len(candidates), errors
+
+
+
+def collect_bat_archive(state, fetcher, page, model, now, limit=100):
+    """Read all recent archive results, then hydrate each auction once."""
+    results = {url: item for url, item in bat_archive_results(page, MODEL_YEARS, now).items()
+               if item["model"] == model}
+    existing = {row["listing_url"]: row for row in state.get("listings", {}).values()
+                if row.get("source") == "bringatrailer" and row.get("model", "LX470") == model}
+    urls = set(results) | bat_listing_urls(page)
+    urls.update(url for url, row in existing.items() if row["status"] in {"active", "unknown"})
+    pending = [url for url in urls if url not in existing or existing[url].get("bat_details_version") != 2
+               or existing[url]["status"] in {"active", "unknown"}
+               or (url in results and not existing[url].get("auction_result_at"))]
+    pending.sort(key=lambda url: results.get(url, {}).get("result_at", ""), reverse=True)
+    rows, errors = [], []
+    sales = {sale["listing_url"]: sale for sale in state.setdefault("historical_sales", [])}
+    for url in pending[:limit]:
+        try:
+            detail = fetcher.get(url)
+            row = parse_bat(detail, url, now)
+            if row["model"] != model:
+                continue
+            if url in results:
+                row["auction_result_at"] = results[url]["result_at"]
+            rows.append(row)
+            if row["status"] == "sold":
+                sale = parse_historical_sale(detail, url, now)
+                sales[url] = sale
+        except Exception as error:
+            errors.append(f"{url}: {error}")
+    state["historical_sales"] = sorted(sales.values(), key=lambda row: (row["sold_at"], row["listing_url"]), reverse=True)
+    remaining = max(0, len(pending) - limit)
+    return rows, results, errors, remaining
 
 
 def clean_title_candidate(row):
@@ -1526,11 +1569,11 @@ def save(root, state, health, changes, cache_photos=False):
         "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
         "service_records_status", "service_records_evidence",
         "modifications_status", "modifications_evidence",
-        "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
+        "auction_result_at", "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
         "rust_location", "price_history", "vehicle_first_seen", "reappeared_at",
     ]
-    public_rows = [r for r in rows if inventory_candidate(r) and r["status"] in {"active", "sold", "ended"}]
+    public_rows = [r for r in rows if (inventory_candidate(r) or (r["source"] == "bringatrailer" and r["status"] in {"sold", "ended"})) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_rows = [{**row, **change_metadata(state, row), **deal_rating(row, public_sales),
@@ -1559,6 +1602,11 @@ def save(root, state, health, changes, cache_photos=False):
             "source": "Bring a Trailer completed auctions",
             "window_months": 24,
             "sales": public_sales,
+            "results": [{**{key: row.get(key) for key in ("listing_url", "year", "make", "model", "mileage", "city", "state", "exterior_color")}, "sale_price": row.get("sold_price") if row["status"] == "sold" else row.get("current_bid"),
+                         "sold_at": str(row.get("auction_result_at") or "")[:10],
+                         "outcome": "sold" if row["status"] == "sold" else "unsold"}
+                        for row in public_rows if row["source"] == "bringatrailer" and row["status"] in {"sold", "ended"}
+                        and str(row.get("auction_result_at") or "")[:10] >= cutoff],
         },
         "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
         "vehicles": public_vehicles,
@@ -1656,26 +1704,14 @@ def run(root=ROOT, live=True):
                     health.append({"source": source["id"], "status": "partial" if errors else "ok", "detail": detail})
                 elif source["type"] == "bringatrailer":
                     page = fetcher.get(source["url"])
-                    urls = bat_listing_urls(page)
-                    urls.update(r["listing_url"] for r in state["listings"].values()
-                                if r["source"] == "bringatrailer" and r.get("model", "LX470") == source.get("model", "LX470") and
-                                (r["status"] in {"active", "unknown"} or
-                                 (r["status"] in {"sold", "ended"} and
-                                  not any(r.get(f"{topic}_evidence") for topic in CONDITION_TOPICS))))
-                    if "listing" not in page or not re.search(r"Land Cruiser" if source.get("model") == "Land Cruiser" else r"LX\s?570" if source.get("model") == "LX570" else r"LX\s?470", page, re.I):
-                        raise ValueError("Auction index format changed")
-                    errors = []
-                    for url in sorted(urls)[:30]:
-                        try:
-                            rows.append(parse_bat(fetcher.get(url), url, now))
-                        except Exception as e:
-                            errors.append(f"{url}: {e}")
-                    health.append({"source": source["id"], "status": "partial" if errors or len(urls) > 30 else "ok", "detail": f"{min(len(urls),30)-len(errors)} auction pages parsed. Index coverage only; not a complete auction archive. " + "; ".join(errors)})
-                    sale_candidates, sale_errors = collect_historical_sales(root, state, fetcher, page, now)
-                    detail = f"{len(state['historical_sales'])} completed sales retained from {sale_candidates} discovered or seeded auctions."
-                    if sale_errors:
-                        detail += f" {len(sale_errors)} records unavailable; first error: {sale_errors[0]}"
-                    health.append({"source": "historical sales" + (" - " + source["model"] if source.get("model") else ""), "status": "warning" if sale_errors else "ok", "detail": detail})
+                    model = source.get("model", "LX470")
+                    batch, results, errors, remaining = collect_bat_archive(state, fetcher, page, model, now)
+                    rows.extend(batch)
+                    detail = (f"{len(results)} supported auctions in the public two-year archive; "
+                              f"{len(batch)} listing pages updated; {remaining} pages awaiting backfill. ")
+                    if errors:
+                        detail += f"{len(errors)} pages unavailable; first error: {errors[0]}"
+                    health.append({"source": source["id"], "status": "partial" if errors or remaining else "ok", "detail": detail})
             except Exception as e:
                 health.append({"source": source["id"], "status": "error", "detail": str(e)})
     # An edited import file is a new observation; unchanged files do not refresh last_seen.

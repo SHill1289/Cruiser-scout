@@ -365,35 +365,28 @@
               </div>
             </div>
             <div class="metric-grid" id="market-metrics"></div>
-            <div class="panel market-controls">
-              <div>
-                <h2>Completed auction sales</h2>
-                <p id="market-count">Loading completed sales…</p>
-              </div>
-              <label
-                >Period<select id="market-period">
-                  <option value="24">Last 24 months</option>
-                  <option value="12">Last 12 months</option>
-                </select></label
-              ><label
-                >Model<select id="market-model">
-                  <option value="LX470">Lexus LX470</option>
-                  <option value="LX570">Lexus LX570</option>
-                  <option value="Land Cruiser">Toyota Land Cruiser</option>
-                </select></label
-              ><label
-                >Model year<select id="market-year">
-                  <option value="">All tracked years</option>
-                  <option value="2006">2006</option>
-                  <option value="2007">2007</option>
-                  <option value="2011">2011</option>
-                  <option value="2013">2013</option>
-                  <option value="2014">2014</option>
-                  <option value="2015">2015</option>
-                  <option value="2016">2016</option>
-                </select></label
-              >
+            <div class="panel market-controls" id="market-controls">
+              <div><h2>Auction results explorer</h2><p id="market-count">Loading completed sales…</p></div>
+              <label>Period<select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
+              <label>Model<select id="market-model"><option value="LX470">Lexus LX470</option><option value="LX570">Lexus LX570</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
+              <details class="market-picks"><summary>Model years <span id="market-year-count">All</span></summary><fieldset id="market-year" aria-label="Model years"></fieldset></details>
+              <label>Min mileage<input id="market-mileage-min" type="number" min="0" step="1000" inputmode="numeric" placeholder="No minimum"></label>
+              <label>Max mileage<input id="market-mileage-max" type="number" min="0" step="1000" inputmode="numeric" placeholder="No maximum"></label>
+              <details class="market-picks"><summary>Exterior colors <span id="market-color-count">All</span></summary><fieldset id="market-colors" aria-label="Exterior colors"></fieldset></details>
+              <label>State / region<select id="market-location"><option value="">All locations</option></select></label>
+              <label>City<input id="market-city" type="search" placeholder="Any city"></label>
+              <label>Result<select id="market-outcome"><option value="all">All auction results</option><option value="sold">Sold</option><option value="unsold">Reserve not met</option></select></label>
+              <button id="market-reset" class="secondary-button" type="button">Reset market filters</button>
             </div>
+            <section class="panel market-explorer-panel" aria-labelledby="market-chart-title">
+              <div class="market-chart-heading"><div><h2 id="market-chart-title">Auction price over time</h2><p id="market-chart-count"></p></div>
+              <label>Horizontal axis<select id="market-axis"><option value="date">Auction date</option><option value="mileage">Mileage</option></select></label></div>
+              <p class="market-legend"><span class="legend-sold">● Sold</span><span class="legend-unsold">○ Reserve not met</span> · Tap a point for details</p>
+              <div id="market-plot" class="market-plot"></div>
+              <div id="market-point-detail" class="market-point-detail" aria-live="polite">Select a point to see its year, mileage, color, location, and auction result.</div>
+              <p class="market-method">Auction prices exclude buyer fees. Reserve-not-met bids are not sales and are excluded from the averages below. Unknown mileage, color, and location remain visible unless a corresponding filter excludes them.</p>
+              <details class="market-results-disclosure"><summary>Browse matching auction results</summary><div id="market-results-list"></div></details>
+            </section>
             <div
               class="market-bands"
               id="market-bands"
@@ -405,11 +398,7 @@
                 <p>Active retail listings</p>
                 <div id="price-distribution" class="bar-chart"></div>
               </section>
-              <section class="panel">
-                <h2>Asking price vs. mileage</h2>
-                <p>Active listings with both values available</p>
-                <div id="price-mileage-chart" class="scatter-chart"></div>
-              </section>
+
               <section class="panel">
                 <h2>Model-year comparison</h2>
                 <p>Median active asking price by model year</p>
@@ -648,6 +637,8 @@
     <script src="filter-normalization.js" defer></script>
     <script src="comparison.js" defer></script>
     <script src="changes.js" defer></script>
+    <script src="market-explorer.js" defer></script>
+    <script src="market-chart.js" defer></script>
     <script src="app.js" defer></script>
   </body>
 </html>

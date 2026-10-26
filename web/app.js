@@ -375,7 +375,7 @@ function statusTiming(row) {
   if (saleState(row) === "live-auction") return `Ends ${formatMoment(row.auction_ends_at)} · bid observed ${formatMoment(row.bid_observed_at)}`;
   if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} · high bid observed ${formatMoment(row.bid_observed_at)}`;
   if (saleState(row) === "auction-ended") return `Auction ended ${formatMoment(row.auction_ends_at)}`;
-  if (saleState(row) === "sold") return `Sale recorded ${formatMoment(row.last_seen)}`;
+  if (saleState(row) === "sold") return `Sold ${formatDay(row.auction_result_at || row.last_seen)}`;
   return `Last seen for sale ${formatMoment(row.last_seen)}`;
 }
 function dealBadge(row) {
@@ -911,14 +911,9 @@ function render(visibleCount = 24) {
 }
 
 function renderMarket() {
-  const months = Number(ui.marketPeriod.value || 24);
-  const cutoff = new Date(generatedAt);
-  cutoff.setUTCMonth(cutoff.getUTCMonth() - months);
-  const year = ui.marketYear.value;
-  const model = ui.marketModel.value;
-  const sales = marketSales.filter(sale => (!model || CruiserFilters.model(sale.model || "LX470") === model) && (!year || String(sale.year) === year)
-    && new Date(`${sale.sold_at}T23:59:59Z`) >= cutoff
-    && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
+  const filteredResults = CruiserMarket.filter(marketRows, marketOptions(), generatedAt);
+  renderMarketChart(filteredResults);
+  const sales = filteredResults.filter(sale => sale.outcome !== "unsold" && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
   const bands = [
     { label: "Under 100k", detail: "0–99,999 miles", includes: miles => miles < 100000 },
     { label: "100k–150k", detail: "100,000–149,999 miles", includes: miles => miles >= 100000 && miles < 150000 },
@@ -986,6 +981,11 @@ async function load() {
     inventory = Array.isArray(data.listings) ? data.listings : [];
     vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
+    marketRows = CruiserMarket.unique([...marketSales, ...(data.market_history?.results || [])]).map(row => {
+      const color = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
+      return {...row, model:CruiserFilters.model(row.model || "LX470"), outcome:row.outcome || "sold",
+        color_key:color.name || "unknown", color_name:color.name || "Color unavailable"};
+    });
     sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
     let previousVisit = null;
@@ -1018,9 +1018,7 @@ async function load() {
       CruiserFilters.model, CruiserFilters.modelLabel)
       .map(([key, label]) => new Option(label, key)));
     if ([...ui.marketModel.options].some(option => option.value === selectedMarketModel)) ui.marketModel.value = selectedMarketModel;
-    ui.marketYear.replaceChildren(new Option("All tracked years", ""), ...[...new Set(
-      [...inventory.map(row => row.year), ...marketSales.map(sale => sale.year)].filter(Boolean).map(String))]
-      .sort().map(year => new Option(year, year)));
+    renderMarketFacets();
     sourceHealth.forEach(source => {
       const row = text("div", "health-row", "");
       row.append(text("strong", "", source.source || "Source"),
@@ -1079,7 +1077,7 @@ toolbarSort.addEventListener("change", () => {
 });
 ui.marketPeriod.addEventListener("input", renderMarket);
 ui.marketYear.addEventListener("input", renderMarket);
-ui.marketModel.addEventListener("input", renderMarket);
+ui.marketModel.addEventListener("input", () => { renderMarketFacets(); renderMarket(); });
 ui.form.addEventListener("reset", event => {
   if (document.querySelector("#filter-drawer").open) {
     event.preventDefault();
@@ -1372,19 +1370,6 @@ function renderMarketOverview() {
   const distribution = bins.map(([min,max]) => active.filter(row => row.asking_price >= min && row.asking_price < max).length);
   document.querySelector("#price-distribution").replaceChildren(...distribution.map((count,index) =>
     chartRow(index === 0 ? "<$20k" : index === 5 ? "$75k+" : `$${bins[index][0]/1000}–${bins[index][1]/1000}k`, count, Math.max(...distribution), String(count))));
-  const scatter = document.querySelector("#price-mileage-chart");
-  scatter.replaceChildren();
-  const withMiles = active.filter(row => Number.isFinite(row.mileage));
-  const maxPrice = Math.max(...withMiles.map(row => row.asking_price), 1);
-  const maxMiles = Math.max(...withMiles.map(row => row.mileage), 1);
-  withMiles.forEach(row => {
-    const dot = text("span", "scatter-point", "");
-    dot.style.left = `${row.mileage / maxMiles * 100}%`;
-    dot.style.bottom = `${row.asking_price / maxPrice * 100}%`;
-    dot.title = `${row.year} ${vehicleName(row)} · ${integer.format(row.mileage)} mi · ${money.format(row.asking_price)}`;
-    scatter.append(dot);
-  });
-  scatter.append(text("span", "chart-axis x", `0–${integer.format(maxMiles)} mi`), text("span", "chart-axis y", `0–${money.format(maxPrice)}`));
   const years = [...new Set(active.map(row => row.year))].sort();
   const values = years.map(year => median(active.filter(row => row.year === year).map(row => row.asking_price)));
   document.querySelector("#year-comparison").replaceChildren(...years.map((year,index) =>
