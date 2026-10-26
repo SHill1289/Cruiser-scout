@@ -1,53 +1,106 @@
 source,source_listing_id,listing_url,year,make,model,sold_at,sale_price,mileage,mileage_is_approximate
 Bring a Trailer,2006-lexus-lx470-88,https://bringatrailer.com/listing/2006-lexus-lx470-88/,2006,Lexus,LX470,2026-10-19,35325,72000,True
+Bring a Trailer,2006-lexus-gx470-43,https://bringatrailer.com/listing/2006-lexus-gx470-43/,2006,Lexus,LX470,2026-10-13,27750,140000,True
+Bring a Trailer,2006-lexus-lx470-85,https://bringatrailer.com/listing/2006-lexus-lx470-85/,2006,Lexus,LX470,2026-10-07,24500,201000,True
 Bring a Trailer,2006-lexus-lx470-84,https://bringatrailer.com/listing/2006-lexus-lx470-84/,2006,Lexus,LX470,2026-10-06,30000,129000,True
+Bring a Trailer,2014-lexus-lx570-4,https://bringatrailer.com/listing/2014-lexus-lx570-4/,2014,Lexus,LX570,2026-10-01,48000,42000,True
+Bring a Trailer,2007-lexus-lx470-58,https://bringatrailer.com/listing/2007-lexus-lx470-58/,2007,Lexus,LX470,2026-09-29,63500,86000,True
+Bring a Trailer,2006-toyota-land-cruiser-112,https://bringatrailer.com/listing/2006-toyota-land-cruiser-112/,2006,Toyota,Land Cruiser,2026-09-29,12750,178000,True
+Bring a Trailer,2015-lexus-lx570-6,https://bringatrailer.com/listing/2015-lexus-lx570-6/,2015,Lexus,LX570,2026-09-17,62000,21000,True
 Bring a Trailer,2006-lexus-lx470-81,https://bringatrailer.com/listing/2006-lexus-lx470-81/,2006,Lexus,LX470,2026-09-16,13500,209000,True
 Bring a Trailer,2007-lexus-lx470-57,https://bringatrailer.com/listing/2007-lexus-lx470-57/,2007,Lexus,LX470,2026-09-08,17750,190000,True
+Bring a Trailer,2006-toyota-land-cruiser-111,https://bringatrailer.com/listing/2006-toyota-land-cruiser-111/,2006,Toyota,Land Cruiser,2026-09-07,33250,182000,True
 Bring a Trailer,2007-lexus-lx470-55,https://bringatrailer.com/listing/2007-lexus-lx470-55/,2007,Lexus,LX470,2026-09-03,14000,198000,True
 Bring a Trailer,2007-lexus-lx470-56,https://bringatrailer.com/listing/2007-lexus-lx470-56/,2007,Lexus,LX470,2026-08-24,18888,198000,True
 Bring a Trailer,2006-lexus-lx470-82,https://bringatrailer.com/listing/2006-lexus-lx470-82/,2006,Lexus,LX470,2026-08-19,28250,155000,True
+Bring a Trailer,2016-lexus-lx570-9,https://bringatrailer.com/listing/2016-lexus-lx570-9/,2016,Lexus,LX570,2026-08-18,76751,7000,True
+Bring a Trailer,2016-lexus-lx570-10,https://bringatrailer.com/listing/2016-lexus-lx570-10/,2016,Lexus,LX570,2026-08-11,72500,13000,True
 Bring a Trailer,2007-lexus-lx470-54,https://bringatrailer.com/listing/2007-lexus-lx470-54/,2007,Lexus,LX470,2026-08-08,44000,115000,True
 Bring a Trailer,2006-lexus-lx470-79,https://bringatrailer.com/listing/2006-lexus-lx470-79/,2006,Lexus,LX470,2026-08-06,20500,163000,True
+Bring a Trailer,2015-lexus-lx570-5,https://bringatrailer.com/listing/2015-lexus-lx570-5/,2015,Lexus,LX570,2026-08-04,34000,97000,True
+Bring a Trailer,2007-toyota-land-cruiser-51,https://bringatrailer.com/listing/2007-toyota-land-cruiser-51/,2007,Toyota,Land Cruiser,2026-07-19,15000,61000,True
 Bring a Trailer,2007-lexus-lx470-53,https://bringatrailer.com/listing/2007-lexus-lx470-53/,2007,Lexus,LX470,2026-06-29,28500,190000,True
 Bring a Trailer,2006-lexus-lx470-78,https://bringatrailer.com/listing/2006-lexus-lx470-78/,2006,Lexus,LX470,2026-06-26,46000,133000,True
+Bring a Trailer,2007-toyota-land-cruiser-49,https://bringatrailer.com/listing/2007-toyota-land-cruiser-49/,2007,Toyota,Land Cruiser,2026-06-19,21750,240000,True
+Bring a Trailer,2006-toyota-land-cruiser-103,https://bringatrailer.com/listing/2006-toyota-land-cruiser-103/,2006,Toyota,Land Cruiser,2026-06-13,19000,107000,True
+Bring a Trailer,2006-toyota-land-cruiser-108,https://bringatrailer.com/listing/2006-toyota-land-cruiser-108/,2006,Toyota,Land Cruiser,2026-06-09,61000,61000,True
+Bring a Trailer,2013-lexus-lx570-10,https://bringatrailer.com/listing/2013-lexus-lx570-10/,2013,Lexus,LX570,2026-06-05,36999,100000,True
+Bring a Trailer,2006-toyota-land-cruiser-107,https://bringatrailer.com/listing/2006-toyota-land-cruiser-107/,2006,Toyota,Land Cruiser,2026-06-02,70000,75000,True
+Bring a Trailer,2006-toyota-land-cruiser-104,https://bringatrailer.com/listing/2006-toyota-land-cruiser-104/,2006,Toyota,Land Cruiser,2026-05-22,44000,255000,True
 Bring a Trailer,2006-lexus-lx470-74,https://bringatrailer.com/listing/2006-lexus-lx470-74/,2006,Lexus,LX470,2026-05-18,44500,98000,True
+Bring a Trailer,2014-lexus-lx570-3,https://bringatrailer.com/listing/2014-lexus-lx570-3/,2014,Lexus,LX570,2026-05-15,32250,152000,True
 Bring a Trailer,2006-lexus-lx470-77,https://bringatrailer.com/listing/2006-lexus-lx470-77/,2006,Lexus,LX470,2026-05-13,30500,117000,True
 Bring a Trailer,2006-lexus-lx470-76,https://bringatrailer.com/listing/2006-lexus-lx470-76/,2006,Lexus,LX470,2026-04-19,30250,184000,True
+Bring a Trailer,2007-toyota-land-cruiser-48,https://bringatrailer.com/listing/2007-toyota-land-cruiser-48/,2007,Toyota,Land Cruiser,2026-04-14,10500,252000,True
+Bring a Trailer,2006-toyota-land-cruiser-102,https://bringatrailer.com/listing/2006-toyota-land-cruiser-102/,2006,Toyota,Land Cruiser,2026-04-08,22750,127000,True
+Bring a Trailer,2016-lexus-lx570-7,https://bringatrailer.com/listing/2016-lexus-lx570-7/,2016,Lexus,LX570,2026-04-04,66000,50000,True
+Bring a Trailer,2013-lexus-lx570-9,https://bringatrailer.com/listing/2013-lexus-lx570-9/,2013,Lexus,LX570,2026-03-31,36750,134000,True
+Bring a Trailer,2006-toyota-land-cruiser-100-2,https://bringatrailer.com/listing/2006-toyota-land-cruiser-100-2/,2006,Toyota,Land Cruiser,2026-03-24,11500,178000,True
 Bring a Trailer,2007-lexus-lx470-51,https://bringatrailer.com/listing/2007-lexus-lx470-51/,2007,Lexus,LX470,2026-03-21,38750,91000,True
+Bring a Trailer,2007-toyota-land-cruiser-46,https://bringatrailer.com/listing/2007-toyota-land-cruiser-46/,2007,Toyota,Land Cruiser,2026-03-18,74000,44000,True
+Bring a Trailer,2006-toyota-land-cruiser-100,https://bringatrailer.com/listing/2006-toyota-land-cruiser-100/,2006,Toyota,Land Cruiser,2026-03-04,15500,178000,True
+Bring a Trailer,2013-lexus-lx570-8,https://bringatrailer.com/listing/2013-lexus-lx570-8/,2013,Lexus,LX570,2026-02-26,45250,57000,True
 Bring a Trailer,2006-lexus-lx470-73,https://bringatrailer.com/listing/2006-lexus-lx470-73/,2006,Lexus,LX470,2026-02-19,15238,223000,True
 Bring a Trailer,2006-lexus-lx470-72,https://bringatrailer.com/listing/2006-lexus-lx470-72/,2006,Lexus,LX470,2026-02-15,22750,163000,True
+Bring a Trailer,2007-toyota-land-cruiser-47,https://bringatrailer.com/listing/2007-toyota-land-cruiser-47/,2007,Toyota,Land Cruiser,2026-01-31,18000,162000,True
 Bring a Trailer,2007-lexus-lx470-50,https://bringatrailer.com/listing/2007-lexus-lx470-50/,2007,Lexus,LX470,2026-01-27,40500,151000,True
 Bring a Trailer,2007-lexus-lx470-49,https://bringatrailer.com/listing/2007-lexus-lx470-49/,2007,Lexus,LX470,2026-01-07,16500,226000,True
+Bring a Trailer,2006-toyota-land-cruiser-97,https://bringatrailer.com/listing/2006-toyota-land-cruiser-97/,2006,Toyota,Land Cruiser,2025-12-27,17500,210000,True
 Bring a Trailer,2007-lexus-lx470-44,https://bringatrailer.com/listing/2007-lexus-lx470-44/,2007,Lexus,LX470,2025-12-26,16000,178000,True
+Bring a Trailer,2006-toyota-land-cruiser-99,https://bringatrailer.com/listing/2006-toyota-land-cruiser-99/,2006,Toyota,Land Cruiser,2025-12-26,10950,389000,True
 Bring a Trailer,2006-lexus-lx470-70,https://bringatrailer.com/listing/2006-lexus-lx470-70/,2006,Lexus,LX470,2025-12-12,53000,51000,True
 Bring a Trailer,2007-lexus-lx470-45,https://bringatrailer.com/listing/2007-lexus-lx470-45/,2007,Lexus,LX470,2025-12-08,28000,152000,True
+Bring a Trailer,2011-lexus-lx570-4-2,https://bringatrailer.com/listing/2011-lexus-lx570-4-2/,2011,Lexus,LX570,2025-12-02,35750,102000,True
 Bring a Trailer,2007-lexus-lx470-48,https://bringatrailer.com/listing/2007-lexus-lx470-48/,2007,Lexus,LX470,2025-11-28,26250,153000,True
 Bring a Trailer,2007-lexus-lx470-47,https://bringatrailer.com/listing/2007-lexus-lx470-47/,2007,Lexus,LX470,2025-11-16,55500,129000,True
 Bring a Trailer,2006-lexus-lx470-68,https://bringatrailer.com/listing/2006-lexus-lx470-68/,2006,Lexus,LX470,2025-11-11,60500,68000,True
+Bring a Trailer,2011-lexus-lx570-4,https://bringatrailer.com/listing/2011-lexus-lx570-4/,2011,Lexus,LX570,2025-10-27,37750,102000,True
 Bring a Trailer,2006-lexus-lx470-65,https://bringatrailer.com/listing/2006-lexus-lx470-65/,2006,Lexus,LX470,2025-10-17,12850,233000,True
 Bring a Trailer,2006-lexus-lx470-67,https://bringatrailer.com/listing/2006-lexus-lx470-67/,2006,Lexus,LX470,2025-10-16,120000,18000,True
 Bring a Trailer,2006-lexus-lx470-66,https://bringatrailer.com/listing/2006-lexus-lx470-66/,2006,Lexus,LX470,2025-10-09,32000,111000,True
+Bring a Trailer,2007-toyota-land-cruiser-44,https://bringatrailer.com/listing/2007-toyota-land-cruiser-44/,2007,Toyota,Land Cruiser,2025-10-06,71000,45000,True
 Bring a Trailer,2007-lexus-lx470-46,https://bringatrailer.com/listing/2007-lexus-lx470-46/,2007,Lexus,LX470,2025-10-05,34500,99000,True
+Bring a Trailer,2006-toyota-land-cruiser-95,https://bringatrailer.com/listing/2006-toyota-land-cruiser-95/,2006,Toyota,Land Cruiser,2025-09-18,18000,210000,True
 Bring a Trailer,2006-lexus-lx470-64,https://bringatrailer.com/listing/2006-lexus-lx470-64/,2006,Lexus,LX470,2025-09-11,18200,204000,True
+Bring a Trailer,2015-lexus-lx570-2,https://bringatrailer.com/listing/2015-lexus-lx570-2/,2015,Lexus,LX570,2025-08-19,41750,69000,True
+Bring a Trailer,2007-toyota-land-cruiser-41,https://bringatrailer.com/listing/2007-toyota-land-cruiser-41/,2007,Toyota,Land Cruiser,2025-08-10,25000,89000,True
+Bring a Trailer,2007-toyota-land-cruiser-42,https://bringatrailer.com/listing/2007-toyota-land-cruiser-42/,2007,Toyota,Land Cruiser,2025-08-09,34000,161000,True
+Bring a Trailer,2006-toyota-land-cruiser-92,https://bringatrailer.com/listing/2006-toyota-land-cruiser-92/,2006,Toyota,Land Cruiser,2025-08-04,57000,38000,True
 Bring a Trailer,2007-lexus-lx470-43,https://bringatrailer.com/listing/2007-lexus-lx470-43/,2007,Lexus,LX470,2025-07-27,11500,218000,True
 Bring a Trailer,2006-lexus-lx470-62,https://bringatrailer.com/listing/2006-lexus-lx470-62/,2006,Lexus,LX470,2025-07-15,24000,133000,True
 Bring a Trailer,2006-lexus-lx470-61,https://bringatrailer.com/listing/2006-lexus-lx470-61/,2006,Lexus,LX470,2025-07-03,44750,87000,True
 Bring a Trailer,2007-lexus-lx470-42,https://bringatrailer.com/listing/2007-lexus-lx470-42/,2007,Lexus,LX470,2025-06-30,21500,184000,True
 Bring a Trailer,2007-lexus-lx470-39,https://bringatrailer.com/listing/2007-lexus-lx470-39/,2007,Lexus,LX470,2025-06-24,29500,115000,True
 Bring a Trailer,2007-lexus-lx470-41-2,https://bringatrailer.com/listing/2007-lexus-lx470-41-2/,2007,Lexus,LX470,2025-06-17,23250,111000,True
+Bring a Trailer,2006-toyota-land-cruiser-88,https://bringatrailer.com/listing/2006-toyota-land-cruiser-88/,2006,Toyota,Land Cruiser,2025-06-17,37250,109000,True
+Bring a Trailer,2006-toyota-land-cruiser-87,https://bringatrailer.com/listing/2006-toyota-land-cruiser-87/,2006,Toyota,Land Cruiser,2025-06-15,20500,158000,True
+Bring a Trailer,2006-toyota-land-cruiser-86,https://bringatrailer.com/listing/2006-toyota-land-cruiser-86/,2006,Toyota,Land Cruiser,2025-05-27,26250,181000,True
+Bring a Trailer,2006-toyota-land-cruiser-83,https://bringatrailer.com/listing/2006-toyota-land-cruiser-83/,2006,Toyota,Land Cruiser,2025-05-20,26095,178000,True
+Bring a Trailer,2006-toyota-land-cruiser-63,https://bringatrailer.com/listing/2006-toyota-land-cruiser-63/,2006,Toyota,Land Cruiser,2025-05-17,31500,113000,True
+Bring a Trailer,2007-toyota-land-cruiser-39,https://bringatrailer.com/listing/2007-toyota-land-cruiser-39/,2007,Toyota,Land Cruiser,2025-05-16,39300,156000,True
 Bring a Trailer,2007-lexus-lx470-41,https://bringatrailer.com/listing/2007-lexus-lx470-41/,2007,Lexus,LX470,2025-05-13,18750,111000,True
+Bring a Trailer,2006-toyota-land-cruiser-85,https://bringatrailer.com/listing/2006-toyota-land-cruiser-85/,2006,Toyota,Land Cruiser,2025-05-13,15500,294000,True
 Bring a Trailer,2007-lexus-lx470-40,https://bringatrailer.com/listing/2007-lexus-lx470-40/,2007,Lexus,LX470,2025-05-07,14750,202000,True
 Bring a Trailer,2006-lexus-lx470-47,https://bringatrailer.com/listing/2006-lexus-lx470-47/,2006,Lexus,LX470,2025-04-24,35000,91000,True
 Bring a Trailer,2007-lexus-lx470-37,https://bringatrailer.com/listing/2007-lexus-lx470-37/,2007,Lexus,LX470,2025-04-07,22000,177000,True
 Bring a Trailer,2006-lexus-lx470-59,https://bringatrailer.com/listing/2006-lexus-lx470-59/,2006,Lexus,LX470,2025-03-25,15000,180000,True
 Bring a Trailer,2006-lexus-lx470-58,https://bringatrailer.com/listing/2006-lexus-lx470-58/,2006,Lexus,LX470,2025-03-16,20250,259000,True
+Bring a Trailer,2006-toyota-land-cruiser-84,https://bringatrailer.com/listing/2006-toyota-land-cruiser-84/,2006,Toyota,Land Cruiser,2025-03-09,18500,219000,True
 Bring a Trailer,2006-lexus-lx470-55,https://bringatrailer.com/listing/2006-lexus-lx470-55/,2006,Lexus,LX470,2025-03-06,19103,180000,True
+Bring a Trailer,2013-lexus-lx570-6,https://bringatrailer.com/listing/2013-lexus-lx570-6/,2013,Lexus,LX570,2025-02-21,18400,203000,True
 Bring a Trailer,2006-lexus-lx470-54,https://bringatrailer.com/listing/2006-lexus-lx470-54/,2006,Lexus,LX470,2025-02-11,15250,207000,True
 Bring a Trailer,2007-lexus-lx470-34,https://bringatrailer.com/listing/2007-lexus-lx470-34/,2007,Lexus,LX470,2025-01-30,16751,248000,True
 Bring a Trailer,2006-lexus-lx470-51,https://bringatrailer.com/listing/2006-lexus-lx470-51/,2006,Lexus,LX470,2025-01-29,23250,185000,True
+Bring a Trailer,2007-toyota-land-cruiser-38,https://bringatrailer.com/listing/2007-toyota-land-cruiser-38/,2007,Toyota,Land Cruiser,2025-01-23,19250,132000,True
+Bring a Trailer,2006-toyota-land-cruiser-82,https://bringatrailer.com/listing/2006-toyota-land-cruiser-82/,2006,Toyota,Land Cruiser,2025-01-18,8900,303000,True
+Bring a Trailer,2007-toyota-land-cruiser-37,https://bringatrailer.com/listing/2007-toyota-land-cruiser-37/,2007,Toyota,Land Cruiser,2025-01-10,24000,93000,True
 Bring a Trailer,2007-lexus-lx470-31,https://bringatrailer.com/listing/2007-lexus-lx470-31/,2007,Lexus,LX470,2024-12-30,35250,76000,True
+Bring a Trailer,2007-toyota-land-cruiser-33,https://bringatrailer.com/listing/2007-toyota-land-cruiser-33/,2007,Toyota,Land Cruiser,2024-12-22,62500,24000,True
 Bring a Trailer,2007-lexus-lx470-32,https://bringatrailer.com/listing/2007-lexus-lx470-32/,2007,Lexus,LX470,2024-12-21,23750,158000,True
 Bring a Trailer,2007-lexus-lx470-27,https://bringatrailer.com/listing/2007-lexus-lx470-27/,2007,Lexus,LX470,2024-12-17,25999,137000,True
+Bring a Trailer,2011-lexus-lx570-2,https://bringatrailer.com/listing/2011-lexus-lx570-2/,2011,Lexus,LX570,2024-12-07,65570,5000,True
+Bring a Trailer,2007-toyota-land-cruiser-35,https://bringatrailer.com/listing/2007-toyota-land-cruiser-35/,2007,Toyota,Land Cruiser,2024-11-19,37000,90000,True
 Bring a Trailer,2006-lexus-lx470-41,https://bringatrailer.com/listing/2006-lexus-lx470-41/,2006,Lexus,LX470,2024-11-09,27500,169000,True
+Bring a Trailer,2007-toyota-land-cruiser-34,https://bringatrailer.com/listing/2007-toyota-land-cruiser-34/,2007,Toyota,Land Cruiser,2024-10-26,30000,103000,True
 Bring a Trailer,2006-lexus-lx470-48,https://bringatrailer.com/listing/2006-lexus-lx470-48/,2006,Lexus,LX470,2024-10-21,17500,105000,True
 Bring a Trailer,2007-lexus-lx470-26,https://bringatrailer.com/listing/2007-lexus-lx470-26/,2007,Lexus,LX470,2024-09-23,24750,204000,True
