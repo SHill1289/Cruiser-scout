@@ -1636,3 +1636,15 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
 .change-event .model-tag { justify-self:start; }
 .change-vehicle { text-align:left; background:transparent; border:0; padding:8px 0; min-height:44px; font:inherit; font-weight:700; color:var(--green); cursor:pointer; text-decoration:underline; }
 @media(max-width:700px) { .changes-controls { align-items:stretch; } .changes-controls label { flex:1 1 140px; } .changes-controls button { width:100%; } }
+
+.mobile-brand { display: none; }
+@media (max-width: 700px) {
+  .topbar { height: 64px; gap: 12px; }
+  .mobile-brand { display: flex; align-items: center; gap: 10px; min-height: 44px; color: #173c32; text-decoration: none; }
+  .mobile-brand .brand-symbol { flex: 0 0 36px; background: #172b25; }
+  .mobile-brand-name strong { display: block; font-size: 16px; font-weight: 800; letter-spacing: -0.035em; }
+  .mobile-brand-name small { display: block; margin-top: 2px; color: #52665c; font-size: 8px; letter-spacing: 0.15em; }
+  .topbar .topbar-breadcrumb { display: none; }
+  .topbar .mobile-menu { order: 2; width: 44px; height: 44px; flex: 0 0 44px; padding: 0; }
+  .mobile-brand:focus-visible { outline: 2px solid #987138; outline-offset: 3px; border-radius: 6px; }
+}
