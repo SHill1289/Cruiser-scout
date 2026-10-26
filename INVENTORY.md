@@ -1,8 +1,8 @@
 # LX470, LX570 and Land Cruiser inventory
 
-Last run: 2026-10-26T19:25:35+00:00
+Last run: 2026-10-26T22:43:10+00:00
 
-**251 distinct vehicles Â· 439 active listings Â· 128 changes this run**
+**251 distinct vehicles Â· 439 active listings Â· 0 changes this run**
 
 Only clean-title candidates appear below. CarGurus candidates have no reported salvage, lemon, frame-damage or theft history; this is not an official title guarantee. Verify NMVTIS/CARFAX and the physical title before purchase. Active means seen advertised at last_seen, not seller-confirmed availability.
 
@@ -13,11 +13,11 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | cargurus-2006 | error | No valid listings parsed from nonempty results |
 | cargurus-2007 | error | No valid listings parsed from nonempty results |
 | truecar | ok | 4 clean-title listings parsed of 4; nationwide. 4 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck. |
-| bringatrailer | ok | 59 supported auctions in the public two-year archive; 59 listing pages updated; 0 pages awaiting backfill.  |
+| bringatrailer | ok | 59 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill.  |
 | cargurus-land-cruiser-2006 | error | No valid listings parsed from nonempty results |
 | cargurus-land-cruiser-2007 | error | No valid listings parsed from nonempty results |
 | truecar-land-cruiser | ok | 2 clean-title listings parsed of 2; nationwide. 2 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck. |
-| bringatrailer-land-cruiser | ok | 40 supported auctions in the public two-year archive; 41 listing pages updated; 0 pages awaiting backfill.  |
+| bringatrailer-land-cruiser | ok | 40 supported auctions in the public two-year archive; 1 listing pages updated; 0 pages awaiting backfill.  |
 | cargurus-lx570-2011 | error | No valid listings parsed from nonempty results |
 | cargurus-lx570-2012 | not_applicable | The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled. |
 | cargurus-lx570-2013 | error | No valid listings parsed from nonempty results |
@@ -25,7 +25,7 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | cargurus-lx570-2015 | error | No valid listings parsed from nonempty results |
 | cargurus-lx570-2016 | error | No valid listings parsed from nonempty results |
 | truecar-lx570 | manual_only | GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically. |
-| bringatrailer-lx570 | ok | 22 supported auctions in the public two-year archive; 22 listing pages updated; 0 pages awaiting backfill.  |
+| bringatrailer-lx570 | ok | 22 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill.  |
 | ksl-lexus-lx | manual_only | Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable. |
 | ksl-toyota-land-cruiser | manual_only | No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation. |
 | bypex | manual_only | One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured. |
@@ -74,7 +74,7 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | 2007 | Toyota | Land Cruiser | 18200 | 182289 | Silver | Gray | Unknown | History unavailable | unknown | Jeffersonville, IN | Driving Xcellence | JTEHT05J072110570 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/toyota-land+cruiser#vin=JTEHT05J072110570) |
 | 2007 | Toyota | Land Cruiser | 18200 | 182289 | Silver Metallic | Gray Leather | Unverified | No reported accidents | clean-title candidate | Jeffersonville, IN | Driving Xcellence | JTEHT05J072110570 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/399761178) |
 | 2006 | Lexus | LX470 | 18398.99 | 200838 | Classic Silver Metallic | White (Ivory) | Unverified | No reported accidents | clean-title candidate | Pompano Beach, FL | Performance Nissan | JTJHT00W264007335 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/460099310) |
-| 2006 | Lexus | LX470 | 18398.99 | 200838 | Classic Silver Metallic | Ivory | 3 | No reported accidents | clean title | Pompano Beach, FL | Performance Nissan | JTJHT00W264007335 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W264007335/) |
+| 2006 | Lexus | LX470 | 18398.99 | 200838 | Classic Silver Metallic | Ivory | 3 | No reported accidents | clean title | Pompano Beach, FL | Performance Nissan | JTJHT00W264007335 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W264007335/) |
 | 2014 | Lexus | LX570 | 18440 | 194894 | Nebula Gray Pearl | Black | 2 | 1 reported accidents | unknown | Rochester, MN | Rochester Chevrolet | JTJHY7AX1E4139650 | 2026-10-26T04:53:30+00:00 | [Open](https://www.rochestermotorcarschevrolet.com/used-Rochester-2014-Lexus-LX-570+4WD-JTJHY7AX1E4139650) |
 | 2011 | Lexus | LX570 | 18493 | 204008 | Starfire Pearl | Cashmere | 3 | No reported accidents | unknown | Fort Myers, FL | AutoNation USA Fort Myers | JTJHY7AX3B4081813 | 2026-10-26T04:53:30+00:00 | [Open](https://www.lexusofpalmbeach.com/inventory/used-2011-lexus-lx-570-four-wheel-drive-sport-utility-jtjhy7ax3b4081813/) |
 | 2011 | Lexus | LX570 | 18493 | 204008 | Starfire Pearl | Cashmere | Unverified | No reported accidents | clean-title candidate | Fort Myers, FL | AutoNation USA Fort Myers | JTJHY7AX3B4081813 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/459507676) |
@@ -104,7 +104,7 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | 2011 | Lexus | LX570 | 19995 | 167673 | Black | Tan | 4 | 1 reported accidents | unknown | Freeport, NY | Ofier Auto Sales | JTJHY7AX0B4062314 | 2026-10-26T04:53:30+00:00 | [Open](https://www.carfax.com/vehicle/JTJHY7AX0B4062314) |
 | 2011 | Lexus | LX570 | 19995 | 170369 | Black Onyx | Cashmere | 2 | No reported accidents | unknown | Des Moines, IA | Tom&#x27;s Auto Sales | JTJHY7AX4B4067547 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX4B4067547) |
 | 2011 | Lexus | LX570 | 19995 | 210882 | Black | Brown (Beige) | Unverified | History unavailable | clean-title candidate | Sacramento, CA | Showcase Auto Group | JTJHY7AX6B4065086 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/462552043) |
-| 2006 | Lexus | LX470 | 20079 | 203028 | Crystal White | Ivory | 1 | No reported accidents | clean title | Simi Valley, CA | Simi Valley Toyota | JTJHT00W464018725 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W464018725/) |
+| 2006 | Lexus | LX470 | 20079 | 203028 | Crystal White | Ivory | 1 | No reported accidents | clean title | Simi Valley, CA | Simi Valley Toyota | JTJHT00W464018725 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W464018725/) |
 | 2011 | Lexus | LX570 | 20098 | 189280 | Mercury Metallic | Cashmere | 6 | 1 reported accidents | unknown | Sanford, NC | JT Auto Group | JTJHY7AX4B4081917 | 2026-10-26T04:53:30+00:00 | [Open](https://jtautogroup.com/used/LEXUS/2011-LEXUS-LX-570-50aa542fac18269702d9db8b032192b4.htm) |
 | 2011 | Lexus | LX570 | 20127 | 188872 | Silver | Tan | 3 | 1 reported accidents | unknown | Zimmerman, MN | The Car Broz | JTJHY7AX1B4082734 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX1B4082734) |
 | 2011 | Lexus | LX570 | 20144 | 155234 |  |  | Unknown | History unavailable | unknown | Gainesville, FL | Deal Maker of Gainesville | JTJHY7AX8B4082679 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX8B4082679) |
@@ -124,7 +124,7 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | 2013 | Lexus | LX570 | 21200 | 197110 | Black Onyx | Black | 3 | 2 reported accidents | unknown | Burton, MI | Vita Motors | JTJHY7AX6D4090797 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX6D4090797) |
 | 2013 | Lexus | LX570 | 21200 | 197110 | Black |  | Unverified | History unavailable | clean-title candidate | Burton, MI | Vita Motors | JTJHY7AX6D4090797 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/458999123) |
 | 2007 | Lexus | LX470 | 21245 | 198412 | White | Brown (Beige) | Unverified | History unavailable | clean-title candidate | Raleigh, NC | Master Auto Group | JTJHT00W074027827 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/459000535) |
-| 2007 | Lexus | LX470 | 21245 | 198412 | Crystal White | Beige | 3 | 1 reported accident | clean title | Raleigh, NC | Master Auto Group | JTJHT00W074027827 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W074027827/) |
+| 2007 | Lexus | LX470 | 21245 | 198412 | Crystal White | Beige | 3 | 1 reported accident | clean title | Raleigh, NC | Master Auto Group | JTJHT00W074027827 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W074027827/) |
 | 2011 | Lexus | LX570 | 21294 | 219737 | Starfire Pearl | Cashmere | Unverified | No reported accidents | clean-title candidate | Birmingham, AL | Narrow Path Automotive | JTJHY7AX4B4062493 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/461557926) |
 | 2006 | Lexus | LX470 | 21394 | 171600 | Silver | Gray | Unverified | No reported accidents | clean-title candidate | Staunton, VA | Skyline Auto Group of Staunton | JTJHT00W564016238 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/450232382) |
 | 2007 | Lexus | LX470 | 21800 | 267101 | Black | Brown (TAN) | Unverified | History unavailable | clean-title candidate | Benton, AR | Bottom Dollar Motors | JTJHT00W274020877 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/462118887) |
@@ -148,7 +148,7 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | 2006 | Toyota | Land Cruiser | 23000 | 141054 | Natural White | Ivory | 2 | 1 reported accidents | unknown | Annapolis, MD | Bayside Chrysler Dodge Jeep Ram of Annapolis | JTEHT05J162101682 | 2026-10-26T04:53:30+00:00 | [Open](https://baysidecdjrva.com/used/Toyota/2006-Toyota-Land-Cruiser-for-sale-King-George-VA-646e549aac181183f6af7e157000417b.htm) |
 | 2014 | Lexus | LX570 | 23000 | 181972 | White | Tan | 2 | 1 reported accidents | unknown | Jacksonville, FL | Brueder Auto Sales | JTJHY7AX8E4134588 | 2026-10-26T04:53:30+00:00 | [Open](https://www.carfax.com/vehicle/JTJHY7AX8E4134588) |
 | 2014 | Lexus | LX570 | 23000 | 181972 |  |  | Unverified | History unavailable | clean-title candidate | Jacksonville, FL | Brueder Auto Sales LLC | JTJHY7AX8E4134588 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/455142399) |
-| 2006 | Toyota | Land Cruiser | 23000 | 141054 | Natural White | Ivory | 2 | No reported accidents | clean title | Annapolis, MD | Bayside Chrysler Dodge Jeep Ram of Annapolis | JTEHT05J162101682 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J162101682/) |
+| 2006 | Toyota | Land Cruiser | 23000 | 141054 | Natural White | Ivory | 2 | No reported accidents | clean title | Annapolis, MD | Bayside Chrysler Dodge Jeep Ram of Annapolis | JTEHT05J162101682 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J162101682/) |
 | 2013 | Lexus | LX570 | 23112 | 171772 | Black Onyx | Black | 2 | 1 reported accidents | unknown | Downers Grove, IL | Napleton&#x27;s Aston Martin of Chicago | JTJHY7AX0D4106959 | 2026-10-26T04:53:30+00:00 | [Open](https://astonmartinchicago.com/used/LEXUS/2013-LEXUS-LX-570-5ecadadeac184ab54e39a4954b98c9ab.htm) |
 | 2013 | Lexus | LX570 | 23112 | 171772 | Black Onyx | Black | Unverified | History unavailable | clean-title candidate | Downers Grove, IL | Napleton&#x27;s Aston Martin of Chicago | JTJHY7AX0D4106959 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/457849943) |
 | 2013 | Lexus | LX570 | 23142 | 193062 | White | Tan | 2 | 1 reported accidents | unknown | Maryville, TN | Auto Solutions | JTJHY7AX8D4100374 | 2026-10-26T04:53:30+00:00 | [Open](https://www.carfax.com/vehicle/JTJHY7AX8D4100374) |
@@ -198,13 +198,13 @@ Only clean-title candidates appear below. CarGurus candidates have no reported s
 | 2011 | Lexus | LX570 | 25999 | 150031 | White | Brown | Unknown | History unavailable | unknown | Merced, CA | Auto Resources Merced | JTJHY7AX2B4066297 | 2026-10-26T04:53:30+00:00 | [Open](https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX2B4066297) |
 | 2011 | Lexus | LX570 | 26119 | 150031 | White | Brown (Tan) | Unverified | No reported accidents | clean-title candidate | Merced, CA | Merced AR | JTJHY7AX2B4066297 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/440000905) |
 | 2006 | Lexus | LX470 | 26249 | 219350 | White |  | Unverified | History unavailable | clean-title candidate | Marietta, GA | Persichetti Motorsports | JTJHT00W864010904 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/461194793) |
-| 2006 | Lexus | LX470 | 26249 | 219350 | Crystal White | Unknown | 4 | 3 reported accidents | clean title | Marietta, GA | Persichetti Motorsports | JTJHT00W864010904 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W864010904/) |
+| 2006 | Lexus | LX470 | 26249 | 219350 | Crystal White | Unknown | 4 | 3 reported accidents | clean title | Marietta, GA | Persichetti Motorsports | JTJHT00W864010904 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTJHT00W864010904/) |
 | 2015 | Lexus | LX570 | 26464 | 162620 | Starfire Pearl | White (Parchment) | Unverified | History unavailable | clean-title candidate | Marietta, GA | ALM Ford Marietta | JTJHY7AX3F4163983 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/455642604) |
 | 2015 | Lexus | LX570 | 26499 | 189129 | White | Black | Unverified | History unavailable | clean-title candidate | Fredericksburg, VA | Pride Auto Sales | JTJHY7AXXF4186368 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/452318770) |
 | 2014 | Lexus | LX570 | 26504 | 153794 | Onyx Black | Black | Unverified | No reported accidents | clean-title candidate | Florence, SC | Capital Toyota of Florence | JTJHY7AX2E4143027 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/452162394) |
 | 2006 | Lexus | LX470 | 26792 | 129315 | Silver | Gray | Unverified | History unavailable | clean-title candidate | Canton, MA | Direct Auto Team | JTJHT00WX64009804 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/454578510) |
 | 2013 | Lexus | LX570 | 26897 | 123271 | Black | Tan | 2 | 1 reported accidents | unknown | Bloomfield, NJ | Lynnes Nissan | JTJHY7AX2D4127683 | 2026-10-26T04:53:30+00:00 | [Open](https://www.lynnesnissan.com/viewdetails/used/jtjhy7ax2d4127683/2013-lexus-lx-570-sport-utility?type=finance) |
-| 2007 | Toyota | Land Cruiser | 26970 | 128849 | Black | Beige | 2 | No reported accidents | clean title | Costa Mesa, CA | Supreme Motors (CA) | JTEHT05J672109214 | 2026-10-26T19:25:35+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J672109214/) |
+| 2007 | Toyota | Land Cruiser | 26970 | 128849 | Black | Beige | 2 | No reported accidents | clean title | Costa Mesa, CA | Supreme Motors (CA) | JTEHT05J672109214 | 2026-10-26T22:43:10+00:00 | [Open](https://www.truecar.com/used-cars-for-sale/listing/JTEHT05J672109214/) |
 | 2014 | Lexus | LX570 | 26983 | 172811 | Starfire Pearl | Parchment Leather | 2 | No reported accidents | unknown | Plano, TX | Auto Locators of Texas | JTJHY7AX0E4145388 | 2026-10-26T04:53:30+00:00 | [Open](https://www.alttx.com/2014-lexus-lx-570-base-%7C-plano%2C-tx-%7C-auto-locators-of-texas-plano-tx-75093/7478143) |
 | 2013 | Lexus | LX570 | 26998 | 163953 | Starfire Pearl | Parchment | 3 | 4 reported accidents | unknown | Denver, CO | Unlimited Auto Sales | JTJHY7AX9D4084721 | 2026-10-26T04:53:30+00:00 | [Open](https://unlimiteddenver.com/inventory/2013-lexus-lx-570-/1080930) |
 | 2013 | Lexus | LX570 | 26998 | 163953 | White | Brown (Beige) | Unverified | History unavailable | clean-title candidate | Denver, CO | Unlimited Auto Sales | JTJHY7AX9D4084721 | 2026-10-26T13:10:49+00:00 | [Open](https://www.cargurus.com/details/444180234) |
