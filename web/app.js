@@ -38,6 +38,11 @@ const controls = ["search", "model", "status", "owners", "accidents", "price", "
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 let sourceHealth = [];
 let latestChanges = [];
+let changesVisit = null;
+const changesKey = "cruiser-scout-changes-v1";
+let changesShown = 30;
+function saveChangesVisit() { try { localStorage.setItem(changesKey, JSON.stringify(changesVisit)); } catch {} }
+
 let viewMode = localStorage.getItem("cruiser-scout-view") === "table" ? "table" : "cards";
 const watchlistKey = "cruiser-scout-watchlist-v1";
 let savedVehicles = new Set();
@@ -983,6 +988,10 @@ async function load() {
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
     sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
+    let previousVisit = null;
+    try { previousVisit = JSON.parse(localStorage.getItem(changesKey)); } catch {}
+    changesVisit = CruiserChanges.visit(previousVisit, generatedAt.toISOString());
+    saveChangesVisit();
     const incomplete = sourceHealth.filter(source => ["error", "partial"].includes(source.status));
     document.querySelector("#collection-label").textContent = incomplete.length ? "PARTIAL REFRESH" : "INVENTORY SNAPSHOT";
     ui.collectionIndicator.classList.toggle("partial", incomplete.length > 0);
@@ -1145,7 +1154,7 @@ function routeView() {
     else link.removeAttribute("aria-current");
   }
   document.querySelector("#current-view-label").textContent =
-    ({ inventory: "Inventory", market: "Market Intelligence", watchlist: "Watchlist", alerts: "Alerts", sources: "Sources & Coverage" })[active];
+    ({ inventory: "Inventory", market: "Market Intelligence", watchlist: "Watchlist", alerts: "What changed?", sources: "Sources & Coverage" })[active];
   document.querySelector("#app-sidebar").classList.remove("is-open");
   document.querySelector("#mobile-menu").setAttribute("aria-expanded", "false");
   syncNavigationLayout();
@@ -1387,40 +1396,44 @@ function renderMarketOverview() {
     return item;
   }));
 }
+function changeDate(value) { return formatDate(value).replace(/^Updated /, ""); }
 function renderAlerts() {
-  const cutoff = generatedAt.getTime() - 7 * 864e5;
-  const recent = inventory.filter(row => Date.parse(row.first_seen) >= cutoff)
-    .sort((a,b) => String(b.first_seen).localeCompare(String(a.first_seen)));
-  const reductions = inventory.filter(row => row.status === "active").flatMap(row => priceDrops(row)
-    .filter(drop => Date.parse(drop.observedAt) >= cutoff).map(drop => ({ row, ...drop })))
-    .sort((a, b) => Date.parse(b.observedAt) - Date.parse(a.observedAt));
-  document.querySelector("#alert-metrics").replaceChildren(
-    marketMetric("New source listings", integer.format(recent.length), "Added in the last 7 days"),
-    marketMetric("Observed price reductions", integer.format(reductions.length), "Active retail listings · last 7 days"),
-    marketMetric("Last collection", formatDay(generatedAt.toISOString()), "Inventory snapshot")
-  );
+  if (!changesVisit) return;
+  const period = document.querySelector("#changes-window").value;
+  const since = period === "visit" ? changesVisit.baseline : new Date(generatedAt.getTime() - Number(period)*864e5).toISOString();
+  const events = CruiserChanges.events(inventory, since, generatedAt.toISOString());
+  const kind = document.querySelector("#changes-type").value;
+  const filtered = events.filter(event => !kind || event.type === kind);
+  document.querySelector("#changes-period").textContent = `${period === "visit" && changesVisit.first ? "First visit — showing the last 7 days. " : ""}Changes after ${changeDate(since)} through ${changeDate(generatedAt.toISOString())}. Visit history is saved only in this browser. Reloading the same snapshot keeps this window.${sourceHealth.some(source => ["partial","error"].includes(source.status)) ? " Some source searches were incomplete; this feed may omit changes." : ""}`;
+  document.querySelector("#alert-metrics").replaceChildren(...[["new","New trucks"],["drop","Price drops"],["returned","Back for sale"]].map(([type,label]) => marketMetric(label,events.filter(e=>e.type===type).length,"In this time period")));
   const holder = document.querySelector("#alerts-content");
-  holder.replaceChildren(text("h2", "", "Recent asking-price reductions"));
-  if (!reductions.length) holder.append(text("p", "", "No asking-price reductions were observed on active listings in the last 7 days."));
-  else holder.append(...reductions.slice(0, 30).map(change => {
-    const item = text("div", "event-row", "");
-    item.append(text("strong", "", formatDay(change.observedAt)));
-    const link = text("a", "", `${change.row.year} ${vehicleName(change.row)} · ${money.format(change.previous)} → ${money.format(change.current)} · ${change.row.source}`);
-    link.href = change.row.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-    item.append(link, text("small", "", `Down ${money.format(change.amount)} · observed by Scout`));
-    return item;
-  }));
-  holder.append(text("h2", "alerts-subheading", "Recently discovered"));
-  if (!recent.length) holder.append(text("p", "", "No listings were first seen in the last 7 days."));
-  else holder.append(...recent.slice(0, 50).map(row => {
-    const item = text("div", "event-row", "");
-    item.append(text("strong", "", formatDay(row.first_seen)));
-    const link = text("a", "", `${row.year} ${vehicleName(row)} · ${priceLabel(row)} · ${row.source}`);
-    link.href = row.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-    item.append(link, text("small", "", row.state || "Location unknown"));
-    return item;
-  }));
+  holder.replaceChildren();
+  if (!filtered.length) holder.append(text("p","empty","No matching changes in this period. Try a longer time period or another change type."));
+  for (const event of filtered.slice(0,changesShown)) {
+    const item = text("article","change-event", "");
+    const label = {new:"New truck",drop:"Price drop",returned:"Back for sale"}[event.type];
+    item.append(text("span","model-tag",label),text("small","",changeDate(event.at)));
+    const button = text("button","change-vehicle",`${event.row.year} ${vehicleName(event.row)}`);
+    button.type="button";
+    button.addEventListener("click",()=>{
+      const group=vehicles.find(g=>g.listings.some(r=>r.listing_key===event.row.listing_key));
+      if(group)openResearch(group,event.row);
+    });
+    item.append(button,text("p","",event.type === "drop" ? `${money.format(event.before)} → ${money.format(event.after)} · Down ${money.format(event.before-event.after)}` : priceLabel(event.row)),text("p","",`${event.row.mileage == null ? "Mileage unavailable" : integer.format(event.row.mileage)+" mi"} · ${[event.row.city,event.row.state].filter(Boolean).join(", ") || "Location unavailable"} · ${CruiserFilters.sourceLabel(event.row.source)}`));
+    if(event.type === "drop")item.append(text("small","","Observed asking prices; current asking price may differ."));
+    holder.append(item);
+  }
+  if(filtered.length > changesShown) {
+    const more=text("button","secondary-button",`Show more changes (${filtered.length-changesShown} remaining)`);
+    more.type="button";more.addEventListener("click",()=>{changesShown+=30;renderAlerts();});holder.append(more);
+  }
 }
+for (const id of ["changes-window","changes-type"]) document.querySelector("#"+id).addEventListener("change",()=>{changesShown=30;renderAlerts();});
+document.querySelector("#changes-reviewed").addEventListener("click",()=>{
+  if(!changesVisit)return;
+  changesVisit={lastSeen:generatedAt.toISOString(),baseline:generatedAt.toISOString(),first:false};saveChangesVisit();
+  document.querySelector("#changes-window").value="visit";changesShown=30;renderAlerts();
+});
 function renderSourceOverview() {
   const counts = [...new Set(inventory.map(row => CruiserFilters.source(row.source)).filter(Boolean))].sort();
   const grid = text("div", "metric-grid", "");

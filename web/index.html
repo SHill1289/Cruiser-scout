@@ -44,8 +44,8 @@
             >☆ <span>Watchlist</span>
             <span class="nav-count" id="watchlist-nav-count"></span
           ></a>
-          <a href="#alerts" data-view-link="alerts" aria-label="Alerts"
-            >◉ <span>Alerts</span></a
+          <a href="#alerts" data-view-link="alerts" aria-label="What changed?"
+            >◉ <span>What changed?</span></a
           >
           <a
             href="#sources"
@@ -449,14 +449,17 @@
             <div class="page-intro">
               <div>
                 <p class="eyebrow">IN-APP TRACKING</p>
-                <h1 id="alerts-title">Alerts</h1>
-                <p>Recent listing changes recorded by the latest collection.</p>
+                <h1 id="alerts-title">What changed?</h1>
+                <p>New trucks, price drops, and returning listings — all in one place.</p>
               </div>
             </div>
-            <div class="info-banner">
-              These are in-app updates from the available data. Email and push
-              delivery are not configured.
+            <p id="changes-period" class="info-banner" role="status"></p>
+            <div class="changes-controls">
+              <label>Time period <select id="changes-window"><option value="visit">Since last visit</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option></select></label>
+              <label>Change type <select id="changes-type"><option value="">All changes</option><option value="new">New trucks</option><option value="drop">Price drops</option><option value="returned">Back for sale</option></select></label>
+              <button type="button" class="secondary-button" id="changes-reviewed">Mark as reviewed</button>
             </div>
+            <p>Dates show when Scout observed a change. Only currently advertised vehicles are shown; a new source for an existing VIN does not count as a new truck.</p>
             <div class="metric-grid" id="alert-metrics"></div>
             <div id="alerts-content" class="panel"></div>
           </section>
@@ -622,6 +625,7 @@
     <script src="deal-comparables.js" defer></script>
     <script src="filter-normalization.js" defer></script>
     <script src="comparison.js" defer></script>
+    <script src="changes.js" defer></script>
     <script src="app.js" defer></script>
   </body>
 </html>

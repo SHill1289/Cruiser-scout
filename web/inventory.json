@@ -887,7 +887,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 28594
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J062101558",
@@ -969,7 +971,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 30249
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J072110570",
@@ -1047,7 +1051,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 18200
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J162101682",
@@ -1125,7 +1131,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 23000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J262085332",
@@ -1207,7 +1215,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 21995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J362091544",
@@ -1285,7 +1295,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 18694
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J572111911",
@@ -1363,7 +1375,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 21975
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J672109214",
@@ -1441,7 +1455,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27040
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J862085738",
@@ -1523,7 +1539,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 14995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J872106413",
@@ -1601,7 +1619,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 30497
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J872108503",
@@ -1679,7 +1699,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 10100
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05J962084694",
@@ -1757,7 +1779,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 18717
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-18T04:40:05+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05JX62084588",
@@ -1835,7 +1859,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 15890
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05JX62084607",
@@ -1913,7 +1939,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 16300
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTEHT05JX72107031",
@@ -1991,7 +2019,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 9900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W074027293",
@@ -2073,7 +2103,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 39995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-08T18:11:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W074027827",
@@ -2155,7 +2187,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 20750
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-16T13:00:38+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W164003504",
@@ -2233,7 +2267,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 11999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W164008900",
@@ -2311,7 +2347,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23950
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W264007335",
@@ -2393,7 +2431,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 16500
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-27T12:08:20+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W264008291",
@@ -2471,7 +2511,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W264016603",
@@ -2549,7 +2591,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 21900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W274020877",
@@ -2631,7 +2675,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 21929
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W274022502",
@@ -2709,7 +2755,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 14000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-08T18:11:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W364005108",
@@ -2787,7 +2835,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W464010351",
@@ -2869,7 +2919,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 17999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W464018725",
@@ -2955,7 +3007,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 19617
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-30T12:40:42+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W564016238",
@@ -3033,7 +3087,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 20995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W764006987",
@@ -3111,7 +3167,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 19995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-19T16:31:04+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W764015124",
@@ -3189,7 +3247,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-02T05:44:42+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W764019528",
@@ -3267,7 +3327,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 8500
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W774020647",
@@ -3345,7 +3407,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 19497
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W774026416",
@@ -3423,7 +3487,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 17995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W864009297",
@@ -3501,7 +3567,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 19728
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W864010904",
@@ -3579,7 +3647,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 25950
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-09T13:26:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W964005131",
@@ -3661,7 +3731,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 12875
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W964005615",
@@ -3739,7 +3811,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 13224
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-22T05:02:58+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00W974021959",
@@ -3817,7 +3891,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 13995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHT00WX64009804",
@@ -3903,7 +3979,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 28584
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-17T17:38:23+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0B4062314",
@@ -3985,7 +4063,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 19995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0B4080179",
@@ -4067,7 +4147,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 19600
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0D4084171",
@@ -4145,7 +4227,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24187
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0D4106959",
@@ -4223,7 +4307,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23112
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0D4121204",
@@ -4301,7 +4387,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0D4122479",
@@ -4379,7 +4467,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 32986
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T21:46:22+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0D4122739",
@@ -4461,7 +4551,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 21900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0E4139350",
@@ -4539,7 +4631,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 31950
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0E4145388",
@@ -4617,7 +4711,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 26983
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4167229",
@@ -4699,7 +4795,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 38876
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-18T11:13:54+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4173676",
@@ -4777,7 +4875,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 32997
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-15T11:35:48+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4177176",
@@ -4855,7 +4955,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 43990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4177257",
@@ -4933,7 +5035,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24724
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4179252",
@@ -5011,7 +5115,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 42794
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0F4181714",
@@ -5093,7 +5199,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4195064",
@@ -5171,7 +5279,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 58000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T21:40:30+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4196943",
@@ -5249,7 +5359,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 41990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4199549",
@@ -5327,7 +5439,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 48998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4201235",
@@ -5405,7 +5519,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 47572
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4215202",
@@ -5483,7 +5599,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 43994
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX0G4220139",
@@ -5561,7 +5679,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 47113
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1B4062385",
@@ -5639,7 +5759,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23395
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1B4062404",
@@ -5721,7 +5843,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 24864
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1B4082734",
@@ -5803,7 +5927,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 20127
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1D4099973",
@@ -5881,7 +6007,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 35800
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1D4101057",
@@ -5963,7 +6091,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 25900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1D4104735",
@@ -6041,7 +6171,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 45497
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1E4136702",
@@ -6119,7 +6251,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29071
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1E4137249",
@@ -6197,7 +6331,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 44998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T17:14:06+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1E4139650",
@@ -6275,7 +6411,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 18440
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1E4160966",
@@ -6353,7 +6491,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 42698
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1F4172424",
@@ -6431,7 +6571,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 42590
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1F4173704",
@@ -6509,7 +6651,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27782
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1F4174352",
@@ -6587,7 +6731,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 28598
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T11:44:37+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1F4177431",
@@ -6665,7 +6811,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 34000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX1G4210235",
@@ -6743,7 +6891,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 49629
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2B4066297",
@@ -6821,7 +6971,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 25999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2D4100130",
@@ -6903,7 +7055,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 32376
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2D4100967",
@@ -6985,7 +7139,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 37900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2D4106851",
@@ -7063,7 +7219,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39994
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2D4127683",
@@ -7145,7 +7303,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 26897
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2D4131362",
@@ -7223,7 +7383,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29750
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2E4140693",
@@ -7305,7 +7467,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 32000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-23T20:07:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2E4161592",
@@ -7387,7 +7551,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 36016
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2F4165322",
@@ -7465,7 +7631,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2F4165692",
@@ -7543,7 +7711,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 41900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2F4166700",
@@ -7625,7 +7795,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 31000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2F4170262",
@@ -7707,7 +7879,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 32995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2F4177910",
@@ -7789,7 +7963,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 40999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T11:30:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4187368",
@@ -7867,7 +8043,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 48950
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4189718",
@@ -7949,7 +8127,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 37137
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4193753",
@@ -8031,7 +8211,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 37097
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4194059",
@@ -8113,7 +8295,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 47634
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T19:15:08+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4202564",
@@ -8191,7 +8375,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 43400
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX2G4217985",
@@ -8269,7 +8455,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 42977
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3B4060850",
@@ -8347,7 +8535,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3B4069631",
@@ -8425,7 +8615,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 22900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3B4075851",
@@ -8503,7 +8695,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3B4081813",
@@ -8581,7 +8775,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 18493
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4084973",
@@ -8659,7 +8855,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 28898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4094855",
@@ -8737,7 +8935,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27099
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4101089",
@@ -8819,7 +9019,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 23265
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4104610",
@@ -8897,7 +9099,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 34229
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4110486",
@@ -8975,7 +9179,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27598
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4110973",
@@ -9053,7 +9259,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39409
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3D4112156",
@@ -9131,7 +9339,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 31972
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3E4142338",
@@ -9209,7 +9419,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 37740
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3F4163983",
@@ -9291,7 +9503,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 25220
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3F4172540",
@@ -9373,7 +9587,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 24850
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T21:16:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3F4173414",
@@ -9455,7 +9671,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 31710
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3F4182680",
@@ -9537,7 +9755,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 31140
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3G4190022",
@@ -9615,7 +9835,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 40654
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3G4190358",
@@ -9693,7 +9915,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 47995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T21:15:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3G4192448",
@@ -9775,7 +9999,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 44995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX3G4194281",
@@ -9853,7 +10079,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 40794
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4B4062493",
@@ -9931,7 +10159,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 20995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4B4067547",
@@ -10013,7 +10243,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 19995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T17:16:24+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4B4081917",
@@ -10091,7 +10323,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 20098
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4D4106043",
@@ -10169,7 +10403,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 32998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T21:16:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4D4129659",
@@ -10247,7 +10483,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 25443
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4E4137620",
@@ -10325,7 +10563,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 38990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-25T04:48:30+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4E4139495",
@@ -10407,7 +10647,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 41590
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4E4157964",
@@ -10485,7 +10727,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27250
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4167413",
@@ -10563,7 +10807,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 31725
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4168514",
@@ -10645,7 +10891,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 36523
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4168805",
@@ -10727,7 +10975,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 31438
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4172773",
@@ -10809,7 +11059,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 39796
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4173650",
@@ -10891,7 +11143,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 47700
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4F4178945",
@@ -10969,7 +11223,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24594
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4G4190529",
@@ -11047,7 +11303,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 43795
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4G4191311",
@@ -11125,7 +11383,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 52160
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4G4208303",
@@ -11203,7 +11463,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 46977
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4G4214909",
@@ -11281,7 +11543,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 47990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX4G4218328",
@@ -11363,7 +11627,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 43280
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5B4058968",
@@ -11445,7 +11711,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 20823
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T17:14:57+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5D4099183",
@@ -11527,7 +11795,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 24280
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5D4120095",
@@ -11605,7 +11875,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 25025
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5D4123871",
@@ -11683,7 +11955,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23850
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5D4124454",
@@ -11761,7 +12035,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24685
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5D4130674",
@@ -11843,7 +12119,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 30895
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5E4144821",
@@ -11921,7 +12199,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24383
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5E4149274",
@@ -11999,7 +12279,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 40590
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5E4151297",
@@ -12081,7 +12363,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 23985
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5F4185547",
@@ -12163,7 +12447,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 29793
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5G4197473",
@@ -12249,7 +12535,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 38049
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5G4213820",
@@ -12327,7 +12615,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 50407
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX5G4219794",
@@ -12405,7 +12695,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 60010
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T17:14:57+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6B4082079",
@@ -12487,7 +12779,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 22999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4087169",
@@ -12565,7 +12859,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 40820
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T17:14:57+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4090797",
@@ -12643,7 +12939,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 21200
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4101670",
@@ -12721,7 +13019,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 28222
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4102513",
@@ -12803,7 +13103,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 27999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4104603",
@@ -12881,7 +13183,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27777
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6D4125631",
@@ -12959,7 +13263,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 30000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6E4141250",
@@ -13041,7 +13347,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 33286
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T04:37:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6F4163539",
@@ -13123,7 +13431,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 29995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6F4169079",
@@ -13201,7 +13511,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 33944
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6F4171298",
@@ -13279,7 +13591,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 37175
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6F4175092",
@@ -13361,7 +13675,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 34190
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6G4191746",
@@ -13443,7 +13759,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 41833
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6G4193030",
@@ -13521,7 +13839,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 48407
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6G4195666",
@@ -13599,7 +13919,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 49570
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6G4199989",
@@ -13681,7 +14003,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 59990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX6G4219402",
@@ -13759,7 +14083,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 53990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-25T04:48:30+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7B4070250",
@@ -13841,7 +14167,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 23403
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7B4082690",
@@ -13927,7 +14255,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 23988
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7D4108546",
@@ -14005,7 +14335,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7D4111138",
@@ -14087,7 +14419,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7D4126528",
@@ -14165,7 +14499,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 32771
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7E4137028",
@@ -14243,7 +14579,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27499
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7E4138650",
@@ -14321,7 +14659,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29210
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7E4140446",
@@ -14399,7 +14739,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 41777
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7E4148000",
@@ -14477,7 +14819,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 32492
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7F4167406",
@@ -14559,7 +14903,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 27900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7F4186151",
@@ -14637,7 +14983,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 34996
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-23T21:27:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7G4211440",
@@ -14719,7 +15067,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 56962
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7G4211759",
@@ -14797,7 +15147,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 43325
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX7G4219893",
@@ -14879,7 +15231,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 52677
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T10:50:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8B4056387",
@@ -14961,7 +15315,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 18900
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8B4079927",
@@ -15043,7 +15399,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 20495
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8B4082679",
@@ -15121,7 +15479,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 20144
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4100374",
@@ -15199,7 +15559,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23142
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4101394",
@@ -15281,7 +15643,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 18500
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4106126",
@@ -15363,7 +15727,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 22273
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4113836",
@@ -15441,7 +15807,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 33594
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4129664",
@@ -15519,7 +15887,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27997
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T04:55:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8D4130815",
@@ -15601,7 +15971,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4133683",
@@ -15683,7 +16055,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 20221
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4134588",
@@ -15761,7 +16135,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 23000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4135790",
@@ -15839,7 +16215,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 30090
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4143940",
@@ -15917,7 +16295,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 34550
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4150239",
@@ -15995,7 +16375,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8E4152802",
@@ -16077,7 +16459,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 40985
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8F4163607",
@@ -16155,7 +16539,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 56998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-19T22:24:04+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8F4164854",
@@ -16237,7 +16623,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 33995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T11:44:37+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8F4170959",
@@ -16315,7 +16703,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 31595
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8F4184070",
@@ -16397,7 +16787,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 35999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8F4186045",
@@ -16475,7 +16867,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 29694
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8G4190291",
@@ -16553,7 +16947,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 58317
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX8G4212516",
@@ -16631,7 +17027,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39985
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T04:33:43+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4060948",
@@ -16713,7 +17111,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 19957
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T20:39:56+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4061890",
@@ -16791,7 +17191,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 16999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4068287",
@@ -16869,7 +17271,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 22680
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4071741",
@@ -16947,7 +17351,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 24777
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T04:56:17+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4079029",
@@ -17025,7 +17431,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 21898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9B4081475",
@@ -17103,7 +17511,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 16809
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4084721",
@@ -17181,7 +17591,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 26998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4099168",
@@ -17259,7 +17671,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4100299",
@@ -17337,7 +17751,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 21999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4100335",
@@ -17415,7 +17831,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 39990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4106412",
@@ -17497,7 +17915,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 30000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4111660",
@@ -17583,7 +18003,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 28176
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9D4122979",
@@ -17661,7 +18083,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 18999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9E4145728",
@@ -17743,7 +18167,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 28995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9F4162711",
@@ -17821,7 +18247,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 44998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T21:15:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9F4168637",
@@ -17903,7 +18331,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 41990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9F4173501",
@@ -17981,7 +18411,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 34631
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9G4195323",
@@ -18059,7 +18491,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 40894
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-19T13:25:27+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9G4199517",
@@ -18137,7 +18571,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 44953
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AX9G4203243",
@@ -18215,7 +18651,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 43029
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXB4080657",
@@ -18297,7 +18735,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 15600
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4105205",
@@ -18375,7 +18815,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 29780
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T04:42:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4105348",
@@ -18453,7 +18895,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 27672
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4108735",
@@ -18531,7 +18975,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 42499
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4114857",
@@ -18613,7 +19059,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 32689
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4118701",
@@ -18695,7 +19143,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 37995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4120609",
@@ -18773,7 +19223,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 33995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4130377",
@@ -18851,7 +19303,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 28950
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXD4131139",
@@ -18929,7 +19383,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 31492
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T20:53:54+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXE4138562",
@@ -19007,7 +19463,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 28525
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T04:33:43+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXE4151893",
@@ -19085,7 +19543,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 29995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-25T04:48:30+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4164810",
@@ -19167,7 +19627,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 33913
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4167223",
@@ -19245,7 +19707,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 37995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4177329",
@@ -19327,7 +19791,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 29220
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4177850",
@@ -19405,7 +19871,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 38385
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4178822",
@@ -19483,7 +19951,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 45300
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4186046",
@@ -19569,7 +20039,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 35542
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXF4186368",
@@ -19651,7 +20123,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 25000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXG4190020",
@@ -19729,7 +20203,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 52288
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXG4203882",
@@ -19807,7 +20283,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 43640
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-15T21:27:31+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXG4207513",
@@ -19885,7 +20363,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 40729
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXG4217197",
@@ -19963,7 +20443,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 45694
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "autodev:JTJHY7AXXG4218513",
@@ -20041,7 +20523,9 @@
           "observed_at": "2026-10-24T12:36:46+00:00",
           "asking_price": 49670
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-81",
@@ -20114,7 +20598,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-84",
@@ -20187,7 +20673,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-09-30T05:37:51+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-85",
@@ -20260,7 +20748,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-10-01T06:01:51+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2006-lexus-lx470-88",
@@ -20333,7 +20823,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-10-13T00:46:00+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2007-lexus-lx470-58",
@@ -20406,7 +20898,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-09-22T23:14:48+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "bringatrailer:2016-lexus-lx570-11",
@@ -20479,7 +20973,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-10-19T04:47:04+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:399761178",
@@ -20557,7 +21053,9 @@
           "observed_at": "2026-10-14T13:09:35+00:00",
           "asking_price": 18200
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:435836953",
@@ -20643,7 +21141,9 @@
           "observed_at": "2026-10-25T16:28:18+00:00",
           "asking_price": 19899
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:436324031",
@@ -20725,7 +21225,9 @@
           "observed_at": "2026-10-17T15:39:44+00:00",
           "asking_price": 8500
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:440000905",
@@ -20803,7 +21305,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 26119
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:440552873",
@@ -20881,7 +21385,9 @@
           "observed_at": "2026-09-19T18:38:54+00:00",
           "asking_price": 28349
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:440632072",
@@ -20959,7 +21465,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 48407
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:442734579",
@@ -21037,7 +21545,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 25004
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:442945314",
@@ -21115,7 +21625,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 37990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:443152506",
@@ -21193,7 +21705,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 29176.63
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:443339639",
@@ -21271,7 +21785,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 38385
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:444180234",
@@ -21353,7 +21869,9 @@
           "observed_at": "2026-10-23T21:27:36+00:00",
           "asking_price": 26998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:445517059",
@@ -21435,7 +21953,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 25155
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:446103639",
@@ -21517,7 +22037,9 @@
           "observed_at": "2026-10-19T22:24:04+00:00",
           "asking_price": 36523.45
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:446851939",
@@ -21595,7 +22117,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 38195
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447035128",
@@ -21677,7 +22201,9 @@
           "observed_at": "2026-10-16T11:30:11+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447090235",
@@ -21755,7 +22281,9 @@
           "observed_at": "2026-10-14T13:09:35+00:00",
           "asking_price": 15890
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447095309",
@@ -21837,7 +22365,9 @@
           "observed_at": "2026-10-21T04:55:45+00:00",
           "asking_price": 35999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447300156",
@@ -21923,7 +22453,9 @@
           "observed_at": "2026-10-16T04:37:36+00:00",
           "asking_price": 23898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447497159",
@@ -22001,7 +22533,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 19994
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447507243",
@@ -22083,7 +22617,9 @@
           "observed_at": "2026-10-24T04:42:35+00:00",
           "asking_price": 44698
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:447749102",
@@ -22161,7 +22697,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 24187
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:448175372",
@@ -22239,7 +22777,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 19366
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:448235235",
@@ -22317,7 +22857,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 21999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:448760395",
@@ -22395,7 +22937,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 28176
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:449010562",
@@ -22473,7 +23017,9 @@
           "observed_at": "2026-09-19T18:38:54+00:00",
           "asking_price": 24249
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:449460214",
@@ -22551,7 +23097,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 37137
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:449701574",
@@ -22645,7 +23193,9 @@
           "observed_at": "2026-10-22T17:14:57+00:00",
           "asking_price": 22499
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:449976884",
@@ -22723,7 +23273,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 23265
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:450232382",
@@ -22805,7 +23357,9 @@
           "observed_at": "2026-10-20T17:14:06+00:00",
           "asking_price": 21394
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:450708829",
@@ -22883,7 +23437,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 31994
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:450982654",
@@ -22961,7 +23517,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 20144
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:451199677",
@@ -23039,7 +23597,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 29220
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:451252440",
@@ -23121,7 +23681,9 @@
           "observed_at": "2026-10-16T11:30:11+00:00",
           "asking_price": 31794
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:451797930",
@@ -23199,7 +23761,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 34000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:451998531",
@@ -23277,7 +23841,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 24999.25
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452162394",
@@ -23367,7 +23933,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 26504
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452316376",
@@ -23445,7 +24013,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 42165
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452318770",
@@ -23523,7 +24093,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 26499
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452411611",
@@ -23609,7 +24181,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 52160
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452681295",
@@ -23687,7 +24261,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 43880
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:452845882",
@@ -23765,7 +24341,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453353574",
@@ -23847,7 +24425,9 @@
           "observed_at": "2026-10-16T21:15:13+00:00",
           "asking_price": 22680
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453554972",
@@ -23929,7 +24509,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 18157
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453605814",
@@ -24015,7 +24597,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 18790
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453631623",
@@ -24097,7 +24681,9 @@
           "observed_at": "2026-10-18T20:48:57+00:00",
           "asking_price": 34321
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453847393",
@@ -24179,7 +24765,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 30249
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453977256",
@@ -24265,7 +24853,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 37097
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453977586",
@@ -24343,7 +24933,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 30000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:453987635",
@@ -24421,6 +25013,10 @@
           "observed_at": "2026-10-16T21:15:13+00:00",
           "asking_price": 44998
         }
+      ],
+      "vehicle_first_seen": "2026-10-16T21:15:13+00:00",
+      "reappeared_at": [
+        "2026-10-23T17:12:57+00:00"
       ]
     },
     {
@@ -24515,7 +25111,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 42698
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454412475",
@@ -24597,7 +25195,9 @@
           "observed_at": "2026-10-14T19:15:08+00:00",
           "asking_price": 38990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454419049",
@@ -24675,7 +25275,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 20638.25
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454458323",
@@ -24753,7 +25355,9 @@
           "observed_at": "2026-10-14T17:16:24+00:00",
           "asking_price": 20175
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T17:16:24+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454578510",
@@ -24859,7 +25463,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 26792
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-17T17:38:23+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454642393",
@@ -24941,7 +25547,9 @@
           "observed_at": "2026-10-15T15:00:42+00:00",
           "asking_price": 44998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454664523",
@@ -25019,6 +25627,10 @@
           "observed_at": "2026-09-19T18:38:54+00:00",
           "asking_price": 20995
         }
+      ],
+      "vehicle_first_seen": "2026-09-17T17:38:23+00:00",
+      "reappeared_at": [
+        "2026-10-11T22:02:12+00:00"
       ]
     },
     {
@@ -25101,7 +25713,9 @@
           "observed_at": "2026-10-17T10:50:11+00:00",
           "asking_price": 17988
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:454873879",
@@ -25179,7 +25793,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 32818
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455142399",
@@ -25261,7 +25877,9 @@
           "observed_at": "2026-10-18T04:40:05+00:00",
           "asking_price": 23000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455282432",
@@ -25339,7 +25957,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 24876.73
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455377530",
@@ -25417,7 +26037,9 @@
           "observed_at": "2026-09-19T18:38:54+00:00",
           "asking_price": 40138.25
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455415225",
@@ -25495,7 +26117,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 29210
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455479664",
@@ -25573,7 +26197,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 29750
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455564879",
@@ -25655,7 +26281,9 @@
           "observed_at": "2026-10-15T17:05:42+00:00",
           "asking_price": 23893
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455642604",
@@ -25741,7 +26369,9 @@
           "observed_at": "2026-10-25T16:28:18+00:00",
           "asking_price": 26464
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455670290",
@@ -25823,7 +26453,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 27724
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455745100",
@@ -25905,7 +26537,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 31537
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455787327",
@@ -25983,7 +26617,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 42399
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455872000",
@@ -26061,7 +26697,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 49420
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455935117",
@@ -26143,7 +26781,9 @@
           "observed_at": "2026-10-08T23:24:03+00:00",
           "asking_price": 12694
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:455988941",
@@ -26221,7 +26861,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 23988.25
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456579089",
@@ -26303,7 +26945,9 @@
           "observed_at": "2026-10-20T04:56:17+00:00",
           "asking_price": 24280
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456681005",
@@ -26381,7 +27025,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 34169
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456722833",
@@ -26463,7 +27109,9 @@
           "observed_at": "2026-10-14T18:21:44+00:00",
           "asking_price": 29071
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456746540",
@@ -26541,7 +27189,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 44995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456810402",
@@ -26623,7 +27273,9 @@
           "observed_at": "2026-10-17T04:33:43+00:00",
           "asking_price": 33294
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456839853",
@@ -26709,7 +27361,9 @@
           "observed_at": "2026-10-17T04:33:43+00:00",
           "asking_price": 18694
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456866784",
@@ -26795,7 +27449,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 35130
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456892941",
@@ -26873,7 +27529,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 31710
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:456929153",
@@ -26951,7 +27609,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 29995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457132031",
@@ -27029,7 +27689,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 41777
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457339406",
@@ -27107,7 +27769,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 19199.99
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457446786",
@@ -27185,7 +27849,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 30393
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457449764",
@@ -27263,7 +27929,9 @@
           "observed_at": "2026-10-23T21:27:36+00:00",
           "asking_price": 34996
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-23T21:27:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457616422",
@@ -27349,7 +28017,9 @@
           "observed_at": "2026-10-23T12:48:24+00:00",
           "asking_price": 29793
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457621994",
@@ -27431,7 +28101,9 @@
           "observed_at": "2026-10-08T18:11:11+00:00",
           "asking_price": 19497
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457629069",
@@ -27517,7 +28189,9 @@
           "observed_at": "2026-10-24T20:53:54+00:00",
           "asking_price": 49134
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457639012",
@@ -27595,7 +28269,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 27872
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457674606",
@@ -27677,7 +28353,9 @@
           "observed_at": "2026-10-18T04:40:05+00:00",
           "asking_price": 18899
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457685480",
@@ -27755,7 +28433,9 @@
           "observed_at": "2026-10-14T13:09:35+00:00",
           "asking_price": 15175
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457849943",
@@ -27841,7 +28521,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 23112
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:457891185",
@@ -27927,7 +28609,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 34190
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458018190",
@@ -28017,7 +28701,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 24685
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458115893",
@@ -28095,7 +28781,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 24210
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458119267",
@@ -28173,7 +28861,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 59194
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458141954",
@@ -28255,7 +28945,9 @@
           "observed_at": "2026-10-14T21:45:07+00:00",
           "asking_price": 27250
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458231032",
@@ -28337,7 +29029,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 31598
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458248914",
@@ -28423,7 +29117,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 27798.5
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458303429",
@@ -28501,7 +29197,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 23142
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458338451",
@@ -28579,7 +29277,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458338452",
@@ -28657,7 +29357,9 @@
           "observed_at": "2026-10-14T13:09:35+00:00",
           "asking_price": 21995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458402410",
@@ -28739,7 +29441,9 @@
           "observed_at": "2026-10-21T11:56:29+00:00",
           "asking_price": 27823
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458442145",
@@ -28817,7 +29521,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 27898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458478772",
@@ -28899,7 +29605,9 @@
           "observed_at": "2026-10-20T04:56:17+00:00",
           "asking_price": 20477
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458511469",
@@ -28989,7 +29697,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 33913
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458599349",
@@ -29067,7 +29777,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 39908
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458809207",
@@ -29153,7 +29865,9 @@
           "observed_at": "2026-10-02T05:44:42+00:00",
           "asking_price": 19240
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-15T21:33:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458911307",
@@ -29235,7 +29949,9 @@
           "observed_at": "2026-10-20T21:16:13+00:00",
           "asking_price": 44953
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:458999123",
@@ -29313,7 +30029,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 21200
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459000535",
@@ -29391,7 +30109,9 @@
           "observed_at": "2026-09-19T18:38:54+00:00",
           "asking_price": 21245
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-16T13:00:38+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459093236",
@@ -29469,7 +30189,9 @@
           "observed_at": "2026-10-19T13:25:27+00:00",
           "asking_price": 40894
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-19T13:25:27+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459345660",
@@ -29551,6 +30273,10 @@
           "observed_at": "2026-09-22T23:10:29+00:00",
           "asking_price": 20694
         }
+      ],
+      "vehicle_first_seen": "2026-09-19T16:31:04+00:00",
+      "reappeared_at": [
+        "2026-10-01T06:01:51+00:00"
       ]
     },
     {
@@ -29633,7 +30359,9 @@
           "observed_at": "2026-10-17T10:50:11+00:00",
           "asking_price": 42794
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459448413",
@@ -29715,7 +30443,9 @@
           "observed_at": "2026-10-24T20:53:54+00:00",
           "asking_price": 40497
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459454421",
@@ -29793,7 +30523,9 @@
           "observed_at": "2026-09-20T16:48:29+00:00",
           "asking_price": 13995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-20T16:48:29+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459507676",
@@ -29871,7 +30603,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 18493
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459519124",
@@ -29953,7 +30687,9 @@
           "observed_at": "2026-09-23T04:50:09+00:00",
           "asking_price": 13224
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-22T05:02:58+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459529856",
@@ -30031,7 +30767,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 56549
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459554170",
@@ -30109,7 +30847,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 35800
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459639403",
@@ -30191,6 +30931,10 @@
           "observed_at": "2026-10-20T04:56:17+00:00",
           "asking_price": 43979
         }
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": [
+        "2026-10-17T04:33:43+00:00"
       ]
     },
     {
@@ -30273,7 +31017,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 47572.5
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459747871",
@@ -30355,7 +31101,9 @@
           "observed_at": "2026-10-26T04:53:30+00:00",
           "asking_price": 22149
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:459934555",
@@ -30433,7 +31181,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 21898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460032658",
@@ -30511,7 +31261,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 37524
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460036473",
@@ -30593,7 +31345,9 @@
           "observed_at": "2026-10-21T21:46:22+00:00",
           "asking_price": 27476.73
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460082699",
@@ -30683,7 +31437,9 @@
           "observed_at": "2026-10-24T04:42:35+00:00",
           "asking_price": 43325
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460085292",
@@ -30761,7 +31517,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 43202
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460099310",
@@ -30863,7 +31621,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 18398.99
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-27T12:08:20+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460144378",
@@ -30941,7 +31701,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 20221
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460265515",
@@ -31023,6 +31785,10 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 19600
         }
+      ],
+      "vehicle_first_seen": "2026-09-30T12:40:42+00:00",
+      "reappeared_at": [
+        "2026-10-11T12:56:46+00:00"
       ]
     },
     {
@@ -31105,7 +31871,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 32492
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460447635",
@@ -31183,7 +31951,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 60240
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460471036",
@@ -31265,7 +32035,9 @@
           "observed_at": "2026-10-22T04:55:36+00:00",
           "asking_price": 16988
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460538301",
@@ -31343,7 +32115,9 @@
           "observed_at": "2026-10-02T22:17:56+00:00",
           "asking_price": 29242
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-02T05:44:42+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460589317",
@@ -31421,7 +32195,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 47776
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460639637",
@@ -31499,7 +32275,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 49570
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460650737",
@@ -31577,7 +32355,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 39397
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460674090",
@@ -31663,7 +32443,9 @@
           "observed_at": "2026-10-23T11:44:51+00:00",
           "asking_price": 28222
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460724510",
@@ -31743,7 +32525,9 @@
           "observed_at": "2026-10-22T11:58:47+00:00",
           "asking_price": 25898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460770167",
@@ -31825,7 +32609,9 @@
           "observed_at": "2026-10-15T15:00:42+00:00",
           "asking_price": 58317
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460792357",
@@ -31903,7 +32689,9 @@
           "observed_at": "2026-10-08T18:11:11+00:00",
           "asking_price": 40060
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-08T18:11:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460814201",
@@ -31985,7 +32773,9 @@
           "observed_at": "2026-10-20T04:56:17+00:00",
           "asking_price": 16300
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460826111",
@@ -32063,6 +32853,11 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 48998
         }
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": [
+        "2026-10-15T21:27:31+00:00",
+        "2026-10-18T04:40:05+00:00"
       ]
     },
     {
@@ -32145,7 +32940,9 @@
           "observed_at": "2026-10-21T21:46:22+00:00",
           "asking_price": 45300
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460904386",
@@ -32227,7 +33024,9 @@
           "observed_at": "2026-10-19T22:24:04+00:00",
           "asking_price": 42357
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460940794",
@@ -32305,7 +33104,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 32376.63
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:460941393",
@@ -32383,7 +33184,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 28798
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461031649",
@@ -32465,7 +33268,9 @@
           "observed_at": "2026-10-23T17:12:57+00:00",
           "asking_price": 34995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461048858",
@@ -32543,7 +33348,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 30195
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461055620",
@@ -32625,7 +33432,9 @@
           "observed_at": "2026-10-20T21:16:13+00:00",
           "asking_price": 31140
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461170116",
@@ -32703,7 +33512,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 30485
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461194793",
@@ -32781,7 +33592,9 @@
           "observed_at": "2026-10-09T13:26:45+00:00",
           "asking_price": 26249
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-09T13:26:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461203054",
@@ -32863,7 +33676,9 @@
           "observed_at": "2026-10-18T15:55:45+00:00",
           "asking_price": 48695
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461338746",
@@ -32941,7 +33756,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 40654
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461385210",
@@ -33023,7 +33840,9 @@
           "observed_at": "2026-10-21T21:46:22+00:00",
           "asking_price": 17999
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-12T06:04:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461470912",
@@ -33113,7 +33932,9 @@
           "observed_at": "2026-10-20T17:14:06+00:00",
           "asking_price": 40985
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461529000",
@@ -33195,7 +34016,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 37041
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461529463",
@@ -33273,7 +34096,9 @@
           "observed_at": "2026-10-14T13:35:50+00:00",
           "asking_price": 25262
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461557926",
@@ -33355,7 +34180,9 @@
           "observed_at": "2026-10-22T04:55:36+00:00",
           "asking_price": 21294
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461591720",
@@ -33441,7 +34268,9 @@
           "observed_at": "2026-10-17T20:39:56+00:00",
           "asking_price": 47634
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T19:15:08+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461642520",
@@ -33519,7 +34348,9 @@
           "observed_at": "2026-10-15T11:35:48+00:00",
           "asking_price": 33247
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-15T11:35:48+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461714719",
@@ -33597,7 +34428,9 @@
           "observed_at": "2026-10-18T11:13:54+00:00",
           "asking_price": 43640
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-15T21:27:31+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461739410",
@@ -33679,7 +34512,9 @@
           "observed_at": "2026-10-23T17:12:57+00:00",
           "asking_price": 33286
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T04:37:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461771834",
@@ -33757,7 +34592,9 @@
           "observed_at": "2026-10-16T11:30:11+00:00",
           "asking_price": 41898
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T11:30:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461831641",
@@ -33835,7 +34672,9 @@
           "observed_at": "2026-10-17T04:33:43+00:00",
           "asking_price": 48990
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-16T21:15:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461846791",
@@ -33913,7 +34752,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 29299
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T04:33:43+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461868474",
@@ -33995,7 +34836,9 @@
           "observed_at": "2026-10-22T11:58:47+00:00",
           "asking_price": 52677
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T10:50:11+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461924914",
@@ -34073,7 +34916,9 @@
           "observed_at": "2026-10-17T20:39:56+00:00",
           "asking_price": 19957
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-17T20:39:56+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461944293",
@@ -34151,7 +34996,9 @@
           "observed_at": "2026-10-18T04:40:05+00:00",
           "asking_price": 18717
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-18T04:40:05+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:461963062",
@@ -34229,7 +35076,9 @@
           "observed_at": "2026-10-18T11:13:54+00:00",
           "asking_price": 39376
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-18T11:13:54+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462007066",
@@ -34307,7 +35156,9 @@
           "observed_at": "2026-10-19T22:24:04+00:00",
           "asking_price": 56998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-19T22:24:04+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462017916",
@@ -34385,7 +35236,9 @@
           "observed_at": "2026-10-20T04:56:17+00:00",
           "asking_price": 24777
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T04:56:17+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462032453",
@@ -34463,7 +35316,9 @@
           "observed_at": "2026-10-20T11:44:37+00:00",
           "asking_price": 29240
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T11:44:37+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462108238",
@@ -34541,7 +35396,9 @@
           "observed_at": "2026-10-20T21:16:13+00:00",
           "asking_price": 25075
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T21:16:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462111785",
@@ -34619,7 +35476,9 @@
           "observed_at": "2026-10-22T21:40:30+00:00",
           "asking_price": 32998
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-20T21:16:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462117114",
@@ -34701,7 +35560,9 @@
           "observed_at": "2026-10-21T11:56:29+00:00",
           "asking_price": 32172
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462118887",
@@ -34783,7 +35644,9 @@
           "observed_at": "2026-10-24T04:42:35+00:00",
           "asking_price": 21800
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462122726",
@@ -34861,7 +35724,9 @@
           "observed_at": "2026-10-21T04:55:45+00:00",
           "asking_price": 35195
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T04:55:45+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462144431",
@@ -34939,7 +35804,9 @@
           "observed_at": "2026-10-21T11:56:29+00:00",
           "asking_price": 47797
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T11:56:29+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462200861",
@@ -35021,7 +35888,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 33481
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-21T21:46:22+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462221724",
@@ -35097,7 +35966,9 @@
           "observed_at": "2026-10-22T04:55:36+00:00",
           "asking_price": 27997
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T04:55:36+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462244744",
@@ -35175,7 +36046,9 @@
           "observed_at": "2026-10-26T12:48:26+00:00",
           "asking_price": 44981
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-26T12:48:26+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462261564",
@@ -35257,7 +36130,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 23799
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462272688",
@@ -35335,7 +36210,9 @@
           "observed_at": "2026-10-22T11:58:47+00:00",
           "asking_price": 42600
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462282048",
@@ -35413,7 +36290,9 @@
           "observed_at": "2026-10-22T17:14:57+00:00",
           "asking_price": 40820
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T17:14:57+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462315081",
@@ -35489,7 +36368,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 58000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T21:40:30+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462419999",
@@ -35567,7 +36448,9 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 32407
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-23T20:07:13+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462438521",
@@ -35645,7 +36528,9 @@
           "observed_at": "2026-10-24T04:42:35+00:00",
           "asking_price": 29780
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T04:42:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462515634",
@@ -35718,7 +36603,9 @@
         "also_listed_states": [],
         "previously_listed_states": []
       },
-      "price_history": []
+      "price_history": [],
+      "vehicle_first_seen": "2026-10-24T20:53:54+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462533265",
@@ -35796,7 +36683,9 @@
           "observed_at": "2026-10-24T20:53:54+00:00",
           "asking_price": 31492
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-24T20:53:54+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462539837",
@@ -35874,7 +36763,9 @@
           "observed_at": "2026-10-25T04:48:30+00:00",
           "asking_price": 34550
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "cargurus:462552043",
@@ -35950,7 +36841,9 @@
           "observed_at": "2026-10-25T11:38:05+00:00",
           "asking_price": 19995
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-25T11:38:05+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "truecar:JTEHT05J162101682",
@@ -36036,7 +36929,9 @@
           "observed_at": "2026-10-24T11:08:22+00:00",
           "asking_price": 23000
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-22T11:58:47+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "truecar:JTEHT05J672109214",
@@ -36122,7 +37017,9 @@
           "observed_at": "2026-10-15T15:27:41+00:00",
           "asking_price": 26970
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-14T13:09:35+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "truecar:JTJHT00W074027827",
@@ -36204,7 +37101,9 @@
           "observed_at": "2026-09-20T20:50:44+00:00",
           "asking_price": 21245
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-16T13:00:38+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "truecar:JTJHT00W264007335",
@@ -36310,7 +37209,9 @@
           "observed_at": "2026-10-23T01:58:47+00:00",
           "asking_price": 18398.99
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-09-27T12:08:20+00:00",
+      "reappeared_at": []
     },
     {
       "listing_key": "truecar:JTJHT00W464018725",
@@ -36396,6 +37297,10 @@
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 20079
         }
+      ],
+      "vehicle_first_seen": "2026-09-30T12:40:42+00:00",
+      "reappeared_at": [
+        "2026-10-11T12:56:46+00:00"
       ]
     },
     {
@@ -36478,7 +37383,9 @@
           "observed_at": "2026-10-09T22:42:00+00:00",
           "asking_price": 26249
         }
-      ]
+      ],
+      "vehicle_first_seen": "2026-10-09T13:26:45+00:00",
+      "reappeared_at": []
     }
   ],
   "vehicles": [

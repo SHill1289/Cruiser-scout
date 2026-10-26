@@ -1290,6 +1290,20 @@ def update(state, rows, now, scopes=()):
     return changes
 
 
+def change_metadata(state, row):
+    """Keep discovery vehicle-wide and returns tied to the exact source record."""
+    key = row.get("vehicle_key", "")
+    matches = [r for r in state.get("listings", {}).values()
+               if (r.get("vehicle_key") == key if key.startswith("vin:") else r.get("listing_key") == row.get("listing_key"))]
+    dates = [r["first_seen"] for r in matches if r.get("first_seen")]
+    cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=90)).isoformat()
+    returns = sorted({r["observed_at"] for r in state.get("history", [])
+                      if r.get("event") == "reappeared" and r.get("listing_key") == row.get("listing_key")
+                      and r.get("listing_url") == row.get("listing_url") and r.get("vehicle_key") == key
+                      and r.get("observed_at", "") >= cutoff})
+    return {"vehicle_first_seen": min(dates) if dates else row.get("first_seen"), "reappeared_at": returns}
+
+
 def asking_price_history(state, row):
     """Return distinct, dated retail asking prices for this exact source listing."""
     if row.get("category") != "retail":
@@ -1514,12 +1528,12 @@ def save(root, state, health, changes, cache_photos=False):
         "modifications_status", "modifications_evidence",
         "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
-        "rust_location", "price_history",
+        "rust_location", "price_history", "vehicle_first_seen", "reappeared_at",
     ]
     public_rows = [r for r in rows if inventory_candidate(r) and r["status"] in {"active", "sold", "ended"}]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
-    public_rows = [{**row, **deal_rating(row, public_sales),
+    public_rows = [{**row, **change_metadata(state, row), **deal_rating(row, public_sales),
                     "accident_category": accident_category(row.get("accident_history")),
                     "rust_location": rust_location_evidence(row, state),
                     "price_history": asking_price_history(state, row)} for row in public_rows]

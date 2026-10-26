@@ -1627,3 +1627,12 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
 .table-view .photo-credit { display: none; }
 
 .listing-media .photo-counter { top: 10px; bottom: auto; }
+
+.changes-controls { display:flex; gap:16px; align-items:end; flex-wrap:wrap; margin:20px 0; }
+.changes-controls label { display:grid; gap:6px; }
+.changes-controls select { min-height:44px; padding:8px; max-width:100%; }
+.change-event { padding:20px 0; border-bottom:1px solid var(--line); display:grid; gap:8px; }
+.change-event p { margin:0; }
+.change-event .model-tag { justify-self:start; }
+.change-vehicle { text-align:left; background:transparent; border:0; padding:8px 0; min-height:44px; font:inherit; font-weight:700; color:var(--green); cursor:pointer; text-decoration:underline; }
+@media(max-width:700px) { .changes-controls { align-items:stretch; } .changes-controls label { flex:1 1 140px; } .changes-controls button { width:100%; } }
