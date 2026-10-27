@@ -132,22 +132,28 @@ def collect(client, state, now):
 
 
 def enrich_photos(client, state, rows, now):
-    """Use spare daily inventory budget for VIN galleries; retry misses after 30 days."""
+    """Backfill 50 galleries/run, 100/day, reserving future inventory calls below 900/month."""
     usage = state.setdefault('autodev_usage', {})
     if usage.get('month') != now[:7] or usage.get('day') != now[:10]:
         return 0
     # Older state did not track daily calls separately. Recover its recorded count.
     match = re.search(r'(\d+) API calls today', usage.get('detail', ''))
-    today = usage.setdefault('calls_today', int(match[1]) if match else 28)
+    usage.setdefault('calls_today', int(match[1]) if match else 28)
+    if usage.get('photo_day') != now[:10]:
+        usage.update(photo_day=now[:10], photo_calls_today=0)
     attempts = state.setdefault('autodev_photo_attempts', {})
     candidates = {r['vin']: r for r in state.get('listings', {}).values()
                   if r.get('source') == 'autodev' and r.get('status') == 'active'}
     candidates.update({r['vin']: r for r in rows})
     enriched = 0
+    calls = 0
+    import calendar
     from datetime import datetime, timedelta
+    date = datetime.fromisoformat(now)
+    reserve = 28 * (calendar.monthrange(date.year, date.month)[1] - date.day)
     cutoff = (datetime.fromisoformat(now) - timedelta(days=30)).isoformat()
     for vin, row in sorted(candidates.items(), key=lambda pair: attempts.get(pair[0], '')):
-        if usage['calls_today'] >= 28 or usage.get('calls', 0) >= 900:
+        if calls >= 50 or usage['photo_calls_today'] >= 100 or usage.get('calls', 0) >= 900 - reserve:
             break
         if len(row.get('photo_urls') or []) > 1 or attempts.get(vin, '') > cutoff:
             continue
@@ -155,7 +161,8 @@ def enrich_photos(client, state, rows, now):
             continue
         attempts[vin] = now
         usage['calls'] += 1
-        usage['calls_today'] += 1
+        usage['photo_calls_today'] += 1
+        calls += 1
         try:
             payload = client.get('https://api.auto.dev/photos/' + vin)
             if payload.get('removedAt'):

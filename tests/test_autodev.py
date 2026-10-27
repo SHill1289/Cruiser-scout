@@ -127,10 +127,10 @@ class AutoDevTests(unittest.TestCase):
             def get(self, url):
                 return {'data': {'retail': ['https://retail.photos.vin/a.jpg',
                     'https://retail.photos.vin/b.jpg', 'https://evil.example/a.jpg']}}
-        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 898, 'calls_today': 27}}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 100, 'calls_today': 28}}
         self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 1)
         self.assertEqual(len(row['photo_urls']), 2)
-        self.assertEqual(state['autodev_usage']['calls'], 899)
+        self.assertEqual(state['autodev_usage']['calls'], 101)
         self.assertEqual(state['autodev_usage']['calls_today'], 28)
         self.assertEqual(enrich_photos(Photos(), state, [parse_listing(self.item, 'LX470')], NOW), 0)
 
@@ -139,12 +139,33 @@ class AutoDevTests(unittest.TestCase):
         class Photos:
             def get(self, url):
                 return {'removedAt': '2026-01-01', 'data': {'retail': ['https://retail.photos.vin/a.jpg']}}
-        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 899, 'calls_today': 10}}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 100, 'calls_today': 10}}
         row = parse_listing(self.item, 'LX470')
         self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 0)
         self.assertNotIn('photo_urls', row)
-        self.assertEqual(state['autodev_usage']['calls'], 900)
+        self.assertEqual(state['autodev_usage']['calls'], 101)
         self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 0)
+
+    @patch('autodev.time.sleep')
+    def test_photo_backfill_reserves_inventory_budget_and_caps_batches(self, _):
+        class Empty:
+            count = 0
+            def get(self, url):
+                self.count += 1
+                return {'data': {'retail': []}}
+        rows = [{'vin': 'JTJHT00W' + str(i).zfill(9), 'status': 'active', 'source': 'autodev'} for i in range(150)]
+        client = Empty()
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 100}}
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.count, 50)
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.count, 100)
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.count, 100)
+        # October 23: reserve 8 remaining days at the maximum 28 inventory calls/day.
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 676}}
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.count, 100)
 
     def test_failed_response_does_not_claim_success(self):
         class Bad:
