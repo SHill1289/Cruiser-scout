@@ -21,6 +21,26 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual(len(rows),2)
         self.assertEqual(rows["https://bringatrailer.com/listing/2006-lexus-gx470-43/"]["model"],"LX470")
         self.assertEqual(rows[item(5)["url"]]["outcome"],"unsold")
+    def test_deferred_chart_uses_public_model_scoped_request(self):
+        from urllib.parse import urlsplit, parse_qs
+        deferred = "var auctionsCompletedInitialData = " + json.dumps({"stats": False,
+            "base_filter": {"keyword_pages": [47770407], "items_type": "model"}})
+        calls = []
+        def fetch(url):
+            calls.append(url)
+            return json.dumps({"stats": {"sold": [item()], "unsold": []}})
+        rows = archive_results(deferred, YEARS, NOW, fetch)
+        self.assertEqual(len(rows), 1)
+        url = urlsplit(calls[0])
+        self.assertEqual(url.netloc, "bringatrailer.com")
+        self.assertEqual(parse_qs(url.query)["base_filter[keyword_pages][]"], ["47770407"])
+        self.assertEqual(parse_qs(url.query)["get_items"], ["0"])
+        with self.assertRaises(ValueError):
+            archive_results(deferred, YEARS, NOW, lambda url: '{"stats":false}')
+        with self.assertRaises(ValueError):
+            archive_results(deferred.replace('47770407', '"https://example.com"'), YEARS, NOW, fetch)
+        self.assertEqual(len(calls), 1)
+
     def test_missing_chart_is_failure_not_empty_inventory(self):
         with self.assertRaises(ValueError):archive_results("<html></html>",YEARS,NOW)
     def test_explicit_location_beats_registration_narrative(self):

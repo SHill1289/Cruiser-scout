@@ -1,6 +1,6 @@
 # Bring a Trailer auction coverage
 
-The collector reads the full public chart history embedded in each tracked model archive, including sold and reserve-not-met outcomes. Discovery uses the auction title rather than the URL slug, because some BaT slugs identify the wrong model. Detail pages verify each vehicle, price, mileage, color, and explicit Location field.
+The collector reads the full public chart history embedded in each tracked model archive, including sold and reserve-not-met outcomes. When BaT defers this data, the collector uses the same public, model-scoped chart request as its page. Both paths validate the full sold/unsold arrays; a failed response never becomes an empty successful refresh. Discovery uses the auction title rather than the URL slug, because some BaT slugs identify the wrong model. Detail pages verify each vehicle, price, mileage, color, and explicit Location field.
 
 Scope remains 2006–2007 LX470, 2006–2007 Land Cruiser, and 2011–2016 LX570. Market history covers two years. Each completed auction is keyed by its URL; repeat sales of a VIN stay separate market observations. The inventory still groups listings for the same vehicle.
 

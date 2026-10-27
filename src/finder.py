@@ -1153,7 +1153,7 @@ def collect_historical_sales(root, state, fetcher, archive_page, now):
 
 def collect_bat_archive(state, fetcher, page, model, now, limit=100):
     """Read all recent archive results, then hydrate each auction once."""
-    results = {url: item for url, item in bat_archive_results(page, MODEL_YEARS, now).items()
+    results = {url: item for url, item in bat_archive_results(page, MODEL_YEARS, now, fetcher.get).items()
                if item["model"] == model}
     existing = {row["listing_url"]: row for row in state.get("listings", {}).values()
                 if row.get("source") == "bringatrailer" and row.get("model", "LX470") == model}
