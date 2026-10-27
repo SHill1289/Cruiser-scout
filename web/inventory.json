@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T20:57:37+00:00",
+  "generated_at": "2026-10-27T21:09:19+00:00",
   "disclaimer": "Inventory includes screened candidates and Auto.dev listings labeled Title unverified. Verify title and independent history before purchase.",
   "summary": {
     "vehicles": 252,
@@ -15,168 +15,168 @@
       "source": "cargurus-2006",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "4 clean-title listings parsed of 4; nationwide. 4 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
       "detail": "59 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2006",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2007",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "truecar-land-cruiser",
       "status": "ok",
       "detail": "1 clean-title listings parsed of 1; nationwide. 1 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "bringatrailer-land-cruiser",
       "status": "ok",
       "detail": "39 supported auctions in the public two-year archive; 1 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2011",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2012",
       "status": "not_applicable",
       "detail": "The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2013",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2014",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2015",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cargurus-lx570-2016",
       "status": "error",
       "detail": "No valid listings parsed from nonempty results",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "truecar-lx570",
       "status": "manual_only",
       "detail": "GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "bringatrailer-lx570",
       "status": "ok",
       "detail": "22 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "ksl-lexus-lx",
       "status": "manual_only",
       "detail": "Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "ksl-toyota-land-cruiser",
       "status": "manual_only",
       "detail": "No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "bypex",
       "status": "manual_only",
       "detail": "One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned an unavailable/block page, not inventory. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "autotempest",
       "status": "manual_only",
       "detail": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "carsandbids",
       "status": "manual_only",
       "detail": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available.",
-      "checked_at": "2026-10-27T20:57:37+00:00"
+      "checked_at": "2026-10-27T21:09:19+00:00"
     },
     {
       "source": "autodev",
       "status": "warning",
-      "detail": "Daily API collection already attempted. 224 dealer observations; 14 API calls today, 70/900 monthly budget. Title history requires independent evidence. 19 incomplete or out-of-scope records excluded. 13 vehicle galleries added using spare free-tier requests.",
+      "detail": "Daily API collection already attempted. 224 dealer observations; 14 API calls today, 70/900 monthly budget. Title history requires independent evidence. 19 incomplete or out-of-scope records excluded. 0 vehicle galleries added using spare free-tier requests.",
       "checked_at": "2026-10-27T05:11:51+00:00"
     }
   ],
@@ -5075,16 +5075,16 @@
       "location_precision": "ZIP area",
       "seller": "AAA Motor Cars",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W074027293-1.jpg",
+      "photo_url": "photos/5332f228071b27b79f06.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027293-8.jpg"
+        "photos/5332f228071b27b79f06.jpg",
+        "photos/b55bc1a0710b93d47907.jpg",
+        "photos/a51facf752a14707ee09.jpg",
+        "photos/58266528d6ae136ede85.jpg",
+        "photos/2d96a4e86fcd53491cdc.jpg",
+        "photos/d6bc24203386edf27c5d.jpg",
+        "photos/57e1a8f31fabb582c0b7.jpg",
+        "photos/5df21745490dc1767eee.jpg"
       ],
       "exterior_color": "Gray",
       "interior_color": "Gray",
@@ -5167,16 +5167,16 @@
       "location_precision": "ZIP area",
       "seller": "Master Auto Group",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W074027827-1.jpg",
+      "photo_url": "photos/1fcf1163d2be25325a8b.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W074027827-8.jpg"
+        "photos/1fcf1163d2be25325a8b.jpg",
+        "photos/3eac5004eaa858a2d514.jpg",
+        "photos/13ad4ec38942f135456f.jpg",
+        "photos/43371977e201a5863546.jpg",
+        "photos/57b07bde17b4e753fc69.jpg",
+        "photos/45bc0ae31e6fed1b7842.jpg",
+        "photos/8e9954d7b3ba8e2f45b7.jpg",
+        "photos/3aa159c2d1dc3fd98a98.jpg"
       ],
       "exterior_color": "White",
       "interior_color": "White",
@@ -5421,16 +5421,16 @@
       "location_precision": "ZIP area",
       "seller": "Performance Nissan of Pompano",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W264007335-1.jpg",
+      "photo_url": "photos/6a288d69e49e21ada804.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W264007335-8.jpg"
+        "photos/6a288d69e49e21ada804.jpg",
+        "photos/8a586a03e3dc921a7b40.jpg",
+        "photos/f1a04fd7a8db5b008a76.jpg",
+        "photos/2ed8e4bdaf7732b3ff51.jpg",
+        "photos/a7b8050616dd9d83c58a.jpg",
+        "photos/dd866a6db27f1b585c76.jpg",
+        "photos/d32cfd4da0bd1fc90030.jpg",
+        "photos/bc006ec119d066b28a85.jpg"
       ],
       "exterior_color": "Silver",
       "interior_color": "White",
@@ -5845,16 +5845,16 @@
       "location_precision": "ZIP area",
       "seller": "Flex Automotive",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W364005108-1.jpg",
+      "photo_url": "photos/ed3a0424bc4eff0d9520.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W364005108-8.jpg"
+        "photos/ed3a0424bc4eff0d9520.jpg",
+        "photos/80435410f82271c09c8c.jpg",
+        "photos/7f74ec178cc47a373bd1.jpg",
+        "photos/0a9e93335c092d58d8a6.jpg",
+        "photos/a6d9d4325802dbe94900.jpg",
+        "photos/37ed62ceaba410a76907.jpg",
+        "photos/2704bd67e65fcc2d8800.jpg",
+        "photos/b1d2456b859ec362e6d3.jpg"
       ],
       "exterior_color": "Silver",
       "interior_color": "Gray",
@@ -6022,16 +6022,16 @@
       "location_precision": "ZIP area",
       "seller": "Simi Valley Toyota",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W464018725-1.jpg",
+      "photo_url": "photos/35d861006dfa6139158e.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W464018725-8.jpg"
+        "photos/35d861006dfa6139158e.jpg",
+        "photos/921265be904cad01ffd9.jpg",
+        "photos/0d457a91224ff0dbc76a.jpg",
+        "photos/0a8f5a71d4258c6795a7.jpg",
+        "photos/7b5da4594e2c578d5c47.jpg",
+        "photos/3b012744762cda2f5d08.jpg",
+        "photos/f3dfa56762846af2ee45.jpg",
+        "photos/902cbe4a141028fcda53.jpg"
       ],
       "exterior_color": "White",
       "interior_color": "White",
@@ -6122,16 +6122,15 @@
       "location_precision": "ZIP area",
       "seller": "Skyline Auto Group",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W564016238-1.jpg",
+      "photo_url": "photos/968d7af5bebf89a7356a.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W564016238-8.jpg"
+        "photos/968d7af5bebf89a7356a.jpg",
+        "photos/6da3c8e5d71b38ae5dbc.jpg",
+        "photos/bf9fb5dbad70cede2a3d.jpg",
+        "photos/0d55ad364ce5a993d5e1.jpg",
+        "photos/bfa19362f44a9d220602.jpg",
+        "photos/92eb29cf5ff2f9b1631f.jpg",
+        "photos/c1c1107f5c901aa9c041.jpg"
       ],
       "exterior_color": "Silver",
       "interior_color": "White",
@@ -6376,16 +6375,16 @@
       "location_precision": "ZIP area",
       "seller": "Motor Deals USA",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W764019528-1.jpg",
+      "photo_url": "photos/30a5e573a63e06b2fa4c.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W764019528-8.jpg"
+        "photos/30a5e573a63e06b2fa4c.jpg",
+        "photos/f23f497b0c182eaca4a4.jpg",
+        "photos/a2e207af55ba61d2ad4f.jpg",
+        "photos/3f67ffb210fe353edc23.jpg",
+        "photos/92d7dfc724be1e65d2b0.jpg",
+        "photos/12418721be923b77180c.jpg",
+        "photos/cee8cc973889243b0af0.jpg",
+        "photos/a6f8d927dd2c82e955d4.jpg"
       ],
       "exterior_color": "White",
       "interior_color": "Black",
@@ -6468,16 +6467,16 @@
       "location_precision": "ZIP area",
       "seller": "Bypex",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W774020647-1.jpg",
+      "photo_url": "photos/a03b7739715b4ea1fab1.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774020647-8.jpg"
+        "photos/a03b7739715b4ea1fab1.jpg",
+        "photos/47bb1e42295935b35d8a.jpg",
+        "photos/7710353f27ecf0818322.jpg",
+        "photos/8ac772cb3f67366d3cf0.jpg",
+        "photos/463ca42c79cfcb8b6c91.jpg",
+        "photos/bc3e464c6fd7bce2c3de.jpg",
+        "photos/e1c25cea255b2ccd0d60.jpg",
+        "photos/718525a6ae692683b421.jpg"
       ],
       "exterior_color": "Black",
       "interior_color": "Tan",
@@ -6556,16 +6555,16 @@
       "location_precision": "ZIP area",
       "seller": "Indy Motors",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W774026416-1.jpg",
+      "photo_url": "photos/0a69d524abd4fdcc964b.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W774026416-8.jpg"
+        "photos/0a69d524abd4fdcc964b.jpg",
+        "photos/bd1f06f29d8b1a6e9836.jpg",
+        "photos/3e53178a9766ed060ab4.jpg",
+        "photos/899e5523cd8f61e9f692.jpg",
+        "photos/09955576f4ef2bebd40b.jpg",
+        "photos/9e8db6be53f2b3c4a1a6.jpg",
+        "photos/72622f6ed33b911fc52a.jpg",
+        "photos/ced7316a41fe68a79940.jpg"
       ],
       "exterior_color": "Gray",
       "interior_color": "Gray",
@@ -6648,16 +6647,16 @@
       "location_precision": "ZIP area",
       "seller": "Rick Hill Imports BMW Mercedes-Benz",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W864009297-1.jpg",
+      "photo_url": "photos/d2ed5021fc053020b0dd.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W864009297-8.jpg"
+        "photos/d2ed5021fc053020b0dd.jpg",
+        "photos/18ef4e7466ac2fdaebad.jpg",
+        "photos/0b7eadf0e2a8ab05710c.jpg",
+        "photos/92a6288717f183b2aed9.jpg",
+        "photos/e2c6195cf15bda581b67.jpg",
+        "photos/320b4c661de22d0b6a64.jpg",
+        "photos/04f17ac600aa92bc9d87.jpg",
+        "photos/3d8171751216785510af.jpg"
       ],
       "exterior_color": "White",
       "interior_color": "Unspecified",
@@ -6817,16 +6816,16 @@
       "location_precision": "ZIP area",
       "seller": "Iautomall NJ",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W964005131-1.jpg",
+      "photo_url": "photos/b8982515f1e224a913d2.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005131-8.jpg"
+        "photos/b8982515f1e224a913d2.jpg",
+        "photos/6834db6d1ca9bdd6a645.jpg",
+        "photos/59f53fbe10be4f557775.jpg",
+        "photos/4df7b64e56970811e963.jpg",
+        "photos/247425468afe7c2ee4ba.jpg",
+        "photos/7af4172653bcd658395f.jpg",
+        "photos/9cd155b88895dfa64e92.jpg",
+        "photos/2bbb1caf6ebb25f2d236.jpg"
       ],
       "exterior_color": "Black",
       "interior_color": "Tan",
@@ -6913,16 +6912,16 @@
       "location_precision": "city area",
       "seller": "Bellfort Kar Care",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00W964005615-1.jpg",
+      "photo_url": "photos/c18a027eacc6db00cea2.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00W964005615-8.jpg"
+        "photos/c18a027eacc6db00cea2.jpg",
+        "photos/8c9dec72b6a19d8fabbe.jpg",
+        "photos/fd9707683476f8db15ef.jpg",
+        "photos/7b4ce8d20c3ce3028ed3.jpg",
+        "photos/3d392770abfd1dad4574.jpg",
+        "photos/a3b396d06f3130c73116.jpg",
+        "photos/c54e8583634ceee5dc52.jpg",
+        "photos/6ae842fc4f20fa7572e7.jpg"
       ],
       "exterior_color": "",
       "interior_color": "",
@@ -7082,16 +7081,16 @@
       "location_precision": "ZIP area",
       "seller": "Direct Auto Team",
       "seller_type": "dealer",
-      "photo_url": "https://api.auto.dev/photos/retail/JTJHT00WX64009804-1.jpg",
+      "photo_url": "photos/6856cda60c20ef293333.jpg",
       "photo_urls": [
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-1.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-2.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-3.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-4.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-5.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-6.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-7.jpg",
-        "https://api.auto.dev/photos/retail/JTJHT00WX64009804-8.jpg"
+        "photos/6856cda60c20ef293333.jpg",
+        "photos/07f06c78f3c6ea536f7c.jpg",
+        "photos/36c201c6ebaadbca10b9.jpg",
+        "photos/debddeeb974ded4d521c.jpg",
+        "photos/4c2a8f1093b42bc5bcf4.jpg",
+        "photos/fadc8a222be6ca8f1f55.jpg",
+        "photos/c4a0ad3092418ceca6d1.jpg",
+        "photos/7eb682c0bc1d4077581e.jpg"
       ],
       "exterior_color": "Silver",
       "interior_color": "Gray",
@@ -49514,8 +49513,8 @@
       "listed_at": "2026-07-13T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-27T20:57:37+00:00",
-      "last_checked": "2026-10-27T20:57:37+00:00",
+      "last_seen": "2026-10-27T21:09:19+00:00",
+      "last_checked": "2026-10-27T21:09:19+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49603,8 +49602,8 @@
       "listed_at": "2026-09-16T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-10-27T20:57:37+00:00",
-      "last_checked": "2026-10-27T20:57:37+00:00",
+      "last_seen": "2026-10-27T21:09:19+00:00",
+      "last_checked": "2026-10-27T21:09:19+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49688,8 +49687,8 @@
       "listed_at": "2026-09-27T07:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-27T20:57:37+00:00",
-      "last_checked": "2026-10-27T20:57:37+00:00",
+      "last_seen": "2026-10-27T21:09:19+00:00",
+      "last_checked": "2026-10-27T21:09:19+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49797,8 +49796,8 @@
       "listed_at": "2026-10-11T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-27T20:57:37+00:00",
-      "last_checked": "2026-10-27T20:57:37+00:00",
+      "last_seen": "2026-10-27T21:09:19+00:00",
+      "last_checked": "2026-10-27T21:09:19+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49888,8 +49887,8 @@
       "listed_at": "2026-10-09T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-10-27T20:57:37+00:00",
-      "last_checked": "2026-10-27T20:57:37+00:00",
+      "last_seen": "2026-10-27T21:09:19+00:00",
+      "last_checked": "2026-10-27T21:09:19+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
