@@ -1485,24 +1485,26 @@ def rust_location_evidence(row, state):
 
 
 def cache_public_photos(root, rows, opener=urllib.request.urlopen):
-    """Serve TrueCar gallery photos locally when its CDN blocks embedded images."""
+    """Serve provider gallery photos locally when their CDNs block embedded images."""
     folder = root / "web/photos"
     folder.mkdir(parents=True, exist_ok=True)
     for row in rows:
-        if row.get("source") != "truecar":
+        if row.get("source") not in {"truecar", "autodev"}:
             continue
         urls = [row.get("photo_url", ""), *(row.get("photo_urls") or [])]
         saved, seen_paths = [], set()
         for url in urls:
             parts = urllib.parse.urlsplit(url)
-            if (parts.scheme != "https" or parts.hostname != "listings-prod.tcimg.net"
+            if (parts.scheme != "https" or parts.hostname not in {"listings-prod.tcimg.net", "api.auto.dev", "retail.photos.vin"}
+                    or (parts.hostname == "api.auto.dev" and not parts.path.startswith("/photos/retail/"))
+                    or (row.get("source") == "autodev" and len(row.get("photo_urls") or []) < 2)
                     or not parts.path.endswith(".jpg") or parts.path in seen_paths):
                 continue
             seen_paths.add(parts.path)
             filename = hashlib.sha256(parts.path.encode()).hexdigest()[:20] + ".jpg"
             target = folder / filename
             if not target.exists():
-                image_url = urllib.parse.urlunsplit(parts._replace(query="h=675&w=1200"))
+                image_url = urllib.parse.urlunsplit(parts._replace(query="h=675&w=1200")) if parts.hostname == "listings-prod.tcimg.net" else url
                 request = urllib.request.Request(image_url, headers={"User-Agent": UA, "Accept": "image/jpeg"})
                 try:
                     with opener(request, timeout=20) as response:

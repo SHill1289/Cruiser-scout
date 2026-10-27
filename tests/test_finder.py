@@ -271,6 +271,21 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
         self.assertEqual(len(row['photo_urls']), 2)
 
+    def test_autodev_gallery_is_cached_without_credentials(self):
+        import tempfile, io
+        rows = [{'source': 'autodev', 'photo_url': 'https://api.auto.dev/photos/retail/VIN-1.jpg',
+                 'photo_urls': ['https://api.auto.dev/photos/retail/VIN-1.jpg',
+                                'https://api.auto.dev/photos/retail/VIN-2.jpg']}]
+        requests = []
+        def opener(request, timeout):
+            requests.append(request)
+            return io.BytesIO(b'\xff\xd8\xfftest')
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]) as directory:
+            cache_public_photos(Path(directory), rows, opener)
+        self.assertEqual(len(rows[0]['photo_urls']), 2)
+        self.assertTrue(all(url.startswith('photos/') for url in rows[0]['photo_urls']))
+        self.assertTrue(all(not r.has_header('Authorization') for r in requests))
+
     def test_truecar_gallery_photos_are_served_locally(self):
         base = 'https://listings-prod.tcimg.net/listings/123/45/JTJHT00W074027827/'
         rows = [{'source': 'truecar', 'source_listing_id': 'JTJHT00W074027827',
