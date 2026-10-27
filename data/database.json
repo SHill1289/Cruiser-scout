@@ -1720,8 +1720,8 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-20T20:50:44+00:00",
-      "last_seen": "2026-10-27T12:18:49+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
@@ -2436,8 +2436,8 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-10-27T12:18:49+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
@@ -2636,8 +2636,8 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-10-27T12:18:49+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
@@ -3534,8 +3534,8 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-10-27T12:18:49+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
@@ -4623,8 +4623,8 @@
       "auction_ends_at": "",
       "bid_observed_at": "",
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-10-27T12:18:49+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
@@ -16658,10 +16658,10 @@
       "auction_result_at": "",
       "bat_details_version": 2,
       "auction_ends_at": "2026-10-28T19:28:00+00:00",
-      "bid_observed_at": "2026-10-27T05:11:51+00:00",
+      "bid_observed_at": "2026-10-27T12:46:33+00:00",
       "first_seen": "2026-10-22T04:55:36+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
+      "last_seen": "2026-10-27T12:46:33+00:00",
+      "last_checked": "2026-10-27T12:46:33+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "notes": "Auction bid excludes buyer fees. Rounded mileage is approximate. Clean-title eligibility requires explicit listing text and still needs verification against the physical title and NMVTIS/CARFAX."
@@ -17233,8 +17233,8 @@
       "bid_observed_at": "",
       "first_seen": "2026-10-23T17:12:57+00:00",
       "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T12:18:49+00:00",
-      "missing_checks": 1,
+      "last_checked": "2026-10-27T12:46:33+00:00",
+      "missing_checks": 2,
       "quality_flags": "",
       "notes": "TrueCar reports clean-title, owner and accident data from Experian AutoCheck. Verify the physical title and a current history report before purchase."
     },
@@ -157758,7 +157758,7 @@
     "16340eda6450ffdfbe64cf6f05909c879ce185bdf9d75a8257fac2bcc2fa2230",
     "eda198c431d9488cdaf35a636ebe5ba0739c47e39766032b85b607a96867b28f"
   ],
-  "updated_at": "2026-10-27T12:18:49+00:00",
+  "updated_at": "2026-10-27T12:46:33+00:00",
   "historical_sales": [
     {
       "source": "Bring a Trailer",
