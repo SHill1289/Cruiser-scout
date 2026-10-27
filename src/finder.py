@@ -432,6 +432,14 @@ def cargurus_search(page, year, extra_criteria=None):
     criteria = search["appliedFilterCriteria"]
     if criteria.get("distance", 0) < 50000 or criteria.get("startYear") != year or criteria.get("endYear") != year:
         raise ValueError("Source did not apply nationwide/year filters")
+    # The applied criteria can echo requested values even when the provider
+    # explicitly relaxes them and substitutes broader inventory.
+    protected_filters = {"YEAR", "IS_LEMON", "IS_SALVAGE", "HAS_FRAME_DAMAGE", "HAS_THEFT_HISTORY"}
+    if extra_criteria and "maxAccidents" in extra_criteria:
+        protected_filters.add("HAS_ACCIDENTS")
+    dropped = protected_filters.intersection(search.get("droppedFilterCriteria") or [])
+    if dropped:
+        raise ValueError("CarGurus dropped required filters: " + ", ".join(sorted(dropped)))
     required = {**CARGURUS_CLEAN_CRITERIA, **(extra_criteria or {})}
     if any(criteria.get(key) != value for key, value in required.items()):
         raise ValueError("Source did not apply required clean-history filters")
@@ -488,14 +496,15 @@ def parse_cargurus(page, year, no_accident_ids=None, model="LX470"):
         if not tile.get("type", "").startswith("LISTING_USED"):
             continue
         d = tile["data"]
-        ontology = d.get("ontologyData", {})
+        ontology = d.get("ontologyDto") or d.get("ontologyData") or {}
         identity_ok = (ontology.get("makeName") == "Toyota" and ontology.get("modelName") == "Land Cruiser"
                        if model == "Land Cruiser" else
                        ontology.get("makeName") == "Lexus" and ontology.get("modelName") == "LX" and ontology.get("trimName", "").startswith("570" if model == "LX570" else "470"))
         if int(ontology.get("carYear", 0)) != year or not identity_ok:
             continue
-        seller, price = d.get("sellerData", {}), d.get("priceData", {})
-        mileage = d.get("mileageData") or {}
+        seller = d.get("sellerDto") or d.get("sellerData") or {}
+        price = d.get("priceDto") or d.get("priceData") or {}
+        mileage = d.get("mileage") or d.get("mileageData") or {}
         if mileage.get("value") not in (None, "") and mileage.get("unit") != "MILES":
             raise ValueError(f"Unexpected mileage units for CarGurus listing {d['id']}: {mileage.get('unit')!r}")
         listing_id = str(d["id"])
@@ -511,9 +520,9 @@ def parse_cargurus(page, year, no_accident_ids=None, model="LX470"):
             "seller": seller.get("serviceProviderName", ""),
             "seller_type": "dealer" if seller.get("serviceProviderId") else "unknown",
             "photo_url": cargurus_photo(d),
-            "exterior_color": d.get("exteriorColorData", {}).get("name", ""),
-            "interior_color": d.get("interiorColorData", {}).get("localized", ""),
-            "reported_extras": listing_extras(d.get("vehicleFeatures", [])),
+            "exterior_color": (d.get("exteriorColor") or d.get("exteriorColorData") or {}).get("name", ""),
+            "interior_color": (d.get("interiorColor") or d.get("interiorColorData") or {}).get("localized", ""),
+            "reported_extras": listing_extras(d.get("options") or d.get("vehicleFeatures") or []),
             "title_status": "clean-title candidate",
             "accident_history": "No reported accidents" if listing_id in no_accident_ids else "History unavailable",
             "owners": "Unverified",

@@ -672,6 +672,46 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(bat_listing_urls('<a href="/listing/2006-toyota-land-cruiser-100/">LC</a>'
                          '<a href="/listing/2005-toyota-land-cruiser/">wrong year</a>'), {url})
 
+    def test_cargurus_echoed_filters_do_not_override_explicitly_dropped_filters(self):
+        for dropped in ('YEAR', 'IS_SALVAGE', 'IS_LEMON', 'HAS_FRAME_DAMAGE', 'HAS_THEFT_HISTORY'):
+            context = self.clean_fixture()
+            context['state']['loaderData']['route']['search']['droppedFilterCriteria'] = [dropped]
+            with self.assertRaisesRegex(ValueError, 'dropped required filters'):
+                parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+
+    def test_cargurus_current_and_mixed_response_fields_preserve_listing_details(self):
+        aliases = {'ontologyData': 'ontologyDto', 'sellerData': 'sellerDto',
+                   'priceData': 'priceDto', 'mileageData': 'mileage',
+                   'exteriorColorData': 'exteriorColor', 'interiorColorData': 'interiorColor',
+                   'vehicleFeatures': 'options'}
+        context = self.clean_fixture()
+        search = context['state']['loaderData']['route']['search']
+        search['tiles'][0]['data']['vehicleFeatures'] = ['CarPlay', 'Navigation System']
+        expected = parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+        for mixed in (True, False):
+            current = json.loads(json.dumps(context))
+            tiles = current['state']['loaderData']['route']['search']['tiles']
+            for index, tile in enumerate(tiles):
+                if mixed and index % 2: continue
+                for old, new in aliases.items():
+                    if old in tile['data']: tile['data'][new] = tile['data'].pop(old)
+            self.assertEqual(parse_cargurus('window.__remixContext = ' + json.dumps(current), 2006), expected)
+
+    def test_cargurus_current_schema_still_rejects_wrong_units_and_identity(self):
+        context = self.clean_fixture()
+        search = context['state']['loaderData']['route']['search']
+        search['tiles'] = search['tiles'][:1]
+        search['totalListings'] = 1
+        data = search['tiles'][0]['data']
+        data['ontologyDto'] = data.pop('ontologyData')
+        data['mileage'] = {'value': 100000, 'unit': 'KILOMETERS'}
+        with self.assertRaisesRegex(ValueError, 'Unexpected mileage units'):
+            parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+        data['mileage']['unit'] = 'MILES'
+        data['ontologyDto']['makeName'] = 'Toyota'
+        with self.assertRaisesRegex(ValueError, 'No valid listings'):
+            parse_cargurus('window.__remixContext = ' + json.dumps(context), 2006)
+
     def test_cargurus_missing_mileage_keeps_complete_listing_batch(self):
         for mileage in (None, {}, {'value': None, 'unit': 'MILES'}, {'value': ''}):
             with self.subTest(mileage=mileage):
