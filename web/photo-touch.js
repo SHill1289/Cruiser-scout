@@ -30,6 +30,24 @@ const CruiserPhotos = (() => {
       }
     }, true);
   }
-  return { swipeDirection, bindSwipe };
+  function createGallery(urls, selected) {
+    let available = [...new Set(urls)];
+    let index = Math.max(0, available.indexOf(selected));
+    return {
+      get urls() { return [...available]; },
+      get index() { return index; },
+      get current() { return available[index] || null; },
+      select(url) { const next = available.indexOf(url); if (next >= 0) index = next; return this.current; },
+      step(direction) { if (available.length) index = (index + direction % available.length + available.length) % available.length; return this.current; },
+      remove(url) {
+        const current = this.current;
+        available = available.filter(item => item !== url);
+        const retained = available.indexOf(current);
+        index = retained >= 0 ? retained : Math.min(index, Math.max(0, available.length - 1));
+        return this.current;
+      }
+    };
+  }
+  return { swipeDirection, bindSwipe, createGallery };
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = CruiserPhotos;

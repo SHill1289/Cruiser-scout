@@ -49,3 +49,21 @@ test("scroll cancellation, pinch gestures, mouse drags, and arrow buttons do not
   emit("pointerdown", { target: { closest: () => ({}) } }); emit("pointerup", { clientX: 50, timeStamp: 300 });
   assert.deepEqual(steps, []);
 });
+
+test("gallery keeps URL selection, wraps in either direction and removes failed images", () => {
+  const {createGallery}=require("../web/photo-touch.js");
+  const gallery=createGallery(["a","b","b","c"],"b");
+  assert.deepEqual(gallery.urls,["a","b","c"]);assert.equal(gallery.index,1);
+  assert.equal(gallery.step(1),"c");assert.equal(gallery.step(1),"a");assert.equal(gallery.step(-1),"c");
+  gallery.remove("a");assert.equal(gallery.current,"c");assert.equal(gallery.index,1);
+  gallery.remove("c");assert.equal(gallery.current,"b");assert.equal(gallery.index,0);
+  gallery.remove("b");assert.equal(gallery.current,null);assert.equal(gallery.step(1),null);
+});
+test("gallery restores selected URL after reorder and falls back when it disappears", () => {
+  const {createGallery}=require("../web/photo-touch.js");
+  assert.equal(createGallery(["c","a","b"],"b").index,2);
+  assert.equal(createGallery(["a","c"],"b").current,"a");
+  const gallery=createGallery(["a","b"],"a");gallery.select("b");gallery.select("missing");
+  assert.equal(gallery.current,"b");
+  const copy=gallery.urls;copy.length=0;assert.equal(gallery.urls.length,2);
+});

@@ -35,3 +35,39 @@
   .filters input:not([type="checkbox"]), .filters select { min-height: 44px; font-size: 16px; }
   .filters .color-option { min-height: 44px; }
 }
+
+/* Clear gallery affordances on inventory cards. */
+.listing-media .photo-counter { display:inline-flex; align-items:center; gap:5px; min-height:36px; padding:7px 9px; border:1px solid #ffffff55; pointer-events:auto; cursor:pointer; font-size:12px; z-index:2; }
+.photo-count-number { font-variant-numeric:tabular-nums; white-space:nowrap; }
+.photo-expand-label { font-weight:500; white-space:nowrap; }
+.photo-browse-hint { position:absolute; left:0; right:0; bottom:32px; text-align:center; color:white; font-size:11px; font-weight:600; padding:6px; background:linear-gradient(transparent,#10251dd9); pointer-events:none; }
+.listing-media .photo-credit { max-width:calc(100% - 16px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.photo-viewer:focus-visible,.photo-counter:focus-visible { outline:3px solid var(--gold); outline-offset:-3px; }
+.photo-step[hidden] { display:none; }
+.table-view .photo-counter { display:inline-flex; top:4px; right:4px; left:auto; bottom:auto; min-height:28px; padding:3px 6px; font-size:11px; }
+.table-view .photo-expand-label,.table-view .photo-browse-hint { display:none; }
+@media (hover:hover) {
+  .photo-browse-hint { font-size:0; }
+  .photo-browse-hint::after { content:"Click to view full screen"; font-size:11px; }
+}
+/* A full-screen canvas on phones, tablets, and desktop. */
+body.photo-gallery-open { position:fixed; top:var(--photo-scroll-top); width:100%; overflow:hidden; }
+.photo-dialog[open] { display:flex; flex-direction:column; width:100vw; max-width:100vw; height:100dvh; max-height:100dvh; margin:0; border:0; border-radius:0; overflow:hidden; background:#14221c; color:#fff; }
+.photo-dialog-header { padding:max(10px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left)); border-color:#ffffff25; flex-shrink:0; }
+.photo-dialog-header strong { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.photo-dialog-header button { color:white; background:#ffffff15; border-radius:8px; }
+.photo-dialog .photo-stage { position:relative; display:flex; justify-content:center; align-items:center; flex:1; min-height:0; overflow:hidden; }
+.photo-dialog .photo-stage img { width:100%; height:100%; min-height:0; max-height:100%; object-fit:contain; margin:0; }
+.photo-dialog .photo-stage button { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:64px; z-index:2; border:1px solid #ffffff44; border-radius:8px; background:#14221cbb; color:#fff; }
+.photo-dialog #photo-previous { left:max(10px,env(safe-area-inset-left)); }
+.photo-dialog #photo-next { right:max(10px,env(safe-area-inset-right)); }
+.photo-dialog #photo-hint { color:#c5d4cd; text-align:center; flex-shrink:0; }
+.photo-dialog #photo-thumbnails { flex-shrink:0; padding:8px 16px; }
+.photo-dialog-footer { flex-shrink:0; border-color:#ffffff25; padding:4px max(16px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left)); }
+.photo-dialog-footer a { color:#e2bd77; font-size:12px; }
+.photo-dialog .photo-stage [hidden],.photo-dialog #photo-thumbnails[hidden],.photo-dialog #photo-hint[hidden] { display:none; }
+@media(max-height:480px) {
+  .photo-dialog #photo-thumbnails { display:none; }
+  .photo-dialog #photo-hint { display:none; }
+  .photo-dialog-header { padding-top:4px; padding-bottom:4px; }
+}

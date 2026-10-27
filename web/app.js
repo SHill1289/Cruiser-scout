@@ -218,75 +218,86 @@ function photoCredit(row, url) {
   const entry = CruiserPhotoCoverage.entries(row, inventory).find(entry => entry.url === url);
   return entry?.borrowed ? `Photo from ${entry.source} · same VIN` : `Photo from ${entry?.source || row.source}`;
 }
-function showLargePhoto() {
-  if (!activeGallery) return;
-  const { row, urls, index } = activeGallery;
-  ui.photoLarge.hidden = false;
-  ui.photoError.hidden = true;
-  ui.photoLarge.src = urls[index];
-  ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " " + vehicleName(row);
-  ui.photoCount.textContent = "Photo " + (index + 1) + " of " + urls.length;
-  document.querySelector("#photo-hint").hidden = urls.length < 2;
-  document.querySelectorAll("#photo-thumbnails button").forEach((button, position) => {
-    button.setAttribute("aria-pressed", String(position === index));
-  });
-  ui.photoTitle.textContent = row.year + " " + vehicleName(row) + " · " + (row.seller || row.source);
-  const origin = CruiserPhotoCoverage.entries(row, inventory).find(entry => entry.url === urls[index]);
-  ui.photoSource.href = origin?.listing_url || row.listing_url;
-  ui.photoSource.textContent = photoCredit(row, urls[index]) + " ↗";
-  ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
-}
-function stepLargePhoto(step) {
-  if (!activeGallery) return;
-  activeGallery.index = (activeGallery.index + step + activeGallery.urls.length) % activeGallery.urls.length;
-  showLargePhoto();
-}
-function openGallery(row, urls, index) {
-  if (!urls.length) return;
-  activeGallery = { row, urls, index };
+function renderPhotoThumbnails() {
   const thumbnails = document.querySelector("#photo-thumbnails");
+  const urls = activeGallery?.gallery.urls || [];
   thumbnails.hidden = urls.length < 2;
   thumbnails.replaceChildren(...urls.map((url, position) => {
     const button = text("button", "photo-thumbnail", "");
     button.type = "button";
-    button.setAttribute("aria-label", `Show photo ${position + 1} of ${urls.length}`);
+    button.setAttribute("aria-label", "Show photo " + (position + 1) + " of " + urls.length);
     const preview = document.createElement("img");
-    preview.src = url;
-    preview.alt = "";
-    preview.loading = "lazy";
-    preview.draggable = false;
+    preview.src = url; preview.alt = ""; preview.loading = "lazy"; preview.draggable = false; preview.referrerPolicy = "no-referrer";
     preview.addEventListener("error", () => { preview.hidden = true; });
     button.append(preview, text("span", "", String(position + 1)));
-    button.addEventListener("click", () => {
-      if (!activeGallery) return;
-      activeGallery.index = position;
-      showLargePhoto();
-    });
+    button.addEventListener("click", () => { if (activeGallery) { activeGallery.gallery.select(url); showLargePhoto(); } });
     return button;
   }));
+}
+function showLargePhoto() {
+  if (!activeGallery) return;
+  const {row, gallery, onChange} = activeGallery;
+  const urls = gallery.urls, index = gallery.index;
+  ui.photoLarge.hidden = !urls.length;
+  ui.photoError.hidden = !!urls.length;
+  ui.photoPrevious.hidden = ui.photoNext.hidden = urls.length < 2;
+  document.querySelector("#photo-hint").hidden = urls.length < 2;
+  ui.photoCount.textContent = urls.length ? "Photo " + (index + 1) + " of " + urls.length : "Photos unavailable";
+  ui.photoTitle.textContent = row.year + " " + vehicleName(row) + " · " + (row.seller || row.source);
+  if (!urls.length) {
+    ui.photoLarge.removeAttribute("src");
+    ui.photoSource.href = row.listing_url; ui.photoSource.textContent = "Open original listing ↗";
+    onChange?.(null); return;
+  }
+  ui.photoLarge.src = gallery.current;
+  ui.photoLarge.alt = "Photo " + (index + 1) + " of " + urls.length + " for " + row.year + " " + vehicleName(row);
+  const thumbnails = document.querySelectorAll("#photo-thumbnails button");
+  thumbnails.forEach((button, position) => button.setAttribute("aria-pressed", String(position === index)));
+  if (ui.photoDialog.open) thumbnails[index]?.scrollIntoView({block:"nearest", inline:"nearest", behavior:"instant"});
+  const origin = CruiserPhotoCoverage.entries(row, inventory).find(entry => entry.url === gallery.current);
+  ui.photoSource.href = origin?.listing_url || row.listing_url;
+  ui.photoSource.textContent = photoCredit(row, gallery.current) + " ↗";
+  rememberPhoto(row, gallery.current);
+  onChange?.(gallery.current);
+}
+function stepLargePhoto(step) {
+  if (activeGallery) { activeGallery.gallery.step(step); showLargePhoto(); }
+}
+let photoScrollY = 0;
+function openGallery(row, urls, index, onChange) {
+  const available = urls.filter(url => !unavailablePhotos.has(url));
+  if (!available.length) return;
+  activeGallery = {row, gallery:CruiserPhotos.createGallery(available, urls[index]), onChange};
+  renderPhotoThumbnails();
   showLargePhoto();
-  ui.photoDialog.showModal();
+  if (!ui.photoDialog.open) {
+    photoScrollY = window.scrollY;
+    document.body.style.setProperty("--photo-scroll-top", "-" + photoScrollY + "px");
+    document.body.classList.add("photo-gallery-open");
+    ui.photoDialog.showModal();
+    document.querySelector("#photo-close").focus({preventScroll:true});
+  }
 }
 CruiserPhotos.bindSwipe(document.querySelector(".photo-stage"), stepLargePhoto);
 ui.photoPrevious.addEventListener("click", () => stepLargePhoto(-1));
 ui.photoNext.addEventListener("click", () => stepLargePhoto(1));
 document.querySelector("#photo-close").addEventListener("click", () => ui.photoDialog.close());
-ui.photoDialog.addEventListener("close", () => { activeGallery = null; });
-ui.photoDialog.addEventListener("click", event => { if (event.target === ui.photoDialog) ui.photoDialog.close(); });
+ui.photoDialog.addEventListener("close", () => {
+  activeGallery = null;
+  document.body.classList.remove("photo-gallery-open");
+  document.body.style.removeProperty("--photo-scroll-top");
+  window.scrollTo({top:photoScrollY, behavior:"instant"});
+});
 ui.photoDialog.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-    event.preventDefault();
-    stepLargePhoto(event.key === "ArrowLeft" ? -1 : 1);
+    event.preventDefault(); stepLargePhoto(event.key === "ArrowLeft" ? -1 : 1);
   }
 });
 ui.photoLarge.addEventListener("error", () => {
-  if (activeGallery) {
-    const { row, urls, index } = activeGallery;
-    unavailablePhotos.add(urls[index]);
-    const remaining = urls.filter(url => !unavailablePhotos.has(url));
-    if (remaining.length) { openGallery(row, remaining, Math.min(index, remaining.length - 1)); return; }
-  }
-  ui.photoLarge.hidden = true; ui.photoError.hidden = false;
+  if (!activeGallery) return;
+  unavailablePhotos.add(activeGallery.gallery.current);
+  activeGallery.gallery.remove(activeGallery.gallery.current);
+  renderPhotoThumbnails(); showLargePhoto();
 });
 function makeMetric(main, label) {
   const node = text("div", "metric", "");
@@ -567,74 +578,7 @@ function renderCard(row, group) {
   const card = document.createElement("article");
   card.className = "listing";
   card.id = "vehicle-" + String(group.vehicleKey).replace(/[^a-zA-Z0-9_-]/g, "-");
-  const photos = galleryUrls(row);
-  const media = text("div", photos.length ? "listing-media" : "listing-media photo-missing", "");
-  if (photos.length) {
-    let index = 0;
-    const failed = new Set();
-    const trigger = text("button", "photo-viewer", "");
-    trigger.type = "button";
-    trigger.setAttribute("aria-label", "View photos for " + row.year + " " + vehicleName(row) + " on " + row.source);
-    const photo = document.createElement("img");
-    photo.alt = `${row.year} ${row.exterior_color || ""} ${vehicleName(row)}`.replace(/\s+/g, " ").trim();
-    photo.loading = "lazy";
-    photo.decoding = "async";
-    photo.referrerPolicy = "no-referrer";
-    const counter = text("span", "photo-counter", "");
-    const credit = text("span", "photo-credit", "");
-    media.append(credit);
-    const show = next => {
-      const direction = next < index ? -1 : 1;
-      index = (next + photos.length) % photos.length;
-      for (let attempts = 0; failed.has(index) && attempts < photos.length; attempts++) index = (index + direction + photos.length) % photos.length;
-      photo.dataset.index = String(index);
-      photo.src = photos[index];
-      const available = photos.filter((_, position) => !failed.has(position));
-      counter.textContent = `Photo ${available.indexOf(photos[index]) + 1} of ${available.length}`;
-      credit.textContent = photoCredit(row, photos[index]);
-    };
-    photo.addEventListener("error", () => {
-      unavailablePhotos.add(photos[Number(photo.dataset.index)]);
-      failed.add(Number(photo.dataset.index));
-      const next = photos.findIndex((_, position) => !failed.has(position));
-      if (next >= 0) show(next);
-      else {
-        trigger.remove();
-        media.classList.add("photo-missing");
-        media.prepend(text("span", "photo-placeholder", row.model || "LX470"));
-        counter.remove();
-        credit.textContent = "Photos unavailable";
-        media.querySelectorAll(".photo-step").forEach(button => button.remove());
-      }
-    });
-    trigger.addEventListener("click", () => {
-      const available = photos.filter((_, position) => !failed.has(position));
-      openGallery(row, available, Math.max(0, available.indexOf(photos[index])));
-    });
-    trigger.append(photo);
-    photo.draggable = false;
-    if (photos.length > 1) CruiserPhotos.bindSwipe(trigger, direction => show(index + direction));
-    media.append(trigger);
-    if (photos.length > 1) {
-      const step = (direction, label) => {
-        const button = text("button", "photo-step photo-" + label, direction < 0 ? "‹" : "›");
-        button.type = "button";
-        button.setAttribute("aria-label", (direction < 0 ? "Previous" : "Next") + " photo for " + row.year + " " + vehicleName(row));
-        button.addEventListener("click", () => show(index + direction));
-        media.append(button);
-      };
-      step(-1, "previous");
-      step(1, "next");
-
-    }
-    media.append(counter);
-    show(0);
-  } else {
-    media.append(text("span", "photo-placeholder", row.model || "LX470"));
-    media.append(text("span", "photo-credit", "Photos unavailable"));
-  }
-  media.append(text("span", "year-badge", String(row.year)));
-  card.append(media);
+  card.append(makePhotoMedia(row));
 
   const identity = text("div", "identity", "");
   const stateRow = text("div", "listing-state-row", "");
