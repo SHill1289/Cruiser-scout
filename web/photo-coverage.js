@@ -13,7 +13,9 @@
       .sort((a, b) => Number(a.url.startsWith("https://retail.photos.vin/")) - Number(b.url.startsWith("https://retail.photos.vin/")))
       .filter(entry => { if (seen.has(entry.url)) return false; seen.add(entry.url); return true; });
     const unrestricted = candidates.filter(entry => !entry.url.startsWith("https://retail.photos.vin/"));
-    return (unrestricted.length ? unrestricted : candidates).slice(0, 16);
+    // Keep a collected gallery even when another source supplies the cover image.
+    const gallery = candidates.filter(entry => entry.url.startsWith("https://retail.photos.vin/"));
+    return (unrestricted.length && gallery.length < 2 ? unrestricted : candidates).slice(0, 16);
   }
   const api = { entries };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

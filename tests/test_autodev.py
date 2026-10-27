@@ -5,7 +5,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from autodev import Client, collect, parse_listing
+from autodev import Client, collect, parse_listing, enrich_photos
 from finder import normalize, clean_title_candidate, inventory_candidate, deal_rating, expire_unrefreshed_observations
 
 NOW = '2026-10-23T20:00:00+00:00'
@@ -119,6 +119,32 @@ class AutoDevTests(unittest.TestCase):
                 client.assert_called_once_with('test-key')
                 saved = save.call_args.args[1]['listings']
                 self.assertEqual(next(iter(saved.values()))['title_status'], 'unknown')
+
+    @patch('autodev.time.sleep')
+    def test_gallery_uses_spare_budget_and_retries_only_after_cooldown(self, _):
+        row = parse_listing(self.item, 'LX470')
+        class Photos:
+            def get(self, url):
+                return {'data': {'retail': ['https://retail.photos.vin/a.jpg',
+                    'https://retail.photos.vin/b.jpg', 'https://evil.example/a.jpg']}}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 898, 'calls_today': 27}}
+        self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 1)
+        self.assertEqual(len(row['photo_urls']), 2)
+        self.assertEqual(state['autodev_usage']['calls'], 899)
+        self.assertEqual(state['autodev_usage']['calls_today'], 28)
+        self.assertEqual(enrich_photos(Photos(), state, [parse_listing(self.item, 'LX470')], NOW), 0)
+
+    @patch('autodev.time.sleep')
+    def test_removed_photo_sets_and_monthly_budget_are_respected(self, _):
+        class Photos:
+            def get(self, url):
+                return {'removedAt': '2026-01-01', 'data': {'retail': ['https://retail.photos.vin/a.jpg']}}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 899, 'calls_today': 10}}
+        row = parse_listing(self.item, 'LX470')
+        self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 0)
+        self.assertNotIn('photo_urls', row)
+        self.assertEqual(state['autodev_usage']['calls'], 900)
+        self.assertEqual(enrich_photos(Photos(), state, [row], NOW), 0)
 
     def test_failed_response_does_not_claim_success(self):
         class Bad:

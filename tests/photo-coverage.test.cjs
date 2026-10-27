@@ -15,3 +15,8 @@ test('deduplicate, accept cached photos, reject unsafe URLs and do not mutate re
  const other={...donor,photo_urls:[donor.photo_url,'javascript:alert(1)','photos/12345678901234567890.jpg']};
  const before=JSON.stringify(other);const result=entries(row,[other]);assert.equal(result.length,2);assert.equal(JSON.stringify(other),before);
 });
+
+test('a same-VIN cover does not discard an Auto.dev gallery',()=>{
+ const result=entries({...row,photo_urls:[row.photo_url,'https://retail.photos.vin/b.jpg']},[donor]);
+ assert.equal(result.length,3);assert.equal(result[0].url,donor.photo_url);
+});

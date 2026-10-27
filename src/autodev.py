@@ -59,7 +59,7 @@ class Client:
 
     def get(self, url):
         p = urllib.parse.urlsplit(url)
-        if p.scheme != 'https' or p.netloc != 'api.auto.dev' or p.path != '/listings':
+        if p.scheme != 'https' or p.netloc != 'api.auto.dev' or not (p.path == '/listings' or re.fullmatch(r'/photos/[A-HJ-NPR-Z0-9]{17}', p.path)):
             raise ValueError('Unexpected API pagination destination')
         request = urllib.request.Request(url, headers={'Authorization': 'Bearer ' + self.api_key, 'Accept': 'application/json'})
         # Do not forward the credential to a redirected host.
@@ -88,7 +88,7 @@ def collect(client, state, now):
         usage.update(month=now[:7], calls=0)
     if usage.get('day') == now[:10]:
         return [], {'status': usage.get('status', 'warning'), 'detail': 'Daily API collection already attempted. ' + usage.get('detail', ''), 'checked_at': usage.get('checked_at', now)}
-    usage.update(day=now[:10], checked_at=now)
+    usage.update(day=now[:10], checked_at=now, calls_today=0)
     rows, errors, calls, skipped = [], [], 0, 0
     for model, make, model_names, years in QUERIES:
         url = BASE + '?' + urllib.parse.urlencode({'vehicle.make': make, 'vehicle.model': model_names,
@@ -104,6 +104,7 @@ def collect(client, state, now):
             seen.add(url)
             calls += 1
             usage['calls'] += 1
+            usage['calls_today'] += 1
             try:
                 payload = client.get(url)
                 if not isinstance(payload.get('data'), list):
@@ -128,3 +129,49 @@ def collect(client, state, now):
         detail += ' ' + '; '.join(dict.fromkeys(errors))
     usage.update(status='partial' if errors else 'warning' if skipped else 'ok', detail=detail)
     return rows, {'status': usage['status'], 'detail': detail, 'checked_at': now}
+
+
+def enrich_photos(client, state, rows, now):
+    """Use spare daily inventory budget for VIN galleries; retry misses after 30 days."""
+    usage = state.setdefault('autodev_usage', {})
+    if usage.get('month') != now[:7] or usage.get('day') != now[:10]:
+        return 0
+    # Older state did not track daily calls separately. Recover its recorded count.
+    match = re.search(r'(\d+) API calls today', usage.get('detail', ''))
+    today = usage.setdefault('calls_today', int(match[1]) if match else 28)
+    attempts = state.setdefault('autodev_photo_attempts', {})
+    candidates = {r['vin']: r for r in state.get('listings', {}).values()
+                  if r.get('source') == 'autodev' and r.get('status') == 'active'}
+    candidates.update({r['vin']: r for r in rows})
+    enriched = 0
+    from datetime import datetime, timedelta
+    cutoff = (datetime.fromisoformat(now) - timedelta(days=30)).isoformat()
+    for vin, row in sorted(candidates.items(), key=lambda pair: attempts.get(pair[0], '')):
+        if usage['calls_today'] >= 28 or usage.get('calls', 0) >= 900:
+            break
+        if len(row.get('photo_urls') or []) > 1 or attempts.get(vin, '') > cutoff:
+            continue
+        if not re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin):
+            continue
+        attempts[vin] = now
+        usage['calls'] += 1
+        usage['calls_today'] += 1
+        try:
+            payload = client.get('https://api.auto.dev/photos/' + vin)
+            if payload.get('removedAt'):
+                continue
+            photos = (payload.get('data') or {}).get('retail') or []
+            photos = list(dict.fromkeys(url for url in photos if isinstance(url, str)
+                and urllib.parse.urlsplit(url).scheme == 'https'
+                and urllib.parse.urlsplit(url).hostname in {'retail.photos.vin', 'api.auto.dev'}
+                and not urllib.parse.urlsplit(url).query))[:8]
+            if len(photos) > 1:
+                row['photo_urls'] = photos
+                row['photo_url'] = photos[0]
+                enriched += 1
+        except Exception as error:
+            # Provider-wide failures should not consume the remaining free budget.
+            if 'HTTP 404' not in str(error):
+                break
+        time.sleep(0.25)
+    return enriched

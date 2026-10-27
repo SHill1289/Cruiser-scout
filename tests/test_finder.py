@@ -260,6 +260,17 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(row['ahc_status'], 'Working per listing')
         self.assertEqual(row['navigation_status'], '')
 
+    def test_existing_cover_does_not_skip_browser_gallery(self):
+        class Fetcher:
+            def get(self, url): return '<html></html>'
+        class Browser:
+            def gallery(self, url): return ['https://static.cargurus.com/images/forsale/a.jpg',
+                                            'https://static.cargurus.com/images/forsale/b.jpg']
+        row = {**self.row, 'source': 'cargurus', 'source_listing_id': '1',
+               'photo_url': 'https://static.cargurus.com/images/forsale/a.jpg', 'photo_urls': []}
+        self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
+        self.assertEqual(len(row['photo_urls']), 2)
+
     def test_truecar_gallery_photos_are_served_locally(self):
         base = 'https://listings-prod.tcimg.net/listings/123/45/JTJHT00W074027827/'
         rows = [{'source': 'truecar', 'source_listing_id': 'JTJHT00W074027827',

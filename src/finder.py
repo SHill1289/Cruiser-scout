@@ -321,10 +321,14 @@ class BrowserPhotoFetcher:
         self.descriptions = {}
         self.errors = {}
         self.last = 0
+        self.remaining = 12
 
     def gallery(self, url):
         if url in self.galleries:
             return self.galleries[url]
+        if self.remaining <= 0:
+            return []
+        self.remaining -= 1
         self.galleries[url] = []
         try:
             from selenium import webdriver
@@ -980,6 +984,12 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
             row["photo_urls"] = photos
             row["photo_url"] = photos[0]
             return ""
+    if row.get("source") == "cargurus" and browser_fetcher is not None:
+        photos = browser_fetcher.gallery(url)
+        if len(photos) > 1:
+            row["photo_urls"] = photos
+            row["photo_url"] = photos[0]
+            return ""
     if row.get("photo_url"):
         row["photo_urls"] = [row["photo_url"]]
         return ""
@@ -998,14 +1008,22 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
 def backfill_listing_photos(state, fetcher, browser_fetcher=None):
     """Fetch photos for existing public rows, including completed auctions."""
     errors = []
-    for row in state.get("listings", {}).values():
+    attempts = state.setdefault("photo_gallery_attempts", {})
+    now = utcnow()
+    cutoff = (datetime.fromisoformat(now) - timedelta(days=7)).isoformat()
+    for row in sorted(state.get("listings", {}).values(), key=lambda r: attempts.get(listing_detail_url(r), "")):
         if (row.get("source") not in {"cargurus", "truecar", "bringatrailer"}
                 or row.get("status") not in {"active", "sold", "ended"}
                 or not clean_title_candidate(row)):
             continue
         if len(row.get("photo_urls") or []) > 1 or (row.get("source") == "bringatrailer" and row.get("photo_url")):
             continue
+        url = listing_detail_url(row)
+        if row.get("source") == "cargurus":
+            if attempts.get(url, "") > cutoff or (browser_fetcher is not None and browser_fetcher.remaining <= 0):
+                continue
         error = add_listing_photo(row, fetcher, browser_fetcher)
+        attempts[url] = now
         if error:
             errors.append(f'{row.get("listing_key", "listing")}: {error}')
     return errors
@@ -1671,12 +1689,15 @@ def run(root=ROOT, live=True):
                     health.append({"source": source["id"], "status": "ok" if complete else "partial",
                                    "detail": f"{len(batch)} clean-title listings parsed of {total}; nationwide. {len(batch)-len(photo_errors)} galleries or lead photos found. {'Search recovered on retry. ' if search_retries and complete else 'Search incomplete after retry. ' if not complete else ''}Owner and accident counts are source-reported from Experian AutoCheck."})
                 elif source["type"] == "autodev":
-                    from autodev import Client, collect
+                    from autodev import Client, collect, enrich_photos
                     key = os.environ.get("AUTODEV_API_KEY", "")
                     if not key:
                         health.append({"source": source["id"], "status": "setup_required", "detail": "Auto.dev API key is not configured; no automatic coverage yet."})
                         continue
-                    batch, result = collect(Client(key), state, now)
+                    client = Client(key)
+                    batch, result = collect(client, state, now)
+                    enriched = enrich_photos(client, state, batch, now)
+                    result["detail"] += f" {enriched} vehicle galleries added using spare free-tier requests."
                     for row in batch:
                         try:
                             rows.append(normalize(row))
