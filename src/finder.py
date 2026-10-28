@@ -336,6 +336,7 @@ class BrowserPhotoFetcher:
             from selenium.webdriver.support.ui import WebDriverWait
             if self.driver is None:
                 options = webdriver.ChromeOptions()
+                options.page_load_strategy = "eager"
                 for argument in ("--headless=new", "--no-sandbox", "--disable-dev-shm-usage",
                                  "--disable-gpu", "--window-size=1280,900"):
                     options.add_argument(argument)
@@ -349,8 +350,17 @@ class BrowserPhotoFetcher:
                 self.driver = webdriver.Chrome(service=service, options=options)
                 self.driver.set_page_load_timeout(30)
             time.sleep(max(0, 2 - (time.monotonic() - self.last)))
-            self.driver.get(url)
+            try:
+                self.driver.get(url)
+            except Exception as navigation_error:
+                # Third-party resources may stall navigation after the gallery is ready.
+                if type(navigation_error).__name__ != "TimeoutException":
+                    raise
             self.last = time.monotonic()
+            actual = urllib.parse.urlsplit(self.driver.current_url)
+            expected = urllib.parse.urlsplit(url)
+            if (actual.hostname, actual.path.rstrip("/")) != (expected.hostname, expected.path.rstrip("/")):
+                raise ValueError("Photo page redirected away from the requested listing")
             gallery_script = """
                 const pick = image => [image.getAttribute('src'), image.currentSrc, image.getAttribute('data-src')]
                     .find(url => url && url.startsWith('https://')) || '';
@@ -358,8 +368,7 @@ class BrowserPhotoFetcher:
                     const main = document.querySelector('#PreviewGalleryMainImage img');
                     const lead = main && pick(main);
                     if (!lead) return null;
-                    const directory = lead.slice(0, lead.lastIndexOf('/') + 1);
-                    const images = [...document.images].map(pick).filter(url => url.startsWith(directory));
+                    const images = [...document.querySelectorAll('[role="tab"][aria-controls="PreviewGalleryMainImage"] img')].map(pick);
                     return [lead, ...images];
                 }
                 if (location.hostname.endsWith('truecar.com')) {
@@ -370,7 +379,7 @@ class BrowserPhotoFetcher:
                 }
                 return null;
             """
-            raw = WebDriverWait(self.driver, 10).until(lambda driver: driver.execute_script(gallery_script))
+            raw = WebDriverWait(self.driver, 20).until(lambda driver: driver.execute_script(gallery_script))
             if urllib.parse.urlsplit(url).hostname == "www.cargurus.com":
                 description_script = """
                     const section = document.querySelector('[data-testid="dealer-section"]');
@@ -400,7 +409,13 @@ class BrowserPhotoFetcher:
                     """) or ""
                 except Exception:
                     pass
-            self.errors[url] = f"{type(error).__name__}: {error}".replace("\n", " ")[:500]
+            title = ""
+            if self.driver is not None:
+                try:
+                    title = self.driver.title[:120]
+                except Exception:
+                    pass
+            self.errors[url] = (f"{type(error).__name__}: {error}; page title: {title}").replace("\n", " ")[:500]
         return self.galleries[url]
 
     def photo(self, url):
@@ -1017,7 +1032,7 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
 def backfill_listing_photos(state, fetcher, browser_fetcher=None):
     """Fetch photos for existing public rows, including completed auctions."""
     errors = []
-    attempts = state.setdefault("photo_gallery_attempts", {})
+    attempts = state.setdefault("photo_gallery_attempts_v2", {})
     now = utcnow()
     cutoff = (datetime.fromisoformat(now) - timedelta(days=7)).isoformat()
     for row in sorted(state.get("listings", {}).values(), key=lambda r: attempts.get(listing_detail_url(r), "")):
