@@ -151,8 +151,11 @@ def enrich_photos(client, state, rows, now, priority_request=None):
     # Migrate the original timestamp-only queue without discarding its history.
     for vin, record in list(attempts.items()):
         if isinstance(record, str):
-            attempts[vin] = {'checked_at': record, 'attempts': 1, 'status': 'legacy',
-                             'retry_at': (datetime.fromisoformat(record) + timedelta(days=7)).isoformat()}
+            record = {'checked_at': record, 'attempts': 1, 'status': 'legacy'}
+            attempts[vin] = record
+        if record.get('status') in {'unavailable', 'legacy'} and record.get('checked_at'):
+            retry_at = (datetime.fromisoformat(record['checked_at']) + timedelta(hours=24)).isoformat()
+            record['retry_at'] = min(record.get('retry_at') or retry_at, retry_at)
     groups = {}
     for row in [*state.get('listings', {}).values(), *rows]:
         vin = row.get('vin', '')
@@ -201,7 +204,7 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             break
         count = record.get('attempts', 0) + 1
         record = {'checked_at': now, 'attempts': count, 'status': 'unavailable',
-                  'retry_at': (date + timedelta(days=min(30, 7 * 2 ** min(count - 1, 3)))).isoformat()}
+                  'retry_at': (date + timedelta(hours=24)).isoformat()}
         attempts[vin] = record
         usage['calls'] += 1
         usage['photo_calls_today'] += 1
@@ -214,7 +217,8 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             if not isinstance(payload, dict) or not isinstance(payload.get('data'), dict):
                 raise ValueError('Invalid photo response')
             if payload.get('removedAt'):
-                record['status'] = 'source_removed'
+                record.update(status='source_removed',
+                              retry_at=(date + timedelta(days=min(30, 7 * 2 ** min(count - 1, 3)))).isoformat())
                 continue
             photos = payload['data'].get('retail') or []
             if not isinstance(photos, list):

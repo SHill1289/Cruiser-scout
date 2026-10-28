@@ -190,7 +190,7 @@ class AutoDevTests(unittest.TestCase):
         self.assertEqual(state['autodev_usage']['calls'], 11)
 
     @patch('autodev.time.sleep')
-    def test_empty_gallery_retries_after_a_week_and_legacy_queue_migrates(self, _):
+    def test_empty_gallery_retries_after_24_hours_and_legacy_queue_migrates(self, _):
         row = parse_listing(self.item, 'LX470')
         state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10},
                  'autodev_photo_attempts': {row['vin']: '2026-10-01T20:00:00+00:00'}}
@@ -200,7 +200,7 @@ class AutoDevTests(unittest.TestCase):
         record = state['autodev_photo_attempts'][row['vin']]
         self.assertEqual(record['attempts'], 2)
         self.assertEqual(record['status'], 'unavailable')
-        self.assertTrue(record['retry_at'].startswith('2026-11-06'))
+        self.assertTrue(record['retry_at'].startswith('2026-10-24'))
         self.assertEqual(state['autodev_photo_progress']['ready'], 0)
 
     @patch('autodev.time.sleep')
@@ -290,6 +290,21 @@ class AutoDevTests(unittest.TestCase):
         request['id'] = 'another-request'
         enrich_photos(client, state, [row], NOW, request)
         self.assertEqual(client.calls, 1)
+
+    @patch('autodev.time.sleep')
+    def test_existing_missing_gallery_deadline_moves_forward_without_resetting_clock(self, _):
+        row = parse_listing(self.item, 'LX470')
+        record = {'status': 'unavailable', 'attempts': 3, 'checked_at': NOW,
+                  'retry_at': '2026-11-06T20:00:00+00:00'}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10},
+                 'autodev_photo_attempts': {row['vin']: record}}
+        class Never:
+            def get(self, url): raise AssertionError('Not eligible yet')
+        enrich_photos(Never(), state, [row], NOW)
+        self.assertEqual(record['retry_at'], '2026-10-24T20:00:00+00:00')
+        enrich_photos(Never(), state, [row], '2026-10-23T23:00:00+00:00')
+        self.assertEqual(record['retry_at'], '2026-10-24T20:00:00+00:00')
+        self.assertEqual(state['autodev_usage']['calls'], 10)
 
     def test_failed_response_does_not_claim_success(self):
         class Bad:
