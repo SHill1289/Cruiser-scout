@@ -131,7 +131,7 @@ def collect(client, state, now):
     return rows, {'status': usage['status'], 'detail': detail, 'checked_at': now}
 
 
-def enrich_photos(client, state, rows, now):
+def enrich_photos(client, state, rows, now, priority_request=None):
     """Persist a fair retry queue without spending the inventory request reserve."""
     import calendar
     from datetime import datetime, timedelta
@@ -140,7 +140,13 @@ def enrich_photos(client, state, rows, now):
         return 0
     date = datetime.fromisoformat(now)
     if usage.get('photo_day') != now[:10]:
-        usage.update(photo_day=now[:10], photo_calls_today=0)
+        usage.update(photo_day=now[:10], photo_calls_today=0, priority_photo_calls_today=0)
+    request = priority_request or {}
+    request_id = str(request.get('id') or '')[:100]
+    requested = {vin for vin in request.get('vins', [])[:50]
+                 if isinstance(vin, str) and re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin)} if request_id else set()
+    processed = state.setdefault('photo_priority_requests', {}).setdefault(request_id, []) if request_id else []
+    requested -= set(processed)
     attempts = state.setdefault('autodev_photo_attempts', {})
     # Migrate the original timestamp-only queue without discarding its history.
     for vin, record in list(attempts.items()):
@@ -178,15 +184,16 @@ def enrich_photos(client, state, rows, now):
         counts = [len(r.get('photo_urls') or ([r['photo_url']] if r.get('photo_url') else []))
                   for r in groups[vin] if r.get('source') == 'cargurus']
         tier = 0 if 0 in counts else 1 if 1 in counts else 2
-        return tier, attempts.get(vin, {}).get('checked_at', ''), vin
+        return vin not in requested, tier, attempts.get(vin, {}).get('checked_at', ''), vin
     for vin, row in sorted(candidates.items(), key=priority):
         record = attempts.get(vin, {})
-        if len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now:
+        urgent = vin in requested
+        if not urgent and (len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now):
             continue
         if state.get('autodev_photo_pause_until', '') > now:
             stop_reason = 'Provider retry pause'
             break
-        if calls >= 50 or usage['photo_calls_today'] >= 100:
+        if calls >= 50 or (not urgent and usage['photo_calls_today'] - usage.get('priority_photo_calls_today', 0) >= 100):
             stop_reason = 'Batch or daily photo allowance reached'
             break
         if usage.get('calls', 0) >= 900 - reserve:
@@ -198,6 +205,9 @@ def enrich_photos(client, state, rows, now):
         attempts[vin] = record
         usage['calls'] += 1
         usage['photo_calls_today'] += 1
+        if urgent:
+            processed.append(vin)
+            usage['priority_photo_calls_today'] = usage.get('priority_photo_calls_today', 0) + 1
         calls += 1
         try:
             payload = client.get('https://api.auto.dev/photos/' + vin)
@@ -232,6 +242,7 @@ def enrich_photos(client, state, rows, now):
         'checked_at': now, 'complete': len(candidates) - len(pending), 'pending': len(pending),
         'waiting_retry': waiting, 'ready': len(pending) - waiting, 'added': enriched,
         'calls_this_run': calls, 'calls_today': usage['photo_calls_today'],
+        'priority_calls_today': usage.get('priority_photo_calls_today', 0),
         'calls_this_month': usage.get('calls', 0), 'reason': stop_reason,
         'next_retry_at': min(retry_dates) if retry_dates else ''}
     return enriched

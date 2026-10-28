@@ -1727,14 +1727,16 @@ def run(root=ROOT, live=True):
                         continue
                     client = Client(key)
                     batch, result = collect(client, state, now)
-                    enriched = enrich_photos(client, state, [*rows, *batch], now)
+                    priority_path = root / "sources/photo_backfill_request.json"
+                    priority_request = json.loads(priority_path.read_text(encoding="utf-8")) if priority_path.exists() else None
+                    enriched = enrich_photos(client, state, [*rows, *batch], now, priority_request)
                     result["detail"] += f" {enriched} vehicle galleries added using spare free-tier requests."
                     progress = state.get("autodev_photo_progress", {})
                     if progress:
                         detail = (f"{progress['complete']} active vehicles have galleries; "
                                   f"{progress['ready']} queued, {progress['waiting_retry']} awaiting retry. "
                                   f"{enriched} added this refresh. "
-                                  f"{progress['calls_today']}/100 photo requests today; "
+                                  f"{progress['calls_today']} photo requests today ({progress.get('priority_calls_today', 0)} owner-priority); "
                                   f"{progress['calls_this_month']}/900 total requests this month. "
                                   + progress['reason'])
                         if progress['next_retry_at']:

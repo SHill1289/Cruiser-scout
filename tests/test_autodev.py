@@ -267,6 +267,30 @@ class AutoDevTests(unittest.TestCase):
         enrich_photos(client, state, rows, NOW)
         self.assertEqual(client.seen, [rows[2]['vin'], rows[1]['vin'], rows[0]['vin']])
 
+    @patch('autodev.time.sleep')
+    def test_owner_priority_is_once_only_and_keeps_monthly_reserve(self, _):
+        row = parse_listing(self.item, 'LX470')
+        request = {'id': 'test-owner-request', 'vins': [row['vin']]}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 100,
+                                  'photo_day': NOW[:10], 'photo_calls_today': 100},
+                 'autodev_photo_attempts': {row['vin']: {'retry_at': '2026-11-01T00:00:00+00:00'}}}
+        class Empty:
+            calls = 0
+            def get(self, url):
+                self.calls += 1
+                return {'data': {'retail': []}}
+        client = Empty()
+        enrich_photos(client, state, [row], NOW, request)
+        enrich_photos(client, state, [row], NOW, request)
+        self.assertEqual(client.calls, 1)
+        self.assertEqual(state['autodev_usage']['calls'], 101)
+        self.assertEqual(state['autodev_usage']['photo_calls_today'], 101)
+        self.assertEqual(state['autodev_usage']['priority_photo_calls_today'], 1)
+        state['autodev_usage']['calls'] = 676
+        request['id'] = 'another-request'
+        enrich_photos(client, state, [row], NOW, request)
+        self.assertEqual(client.calls, 1)
+
     def test_failed_response_does_not_claim_success(self):
         class Bad:
             def get(self, url): return {'error': 'unavailable'}
