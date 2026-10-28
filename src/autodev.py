@@ -147,17 +147,29 @@ def enrich_photos(client, state, rows, now):
         if isinstance(record, str):
             attempts[vin] = {'checked_at': record, 'attempts': 1, 'status': 'legacy',
                              'retry_at': (datetime.fromisoformat(record) + timedelta(days=7)).isoformat()}
-    candidates = {r['vin']: r for r in state.get('listings', {}).values()
-                  if r.get('source') == 'autodev' and r.get('status') == 'active'}
-    for row in rows:
-        old = candidates.get(row['vin'], {})
-        # Daily search responses contain only a cover. Keep the previously fetched gallery.
-        if len(old.get('photo_urls') or []) > len(row.get('photo_urls') or []):
-            row['photo_urls'] = list(old['photo_urls'])
-            row['photo_url'] = old.get('photo_url') or old['photo_urls'][0]
-        candidates[row['vin']] = row
-    candidates = {vin: row for vin, row in candidates.items()
-                  if re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin)}
+    groups = {}
+    for row in [*state.get('listings', {}).values(), *rows]:
+        vin = row.get('vin', '')
+        if (row.get('source') not in {'autodev', 'cargurus'} or row.get('status') != 'active'
+                or 'vin_model_or_year_conflict' in (row.get('quality_flags') or '')
+                or not re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin)):
+            continue
+        groups.setdefault(vin, []).append(row)
+    # Conflicting identity evidence must never transfer photographs to another vehicle.
+    groups = {vin: group for vin, group in groups.items()
+              if len({(r.get('year'), r.get('model')) for r in group}) == 1}
+    def assign(group, photos, source, source_url):
+        for target in group:
+            if len(target.get('photo_urls') or []) < len(photos):
+                target.update(photo_urls=list(photos), photo_url=photos[0],
+                              photo_source=source, photo_source_url=source_url)
+    candidates = {}
+    for vin, group in groups.items():
+        donor = max(group, key=lambda r: len(r.get('photo_urls') or []))
+        if len(donor.get('photo_urls') or []) > 1:
+            assign(group, donor['photo_urls'], donor.get('photo_source') or donor['source'],
+                   donor.get('photo_source_url') or donor.get('listing_url', ''))
+        candidates[vin] = donor
     reserve = 28 * (calendar.monthrange(date.year, date.month)[1] - date.day)
     enriched = calls = 0
     stop_reason = ''
@@ -196,8 +208,7 @@ def enrich_photos(client, state, rows, now):
                 and urllib.parse.urlsplit(url).hostname in {'retail.photos.vin', 'api.auto.dev'}
                 and not urllib.parse.urlsplit(url).query))[:8]
             if len(photos) > 1:
-                row['photo_urls'] = photos
-                row['photo_url'] = photos[0]
+                assign(groups[vin], photos, 'autodev', 'https://docs.auto.dev/v2/products/vehicle-photos')
                 record.update(status='complete', retry_at=(date + timedelta(days=30)).isoformat())
                 enriched += 1
         except Exception as error:

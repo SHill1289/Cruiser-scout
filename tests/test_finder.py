@@ -271,6 +271,17 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(add_listing_photo(row, Fetcher(), Browser()), '')
         self.assertEqual(len(row['photo_urls']), 2)
 
+    def test_provider_photos_on_cargurus_rows_are_cached(self):
+        import tempfile, io
+        rows = [{'source': 'cargurus', 'photo_source': 'autodev',
+                 'photo_urls': ['https://api.auto.dev/photos/retail/VIN-1.jpg',
+                                'https://api.auto.dev/photos/retail/VIN-2.jpg']}]
+        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1]) as directory:
+            cache_public_photos(Path(directory), rows, lambda request, timeout: io.BytesIO(b'\xff\xd8\xfftest'))
+        self.assertEqual(len(rows[0]['photo_urls']), 2)
+        self.assertTrue(all(url.startswith('photos/') for url in rows[0]['photo_urls']))
+        self.assertEqual(rows[0]['photo_source'], 'autodev')
+
     def test_autodev_gallery_is_cached_without_credentials(self):
         import tempfile, io
         rows = [{'source': 'autodev', 'photo_url': 'https://api.auto.dev/photos/retail/VIN-1.jpg',

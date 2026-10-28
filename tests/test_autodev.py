@@ -203,6 +203,46 @@ class AutoDevTests(unittest.TestCase):
         self.assertTrue(record['retry_at'].startswith('2026-11-06'))
         self.assertEqual(state['autodev_photo_progress']['ready'], 0)
 
+    @patch('autodev.time.sleep')
+    def test_cargurus_only_vin_gets_provider_gallery_with_attribution(self, _):
+        row = {**parse_listing(self.item, 'LX470'), 'source': 'cargurus'}
+        class Photos:
+            count = 0
+            def get(self, url):
+                self.count += 1
+                return {'data': {'retail': ['https://api.auto.dev/photos/retail/a.jpg',
+                                             'https://api.auto.dev/photos/retail/b.jpg']}}
+        client = Photos()
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10},
+                 'listings': {'cargurus:1': row}}
+        fresh = dict(row)
+        self.assertEqual(enrich_photos(client, state, [fresh], NOW), 1)
+        self.assertEqual(client.count, 1)
+        for item in (row, fresh):
+            self.assertEqual(item['photo_source'], 'autodev')
+            self.assertEqual(len(item['photo_urls']), 2)
+            self.assertEqual(item['source'], 'cargurus')
+        self.assertEqual(enrich_photos(client, state, [dict(fresh)], NOW), 0)
+        self.assertEqual(client.count, 1)
+
+    @patch('autodev.time.sleep')
+    def test_existing_vin_gallery_is_reused_without_calls_and_conflicts_are_excluded(self, _):
+        donor = parse_listing(self.item, 'LX470')
+        donor['photo_urls'] = ['https://api.auto.dev/photos/retail/a.jpg', 'https://api.auto.dev/photos/retail/b.jpg']
+        target = {**parse_listing(self.item, 'LX470'), 'source': 'cargurus'}
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10},
+                 'listings': {'autodev:1': donor, 'cargurus:1': target}}
+        class Never:
+            def get(self, url): raise AssertionError('No request expected')
+        enrich_photos(Never(), state, [], NOW)
+        self.assertEqual(target['photo_source'], 'autodev')
+        self.assertEqual(target['photo_urls'], donor['photo_urls'])
+        target.pop('photo_urls')
+        target['year'] = 2007
+        enrich_photos(Never(), state, [], NOW)
+        self.assertNotIn('photo_urls', target)
+        self.assertEqual(state['autodev_usage']['calls'], 10)
+
     def test_failed_response_does_not_claim_success(self):
         class Bad:
             def get(self, url): return {'error': 'unavailable'}

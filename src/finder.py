@@ -29,7 +29,7 @@ KSL_UA = "Mozilla/5.0 (compatible; CruiserScout/1.0; +https://github.com/SHill12
 FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source", "source_listing_id",
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
-          "seller", "seller_type", "photo_url", "photo_urls", "exterior_color", "interior_color", "title_status",
+          "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url", "exterior_color", "interior_color", "title_status",
           "reported_extras",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
@@ -1327,6 +1327,9 @@ def update(state, rows, now, scopes=()):
             row["photo_url"] = previous["photo_url"]
         if previous and len(previous.get("photo_urls") or []) > len(row.get("photo_urls") or []):
             row["photo_urls"] = previous["photo_urls"]
+            row["photo_url"] = previous.get("photo_url") or previous["photo_urls"][0]
+            row["photo_source"] = previous.get("photo_source", "")
+            row["photo_source_url"] = previous.get("photo_source_url", "")
         if previous and previous.get("listing_url") == row["listing_url"]:
             for topic in CONDITION_TOPICS:
                 if not row.get(f"{topic}_evidence") and previous.get(f"{topic}_evidence"):
@@ -1513,7 +1516,7 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
     folder = root / "web/photos"
     folder.mkdir(parents=True, exist_ok=True)
     for row in rows:
-        if row.get("source") not in {"truecar", "autodev"}:
+        if (row.get("photo_source") or row.get("source")) not in {"truecar", "autodev"}:
             continue
         urls = [row.get("photo_url", ""), *(row.get("photo_urls") or [])]
         saved, seen_paths = [], set()
@@ -1521,7 +1524,7 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
             parts = urllib.parse.urlsplit(url)
             if (parts.scheme != "https" or parts.hostname not in {"listings-prod.tcimg.net", "api.auto.dev", "retail.photos.vin"}
                     or (parts.hostname == "api.auto.dev" and not parts.path.startswith("/photos/retail/"))
-                    or (row.get("source") == "autodev" and len(row.get("photo_urls") or []) < 2)
+                    or ((row.get("photo_source") or row.get("source")) == "autodev" and len(row.get("photo_urls") or []) < 2)
                     or not parts.path.endswith(".jpg") or parts.path in seen_paths):
                 continue
             seen_paths.add(parts.path)
@@ -1606,7 +1609,7 @@ def save(root, state, health, changes, cache_photos=False):
         "listing_key", "vehicle_key", "vin", "year", "make", "model", "source", "listing_url", "status", "category",
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
-        "seller", "seller_type", "photo_url", "photo_urls",
+        "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url",
         "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
@@ -1687,7 +1690,9 @@ def run(root=ROOT, live=True):
     now, rows, scopes, health = utcnow(), [], [], []
     config = json.loads((root / "sources/config.json").read_text(encoding="utf-8"))
     fetcher = Fetcher()
-    photo_browser = BrowserPhotoFetcher() if live else None
+    # GitHub cannot load CarGurus detail galleries reliably. Use the VIN photo
+    # provider below; keep HTTP galleries for sources that support them.
+    photo_browser = None
     photo_backfill_errors = backfill_listing_photos(state, fetcher, photo_browser) if live else []
     if live:
         for source in config["sources"]:
@@ -1722,11 +1727,11 @@ def run(root=ROOT, live=True):
                         continue
                     client = Client(key)
                     batch, result = collect(client, state, now)
-                    enriched = enrich_photos(client, state, batch, now)
+                    enriched = enrich_photos(client, state, [*rows, *batch], now)
                     result["detail"] += f" {enriched} vehicle galleries added using spare free-tier requests."
                     progress = state.get("autodev_photo_progress", {})
                     if progress:
-                        detail = (f"{progress['complete']} active Auto.dev vehicles have galleries; "
+                        detail = (f"{progress['complete']} active vehicles have galleries; "
                                   f"{progress['ready']} queued, {progress['waiting_retry']} awaiting retry. "
                                   f"{enriched} added this refresh. "
                                   f"{progress['calls_today']}/100 photo requests today; "

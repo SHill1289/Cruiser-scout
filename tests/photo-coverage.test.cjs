@@ -20,3 +20,9 @@ test('a same-VIN cover does not discard an Auto.dev gallery',()=>{
  const result=entries({...row,photo_urls:[row.photo_url,'https://retail.photos.vin/b.jpg']},[donor]);
  assert.equal(result.length,3);assert.equal(result[0].url,donor.photo_url);
 });
+
+test('provider gallery on a CarGurus row keeps its provider credit and link',()=>{
+ const result=entries({...donor,photo_source:'autodev',photo_source_url:'https://docs.auto.dev/v2/products/vehicle-photos',photo_url:'photos/12345678901234567890.jpg'});
+ assert.equal(result[0].source,'autodev');assert.equal(result[0].borrowed,true);
+ assert.equal(result[0].listing_url,'https://docs.auto.dev/v2/products/vehicle-photos');
+});
