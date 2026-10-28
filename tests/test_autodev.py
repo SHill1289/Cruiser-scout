@@ -167,6 +167,42 @@ class AutoDevTests(unittest.TestCase):
         enrich_photos(client, state, rows, NOW)
         self.assertEqual(client.count, 100)
 
+    @patch('autodev.time.sleep')
+    def test_retry_queue_preserves_success_and_tracks_transient_failures(self, _):
+        row = parse_listing(self.item, 'LX470')
+        row['photo_urls'] = ['https://api.auto.dev/photos/retail/a.jpg', 'https://api.auto.dev/photos/retail/b.jpg']
+        state = {'listings': {'autodev:test': row}, 'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10}}
+        class Fails:
+            def get(self, url): raise ValueError('Auto.dev HTTP 503; collection stopped')
+        fresh = parse_listing(self.item, 'LX470')
+        self.assertEqual(enrich_photos(Fails(), state, [fresh], NOW), 0)
+        self.assertEqual(fresh['photo_urls'], row['photo_urls'])
+        self.assertEqual(state['autodev_usage']['calls'], 10)
+        self.assertEqual(state['autodev_photo_progress']['complete'], 1)
+        state['listings'] = {}
+        fresh = parse_listing(self.item, 'LX470')
+        enrich_photos(Fails(), state, [fresh], NOW)
+        record = state['autodev_photo_attempts'][fresh['vin']]
+        self.assertEqual(record['status'], 'temporary_error')
+        self.assertTrue(record['retry_at'].startswith('2026-10-24'))
+        self.assertEqual(state['autodev_photo_progress']['waiting_retry'], 1)
+        enrich_photos(Fails(), state, [fresh], NOW)
+        self.assertEqual(state['autodev_usage']['calls'], 11)
+
+    @patch('autodev.time.sleep')
+    def test_empty_gallery_retries_after_a_week_and_legacy_queue_migrates(self, _):
+        row = parse_listing(self.item, 'LX470')
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10},
+                 'autodev_photo_attempts': {row['vin']: '2026-10-01T20:00:00+00:00'}}
+        class Empty:
+            def get(self, url): return {'data': {'retail': []}}
+        enrich_photos(Empty(), state, [row], NOW)
+        record = state['autodev_photo_attempts'][row['vin']]
+        self.assertEqual(record['attempts'], 2)
+        self.assertEqual(record['status'], 'unavailable')
+        self.assertTrue(record['retry_at'].startswith('2026-11-06'))
+        self.assertEqual(state['autodev_photo_progress']['ready'], 0)
+
     def test_failed_response_does_not_claim_success(self):
         class Bad:
             def get(self, url): return {'error': 'unavailable'}

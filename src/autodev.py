@@ -132,42 +132,65 @@ def collect(client, state, now):
 
 
 def enrich_photos(client, state, rows, now):
-    """Backfill 50 galleries/run, 100/day, reserving future inventory calls below 900/month."""
+    """Persist a fair retry queue without spending the inventory request reserve."""
+    import calendar
+    from datetime import datetime, timedelta
     usage = state.setdefault('autodev_usage', {})
     if usage.get('month') != now[:7] or usage.get('day') != now[:10]:
         return 0
-    # Older state did not track daily calls separately. Recover its recorded count.
-    match = re.search(r'(\d+) API calls today', usage.get('detail', ''))
-    usage.setdefault('calls_today', int(match[1]) if match else 28)
+    date = datetime.fromisoformat(now)
     if usage.get('photo_day') != now[:10]:
         usage.update(photo_day=now[:10], photo_calls_today=0)
     attempts = state.setdefault('autodev_photo_attempts', {})
+    # Migrate the original timestamp-only queue without discarding its history.
+    for vin, record in list(attempts.items()):
+        if isinstance(record, str):
+            attempts[vin] = {'checked_at': record, 'attempts': 1, 'status': 'legacy',
+                             'retry_at': (datetime.fromisoformat(record) + timedelta(days=7)).isoformat()}
     candidates = {r['vin']: r for r in state.get('listings', {}).values()
                   if r.get('source') == 'autodev' and r.get('status') == 'active'}
-    candidates.update({r['vin']: r for r in rows})
-    enriched = 0
-    calls = 0
-    import calendar
-    from datetime import datetime, timedelta
-    date = datetime.fromisoformat(now)
+    for row in rows:
+        old = candidates.get(row['vin'], {})
+        # Daily search responses contain only a cover. Keep the previously fetched gallery.
+        if len(old.get('photo_urls') or []) > len(row.get('photo_urls') or []):
+            row['photo_urls'] = list(old['photo_urls'])
+            row['photo_url'] = old.get('photo_url') or old['photo_urls'][0]
+        candidates[row['vin']] = row
+    candidates = {vin: row for vin, row in candidates.items()
+                  if re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin)}
     reserve = 28 * (calendar.monthrange(date.year, date.month)[1] - date.day)
-    cutoff = (datetime.fromisoformat(now) - timedelta(days=30)).isoformat()
-    for vin, row in sorted(candidates.items(), key=lambda pair: attempts.get(pair[0], '')):
-        if calls >= 50 or usage['photo_calls_today'] >= 100 or usage.get('calls', 0) >= 900 - reserve:
+    enriched = calls = 0
+    stop_reason = ''
+    for vin, row in sorted(candidates.items(), key=lambda pair: attempts.get(pair[0], {}).get('checked_at', '')):
+        record = attempts.get(vin, {})
+        if len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now:
+            continue
+        if state.get('autodev_photo_pause_until', '') > now:
+            stop_reason = 'Provider retry pause'
             break
-        if len(row.get('photo_urls') or []) > 1 or attempts.get(vin, '') > cutoff:
-            continue
-        if not re.fullmatch(r'[A-HJ-NPR-Z0-9]{17}', vin):
-            continue
-        attempts[vin] = now
+        if calls >= 50 or usage['photo_calls_today'] >= 100:
+            stop_reason = 'Batch or daily photo allowance reached'
+            break
+        if usage.get('calls', 0) >= 900 - reserve:
+            stop_reason = 'Remaining free requests reserved for inventory'
+            break
+        count = record.get('attempts', 0) + 1
+        record = {'checked_at': now, 'attempts': count, 'status': 'unavailable',
+                  'retry_at': (date + timedelta(days=min(30, 7 * 2 ** min(count - 1, 3)))).isoformat()}
+        attempts[vin] = record
         usage['calls'] += 1
         usage['photo_calls_today'] += 1
         calls += 1
         try:
             payload = client.get('https://api.auto.dev/photos/' + vin)
+            if not isinstance(payload, dict) or not isinstance(payload.get('data'), dict):
+                raise ValueError('Invalid photo response')
             if payload.get('removedAt'):
+                record['status'] = 'source_removed'
                 continue
-            photos = (payload.get('data') or {}).get('retail') or []
+            photos = payload['data'].get('retail') or []
+            if not isinstance(photos, list):
+                raise ValueError('Invalid photo array')
             photos = list(dict.fromkeys(url for url in photos if isinstance(url, str)
                 and urllib.parse.urlsplit(url).scheme == 'https'
                 and urllib.parse.urlsplit(url).hostname in {'retail.photos.vin', 'api.auto.dev'}
@@ -175,10 +198,23 @@ def enrich_photos(client, state, rows, now):
             if len(photos) > 1:
                 row['photo_urls'] = photos
                 row['photo_url'] = photos[0]
+                record.update(status='complete', retry_at=(date + timedelta(days=30)).isoformat())
                 enriched += 1
         except Exception as error:
-            # Provider-wide failures should not consume the remaining free budget.
             if 'HTTP 404' not in str(error):
+                record.update(status='temporary_error',
+                              retry_at=(date + timedelta(days=min(7, 2 ** min(count - 1, 3)))).isoformat())
+                state['autodev_photo_pause_until'] = (date + timedelta(hours=6)).isoformat()
+                stop_reason = 'Provider unavailable; retries scheduled'
                 break
         time.sleep(0.25)
+    pending = [vin for vin, row in candidates.items() if len(row.get('photo_urls') or []) < 2]
+    waiting = sum(attempts.get(vin, {}).get('retry_at', '') > now for vin in pending)
+    retry_dates = [attempts[vin]['retry_at'] for vin in pending if attempts.get(vin, {}).get('retry_at', '') > now]
+    state['autodev_photo_progress'] = {
+        'checked_at': now, 'complete': len(candidates) - len(pending), 'pending': len(pending),
+        'waiting_retry': waiting, 'ready': len(pending) - waiting, 'added': enriched,
+        'calls_this_run': calls, 'calls_today': usage['photo_calls_today'],
+        'calls_this_month': usage.get('calls', 0), 'reason': stop_reason,
+        'next_retry_at': min(retry_dates) if retry_dates else ''}
     return enriched

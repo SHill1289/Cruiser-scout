@@ -1709,6 +1709,18 @@ def run(root=ROOT, live=True):
                     batch, result = collect(client, state, now)
                     enriched = enrich_photos(client, state, batch, now)
                     result["detail"] += f" {enriched} vehicle galleries added using spare free-tier requests."
+                    progress = state.get("autodev_photo_progress", {})
+                    if progress:
+                        detail = (f"{progress['complete']} active Auto.dev vehicles have galleries; "
+                                  f"{progress['ready']} queued, {progress['waiting_retry']} awaiting retry. "
+                                  f"{enriched} added this refresh. "
+                                  f"{progress['calls_today']}/100 photo requests today; "
+                                  f"{progress['calls_this_month']}/900 total requests this month. "
+                                  + progress['reason'])
+                        if progress['next_retry_at']:
+                            detail += " Next unsuccessful-listing retry eligible: " + progress['next_retry_at'] + "."
+                        health.append({"source": "Auto.dev photo backfill", "status": "warning" if "Provider" in progress['reason'] else "ok",
+                                       "detail": detail, "checked_at": now})
                     for row in batch:
                         try:
                             rows.append(normalize(row))
