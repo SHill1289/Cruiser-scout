@@ -173,7 +173,13 @@ def enrich_photos(client, state, rows, now):
     reserve = 28 * (calendar.monthrange(date.year, date.month)[1] - date.day)
     enriched = calls = 0
     stop_reason = ''
-    for vin, row in sorted(candidates.items(), key=lambda pair: attempts.get(pair[0], {}).get('checked_at', '')):
+    def priority(pair):
+        vin, _ = pair
+        counts = [len(r.get('photo_urls') or ([r['photo_url']] if r.get('photo_url') else []))
+                  for r in groups[vin] if r.get('source') == 'cargurus']
+        tier = 0 if 0 in counts else 1 if 1 in counts else 2
+        return tier, attempts.get(vin, {}).get('checked_at', ''), vin
+    for vin, row in sorted(candidates.items(), key=priority):
         record = attempts.get(vin, {})
         if len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now:
             continue

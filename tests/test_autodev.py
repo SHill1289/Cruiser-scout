@@ -243,6 +243,30 @@ class AutoDevTests(unittest.TestCase):
         self.assertNotIn('photo_urls', target)
         self.assertEqual(state['autodev_usage']['calls'], 10)
 
+    @patch('autodev.time.sleep')
+    def test_cargurus_photo_priority_respects_retry_dates_and_budget(self, _):
+        rows = []
+        for vin, source, photos in [('JTJHT00W364008364', 'autodev', []),
+                                    ('JTJHT00W464018725', 'cargurus', ['https://example.com/cover.jpg']),
+                                    ('JTJHT00W664006477', 'cargurus', []),
+                                    ('JTJHT00W964005131', 'cargurus', [])]:
+            rows.append(dict(vin=vin, source=source, status='active', year=2006, model='LX470', photo_urls=photos))
+        class Empty:
+            seen = []
+            def get(self, url):
+                self.seen.append(url.rsplit('/', 1)[1])
+                return {'data': {'retail': []}}
+        client = Empty()
+        state = {'autodev_usage': {'month': NOW[:7], 'day': NOW[:10], 'calls': 10,
+                                  'photo_day': NOW[:10], 'photo_calls_today': 99},
+                 'autodev_photo_attempts': {rows[3]['vin']: {'retry_at': '2026-10-30T00:00:00+00:00'}}}
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.seen, [rows[2]['vin']])
+        self.assertEqual(state['autodev_usage']['photo_calls_today'], 100)
+        state['autodev_usage']['photo_calls_today'] = 98
+        enrich_photos(client, state, rows, NOW)
+        self.assertEqual(client.seen, [rows[2]['vin'], rows[1]['vin'], rows[0]['vin']])
+
     def test_failed_response_does_not_claim_success(self):
         class Bad:
             def get(self, url): return {'error': 'unavailable'}
