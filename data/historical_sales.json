@@ -1,6 +1,26 @@
 [
   {
     "source": "Bring a Trailer",
+    "source_listing_id": "2006-toyota-land-cruiser-114",
+    "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-114/",
+    "year": 2006,
+    "make": "Toyota",
+    "model": "Land Cruiser",
+    "sold_at": "2026-10-28",
+    "sale_price": 30000,
+    "mileage": 170000,
+    "mileage_is_approximate": true,
+    "city": "Portland",
+    "state": "ME",
+    "postal_code": "04102",
+    "exterior_color": "Black",
+    "interior_color": "Ivory Leather",
+    "vin": "JTEHT05J262084620",
+    "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/10/IMG_1670-scaled-copy-2026-10-09-wn1-59513.jpg",
+    "title_status": "unknown"
+  },
+  {
+    "source": "Bring a Trailer",
     "source_listing_id": "2006-lexus-lx470-88",
     "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-88/",
     "year": 2006,
