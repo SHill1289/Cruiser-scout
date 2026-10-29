@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cas",
+    "sellers": [
+      "Cas"
+    ],
+    "pages": {
+      "JTJHT00W664011131": "https://www.chapparoneautosales.com/details/used-2006-lexus-lx-470/130281244"
+    },
+    "indexes": [
+      "https://www.chapparoneautosales.com/"
+    ]
+  },
+  {
+    "id": "adam",
+    "sellers": [
+      "Adam Auto Group"
+    ],
+    "pages": {
+      "JTJHY00W9D4117328": "https://www.adamautogroupinc.com/pre-owned-cars/detail/x/1565914"
+    },
+    "indexes": [
+      "https://www.adamautogroupinc.com/pre-owned-cars/lexus"
+    ]
+  },
+  {
+    "id": "bm",
+    "sellers": [
+      "BM Motors Group"
+    ],
+    "pages": {
+      "JTJHY7AX8E4134008": "https://www.bmmotorsgroup.com/pre-owned-cars/detail/2014-Lexus-LX-570/1609474"
+    },
+    "indexes": [
+      "https://www.bmmotorsgroup.com/pre-owned-cars/Lexus"
+    ]
+  },
+  {
+    "id": "showcase",
+    "sellers": [
+      "Showcase Auto Group"
+    ],
+    "pages": {
+      "JTJHY7AX6B4065086": "https://www.showcaseautogroup.net/Inventory/Details/8f3ca4bb-e4c7-4313-ab13-b25b8fdbbf1a"
+    },
+    "indexes": [
+      "https://www.showcaseautogroup.net/lexus-for-sale"
+    ]
+  },
+  {
+    "id": "autojunction",
+    "sellers": [
+      "Auto Junction Benz & Beemers"
+    ],
+    "pages": {
+      "JTJHY7AX4G4205871": "https://www.autojunction.us/used-cars-LEXUS-LX-2016-205871-RNPEXAGR"
+    },
+    "indexes": []
+  },
+  {
+    "id": "magnetism",
+    "sellers": [
+      "Magnetism Motors"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.magnetismmotors.com/used-lexus/"
+    ]
+  },
+  {
+    "id": "eskridge",
+    "sellers": [
+      "Eskridge Lexus of Oklahoma City"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.eskridgelexus.com/llm/inventory/?_paymentType=our_price&type=pre-owned"
+    ]
+  },
+  {
+    "id": "southbay",
+    "sellers": [
+      "South Bay Lexus"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.southbaylexus.com/"
+    ]
+  },
+  {
+    "id": "younker",
+    "sellers": [
+      "Younker Mitsubishi",
+      "Younker Nissan"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.younkernissan.com/"
+    ]
+  },
+  {
+    "id": "bishop",
+    "sellers": [
+      "Bishop Maserati/Alfa Romeo of Hurst",
+      "Bishop Maserati Alfa Romeo of Hurst"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.bishopmaserati.com/used-vehicles/"
+    ]
+  },
+  {
+    "id": "motorvation",
+    "sellers": [
+      "Motorvation Trucks"
+    ],
+    "pages": {},
+    "indexes": [
+      "https://www.motorvationtrucks.com/shop-all"
+    ]
+  }
+]

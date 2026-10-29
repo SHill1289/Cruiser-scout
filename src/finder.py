@@ -1516,16 +1516,16 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
     folder = root / "web/photos"
     folder.mkdir(parents=True, exist_ok=True)
     for row in rows:
-        if (row.get("photo_source") or row.get("source")) not in {"truecar", "autodev"}:
+        if (row.get("photo_source") or row.get("source")) not in {"truecar", "autodev", "dealer"} and row.get("photo_source") != "cargurus":
             continue
         urls = [row.get("photo_url", ""), *(row.get("photo_urls") or [])]
         saved, seen_paths = [], set()
         for url in urls:
             parts = urllib.parse.urlsplit(url)
-            if (parts.scheme != "https" or parts.hostname not in {"listings-prod.tcimg.net", "api.auto.dev", "retail.photos.vin"}
+            if (parts.scheme != "https" or parts.hostname not in {"listings-prod.tcimg.net", "api.auto.dev", "retail.photos.vin", "images.dealersync.com", "cdn05.carsforsale.com", "cdn.ebizautos.media", "cdn-img.vincue.net", "cdn.gma.to", "vehicle-images.carscommerce.inc", "static.cargurus.com"}
                     or (parts.hostname == "api.auto.dev" and not parts.path.startswith("/photos/retail/"))
                     or ((row.get("photo_source") or row.get("source")) == "autodev" and len(row.get("photo_urls") or []) < 2)
-                    or not parts.path.endswith(".jpg") or parts.path in seen_paths):
+                    or not parts.path.lower().endswith((".jpg", ".jpeg", ".webp", ".png")) or parts.path in seen_paths):
                 continue
             seen_paths.add(parts.path)
             stem = hashlib.sha256(parts.path.encode()).hexdigest()[:20]
@@ -1817,6 +1817,9 @@ def run(root=ROOT, live=True):
             health.append({"source": "listing photos", "status": "warning", "detail": f"{len(photo_backfill_errors)} existing listing photos were unavailable; placeholders remain. First error: {photo_backfill_errors[0]}", "checked_at": now})
     elif (root / "data/source_health.json").exists():
         health = json.loads((root / "data/source_health.json").read_text(encoding="utf-8"))
+    if live:
+        from dealer_photos import enrich as enrich_dealer_photos
+        health.append(enrich_dealer_photos(root, state, now, cache_public_photos))
     save(root, state, health, changes, cache_photos=live)
     print(json.dumps({"vehicles": len(master_rows(state)), "listings": len(state["listings"]), "changes": len(changes), "sources": health}, indent=2))
     return 1 if any(h["status"] in {"error", "partial"} for h in health) else 0
