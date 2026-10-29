@@ -101,5 +101,26 @@
     "listing_keys": [
       "cargurus:462839470"
     ]
+  },
+  {
+    "vin": "JTJHY7AX8D4101265",
+    "year": 2013,
+    "model": "LX570",
+    "seller": "Motorvation Trucks",
+    "source": "cargurus",
+    "source_url": "https://www.cargurus.com/details/462733551",
+    "checked_at": "2026-10-29",
+    "photos": [
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958336-IFBJF-olid389626-overlaymodetopbottom--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958336_e81170.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958346-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958346_002480.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958466-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958466_69730f.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958326-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958326_e07bf0.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958386-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958386_61254a.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958476-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958476_ca7515.jpg",
+      "https://cdn-img.vincue.net/image/opt-remotessl-dealerid200245-photoid2108958376-IFBJF--IFBJF-ltid2/img.vincue.com/dealersiteimg/200245/InventoryId/400718641/2108958376_245ad4.jpg"
+    ],
+    "listing_keys": [
+      "cargurus:462733551"
+    ]
   }
 ]
