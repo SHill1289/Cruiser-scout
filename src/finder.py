@@ -22,6 +22,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from statistics import median
 from bat_archive import archive_results as bat_archive_results, location as bat_location
+from bat_photos import gallery_urls as bat_gallery_urls
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -1001,8 +1002,9 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
             row.update(condition_claims([description]))
     if len(row.get("photo_urls") or []) > 1:
         return ""
-    if page and row.get("source") in {"cargurus", "truecar"}:
-        photos = gallery_urls_in_page(page, row["source"], row.get("photo_url", ""), row.get("vin", ""))
+    if page and row.get("source") in {"cargurus", "truecar", "bringatrailer"}:
+        photos = (bat_gallery_urls(page) if row["source"] == "bringatrailer" else
+                  gallery_urls_in_page(page, row["source"], row.get("photo_url", ""), row.get("vin", "")))
         print("Listing HTML gallery:", row["source"], row["source_listing_id"], len(photos))
         if len(photos) > 1:
             row["photo_urls"] = photos
@@ -1035,18 +1037,27 @@ def backfill_listing_photos(state, fetcher, browser_fetcher=None):
     attempts = state.setdefault("photo_gallery_attempts_v2", {})
     now = utcnow()
     cutoff = (datetime.fromisoformat(now) - timedelta(days=7)).isoformat()
+    bat_cutoff = (datetime.fromisoformat(now) - timedelta(days=1)).isoformat()
+    bat_remaining = 150
     for row in sorted(state.get("listings", {}).values(), key=lambda r: attempts.get(listing_detail_url(r), "")):
         if (row.get("source") not in {"cargurus", "truecar", "bringatrailer"}
                 or row.get("status") not in {"active", "sold", "ended"}
-                or not clean_title_candidate(row)):
+                or (not clean_title_candidate(row) and not
+                    (row.get("source") == "bringatrailer" and row.get("status") in {"sold", "ended"}))):
             continue
-        if len(row.get("photo_urls") or []) > 1 or (row.get("source") == "bringatrailer" and row.get("photo_url")):
+        if len(row.get("photo_urls") or []) > 1:
             continue
         url = listing_detail_url(row)
+        if row.get("source") == "bringatrailer":
+            if attempts.get(url, "") > bat_cutoff or bat_remaining <= 0:
+                continue
+            bat_remaining -= 1
         if row.get("source") == "cargurus":
             if attempts.get(url, "") > cutoff or (browser_fetcher is not None and browser_fetcher.remaining <= 0):
                 continue
         error = add_listing_photo(row, fetcher, browser_fetcher)
+        if row.get("source") == "bringatrailer" and len(row.get("photo_urls") or []) < 2:
+            error = error or "BaT gallery unavailable; retained cover and will retry after 24 hours"
         attempts[url] = now
         if error:
             errors.append(f'{row.get("listing_key", "listing")}: {error}')
@@ -1113,6 +1124,7 @@ def parse_bat(page, url, now):
            "exterior_color": exterior_item.removesuffix(" Paint"),
            "interior_color": interior_item.removesuffix(" Upholstery"),
            "photo_url": parse_listing_photo(page),
+           "photo_urls": bat_gallery_urls(page),
            "title_status": "clean title" if clean_title else "unknown",
            "accident_history": accidents,
            "owners": "Unknown",
