@@ -1528,21 +1528,29 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
                     or not parts.path.endswith(".jpg") or parts.path in seen_paths):
                 continue
             seen_paths.add(parts.path)
-            filename = hashlib.sha256(parts.path.encode()).hexdigest()[:20] + ".jpg"
-            target = folder / filename
+            stem = hashlib.sha256(parts.path.encode()).hexdigest()[:20]
+            target = next((folder / (stem + ext) for ext in (".jpg", ".webp", ".png")
+                           if (folder / (stem + ext)).exists()), folder / (stem + ".jpg"))
             if not target.exists():
                 image_url = urllib.parse.urlunsplit(parts._replace(query="h=675&w=1200")) if parts.hostname == "listings-prod.tcimg.net" else url
                 request = urllib.request.Request(image_url, headers={"User-Agent": UA, "Accept": "image/jpeg"})
                 try:
                     with opener(request, timeout=20) as response:
                         image = response.read(2_000_001)
-                    if len(image) > 2_000_000 or not image.startswith(b"\xff\xd8\xff"):
+                    # Provider .jpg URLs can return WebP or PNG bytes.
+                    extension = (".jpg" if image.startswith(b"\xff\xd8\xff") else
+                                 ".webp" if image[:4] == b"RIFF" and image[8:12] == b"WEBP" else
+                                 ".png" if image.startswith(b"\x89PNG\r\n\x1a\n") else None)
+                    if len(image) > 2_000_000 or not extension:
+                        print("Photo cache rejected:", row.get("source_listing_id"),
+                              "oversized or unsupported image")
                         continue
+                    target = folder / (stem + extension)
                     target.write_bytes(image)
                 except Exception as error:
                     print("Photo cache unavailable:", row.get("source_listing_id"), type(error).__name__)
                     continue
-            saved.append("photos/" + filename)
+            saved.append("photos/" + target.name)
             if len(saved) == 8:
                 break
         if saved:

@@ -26,3 +26,8 @@ test('provider gallery on a CarGurus row keeps its provider credit and link',()=
  assert.equal(result[0].source,'autodev');assert.equal(result[0].borrowed,true);
  assert.equal(result[0].listing_url,'https://docs.auto.dev/v2/products/vehicle-photos');
 });
+
+test('cached WebP and PNG galleries are usable but arbitrary paths are rejected',()=>{
+ const result=entries({...row,photo_url:'',photo_urls:['photos/12345678901234567890.webp','photos/12345678901234567890.png','photos/12345678901234567890.svg','photos/../secret.png']});
+ assert.equal(result.length,2);
+});

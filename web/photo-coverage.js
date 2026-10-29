@@ -7,7 +7,7 @@
       other.status === "active" && !(other.quality_flags || "").includes("vin_model_or_year_conflict")) : [];
     const seen = new Set();
     const candidates = [row, ...donors].flatMap(record => [record.photo_url, ...(record.photo_urls || [])]
-      .filter(url => typeof url === "string" && (/^https:\/\//.test(url) || /^photos\/[a-f0-9]{20}\.jpg$/.test(url)))
+      .filter(url => typeof url === "string" && (/^https:\/\//.test(url) || /^photos\/[a-f0-9]{20}\.(?:jpg|webp|png)$/.test(url)))
       .map(url => ({ url, source: record.photo_source || record.source, listing_url: record.photo_source_url || record.listing_url,
         borrowed: record.listing_key !== row.listing_key || Boolean(record.photo_source && record.photo_source !== record.source) })))
       .sort((a, b) => Number(a.url.startsWith("https://retail.photos.vin/")) - Number(b.url.startsWith("https://retail.photos.vin/")))

@@ -282,6 +282,27 @@ class DatabaseTests(unittest.TestCase):
         self.assertTrue(all(url.startswith('photos/') for url in rows[0]['photo_urls']))
         self.assertEqual(rows[0]['photo_source'], 'autodev')
 
+    def test_gallery_detects_actual_formats_and_reuses_cached_images(self):
+        import tempfile, io
+        payloads = [b'RIFF' + b'0000' + b'WEBPVP8 ' + b'image',
+                    b'\x89PNG\r\n\x1a\nimage', b'<html>blocked</html>']
+        urls = ['https://api.auto.dev/photos/retail/test-%s.jpg' % n for n in range(3)]
+        def opener(request, timeout):
+            return io.BytesIO(payloads[urls.index(request.full_url)])
+        with temporary_workspace() as root:
+            rows = [{'source': 'cargurus', 'photo_source': 'autodev', 'photo_urls': urls}]
+            cache_public_photos(root, rows, opener)
+            self.assertEqual(len(rows[0]['photo_urls']), 2)
+            self.assertTrue(rows[0]['photo_urls'][0].endswith('.webp'))
+            self.assertTrue(rows[0]['photo_urls'][1].endswith('.png'))
+            for url in rows[0]['photo_urls']:
+                self.assertTrue((root / 'web' / url).exists())
+            second = [{'source': 'autodev', 'photo_urls': urls[:2]}]
+            def never(*args, **kwargs):
+                raise AssertionError('Already downloaded')
+            cache_public_photos(root, second, never)
+            self.assertEqual(second[0]['photo_urls'], rows[0]['photo_urls'])
+
     def test_autodev_gallery_is_cached_without_credentials(self):
         import tempfile, io
         rows = [{'source': 'autodev', 'photo_url': 'https://api.auto.dev/photos/retail/VIN-1.jpg',
