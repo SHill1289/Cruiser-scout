@@ -1,4 +1,5 @@
 """Bounded Auto.dev free-tier collection. Credentials never enter URLs or exports."""
+from photo_selection import select_photos
 import json
 import re
 import time
@@ -223,10 +224,10 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             photos = payload['data'].get('retail') or []
             if not isinstance(photos, list):
                 raise ValueError('Invalid photo array')
-            photos = list(dict.fromkeys(url for url in photos if isinstance(url, str)
+            photos = select_photos(list(dict.fromkeys(url for url in photos if isinstance(url, str)
                 and urllib.parse.urlsplit(url).scheme == 'https'
                 and urllib.parse.urlsplit(url).hostname in {'retail.photos.vin', 'api.auto.dev'}
-                and not urllib.parse.urlsplit(url).query))[:8]
+                and not urllib.parse.urlsplit(url).query)))
             if len(photos) > 1:
                 assign(groups[vin], photos, 'autodev', 'https://docs.auto.dev/v2/products/vehicle-photos')
                 record.update(status='complete', retry_at=(date + timedelta(days=30)).isoformat())

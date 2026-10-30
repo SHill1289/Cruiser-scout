@@ -22,7 +22,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from statistics import median
 from bat_archive import archive_results as bat_archive_results, location as bat_location
-from bat_photos import gallery_urls as bat_gallery_urls
+from bat_photos import gallery_urls as bat_gallery_urls, SELECTION_VERSION as BAT_PHOTO_VERSION
+from photo_selection import select_photos
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -38,7 +39,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source"
           "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
           "service_records_status", "service_records_evidence",
           "modifications_status", "modifications_evidence",
-          "auction_result_at", "bat_details_version", "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
+          "auction_result_at", "bat_details_version", "photo_selection_version", "auction_ends_at", "bid_observed_at", "first_seen", "last_seen", "last_checked", "missing_checks",
           "quality_flags", "notes"]
 MODEL_YEARS = {"LX470": (2006, 2007), "Land Cruiser": (2006, 2007), "LX570": tuple(range(2011, 2017))}
 VIN_PREFIXES = {"LX470": ("JTJHT00W",), "Land Cruiser": ("JTEHT05J",), "LX570": ("JTJHY7AX",)}
@@ -136,9 +137,7 @@ def gallery_image_urls(raw):
             continue
         if photo not in photos:
             photos.append(photo)
-        if len(photos) == 8:
-            break
-    return photos
+    return select_photos(photos)
 
 
 def gallery_urls_in_page(page, source, lead_url="", vin=""):
@@ -610,7 +609,7 @@ def parse_truecar(page, now, model="LX470", page_offset=0, paginated=False):
         location = dealer.get("location", {}).get("geolocation", {}) or {}
         gallery = next((value for key, value in listing.items() if key.startswith("galleryImages(")), {}) or {}
         photos = [item.get("node", {}).get("url", "") for item in gallery.get("edges", [])]
-        photos = [url for url in photos if url.startswith("https://")][:8]
+        photos = select_photos([url for url in photos if url.startswith("https://")])
         photo = next(iter(photos), "")
         accident_count = history.get("accidentCount")
         accidents = ("No reported accidents" if accident_count == 0 else
@@ -1000,7 +999,8 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
         description = browser_fetcher.description(url)
         if description:
             row.update(condition_claims([description]))
-    if len(row.get("photo_urls") or []) > 1:
+    needs_bat_selection = row.get("source") == "bringatrailer" and row.get("photo_selection_version") != BAT_PHOTO_VERSION
+    if len(row.get("photo_urls") or []) > 1 and not needs_bat_selection:
         return ""
     if page and row.get("source") in {"cargurus", "truecar", "bringatrailer"}:
         photos = (bat_gallery_urls(page) if row["source"] == "bringatrailer" else
@@ -1009,7 +1009,11 @@ def add_listing_photo(row, fetcher, browser_fetcher=None):
         if len(photos) > 1:
             row["photo_urls"] = photos
             row["photo_url"] = photos[0]
+            if row["source"] == "bringatrailer":
+                row["photo_selection_version"] = BAT_PHOTO_VERSION
             return ""
+    if needs_bat_selection and len(row.get("photo_urls") or []) > 1:
+        return plain_error or "BaT photo selection unavailable; retained existing gallery"
     if row.get("source") == "cargurus" and browser_fetcher is not None:
         photos = browser_fetcher.gallery(url)
         if len(photos) > 1:
@@ -1045,11 +1049,13 @@ def backfill_listing_photos(state, fetcher, browser_fetcher=None):
                 or (not clean_title_candidate(row) and not
                     (row.get("source") == "bringatrailer" and row.get("status") in {"sold", "ended"}))):
             continue
-        if len(row.get("photo_urls") or []) > 1:
+        needs_bat_selection = row.get("source") == "bringatrailer" and row.get("photo_selection_version") != BAT_PHOTO_VERSION
+        if len(row.get("photo_urls") or []) > 1 and not needs_bat_selection:
             continue
         url = listing_detail_url(row)
+        attempt_key = url + f"#selection-{BAT_PHOTO_VERSION}" if needs_bat_selection else url
         if row.get("source") == "bringatrailer":
-            if attempts.get(url, "") > bat_cutoff or bat_remaining <= 0:
+            if attempts.get(attempt_key, "") > bat_cutoff or bat_remaining <= 0:
                 continue
             bat_remaining -= 1
         if row.get("source") == "cargurus":
@@ -1058,7 +1064,7 @@ def backfill_listing_photos(state, fetcher, browser_fetcher=None):
         error = add_listing_photo(row, fetcher, browser_fetcher)
         if row.get("source") == "bringatrailer" and len(row.get("photo_urls") or []) < 2:
             error = error or "BaT gallery unavailable; retained cover and will retry after 24 hours"
-        attempts[url] = now
+        attempts[attempt_key] = now
         if error:
             errors.append(f'{row.get("listing_key", "listing")}: {error}')
     return errors
@@ -1132,6 +1138,9 @@ def parse_bat(page, url, now):
     row.update(bat_location(page))
     row["auction_result_at"] = bat_sale_date(page) if status == "sold" else ""
     row["bat_details_version"] = 2
+    if len(row["photo_urls"]) > 1:
+        row["photo_url"] = row["photo_urls"][0]
+        row["photo_selection_version"] = BAT_PHOTO_VERSION
     if not row["exterior_color"]:
         color = re.search(r"(?:finished|repainted) in ([^.]+?) (?:over|with|and is)", excerpt_text, re.I)
         if color and len(color[1]) < 100:

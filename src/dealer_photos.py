@@ -1,6 +1,7 @@
 """Free, bounded photo recovery from explicitly configured dealer inventory pages.
 Only exact VIN evidence and vehicle-scoped galleries are accepted.
 """
+from photo_selection import select_photos
 import html
 import json
 import re
@@ -64,7 +65,7 @@ def clean_images(urls, base):
         if key not in seen:
             seen.add(key)
             result.append(url)
-    return result[:8]
+    return select_photos(result)
 
 
 def gallery(page, url, vin):
