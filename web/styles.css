@@ -1751,3 +1751,25 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
  .market-chart-heading label{margin:14px 0}
  .market-legend span{margin-right:8px}
 }
+
+/* Evidence stays readable in cards, the mobile table and the details dialog. */
+.maintenance-highlights { margin: 8px 17px 12px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: #f3f6f2; font-size: 12px; line-height: 1.5; min-width: 0; }
+.maintenance-highlights h4 { margin: 0 0 8px; font-size: 12px; color: var(--text); }
+.maintenance-highlight + .maintenance-highlight { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.maintenance-topic { display: block; font-weight: 700; color: var(--sage); }
+.maintenance-claim { min-width: 0; overflow-wrap: anywhere; }
+.maintenance-claim + .maintenance-claim { margin-top: 12px; }
+.maintenance-claim p { margin: 4px 0; line-height: 1.5; }
+.maintenance-source { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; }
+.maintenance-date { display: block; color: var(--muted); }
+.maintenance-differs { display: block; color: #83501f; }
+.maintenance-note, .maintenance-empty { margin: 6px 0 0; color: var(--muted); }
+.maintenance-more { margin-top: 6px; min-height: 44px; padding: 5px 0; border: 0; background: transparent; color: var(--sage); text-align: left; text-decoration: underline; font: inherit; font-weight: 700; cursor: pointer; }
+.condition-records { font-size: 12px; }
+.condition-disclaimer { font-size: 12px; line-height: 1.5; }
+#research-maintenance { scroll-margin-top: 16px; }
+@media (max-width: 700px) {
+  .maintenance-highlights { margin-left: 0; margin-right: 0; font-size: 13px; }
+  .condition-record { grid-template-columns: 1fr; gap: 3px; padding: 10px 0; }
+  .condition-records { font-size: 13px; }
+}

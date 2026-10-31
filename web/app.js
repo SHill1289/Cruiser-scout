@@ -502,31 +502,69 @@ function reportedExtras(row) {
   return panel;
 }
 
-function conditionRecords(row) {
-  const topics = [
-    ["timing_belt", "Timing belt"], ["ahc", "AHC"], ["rust", "Rust"],
-    ["navigation", "Navigation"], ["service_records", "Service records"],
-    ["modifications", "Modifications"],
-  ];
-  const sourced = topics.filter(([key]) => row[`${key}_status`] && row[`${key}_evidence`]).length;
-  const panel = document.createElement("details");
-  panel.className = "condition-records";
-  panel.append(text("summary", "", `Maintenance & condition · ${sourced} of 6 sourced`));
-  const content = text("div", "condition-records-content", "");
-  for (const [key, label] of topics) {
-    const status = row[`${key}_status`] && row[`${key}_evidence`] ? row[`${key}_status`] : "Unknown";
-    const item = text("div", "condition-record", "");
-    item.append(text("span", "condition-label", label), text("strong", status === "Unknown" ? "condition-unknown" : "", status));
-    if (status !== "Unknown") item.append(text("p", "condition-evidence", row[`${key}_evidence`]));
-    content.append(item);
-  }
-  const source = text("p", "condition-disclaimer", "Statements from the listing, not an inspection. Confirm records and condition with the seller. ");
-  const link = text("a", "", "View source");
-  link.href = row.listing_url;
+function maintenanceClaim(claim) {
+  const item = text("div", "maintenance-claim", "");
+  item.append(text("strong", "", claim.status), text("p", "condition-evidence", claim.evidence));
+  const link = text("a", "maintenance-source", `View evidence on ${claim.source} ↗`);
+  link.href = claim.url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  source.append(link);
-  content.append(source);
+  item.append(link);
+  const date = claim.listedAt || claim.lastSeen;
+  if (date || claim.historical) item.append(text("small", "maintenance-date",
+    [claim.historical ? "Earlier listing" : "", date ? `${claim.listedAt ? "Listed" : "Last seen"} ${formatDay(date)}` : ""].filter(Boolean).join(" · ")));
+  return item;
+}
+
+function maintenanceHighlights(row, group) {
+  const records = CruiserMaintenance.records(row, group.listings);
+  const known = records.filter(record => record.claims.length);
+  const panel = text("section", "maintenance-highlights", "");
+  panel.setAttribute("aria-label", "Maintenance evidence");
+  panel.append(text("h4", "", "Maintenance evidence"));
+  if (!known.length) {
+    panel.append(text("p", "maintenance-empty", "Not mentioned in collected evidence. This does not mean the work was not done."));
+    return panel;
+  }
+  for (const record of known.slice(0, 2)) {
+    const item = text("div", "maintenance-highlight", "");
+    item.append(text("span", "maintenance-topic", record.label));
+    if (record.differs) item.append(text("span", "maintenance-differs", "Reports differ · review all evidence"));
+    item.append(maintenanceClaim(record.claims[0]));
+    if (record.claims.length > 1) item.append(text("small", "", `${record.claims.length - 1} more source report${record.claims.length === 2 ? "" : "s"} in full details`));
+    panel.append(item);
+  }
+  panel.append(text("p", "maintenance-note", "Listing-reported. Confirm dates, mileage and receipts with the seller."));
+  const button = text("button", "maintenance-more", "View all maintenance & condition evidence");
+  button.type = "button";
+  button.addEventListener("click", () => {
+    openResearch(group, row);
+    document.querySelector("#research-maintenance").scrollIntoView({ block: "start" });
+    document.querySelector("#research-maintenance summary").focus();
+  });
+  panel.append(button);
+  return panel;
+}
+
+function conditionRecords(row, group = { listings: [row] }, expanded = false) {
+  const records = CruiserMaintenance.records(row, group.listings);
+  const sourced = records.filter(record => record.claims.length).length;
+  const panel = document.createElement("details");
+  panel.className = "condition-records";
+  panel.open = expanded;
+  panel.append(text("summary", "", `Maintenance & condition · ${sourced} topics with evidence`));
+  const content = text("div", "condition-records-content", "");
+  for (const record of records) {
+    const item = text("div", "condition-record", "");
+    item.append(text("span", "condition-label", record.label));
+    const reports = text("div", "", "");
+    if (record.differs) reports.append(text("strong", "maintenance-differs", "Reports differ — compare the source dates and wording."));
+    if (record.claims.length) reports.append(...record.claims.map(maintenanceClaim));
+    else reports.append(text("span", "condition-unknown", "Not mentioned in collected evidence"));
+    item.append(reports);
+    content.append(item);
+  }
+  content.append(text("p", "condition-disclaimer", "Not mentioned does not mean not done. These are statements from collected listings, not independently verified service records or an inspection. Earlier listings describe the vehicle at that time. Confirm receipts, dates and mileage with the seller."));
   panel.append(content);
   return panel;
 }
@@ -624,6 +662,7 @@ function renderCard(row, group) {
   mileageButton.setAttribute("aria-haspopup", "dialog");
   mileageButton.addEventListener("click", showDetails);
   identity.append(mileageButton);
+  identity.append(maintenanceHighlights(row, group));
   card.addEventListener("click", event => {
     if (!window.matchMedia("(max-width: 700px)").matches) return;
     if (event.target.closest("button, a, input, select, label, details, [role='button']")) return;
@@ -640,7 +679,7 @@ function renderCard(row, group) {
   identity.append(colors);
   const extras = reportedExtras(row);
   if (extras) identity.append(extras);
-  identity.append(conditionRecords(row));
+  identity.append(conditionRecords(row, group));
   card.append(identity);
 
   const price = makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price");
@@ -1256,10 +1295,11 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   }
   body.append(more);
   const condition = text("section", "research-section", "");
-  condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row));
+  condition.id = "research-maintenance";
+  condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row, group, true));
   const extras = reportedExtras(row);
   if (extras) condition.append(extras);
-  body.append(condition);
+  body.insertBefore(condition, layout);
   const history = text("section", "research-section", "");
   history.append(text("h3", "", "Price & auction context"));
   history.append(text("p", "", row.deal_quality && row.deal_median_price
