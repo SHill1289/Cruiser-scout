@@ -9,12 +9,9 @@ on:
     paths:
       - 'src/**'
       - 'scripts/**'
-      - 'tests/**'
       - 'sources/**'
       - 'imports/**'
       - 'overrides/**'
-      - 'web/**'
-      - 'vercel.json'
       - '.github/workflows/**'
   pull_request:
     paths:
