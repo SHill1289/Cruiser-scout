@@ -1579,6 +1579,15 @@ def cache_public_photos(root, rows, opener=urllib.request.urlopen):
             row["photo_urls"] = saved
 
 
+
+def verify_photo_gallery(root, photos):
+    """Only replace a working gallery after every selected image is cached."""
+    trial = {"source": "autodev", "photo_urls": list(photos), "photo_url": photos[0]}
+    cache_public_photos(root, [trial])
+    return (len(trial["photo_urls"]) == len(photos)
+            and all(url.startswith("photos/") for url in trial["photo_urls"]))
+
+
 def load_location_points():
     """Read Census representative points; no live geocoding or map account needed."""
     with zipfile.ZipFile(ROOT / "sources" / "gazetteer" / "places.zip") as archive:
@@ -1758,7 +1767,8 @@ def run(root=ROOT, live=True):
                     batch, result = collect(client, state, now)
                     priority_path = root / "sources/photo_backfill_request.json"
                     priority_request = json.loads(priority_path.read_text(encoding="utf-8")) if priority_path.exists() else None
-                    enriched = enrich_photos(client, state, [*rows, *batch], now, priority_request)
+                    enriched = enrich_photos(client, state, [*rows, *batch], now, priority_request,
+                                             verify_gallery=lambda photos: verify_photo_gallery(root, photos))
                     result["detail"] += f" {enriched} vehicle galleries added using spare free-tier requests."
                     progress = state.get("autodev_photo_progress", {})
                     if progress:
@@ -1772,6 +1782,13 @@ def run(root=ROOT, live=True):
                             detail += " Next unsuccessful-listing retry eligible: " + progress['next_retry_at'] + "."
                         health.append({"source": "Auto.dev photo backfill", "status": "warning" if "Provider" in progress['reason'] else "ok",
                                        "detail": detail, "checked_at": now})
+                    selection = state.get("cargurus_photo_selection_progress", {})
+                    if selection:
+                        health.append({"source": "CarGurus photo selection", "status": "ok",
+                                       "detail": (f"{selection['checked']}/{selection['total']} existing galleries checked; "
+                                                  f"{selection['upgraded']} updated; {selection['source_limited']} retained because the source offered fewer photos; "
+                                                  f"{selection['pending']} queued within spare free-tier requests."),
+                                       "checked_at": now})
                     for row in batch:
                         try:
                             rows.append(normalize(row))

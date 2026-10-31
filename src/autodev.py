@@ -132,7 +132,7 @@ def collect(client, state, now):
     return rows, {'status': usage['status'], 'detail': detail, 'checked_at': now}
 
 
-def enrich_photos(client, state, rows, now, priority_request=None):
+def enrich_photos(client, state, rows, now, priority_request=None, verify_gallery=None):
     """Persist a fair retry queue without spending the inventory request reserve."""
     import calendar
     from datetime import datetime, timedelta
@@ -149,6 +149,7 @@ def enrich_photos(client, state, rows, now, priority_request=None):
     processed = state.setdefault('photo_priority_requests', {}).setdefault(request_id, []) if request_id else []
     requested -= set(processed)
     attempts = state.setdefault('autodev_photo_attempts', {})
+    selections = state.setdefault('cargurus_photo_selection', {})
     # Migrate the original timestamp-only queue without discarding its history.
     for vin, record in list(attempts.items()):
         if isinstance(record, str):
@@ -168,9 +169,10 @@ def enrich_photos(client, state, rows, now, priority_request=None):
     # Conflicting identity evidence must never transfer photographs to another vehicle.
     groups = {vin: group for vin, group in groups.items()
               if len({(r.get('year'), r.get('model')) for r in group}) == 1}
-    def assign(group, photos, source, source_url):
+    def assign(group, photos, source, source_url, replace_equal=False):
         for target in group:
-            if len(target.get('photo_urls') or []) < len(photos):
+            if (len(target.get('photo_urls') or []) < len(photos)
+                    or (replace_equal and len(target.get('photo_urls') or []) == len(photos))):
                 target.update(photo_urls=list(photos), photo_url=photos[0],
                               photo_source=source, photo_source_url=source_url)
     candidates = {}
@@ -180,6 +182,9 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             assign(group, donor['photo_urls'], donor.get('photo_source') or donor['source'],
                    donor.get('photo_source_url') or donor.get('listing_url', ''))
         candidates[vin] = donor
+    selection_candidates = {vin for vin, row in candidates.items()
+                            if verify_gallery is not None and len(row.get('photo_urls') or []) > 1
+                            and any(r.get('source') == 'cargurus' for r in groups[vin])}
     reserve = 28 * (calendar.monthrange(date.year, date.month)[1] - date.day)
     enriched = calls = 0
     stop_reason = ''
@@ -192,7 +197,12 @@ def enrich_photos(client, state, rows, now, priority_request=None):
     for vin, row in sorted(candidates.items(), key=priority):
         record = attempts.get(vin, {})
         urgent = vin in requested
-        if not urgent and (len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now):
+        selection = selections.get(vin, {})
+        upgrading = vin in selection_candidates and selection.get('version') != 1
+        if upgrading:
+            if selection.get('retry_at', '') > now:
+                continue
+        elif not urgent and (len(row.get('photo_urls') or []) > 1 or record.get('retry_at', '') > now):
             continue
         if state.get('autodev_photo_pause_until', '') > now:
             stop_reason = 'Provider retry pause'
@@ -213,6 +223,10 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             processed.append(vin)
             usage['priority_photo_calls_today'] = usage.get('priority_photo_calls_today', 0) + 1
         calls += 1
+        if upgrading:
+            selection = {'checked_at': now, 'status': 'retry_pending',
+                         'retry_at': (date + timedelta(hours=24)).isoformat()}
+            selections[vin] = selection
         try:
             payload = client.get('https://api.auto.dev/photos/' + vin)
             if not isinstance(payload, dict) or not isinstance(payload.get('data'), dict):
@@ -220,16 +234,30 @@ def enrich_photos(client, state, rows, now, priority_request=None):
             if payload.get('removedAt'):
                 record.update(status='source_removed',
                               retry_at=(date + timedelta(days=min(30, 7 * 2 ** min(count - 1, 3)))).isoformat())
+                if upgrading:
+                    selection['retry_at'] = record['retry_at']
                 continue
             photos = payload['data'].get('retail') or []
             if not isinstance(photos, list):
                 raise ValueError('Invalid photo array')
-            photos = select_photos(list(dict.fromkeys(url for url in photos if isinstance(url, str)
+            available = list(dict.fromkeys(url for url in photos if isinstance(url, str)
                 and urllib.parse.urlsplit(url).scheme == 'https'
                 and urllib.parse.urlsplit(url).hostname in {'retail.photos.vin', 'api.auto.dev'}
-                and not urllib.parse.urlsplit(url).query)))
+                and not urllib.parse.urlsplit(url).query))
+            photos = select_photos(available)
+            if upgrading and len(photos) < len(row.get('photo_urls') or []):
+                selection.update(version=1, status='source_limited', available=len(available))
+                continue
             if len(photos) > 1:
-                assign(groups[vin], photos, 'autodev', 'https://docs.auto.dev/v2/products/vehicle-photos')
+                if upgrading and not verify_gallery(photos):
+                    selection['status'] = 'download_unavailable'
+                    continue
+                changed = photos != row.get('photo_urls')
+                assign(groups[vin], photos, 'autodev', 'https://docs.auto.dev/v2/products/vehicle-photos',
+                       replace_equal=upgrading)
+                if upgrading:
+                    selection.update(version=1, status='upgraded' if changed else 'already_selected',
+                                     available=len(available), selected=len(photos))
                 record.update(status='complete', retry_at=(date + timedelta(days=30)).isoformat())
                 enriched += 1
         except Exception as error:
@@ -238,11 +266,19 @@ def enrich_photos(client, state, rows, now, priority_request=None):
                               retry_at=(date + timedelta(days=min(7, 2 ** min(count - 1, 3)))).isoformat())
                 state['autodev_photo_pause_until'] = (date + timedelta(hours=6)).isoformat()
                 stop_reason = 'Provider unavailable; retries scheduled'
+                if upgrading:
+                    selection['retry_at'] = record['retry_at']
                 break
         time.sleep(0.25)
     pending = [vin for vin, row in candidates.items() if len(row.get('photo_urls') or []) < 2]
     waiting = sum(attempts.get(vin, {}).get('retry_at', '') > now for vin in pending)
     retry_dates = [attempts[vin]['retry_at'] for vin in pending if attempts.get(vin, {}).get('retry_at', '') > now]
+    state['cargurus_photo_selection_progress'] = {
+        'checked_at': now, 'total': len(selection_candidates),
+        'checked': sum(selections.get(vin, {}).get('version') == 1 for vin in selection_candidates),
+        'upgraded': sum(selections.get(vin, {}).get('status') == 'upgraded' for vin in selection_candidates),
+        'source_limited': sum(selections.get(vin, {}).get('status') == 'source_limited' for vin in selection_candidates),
+        'pending': sum(selections.get(vin, {}).get('version') != 1 for vin in selection_candidates)}
     state['autodev_photo_progress'] = {
         'checked_at': now, 'complete': len(candidates) - len(pending), 'pending': len(pending),
         'waiting_retry': waiting, 'ready': len(pending) - waiting, 'added': enriched,
