@@ -1,0 +1,59 @@
+name: Publish inventory feed
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'web/inventory.json'
+      - 'web/photos/**'
+      - 'scripts/build_inventory_feed.cjs'
+      - 'tests/inventory-feed.test.cjs'
+      - '.github/workflows/inventory_pages.yml'
+  # GITHUB_TOKEN commits do not start push workflows. Publish after the collector,
+  # including partial runs that successfully saved previously verified inventory.
+  workflow_run:
+    workflows: ['LX470 database refresh']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: inventory-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.event != 'pull_request')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/inventory-feed.test.cjs
+      - run: node scripts/build_inventory_feed.cjs
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: inventory-output
+          retention-days: 1
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy public inventory
+        id: deployment
+        uses: actions/deploy-pages@v4

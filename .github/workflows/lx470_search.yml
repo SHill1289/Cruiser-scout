@@ -13,6 +13,10 @@ on:
       - 'imports/**'
       - 'overrides/**'
       - '.github/workflows/**'
+      - '!scripts/build_inventory_feed.cjs'
+      - '!scripts/build_site.cjs'
+      - '!scripts/ignore_vercel_build.cjs'
+      - '!.github/workflows/inventory_pages.yml'
   pull_request:
     paths:
       - 'src/**'
