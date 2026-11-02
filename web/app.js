@@ -952,7 +952,7 @@ function updateFilterToggle() {
 
 async function load() {
   try {
-    const response = await fetch("inventory.json", { cache: "no-cache" });
+    const response = await fetch(CruiserInventory.url, { cache: "no-cache", credentials: "omit" });
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
     const data = await response.json();
     try {

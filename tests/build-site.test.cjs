@@ -1,30 +1,29 @@
-const test = require("node:test");
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const os = require("node:os");
-const { build, photoReferences } = require("../scripts/build_site.cjs");
-test("published galleries keep every referenced photo and omit unused cache files", () => {
- const root = fs.mkdtempSync(path.join(os.tmpdir(), "scout-build-"));
- const photos = path.join(root, "web", "photos");
- fs.mkdirSync(photos, { recursive: true });
- const used = "photos/" + "a".repeat(20) + ".jpg", unused = "b".repeat(20) + ".jpg";
- fs.writeFileSync(path.join(root, "web", used), "image");
- fs.writeFileSync(path.join(photos, unused), "unused");
- fs.writeFileSync(path.join(root, "web", "index.html"), "site");
- fs.writeFileSync(path.join(root, "web", "inventory.json"), JSON.stringify({listings:[{photo_url:used,photo_urls:[used]}]}));
- const result = build(root);
- assert.equal(result.photos, 1);
- assert.equal(fs.readFileSync(path.join(root,"site-output",used),"utf8"),"image");
- assert.equal(fs.existsSync(path.join(root,"site-output","photos",unused)),false);
- assert.equal(fs.existsSync(path.join(photos,unused)),true);
- assert.equal(fs.readFileSync(path.join(root,"site-output","index.html"),"utf8"),"site");
- fs.unlinkSync(path.join(root,"web",used));
- assert.throws(()=>build(root));
- assert.equal(fs.readFileSync(path.join(root,"site-output","index.html"),"utf8"),"site");
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const os = require('node:os');
+const {build} = require('../scripts/build_site.cjs');
+const {needsBuild,shouldSkip} = require('../scripts/ignore_vercel_build.cjs');
+test('Vercel output contains application files but no inventory or photo library', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(),'scout-app-'));
+  t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+  fs.mkdirSync(path.join(root,'web/photos'),{recursive:true});
+  fs.writeFileSync(path.join(root,'web/photos/photo.jpg'),'image');
+  fs.writeFileSync(path.join(root,'web/inventory.json'),'{}');
+  fs.writeFileSync(path.join(root,'web/index.html'),'site');
+  fs.writeFileSync(path.join(root,'web/zip-centroids.json'),'{}');
+  assert.equal(build(root).files,2);
+  assert.deepEqual(fs.readdirSync(path.join(root,'site-output')).sort(),['index.html','zip-centroids.json']);
+  assert.equal(fs.readFileSync(path.join(root,'web/photos/photo.jpg'),'utf8'),'image');
+  fs.writeFileSync(path.join(root,'web/oversized.bin'),Buffer.alloc(11*1024*1024));
+  assert.throws(()=>build(root),/budget/);
+  assert.equal(fs.readFileSync(path.join(root,'site-output/index.html'),'utf8'),'site');
 });
-test("photo references reject traversal and deduplicate all nested galleries", () => {
- assert.throws(()=>photoReferences("photos/../../private"));
- assert.throws(()=>photoReferences("photos/sub/file.jpg"));
- assert.equal(photoReferences({cover:"https://example.com/a.jpg",nested:[{photo_urls:["photos/"+"f".repeat(20)+".webp"]}]}).size,1);
+test('data-only changes skip builds but mixed application changes and unknown baselines build',()=>{
+  assert.equal(needsBuild(['data/listings.json','web/inventory.json','web/photos/a.jpg','INVENTORY.md']),false);
+  for(const file of ['web/app.js','web/inventory-source.js','api/refresh.js','vercel.json','scripts/build_site.cjs'])
+    assert.equal(needsBuild(['web/inventory.json',file]),true);
+  assert.equal(shouldSkip({VERCEL_GIT_COMMIT_REF:'raptor-finder'}),true);
+  assert.equal(shouldSkip({VERCEL_GIT_COMMIT_REF:'main'}),false);
 });

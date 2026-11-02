@@ -46,7 +46,7 @@
       else if (data.cooldown) status.textContent = "Next manual refresh available after " + new Date(data.nextAllowedAt).toLocaleTimeString() + ".";
       else status.textContent = "Ready. Manual refreshes are limited to once an hour.";
       if (awaiting) {
-        const response = await fetch("/inventory.json", {cache:"no-store"});
+        const response = await fetch(CruiserInventory.url, {cache:"no-store", credentials:"omit"});
         if (!response.ok) throw new Error();
         const latest = await response.json();
         if (!data.active && latest.generated_at && Date.parse(latest.generated_at) > Date.parse(snapshot)) {

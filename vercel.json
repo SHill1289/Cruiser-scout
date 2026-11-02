@@ -21,7 +21,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://static.cargurus.com https://bringatrailer.com https://retail.photos.vin https://api.auto.dev; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://shill1289.github.io https://static.cargurus.com https://bringatrailer.com https://retail.photos.vin https://api.auto.dev; connect-src 'self' https://shill1289.github.io; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
         }
       ]
     },
@@ -35,5 +35,18 @@
       ]
     }
   ],
-  "buildCommand": "node scripts/build_site.cjs"
+  "buildCommand": "node scripts/build_site.cjs",
+  "ignoreCommand": "node scripts/ignore_vercel_build.cjs",
+  "redirects": [
+    {
+      "source": "/inventory.json",
+      "destination": "https://shill1289.github.io/Cruiser-scout/inventory.json",
+      "permanent": false
+    },
+    {
+      "source": "/photos/:path*",
+      "destination": "https://shill1289.github.io/Cruiser-scout/photos/:path*",
+      "permanent": false
+    }
+  ]
 }
