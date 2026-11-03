@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-03T01:02:01+00:00",
+  "generated_at": "2026-11-03T14:23:22+00:00",
   "disclaimer": "Inventory includes screened candidates and Auto.dev listings labeled Title unverified. Verify title and independent history before purchase.",
   "summary": {
-    "vehicles": 277,
-    "visible_vehicles": 392,
-    "active_listings": 466,
-    "retail": 465,
+    "vehicles": 272,
+    "visible_vehicles": 387,
+    "active_listings": 462,
+    "retail": 461,
     "auctions": 1,
     "sold": 104,
     "ended_auctions": 18
@@ -14,192 +14,192 @@
     {
       "source": "cargurus-2006",
       "status": "ok",
-      "detail": "16 parsed of 16; 16 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "15 parsed of 15; 15 photos found; nationwide; all result pages checked.",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-2007",
       "status": "ok",
       "detail": "4 parsed of 4; 4 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "truecar",
       "status": "ok",
       "detail": "3 clean-title listings parsed of 3; nationwide. 3 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "bringatrailer",
       "status": "ok",
-      "detail": "59 supported auctions in the public two-year archive; 1 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "0 supported auctions in the public two-year archive; 1 listing pages updated; 0 pages awaiting backfill. ",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2006",
       "status": "ok",
       "detail": "9 parsed of 9; 9 photos found; nationwide; all result pages checked.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-land-cruiser-2007",
       "status": "warning",
       "detail": "1 parsed of 1; 1 photos found; nationwide; all result pages checked. Supplemental accident-history search unavailable (ValueError); accident history unavailable.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "truecar-land-cruiser",
       "status": "ok",
       "detail": "1 clean-title listings parsed of 1; nationwide. 1 galleries or lead photos found. Owner and accident counts are source-reported from Experian AutoCheck.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "bringatrailer-land-cruiser",
       "status": "ok",
       "detail": "40 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2011",
       "status": "ok",
-      "detail": "29 parsed of 29; 28 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "28 parsed of 28; 28 photos found; nationwide; all result pages checked.",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2012",
       "status": "not_applicable",
       "detail": "The US LX570 skipped model year 2012. CarGurus substitutes other years for a 2012-only search; 2011 and 2013-2016 searches are enabled.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2013",
       "status": "ok",
-      "detail": "45 parsed of 45; 43 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "46 parsed of 46; 45 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2014",
       "status": "ok",
-      "detail": "18 parsed of 18; 17 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "21 parsed of 21; 19 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2015",
       "status": "ok",
-      "detail": "41 parsed of 41; 40 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "40 parsed of 40; 39 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cargurus-lx570-2016",
       "status": "ok",
       "detail": "32 parsed of 32; 30 photos found; nationwide; all result pages checked. First photo error: Disallowed by robots.txt",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "truecar-lx570",
       "status": "manual_only",
       "detail": "GitHub-hosted automated requests returned HTTP 403 during validation. Use the prefilled TrueCar LX570 search link; CarGurus and BaT collect LX570s automatically.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "bringatrailer-lx570",
       "status": "ok",
       "detail": "22 supported auctions in the public two-year archive; 0 listing pages updated; 0 pages awaiting backfill. ",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "ksl-lexus-lx",
       "status": "manual_only",
       "detail": "Live parser found four clean-title candidates, but repeated automated listing requests returned HTTP 403. Four verified observations were imported once; scheduled collection is paused until access is reliable.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "ksl-toyota-land-cruiser",
       "status": "manual_only",
       "detail": "No matching 2006-2007 Land Cruiser listing in the current regional search; automated access was inconsistent during validation.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "bypex",
       "status": "manual_only",
       "detail": "One clean-title LX470 dealer listing was manually verified on 2026-10-14. No validated automatic inventory feed is configured.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "carfax",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "cars.com",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "edmunds",
       "status": "manual_only",
       "detail": "Direct automated request returned HTTP 403 during setup. Import verified observations manually.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "autotrader",
       "status": "manual_only",
       "detail": "Automated validation on 2026-10-23 returned an unavailable/block page, not inventory. Model search links are available in Sources & Coverage; manual imports supported.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "copart",
       "status": "manual_only",
       "detail": "No validated collector yet; manual auction/salvage imports supported.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "iseecars",
       "status": "manual_only",
       "detail": "No validated collector yet; manual imports supported.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "autotempest",
       "status": "manual_only",
       "detail": "Search links available for all three models. Automated imports require written authorization from AutoTempest; no authorized feed configured.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "carsandbids",
       "status": "manual_only",
       "detail": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "Auto.dev photo backfill",
       "status": "ok",
-      "detail": "252 active vehicles have galleries; 7 queued, 15 awaiting retry. 18 added this refresh. 22 photo requests today (0 owner-priority); 144/900 total requests this month. Remaining free requests reserved for inventory Next unsuccessful-listing retry eligible: 2026-11-03T06:15:27+00:00.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "252 active vehicles have galleries; 13 queued, 12 awaiting retry. 0 added this refresh. 22 photo requests today (0 owner-priority); 144/900 total requests this month. Remaining free requests reserved for inventory Next unsuccessful-listing retry eligible: 2026-11-04T01:02:01+00:00.",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "CarGurus photo selection",
       "status": "ok",
-      "detail": "163/191 existing galleries checked; 147 updated; 3 retained because the source offered fewer photos; 28 queued within spare free-tier requests.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "162/191 existing galleries checked; 146 updated; 3 retained because the source offered fewer photos; 29 queued within spare free-tier requests.",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     },
     {
       "source": "autodev",
       "status": "partial",
-      "detail": "77 dealer observations; 6 API calls today, 122/900 monthly budget. Title history requires independent evidence. 8 incomplete or out-of-scope records excluded. TimeoutError 18 vehicle galleries added using spare free-tier requests.",
+      "detail": "Daily API collection already attempted. 77 dealer observations; 6 API calls today, 122/900 monthly budget. Title history requires independent evidence. 8 incomplete or out-of-scope records excluded. TimeoutError 0 vehicle galleries added using spare free-tier requests.",
       "checked_at": "2026-11-03T01:02:01+00:00"
     },
     {
       "source": "dealer photo backfill",
       "status": "ok",
-      "detail": "0 dealer galleries recovered; 0 reviewed galleries restored; 0 vehicles checked. Missing or inaccessible galleries retry after 24 hours.",
-      "checked_at": "2026-11-03T01:02:01+00:00"
+      "detail": "0 dealer galleries recovered; 0 reviewed galleries restored; 3 vehicles checked. Missing or inaccessible galleries retry after 24 hours.",
+      "checked_at": "2026-11-03T14:23:22+00:00"
     }
   ],
   "market_history": {
-    "source": "Bring a Trailer completed auctions",
+    "source": "Collected confirmed sales (historical coverage primarily Bring a Trailer)",
     "window_months": 24,
     "sales": [
       {
@@ -2265,6 +2265,7 @@
     ],
     "results": [
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-gx470-43/",
         "year": 2006,
         "make": "Lexus",
@@ -2278,6 +2279,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx-33-2/",
         "year": 2006,
         "make": "Lexus",
@@ -2291,6 +2293,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-41/",
         "year": 2006,
         "make": "Lexus",
@@ -2304,6 +2307,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-47/",
         "year": 2006,
         "make": "Lexus",
@@ -2317,6 +2321,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-51/",
         "year": 2006,
         "make": "Lexus",
@@ -2330,6 +2335,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-52/",
         "year": 2006,
         "make": "Lexus",
@@ -2343,6 +2349,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-54/",
         "year": 2006,
         "make": "Lexus",
@@ -2356,6 +2363,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-55/",
         "year": 2006,
         "make": "Lexus",
@@ -2369,6 +2377,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-58/",
         "year": 2006,
         "make": "Lexus",
@@ -2382,6 +2391,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-59/",
         "year": 2006,
         "make": "Lexus",
@@ -2395,6 +2405,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-61/",
         "year": 2006,
         "make": "Lexus",
@@ -2408,6 +2419,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-62/",
         "year": 2006,
         "make": "Lexus",
@@ -2421,6 +2433,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-64/",
         "year": 2006,
         "make": "Lexus",
@@ -2434,6 +2447,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-65/",
         "year": 2006,
         "make": "Lexus",
@@ -2447,6 +2461,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-66/",
         "year": 2006,
         "make": "Lexus",
@@ -2460,6 +2475,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-67/",
         "year": 2006,
         "make": "Lexus",
@@ -2473,6 +2489,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-68/",
         "year": 2006,
         "make": "Lexus",
@@ -2486,6 +2503,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-70/",
         "year": 2006,
         "make": "Lexus",
@@ -2499,6 +2517,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-72/",
         "year": 2006,
         "make": "Lexus",
@@ -2512,6 +2531,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-73/",
         "year": 2006,
         "make": "Lexus",
@@ -2525,6 +2545,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-74/",
         "year": 2006,
         "make": "Lexus",
@@ -2538,6 +2559,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-75/",
         "year": 2006,
         "make": "Lexus",
@@ -2551,6 +2573,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-76/",
         "year": 2006,
         "make": "Lexus",
@@ -2564,6 +2587,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-77/",
         "year": 2006,
         "make": "Lexus",
@@ -2577,6 +2601,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-78/",
         "year": 2006,
         "make": "Lexus",
@@ -2590,6 +2615,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-79/",
         "year": 2006,
         "make": "Lexus",
@@ -2603,6 +2629,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-80/",
         "year": 2006,
         "make": "Lexus",
@@ -2616,6 +2643,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-81/",
         "year": 2006,
         "make": "Lexus",
@@ -2629,6 +2657,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-82/",
         "year": 2006,
         "make": "Lexus",
@@ -2642,6 +2671,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-83/",
         "year": 2006,
         "make": "Lexus",
@@ -2655,6 +2685,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-84/",
         "year": 2006,
         "make": "Lexus",
@@ -2668,6 +2699,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-85/",
         "year": 2006,
         "make": "Lexus",
@@ -2681,6 +2713,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-88/",
         "year": 2006,
         "make": "Lexus",
@@ -2694,6 +2727,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-100/",
         "year": 2006,
         "make": "Toyota",
@@ -2707,6 +2741,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-100-2/",
         "year": 2006,
         "make": "Toyota",
@@ -2720,6 +2755,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-101/",
         "year": 2006,
         "make": "Toyota",
@@ -2733,6 +2769,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-102/",
         "year": 2006,
         "make": "Toyota",
@@ -2746,6 +2783,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-103/",
         "year": 2006,
         "make": "Toyota",
@@ -2759,6 +2797,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-104/",
         "year": 2006,
         "make": "Toyota",
@@ -2772,6 +2811,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-105/",
         "year": 2006,
         "make": "Toyota",
@@ -2785,6 +2825,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-107/",
         "year": 2006,
         "make": "Toyota",
@@ -2798,6 +2839,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-108/",
         "year": 2006,
         "make": "Toyota",
@@ -2811,6 +2853,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-109/",
         "year": 2006,
         "make": "Toyota",
@@ -2824,6 +2867,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-111/",
         "year": 2006,
         "make": "Toyota",
@@ -2837,6 +2881,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-112/",
         "year": 2006,
         "make": "Toyota",
@@ -2850,6 +2895,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-114/",
         "year": 2006,
         "make": "Toyota",
@@ -2863,6 +2909,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-63/",
         "year": 2006,
         "make": "Toyota",
@@ -2876,6 +2923,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-82/",
         "year": 2006,
         "make": "Toyota",
@@ -2889,6 +2937,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-83/",
         "year": 2006,
         "make": "Toyota",
@@ -2902,6 +2951,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-84/",
         "year": 2006,
         "make": "Toyota",
@@ -2915,6 +2965,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-85/",
         "year": 2006,
         "make": "Toyota",
@@ -2928,6 +2979,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-86/",
         "year": 2006,
         "make": "Toyota",
@@ -2941,6 +2993,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-87/",
         "year": 2006,
         "make": "Toyota",
@@ -2954,6 +3007,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-88/",
         "year": 2006,
         "make": "Toyota",
@@ -2967,6 +3021,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-92/",
         "year": 2006,
         "make": "Toyota",
@@ -2980,6 +3035,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-93/",
         "year": 2006,
         "make": "Toyota",
@@ -2993,6 +3049,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-95/",
         "year": 2006,
         "make": "Toyota",
@@ -3006,6 +3063,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-97/",
         "year": 2006,
         "make": "Toyota",
@@ -3019,6 +3077,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2006-toyota-land-cruiser-99/",
         "year": 2006,
         "make": "Toyota",
@@ -3032,6 +3091,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-27/",
         "year": 2007,
         "make": "Lexus",
@@ -3045,6 +3105,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-31/",
         "year": 2007,
         "make": "Lexus",
@@ -3058,6 +3119,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-32/",
         "year": 2007,
         "make": "Lexus",
@@ -3071,6 +3133,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-34/",
         "year": 2007,
         "make": "Lexus",
@@ -3084,6 +3147,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-37/",
         "year": 2007,
         "make": "Lexus",
@@ -3097,6 +3161,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-39/",
         "year": 2007,
         "make": "Lexus",
@@ -3110,6 +3175,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-40/",
         "year": 2007,
         "make": "Lexus",
@@ -3123,6 +3189,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-41/",
         "year": 2007,
         "make": "Lexus",
@@ -3136,6 +3203,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-41-2/",
         "year": 2007,
         "make": "Lexus",
@@ -3149,6 +3217,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-42/",
         "year": 2007,
         "make": "Lexus",
@@ -3162,6 +3231,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-43/",
         "year": 2007,
         "make": "Lexus",
@@ -3175,6 +3245,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-44/",
         "year": 2007,
         "make": "Lexus",
@@ -3188,6 +3259,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-45/",
         "year": 2007,
         "make": "Lexus",
@@ -3201,6 +3273,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-46/",
         "year": 2007,
         "make": "Lexus",
@@ -3214,6 +3287,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-47/",
         "year": 2007,
         "make": "Lexus",
@@ -3227,6 +3301,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-48/",
         "year": 2007,
         "make": "Lexus",
@@ -3240,6 +3315,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-49/",
         "year": 2007,
         "make": "Lexus",
@@ -3253,6 +3329,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-50/",
         "year": 2007,
         "make": "Lexus",
@@ -3266,6 +3343,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-51/",
         "year": 2007,
         "make": "Lexus",
@@ -3279,6 +3357,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-52/",
         "year": 2007,
         "make": "Lexus",
@@ -3292,6 +3371,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-53/",
         "year": 2007,
         "make": "Lexus",
@@ -3305,6 +3385,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-54/",
         "year": 2007,
         "make": "Lexus",
@@ -3318,6 +3399,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-55/",
         "year": 2007,
         "make": "Lexus",
@@ -3331,6 +3413,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-56/",
         "year": 2007,
         "make": "Lexus",
@@ -3344,6 +3427,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-57/",
         "year": 2007,
         "make": "Lexus",
@@ -3357,6 +3441,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-58/",
         "year": 2007,
         "make": "Lexus",
@@ -3370,6 +3455,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-33/",
         "year": 2007,
         "make": "Toyota",
@@ -3383,6 +3469,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-35/",
         "year": 2007,
         "make": "Toyota",
@@ -3396,6 +3483,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-37/",
         "year": 2007,
         "make": "Toyota",
@@ -3409,6 +3497,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-38/",
         "year": 2007,
         "make": "Toyota",
@@ -3422,6 +3511,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-39/",
         "year": 2007,
         "make": "Toyota",
@@ -3435,6 +3525,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-41/",
         "year": 2007,
         "make": "Toyota",
@@ -3448,6 +3539,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-42/",
         "year": 2007,
         "make": "Toyota",
@@ -3461,6 +3553,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-44/",
         "year": 2007,
         "make": "Toyota",
@@ -3474,6 +3567,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-46/",
         "year": 2007,
         "make": "Toyota",
@@ -3487,6 +3581,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-47/",
         "year": 2007,
         "make": "Toyota",
@@ -3500,6 +3595,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-48/",
         "year": 2007,
         "make": "Toyota",
@@ -3513,6 +3609,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-49/",
         "year": 2007,
         "make": "Toyota",
@@ -3526,6 +3623,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-51/",
         "year": 2007,
         "make": "Toyota",
@@ -3539,6 +3637,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2007-toyota-land-cruiser-53/",
         "year": 2007,
         "make": "Toyota",
@@ -3552,6 +3651,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2011-lexus-lx570-2/",
         "year": 2011,
         "make": "Lexus",
@@ -3565,6 +3665,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2011-lexus-lx570-4/",
         "year": 2011,
         "make": "Lexus",
@@ -3578,6 +3679,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2011-lexus-lx570-4-2/",
         "year": 2011,
         "make": "Lexus",
@@ -3591,6 +3693,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2011-lexus-lx570-5/",
         "year": 2011,
         "make": "Lexus",
@@ -3604,6 +3707,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-10/",
         "year": 2013,
         "make": "Lexus",
@@ -3617,6 +3721,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-11/",
         "year": 2013,
         "make": "Lexus",
@@ -3630,6 +3735,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-12/",
         "year": 2013,
         "make": "Lexus",
@@ -3643,6 +3749,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-6/",
         "year": 2013,
         "make": "Lexus",
@@ -3656,6 +3763,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-8/",
         "year": 2013,
         "make": "Lexus",
@@ -3669,6 +3777,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2013-lexus-lx570-9/",
         "year": 2013,
         "make": "Lexus",
@@ -3682,6 +3791,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2014-lexus-lx570-3/",
         "year": 2014,
         "make": "Lexus",
@@ -3695,6 +3805,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2014-lexus-lx570-4/",
         "year": 2014,
         "make": "Lexus",
@@ -3708,6 +3819,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2014-lexus-lx570-5/",
         "year": 2014,
         "make": "Lexus",
@@ -3721,6 +3833,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2015-lexus-lx570-2/",
         "year": 2015,
         "make": "Lexus",
@@ -3734,6 +3847,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2015-lexus-lx570-4/",
         "year": 2015,
         "make": "Lexus",
@@ -3747,6 +3861,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2015-lexus-lx570-5/",
         "year": 2015,
         "make": "Lexus",
@@ -3760,6 +3875,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2015-lexus-lx570-6/",
         "year": 2015,
         "make": "Lexus",
@@ -3773,6 +3889,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2016-lexus-lx570-10/",
         "year": 2016,
         "make": "Lexus",
@@ -3786,6 +3903,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2016-lexus-lx570-11/",
         "year": 2016,
         "make": "Lexus",
@@ -3799,6 +3917,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2016-lexus-lx570-7/",
         "year": 2016,
         "make": "Lexus",
@@ -3812,6 +3931,7 @@
         "outcome": "sold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2016-lexus-lx570-8/",
         "year": 2016,
         "make": "Lexus",
@@ -3825,6 +3945,7 @@
         "outcome": "unsold"
       },
       {
+        "source": "bringatrailer",
         "listing_url": "https://bringatrailer.com/listing/2016-lexus-lx570-9/",
         "year": 2016,
         "make": "Lexus",
@@ -10300,93 +10421,6 @@
       "reappeared_at": []
     },
     {
-      "listing_key": "autodev:JTJHY7AX1D4101057",
-      "vehicle_key": "vin:JTJHY7AX1D4101057",
-      "vin": "JTJHY7AX1D4101057",
-      "year": 2013,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX1D4101057",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 25900,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 153545,
-      "mileage_is_approximate": "",
-      "city": "Virginia Beach",
-      "state": "VA",
-      "postal_code": "23455",
-      "latitude": 36.88605,
-      "longitude": -76.14728,
-      "location_precision": "ZIP area",
-      "seller": "Monarch Motors",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX1D4101057-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX1D4101057-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "Black",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "1 reported accidents",
-      "accident_category": "reported",
-      "owners": "2",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 26499
-        },
-        {
-          "observed_at": "2026-10-26T04:53:30+00:00",
-          "asking_price": 25900
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
-      "reappeared_at": []
-    },
-    {
       "listing_key": "autodev:JTJHY7AX1D4104735",
       "vehicle_key": "vin:JTJHY7AX1D4104735",
       "vin": "JTJHY7AX1D4104735",
@@ -12166,93 +12200,6 @@
         {
           "observed_at": "2026-11-01T06:15:22+00:00",
           "asking_price": 25884
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
-      "reappeared_at": []
-    },
-    {
-      "listing_key": "autodev:JTJHY7AX2E4161592",
-      "vehicle_key": "vin:JTJHY7AX2E4161592",
-      "vin": "JTJHY7AX2E4161592",
-      "year": 2014,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://lexusofbrookfield.com/used/LEXUS/2014-LEXUS-LX-ac199de0ac182087090c39b26c4688f5.htm",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 36016,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 110568,
-      "mileage_is_approximate": "",
-      "city": "Brookfield",
-      "state": "WI",
-      "postal_code": "53045",
-      "latitude": 43.05889,
-      "longitude": -88.15252,
-      "location_precision": "ZIP area",
-      "seller": "Lexus of Brookfield",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX2E4161592-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX2E4161592-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "White",
-      "interior_color": "Tan",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "1 reported accidents",
-      "accident_category": "reported",
-      "owners": "1",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "WI",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 36015
-        },
-        {
-          "observed_at": "2026-10-26T04:53:30+00:00",
-          "asking_price": 36016
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -15987,89 +15934,6 @@
       "reappeared_at": []
     },
     {
-      "listing_key": "autodev:JTJHY7AX4F4167413",
-      "vehicle_key": "vin:JTJHY7AX4F4167413",
-      "vin": "JTJHY7AX4F4167413",
-      "year": 2015,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://www.group1fordofrockwall.com/inventory/used-2015-lexus-lx-570-4wd-sport-utility-jtjhy7ax4f4167413/",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 31725,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 114683,
-      "mileage_is_approximate": "",
-      "city": "Grapevine",
-      "state": "TX",
-      "postal_code": "76051",
-      "latitude": 32.94203,
-      "longitude": -97.07993,
-      "location_precision": "ZIP area",
-      "seller": "Audi Grapevine",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX4F4167413-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX4F4167413-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "Black",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "1 reported accidents",
-      "accident_category": "reported",
-      "owners": "3",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-25T04:48:30+00:00",
-          "asking_price": 31725
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
-      "reappeared_at": []
-    },
-    {
       "listing_key": "autodev:JTJHY7AX4F4168514",
       "vehicle_key": "vin:JTJHY7AX4F4168514",
       "vin": "JTJHY7AX4F4168514",
@@ -18018,180 +17882,6 @@
         }
       ],
       "vehicle_first_seen": "2026-10-24T20:53:54+00:00",
-      "reappeared_at": []
-    },
-    {
-      "listing_key": "autodev:JTJHY7AX5G4197473",
-      "vehicle_key": "vin:JTJHY7AX5G4197473",
-      "vin": "JTJHY7AX5G4197473",
-      "year": 2016,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://autonationhyundaimallofgeorgia.com/used/LEXUS/2016-LEXUS-LX-570-d2970ae6ac1817c04f88581afc5139a0.htm",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 38049,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 131075,
-      "mileage_is_approximate": "",
-      "city": "Buford",
-      "state": "GA",
-      "postal_code": "30519",
-      "latitude": 34.08741,
-      "longitude": -83.94506,
-      "location_precision": "ZIP area",
-      "seller": "AutoNation Volkswagen Mall of Georgia",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX5G4197473-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX5G4197473-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "Black",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "No reported accidents",
-      "accident_category": "none",
-      "owners": "4",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 40091
-        },
-        {
-          "observed_at": "2026-10-25T04:48:30+00:00",
-          "asking_price": 39247
-        },
-        {
-          "observed_at": "2026-10-26T04:53:30+00:00",
-          "asking_price": 38049
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
-      "reappeared_at": []
-    },
-    {
-      "listing_key": "autodev:JTJHY7AX5G4213820",
-      "vehicle_key": "vin:JTJHY7AX5G4213820",
-      "vin": "JTJHY7AX5G4213820",
-      "year": 2016,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://tavernacdjrfortlauderdale.com/used/LEXUS/2016-LEXUS-LX-570-71a5efb9ac185ca9e7e2cb7f60a0bf53.htm",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 50407,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 59417,
-      "mileage_is_approximate": "",
-      "city": "West Park",
-      "state": "FL",
-      "postal_code": "33023",
-      "latitude": 25.98848,
-      "longitude": -80.21246,
-      "location_precision": "ZIP area",
-      "seller": "Taverna Infiniti North Miami",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX5G4213820-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX5G4213820-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "Gray",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "1 reported accidents",
-      "accident_category": "reported",
-      "owners": "3",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 50407
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
       "reappeared_at": []
     },
     {
@@ -22256,100 +21946,6 @@
       "reappeared_at": []
     },
     {
-      "listing_key": "autodev:JTJHY7AX8D4106126",
-      "vehicle_key": "vin:JTJHY7AX8D4106126",
-      "vin": "JTJHY7AX8D4106126",
-      "year": 2013,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://www.millstoyota.com/inventory/used-2013-lexus-lx-570-4wd-4d-sport-utility-jtjhy7ax8d4106126/",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 22273,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 194494,
-      "mileage_is_approximate": "",
-      "city": "Willmar",
-      "state": "MN",
-      "postal_code": "56201",
-      "latitude": 45.10218,
-      "longitude": -95.04182,
-      "location_precision": "ZIP area",
-      "seller": "Mills Buick Willmar",
-      "seller_type": "dealer",
-      "photo_url": "photos/3f58b7fbd9ee3eb97859.jpg",
-      "photo_urls": [
-        "photos/3f58b7fbd9ee3eb97859.jpg",
-        "photos/797428ebd6e701fa0fc5.jpg",
-        "photos/a7449649fe5c8889bd89.jpg",
-        "photos/891fcb5654a87ed50436.jpg",
-        "photos/e5349e5b9a8be275dde3.jpg",
-        "photos/9aa3b7a0d204ebdc89e0.jpg",
-        "photos/15a296f430f591482001.jpg",
-        "photos/17e873b06a25295aa926.jpg"
-      ],
-      "photo_source": "autodev",
-      "photo_source_url": "https://docs.auto.dev/v2/products/vehicle-photos",
-      "exterior_color": "Silver",
-      "interior_color": "Tan",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "No reported accidents",
-      "accident_category": "none",
-      "owners": "3",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "MN",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-25T04:48:30+00:00",
-          "asking_price": 22548
-        },
-        {
-          "observed_at": "2026-10-26T04:53:30+00:00",
-          "asking_price": 22273
-        }
-      ],
-      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
-      "reappeared_at": []
-    },
-    {
       "listing_key": "autodev:JTJHY7AX8D4113836",
       "vehicle_key": "vin:JTJHY7AX8D4113836",
       "vin": "JTJHY7AX8D4113836",
@@ -22437,93 +22033,6 @@
         }
       ],
       "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
-      "reappeared_at": []
-    },
-    {
-      "listing_key": "autodev:JTJHY7AX8D4129664",
-      "vehicle_key": "vin:JTJHY7AX8D4129664",
-      "vin": "JTJHY7AX8D4129664",
-      "year": 2013,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://www.bergstromlexusofappleton.com/used-Appleton-2013-Lexus-LX+570-4WD+4dr-JTJHY7AX8D4129664",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 27997,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 137589,
-      "mileage_is_approximate": "",
-      "city": "Appleton",
-      "state": "WI",
-      "postal_code": "54913",
-      "latitude": 44.336,
-      "longitude": -88.39997,
-      "location_precision": "ZIP area",
-      "seller": "Bergstrom Lexus",
-      "seller_type": "dealer",
-      "photo_url": "photos/13bb84a45eaad73c626a.webp",
-      "photo_urls": [
-        "photos/13bb84a45eaad73c626a.webp",
-        "photos/c87fe68f4816e4a8dc07.webp",
-        "photos/5d3dfed2a7eabf8540df.webp",
-        "photos/227af39bd5fc4a18dd7a.webp",
-        "photos/ebe62eaf0a693d144f0f.webp"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "White",
-      "interior_color": "Black",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "No reported accidents",
-      "accident_category": "none",
-      "owners": "3",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "WI",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 27997
-        }
-      ],
-      "vehicle_first_seen": "2026-10-22T04:55:36+00:00",
       "reappeared_at": []
     },
     {
@@ -24030,89 +23539,6 @@
         }
       ],
       "vehicle_first_seen": "2026-10-28T12:26:57+00:00",
-      "reappeared_at": []
-    },
-    {
-      "listing_key": "autodev:JTJHY7AX8G4212516",
-      "vehicle_key": "vin:JTJHY7AX8G4212516",
-      "vin": "JTJHY7AX8G4212516",
-      "year": 2016,
-      "make": "Lexus",
-      "model": "LX570",
-      "source": "autodev",
-      "listing_url": "https://www.autolist.com/lexus-lx+570#vin=JTJHY7AX8G4212516",
-      "status": "active",
-      "category": "retail",
-      "asking_price": 39985,
-      "base_price": null,
-      "current_bid": null,
-      "sold_price": null,
-      "currency": "USD",
-      "mileage": 149256,
-      "mileage_is_approximate": "",
-      "city": "Gainesville",
-      "state": "FL",
-      "postal_code": "32609",
-      "latitude": 29.77219,
-      "longitude": -82.28342,
-      "location_precision": "ZIP area",
-      "seller": "Tomlinson Motor Company",
-      "seller_type": "dealer",
-      "photo_url": "https://retail.photos.vin/JTJHY7AX8G4212516-1.jpg",
-      "photo_urls": [
-        "https://retail.photos.vin/JTJHY7AX8G4212516-1.jpg"
-      ],
-      "photo_source": null,
-      "photo_source_url": null,
-      "exterior_color": "Blue",
-      "interior_color": "Tan",
-      "reported_extras": "",
-      "title_status": "unknown",
-      "accident_history": "1 reported accidents",
-      "accident_category": "reported",
-      "owners": "1",
-      "owners_source": "Auto.dev reported history",
-      "owners_verified_at": "",
-      "owner_evidence_url": "",
-      "timing_belt_status": "",
-      "timing_belt_evidence": "",
-      "ahc_status": "",
-      "ahc_evidence": "",
-      "rust_status": "",
-      "rust_evidence": "",
-      "navigation_status": "",
-      "navigation_evidence": "",
-      "service_records_status": "",
-      "service_records_evidence": "",
-      "modifications_status": "",
-      "modifications_evidence": "",
-      "auction_result_at": "",
-      "auction_ends_at": "",
-      "bid_observed_at": "",
-      "listed_at": "",
-      "listed_at_is_estimated": false,
-      "first_seen": "2026-10-24T12:36:46+00:00",
-      "last_seen": "2026-10-27T05:11:51+00:00",
-      "last_checked": "2026-10-27T05:11:51+00:00",
-      "missing_checks": 0,
-      "quality_flags": "",
-      "deal_quality": null,
-      "deal_percent_vs_median": null,
-      "deal_comparable_count": null,
-      "deal_median_price": null,
-      "deal_mileage_band": null,
-      "rust_location": {
-        "current_state": "",
-        "also_listed_states": [],
-        "previously_listed_states": []
-      },
-      "price_history": [
-        {
-          "observed_at": "2026-10-24T12:36:46+00:00",
-          "asking_price": 39985
-        }
-      ],
-      "vehicle_first_seen": "2026-10-17T04:33:43+00:00",
       "reappeared_at": []
     },
     {
@@ -36037,12 +35463,12 @@
       "modifications_evidence": "",
       "auction_result_at": "",
       "auction_ends_at": "2026-11-04T21:04:00+00:00",
-      "bid_observed_at": "2026-11-03T01:02:01+00:00",
+      "bid_observed_at": "2026-11-03T14:23:22+00:00",
       "listed_at": "",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-28T19:11:51+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -39291,8 +38717,8 @@
       "listed_at": "2024-10-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -39381,8 +38807,8 @@
       "listed_at": "2025-12-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -39483,8 +38909,8 @@
       "listed_at": "2025-12-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -39577,8 +39003,8 @@
       "listed_at": "2026-02-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -39671,8 +39097,8 @@
       "listed_at": "2026-02-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -39756,8 +39182,8 @@
       "listed_at": "2026-02-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -39782,6 +39208,95 @@
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
       "reappeared_at": []
+    },
+    {
+      "listing_key": "cargurus:441965374",
+      "vehicle_key": "vin:JTJHY7AX3D4094855",
+      "vin": "JTJHY7AX3D4094855",
+      "year": 2013,
+      "make": "Lexus",
+      "model": "LX570",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/441965374",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 27099,
+      "base_price": 26500,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 121753,
+      "mileage_is_approximate": "",
+      "city": "Pasadena",
+      "state": "MD",
+      "postal_code": "",
+      "latitude": 39.152423,
+      "longitude": -76.560889,
+      "location_precision": "city area",
+      "seller": "Sports & Imports",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/11/03/07/39/2013_lexus_lx-pic-905460495999886379-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/11/03/07/39/2013_lexus_lx-pic-905460495999886379-1024x768.jpeg"
+      ],
+      "photo_source": "",
+      "photo_source_url": "",
+      "exterior_color": "Nebula Gray Pearl",
+      "interior_color": "Black Leather Interior",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "History unavailable",
+      "accident_category": "unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_result_at": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-03-10",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-10-14T13:35:50+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 0,
+      "quality_flags": "",
+      "deal_quality": "great",
+      "deal_percent_vs_median": -27,
+      "deal_comparable_count": 4,
+      "deal_median_price": 36874.5,
+      "deal_mileage_band": "100k-150k",
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-10-14T13:35:50+00:00",
+          "asking_price": 27376
+        },
+        {
+          "observed_at": "2026-10-16T04:37:36+00:00",
+          "asking_price": 27099
+        }
+      ],
+      "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": [
+        "2026-11-03T14:23:22+00:00"
+      ]
     },
     {
       "listing_key": "cargurus:442734579",
@@ -39844,8 +39359,8 @@
       "listed_at": "2026-03-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -39934,8 +39449,8 @@
       "listed_at": "2026-03-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40024,8 +39539,8 @@
       "listed_at": "2026-03-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40114,8 +39629,8 @@
       "listed_at": "2026-04-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -40208,8 +39723,8 @@
       "listed_at": "2026-04-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -40306,8 +39821,8 @@
       "listed_at": "2026-04-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40420,8 +39935,8 @@
       "listed_at": "2026-05-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40510,8 +40025,8 @@
       "listed_at": "2026-05-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40604,8 +40119,8 @@
       "listed_at": "2026-05-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -40694,8 +40209,8 @@
       "listed_at": "2026-05-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -40788,8 +40303,8 @@
       "listed_at": "2026-05-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -40891,8 +40406,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
       "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 0,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 1,
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -40974,8 +40489,8 @@
       "listed_at": "2026-05-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -41068,8 +40583,8 @@
       "listed_at": "2026-05-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41158,8 +40673,8 @@
       "listed_at": "2026-05-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41248,8 +40763,8 @@
       "listed_at": "2026-05-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41338,8 +40853,8 @@
       "listed_at": "2026-05-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41428,8 +40943,8 @@
       "listed_at": "2026-05-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -41518,8 +41033,8 @@
       "listed_at": "2026-05-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -41608,8 +41123,8 @@
       "listed_at": "2026-06-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41712,8 +41227,8 @@
       "listed_at": "2026-06-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -41802,8 +41317,8 @@
       "listed_at": "2026-06-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -41896,8 +41411,8 @@
       "listed_at": "2026-06-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -41986,8 +41501,8 @@
       "listed_at": "2026-06-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -42076,8 +41591,8 @@
       "listed_at": "2026-06-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -42166,8 +41681,8 @@
       "listed_at": "2026-06-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -42260,8 +41775,8 @@
       "listed_at": "2026-06-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -42344,8 +41859,8 @@
       "listed_at": "2026-06-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -42434,8 +41949,8 @@
       "listed_at": "2026-07-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -42524,8 +42039,8 @@
       "listed_at": "2026-07-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -42618,8 +42133,8 @@
       "listed_at": "2026-07-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -42722,8 +42237,8 @@
       "listed_at": "2026-07-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -42812,8 +42327,8 @@
       "listed_at": "2026-07-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -42902,8 +42417,8 @@
       "listed_at": "2026-07-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -43000,8 +42515,8 @@
       "listed_at": "2026-07-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -43094,8 +42609,8 @@
       "listed_at": "2026-07-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -43196,8 +42711,8 @@
       "listed_at": "2026-07-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -43290,8 +42805,8 @@
       "listed_at": "2026-07-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -43385,8 +42900,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
       "last_seen": "2026-11-02T16:15:46+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 1,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 2,
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -43482,8 +42997,8 @@
       "listed_at": "2026-07-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -43572,8 +43087,8 @@
       "listed_at": "2026-07-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-16T21:15:13+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -43668,8 +43183,8 @@
       "listed_at": "2026-07-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -43782,8 +43297,8 @@
       "listed_at": "2026-07-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -43876,8 +43391,8 @@
       "listed_at": "2026-07-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -43966,8 +43481,8 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T17:16:24+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -44056,8 +43571,8 @@
       "listed_at": "2026-07-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -44174,8 +43689,8 @@
       "listed_at": "2026-07-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -44272,8 +43787,8 @@
       "listed_at": "2026-07-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-17T17:38:23+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -44368,8 +43883,8 @@
       "listed_at": "2026-07-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -44464,8 +43979,8 @@
       "listed_at": "2026-07-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -44549,8 +44064,8 @@
       "listed_at": "2026-08-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -44639,8 +44154,8 @@
       "listed_at": "2026-08-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -44733,8 +44248,8 @@
       "listed_at": "2026-08-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -44767,8 +44282,8 @@
       "listing_url": "https://www.cargurus.com/details/455479664",
       "status": "active",
       "category": "retail",
-      "asking_price": 28995,
-      "base_price": 28995,
+      "asking_price": 27995,
+      "base_price": 27995,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -44823,12 +44338,12 @@
       "listed_at": "2026-08-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
-      "deal_percent_vs_median": -21,
+      "deal_percent_vs_median": -24,
       "deal_comparable_count": 4,
       "deal_median_price": 36874.5,
       "deal_mileage_band": "100k-150k",
@@ -44845,6 +44360,10 @@
         {
           "observed_at": "2026-10-27T22:03:27+00:00",
           "asking_price": 28995
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 27995
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -44861,8 +44380,8 @@
       "listing_url": "https://www.cargurus.com/details/455564879",
       "status": "active",
       "category": "retail",
-      "asking_price": 23893,
-      "base_price": 23395,
+      "asking_price": 23493,
+      "base_price": 22995,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -44917,8 +44436,8 @@
       "listed_at": "2026-08-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -44939,6 +44458,10 @@
         {
           "observed_at": "2026-10-15T17:05:42+00:00",
           "asking_price": 23893
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 23493
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -45011,8 +44534,8 @@
       "listed_at": "2026-08-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -45104,8 +44627,8 @@
       "listed_at": "2026-08-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -45198,8 +44721,8 @@
       "listed_at": "2026-08-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -45292,8 +44815,8 @@
       "listed_at": "2026-08-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -45388,8 +44911,8 @@
       "listed_at": "2026-08-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -45472,8 +44995,8 @@
       "listed_at": "2026-08-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -45567,8 +45090,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
       "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 0,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 1,
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -34,
@@ -45660,8 +45183,8 @@
       "listed_at": "2026-08-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -45750,8 +45273,8 @@
       "listed_at": "2026-08-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -45842,8 +45365,8 @@
       "listed_at": "2026-08-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -45935,8 +45458,8 @@
       "listed_at": "2026-08-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -46025,8 +45548,8 @@
       "listed_at": "2026-08-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46119,8 +45642,8 @@
       "listed_at": "2026-08-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -46212,8 +45735,8 @@
       "listed_at": "2026-08-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -46254,8 +45777,8 @@
       "listing_url": "https://www.cargurus.com/details/456892941",
       "status": "active",
       "category": "retail",
-      "asking_price": 31710,
-      "base_price": 31538,
+      "asking_price": 30967,
+      "base_price": 30795,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -46310,8 +45833,8 @@
       "listed_at": "2026-08-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46348,6 +45871,10 @@
         {
           "observed_at": "2026-10-30T22:25:51+00:00",
           "asking_price": 31710
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 30967
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -46420,8 +45947,8 @@
       "listed_at": "2026-08-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46506,8 +46033,8 @@
       "listed_at": "2026-08-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -46596,8 +46123,8 @@
       "listed_at": "2026-08-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46686,8 +46213,8 @@
       "listed_at": "2026-08-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46776,8 +46303,8 @@
       "listed_at": "2026-08-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-23T21:27:36+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -46874,8 +46401,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -46976,8 +46503,8 @@
       "listed_at": "2026-08-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -47070,8 +46597,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -47172,8 +46699,8 @@
       "listed_at": "2026-08-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -47266,8 +46793,8 @@
       "listed_at": "2026-09-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -47360,8 +46887,8 @@
       "listed_at": "2026-09-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -47450,8 +46977,8 @@
       "listed_at": "2026-09-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -47496,8 +47023,8 @@
       "listing_url": "https://www.cargurus.com/details/457891185",
       "status": "active",
       "category": "retail",
-      "asking_price": 32690,
-      "base_price": 31000,
+      "asking_price": 32190,
+      "base_price": 30500,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -47552,12 +47079,12 @@
       "listed_at": "2026-09-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
-      "deal_percent_vs_median": -11,
+      "deal_percent_vs_median": -13,
       "deal_comparable_count": 4,
       "deal_median_price": 36874.5,
       "deal_mileage_band": "100k-150k",
@@ -47586,6 +47113,10 @@
         {
           "observed_at": "2026-11-01T13:36:19+00:00",
           "asking_price": 32690
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 32190
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -47602,8 +47133,8 @@
       "listing_url": "https://www.cargurus.com/details/458018190",
       "status": "active",
       "category": "retail",
-      "asking_price": 23301,
-      "base_price": 22606,
+      "asking_price": 23595,
+      "base_price": 22900,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -47658,8 +47189,8 @@
       "listed_at": "2026-09-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -47696,6 +47227,10 @@
         {
           "observed_at": "2026-11-02T14:40:35+00:00",
           "asking_price": 23301
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 23595
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -47768,8 +47303,8 @@
       "listed_at": "2026-09-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -47859,8 +47394,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
       "last_seen": "2026-11-02T16:15:46+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 1,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 2,
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -47960,8 +47495,8 @@
       "listed_at": "2026-09-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-22T11:58:47+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -48060,8 +47595,8 @@
       "listed_at": "2026-09-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -48154,8 +47689,8 @@
       "listed_at": "2026-09-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -48239,8 +47774,8 @@
       "listed_at": "2026-09-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -48329,8 +47864,8 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -48427,8 +47962,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -48517,8 +48052,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -48618,8 +48153,8 @@
       "listed_at": "2026-09-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -48724,8 +48259,8 @@
       "listed_at": "2026-09-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -48814,8 +48349,8 @@
       "listed_at": "2026-09-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-15T21:33:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -48912,8 +48447,8 @@
       "listed_at": "2026-09-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -49010,8 +48545,8 @@
       "listed_at": "2026-09-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -49104,8 +48639,8 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-19T16:31:04+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -49200,8 +48735,8 @@
       "listed_at": "2026-09-19",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -49298,8 +48833,8 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -49392,8 +48927,8 @@
       "listed_at": "2026-09-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-20T16:48:29+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -49482,8 +49017,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -49576,8 +49111,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-22T05:02:58+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -49670,8 +49205,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49760,8 +49295,8 @@
       "listed_at": "2026-09-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -49845,8 +49380,8 @@
       "listed_at": "2026-09-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -49941,8 +49476,8 @@
       "listed_at": "2026-09-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -50039,8 +49574,8 @@
       "listed_at": "2026-09-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -50133,8 +49668,8 @@
       "listed_at": "2026-09-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -50223,8 +49758,8 @@
       "listed_at": "2026-09-26",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -50317,8 +49852,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -50411,8 +49946,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -50521,8 +50056,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -50611,8 +50146,8 @@
       "listed_at": "2026-09-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -50729,8 +50264,8 @@
       "listed_at": "2026-09-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -50825,8 +50360,8 @@
       "listed_at": "2026-09-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -50867,8 +50402,8 @@
       "listing_url": "https://www.cargurus.com/details/460382726",
       "status": "active",
       "category": "retail",
-      "asking_price": 46922,
-      "base_price": 46800,
+      "asking_price": 45996,
+      "base_price": 45874,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -50923,12 +50458,12 @@
       "listed_at": "2026-10-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T12:26:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
-      "deal_percent_vs_median": 27,
+      "deal_percent_vs_median": 25,
       "deal_comparable_count": 4,
       "deal_median_price": 36874.5,
       "deal_mileage_band": "100k-150k",
@@ -50941,6 +50476,10 @@
         {
           "observed_at": "2026-10-28T12:26:57+00:00",
           "asking_price": 46922
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 45996
         }
       ],
       "vehicle_first_seen": "2026-10-28T12:26:57+00:00",
@@ -51013,8 +50552,8 @@
       "listed_at": "2026-10-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -51103,8 +50642,8 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -51197,8 +50736,8 @@
       "listed_at": "2026-10-02",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-02T05:44:42+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -51287,8 +50826,8 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -51321,8 +50860,8 @@
       "listing_url": "https://www.cargurus.com/details/460650737",
       "status": "active",
       "category": "retail",
-      "asking_price": 36997,
-      "base_price": 36598,
+      "asking_price": 35997,
+      "base_price": 35598,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -51377,12 +50916,12 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
-      "deal_percent_vs_median": -40,
+      "deal_percent_vs_median": -42,
       "deal_comparable_count": 9,
       "deal_median_price": 62000,
       "deal_mileage_band": "Under 100k",
@@ -51399,6 +50938,10 @@
         {
           "observed_at": "2026-10-27T21:24:04+00:00",
           "asking_price": 36997
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 35997
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
@@ -51471,8 +51014,8 @@
       "listed_at": "2026-10-03",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -51567,8 +51110,8 @@
       "listed_at": "2026-10-04",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -51665,8 +51208,8 @@
       "listed_at": "2026-10-05",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-08T18:11:11+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -51759,8 +51302,8 @@
       "listed_at": "2026-10-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -51853,8 +51396,8 @@
       "listed_at": "2026-10-06",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -51948,8 +51491,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "mileage_decreased",
       "deal_quality": "fair",
@@ -51973,6 +51516,96 @@
         }
       ],
       "vehicle_first_seen": "2026-10-14T13:35:50+00:00",
+      "reappeared_at": []
+    },
+    {
+      "listing_key": "cargurus:460918808",
+      "vehicle_key": "vin:JTJHY7AX9E4145728",
+      "vin": "JTJHY7AX9E4145728",
+      "year": 2014,
+      "make": "Lexus",
+      "model": "LX570",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/460918808",
+      "status": "active",
+      "category": "retail",
+      "asking_price": 27995,
+      "base_price": 27995,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 145033,
+      "mileage_is_approximate": "",
+      "city": "Matthews",
+      "state": "NC",
+      "postal_code": "",
+      "latitude": 35.119865,
+      "longitude": -80.709414,
+      "location_precision": "city area",
+      "seller": "5 Star Auto",
+      "seller_type": "dealer",
+      "photo_url": "photos/254bb2b619f3fe3b2d91.jpg",
+      "photo_urls": [
+        "photos/254bb2b619f3fe3b2d91.jpg",
+        "photos/75641d9d91dea76e078c.jpg",
+        "photos/adca86988a43fac45f86.jpg",
+        "photos/6cb38350fca3928f06ca.jpg",
+        "photos/9c14897b420180b49740.jpg",
+        "photos/eee97a40dc1b8de06b19.jpg",
+        "photos/3e669ee182aea7144e80.jpg",
+        "photos/7a2e2f6b66f00cd6738b.jpg"
+      ],
+      "photo_source": "autodev",
+      "photo_source_url": "https://www.carfax.com/vehicle/JTJHY7AX9E4145728",
+      "exterior_color": "Black Onyx",
+      "interior_color": "Black",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_result_at": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "2026-10-07",
+      "listed_at_is_estimated": true,
+      "first_seen": "2026-11-03T14:23:22+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 0,
+      "quality_flags": "",
+      "deal_quality": "great",
+      "deal_percent_vs_median": -24,
+      "deal_comparable_count": 4,
+      "deal_median_price": 36874.5,
+      "deal_mileage_band": "100k-150k",
+      "rust_location": {
+        "current_state": "",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      },
+      "price_history": [
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 27995
+        }
+      ],
+      "vehicle_first_seen": "2026-10-24T12:36:46+00:00",
       "reappeared_at": []
     },
     {
@@ -52042,8 +51675,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -52132,8 +51765,8 @@
       "listed_at": "2026-10-07",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -52222,8 +51855,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -52316,8 +51949,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -52406,8 +52039,8 @@
       "listed_at": "2026-10-08",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -52504,8 +52137,8 @@
       "listed_at": "2026-10-09",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-09T13:26:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -52594,8 +52227,8 @@
       "listed_at": "2026-10-10",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -52688,8 +52321,8 @@
       "listed_at": "2026-10-11",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -52785,8 +52418,8 @@
       "listed_at": "2026-10-12",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-12T06:04:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -52883,8 +52516,8 @@
       "listed_at": "2026-10-13",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -52979,8 +52612,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -53073,8 +52706,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -53167,8 +52800,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T13:35:50+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -53261,8 +52894,8 @@
       "listed_at": "2026-10-14",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-14T19:15:08+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -53359,8 +52992,8 @@
       "listed_at": "2026-10-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-15T11:35:48+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -53453,8 +53086,8 @@
       "listed_at": "2026-10-15",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-15T21:27:31+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -53547,8 +53180,8 @@
       "listed_at": "2026-10-16",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-16T04:37:36+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -53641,8 +53274,8 @@
       "listed_at": "2026-10-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-16T21:15:13+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -53735,8 +53368,8 @@
       "listed_at": "2026-10-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-17T04:33:43+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -53825,8 +53458,8 @@
       "listed_at": "2026-10-17",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-17T10:50:11+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -53919,8 +53552,8 @@
       "listed_at": "2026-10-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-17T20:39:56+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -54009,8 +53642,8 @@
       "listed_at": "2026-10-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-18T04:40:05+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -54099,8 +53732,8 @@
       "listed_at": "2026-10-18",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-18T11:13:54+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -54189,8 +53822,8 @@
       "listed_at": "2026-10-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-20T04:56:17+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -54279,8 +53912,8 @@
       "listed_at": "2026-10-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-20T11:44:37+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -54369,8 +54002,8 @@
       "listed_at": "2026-10-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-20T11:44:37+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -54465,8 +54098,8 @@
       "listed_at": "2026-10-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-20T21:16:13+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -54504,7 +54137,7 @@
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
-      "mileage": 93826,
+      "mileage": 93827,
       "mileage_is_approximate": "",
       "city": "San Antonio",
       "state": "TX",
@@ -54555,8 +54188,8 @@
       "listed_at": "2026-10-20",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-20T21:16:13+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -54645,8 +54278,8 @@
       "listed_at": "2026-10-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-21T04:55:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -54739,8 +54372,8 @@
       "listed_at": "2026-10-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-21T04:55:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -54833,8 +54466,8 @@
       "listed_at": "2026-10-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-21T04:55:45+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -54923,8 +54556,8 @@
       "listed_at": "2026-10-21",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-21T11:56:29+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -55013,8 +54646,8 @@
       "listed_at": "2026-10-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-21T21:46:22+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55105,8 +54738,8 @@
       "listed_at": "2026-10-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-22T11:58:47+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55199,8 +54832,8 @@
       "listed_at": "2026-10-22",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-22T17:14:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -55282,8 +54915,8 @@
       "listed_at": "2026-10-23",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-22T17:14:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55326,7 +54959,7 @@
       "listing_url": "https://www.cargurus.com/details/462419999",
       "status": "active",
       "category": "retail",
-      "asking_price": 32407,
+      "asking_price": 32439,
       "base_price": 32000,
       "current_bid": null,
       "sold_price": null,
@@ -55377,8 +55010,8 @@
       "listed_at": "2026-10-24",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-23T20:07:13+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55395,6 +55028,10 @@
         {
           "observed_at": "2026-10-23T20:07:13+00:00",
           "asking_price": 32407
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 32439
         }
       ],
       "vehicle_first_seen": "2026-10-23T20:07:13+00:00",
@@ -55467,8 +55104,8 @@
       "listed_at": "2026-10-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-25T04:48:30+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55516,8 +55153,10 @@
       "location_precision": "city area",
       "seller": "Showcase Auto Group",
       "seller_type": "dealer",
-      "photo_url": "",
-      "photo_urls": [],
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/11/03/04/43/2011_lexus_lx-pic-3771265562307391453-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/11/03/04/43/2011_lexus_lx-pic-3771265562307391453-1024x768.jpeg"
+      ],
       "photo_source": "",
       "photo_source_url": "",
       "exterior_color": "Black",
@@ -55548,8 +55187,8 @@
       "listed_at": "2026-10-25",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-25T11:38:05+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -55638,8 +55277,8 @@
       "listed_at": "2026-10-27",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-27T21:24:04+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "vin_model_or_year_conflict",
       "deal_quality": "fair",
@@ -55732,8 +55371,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-27T21:24:04+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -55766,8 +55405,8 @@
       "listing_url": "https://www.cargurus.com/details/462699230",
       "status": "active",
       "category": "retail",
-      "asking_price": 26312,
-      "base_price": 25900,
+      "asking_price": 25912,
+      "base_price": 25500,
       "current_bid": null,
       "sold_price": null,
       "currency": "USD",
@@ -55822,8 +55461,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T12:26:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -55840,6 +55479,10 @@
         {
           "observed_at": "2026-10-28T12:26:57+00:00",
           "asking_price": 26312
+        },
+        {
+          "observed_at": "2026-11-03T14:23:22+00:00",
+          "asking_price": 25912
         }
       ],
       "vehicle_first_seen": "2026-10-28T12:26:57+00:00",
@@ -55912,8 +55555,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-27T21:24:04+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -56002,8 +55645,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T05:48:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56095,8 +55738,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T12:26:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56176,8 +55819,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T12:26:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -56257,8 +55900,8 @@
       "listed_at": "2026-10-28",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-28T22:39:06+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -56346,8 +55989,8 @@
       "listed_at": "2026-10-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-29T13:09:18+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56436,8 +56079,8 @@
       "listed_at": "2026-10-29",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-29T22:48:51+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56526,8 +56169,8 @@
       "listed_at": "2026-10-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T05:55:28+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56616,8 +56259,8 @@
       "listed_at": "2026-10-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T05:55:28+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -56701,8 +56344,8 @@
       "listed_at": "2026-10-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T05:55:28+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -56788,8 +56431,8 @@
       "listed_at": "2026-10-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T13:02:39+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -56874,8 +56517,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T13:02:39+00:00",
       "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 0,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 1,
       "quality_flags": "",
       "deal_quality": "fair",
       "deal_percent_vs_median": -1,
@@ -56956,8 +56599,8 @@
       "listed_at": "2026-10-30",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T13:02:39+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -57046,8 +56689,8 @@
       "listed_at": "2026-10-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-30T22:25:51+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -57136,8 +56779,8 @@
       "listed_at": "2026-10-31",
       "listed_at_is_estimated": true,
       "first_seen": "2026-10-31T18:51:57+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -57226,8 +56869,8 @@
       "listed_at": "2026-11-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T06:15:22+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -57310,8 +56953,8 @@
       "listed_at": "2026-11-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T06:15:22+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -57391,8 +57034,8 @@
       "listed_at": "2026-11-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T06:15:22+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "great",
@@ -57482,8 +57125,8 @@
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T13:36:19+00:00",
       "last_seen": "2026-11-02T16:15:46+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 1,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 2,
       "quality_flags": "",
       "deal_quality": "great",
       "deal_percent_vs_median": -20,
@@ -57530,8 +57173,10 @@
       "location_precision": "city area",
       "seller": "Sell Your Auto Fast",
       "seller_type": "dealer",
-      "photo_url": "",
-      "photo_urls": [],
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/11/03/07/52/2013_lexus_lx-pic-8214922322585053340-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/11/03/07/52/2013_lexus_lx-pic-8214922322585053340-1024x768.jpeg"
+      ],
       "photo_source": "",
       "photo_source_url": "",
       "exterior_color": "BLACK",
@@ -57562,8 +57207,8 @@
       "listed_at": "2026-11-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T13:36:19+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -57643,8 +57288,8 @@
       "listed_at": "2026-11-01",
       "listed_at_is_estimated": true,
       "first_seen": "2026-11-01T22:06:06+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": null,
@@ -57728,8 +57373,8 @@
       "listed_at_is_estimated": false,
       "first_seen": "2026-11-01T22:06:06+00:00",
       "last_seen": "2026-11-02T16:15:46+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
-      "missing_checks": 1,
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 2,
       "quality_flags": "",
       "deal_quality": null,
       "deal_percent_vs_median": null,
@@ -57743,6 +57388,160 @@
       },
       "price_history": [],
       "vehicle_first_seen": "2026-11-01T22:06:06+00:00",
+      "reappeared_at": []
+    },
+    {
+      "listing_key": "cargurus:463265254",
+      "vehicle_key": "vin:JTJHY7AX4E4138671",
+      "vin": "JTJHY7AX4E4138671",
+      "year": 2014,
+      "make": "Lexus",
+      "model": "LX570",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/463265254",
+      "status": "active",
+      "category": "retail",
+      "asking_price": null,
+      "base_price": null,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": null,
+      "mileage_is_approximate": "",
+      "city": "Great Neck",
+      "state": "NY",
+      "postal_code": "",
+      "latitude": 40.802368,
+      "longitude": -73.733099,
+      "location_precision": "city area",
+      "seller": "New Country Lexus of Great Neck",
+      "seller_type": "dealer",
+      "photo_url": "",
+      "photo_urls": [],
+      "photo_source": "",
+      "photo_source_url": "",
+      "exterior_color": "Onyx Black",
+      "interior_color": "Black",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "No reported accidents",
+      "accident_category": "none",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_result_at": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "",
+      "listed_at_is_estimated": false,
+      "first_seen": "2026-11-03T14:23:22+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 0,
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "NY",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      },
+      "price_history": [],
+      "vehicle_first_seen": "2026-11-03T14:23:22+00:00",
+      "reappeared_at": []
+    },
+    {
+      "listing_key": "cargurus:463269212",
+      "vehicle_key": "vin:JTJHY7AX6E4141765",
+      "vin": "JTJHY7AX6E4141765",
+      "year": 2014,
+      "make": "Lexus",
+      "model": "LX570",
+      "source": "cargurus",
+      "listing_url": "https://www.cargurus.com/details/463269212",
+      "status": "active",
+      "category": "retail",
+      "asking_price": null,
+      "base_price": null,
+      "current_bid": null,
+      "sold_price": null,
+      "currency": "USD",
+      "mileage": 66500,
+      "mileage_is_approximate": "",
+      "city": "Long Island City",
+      "state": "NY",
+      "postal_code": "",
+      "latitude": null,
+      "longitude": null,
+      "location_precision": "",
+      "seller": "NorthStar Mitsubishi",
+      "seller_type": "dealer",
+      "photo_url": "https://static.cargurus.com/images/forsale/2026/11/03/04/58/2014_lexus_lx-pic-8368912772989410351-1024x768.jpeg",
+      "photo_urls": [
+        "https://static.cargurus.com/images/forsale/2026/11/03/04/58/2014_lexus_lx-pic-8368912772989410351-1024x768.jpeg"
+      ],
+      "photo_source": "",
+      "photo_source_url": "",
+      "exterior_color": "Silver",
+      "interior_color": "",
+      "reported_extras": "",
+      "title_status": "clean-title candidate",
+      "accident_history": "History unavailable",
+      "accident_category": "unavailable",
+      "owners": "Unverified",
+      "owners_source": "",
+      "owners_verified_at": "",
+      "owner_evidence_url": "",
+      "timing_belt_status": "",
+      "timing_belt_evidence": "",
+      "ahc_status": "",
+      "ahc_evidence": "",
+      "rust_status": "",
+      "rust_evidence": "",
+      "navigation_status": "",
+      "navigation_evidence": "",
+      "service_records_status": "",
+      "service_records_evidence": "",
+      "modifications_status": "",
+      "modifications_evidence": "",
+      "auction_result_at": "",
+      "auction_ends_at": "",
+      "bid_observed_at": "",
+      "listed_at": "",
+      "listed_at_is_estimated": false,
+      "first_seen": "2026-11-03T14:23:22+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
+      "missing_checks": 0,
+      "quality_flags": "",
+      "deal_quality": null,
+      "deal_percent_vs_median": null,
+      "deal_comparable_count": null,
+      "deal_median_price": null,
+      "deal_mileage_band": null,
+      "rust_location": {
+        "current_state": "NY",
+        "also_listed_states": [],
+        "previously_listed_states": []
+      },
+      "price_history": [],
+      "vehicle_first_seen": "2026-11-03T14:23:22+00:00",
       "reappeared_at": []
     },
     {
@@ -57809,8 +57608,8 @@
       "listed_at": "2026-07-13T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-14T13:09:35+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -57900,8 +57699,8 @@
       "listed_at": "2026-09-27T07:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-27T12:08:20+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -58015,8 +57814,8 @@
       "listed_at": "2026-10-11T00:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-09-30T12:40:42+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "fair",
@@ -58108,8 +57907,8 @@
       "listed_at": "2026-10-09T12:45:00.000Z",
       "listed_at_is_estimated": false,
       "first_seen": "2026-10-09T22:42:00+00:00",
-      "last_seen": "2026-11-03T01:02:01+00:00",
-      "last_checked": "2026-11-03T01:02:01+00:00",
+      "last_seen": "2026-11-03T14:23:22+00:00",
+      "last_checked": "2026-11-03T14:23:22+00:00",
       "missing_checks": 0,
       "quality_flags": "",
       "deal_quality": "bad",
@@ -60143,17 +59942,6 @@
       ]
     },
     {
-      "vehicle_key": "vin:JTJHY7AX1D4101057",
-      "vin": "JTJHY7AX1D4101057",
-      "listing_keys": [
-        "autodev:JTJHY7AX1D4101057"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
-      ]
-    },
-    {
       "vehicle_key": "vin:JTJHY7AX1D4104735",
       "vin": "JTJHY7AX1D4104735",
       "listing_keys": [
@@ -60400,17 +60188,6 @@
       ]
     },
     {
-      "vehicle_key": "vin:JTJHY7AX2E4161592",
-      "vin": "JTJHY7AX2E4161592",
-      "listing_keys": [
-        "autodev:JTJHY7AX2E4161592"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
-      ]
-    },
-    {
       "vehicle_key": "vin:JTJHY7AX2F4165322",
       "vin": "JTJHY7AX2F4165322",
       "listing_keys": [
@@ -60626,6 +60403,17 @@
       "vin": "JTJHY7AX3D4087274",
       "listing_keys": [
         "cargurus:462699230"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTJHY7AX3D4094855",
+      "vin": "JTJHY7AX3D4094855",
+      "listing_keys": [
+        "cargurus:441965374"
       ],
       "listing_count": 1,
       "sources": [
@@ -60922,6 +60710,17 @@
       ]
     },
     {
+      "vehicle_key": "vin:JTJHY7AX4E4138671",
+      "vin": "JTJHY7AX4E4138671",
+      "listing_keys": [
+        "cargurus:463265254"
+      ],
+      "listing_count": 1,
+      "sources": [
+        "cargurus"
+      ]
+    },
+    {
       "vehicle_key": "vin:JTJHY7AX4E4139495",
       "vin": "JTJHY7AX4E4139495",
       "listing_keys": [
@@ -60954,17 +60753,6 @@
       "listing_count": 1,
       "sources": [
         "bringatrailer"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX4F4167413",
-      "vin": "JTJHY7AX4F4167413",
-      "listing_keys": [
-        "autodev:JTJHY7AX4F4167413"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
       ]
     },
     {
@@ -61253,28 +61041,6 @@
       ]
     },
     {
-      "vehicle_key": "vin:JTJHY7AX5G4197473",
-      "vin": "JTJHY7AX5G4197473",
-      "listing_keys": [
-        "autodev:JTJHY7AX5G4197473"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX5G4213820",
-      "vin": "JTJHY7AX5G4213820",
-      "listing_keys": [
-        "autodev:JTJHY7AX5G4213820"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
-      ]
-    },
-    {
       "vehicle_key": "vin:JTJHY7AX5G4219794",
       "vin": "JTJHY7AX5G4219794",
       "listing_keys": [
@@ -61421,6 +61187,17 @@
       "listing_count": 2,
       "sources": [
         "autodev",
+        "cargurus"
+      ]
+    },
+    {
+      "vehicle_key": "vin:JTJHY7AX6E4141765",
+      "vin": "JTJHY7AX6E4141765",
+      "listing_keys": [
+        "cargurus:463269212"
+      ],
+      "listing_count": 1,
+      "sources": [
         "cargurus"
       ]
     },
@@ -61906,17 +61683,6 @@
       ]
     },
     {
-      "vehicle_key": "vin:JTJHY7AX8D4106126",
-      "vin": "JTJHY7AX8D4106126",
-      "listing_keys": [
-        "autodev:JTJHY7AX8D4106126"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
-      ]
-    },
-    {
       "vehicle_key": "vin:JTJHY7AX8D4113836",
       "vin": "JTJHY7AX8D4113836",
       "listing_keys": [
@@ -61936,17 +61702,6 @@
       "listing_count": 1,
       "sources": [
         "bringatrailer"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX8D4129664",
-      "vin": "JTJHY7AX8D4129664",
-      "listing_keys": [
-        "autodev:JTJHY7AX8D4129664"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
       ]
     },
     {
@@ -62154,17 +61909,6 @@
       "sources": [
         "autodev",
         "cargurus"
-      ]
-    },
-    {
-      "vehicle_key": "vin:JTJHY7AX8G4212516",
-      "vin": "JTJHY7AX8G4212516",
-      "listing_keys": [
-        "autodev:JTJHY7AX8G4212516"
-      ],
-      "listing_count": 1,
-      "sources": [
-        "autodev"
       ]
     },
     {
@@ -62395,11 +62139,13 @@
       "vehicle_key": "vin:JTJHY7AX9E4145728",
       "vin": "JTJHY7AX9E4145728",
       "listing_keys": [
-        "autodev:JTJHY7AX9E4145728"
+        "autodev:JTJHY7AX9E4145728",
+        "cargurus:460918808"
       ],
-      "listing_count": 1,
+      "listing_count": 2,
       "sources": [
-        "autodev"
+        "autodev",
+        "cargurus"
       ]
     },
     {
