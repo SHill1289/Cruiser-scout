@@ -367,7 +367,7 @@ function listingDates(row) {
   listed.append(text("span", "", "Listed"), text("strong", "", formatDay(row.listed_at)));
   if (row.listed_at && row.listed_at_is_estimated) listed.append(text("small", "", "Estimated from days on market"));
   const added = text("p", "date-fact", "");
-  added.append(text("span", "", "Added to Finder"), text("strong", "", formatDay(row.first_seen)));
+  added.append(text("span", "", "Truck added to Scout"), text("strong", "", formatDay(row.vehicle_first_seen || row.first_seen)));
   const verified = text("p", "date-fact", "");
   verified.append(text("span", "", row.status === "active" ? "Last verified for sale" : "Last observed"),
     text("strong", "", formatMoment(row.last_seen)));
@@ -774,6 +774,15 @@ function matches(row) {
     && (!origin || !controls.radius.value || (distanceTo(row) != null && distanceTo(row) <= Number(controls.radius.value)));
 }
 
+function discoveryTime(row) {
+  const time = Date.parse(row.vehicle_first_seen || row.first_seen || "");
+  return Number.isFinite(time) ? time : -Infinity;
+}
+function compareDiscovery(a, b) {
+  return discoveryTime(b) - discoveryTime(a)
+    || String(a.vehicle_key || a.listing_key || "").localeCompare(String(b.vehicle_key || b.listing_key || ""))
+    || String(a.listing_key || "").localeCompare(String(b.listing_key || ""));
+}
 function sortRows(rows) {
   const missing = Number.MAX_SAFE_INTEGER;
   const listedTime = row => {
@@ -784,8 +793,8 @@ function sortRows(rows) {
     "price-asc": (a, b) => (listingPrice(a) ?? missing) - (listingPrice(b) ?? missing),
     "price-desc": (a, b) => (listingPrice(b) ?? -1) - (listingPrice(a) ?? -1),
     "mileage-asc": (a, b) => (a.mileage ?? missing) - (b.mileage ?? missing),
-    "listed-newest": (a, b) => listedTime(b) - listedTime(a) || String(b.first_seen || "").localeCompare(String(a.first_seen || "")),
-    "newest": (a, b) => String(b.first_seen).localeCompare(String(a.first_seen)),
+    "listed-newest": (a, b) => listedTime(b) - listedTime(a) || compareDiscovery(a, b),
+    "newest": compareDiscovery,
     "price-drop-newest": (a, b) => (Date.parse(latestReduction(b)?.observedAt || "") || 0) - (Date.parse(latestReduction(a)?.observedAt || "") || 0)
       || listedTime(b) - listedTime(a),
     "distance-asc": (a, b) => (distanceTo(a) ?? missing) - (distanceTo(b) ?? missing)
@@ -1277,7 +1286,8 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     researchFact("Location", [row.city, row.state].filter(Boolean).join(", ") || "Unknown"),
     researchFact("Seller", row.seller || "Unknown"),
     researchFact("Listing date", row.listed_at ? formatDay(row.listed_at) + (row.listed_at_is_estimated ? " (estimated)" : "") : "Unknown"),
-    researchFact("Added to Scout", formatDay(row.first_seen)),
+    researchFact("Truck added to Scout", formatDay(row.vehicle_first_seen || row.first_seen)),
+    researchFact("This source first found", formatDay(row.first_seen)),
     researchFact("Title indicator", row.title_status === "unknown" ? "Title unverified — not provided by this source" : row.title_status || "Unknown"),
     researchFact("Ownership", ownerLabel(row)),
     researchFact("Accident history", accidentGroup(row) === "unavailable" ? "History unavailable" : row.accident_history),
