@@ -17,7 +17,9 @@ function renderMarketFacets(suffix="") {
       label.append(input,document.createTextNode(name));return label;
     }));
   }
-  picks("market-year",[...new Set(rows.map(r=>String(r.year)))].sort().map(y=>[y,y]),previous.years);
+  const availableYears=rows.map(r=>Number(r.year)).filter(Number.isFinite);
+  const years=availableYears.length?Array.from({length:Math.max(...availableYears)-Math.min(...availableYears)+1},(_,i)=>String(Math.min(...availableYears)+i)):[];
+  picks("market-year",years.map(y=>[y,y]),previous.years);
   picks("market-colors",[...new Map(rows.map(r=>[r.color_key,r.color_name])).entries()].sort((a,b)=>a[1].localeCompare(b[1])),previous.colors);
   const locations=[...new Set(rows.map(r=>r.state||"unknown"))].sort();
   const select=document.getElementById("market-location"+suffix);
@@ -144,3 +146,4 @@ function renderMarketComparison(a,b) {
     return card;
   }));
 }
+
