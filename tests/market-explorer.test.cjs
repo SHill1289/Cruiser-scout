@@ -27,3 +27,22 @@ test("deduplicate by auction URL without merging repeat auctions of a VIN",()=>{
  assert.equal(result.length,2);assert.equal(result[0].sale_price,2);
 });
 test("axis bounds include maximum price",()=>{const ticks=market.ticks(121001);assert.equal(ticks[0],0);assert.ok(ticks.at(-1)>=121001);});
+
+test("two comparison sets retain independent year and mileage filters",()=>{
+ const data=[...rows,{listing_url:"f",model:"LX570",year:2012,mileage:99000,sale_price:30000,sold_at:"2026-06-01"}];
+ const a=market.filter(data,{model:"LX470",years:["2006","2007"],maxMiles:149999,outcome:"sold"},now);
+ const b=market.filter(data,{model:"LX570",years:["2011","2012","2013"],maxMiles:99999,outcome:"sold"},now);
+ assert.deepEqual(a.map(r=>r.listing_url),["a"]);
+ assert.deepEqual(b.map(r=>r.listing_url),["f"]);
+ assert.equal(market.stats(a).median,17000);
+ assert.equal(market.stats(b).median,30000);
+});
+test("sale statistics exclude unsold bids and deduplicate each set",()=>{
+ assert.deepEqual(market.stats([rows[0],rows[0],rows[1],rows[2]]),{count:2,median:21000,average:21000,min:17000,max:25000});
+ assert.equal(market.stats([]).median,null);
+});
+test("any source can supply confirmed sales, never asking prices or last-seen dates",()=>{
+ const base={source:"dealer",status:"sold",sold_price:20000,auction_result_at:"2026-05-01"};
+ const result=market.completed([base,{...base,status:"removed"},{...base,sold_price:null,asking_price:20000},{...base,auction_result_at:null,last_seen:"2026-05-01"}]);
+ assert.equal(result.length,1);assert.equal(result[0].sale_price,20000);
+});

@@ -359,14 +359,14 @@
                 <p class="eyebrow">MARKET INTELLIGENCE</p>
                 <h1 id="market-title">The market, in context</h1>
                 <p>
-                  Live asking prices and completed auction sales are measured
+                  Live asking prices and completed sales are measured
                   separately.
                 </p>
               </div>
             </div>
             <div class="metric-grid" id="market-metrics"></div>
             <div class="panel market-controls" id="market-controls">
-              <div><h2>Auction results explorer</h2><p id="market-count">Loading completed sales…</p></div>
+              <div><h2>Completed sales explorer · Set A</h2><p id="market-count">Loading completed sales…</p></div>
               <label>Period<select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
               <label>Model<select id="market-model"><option value="LX470">Lexus LX470</option><option value="LX570">Lexus LX570</option><option value="Land Cruiser">Toyota Land Cruiser</option></select></label>
               <details class="market-picks"><summary>Model years <span id="market-year-count">All</span></summary><fieldset id="market-year" aria-label="Model years"></fieldset></details>
@@ -375,17 +375,25 @@
               <details class="market-picks"><summary>Exterior colors <span id="market-color-count">All</span></summary><fieldset id="market-colors" aria-label="Exterior colors"></fieldset></details>
               <label>State / region<select id="market-location"><option value="">All locations</option></select></label>
               <label>City<input id="market-city" type="search" placeholder="Any city"></label>
-              <label>Result<select id="market-outcome"><option value="all">All auction results</option><option value="sold">Sold</option><option value="unsold">Reserve not met</option></select></label>
+              <label>Result<select id="market-outcome"><option value="all">Sales and unsold auctions</option><option value="sold" selected>Confirmed sales</option><option value="unsold">Reserve not met</option></select></label>
               <button id="market-reset" class="secondary-button" type="button">Reset market filters</button>
             </div>
+            <div class="panel">
+              <label><input type="checkbox" id="market-compare"> Compare with Set B</label>
+              <p>Choose independent filters for each set. Matching sales can belong to both sets.</p>
+              <p id="market-coverage">Includes collected, confirmed sales with reported prices and dates. Current historical coverage is primarily Bring a Trailer; dealer removals and asking prices are not completed sales.</p>
+            </div>
+            <div id="market-controls-b" class="panel market-controls" aria-label="Set B filters" hidden></div>
+            <div id="market-comparison" class="market-comparison" aria-live="polite"></div>
             <section class="panel market-explorer-panel" aria-labelledby="market-chart-title">
-              <div class="market-chart-heading"><div><h2 id="market-chart-title">Auction price over time</h2><p id="market-chart-count"></p></div>
-              <label>Horizontal axis<select id="market-axis"><option value="date">Auction date</option><option value="mileage">Mileage</option></select></label></div>
+              <div class="market-chart-heading"><div><h2 id="market-chart-title">Sale price over time</h2><p id="market-chart-count"></p></div>
+              <label>Horizontal axis<select id="market-axis"><option value="date">Sale / result date</option><option value="mileage">Mileage</option></select></label></div>
+              <p id="market-set-legend" hidden><span class="set-a-label">● Set A</span> · <span class="set-b-label">◆ Set B</span></p>
               <p class="market-legend"><span class="legend-sold">● Sold</span><span class="legend-unsold">○ Reserve not met</span> · Tap a point for details</p>
               <div id="market-plot" class="market-plot"></div>
-              <div id="market-point-detail" class="market-point-detail" aria-live="polite">Select a point to see its year, mileage, color, location, and auction result.</div>
+              <div id="market-point-detail" class="market-point-detail" aria-live="polite">Select a point to see its year, mileage, color, location, and sale result.</div>
               <p class="market-method">Auction prices exclude buyer fees. Reserve-not-met bids are not sales and are excluded from the averages below. Unknown mileage, color, and location remain visible unless a corresponding filter excludes them.</p>
-              <details class="market-results-disclosure"><summary>Browse matching auction results</summary><div id="market-results-list"></div></details>
+              <details class="market-results-disclosure"><summary>Browse matching results</summary><div id="market-results-list"></div></details>
             </section>
             <div
               class="market-bands"
@@ -410,7 +418,7 @@
               </section>
             </div>
             <p class="market-note">
-              <span id="market-source">Completed auction results</span>.
+              <span id="market-source">Completed sales</span>.
               Averages and medians exclude bids that did not meet reserve. Deal
               labels compare asking price with the median completed sale in the
               same mileage band (15% below: Great; within 15%: Fair; 15% above:

@@ -1684,14 +1684,14 @@ def save(root, state, health, changes, cache_photos=False):
         },
         "source_health": health,
         "market_history": {
-            "source": "Bring a Trailer completed auctions",
+            "source": "Collected confirmed sales (historical coverage primarily Bring a Trailer)",
             "window_months": 24,
             "sales": public_sales,
-            "results": [{**{key: row.get(key) for key in ("listing_url", "year", "make", "model", "mileage", "city", "state", "exterior_color")}, "sale_price": row.get("sold_price") if row["status"] == "sold" else row.get("current_bid"),
-                         "sold_at": str(row.get("auction_result_at") or "")[:10],
+            "results": [{**{key: row.get(key) for key in ("source", "listing_url", "year", "make", "model", "mileage", "city", "state", "exterior_color")}, "sale_price": row.get("sold_price") if row["status"] == "sold" else row.get("current_bid"),
+                         "sold_at": str(row.get("sold_at") or row.get("auction_result_at") or "")[:10],
                          "outcome": "sold" if row["status"] == "sold" else "unsold"}
-                        for row in public_rows if row["source"] == "bringatrailer" and row["status"] in {"sold", "ended"}
-                        and str(row.get("auction_result_at") or "")[:10] >= cutoff],
+                        for row in rows if ((row["status"] == "sold" and isinstance(row.get("sold_price"), (int, float)) and row["sold_price"] > 0) or (row["source"] == "bringatrailer" and row["status"] == "ended"))
+                        and str(row.get("sold_at") or row.get("auction_result_at") or "")[:10] >= cutoff],
         },
         "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
         "vehicles": public_vehicles,

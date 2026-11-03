@@ -19,5 +19,15 @@
   }
   function unique(rows){return [...new Map(rows.map(r=>[r.listing_url,r])).values()];}
   function ticks(max,count=4){const power=10**Math.floor(Math.log10(Math.max(max/count,1)));const step=Math.ceil(max/count/power)*power;return Array.from({length:count+1},(_,i)=>i*step);}
-  return {filter,unique,ticks};
+  function completed(rows) {
+    return rows.filter(r=>r.status==="sold" && Number.isFinite(r.sold_price) && r.sold_price>0 && Number.isFinite(Date.parse(r.sold_at||r.auction_result_at||"")))
+      .map(r=>({...r,sale_price:r.sold_price,sold_at:r.sold_at||r.auction_result_at,outcome:"sold"}));
+  }
+  function stats(rows) {
+    const prices=unique(rows).filter(r=>(r.outcome||"sold")==="sold" && Number.isFinite(r.sale_price) && r.sale_price>0).map(r=>r.sale_price).sort((a,b)=>a-b);
+    const n=prices.length;
+    return {count:n,median:n?(prices[Math.floor((n-1)/2)]+prices[Math.floor(n/2)])/2:null,
+      average:n?prices.reduce((a,b)=>a+b,0)/n:null,min:n?prices[0]:null,max:n?prices[n-1]:null};
+  }
+  return {filter,unique,ticks,completed,stats};
 });

@@ -904,7 +904,9 @@ function render(visibleCount = 24) {
 
 function renderMarket() {
   const filteredResults = CruiserMarket.filter(marketRows, marketOptions(), generatedAt);
-  renderMarketChart(filteredResults);
+  const comparisonResults=document.getElementById("market-compare").checked?CruiserMarket.filter(marketRows,marketOptions("-b"),generatedAt):null;
+  renderMarketComparison(filteredResults,comparisonResults);
+  renderMarketChart(filteredResults,comparisonResults);
   const sales = filteredResults.filter(sale => sale.outcome !== "unsold" && Number.isFinite(sale.mileage) && Number.isFinite(sale.sale_price));
   const bands = [
     { label: "Under 100k", detail: "0–99,999 miles", includes: miles => miles < 100000 },
@@ -932,7 +934,7 @@ function renderMarket() {
     card.append(facts);
     return card;
   }));
-  ui.marketCount.textContent = `${sales.length} completed sale${sales.length === 1 ? "" : "s"} in this view`;
+  ui.marketCount.textContent = `${CruiserMarket.stats(filteredResults).count} confirmed sales · mileage bands below describe Set A`;
 }
 
 function reset() {
@@ -973,11 +975,13 @@ async function load() {
     inventory = Array.isArray(data.listings) ? data.listings : [];
     vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
+    marketSales = CruiserMarket.unique([...marketSales, ...CruiserMarket.completed(inventory)]);
     marketRows = CruiserMarket.unique([...marketSales, ...(data.market_history?.results || [])]).map(row => {
       const color = resolveFactoryColor("exterior", row.exterior_color, row.year, row.model);
       return {...row, model:CruiserFilters.model(row.model || "LX470"), outcome:row.outcome || "sold",
         color_key:color.name || "unknown", color_name:color.name || "Color unavailable"};
     });
+    marketSales = marketRows.filter(row => (row.outcome || "sold") === "sold" && Number.isFinite(row.sale_price) && row.sale_price > 0);
     sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
     let previousVisit = null;
@@ -990,7 +994,7 @@ async function load() {
     ui.collectionNotice.hidden = incomplete.length === 0;
     if (incomplete.length) document.querySelector("#collection-message").textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
     window.CruiserRefresh.notice(data.generated_at, incomplete.length > 0);
-    ui.marketSource.textContent = data.market_history?.source || "Completed auction results";
+    ui.marketSource.textContent = data.market_history?.source || "Completed sale results";
     ui.updated.textContent = formatDate(data.generated_at);
     document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);
     ui.disclaimer.textContent = data.disclaimer || ui.disclaimer.textContent;
@@ -1010,6 +1014,9 @@ async function load() {
       CruiserFilters.model, CruiserFilters.modelLabel)
       .map(([key, label]) => new Option(label, key)));
     if ([...ui.marketModel.options].some(option => option.value === selectedMarketModel)) ui.marketModel.value = selectedMarketModel;
+    document.getElementById("market-model-b").innerHTML=ui.marketModel.innerHTML;
+    document.getElementById("market-model-b").value="LX570";
+    renderMarketFacets("-b");
     renderMarketFacets();
     sourceHealth.forEach(source => {
       const row = text("div", "health-row", "");
@@ -1038,7 +1045,7 @@ async function load() {
     ui.resultCount.textContent = "Inventory unavailable";
     ui.updated.textContent = "Inventory unavailable";
     ui.marketCount.textContent = "Market data unavailable";
-    ui.marketBands.replaceChildren(text("p", "empty", "Completed auction data could not be loaded."));
+    ui.marketBands.replaceChildren(text("p", "empty", "Completed sale data could not be loaded."));
     ui.sourceHealth.replaceChildren(text("p", "empty", "Source status is unavailable."));
     document.querySelector("#watchlist-content").replaceChildren(text("p", "empty", "Saved vehicles cannot be shown until inventory loads."));
     document.querySelector("#alerts-content").textContent = "Inventory unavailable.";
@@ -1358,7 +1365,7 @@ function renderMarketOverview() {
     marketMetric("Active retail listings", integer.format(active.length), "Asking prices, not sales"),
     marketMetric("Median asking price", active.length ? money.format(median(active.map(row => row.asking_price))) : "—", "Active retail listings"),
     marketMetric("Added in 7 days", integer.format(newCount), "Based on first seen"),
-    marketMetric("Completed auction sales", integer.format(marketSales.length), "Historical feed")
+    marketMetric("Completed sales", integer.format(marketSales.length), "Historical feed")
   );
   const bins = [[0,20000],[20000,30000],[30000,40000],[40000,50000],[50000,75000],[75000,Infinity]];
   const distribution = bins.map(([min,max]) => active.filter(row => row.asking_price >= min && row.asking_price < max).length);
