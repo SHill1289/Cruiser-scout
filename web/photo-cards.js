@@ -23,8 +23,15 @@ function makePhotoMedia(row) {
   const counter = text("button", "photo-counter", "");
   counter.type = "button";
   const count = text("span", "photo-count-number", "");
-  counter.append(count, text("span", "photo-expand-label", "photos · Expand ⛶"));
-  const hint = text("span", "photo-browse-hint", "Swipe to browse · Tap to expand");
+  const expand = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  expand.setAttribute("viewBox", "0 0 24 24");
+  expand.setAttribute("class", "photo-expand-icon");
+  expand.setAttribute("aria-hidden", "true");
+  const corners = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  corners.setAttribute("d", "M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5");
+  expand.append(corners);
+  counter.append(count, expand);
+  counter.title = "View photos fullscreen";
   const arrows = [-1, 1].map(direction => {
     const button = text("button", "photo-step photo-" + (direction < 0 ? "previous" : "next"), direction < 0 ? "‹" : "›");
     button.type = "button";
@@ -36,7 +43,7 @@ function makePhotoMedia(row) {
     gallery.urls.filter(url => unavailablePhotos.has(url)).forEach(url => gallery.remove(url));
     const total = gallery.urls.length;
     if (!total) {
-      trigger.remove(); counter.remove(); hint.remove(); arrows.forEach(button => button.remove());
+      trigger.remove(); counter.remove(); arrows.forEach(button => button.remove());
       if (!media.querySelector(".photo-placeholder")) media.prepend(text("span", "photo-placeholder", row.model || "Vehicle"));
       media.classList.add("photo-missing"); credit.textContent = "Photos unavailable"; return;
     }
@@ -46,7 +53,6 @@ function makePhotoMedia(row) {
     count.textContent = (gallery.index + 1) + " / " + total;
     const label = "Open full-screen gallery, photo " + (gallery.index + 1) + " of " + total + ", " + row.year + " " + vehicleName(row);
     trigger.setAttribute("aria-label", label); counter.setAttribute("aria-label", label);
-    hint.textContent = total > 1 ? "Swipe to browse · Tap to expand" : "Tap to view full screen";
     arrows.forEach(button => { button.hidden = total < 2; });
     credit.textContent = photoCredit(row, gallery.current);
   }
@@ -65,7 +71,7 @@ function makePhotoMedia(row) {
     }
   });
   CruiserPhotos.bindSwipe(trigger, direction => { gallery.step(direction); show(); });
-  media.append(trigger, ...arrows, counter, hint);
+  media.append(trigger, ...arrows, counter);
   show();
   return media;
 }

@@ -37,18 +37,18 @@
 }
 
 /* Clear gallery affordances on inventory cards. */
-.listing-media .photo-counter { display:inline-flex; align-items:center; gap:5px; min-height:36px; padding:7px 9px; border:1px solid #ffffff55; pointer-events:auto; cursor:pointer; font-size:12px; z-index:2; }
+.listing-media .photo-counter { display:inline-flex; align-items:center; gap:9px; min-height:36px; padding:7px 10px; border-radius:8px; background:#14221ccc; box-shadow:0 1px 5px #0003; border:1px solid #ffffff55; pointer-events:auto; cursor:pointer; font-size:12px; z-index:2; }
 .photo-count-number { font-variant-numeric:tabular-nums; white-space:nowrap; }
-.photo-expand-label { font-weight:500; white-space:nowrap; }
-.photo-browse-hint { position:absolute; left:0; right:0; bottom:32px; text-align:center; color:white; font-size:11px; font-weight:600; padding:6px; background:linear-gradient(transparent,#10251dd9); pointer-events:none; }
+.photo-expand-icon { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
 .listing-media .photo-credit { max-width:calc(100% - 16px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .photo-viewer:focus-visible,.photo-counter:focus-visible { outline:3px solid var(--gold); outline-offset:-3px; }
 .photo-step[hidden] { display:none; }
 .table-view .photo-counter { display:inline-flex; top:4px; right:4px; left:auto; bottom:auto; min-height:28px; padding:3px 6px; font-size:11px; }
-.table-view .photo-expand-label,.table-view .photo-browse-hint { display:none; }
 @media (hover:hover) {
-  .photo-browse-hint { font-size:0; }
-  .photo-browse-hint::after { content:"Click to view full screen"; font-size:11px; }
+  .listing-media .photo-counter:hover { background:#14221cef; border-color:#ffffffaa; }
+}
+@media (pointer:coarse) {
+  .listing-media .photo-counter { min-height:44px; min-width:44px; }
 }
 /* A full-screen canvas on phones, tablets, and desktop. */
 body.photo-gallery-open { position:fixed; top:var(--photo-scroll-top); width:100%; overflow:hidden; }
