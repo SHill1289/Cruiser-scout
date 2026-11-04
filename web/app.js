@@ -1220,6 +1220,7 @@ function renderActiveFilters() {
 function toggleSaved(key) {
   if (savedVehicles.has(key)) savedVehicles.delete(key);
   else savedVehicles.add(key);
+  window.CruiserWatchlist?.changed(key, savedVehicles.has(key));
   try { localStorage.setItem(watchlistKey, JSON.stringify([...savedVehicles])); }
   catch { /* Browser storage is optional. */ }
   document.querySelector("#watchlist-nav-count").textContent = savedVehicles.size || "";

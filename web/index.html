@@ -439,6 +439,17 @@
                 <p>Saved vehicles stay on this browser between visits.</p>
               </div>
             </div>
+            <div class="panel watch-sync-panel">
+              <h2>Private synced watchlist</h2>
+              <p>Use your inventory-refresh owner code on each browser. Existing saves from this browser are merged automatically the first time you unlock syncing.</p>
+              <p id="watch-sync-status" role="status">Checking sync…</p>
+              <div id="watch-sync-login" hidden>
+                <label>Owner access code <input id="watch-sync-key" type="password" autocomplete="current-password"></label>
+                <button id="watch-sync-unlock" type="button" class="secondary-button">Unlock syncing</button>
+              </div>
+              <button id="watch-sync-now" type="button" class="secondary-button">Sync now</button>
+              <p>Changes sync when you save or remove a truck and when you return to this page. Offline changes stay on this browser until syncing succeeds.</p>
+            </div>
             <div id="watchlist-content"></div>
           </section>
           <section
@@ -651,5 +662,6 @@
     <script src="market-explorer.js" defer></script>
     <script src="market-chart.js" defer></script>
     <script src="app.js" defer></script>
+    <script src="watchlist-sync.js" defer></script>
   </body>
 </html>

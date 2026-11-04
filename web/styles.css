@@ -1781,3 +1781,9 @@ body.filter-drawer-open { position: fixed; top: 0; width: 100%; overflow: hidden
 .set-b-label { color: #965118; }
 .market-dot-core.set-b { fill: #b96520; stroke: #965118; }
 .market-dot-core.set-b.unsold { fill: white; }
+
+.watch-sync-panel { margin-bottom: 20px; }
+.watch-sync-panel p { margin: 12px 0; }
+#watch-sync-login:not([hidden]) { display:flex; gap:12px; align-items:end; flex-wrap:wrap; margin-bottom:12px; }
+#watch-sync-login label { display:grid; gap:6px; max-width:100%; }
+#watch-sync-key { min-height:44px; max-width:100%; box-sizing:border-box; }
