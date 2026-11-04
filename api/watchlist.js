@@ -13,7 +13,7 @@ function createHandler(storage) {
     const send = (code, data) => res.status(code).json(data);
     if (!['GET', 'POST'].includes(req.method)) return send(405, {message:'Method not allowed.'});
     const key = process.env.REFRESH_OWNER_KEY;
-    if (!key || !session(req, key)) return send(401, {message:'Unlock syncing with your owner access code.'});
+    if (!key || !session(req, key, res)) return send(401, {message:'Unlock syncing with your owner access code.'});
     let operations = [];
     if (req.method === 'POST') {
       const origins = ['https://cruiser-scout.vercel.app', process.env.VERCEL_URL && 'https://' + process.env.VERCEL_URL];

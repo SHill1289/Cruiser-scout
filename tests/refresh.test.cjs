@@ -45,3 +45,24 @@ test('owner authentication, origin, cooldown and dispatch protections', async ()
     assert.doesNotMatch(JSON.stringify(failure.body),/secret upstream/);
   } finally { global.fetch = original; }
 });
+
+test('remembered sessions outlive seven days and valid legacy cookies upgrade', async () => {
+  const {createHmac}=require('node:crypto');
+  const login=await call('POST',{action:'login',key});
+  const cookie=login.headers['Set-Cookie'].split(';')[0];
+  assert.match(login.headers['Set-Cookie'],/Max-Age=34560000/);
+  const clock=Date.now;
+  try {
+    Date.now=()=>clock()+10*365*86400000;
+    assert.equal(handler.session({headers:{cookie}},key),true);
+    assert.equal(handler.session({headers:{cookie}},key+'changed'),false);
+    assert.equal(handler.session({headers:{cookie:cookie+'.extra'}},key),false);
+  } finally {Date.now=clock;}
+  const expiry=String(Date.now()+86400000);
+  const legacy='__Host-scout-owner='+expiry+'.'+createHmac('sha256',key).update(expiry).digest('hex');
+  const res={setHeader(k,v){this.cookie=v;}};
+  assert.equal(handler.session({headers:{cookie:legacy}},key,res),true);
+  assert.match(res.cookie,/v2:/);
+  const expired='1.'+createHmac('sha256',key).update('1').digest('hex');
+  assert.equal(handler.session({headers:{cookie:'__Host-scout-owner='+expired}},key),false);
+});

@@ -1,4 +1,4 @@
-const { createHmac, timingSafeEqual } = require('node:crypto');
+const { createHmac, timingSafeEqual, randomBytes } = require('node:crypto');
 const ROOT = 'https://api.github.com/repos/SHill1289/Cruiser-scout/actions/workflows/lx470_search.yml';
 const COOKIE = '__Host-scout-owner';
 function equal(a, b) {
@@ -6,11 +6,22 @@ function equal(a, b) {
   return left.length === right.length && timingSafeEqual(left, right);
 }
 function signature(value, key) { return createHmac('sha256', key).update(value).digest('hex'); }
-function session(req, key) {
+function remember(res, key) {
+  const value = 'v2:' + randomBytes(24).toString('hex');
+  res.setHeader('Set-Cookie', COOKIE + '=' + value + '.' + signature(value, key) + '; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=34560000');
+}
+function session(req, key, res) {
   const cookie = (req.headers.cookie || '').split(';').map(v => v.trim()).find(v => v.startsWith(COOKIE + '='));
   if (!cookie) return false;
-  const [expiry, sig] = cookie.slice(COOKIE.length + 1).split('.');
-  return Number(expiry) > Date.now() && Number(expiry) <= Date.now() + 7 * 86400000 && equal(sig, signature(expiry, key));
+  const parts = cookie.slice(COOKIE.length + 1).split('.');
+  if (parts.length !== 2) return false;
+  const [value, sig] = parts;
+  const valid = (/^v2:[a-f0-9]{48}$/.test(value) ||
+    (Number(value) > Date.now() && Number(value) <= Date.now() + 7 * 86400000)) &&
+    equal(sig, signature(value, key));
+  // Upgrade still-valid legacy sessions and renew browser cookie retention on use.
+  if (valid && res) remember(res, key);
+  return valid;
 }
 async function github(path, token, options = {}) {
   const response = await fetch(ROOT + path, {
@@ -44,11 +55,10 @@ async function handler(req, res) {
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch { return send(400, { message: 'Invalid request.' }); } }
   if (req.method === 'POST' && body.action === 'login') {
     if (!equal(body.key, key)) return send(401, { configured: true, message: 'That owner access code is not valid.' });
-    const expiry = String(Date.now() + 7 * 86400000);
-    res.setHeader('Set-Cookie', COOKIE + '=' + expiry + '.' + signature(expiry, key) + '; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=604800');
+    remember(res, key);
     return send(200, { authenticated: true });
   }
-  if (!session(req, key)) return send(401, { configured: true, message: 'Unlock owner controls to refresh inventory.' });
+  if (!session(req, key, res)) return send(401, { configured: true, message: 'Unlock owner controls to refresh inventory.' });
   if (req.method === 'POST' && body.action === 'logout') {
     res.setHeader('Set-Cookie', COOKIE + '=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0');
     return send(200, { authenticated: false });
