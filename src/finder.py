@@ -32,7 +32,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source"
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
           "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url", "exterior_color", "interior_color", "title_status",
-          "reported_extras",
+          "reported_extras", "equipment_evidence",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
           "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
@@ -910,9 +910,36 @@ class ListingParagraphs(HTMLParser):
             self.current.append(data)
 
 
+def equipment_claims(paragraphs):
+    """Keep verbatim mentions, including negatives; never infer installed equipment."""
+    patterns = {
+        "Night View": r"\bnight (?:view|vision)(?: system)?\b",
+        "Rear-seat entertainment": r"\b(?:(?:rear[- ]seat|rear|second[- ]row|2nd[- ]row|factory) (?:DVD|entertainment)(?: system)?|DVD (?:player|entertainment system))\b",
+        "Mark Levinson audio": r"\bMark Levinson\b",
+        "CarPlay": r"\b(?:Apple )?CarPlay\b",
+        "Remote start": r"\bremote start\b",
+    }
+    records = []
+    for paragraph in paragraphs:
+        for sentence in re.split(r"(?<=[.!?])\s+|[\r\n]+", paragraph):
+            sentence = sentence.strip()
+            # Keep entire short sentences so negation and qualifications stay intact.
+            if not sentence or len(sentence) > 700:
+                continue
+            for label, pattern in patterns.items():
+                if re.search(pattern, sentence, re.I):
+                    record = {"label": label, "quote": sentence, "kind": "description"}
+                    if record not in records:
+                        records.append(record)
+    return records[:25]
+
+
 def condition_claims(paragraphs):
     """Extract explicit listing claims; an absent or standard feature stays unknown."""
     claims = {}
+    equipment = equipment_claims(paragraphs)
+    if equipment:
+        claims["equipment_evidence"] = equipment
     patterns = {
         "timing_belt": [
             (r"\b(?:timing belt|timing-belt)\b.{0,55}\b(?:due|overdue|needs|required)\b", "Service due per listing"),
@@ -1361,6 +1388,8 @@ def update(state, rows, now, scopes=()):
             row["photo_source"] = previous.get("photo_source", "")
             row["photo_source_url"] = previous.get("photo_source_url", "")
         if previous and previous.get("listing_url") == row["listing_url"]:
+            if not row.get("equipment_evidence") and previous.get("equipment_evidence"):
+                row["equipment_evidence"] = previous["equipment_evidence"]
             for topic in CONDITION_TOPICS:
                 if not row.get(f"{topic}_evidence") and previous.get(f"{topic}_evidence"):
                     row[f"{topic}_status"] = previous[f"{topic}_status"]
@@ -1657,7 +1686,7 @@ def save(root, state, health, changes, cache_photos=False):
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
         "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url",
-        "exterior_color", "interior_color", "reported_extras", "title_status", "accident_history", "accident_category",
+        "exterior_color", "interior_color", "reported_extras", "equipment_evidence", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
         "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",

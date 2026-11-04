@@ -503,27 +503,44 @@ function reportedExtras(row) {
 }
 
 function equipmentHighlights(row, group) {
-  const reports = new Map();
+  const reports = [];
+  const seen = new Set();
   for (const listing of group.listings) {
-    for (const raw of String(listing.reported_extras || "").split(";").filter(Boolean)) {
-      if (!reports.has(raw)) reports.set(raw, listing);
+    if (listing.model !== row.model || Number(listing.year) !== Number(row.year)) continue;
+    const claims = Array.isArray(listing.equipment_evidence) ? listing.equipment_evidence : [];
+    const tags = String(listing.reported_extras || "").split(";").filter(Boolean)
+      .map(label => ({ label, quote: label, kind: "tag" }));
+    for (const claim of [...claims, ...tags]) {
+      if (typeof claim.label !== "string" || typeof claim.quote !== "string") continue;
+      if (!/^https?:\/\//i.test(listing.listing_url || "")) continue;
+      const key = JSON.stringify([claim.label, claim.quote, listing.listing_url]);
+      if (!seen.has(key)) { seen.add(key); reports.push({ ...claim, listing }); }
     }
   }
   const panel = text("div", "equipment-highlights", "");
-  panel.setAttribute("aria-label", "Listing-reported equipment");
-  if (!reports.size) {
-    panel.append(text("span", "equipment-unknown", "Special options not documented"));
+  panel.setAttribute("aria-label", "Equipment evidence");
+  if (!reports.length) {
+    panel.append(text("span", "equipment-unknown", "Special equipment not mentioned · absence not confirmed"));
     return panel;
   }
-  panel.append(text("span", "equipment-label", "Reported equipment"));
-  for (const [label, listing] of reports) {
-    const dvd = /dvd|rear.seat entertainment/i.test(label);
-    const factory = /factory|oem/i.test(label);
-    const link = text("a", "equipment-badge", label + (dvd && !factory ? " · factory unverified" : " · reported"));
+  const details = document.createElement("details");
+  details.className = "equipment-evidence";
+  const labels = [...new Set(reports.map(report => report.label))];
+  details.append(text("summary", "", `Equipment evidence · ${labels.join(" · ")}`));
+  details.append(text("p", "equipment-note", "Source mentions, not verified equipment. Quotes may describe missing, modified or nonworking equipment. Factory origin and operation need confirmation unless explicitly documented."));
+  for (const report of reports) {
+    const item = text("div", "equipment-claim", "");
+    item.append(text("strong", "", report.label));
+    item.append(text("span", "equipment-label", report.kind === "description" ? "Listing description" : "Marketplace tag · factory origin unverified"));
+    item.append(text("blockquote", "", report.quote));
+    const listing = report.listing;
+    const link = text("a", "maintenance-source", `View evidence on ${listing.source} ↗`);
     link.href = listing.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-    link.title = "Reported by " + listing.source + ". Open source evidence; confirm equipment and operation with the seller.";
-    panel.append(link);
+    item.append(link);
+    if (listing.status !== "active") item.append(text("span", "equipment-label", "Historical listing · equipment may have changed"));
+    details.append(item);
   }
+  panel.append(details);
   return panel;
 }
 
@@ -1343,9 +1360,9 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   const condition = text("section", "research-section", "");
   condition.id = "research-maintenance";
   condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row, group, true));
-  condition.append(equipmentHighlights(row, group));
-  const extras = reportedExtras(row);
-  if (extras) condition.append(extras);
+  const equipment = text("section", "research-section", "");
+  equipment.append(text("h3", "", "Equipment evidence"), equipmentHighlights(row, group));
+  body.insertBefore(equipment, layout);
   body.insertBefore(condition, layout);
   const history = text("section", "research-section", "");
   history.append(text("h3", "", "Price & auction context"));
