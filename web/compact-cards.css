@@ -1,0 +1,37 @@
+
+/* Keep cards content-sized, including watchlist cards. */
+.listings, .watchlist-grid { align-items: start; }
+.listing .identity { padding: 12px 16px 6px; }
+.listing .listing-state-row { margin-bottom: 6px; }
+.listing .vehicle-title { margin: 0 0 6px; }
+.card-primary-facts { display:flex; gap:16px; justify-content:space-between; align-items:center; margin:4px 0 10px; }
+.card-primary-facts .metric strong { display:block; font-size:21px; line-height:1.2; }
+.card-primary-facts .metric span { font-size:11px; color:var(--muted); }
+.card-mileage { font-family:inherit; font-size:18px; font-weight:700; padding:0; min-height:44px; border:0; background:transparent; color:var(--text); cursor:pointer; }
+.listing > .metric, .listing .listing-mileage-summary { display:none; }
+.listing .listing-actions { margin-top:0; padding:8px 16px 12px; flex-wrap:wrap; }
+.listing .listing-actions .compare-select { width:auto; margin:0; }
+.listing .listing-actions > * { min-height:44px; }
+.listing .listing-dates { margin-top:0; padding:6px 16px; gap:10px; }
+.listing .history { padding:6px 16px; }
+.listing .maintenance-highlights { margin:8px 0; padding:9px; }
+.maintenance-compact-empty { font-size:11px; color:var(--muted); margin:8px 0; line-height:1.45; }
+.equipment-highlights { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:6px 0 10px; font-size:11px; }
+.equipment-label { color:var(--muted); width:100%; }
+.equipment-badge { padding:7px 9px; border:1px solid #d6bc8e; background:#fbf5e9; border-radius:5px; color:#69491d; text-decoration:none; line-height:1.4; }
+.equipment-badge:hover { text-decoration:underline; }
+.equipment-unknown { color:var(--muted); }
+.table-view .card-primary-facts { display:none; }
+.table-view .listing > .price-metric { display:block; }
+.table-view .listing .listing-mileage-summary { display:block; }
+.table-view .listing-actions { grid-column:auto; }
+@media(min-width:701px) { .table-view .listing > .mileage-metric { display:block; } }
+@media(max-width:700px) {
+  .listing .identity { padding:10px 12px 4px; }
+  .listing .listing-actions { padding:6px 12px 10px; gap:6px; }
+  .listing .listing-actions > * { flex:1 1 auto; justify-content:center; }
+  .table-view .listing .listing-actions { grid-column:1 / -1; }
+  .equipment-badge { display:inline-flex; align-items:center; min-height:44px; padding:4px 8px; box-sizing:border-box; }
+}
+
+@media(min-width:701px) { .listings.table-view .listing { grid-template-columns:80px minmax(160px,1.6fr) minmax(90px,.8fr) minmax(90px,.8fr) minmax(240px,1.3fr); } }

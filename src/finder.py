@@ -83,7 +83,14 @@ def valid_vin(vin):
 DISTINCT_EXTRAS = {
     "DVD Entertainment System": "Rear-seat DVD",
     "Rear Seat Entertainment": "Rear-seat DVD",
+    "Rear Seat DVD": "Rear-seat DVD",
+    "Rear-Seat DVD": "Rear-seat DVD",
+    "Rear Entertainment System": "Rear-seat entertainment",
+    "Factory Rear Seat DVD": "Factory rear-seat DVD",
+    "Factory DVD Entertainment System": "Factory rear-seat DVD",
     "Night View": "Night View",
+    "Night View System": "Night View",
+    "Night Vision System": "Night View",
     "Night Vision": "Night View",
     "CarPlay": "CarPlay",
     "Apple CarPlay": "CarPlay",
@@ -98,8 +105,10 @@ def listing_extras(features):
     labels = set()
     for item in features:
         name = item.get("name") if isinstance(item, dict) else item
-        if isinstance(name, str) and name in DISTINCT_EXTRAS:
-            labels.add(DISTINCT_EXTRAS[name])
+        if isinstance(name, str):
+            label = {key.casefold(): value for key, value in DISTINCT_EXTRAS.items()}.get(name.strip().casefold())
+            if label:
+                labels.add(label)
     return ";".join(sorted(labels))
 
 

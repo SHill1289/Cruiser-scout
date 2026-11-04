@@ -502,6 +502,31 @@ function reportedExtras(row) {
   return panel;
 }
 
+function equipmentHighlights(row, group) {
+  const reports = new Map();
+  for (const listing of group.listings) {
+    for (const raw of String(listing.reported_extras || "").split(";").filter(Boolean)) {
+      if (!reports.has(raw)) reports.set(raw, listing);
+    }
+  }
+  const panel = text("div", "equipment-highlights", "");
+  panel.setAttribute("aria-label", "Listing-reported equipment");
+  if (!reports.size) {
+    panel.append(text("span", "equipment-unknown", "Special options not documented"));
+    return panel;
+  }
+  panel.append(text("span", "equipment-label", "Reported equipment"));
+  for (const [label, listing] of reports) {
+    const dvd = /dvd|rear.seat entertainment/i.test(label);
+    const factory = /factory|oem/i.test(label);
+    const link = text("a", "equipment-badge", label + (dvd && !factory ? " · factory unverified" : " · reported"));
+    link.href = listing.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+    link.title = "Reported by " + listing.source + ". Open source evidence; confirm equipment and operation with the seller.";
+    panel.append(link);
+  }
+  return panel;
+}
+
 function maintenanceClaim(claim) {
   const item = text("div", "maintenance-claim", "");
   item.append(text("strong", "", claim.status), text("p", "condition-evidence", claim.evidence));
@@ -523,8 +548,8 @@ function maintenanceHighlights(row, group) {
   panel.setAttribute("aria-label", "Maintenance evidence");
   panel.append(text("h4", "", "Maintenance evidence"));
   if (!known.length) {
-    panel.append(text("p", "maintenance-empty", "Not mentioned in collected evidence. This does not mean the work was not done."));
-    return panel;
+    const empty = text("p", "maintenance-compact-empty", "Maintenance: not mentioned — not the same as not done.");
+    return empty;
   }
   for (const record of known.slice(0, 2)) {
     const item = text("div", "maintenance-highlight", "");
@@ -662,7 +687,13 @@ function renderCard(row, group) {
   mileageButton.setAttribute("aria-haspopup", "dialog");
   mileageButton.addEventListener("click", showDetails);
   identity.append(mileageButton);
-  identity.append(maintenanceHighlights(row, group));
+  const facts = text("div", "card-primary-facts", "");
+  facts.append(makeMetric(priceLabel(row), row.status === "sold" ? "Recorded sale price" : row.category === "auction" ? "Auction price" : "Asking price"));
+  const compactMileage = mileageButton.cloneNode(true);
+  compactMileage.className = "card-mileage";
+  compactMileage.addEventListener("click", showDetails);
+  facts.append(compactMileage);
+  identity.append(facts, equipmentHighlights(row, group));
   card.addEventListener("click", event => {
     if (!window.matchMedia("(max-width: 700px)").matches) return;
     if (event.target.closest("button, a, input, select, label, details, [role='button']")) return;
@@ -677,9 +708,7 @@ function renderCard(row, group) {
   const colors = text("div", "color-pair", "");
   colors.append(makeColorFact("exterior", row.exterior_color, row.year, row.model), makeColorFact("interior", row.interior_color, row.year, row.model));
   identity.append(colors);
-  const extras = reportedExtras(row);
-  if (extras) identity.append(extras);
-  identity.append(conditionRecords(row, group));
+  identity.append(maintenanceHighlights(row, group));
   card.append(identity);
 
   const price = makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price");
@@ -721,9 +750,8 @@ function renderCard(row, group) {
   save.setAttribute("aria-pressed", String(savedVehicles.has(group.vehicleKey)));
   save.setAttribute("aria-label", (savedVehicles.has(group.vehicleKey) ? "Remove from" : "Save to") + " watchlist: " + row.year + " " + vehicleName(row));
   save.addEventListener("click", () => toggleSaved(group.vehicleKey));
-  actions.append(research, save, link);
+  actions.append(research, save, link, comparisonButton(row, group));
   card.append(actions);
-  card.append(comparisonButton(row, group));
   const others = otherListings(group);
   if (others) card.append(others);
   return card;
@@ -1315,6 +1343,7 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   const condition = text("section", "research-section", "");
   condition.id = "research-maintenance";
   condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row, group, true));
+  condition.append(equipmentHighlights(row, group));
   const extras = reportedExtras(row);
   if (extras) condition.append(extras);
   body.insertBefore(condition, layout);

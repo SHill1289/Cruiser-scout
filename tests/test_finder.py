@@ -130,6 +130,9 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(listing_extras(features), 'CarPlay;Rear-seat DVD;Remote start')
         self.assertEqual(listing_extras([{'name': 'Night View'}, {'name': 'Moonroof'}]), 'Night View')
         self.assertEqual(listing_extras(None), '')
+        self.assertEqual(listing_extras(['night view system', 'Factory Rear Seat DVD', 'DVD player', 'No Night View']),
+                         'Factory rear-seat DVD;Night View')
+        self.assertEqual(listing_extras(['Rear Seat DVD']), 'Rear-seat DVD')
 
     def test_scope_filters_and_missing_vin(self):
         for field, value in [('year', 2005), ('make', 'Toyota'), ('model', 'LX570')]:
