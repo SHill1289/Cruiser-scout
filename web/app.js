@@ -118,6 +118,7 @@ function saleState(row) {
   return "other";
 }
 function saleStateLabel(row) {
+  if (String(row.quality_flags || '').split(';').includes('email_discovery')) return 'Auction status unverified';
   if (row.source === "carsandbids" && row.status === "unknown" && String(row.quality_flags || "").split(";").includes("rss_discovery")) return "Auction status unverified";
   return ({ "for-sale": "For sale", "live-auction": "Live auction", sold: "Sold",
     "bid-not-met": "Bid not met", "auction-ended": "Auction ended", other: "Status unknown" })[saleState(row)];
@@ -674,6 +675,7 @@ function renderCard(row, group) {
   }
   if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
   if (String(row.quality_flags || "").split(";").includes("rss_discovery")) stateRow.append(text("span", "title-unverified-badge", "RSS discovery · details unverified"));
+  if (String(row.quality_flags || '').split(';').includes('email_discovery')) stateRow.append(text('span', 'title-unverified-badge', `New auction alert · ${formatDate(row.email_observed_at)}`));
   const accidentReports = new Set(group.listings.map(accidentGroup));
   if (accidentReports.has("reported") && accidentReports.has("none"))
     stateRow.append(text("span", "duplicate-conflict-badge", "History differs by source"));
@@ -1010,9 +1012,13 @@ function updateFilterToggle() {
 
 async function load() {
   try {
+    const emailLoad = fetch('/api/email-alerts', {credentials:'omit',signal:AbortSignal.timeout(9000)})
+      .then(response => response.ok ? response.json() : null).catch(() => null);
     const response = await fetch(CruiserInventory.url, { cache: "no-cache", credentials: "omit" });
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
-    const data = await response.json();
+    let data = await response.json();
+    const alerts = await emailLoad;
+    if (alerts) data = CruiserEmailAlerts.merge(data, alerts);
     try {
       const colorResponse = await fetch("factory-colors.json", { cache: "no-cache" });
       if (colorResponse.ok) colorReference = await colorResponse.json();
