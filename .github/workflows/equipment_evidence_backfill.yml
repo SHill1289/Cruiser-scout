@@ -1,0 +1,44 @@
+name: Backfill cached equipment evidence
+on:
+  push:
+    branches: [equipment-evidence-backfill]
+    paths: ['.backfill/**', '.github/workflows/equipment_evidence_backfill.yml']
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: lx470-refs/heads/main
+  cancel-in-progress: false
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: backfill
+          sparse-checkout: .backfill
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+          sparse-checkout: |
+            data/database.json
+            web/inventory.json
+          sparse-checkout-cone-mode: false
+      - name: Apply cached evidence without collecting inventory
+        run: python backfill/.backfill/apply.py site backfill/.backfill
+      - name: Save equipment-only changes
+        working-directory: site
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/database.json web/inventory.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Backfill cached equipment evidence for existing listings"
+            git push origin HEAD:main
+          fi
+      - name: Publish public inventory feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run inventory_pages.yml --repo SHill1289/Cruiser-scout --ref main
