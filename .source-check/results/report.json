@@ -1,0 +1,20 @@
+[
+  {
+    "source": "carsandbids",
+    "url": "https://carsandbids.com/search/lexus/lx",
+    "robots_allowed": true,
+    "http": {
+      "bytes": 18206,
+      "challenge": false
+    },
+    "title": "Just a moment...",
+    "final_url": "https://carsandbids.com/search/lexus/lx",
+    "text_preview": "carsandbids.com\nPerforming security verification\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\nRay ID: a55c19305f86a1df\nPerformance and Security by Cloudflare\nPrivacy",
+    "search_error": "TimeoutException"
+  },
+  {
+    "source": "cars.com",
+    "url": "https://www.cars.com/shopping/lexus-lx_470/",
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  }
+]
