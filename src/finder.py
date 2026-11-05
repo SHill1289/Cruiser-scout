@@ -32,7 +32,7 @@ FIELDS = ["listing_key", "vehicle_key", "vin", "year", "make", "model", "source"
           "listing_url", "status", "category", "asking_price", "base_price", "current_bid",
           "sold_price", "currency", "mileage", "mileage_is_approximate", "city", "state", "postal_code",
           "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url", "exterior_color", "interior_color", "title_status",
-          "reported_extras", "equipment_evidence",
+          "reported_extras", "equipment_evidence", "source_description",
           "accident_history", "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
           "service_records", "rust_notes", "source_days_on_market", "listed_at", "listed_at_is_estimated",
           "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
@@ -1289,7 +1289,8 @@ def clean_title_candidate(row):
 
 def inventory_candidate(row):
     """Include labeled Auto.dev unknown-title observations, never branded titles."""
-    return clean_title_candidate(row) or (row.get("source") == "autodev"
+    return clean_title_candidate(row) or (row.get("source") == "carsandbids" and row.get("status") == "unknown"
+        and row.get("title_status") == "unknown" and "rss_discovery" in row.get("quality_flags", "").split(";")) or (row.get("source") == "autodev"
         and row.get("title_status") == "unknown" and valid_vin(row.get("vin", ""))
         and "vin_model_or_year_conflict" not in row.get("quality_flags", ""))
 
@@ -1686,7 +1687,7 @@ def save(root, state, health, changes, cache_photos=False):
         "asking_price", "base_price", "current_bid", "sold_price", "currency", "mileage",
         "mileage_is_approximate", "city", "state", "postal_code", "latitude", "longitude", "location_precision",
         "seller", "seller_type", "photo_url", "photo_urls", "photo_source", "photo_source_url",
-        "exterior_color", "interior_color", "reported_extras", "equipment_evidence", "title_status", "accident_history", "accident_category",
+        "exterior_color", "interior_color", "reported_extras", "equipment_evidence", "source_description", "title_status", "accident_history", "accident_category",
         "owners", "owners_source", "owners_verified_at", "owner_evidence_url",
         "timing_belt_status", "timing_belt_evidence", "ahc_status", "ahc_evidence",
         "rust_status", "rust_evidence", "navigation_status", "navigation_evidence",
@@ -1696,7 +1697,10 @@ def save(root, state, health, changes, cache_photos=False):
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
         "rust_location", "price_history", "vehicle_first_seen", "reappeared_at",
     ]
-    public_rows = [r for r in rows if (inventory_candidate(r) or (r["source"] == "bringatrailer" and r["status"] in {"sold", "ended"})) and r["status"] in {"active", "sold", "ended"}]
+    discovery_cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=14)).isoformat()
+    public_rows = [r for r in rows if (inventory_candidate(r) or (r["source"] == "bringatrailer" and r["status"] in {"sold", "ended"}))
+                  and (r["status"] in {"active", "sold", "ended"} or (r["source"] == "carsandbids" and r["status"] == "unknown"
+                  and "rss_discovery" in r.get("quality_flags", "").split(";") and r.get("listed_at", "") >= discovery_cutoff))]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
     public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
     public_rows = [{**row, **change_metadata(state, row), **deal_rating(row, public_sales),
@@ -1834,6 +1838,16 @@ def run(root=ROOT, live=True):
                             result["status"] = "partial"
                             result["detail"] += " One listing failed validation."
                     health.append({"source": source["id"], **result})
+                elif source["type"] == "carsandbids_rss":
+                    from carsandbids_rss import collect as collect_rss
+                    batch = collect_rss(now)
+                    for row in batch:
+                        prior = state["listings"].get("carsandbids:" + row["source_listing_id"])
+                        if prior and prior.get("status") in {"active", "sold", "ended"}:
+                            continue  # RSS must never downgrade a verified auction outcome.
+                        row.update(condition_claims(row.pop("_paragraphs", [])))
+                        rows.append(normalize(row))
+                    health.append({"source": source["id"], "status": "ok", "detail": f"{len(batch)} recent RSS discoveries; auction status, title, VIN and bids unverified. No paid API used."})
                 elif source["type"] == "carsandbids":
                     from carsandbids import Collector
                     collector = Collector()

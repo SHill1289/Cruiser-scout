@@ -118,6 +118,7 @@ function saleState(row) {
   return "other";
 }
 function saleStateLabel(row) {
+  if (row.source === "carsandbids" && row.status === "unknown" && String(row.quality_flags || "").split(";").includes("rss_discovery")) return "Auction status unverified";
   return ({ "for-sale": "For sale", "live-auction": "Live auction", sold: "Sold",
     "bid-not-met": "Bid not met", "auction-ended": "Auction ended", other: "Status unknown" })[saleState(row)];
 }
@@ -537,7 +538,7 @@ function equipmentHighlights(row, group) {
     const link = text("a", "maintenance-source", `View evidence on ${listing.source} ↗`);
     link.href = listing.listing_url; link.target = "_blank"; link.rel = "noopener noreferrer";
     item.append(link);
-    if (listing.status !== "active") item.append(text("span", "equipment-label", "Historical listing · equipment may have changed"));
+    if (["sold", "ended", "removed"].includes(listing.status)) item.append(text("span", "equipment-label", "Historical listing · equipment may have changed"));
     details.append(item);
   }
   panel.append(details);
@@ -672,6 +673,7 @@ function renderCard(row, group) {
     stateRow.append(badge);
   }
   if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
+  if (String(row.quality_flags || "").split(";").includes("rss_discovery")) stateRow.append(text("span", "title-unverified-badge", "RSS discovery · details unverified"));
   const accidentReports = new Set(group.listings.map(accidentGroup));
   if (accidentReports.has("reported") && accidentReports.has("none"))
     stateRow.append(text("span", "duplicate-conflict-badge", "History differs by source"));
@@ -752,7 +754,7 @@ function renderCard(row, group) {
   card.append(history);
 
   const link = text("a", "open-link", "");
-  link.append(text("span", "open-link-label", "Source listing"), text("span", "open-link-arrow", "\u2197"));
+  link.append(text("span", "open-link-label", row.source === "carsandbids" && row.status === "unknown" ? "View auction / current bid" : "Source listing"), text("span", "open-link-arrow", "\u2197"));
   link.href = row.listing_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
@@ -1348,6 +1350,17 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     researchFact("Interior", row.interior_color || "Unknown")
   );
   layout.append(media, facts); body.append(layout);
+  if (row.source_description) {
+    const description = text("section", "research-section", "");
+    description.append(text("h3", "", "Source description"));
+    const excerpt = text("p", "", row.source_description);
+    excerpt.style.whiteSpace = "pre-line";
+    description.append(excerpt);
+    const source = text("a", "maintenance-source", "Read full auction and current bid on Cars & Bids ↗");
+    source.href = row.listing_url; source.target = "_blank"; source.rel = "noopener noreferrer";
+    description.append(source);
+    body.append(description);
+  }
   const more = text("section", "research-section", "");
   more.append(text("h3", "", "Source records"));
   const sources = otherListings(group);

@@ -160,7 +160,7 @@
     {
       "id": "cars.com",
       "enabled": false,
-      "reason": "Automated validation on 2026-10-23 returned HTTP 403. Model search links are available in Sources & Coverage; manual imports supported."
+      "reason": "Rechecked 2026-11-05: HTTP 403 from public shopping page and runner robots request. Free unattended collection unavailable; remains disabled."
     },
     {
       "id": "edmunds",
@@ -189,10 +189,10 @@
     },
     {
       "id": "carsandbids",
-      "type": "carsandbids",
-      "enabled": false,
-      "url": "https://carsandbids.com/search/lexus/lx",
-      "reason": "Collector implemented; unattended Chrome encountered a Cloudflare security verification page during validation on 2026-10-23. Not enabled until unattended access is available."
+      "type": "carsandbids_rss",
+      "enabled": true,
+      "url": "https://carsandbids.com/rss.xml",
+      "reason": "Official RSS validated on GitHub runner 2026-11-05. Recent discoveries only; auction status, title, VIN and current bids unverified. Full browser collector remains blocked."
     },
     {
       "id": "autodev",
