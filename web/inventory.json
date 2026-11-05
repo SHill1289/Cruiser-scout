@@ -28868,7 +28868,38 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Night View",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a receiver hitch, a rear spoiler, automatic climate control, Night View, a Mark Levinson sound system, a rearview camera, navigation, a cassette stereo, a six-disc CD changer, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a receiver hitch, a rear spoiler, automatic climate control, Night View, a Mark Levinson sound system, a rearview camera, navigation, a cassette stereo, a six-disc CD changer, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a receiver hitch, a rear spoiler, automatic climate control, Night View, a Mark Levinson sound system, a rearview camera, navigation, a cassette stereo, a six-disc CD changer, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Night View",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a Mark Levinson sound system, a cassette stereo linked to a six-disc CD changer, a rearview camera, a rear-seat entertainment system, cruise control, Night View, and removable third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a Mark Levinson sound system, a cassette stereo linked to a six-disc CD changer, a rearview camera, a rear-seat entertainment system, cruise control, Night View, and removable third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a Mark Levinson sound system, a cassette stereo linked to a six-disc CD changer, a rearview camera, a rear-seat entertainment system, cruise control, Night View, and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -28954,7 +28985,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The seller purchased the vehicle shortly after it was listed on BaT in December 2021 , and work since then is said to have included refurbishing the Mark Levinson audio system, changing the fluids, installing extended sway-bar links, and replacing the front CV axles, sway-bar bushings, and Ironman Foam Cell Pro shocks.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The Mark Levinson audio system has reportedly been refurbished, but the amplifier no longer works.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29040,7 +29082,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ five-spoke wheels, a power sunroof, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, third-row seating, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a Mark Levinson sound system, automatic climate control, a rear-view camera, a CD stereo, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "Seller discloses prior accident",
       "accident_category": "reported",
@@ -29126,7 +29179,18 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes Adaptive Variable Suspension with Adjustable Height Control as well as 18″ wheels, a power sunroof, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rear-view camera, a CD/cassette stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29214,7 +29278,18 @@
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Galactic Gray Mica over Gray leather and features 18″ five-spoke alloy wheels and Adaptive Variable Suspension with Adjustable Height Control as well as a power sunroof, an aftermarket touchscreen head unit, automatic climate control, a Mark Levinson sound system, heated and power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "An aftermarket touchscreen head unit has been retrofitted, and amenities include heated power-adjustable front seats, automatic climate control, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29300,7 +29375,18 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Sand Dollar Pearl over Ivory leather upholstery and features 17″ ICON Vehicle Dynamics wheels, a power sunroof, automatic climate control, a Mark Levinson sound system, a rear-view camera, navigation, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include heated power-adjustable front seats, automatic climate control, a rear-view camera, navigation, a Mark Levinson sound system, cruise control, and a rear seat infotainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "No reported accidents",
       "accident_category": "none",
@@ -29388,7 +29474,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Crystal White over Ivory leather upholstery, and features include 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a receiver hitch, automatic climate control, a rear-view camera, heated power-adjustable front seats, third-row seating, a cassette/CD stereo, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, driver’s seat position memory, a rear-view camera, a cassette/CD stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29474,7 +29571,18 @@
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Powered by a 4.7-liter V8 paired with a five-speed automatic transmission, it has a locking center differential, Adaptive Variable Suspension, 18″ wheels, heated front seats, folding and removable third-row seats, a Mark Levinson sound system, and a rearview camera.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Appointments in the eight-passenger cabin include burl wood trim, front and rear automatic climate control, and an 11-speaker Mark Levinson sound system with a CD changer and a cassette player.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29560,7 +29668,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Further equipment includes a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rear-view camera, a CD stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29646,7 +29765,18 @@
       "exterior_color": "Black",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional equipment includes 18″ five-spoke alloy wheels, a receiver hitch, running boards, heated power-adjustable front seats, third-row seating, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The heated power-adjustable front seats are trimmed in gray leather, and appointments include third-row seating, a Mark Levinson sound system, and navigation.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29732,7 +29862,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ alloy wheels and Adaptive Variable Suspension with Adjustable Height Control as well as a power sunroof, automatic climate control, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29818,7 +29959,18 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Sand Dollar Pearl over Ivory leather and features 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a CD stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29904,7 +30056,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck is finished in Black Onyx over Ivory leather and features 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a cassette stereo, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a cassette stereo, a Mark Levinson sound system, navigation, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -29990,7 +30153,18 @@
       "exterior_color": "Cypress Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a CD stereo, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include heated power-adjustable front seats, a rear-view camera, a CD stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30078,7 +30252,18 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes a power sunroof, an Adaptive Variable Suspension, 18″ five-spoke alloy wheels, heated power-adjustable front seats, third-row seating, automatic climate control, cruise control, a cassette stereo, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include automatic climate control, cruise control, a rearview camera, a cassette stereo, and a Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30166,7 +30351,18 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Finished in Classic Silver Metallic over gray leather, appointments include a sunroof, a roof rack, a receiver hitch, a roof spoiler, illuminated running boards, rear splash guards, 18″ five-spoke alloy wheels, heated front seats, third-row seating, a Mark Levinson sound system, and a rearview camera.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, driver-seat position memory settings, automatic climate control, a rearview camera, an AM/FM/cassette stereo, a Mark Levinson sound system, navigation, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30254,7 +30450,28 @@
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It rolls on 18″ alloy wheels and is further equipped with a sunroof, heated power-adjustable front seats, third-row seating, a Mark Levinson sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It rolls on 18″ alloy wheels and is further equipped with a sunroof, heated power-adjustable front seats, third-row seating, a Mark Levinson sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Aftermarket front door speakers and a 12″ touchscreen display with Android Auto connectivity have been installed, and amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a Mark Levinson sound system, cruise control, and a rear-seat entertainment system with a flip-down display.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Aftermarket front door speakers and a 12″ touchscreen display with Android Auto connectivity have been installed, and amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a Mark Levinson sound system, cruise control, and a rear-seat entertainment system with a flip-down display.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30340,7 +30557,18 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It features a power sunroof, Adaptive Variable Suspension, automatic climate control, a CD changer, a Mark Levinson sound system, navigation, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, driver-seat position memory settings, automatic climate control, a rearview camera, a CD changer, a cassette stereo, a Mark Levinson sound system, navigation, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30428,7 +30656,28 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Features include a power sunroof, 18″ alloy wheels, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, a rear-seat entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include a power sunroof, 18″ alloy wheels, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, a rear-seat entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo, a CD changer, a Mark Levinson sound system, cruise control, and an Audiovox rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo, a CD changer, a Mark Levinson sound system, cruise control, and an Audiovox rear-seat entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30514,7 +30763,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include a power sunroof, automatic climate control, a CD/cassette stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30600,7 +30860,18 @@
       "exterior_color": "Crystal White Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include a power sunroof, 18″ alloy wheels, an Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a cassette stereo linked to a CD changer, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include driver’s seat position memory settings, automatic climate control, a rearview camera, a cassette stereo linked to a CD changer, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30686,7 +30957,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes a power sunroof, an Adaptive Variable Suspension, black 18″ five-spoke alloy wheels, heated power-adjustable front seats, side-folding third-row seats, automatic climate control, cruise control, a cassette stereo, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include driver’s seat position memory settings, automatic climate control, cruise control, a cassette stereo, a Mark Levinson sound system, and a rearview camera.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30772,7 +31054,38 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "The work included installing a Dobinsons 2.5″ suspension lift kit, a Slee Off-Road front bumper, Baja Designs LED auxiliary lighting, a COMEUP front winch, an Apple CarPlay module for the factory infotainment screen, and spacers for the 18″ five-spoke alloy wheels.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional features include a power sunroof, a receiver hitch, a roof rack, automatic climate control, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional features include a power sunroof, a receiver hitch, a roof rack, automatic climate control, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "The infotainment system has been upgraded with a Grom Vline module, adding Apple CarPlay capability, and an additional microphone was installed near the rearview mirror for phone calls via integrated steering wheel controls.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30858,7 +31171,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ alloy wheels, a power sunroof, roof rails, running boards, a rear spoiler, a receiver hitch, heated power-adjustable front seats, automatic climate control, a cassette stereo with a CD changer, a Mark Levinson sound system, rear audio controls, and a rearview camera.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a cassette stereo with a CD changer, a Mark Levinson sound system, WeatherTech floor mats, rear audio controls, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -30944,7 +31268,28 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The truck rides on 18″ alloy wheels and is further equipped with an Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, roof rails with cross bars, running boards, a receiver hitch, automatic climate control, a cassette stereo linked to a CD changer, a Mark Levinson sound system, a rearview camera, an aftermarket rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck rides on 18″ alloy wheels and is further equipped with an Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, roof rails with cross bars, running boards, a receiver hitch, automatic climate control, a cassette stereo linked to a CD changer, a Mark Levinson sound system, a rearview camera, an aftermarket rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and additional amenities include automatic climate control, a rearview camera, a cassette stereo linked to a CD changer, a Mark Levinson sound system, an aftermarket rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and additional amenities include automatic climate control, a rearview camera, a cassette stereo linked to a CD changer, a Mark Levinson sound system, an aftermarket rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31030,7 +31375,28 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "On the inside, the heated power-adjustable front seats are trimmed in gray leather and complemented by a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, automatic climate control, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "On the inside, the heated power-adjustable front seats are trimmed in gray leather and complemented by a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, automatic climate control, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31118,7 +31484,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, running boards, a rear spoiler, a receiver hitch, automatic climate control, a rearview camera, navigation, a cassette stereo linked to a CD changer, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, driver-seat position memory, automatic climate control, a rearview camera, navigation, a cassette stereo linked to a CD changer, a Mark Levinson sound system, cruise control, all-weather floor mats, and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31204,7 +31581,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Black Onyx over Ivory leather and features a power sunroof, a receiver hitch, a roof rack, 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a CD stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "No accident on history report; seller discloses prior accident",
       "accident_category": "reported",
@@ -31292,7 +31680,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, running boards, roof rails, a receiver hitch, automatic climate control, a Mark Levinson sound system, a cassette stereo linked to a CD changer, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, removable third-row seats, automatic climate control, a rearview camera, a Mark Levinson sound system, a cassette stereo linked to a CD changer, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31380,7 +31779,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Riding on 18″ alloy wheels, it is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a rear spoiler, a receiver hitch, a Mark Levinson sound system, a rearview camera, automatic climate control, cruise control, navigation, a cassette stereo linked to a CD changer, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and additional amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, removable third-row seats, automatic climate control, cruise control, Lexus-branded floor mats, a rearview camera, a Mark Levinson sound system, navigation, and a cassette stereo linked to a CD changer.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31466,7 +31876,33 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The truck rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, running boards, a rear spoiler, a receiver hitch, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, navigation, a rearview camera, factory and aftermarket rear-seat entertainment systems, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, running boards, a rear spoiler, a receiver hitch, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, navigation, a rearview camera, factory and aftermarket rear-seat entertainment systems, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a cassette stereo, a CD changer, navigation, a Mark Levinson sound system, a rear-seat entertainment system, cruise control, and removable third-row seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a cassette stereo, a CD changer, navigation, a Mark Levinson sound system, a rear-seat entertainment system, cruise control, and removable third-row seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The factory rear-seat entertainment system remains equipped in addition to an installed Myron & Davis headrest DVD system and auxiliary video input with a 120-volt AC power panel.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31552,7 +31988,28 @@
       "exterior_color": "Cypress Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Night View",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, a roof rack, running boards, a receiver hitch, automatic climate control, Night View, a Mark Levinson sound system, a rearview camera, navigation, a Pioneer stereo, a six-disc CD changer, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The vehicle rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, a roof rack, running boards, a receiver hitch, automatic climate control, Night View, a Mark Levinson sound system, a rearview camera, navigation, a Pioneer stereo, a six-disc CD changer, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Night View",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a Mark Levinson sound system, a Pioneer stereo with a retractable screen, a six-disc CD changer, a rearview camera, cruise control, Night View, and removable third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a Mark Levinson sound system, a Pioneer stereo with a retractable screen, a six-disc CD changer, a rearview camera, cruise control, Night View, and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31638,7 +32095,28 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Features include a power sunroof, a receiver hitch, 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include a power sunroof, a receiver hitch, 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a Mark Levinson sound system, a rear-seat entertainment system, and navigation.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a Mark Levinson sound system, a rear-seat entertainment system, and navigation.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31724,7 +32202,23 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "Features include 18″ alloy wheels, fog lights, a power sunroof, a receiver hitch, power-adjustable front seats, third-row seating, cruise control, automatic climate control, a cassette stereo, navigation, a rearview camera, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "Amenities include folding third-row seating, cruise control, automatic climate control, a cassette stereo, navigation, a rearview camera, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The woodgrain trim and rear-seat entertainment screens are scratched, the door panels are cracked, the speaker covers are stained, the lower tailgate panel is missing, and other blemishes can be viewed in the gallery.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -31812,7 +32306,23 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "Features include 18″ alloy wheels, fog lights, a power sunroof, a receiver hitch, power-adjustable front seats, third-row seating, cruise control, automatic climate control, a cassette stereo, navigation, a rearview camera, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "Amenities include folding third-row seating, cruise control, automatic climate control, a cassette stereo, navigation, a rearview camera, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The woodgrain trim and rear-seat entertainment screens are scratched, the door panels are cracked, the speaker covers are stained, the lower tailgate panel is missing, and other blemishes can be viewed in the gallery.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -32158,7 +32668,13 @@
       "exterior_color": "Natural White",
       "interior_color": "Katzkin Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Katzkin leather upholstery was installed in the past year, and the cabin has heated and power-adjustable front seats, automatic climate control, a sunroof, a CD/cassette stereo, touchscreen infotainment, and a rear-seat entertainment system with dual displays.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -32506,7 +33022,18 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Finished in Classic Silver Metallic over Stone leather, the truck is equipped with a power sunroof, 18″ five-spoke alloy wheels, heated power-adjustable front seats, automatic climate control, cruise control, navigation, a cassette stereo, and dual rear-seat entertainment displays.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include automatic climate control, cruise control, side-impact and curtain airbags, navigation, a cassette stereo, a backup camera, and dual Audiovox rear-seat entertainment displays.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -32592,7 +33119,18 @@
       "exterior_color": "Pacific Blue Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It rides on 18″ alloy wheels and is equipped with fog lights, a power sunroof, a roof rack, running boards, a receiver hitch, a backup camera, power-adjustable heated front seats, navigation, a cassette stereo, a CD changer, cruise control, automatic climate control, a rear-seat entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, a cassette stereo, a CD changer, rear-seat entertainment system, cruise control, automatic climate control, all-weather floor mats, folding third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -32680,7 +33218,23 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "Features include 18″ alloy wheels, a power sunroof, a receiver hitch, power-adjustable front seats, third-row seating, cruise control, automatic climate control, and a cassette stereo as well as navigation, a rearview camera, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "Amenities include folding third-row seating, a rearview camera, navigation, cruise control, automatic climate control, a cassette stereo, and a Grom Audio VLine CarPlay system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "There are scratches on the woodgrain trim and rear-seat entertainment screens, the door panels are cracked, the speaker covers and rear carpet are stained, the lower tailgate panel is missing, and other blemishes can be viewed in the gallery.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -32768,7 +33322,18 @@
       "exterior_color": "Black",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes a power sunroof, 18″ five-spoke alloy wheels, heated power-adjustable front seats, cruise control, automatic climate control, a cassette stereo, a CD changer, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Woodgrain trim accents the cabin, and amenities include a cassette stereo, a CD changer, navigation, cruise control, automatic climate control, side-impact and curtain airbags, and a rear-seat entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33030,7 +33595,18 @@
       "exterior_color": "Thunder Cloud Metallic",
       "interior_color": "Ash Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional equipment includes a power sunroof, a receiver hitch, a backup camera, heated front seats, third-row seating, navigation, a JBL CD stereo, automatic climate control, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Rubberized floor mats line the footwells, and amenities include navigation, a backup camera, folding third-row seating, a JBL CD stereo, cruise control, automatic climate control, and a rear-seat entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33116,7 +33692,23 @@
       "exterior_color": "Galactic Gray Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "Finished in Galactic Gray Metallic over Stone leather, it has a locking center differential, height-adjustable suspension, 18″ wheels, heated front seats, removable third-row seats, an Apple CarPlay / Android Auto module for its touchscreen head unit, and a rearview camera.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "The heated and power-adjustable front seats are trimmed in Stone leather, and the eight-passenger cabin has a glass sunroof, automatic climate control, folding and removable third-row seats, and a GROM VLite Apple CarPlay / Android Auto module for the touchscreen head unit.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The rear seat entertainment system does not work.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "No reported accidents",
       "accident_category": "none",
@@ -33202,7 +33794,18 @@
       "exterior_color": "Thunder Cloud Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Finished in Thunder Cloud Metallic over Stone leather upholstery, the truck features 18″ five-spoke alloy wheels, fog lights, a power sunroof, a receiver hitch, a backup camera, heated front seats, third-row seating, a rear seat entertainment system, navigation, a cassette stereo, cruise control, and automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, folding third-row seating, a rear seat entertainment system, a cassette stereo, cruise control, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33288,7 +33891,13 @@
       "exterior_color": "Sonora Gold Pearl",
       "interior_color": "Two-Tone Beige & Brown Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "An Apple CarPlay module has been added to the stereo.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33634,7 +34243,18 @@
       "exterior_color": "Sonora Gold Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes the Convenience Package, the Roof Rack and Running Board Package, a rear-seat entertainment system, third-row seating, navigation, a back-up camera, 18″ wheels, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include an optional $2,097 rear-seat entertainment system as well as navigation, a back-up camera, Bluetooth compatibility, folding third-row seating, cruise control, automatic climate control, and curtain and side airbags.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33720,7 +34340,18 @@
       "exterior_color": "Galactic Gray Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional equipment includes 18″ alloy wheels, a power sunroof, a front brush guard, running boards, a rearview camera, and a receiver hitch as well as heated front seats, third-row seating, navigation, a six-disc CD changer, a rear seat entertainment system, and a custom audio system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a rearview camera, folding third-row seating, automatic climate control, cruise control, WeatherTech floor mats, a rear seat entertainment system, a six-disc CD changer, and a custom audio system consisting of JBL and Skar Audio speakers.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33892,7 +34523,13 @@
       "exterior_color": "Sonora Gold Pearl",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "Amenities include a Kenwood stereo with Android Auto and Apple CarPlay, an aftermarket backup camera, a JBL sound system, folding third-row seating, side-impact and curtain airbags, cruise control, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -33978,7 +34615,28 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It is also equipped with a power sunroof, a rear spoiler, a split tailgate, projector-style headlights, fog lights, roof rails, running boards, Adaptive Variable Suspension with driver-selected Adjustable Height Control, and 18″ wheels as well as automatic climate control, a rear-view camera, heated power-adjustable front seats, second- and third-row bench seats, aftermarket rear-seat entertainment screens, a navigation system, a factory cassette stereo with a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is also equipped with a power sunroof, a rear spoiler, a split tailgate, projector-style headlights, fog lights, roof rails, running boards, Adaptive Variable Suspension with driver-selected Adjustable Height Control, and 18″ wheels as well as automatic climate control, a rear-view camera, heated power-adjustable front seats, second- and third-row bench seats, aftermarket rear-seat entertainment screens, a navigation system, a factory cassette stereo with a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Appointments include automatic climate control, cruise control, a rear-view camera, heated power-adjustable front seats, a navigation system, a factory AM/FM/cassette stereo with a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Aftermarket second-row entertainment displays are housed within the front-seat headrests.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34064,7 +34722,18 @@
       "exterior_color": "Crystal White Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a cassette stereo, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rear-view camera, a cassette stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34150,7 +34819,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Black Onyx over Stone leather and features 18″ five-spoke alloy wheels, Bilstein shocks, Ironman torsion bars, a power sunroof, automatic climate control, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34236,7 +34916,33 @@
       "exterior_color": "Crystal White Pearl",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 18″ five-spoke alloy wheels, a power sunroof, running boards, a receiver hitch, automatic climate control, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, an aftermarket rear-seat entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ five-spoke alloy wheels, a power sunroof, running boards, a receiver hitch, automatic climate control, a Mark Levinson sound system, a rear-view camera, heated power-adjustable front seats, an aftermarket rear-seat entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, driver’s seat position memory, automatic climate control, a rear-view camera, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The split-folding tailgate opens to reveal folding and removable third-row seating, and a roof-mounted Rosen rear seat entertainment system has been retrofitted.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The seller notes the factory DVD player does not work.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34322,7 +35028,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Black Onyx over Stone leather and features Adaptive Variable Suspension with Adjustable Height Control, 18″ five-spoke alloy wheels, a power sunroof, a roof spoiler, running boards, heated power-adjustable front seats, a Mark Levinson sound system, a rearview camera, navigation, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo, a Mark Levinson sound system, navigation, rear-seat audio controls, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34408,7 +35125,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34494,7 +35222,18 @@
       "exterior_color": "White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a cassette stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34580,7 +35319,28 @@
       "exterior_color": "Black Onyx",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 18″ five-spoke wheels, a power sunroof, a Mark Levinson sound system, a back-up camera, heated power-adjustable front seats, third-row seating, rear-seat entertainment, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ five-spoke wheels, a power sunroof, a Mark Levinson sound system, a back-up camera, heated power-adjustable front seats, third-row seating, rear-seat entertainment, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include a back-up camera, a Mark Levinson sound system, heated power-adjustable front seats, automatic climate control, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "A rear-seat entertainment system was ordered on this example, and the split-folding tailgate opens to reveal folding and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34668,7 +35428,28 @@
       "exterior_color": "Black Onyx",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 18″ five-spoke wheels, a power sunroof, a Mark Levinson sound system, a back-up camera, heated power-adjustable front seats, third-row seating, rear-seat entertainment, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 18″ five-spoke wheels, a power sunroof, a Mark Levinson sound system, a back-up camera, heated power-adjustable front seats, third-row seating, rear-seat entertainment, and Adaptive Variable Suspension with Adjustable Height Control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include a back-up camera, a Mark Levinson sound system, heated power-adjustable front seats, automatic climate control, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "A rear-seat entertainment system was ordered on this example, and the split-folding tailgate opens to reveal folding and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34756,7 +35537,18 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Sand Dollar Pearl over Stone leather and features 18″ five-spoke alloy wheels, an Ironman suspension lift, a power sunroof, automatic climate control, a Mark Levinson sound system, navigation, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and amenities include heated power-adjustable front seats, automatic climate control, a Mark Levinson sound system, navigation, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34842,7 +35634,18 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck is finished in Classic Silver Metallic over Stone leather and features bronze-finished 18″ alloy wheels, a sunroof, automatic climate control, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and navigation.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo, a Mark Levinson sound system, navigation, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -34930,7 +35733,28 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes a power sunroof, 18″ five-spoke alloy wheels, heated power-adjustable front seats, automatic climate control, cruise control, navigation, a cassette stereo, a Mark Levinson sound system, and rear-seat entertainment screens.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes a power sunroof, 18″ five-spoke alloy wheels, heated power-adjustable front seats, automatic climate control, cruise control, navigation, a cassette stereo, a Mark Levinson sound system, and rear-seat entertainment screens.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include driver’s seat position memory settings, automatic climate control, cruise control, navigation, a cassette stereo, a Mark Levinson sound system, and rear-seat entertainment screens.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include driver’s seat position memory settings, automatic climate control, cruise control, navigation, a cassette stereo, a Mark Levinson sound system, and rear-seat entertainment screens.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35016,7 +35840,28 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It is finished in Sand Dollar Pearl over Ivory leather upholstery and features 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a CD stereo, a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, and heated power-adjustable front seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is finished in Sand Dollar Pearl over Ivory leather upholstery and features 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, automatic climate control, a CD stereo, a Mark Levinson sound system, a rearview camera, a rear-seat entertainment system, and heated power-adjustable front seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD stereo, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35102,7 +35947,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes a power sunroof, an Adaptive Variable Suspension, 18″ five-spoke alloy wheels, heated power-adjustable front seats, folding third-row seats, automatic climate control, cruise control, a cassette stereo, a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include driver’s seat position memory, automatic climate control, cruise control, a rearview camera, a cassette stereo, a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35188,7 +36044,28 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Remote start",
+          "quote": "Other features include a Smittybilt X20 12k-lb winch, a Safari ARMAX air intake snorkel, White Knuckle Off Road rock sliders, and a Dissent Off-Road roof rack, bumpers, and skid plates in addition to a Compustar remote start system and a GROMAudio VLine infotainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "Additional work involved adding a Compustar remote start system, WeatherTech floor liners, LED courtesy lights, and a GROMAudio VLine infotainment system with navigation and Apple CarPlay and Android Auto integration as well as changing the cabin air filter, front window regulators, and trim surrounds for the stereo and transmission shifter.",
+          "kind": "description"
+        },
+        {
+          "label": "Remote start",
+          "quote": "Additional work involved adding a Compustar remote start system, WeatherTech floor liners, LED courtesy lights, and a GROMAudio VLine infotainment system with navigation and Apple CarPlay and Android Auto integration as well as changing the cabin air filter, front window regulators, and trim surrounds for the stereo and transmission shifter.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the cabin, and amenities include driver’s seat position memory settings, automatic climate control, cruise control, upfitter switches, a cassette stereo, and a Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35274,7 +36151,28 @@
       "exterior_color": "Silver",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Finished in silver over gray leather, the truck is equipped with a power sunroof, 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a CD/cassette stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, a rear entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Finished in silver over gray leather, the truck is equipped with a power sunroof, 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a CD/cassette stereo, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, a rear entertainment system, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD/cassette stereo, a Mark Levinson sound system, a rear entertainment system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD/cassette stereo, a Mark Levinson sound system, a rear entertainment system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35360,7 +36258,18 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "20″ Method MR305 wheels and a Borla cat-back exhaust system have been installed, and additional features include Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a CD stereo, a Mark Levinson sound system, navigation, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a CD stereo, navigation, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35446,7 +36355,18 @@
       "exterior_color": "Cypress Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include a power sunroof, 18″ alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, automatic climate control, cruise control, a rearview camera, a cassette stereo, a CD-changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35532,7 +36452,18 @@
       "exterior_color": "Sand Dollar Pearl",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ five-spoke alloy wheels, Adaptive Variable Suspension with Adjustable Height Control, a power sunroof, running boards, roof rails, a rear spoiler, a receiver hitch, heated power-adjustable front seats, automatic climate control, a cassette stereo with a CD changer, a Mark Levinson sound system, a rearview camera, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Plastic wrap has been applied to the carpets, and amenities include heated power-adjustable front seats, automatic climate control, a rearview camera, a cassette stereo linked to a CD changer, a Mark Levinson sound system, first and second-row rubberized floormats, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35618,7 +36549,18 @@
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Gray Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Features include 18″ alloy wheels, an Adaptive Variable Suspension, a power sunroof, running boards, a rear spoiler, a receiver hitch, automatic climate control, a cassette stereo linked to a CD changer, navigation, a rearview camera, a Mark Levinson sound system, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a cassette stereo linked to a CD changer, a rearview camera, navigation, a Mark Levinson sound system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35704,7 +36646,28 @@
       "exterior_color": "Crystal White",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes a power sunroof, a hitch receiver, a rearview camera, 18″ five-spoke alloy wheels, and Adaptive Variable Suspension with Adjustable Height Control as well as automatic climate control, a cassette stereo, a Mark Levinson sound system, a rear-seat entertainment system, heated power-adjustable front seats, and three-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes a power sunroof, a hitch receiver, a rearview camera, 18″ five-spoke alloy wheels, and Adaptive Variable Suspension with Adjustable Height Control as well as automatic climate control, a cassette stereo, a Mark Levinson sound system, a rear-seat entertainment system, heated power-adjustable front seats, and three-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional appointments include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional appointments include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a cassette stereo, a CD changer, a Mark Levinson sound system, a rear-seat entertainment system, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35790,7 +36753,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck rides on 18″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails with cross bars, running boards, a rear spoiler, a receiver hitch, black Bird’s-Eye Maple trim, automatic climate control, a cassette stereo linked to a CD changer, a Mark Levinson sound system, a rearview camera, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, a cassette stereo linked to a CD changer, a Mark Levinson sound system, cruise control, Limited Edition-branded floor mats, and folding and removable third-row seating.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35876,7 +36850,28 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It rides on bronze-finished 17″ wheels and Icon 4×4 shocks and is equipped with a power sunroof, fog lights, roof rails, a rear spoiler, a receiver hitch, automatic climate control, a rear-seat entertainment system, a Mark Levinson sound system, navigation, a rearview camera, a cassette stereo, a CD changer, and heated power-adjustable front seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It rides on bronze-finished 17″ wheels and Icon 4×4 shocks and is equipped with a power sunroof, fog lights, roof rails, a rear spoiler, a receiver hitch, automatic climate control, a rear-seat entertainment system, a Mark Levinson sound system, navigation, a rearview camera, a cassette stereo, a CD changer, and heated power-adjustable front seats.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Burl wood veneers accent the center console and doors, and additional amenities include automatic climate control, cruise control, a rear-seat entertainment system, a Mark Levinson sound system, navigation, a rearview camera, and a cassette stereo linked to a CD changer.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console and doors, and additional amenities include automatic climate control, cruise control, a rear-seat entertainment system, a Mark Levinson sound system, navigation, a rearview camera, and a cassette stereo linked to a CD changer.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -35962,7 +36957,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It rides on 20″ alloy wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a rear spoiler, a receiver hitch, a cassette stereo, a CD changer, a Mark Levinson sound system, a rearview camera, automatic climate control, cruise control, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the center console, gear selector, and doors, and additional amenities include automatic climate control, a rearview camera, a cassette stereo, a CD changer, navigation, a Mark Levinson sound system, all-weather floor mats, and cruise control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -36048,7 +37054,18 @@
       "exterior_color": "Black Onyx and Dark Gray Metallic",
       "interior_color": "Ivory Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Finished in Black Onyx and Dark Gray Metallic over Ivory leather, the truck is equipped with a power sunroof, an Adaptive Variable Suspension, 18″ five-spoke alloy wheels, heated power-adjustable front seats, automatic climate control, cruise control, a cassette stereo, a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Burl wood veneers accent the cabin, and amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, driver’s seat position memory settings, automatic climate control, cruise control, a rearview camera, a cassette stereo, a CD changer, and a Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -36134,7 +37151,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck rides on 18″ wheels and is equipped with an Adaptive Variable Suspension, a power sunroof, roof rails, running boards, a rear spoiler, a receiver hitch, automatic climate control, a cassette stereo linked to a CD changer, a Mark Levinson sound system, a rearview camera, navigation, heated power-adjustable front seats, and third-row seating.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated power-adjustable front seats, a 60/40-split folding second-row bench, automatic climate control, a rearview camera, navigation, a cassette stereo linked to a CD changer, a Mark Levinson sound system, cruise control, Limited Edition-branded and all-weather floor mats, and removable third-row seats.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -36423,7 +37451,18 @@
       "exterior_color": "Galactic Gray Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 18″ alloy wheels, fog lights, a receiver hitch, a backup camera, heated front seats, a rear-seat entertainment system, navigation, a JBL CD/cassette stereo, cruise control, and automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, a CD player, a JBL cassette stereo, cruise control, a rear-seat entertainment system, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -36511,7 +37550,18 @@
       "exterior_color": "Thunder Cloud Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes a backup camera, heated front seats, third-row seating, navigation, a JBL cassette stereo, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes navigation, a backup camera, folding third-row seating, a JBL cassette stereo, cruise control, automatic climate control, an Auxbeam switch panel, and a rear-seat entertainment system with VizuaLogic headrest-mounted screens.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -36683,7 +37733,18 @@
       "exterior_color": "Galactic Gray Mica",
       "interior_color": "Dark Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The truck is finished in Galactic Gray Mica over Dark Stone leather and features 18″ five-spoke alloy wheels , fog lights, a power sunroof, a receiver hitch, a backup camera , heated front seats, third-row seating, navigation, a JBL CD stereo, a rear seat entertainment system, and automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, folding third-row seating, a JBL CD stereo, cruise control, a rear seat entertainment system, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37113,7 +38174,13 @@
       "exterior_color": "Natural White",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, folding third-row seating, a rear seat entertainment system, side-impact and curtain airbags, cruise control, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37373,7 +38440,18 @@
       "exterior_color": "Galactic Gray Metallic",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It is finished in Galactic Gray Metallic over Stone leather and features 18″ five-spoke alloy wheels, fog lights, a power sunroof, a roof rack, running boards, a rear spoiler, a receiver hitch, heated front seats, third-row seating, a rearview camera, navigation, a cassette stereo linked to a CD changer, a JBL sound system, a rear-seat entertainment system, cruise control, and automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, a backup camera, folding third-row seating, a cassette stereo linked to a CD changer, a JBL sound system, a rear-seat entertainment system, cruise control, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37545,7 +38623,18 @@
       "exterior_color": "Natural White",
       "interior_color": "Stone Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The truck rides on 18″ alloy wheels and is equipped with fog lights, a power sunroof, running boards, a rear spoiler, a receiver hitch, heated power-adjustable front seats, third-row seating, navigation, a JBL sound system, a cassette stereo, a six-disc CD changer, a rear-seat entertainment system, cruise control, and automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include navigation, folding third-row seating, a rear-seat entertainment system, a JBL sound system, a cassette stereo, a six-disc CD changer, side-impact and curtain airbags, WeatherTech floor mats, cruise control, and automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37633,7 +38722,18 @@
       "exterior_color": "Mercury Metallic",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes heated and ventilated power front seats as well as a sunroof, an Adaptive Variable Suspension, 20″ 10-spoke wheels, heated second-row seats, power-folding third-row seats, Intuitive Parking Assist, a 19-speaker Mark Levinson sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Other interior details comprise a 19-speaker Mark Levinson Reference surround-sound system, four-zone automatic climate control, heated second-row seats, power-folding third-row seats, and Intuitive Parking Assist.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37719,7 +38819,28 @@
       "exterior_color": "Noble Spinel Mica",
       "interior_color": "Cashmere Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The interior features Cashmere leather upholstery, heated and ventilated front seats, heated second-row seats, power-folding third-row seats, four-zone automatic climate control, a heated steering wheel, a center console cool box, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The interior features Cashmere leather upholstery, heated and ventilated front seats, heated second-row seats, power-folding third-row seats, four-zone automatic climate control, a heated steering wheel, a center console cool box, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Appointments include four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson 19-speaker surround sound system, and a rear-seat DVD entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Appointments include four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson 19-speaker surround sound system, and a rear-seat DVD entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37805,7 +38926,28 @@
       "exterior_color": "Noble Spinel Mica",
       "interior_color": "Cashmere Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The interior features Cashmere leather upholstery, heated and ventilated front seats, heated second-row seats, power-folding third-row seats, four-zone automatic climate control, a heated steering wheel, a center console cool box, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The interior features Cashmere leather upholstery, heated and ventilated front seats, heated second-row seats, power-folding third-row seats, four-zone automatic climate control, a heated steering wheel, a center console cool box, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Appointments include four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson 19-speaker surround sound system, and a rear-seat DVD entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Appointments include four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson 19-speaker surround sound system, and a rear-seat DVD entertainment system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37891,7 +39033,28 @@
       "exterior_color": "Mercury Metallic",
       "interior_color": "Cashmere Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 20″ alloy wheels, an Adaptive Variable Suspension, a sunroof, heated power-folding side mirrors, roof rails, illuminated running boards, a power-operated tailgate, a rear spoiler, LED taillights, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, a rear-seat entertainment system, a CD stereo, navigation, a rearview camera, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 20″ alloy wheels, an Adaptive Variable Suspension, a sunroof, heated power-folding side mirrors, roof rails, illuminated running boards, a power-operated tailgate, a rear spoiler, LED taillights, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, a rear-seat entertainment system, a CD stereo, navigation, a rearview camera, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Cashmere leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, woodgrain trim, Intuitive Parking Assist, a rear-seat entertainment system, a CD stereo, navigation, a rearview camera, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Cashmere leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, woodgrain trim, Intuitive Parking Assist, a rear-seat entertainment system, a CD stereo, navigation, a rearview camera, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -37977,7 +39140,28 @@
       "exterior_color": "Nebula Gray Pearl",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The truck was optioned with 20″ alloy wheels, an Adaptive Variable Suspension, a sunroof, roof rails, running boards, a rear spoiler, a power-operated tailgate, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, a rear-seat DVD entertainment system, a CD stereo, a rearview camera, navigation, a Mark Levinson surround sound system, cruise control, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The truck was optioned with 20″ alloy wheels, an Adaptive Variable Suspension, a sunroof, roof rails, running boards, a rear spoiler, a power-operated tailgate, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, a rear-seat DVD entertainment system, a CD stereo, a rearview camera, navigation, a Mark Levinson surround sound system, cruise control, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Interior details include heated second-row seats, power-folding third-row seats, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, a rearview camera, Lexus-branded floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Interior details include heated second-row seats, power-folding third-row seats, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, a rearview camera, Lexus-branded floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38063,7 +39247,28 @@
       "exterior_color": "Starfire Pearl",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It now has 105k miles and was optioned with Intuitive Park Assist, a rear-seat entertainment system, a Mark Levinson 19- speaker audio system, and the Luxury Package, which included heated and ventilated power-adjustable front seats, heated second-row seats, a cool box, wood trim, and a heated wood- and leather-trimmed steering wheel.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It now has 105k miles and was optioned with Intuitive Park Assist, a rear-seat entertainment system, a Mark Levinson 19- speaker audio system, and the Luxury Package, which included heated and ventilated power-adjustable front seats, heated second-row seats, a cool box, wood trim, and a heated wood- and leather-trimmed steering wheel.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Interior details include heated second-row seats, power-folding third-row seats, cruise control, a center console cool box, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, front- and rear-view cameras, Lexus-branded floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Interior details include heated second-row seats, power-folding third-row seats, cruise control, a center console cool box, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, front- and rear-view cameras, Lexus-branded floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38149,7 +39354,28 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Black Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional equipment includes a power sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, power-folding third-row seats, four-zone automatic climate control, cruise control, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional equipment includes a power sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, power-folding third-row seats, four-zone automatic climate control, cruise control, a Mark Levinson surround sound system, and a rear-seat entertainment system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include driver’s seat position memory settings, four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson surround sound system, and a rear-seat DVD entertainment system with dual displays.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include driver’s seat position memory settings, four-zone automatic climate control, cruise control, Intuitive Parking Assist, a center console cool box, a Mark Levinson surround sound system, and a rear-seat DVD entertainment system with dual displays.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38235,7 +39461,28 @@
       "exterior_color": "Nebula Gray Pearl",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional features include heated and ventilated front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional features include heated and ventilated front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38321,7 +39568,28 @@
       "exterior_color": "Black",
       "interior_color": "Black Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ alloy wheels, Intuitive Park Assist with front and side cameras, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, navigation, and a Mark Levinson surround sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ alloy wheels, Intuitive Park Assist with front and side cameras, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, navigation, and a Mark Levinson surround sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Black leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, navigation, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Black leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, navigation, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38409,7 +39677,33 @@
       "exterior_color": "Black Onyx",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes 20″ alloy wheels, a sunroof, an Adaptive Variable Suspension, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, a rearview camera, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes 20″ alloy wheels, a sunroof, an Adaptive Variable Suspension, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a heated steering wheel, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, a rearview camera, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, cruise control, a rear-seat DVD entertainment system, a CD stereo, a Mark Levinson surround sound system, navigation, a rearview camera, Lexus-branded floor mats, remote start, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, cruise control, a rear-seat DVD entertainment system, a CD stereo, a Mark Levinson surround sound system, navigation, a rearview camera, Lexus-branded floor mats, remote start, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Remote start",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, cruise control, a rear-seat DVD entertainment system, a CD stereo, a Mark Levinson surround sound system, navigation, a rearview camera, Lexus-branded floor mats, remote start, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38495,7 +39789,28 @@
       "exterior_color": "Nebula Gray Pearl",
       "interior_color": "Parchment Semi-Aniline Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It rides on Liquid Graphite-finished 20″ wheels and is further equipped with an Adaptive Variable Suspension, a sunroof, roof rails, running boards, a rear spoiler, power-folding third-row seats, Intuitive Parking Assist, a dual-screen rear-seat DVD entertainment system, four-zone automatic climate control, a CD stereo, and a 19-speaker Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It rides on Liquid Graphite-finished 20″ wheels and is further equipped with an Adaptive Variable Suspension, a sunroof, roof rails, running boards, a rear spoiler, power-folding third-row seats, Intuitive Parking Assist, a dual-screen rear-seat DVD entertainment system, four-zone automatic climate control, a CD stereo, and a 19-speaker Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Amenities include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, a rear-seat DVD entertainment system, four-zone automatic climate control, a CD stereo, and a 19-speaker Mark Levinson sound system.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Amenities include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, a rear-seat DVD entertainment system, four-zone automatic climate control, a CD stereo, and a 19-speaker Mark Levinson sound system.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38581,7 +39896,33 @@
       "exterior_color": "Nebula Gray Pearl",
       "interior_color": "Black Semi-Aniline Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional equipment includes an Adaptive Variable Suspension, a sunroof, illuminated running boards, a power-operated tailgate, a rear spoiler, power-folding third-row seats, Intuitive Parking Assist, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional equipment includes an Adaptive Variable Suspension, a sunroof, illuminated running boards, a power-operated tailgate, a rear spoiler, power-folding third-row seats, Intuitive Parking Assist, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in black semi-aniline leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist with wide-view cameras, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson sound system, remote start, four-zone automatic climate control, and Mahogany-trimmed door switchplates and rear-center armrest cover.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in black semi-aniline leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist with wide-view cameras, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson sound system, remote start, four-zone automatic climate control, and Mahogany-trimmed door switchplates and rear-center armrest cover.",
+          "kind": "description"
+        },
+        {
+          "label": "Remote start",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in black semi-aniline leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist with wide-view cameras, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson sound system, remote start, four-zone automatic climate control, and Mahogany-trimmed door switchplates and rear-center armrest cover.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38753,7 +40094,28 @@
       "exterior_color": "Starfire Pearl",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38841,7 +40203,28 @@
       "exterior_color": "Starfire Pearl",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes the Luxury Package, a sunroof, an Adaptive Variable Suspension, 20″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -38927,7 +40310,33 @@
       "exterior_color": "Satin Cashmere Metallic",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Riding on 20″ alloy wheels, it is further equipped with a sunroof, illuminated running boards, a power-operated tailgate, Intuitive Parking Assist, third-row seating, a rear-seat DVD entertainment system, a 19-speaker Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Riding on 20″ alloy wheels, it is further equipped with a sunroof, illuminated running boards, a power-operated tailgate, Intuitive Parking Assist, third-row seating, a rear-seat DVD entertainment system, a 19-speaker Mark Levinson surround sound system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, third-row seating, a center console cool box, Intuitive Parking Assist, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, remote start, a rear-seat DVD entertainment system, a 19-speaker Mark Levinson surround sound system, WeatherTech floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, third-row seating, a center console cool box, Intuitive Parking Assist, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, remote start, a rear-seat DVD entertainment system, a 19-speaker Mark Levinson surround sound system, WeatherTech floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Remote start",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment leather, and interior details include heated second-row seats, third-row seating, a center console cool box, Intuitive Parking Assist, a Pre-Collision System (PCS), Dynamic Radar Cruise Control, remote start, a rear-seat DVD entertainment system, a 19-speaker Mark Levinson surround sound system, WeatherTech floor mats, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -39101,7 +40510,28 @@
       "exterior_color": "Black Onyx",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes the Luxury Package, a sunroof, a rearview camera, an Adaptive Variable Suspension, 21″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, Pre-Collision System (PCS), a rear-seat DVD entertainment system, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes the Luxury Package, a sunroof, a rearview camera, an Adaptive Variable Suspension, 21″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, Pre-Collision System (PCS), a rear-seat DVD entertainment system, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment semi-aniline leather, and interior details include heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, a wide-view camera system, Intuitive Parking Assist, Pre-Collision System (PCS), a rear-seat DVD entertainment system, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "The cabin houses heated and ventilated power-adjustable front seats upholstered in Parchment semi-aniline leather, and interior details include heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, a wide-view camera system, Intuitive Parking Assist, Pre-Collision System (PCS), a rear-seat DVD entertainment system, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -39189,7 +40619,28 @@
       "exterior_color": "Atomic Silver",
       "interior_color": "Parchment Leather",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment highlights include 21″ wheels, Adaptive Variable Suspension, a heated steering wheel, heated and ventilated front and second-row seats, power-folding third-row seats, navigation, a Mark Levinson sound system, a rear-seat entertainment system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment highlights include 21″ wheels, Adaptive Variable Suspension, a heated steering wheel, heated and ventilated front and second-row seats, power-folding third-row seats, navigation, a Mark Levinson sound system, a rear-seat entertainment system, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Equipment includes heated and ventilated front and second-row seats, power-folding third-row seats, navigation, a Mark Levinson sound system, a rear-seat entertainment system, four-zone automatic climate control, and a center console cool box.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes heated and ventilated front and second-row seats, power-folding third-row seats, navigation, a Mark Levinson sound system, a rear-seat entertainment system, four-zone automatic climate control, and a center console cool box.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -39275,7 +40726,28 @@
       "exterior_color": "Starfire Pearl",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "It is further equipped with a sunroof, LED headlights, a rear spoiler, illuminated running boards, a rearview camera, an Adaptive Variable Suspension, power-folding third-row seats, a center console cool box, a heated steering wheel, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, and navigation.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "It is further equipped with a sunroof, LED headlights, a rear spoiler, illuminated running boards, a rearview camera, an Adaptive Variable Suspension, power-folding third-row seats, a center console cool box, a heated steering wheel, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, and navigation.",
+          "kind": "description"
+        },
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "Additional amenities include heated and ventilated second-row seats, power-folding third-row seats, driver’s seat memory settings, a center console cool box, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, rear-window sunshades, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional amenities include heated and ventilated second-row seats, power-folding third-row seats, driver’s seat memory settings, a center console cool box, cruise control, a rear-seat DVD entertainment system, a Mark Levinson surround sound system, a CD stereo, navigation, rear-window sunshades, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -39363,7 +40835,18 @@
       "exterior_color": "Atomic Silver",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Further equipment includes 21″ alloy wheels, an Adaptive Variable Suspension, a sunroof, LED headlights, illuminated running boards, a power-operated tailgate, a rear spoiler, a heated steering wheel, power-folding third-row seats, cruise control, rear-window sunshades, a Mark Levinson surround sound system, a rearview camera, a CD stereo, and navigation.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Additional amenities include driver’s seat memory settings, heated and ventilated second-row seats, power-folding third-row seats, cruise control, rear-window sunshades, a Mark Levinson surround sound system, a rearview camera, a CD stereo, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "unknown",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -39451,7 +40934,18 @@
       "exterior_color": "Black Onyx",
       "interior_color": "",
       "reported_extras": "",
-      "equipment_evidence": null,
+      "equipment_evidence": [
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Equipment includes the Luxury Package, a sunroof, a rearview camera, an Adaptive Variable Suspension, 21″ split-spoke alloy wheels, heated and ventilated power-adjustable front seats, heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, a heated steering wheel, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        },
+        {
+          "label": "Mark Levinson audio",
+          "quote": "Interior details include heated and ventilated second-row seats, power-folding third-row seats, a center console cool box, Intuitive Parking Assist, Pre-Collision System (PCS), Dynamic Radar Cruise Control, a Mark Levinson surround sound system, navigation, and four-zone automatic climate control.",
+          "kind": "description"
+        }
+      ],
       "title_status": "clean title",
       "accident_history": "No reported accidents",
       "accident_category": "none",
@@ -39733,7 +41227,23 @@
       "exterior_color": "Crystal White",
       "interior_color": "White (Ivory)",
       "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
-      "equipment_evidence": "",
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "DVD Entertainment System",
+          "kind": "tag"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "CarPlay",
+          "kind": "tag"
+        },
+        {
+          "label": "Remote start",
+          "quote": "Remote Start",
+          "kind": "tag"
+        }
+      ],
       "title_status": "clean-title candidate",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -44374,7 +45884,13 @@
       "exterior_color": "Silver",
       "interior_color": "Gray",
       "reported_extras": "Rear-seat DVD",
-      "equipment_evidence": "",
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "DVD Entertainment System",
+          "kind": "tag"
+        }
+      ],
       "title_status": "clean-title candidate",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -49309,7 +50825,13 @@
       "exterior_color": "White",
       "interior_color": "Brown (Beige)",
       "reported_extras": "CarPlay",
-      "equipment_evidence": "",
+      "equipment_evidence": [
+        {
+          "label": "CarPlay",
+          "quote": "CarPlay",
+          "kind": "tag"
+        }
+      ],
       "title_status": "clean-title candidate",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -49790,7 +51312,13 @@
       "exterior_color": "",
       "interior_color": "",
       "reported_extras": "Rear-seat DVD",
-      "equipment_evidence": "",
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "DVD Entertainment System",
+          "kind": "tag"
+        }
+      ],
       "title_status": "clean-title candidate",
       "accident_history": "History unavailable",
       "accident_category": "unavailable",
@@ -50852,7 +52380,23 @@
       "exterior_color": "Classic Silver Metallic",
       "interior_color": "White (Ivory)",
       "reported_extras": "CarPlay;Rear-seat DVD;Remote start",
-      "equipment_evidence": "",
+      "equipment_evidence": [
+        {
+          "label": "Rear-seat entertainment",
+          "quote": "DVD Entertainment System",
+          "kind": "tag"
+        },
+        {
+          "label": "CarPlay",
+          "quote": "CarPlay",
+          "kind": "tag"
+        },
+        {
+          "label": "Remote start",
+          "quote": "Remote Start",
+          "kind": "tag"
+        }
+      ],
       "title_status": "clean-title candidate",
       "accident_history": "No reported accidents",
       "accident_category": "none",
