@@ -31,6 +31,7 @@ try:
             with urllib.request.urlopen(req,timeout=25) as response:
                 html=response.read(6000000).decode(errors="replace")
             item["http"]={"bytes":len(html),"challenge":any(s in html.lower() for s in ["verify you are human","just a moment...","access denied"])}
+            (out/(source+"-http.html")).write_text(html,encoding="utf-8")
         except Exception as e:item["http_error"]=str(e)[:200]
         try:driver.get(url)
         except Exception as e:item["navigation_error"]=type(e).__name__
