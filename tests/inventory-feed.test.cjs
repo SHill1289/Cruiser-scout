@@ -40,3 +40,17 @@ test('oversize, missing photos, empty inventory and unsafe paths cannot replace 
   assert.throws(()=>build(root),/Unsafe photo/);
   assert.equal(fs.readFileSync(path.join(root,'inventory-output/inventory.json'),'utf8'),prior);
 });
+
+test('watchdog report is merged without changing inventory freshness or exposing extra fields', t => {
+  const {root,data} = fixture(t);
+  fs.mkdirSync(path.join(root,'data'));
+  fs.writeFileSync(path.join(root,'data/collection_watchdog.json'), JSON.stringify({
+    source:'Collection watchdog',status:'warning',checked_at:'2026-11-09T15:00:00Z',detail:'Recovery deferred.',private:'excluded'
+  }));
+  build(root);
+  const feed = JSON.parse(fs.readFileSync(path.join(root,'inventory-output/inventory.json')));
+  assert.equal(feed.generated_at,data.generated_at);
+  assert.equal(feed.source_health[0].detail,'Recovery deferred.');
+  assert.equal(feed.source_health[0].private,undefined);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(root,'web/inventory.json'))).source_health,undefined);
+});

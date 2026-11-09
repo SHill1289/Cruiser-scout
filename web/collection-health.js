@@ -4,7 +4,7 @@
   function state(job, now) {
     if (paused.has(job.status)) return 'paused';
     if (['error','partial','warning'].includes(job.status)) return 'attention';
-    const checked = Date.parse(job.checked_at), limit = job.email ? 20*60000 : /^autodev/.test(job.source || '') ? 30*3600000 : 9*3600000;
+    const checked = Date.parse(job.checked_at), limit = job.email ? 20*60000 : /^autodev/.test(job.source || '') || job.source==='Collection watchdog' ? 30*3600000 : 9*3600000;
     if (!Number.isFinite(checked) || now-checked>limit || checked>now+300000) return 'stale';
     return job.status === 'ok' ? 'healthy' : 'unknown';
   }

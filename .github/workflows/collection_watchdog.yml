@@ -1,0 +1,51 @@
+name: Collection watchdog
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 14 * * *'
+  workflow_run:
+    workflows: ['LX470 database refresh']
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/collection_watchdog.py'
+      - '.github/workflows/collection_watchdog.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: collection-watchdog
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.event != 'pull_request')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+      - name: Test recovery rules
+        run: python -m unittest discover -s tests -p test_collection_watchdog.py -v
+      - name: Check health and request bounded recovery
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/collection_watchdog.py
+      - name: Save operational report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/collection_watchdog.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update collection watchdog report'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

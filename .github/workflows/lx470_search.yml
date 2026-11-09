@@ -17,6 +17,8 @@ on:
       - '!scripts/build_site.cjs'
       - '!scripts/ignore_vercel_build.cjs'
       - '!.github/workflows/inventory_pages.yml'
+      - '!.github/workflows/collection_watchdog.yml'
+      - '!scripts/collection_watchdog.py'
   pull_request:
     paths:
       - 'src/**'
@@ -97,6 +99,7 @@ jobs:
           git add data/ web/ sources/gazetteer/ INVENTORY.md
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh LX470 listings and source health'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
       - name: Publish inventory summary

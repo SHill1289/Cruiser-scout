@@ -21,6 +21,15 @@ function build(root, maxBytes = MAX_BYTES) {
   root = path.resolve(root);
   const source = path.join(root, 'web'), output = path.join(root, 'inventory-output');
   const inventory = JSON.parse(fs.readFileSync(path.join(source, 'inventory.json'), 'utf8'));
+  const watchdogPath = path.join(root, 'data/collection_watchdog.json');
+  if (fs.existsSync(watchdogPath)) {
+    const report = JSON.parse(fs.readFileSync(watchdogPath, 'utf8'));
+    if (report.source === 'Collection watchdog' && ['ok','warning'].includes(report.status) &&
+        Number.isFinite(Date.parse(report.checked_at)) && typeof report.detail === 'string') {
+      inventory.source_health = [...(inventory.source_health || []).filter(row => row.source !== report.source),
+        {source:report.source, status:report.status, checked_at:report.checked_at, detail:report.detail}];
+    }
+  }
   if (!Array.isArray(inventory.listings) || !inventory.listings.length || !Number.isFinite(Date.parse(inventory.generated_at))) {
     throw new Error('Refusing to replace the published feed with invalid or empty inventory.');
   }
