@@ -37,6 +37,7 @@ const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const controls = ["search", "model", "type", "status", "deal", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 let sourceHealth = [];
+let emailHealth = null;
 let latestChanges = [];
 let changesVisit = null;
 const changesKey = "cruiser-scout-changes-v1";
@@ -1020,6 +1021,7 @@ async function load() {
     if (!response.ok) throw new Error(`Inventory request returned ${response.status}`);
     let data = await response.json();
     const alerts = await emailLoad;
+    emailHealth = alerts;
     if (alerts) data = CruiserEmailAlerts.merge(data, alerts);
     try {
       const colorResponse = await fetch("factory-colors.json", { cache: "no-cache" });
@@ -1491,11 +1493,8 @@ document.querySelector("#changes-reviewed").addEventListener("click",()=>{
   document.querySelector("#changes-window").value="visit";changesShown=30;renderAlerts();
 });
 function renderSourceOverview() {
-  const counts = [...new Set(inventory.map(row => CruiserFilters.source(row.source)).filter(Boolean))].sort();
-  const grid = text("div", "metric-grid", "");
-  grid.append(...counts.map(source => marketMetric(CruiserFilters.sourceLabel(source),
-    integer.format(inventory.filter(row => CruiserFilters.source(row.source) === source).length), "Current source listings")));
-  ui.sourceHealth.parentElement.before(grid);
+  CruiserCollectionHealth.render(document.querySelector('#collection-health'), inventory, sourceHealth, emailHealth,
+    generatedAt.toISOString(), source => CruiserFilters.sourceLabel(CruiserFilters.source(source)));
 }
 syncNavigationLayout();
 load();

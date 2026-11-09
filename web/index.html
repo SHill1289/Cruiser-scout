@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="deal-comparables.css" />
     <link rel="stylesheet" href="photo-touch.css" />
     <link rel="stylesheet" href="compact-cards.css" />
+    <link rel="stylesheet" href="collection-health.css" />
   </head>
   <body>
     <a class="skip-link" href="#workspace">Skip to content</a>
@@ -503,7 +504,7 @@
             <div class="page-intro">
               <div>
                 <p class="eyebrow">DATA TRANSPARENCY</p>
-                <h1 id="sources-title">Sources &amp; Coverage</h1>
+                <h1 id="sources-title">Collection health</h1>
                 <p>
                   Collection health and coverage limits, as reported by each
                   source.
@@ -514,10 +515,11 @@
               Listings are screened for title-history signals. Verify the
               physical title and independent history before purchase.
             </div>
-            <div class="panel">
-              <h2>Source status</h2>
+            <div id="collection-health" aria-label="Collection health dashboard"></div>
+            <details class="panel">
+              <summary>Raw source reports</summary>
               <div id="source-health" class="source-health"></div>
-            </div>
+            </details>
             <div class="panel external-searches">
               <h2>Broaden your search</h2>
               <p>
@@ -681,6 +683,7 @@
     <script src="changes.js" defer></script>
     <script src="market-explorer.js" defer></script>
     <script src="market-chart.js" defer></script>
+    <script src="collection-health.js" defer></script>
     <script src="app.js" defer></script>
     <script src="watchlist-sync.js" defer></script>
   </body>
