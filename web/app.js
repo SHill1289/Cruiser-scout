@@ -34,7 +34,7 @@ let zipLoad = null;
 let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "model", "status", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
+const controls = ["search", "model", "type", "status", "deal", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 let sourceHealth = [];
 let latestChanges = [];
@@ -815,6 +815,8 @@ function matches(row) {
     && (!controls.model.value || CruiserFilters.model(row.model || "LX470") === controls.model.value)
     && (!controls.source.value || CruiserFilters.source(row.source) === controls.source.value)
     && (!controls.status.value || saleState(row) === controls.status.value)
+    && (!controls.type.value || row.category === controls.type.value)
+    && (!controls.deal.value || (['great', 'fair', 'bad'].includes(row.deal_quality) ? row.deal_quality : 'unrated') === controls.deal.value)
     && (!filterColors.size || filterColors.has(indexed.color))
     && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
     && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
@@ -1247,9 +1249,10 @@ function renderActiveFilters() {
     control.value && !(name === "sort" && control.value === "listed-newest"));
   holder.replaceChildren(...active.map(([name, control]) => {
     const label = control.selectedOptions?.[0]?.textContent || control.value;
-    const chip = text("button", "filter-chip", `${name}: ${label} ×`);
+    const filterName = ({type: 'Listing type', deal: 'Deal quality'})[name] || name;
+    const chip = text("button", "filter-chip", `${filterName}: ${label} ×`);
     chip.type = "button";
-    chip.setAttribute("aria-label", `Remove ${name} filter`);
+    chip.setAttribute("aria-label", `Remove ${filterName} filter`);
     chip.addEventListener("click", () => {
       control.value = name === "sort" ? "listed-newest" : "";
       if (name === "zip") origin = null;
@@ -1551,4 +1554,3 @@ ui.form.addEventListener("submit", event => {
   if (filterDrawer.open) closeFilterDrawer(true);
   else { render(); syncFilters(); }
 });
-

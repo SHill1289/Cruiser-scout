@@ -182,6 +182,14 @@
                   </select></label
                 >
                 <label
+                  ><span>Listing type</span
+                  ><select id="type">
+                    <option value="">Auctions and sales</option>
+                    <option value="auction">Auction — current or closed</option>
+                    <option value="retail">Sale — available or sold</option>
+                  </select></label
+                >
+                <label
                   ><span>Status</span
                   ><select id="status">
                     <option value="">All statuses</option>
@@ -190,6 +198,16 @@
                     <option value="sold">Sold</option>
                     <option value="bid-not-met">Bid not met</option>
                     <option value="auction-ended">Auction ended</option>
+                  </select></label
+                >
+                <label
+                  ><span>Deal quality</span
+                  ><select id="deal">
+                    <option value="">All deal qualities</option>
+                    <option value="great">Great deal</option>
+                    <option value="fair">Fair deal</option>
+                    <option value="bad">Bad deal</option>
+                    <option value="unrated">Not rated</option>
                   </select></label
                 >
                 <fieldset id="color" class="color-filter">
