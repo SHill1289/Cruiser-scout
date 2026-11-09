@@ -3,6 +3,31 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'), vm=require('node:vm');
 const api={}; vm.createContext(api); vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../integrations/email-alerts/Code.js'),'utf8'),api);
 const now='2026-11-05T20:07:00.000Z';
+
+test('AutoTrader digest keeps each card price/photo paired and strips tracking',()=>{
+ const card=(year,price,id)=>`<a href="https://click.messages.autotrader.com/?qs=photo${id}"><img src="https://images.autotrader.com/hn/c/${id}.jpg" alt="See this car"></a><table><tr><td>Used ${year} Lexus LX 570 4WD</td></tr><tr><td>$${price}</td></tr></table><a href="https://click.messages.autotrader.com/?qs=${id}">See This Car</a>`;
+ const parsed=api.parseAutotrader('My Autotrader Alerts: We found 3 more vehicles for you',card(2015,'30,966','793639540')+card(2013,'25,000','793639541')+card(2020,'55,000','793639542'),now,u=>'https://www.autotrader.com/cars-for-sale/vehicle/'+u.split('=').pop()+'?emid=private');
+ assert.equal(parsed.failed,0); assert.equal(parsed.rows.length,2);
+ const rows=parsed.rows.map(r=>publicFeed.clean(r,Date.parse(now)));
+ assert.equal(rows[0].asking_price,30966); assert.equal(rows[1].asking_price,25000);
+ assert.equal(rows[1].photo_url,'https://images.autotrader.com/hn/c/793639541.jpg');
+ assert.equal(rows[0].category,'retail');assert.equal(rows[0].status,'unknown');
+ assert.doesNotMatch(JSON.stringify(rows),/emid|click\.messages|private/);
+});
+
+test('AutoTrader resolves only observed redirect host and does not fetch vehicle pages',()=>{
+ let calls=0; api.UrlFetchApp={fetch:()=>{calls++;return {getResponseCode:()=>302,getAllHeaders:()=>({Location:'https://www.autotrader.com/cars-for-sale/vehicle/793639540?emid=private'})}}};
+ assert.equal(api.resolveAutotrader('https://click.messages.autotrader.com/?qs=abc'),'https://www.autotrader.com/cars-for-sale/vehicle/793639540');
+ assert.equal(calls,1);assert.equal(api.resolveAutotrader('https://evil.example/?qs=abc'),null);assert.equal(calls,1);
+ assert.equal(api.canonicalAutotrader('https://www.autotrader.com.evil/cars-for-sale/vehicle/793639540'),null);
+});
+
+test('Cars & Bids actual out-of-scope alert stays excluded; supported year with same markup parses',()=>{
+ const html='<a href="https://carsandbids.com/auctions/9WDvZqgq/2005-lexus-lx-470?utm_campaign=button">Go to Auction</a><img src="https://media.carsandbids.com/cdn-cgi/image/width=900,quality=90/photos/application/photo.jpg?t=123">';
+ assert.equal(api.parseAlert('2005 Lexus LX 470 now live!',html,'carsandbids',now,api.canonicalAuction),null);
+ const supported=api.parseAlert('2006 Lexus LX 470 now live!',html.replaceAll('2005','2006'),'carsandbids',now,api.canonicalAuction);
+ assert.equal(supported.photo_urls.length,1);assert.equal(supported.source,'carsandbids');
+});
 test('BaT alert publishes only whitelisted vehicle data, never email tracking or personal content',()=>{
  const html='<p>Hello private@example.com</p><a href="https://links.bringatrailer.com/a/sc/private">VIEW AUCTION</a><img src="https://bringatrailer.com/wp-content/uploads/2026/11/truck.jpg?w=940"><img src="https://tracker.example/pixel">';
  const row=api.parseAlert('2006 Lexus LX470 now live on BaT',html,'bringatrailer',now,()=> 'https://bringatrailer.com/listing/2006-lexus-lx470-123/?utm_source=private');

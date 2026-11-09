@@ -72,29 +72,77 @@ function emailHtml(part) {
   for (const child of part.parts || []) { const html = emailHtml(child); if (html) return html; }
   return '';
 }
-function refreshAlerts() {
+function canonicalAutotrader(url) {
+  const m = String(url || '').match(/^https:\/\/(?:www\.)?autotrader\.com\/cars-for-sale\/(?:vehicle\/|vehicledetails\.xhtml\?listingId=)(\d{6,12})(?:[/?&#].*)?$/i);
+  return m ? 'https://www.autotrader.com/cars-for-sale/vehicle/' + m[1] : null;
+}
+function resolveAutotrader(url) {
+  for (let i=0;i<4;i++) {
+    const canonical = canonicalAutotrader(url);
+    if (canonical) return canonical;
+    if (!/^https:\/\/click\.messages\.autotrader\.com\/\?qs=[A-Za-z0-9_%=-]+$/.test(url)) return null;
+    const response = UrlFetchApp.fetch(url,{followRedirects:false,muteHttpExceptions:true});
+    if (![301,302,303,307,308].includes(response.getResponseCode())) return null;
+    const headers=response.getAllHeaders(); url=String(headers.Location || headers.location || '');
+  }
+  return null;
+}
+function parseAutotrader(subject, html, received, resolve) {
+  if (!/^My Autotrader Alerts: We found \d+ more vehicles? for you$/i.test(subject.trim())) return {rows:[],failed:0};
+  const rows=[], keys=new Set(); let start=0, failed=0;
+  for (const a of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+    if (decodeHtml(a[2].replace(/<[^>]+>/g,' ')).trim().toLowerCase()!=='see this car') continue;
+    const block=html.slice(start,a.index); start=a.index+a[0].length;
+    const text=decodeHtml(block.replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ');
+    // Require the individual card's identity, never the saved search name.
+    const title=text.match(/\b(?:Used|Certified)\s+(20\d{2}\s+(?:Lexus\s+LX\s*(?:470|570)|Toyota\s+Land\s+Cruiser))\b/i);
+    if (!title) { failed++; continue; }
+    const vehicle=vehicleIdentity(title[1]); if (!vehicle) continue;
+    const url=canonicalAutotrader(resolve(decodeHtml(a[1])));
+    if (!url) { failed++; continue; }
+    const id=url.split('/').pop(); if (keys.has(id)) continue; keys.add(id);
+    const price=text.slice(title.index).match(/\$([\d,]+)(?:\.00)?\b/);
+    const photo=[...block.matchAll(/<img\b[^>]*src=["']([^"']+)["']/gi)].map(m=>decodeHtml(m[1])).find(p=>/^https:\/\/images\.autotrader\.com\/[a-z0-9/_-]+\.(?:jpg|jpeg|png|webp)$/i.test(p)) || '';
+    rows.push({...vehicle,source:'autotrader',listing_key:'autotrader:'+id,source_listing_id:id,
+      listing_url:url,category:'retail',status:'unknown',title_status:'unknown',quality_flags:'email_discovery',
+      email_observed_at:received,listed_at:received,first_seen:received,last_seen:received,
+      photo_url:photo,photo_urls:photo?[photo]:[],asking_price:price?Number(price[1].replace(/,/g,'')):null,
+      mileage:null,current_bid:null,notes:'Saved-search email discovery. Price is as reported in the email; availability and title history are unverified.'});
+  }
+  return {rows,failed};
+}
+function refreshAlerts(recheck) {
   const lock = LockService.getScriptLock();
   if (!lock.tryLock(1000)) return;
   try {
     const props = PropertiesService.getScriptProperties(), all = props.getProperties();
     const now = Date.now(), cutoff = now - 7 * 86400000;
     for (const key of Object.keys(all)) if (key.startsWith('row:') && Date.parse(JSON.parse(all[key]).email_observed_at) < cutoff) props.deleteProperty(key);
-    const query = 'newer_than:7d -in:spam -in:trash {from:updates@bringatrailer.com from:no-reply@carsandbids.com} subject:"now live" {Lexus "Land Cruiser"}';
+    const query = 'newer_than:7d -in:spam -in:trash (({from:updates@bringatrailer.com from:no-reply@carsandbids.com} subject:"now live" {Lexus "Land Cruiser"}) OR (from:email@messages.autotrader.com subject:"My Autotrader Alerts"))';
     const result = Gmail.Users.Messages.list('me', {q:query, maxResults:100});
     let failures = 0;
     for (const item of result.messages || []) {
       // IDs stay private, used only to avoid rereading already handled messages.
-      if (all['seen:' + item.id]) continue;
+      if (recheck!==true && all['seen:' + item.id]) continue;
       try {
         const m = Gmail.Users.Messages.get('me', item.id, {format:'full'});
         const headers = m.payload.headers || [], header = n => (headers.find(h => h.name.toLowerCase() === n) || {}).value || '';
         const from = header('from');
-        const source = /(?:^|<)updates@bringatrailer\.com>?$/i.test(from.trim()) ? 'bringatrailer' : /(?:^|<)no-reply@carsandbids\.com>?$/i.test(from.trim()) ? 'carsandbids' : null;
+        const source = /(?:^|<)updates@bringatrailer\.com>?$/i.test(from.trim()) ? 'bringatrailer' : /(?:^|<)no-reply@carsandbids\.com>?$/i.test(from.trim()) ? 'carsandbids' : /(?:^|<)email@messages.autotrader\.com>?$/i.test(from.trim()) ? 'autotrader' : null;
         const received = Number(m.internalDate);
         if (!source || received < cutoff || received > now + 60000) continue;
         const subject = header('subject');
-        if (!vehicleIdentity(subject)) { props.setProperty('seen:' + item.id, String(now)); continue; }
+        if (source!=='autotrader' && !vehicleIdentity(subject)) { props.setProperty('seen:' + item.id, String(now)); continue; }
         const html = emailHtml(m.payload);
+        if (source==='autotrader') {
+          const parsed=parseAutotrader(subject,html,new Date(received).toISOString(),resolveAutotrader);
+          for (const row of parsed.rows) {
+            const existing=props.getProperty('row:'+row.listing_key);
+            if (!existing || Date.parse(JSON.parse(existing).email_observed_at)<=Date.parse(row.email_observed_at)) props.setProperty('row:'+row.listing_key,JSON.stringify(row));
+          }
+          if (parsed.failed) { failures++; continue; }
+          props.setProperty('seen:'+item.id,String(now)); continue;
+        }
         const row = parseAlert(subject, html, source, new Date(received).toISOString(), resolveAuction);
         if (!row) { console.log('Unparsed alert: HTML bytes=' + html.length + ', auction CTA=' + /VIEW AUCTION|Go to Auction/i.test(html)); failures++; continue; } // retry later, never silently mark malformed alerts done
         props.setProperty('row:' + row.listing_key, JSON.stringify(row));
@@ -110,6 +158,7 @@ function installRefresh() {
   refreshAlerts();
   if (!ScriptApp.getProjectTriggers().some(t => t.getHandlerFunction() === 'refreshAlerts')) ScriptApp.newTrigger('refreshAlerts').timeBased().everyMinutes(5).create();
 }
+function recheckRecentAlerts() { refreshAlerts(true); }
 function doGet() {
   const all = PropertiesService.getScriptProperties().getProperties();
   const cutoff = Date.now() - 7 * 86400000;

@@ -14,9 +14,9 @@
   }
   function summarize(rows, jobs, email, now=Date.now()) {
     const searches = jobs.map(j=>({...j,health:state(j,now)}));
-    const mail = email ? {source:'Auction email alerts',status:email.partial?'partial':'ok',checked_at:email.checked_at,email:true,
-      detail:'BaT and Cars & Bids alerts. A successful check does not mean a new matching email arrived.'} :
-      {source:'Auction email alerts',status:'error',email:true,detail:'The email feed could not be loaded. Main inventory remains available.'};
+    const mail = email ? {source:'Listing email alerts',status:email.partial?'partial':'ok',checked_at:email.checked_at,email:true,
+      detail:'BaT, Cars & Bids, and AutoTrader alerts. A successful check does not mean a new matching email arrived.'} :
+      {source:'Listing email alerts',status:'error',email:true,detail:'The email feed could not be loaded. Main inventory remains available.'};
     searches.push({...mail,health:state(mail,now)});
     const counts = {healthy:0,attention:0,stale:0,paused:0,unknown:0};
     searches.forEach(j=>counts[j.health]++);
@@ -45,7 +45,7 @@
     const metrics=el('div','metric-grid');
     metrics.append(metric('Up to date',data.counts.healthy,'Collection jobs, including email checks'),metric('Needs attention',data.counts.attention+data.counts.stale+data.counts.unknown,'Errors, warnings, overdue or unknown checks'),metric('Paused / not enabled',data.counts.paused,'Not counted as failed checks'),metric('Active listings missing photos',data.sources.reduce((n,s)=>n+s.noPhotos,0),'Listing records, not unique trucks'));
     holder.append(metrics);
-    const jobsPanel=el('section','panel'); jobsPanel.append(el('h2','','Collection jobs'),el('p','health-caption','Most jobs run every 6 hours; Auto.dev runs daily; auction emails are checked every 5 minutes. Overdue means more than 9 hours, 30 hours, or 20 minutes respectively. Last check is an attempt, not proof of a successful refresh.'));
+    const jobsPanel=el('section','panel'); jobsPanel.append(el('h2','','Collection jobs'),el('p','health-caption','Most jobs run every 6 hours; Auto.dev runs daily; listing emails are checked every 5 minutes. Overdue means more than 9 hours, 30 hours, or 20 minutes respectively. Last check is an attempt, not proof of a successful refresh.'));
     const list=el('div','health-jobs');
     const rank={attention:0,stale:1,unknown:2,healthy:3,paused:4};
     for(const job of [...data.searches].sort((a,b)=>rank[a.health]-rank[b.health] || a.source.localeCompare(b.source))) {

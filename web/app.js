@@ -119,7 +119,7 @@ function saleState(row) {
   return "other";
 }
 function saleStateLabel(row) {
-  if (String(row.quality_flags || '').split(';').includes('email_discovery')) return 'Auction status unverified';
+  if (String(row.quality_flags || '').split(';').includes('email_discovery')) return row.category === 'retail' ? 'Availability unverified' : 'Auction status unverified';
   if (row.source === "carsandbids" && row.status === "unknown" && String(row.quality_flags || "").split(";").includes("rss_discovery")) return "Auction status unverified";
   return ({ "for-sale": "For sale", "live-auction": "Live auction", sold: "Sold",
     "bid-not-met": "Bid not met", "auction-ended": "Auction ended", other: "Status unknown" })[saleState(row)];
@@ -367,7 +367,7 @@ function formatDay(raw) {
 function listingDates(row) {
   const dates = text("div", "listing-dates", "");
   const listed = text("p", "date-fact", "");
-  listed.append(text("span", "", row.email_observed_at ? "Auction alert received" : "Listed"), text("strong", "", formatDay(row.listed_at)));
+  listed.append(text("span", "", row.email_observed_at ? "Listing alert received" : "Listed"), text("strong", "", formatDay(row.listed_at)));
   if (row.listed_at && row.listed_at_is_estimated) listed.append(text("small", "", "Estimated from days on market"));
   const added = text("p", "date-fact", "");
   added.append(text("span", "", "Truck added to Scout"), text("strong", "", formatDay(row.vehicle_first_seen || row.first_seen)));
@@ -390,7 +390,7 @@ function statusTiming(row) {
   if (saleState(row) === "bid-not-met") return `Auction ended ${formatMoment(row.auction_ends_at)} · high bid observed ${formatMoment(row.bid_observed_at)}`;
   if (saleState(row) === "auction-ended") return `Auction ended ${formatMoment(row.auction_ends_at)}`;
   if (saleState(row) === "sold") return `Sold ${formatDay(row.auction_result_at || row.last_seen)}`;
-  return row.email_observed_at ? `Auction alert received ${formatMoment(row.email_observed_at)}` : `Last seen for sale ${formatMoment(row.last_seen)}`;
+  return row.email_observed_at ? `Listing alert received ${formatMoment(row.email_observed_at)}` : `Last seen for sale ${formatMoment(row.last_seen)}`;
 }
 function dealBadge(row) {
   const labels = { great: "Great deal", fair: "Fair deal", bad: "Bad deal" };
@@ -676,7 +676,7 @@ function renderCard(row, group) {
   }
   if (group.listings.length > 1) stateRow.append(text("span", "duplicate-badge", `${group.listings.length} listings · same VIN`));
   if (String(row.quality_flags || "").split(";").includes("rss_discovery")) stateRow.append(text("span", "title-unverified-badge", "RSS discovery · details unverified"));
-  if (String(row.quality_flags || '').split(';').includes('email_discovery')) stateRow.append(text('span', 'title-unverified-badge', 'New auction alert · details unverified'));
+  if (String(row.quality_flags || '').split(';').includes('email_discovery')) stateRow.append(text('span', 'title-unverified-badge', 'Email alert · details unverified'));
   const accidentReports = new Set(group.listings.map(accidentGroup));
   if (accidentReports.has("reported") && accidentReports.has("none"))
     stateRow.append(text("span", "duplicate-conflict-badge", "History differs by source"));
