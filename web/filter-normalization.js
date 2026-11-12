@@ -26,12 +26,13 @@ const CruiserFilters = (() => {
 
   function source(value) {
     const name = token(value).replace(/ /g, "");
+    if (name === "carscom") return "cars.com";
     if (name === "cargurus" || name === "truecar" || name === "bringatrailer" || name === "ksl" || name === "bypex") return name;
     return token(value);
   }
 
   function sourceLabel(value) {
-    return ({ cargurus: "CarGurus", truecar: "TrueCar", bringatrailer: "Bring a Trailer", ksl: "KSL Cars", autodev: "Auto.dev", carsandbids: "Cars & Bids", bypex: "Bypex LLC" })[value] || value;
+    return ({ "cars.com": "Cars.com", autotrader: "AutoTrader", cargurus: "CarGurus", truecar: "TrueCar", bringatrailer: "Bring a Trailer", ksl: "KSL Cars", autodev: "Auto.dev", carsandbids: "Cars & Bids", bypex: "Bypex LLC" })[value] || value;
   }
 
   function facetOptions(values, canonical, label) {

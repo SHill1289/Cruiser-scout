@@ -1,0 +1,12 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const F=require('../web/strong-filters.js');
+const blank=()=>({...Object.fromEntries(F.multi.map(k=>[k,[]])),minPrice:'',price:'',minMileage:'',mileage:''});
+const row={year:2007,category:'retail',owners:2,mileage:100000,listed_at:'2026-11-01'};
+const derived={model:'LX470',status:'for-sale',source:'cargurus',deal:'fair',interior:'tan',accidents:'none',price:25000};
+test('selections match any within a facet and all across facets',()=>{const f=blank();f.model=['LX470','LX570'];f.year=['2006','2007'];assert.ok(F.match(row,f,derived));f.source=['bat'];assert.equal(F.match(row,f,derived),false);});
+test('ranges are inclusive and exclude missing values only when constrained',()=>{for(const value of [null,undefined,'']){assert.ok(F.numeric(value,'',''));assert.equal(F.numeric(value,'1',''),false);}assert.ok(F.numeric(100,'100','100'));assert.equal(F.numeric(101,'','100'),false);const f={...blank(),minPrice:'25000',price:'25000',minMileage:'100000',mileage:'100000'};assert.ok(F.match(row,f,derived));assert.equal(F.match({...row,mileage:100001},f,derived),false);});
+test('ended auctions include reserve-not-met without treating them as sold',()=>{const f={...blank(),status:['auction-ended']};assert.ok(F.match(row,f,{...derived,status:'bid-not-met'}));f.status=['sold'];assert.equal(F.match(row,f,{...derived,status:'bid-not-met'}),false);});
+test('owner selections distinguish exact, multiple, and unavailable',()=>{assert.equal(F.owner({owners:null}),'unknown');assert.equal(F.owner({owners:5}),'4+');assert.ok(F.match(row,{...blank(),owners:['multiple']},derived));assert.equal(F.match(row,{...blank(),owners:['3']},derived),false);});
+test('listing age ignores last seen, first seen and unverified email timestamps',()=>{const now=Date.parse('2026-11-12T00:00:00Z');assert.equal(F.age({...row,last_seen:'2026-11-12'},now),'month');assert.equal(F.age({first_seen:'2026-11-11'},now),'unknown');assert.equal(F.age({...row,quality_flags:'email_discovery'},now),'unknown');assert.equal(F.age({listed_at:'2026-12-01'},now),'unknown');assert.equal(F.age({listed_at:'2026-11-05'},now),'week');assert.equal(F.age({listed_at:'2026-11-04'},now),'month');});
+test('reported interior families remain usable without a factory catalogue',()=>{assert.equal(F.interior('Brown (Tan)').key,'beige');assert.equal(F.interior('Stone').key,'gray');assert.equal(F.interior('Black').key,'black');assert.equal(F.interior(null).key,'unknown');});

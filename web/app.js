@@ -34,7 +34,8 @@ let zipLoad = null;
 let origin = null;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
-const controls = ["search", "model", "type", "status", "deal", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
+CruiserStrongFilters.prepare();
+const controls = ["year", "interior", "age", "minPrice", "minMileage", "search", "model", "type", "status", "deal", "owners", "accidents", "price", "mileage", "zip", "radius", "source", "sort"]
   .reduce((all, id) => ({ ...all, [id]: document.querySelector(`#${id}`) }), {});
 let sourceHealth = [];
 let emailHealth = null;
@@ -780,7 +781,7 @@ function renderCard(row, group) {
 }
 
 function renderColorOptions(selected = new Set(selectedColors().map(input => input.value))) {
-  document.querySelector("#color-options").replaceChildren(...CruiserFilters.colorOptions(inventory, colorReference, controls.model.value)
+  document.querySelector("#color-options").replaceChildren(...CruiserFilters.colorOptions(inventory.filter(row => CruiserStrongFilters.any(CruiserStrongFilters.values(controls.model), CruiserFilters.model(row.model || "LX470"))), colorReference)
     .map(([key, label]) => {
       const option = text("label", "color-option", "");
       const input = document.createElement("input");
@@ -793,6 +794,17 @@ function renderColorOptions(selected = new Set(selectedColors().map(input => inp
     }));
 }
 
+function renderInteriorOptions() {
+  const selected = new Set(CruiserStrongFilters.values(controls.interior)), options = new Map();
+  for(const row of inventory) {
+    if(!CruiserStrongFilters.any(CruiserStrongFilters.values(controls.model),CruiserFilters.model(row.model || "LX470"))) continue;
+    const c = CruiserStrongFilters.interior(row.interior_color);
+    options.set(c.key,c.label);
+  }
+  controls.interior.replaceChildren(...[...options].sort((a,b)=>a[1].localeCompare(b[1])).map(([key,label])=>new Option(label,key,false,selected.has(key))));
+  CruiserStrongFilters.enhance();
+}
+
 function selectedColors() {
   return [...ui.color.querySelectorAll("input:checked")];
 }
@@ -800,6 +812,7 @@ function selectedColors() {
 const searchIndex = new WeakMap();
 let filterQuery = "";
 let filterColors = new Set();
+let strongFilterState = {};
 function matches(row) {
   const query = filterQuery;
   let indexed = searchIndex.get(row);
@@ -808,21 +821,17 @@ function matches(row) {
   const factoryInterior = resolveFactoryColor("interior", row.interior_color, row.year, row.model);
   const haystack = [vehicleName(row), row.city, row.state, row.seller, row.vin, row.exterior_color, row.interior_color,
     factoryExterior.name, factoryInterior.name, row.source].join(" ").toLowerCase();
-  indexed = { haystack, color: factoryExterior.key };
+  indexed = { haystack, color: factoryExterior.key, interior: CruiserStrongFilters.interior(row.interior_color).key };
   searchIndex.set(row, indexed);
   }
   const amount = listingPrice(row);
   return (!query || indexed.haystack.includes(query))
-    && (!controls.model.value || CruiserFilters.model(row.model || "LX470") === controls.model.value)
-    && (!controls.source.value || CruiserFilters.source(row.source) === controls.source.value)
-    && (!controls.status.value || saleState(row) === controls.status.value)
-    && (!controls.type.value || row.category === controls.type.value)
-    && (!controls.deal.value || (['great', 'fair', 'bad'].includes(row.deal_quality) ? row.deal_quality : 'unrated') === controls.deal.value)
+    && CruiserStrongFilters.match(row, strongFilterState, {
+      model:CruiserFilters.model(row.model || "LX470"),source:CruiserFilters.source(row.source),status:saleState(row),
+      deal:['great','fair','bad'].includes(row.deal_quality)?row.deal_quality:'unrated',interior:indexed.interior,
+      accidents:accidentGroup(row),price:amount
+    })
     && (!filterColors.size || filterColors.has(indexed.color))
-    && (!controls.owners.value || ownerGroup(row) === controls.owners.value)
-    && (!controls.accidents.value || accidentGroup(row) === controls.accidents.value)
-    && (!controls.price.value || (amount != null && amount <= Number(controls.price.value)))
-    && (!controls.mileage.value || (row.mileage != null && row.mileage <= Number(controls.mileage.value)))
     && (!origin || !controls.radius.value || (distanceTo(row) != null && distanceTo(row) <= Number(controls.radius.value)));
 }
 
@@ -904,8 +913,9 @@ function render(visibleCount = 24) {
   if (document.querySelector("#filter-drawer").open) return;
   filterQuery = controls.search.value.trim().toLowerCase();
   filterColors = new Set(selectedColors().map(input => input.value));
+  strongFilterState = Object.fromEntries(Object.entries(controls).map(([k,c])=>[k,c.multiple?CruiserStrongFilters.values(c):c.value]));
   const groups = vehicles.map(group => ({ ...group, matched: group.listings.filter(matches) }))
-    .filter(group => controls.accidents.value !== "none" || !group.listings.some(listing => accidentGroup(listing) === "reported"))
+    .filter(group => !(CruiserStrongFilters.values(controls.accidents).length === 1 && CruiserStrongFilters.values(controls.accidents)[0] === "none") || !group.listings.some(listing => accidentGroup(listing) === "reported"))
     .filter(group => group.matched.length);
   for (const group of groups) group.primary = sortRows(group.matched)[0];
   const rows = sortRows(groups.map(group => group.primary));
@@ -992,6 +1002,7 @@ function renderMarket() {
 function reset() {
   HTMLFormElement.prototype.reset.call(ui.form);
   renderColorOptions();
+  renderInteriorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
@@ -1001,9 +1012,9 @@ function reset() {
 }
 
 function updateFilterToggle() {
+  CruiserStrongFilters.refresh();
   document.querySelector("#toolbar-sort").value = controls.sort.value;
-  const active = Object.entries(controls).filter(([id, control]) =>
-    control.value && !(id === "sort" && control.value === "listed-newest")).length + selectedColors().length;
+  const active = Object.entries(controls).reduce((n,[id,c]) => n + (id === "sort" && c.value === "listed-newest" ? 0 : CruiserStrongFilters.values(c).length),0) + selectedColors().length;
   const colors = selectedColors();
   document.querySelector("#color-summary").textContent = colors.length
     ? `${colors.length} color${colors.length === 1 ? "" : "s"} selected` : "All colors";
@@ -1083,6 +1094,7 @@ async function load() {
         text("small", "", `Checked ${formatDay(source.checked_at)}`));
       ui.sourceHealth.append(row);
     });
+    controls.year.replaceChildren(...[...new Set(inventory.map(r=>r.year))].sort((a,b)=>b-a).map(y=>new Option(String(y),String(y))));
     restoreFilters();
     if (controls.zip.value) await updateOrigin();
     syncFilterLayout(true);
@@ -1111,7 +1123,7 @@ async function load() {
 }
 
 ui.form.addEventListener("input", event => {
-  if (event.target === controls.model) renderColorOptions();
+  if (event.target === controls.model) { renderColorOptions(); renderInteriorOptions(); }
   clearTimeout(searchTimer);
   if (event.target === controls.search) {
     searchTimer = setTimeout(() => { updateFilterToggle(); render(); syncFilters(); }, 150);
@@ -1137,7 +1149,8 @@ ui.marketModel.addEventListener("input", () => { renderMarketFacets(); renderMar
 ui.form.addEventListener("reset", event => {
   if (document.querySelector("#filter-drawer").open) {
     event.preventDefault();
-    for (const [key, control] of Object.entries(controls)) control.value = key === "sort" ? "listed-newest" : "";
+    for (const [key, control] of Object.entries(controls)) CruiserStrongFilters.set(control,key === "sort" ? "listed-newest" : "");
+    renderInteriorOptions();
     renderColorOptions(new Set());
     origin = null;
     ui.distanceStatus.classList.remove("error");
@@ -1147,6 +1160,7 @@ ui.form.addEventListener("reset", event => {
   }
   setTimeout(() => {
   renderColorOptions();
+  renderInteriorOptions();
   origin = null;
   ui.distanceStatus.classList.remove("error");
   ui.distanceStatus.textContent = "Enter a ZIP to see approximate straight-line distances.";
@@ -1229,7 +1243,7 @@ function syncFilters() {
   const params = new URLSearchParams();
   selectedColors().forEach(input => params.append("color", input.value));
   for (const [name, control] of Object.entries(controls)) {
-    if (control.value && !(name === "sort" && control.value === "listed-newest")) params.set(name, control.value);
+    if (!(name === "sort" && control.value === "listed-newest")) CruiserStrongFilters.values(control).forEach(v=>params.append(name,v));
   }
   const path = currentView();
   history.replaceState(null, "", `#${path}${params.size ? "?" + params : ""}`);
@@ -1238,30 +1252,33 @@ function restoreFilters() {
   const params = new URLSearchParams(location.hash.split("?")[1] || "");
   const colors = new Set(params.getAll("color"));
   for (const [name, control] of Object.entries(controls)) {
-    const desired = params.get(name);
-    if (desired != null && [...control.options || []].some(option => option.value === desired) || (control.tagName === "INPUT" && desired != null)) control.value = desired;
+    if(name==='interior')continue;
+    const desired=params.getAll(name);
+    if(control.multiple) CruiserStrongFilters.set(control,desired);
+    else if(desired.length && (control.tagName==='INPUT' || [...control.options||[]].some(o=>o.value===desired[0]))) control.value=desired[0];
   }
+  renderInteriorOptions();
+  CruiserStrongFilters.set(controls.interior,params.getAll('interior'));
+  CruiserStrongFilters.refresh();
   renderColorOptions(colors);
   syncFilters();
   setViewMode(viewMode);
 }
 function renderActiveFilters() {
   const holder = document.querySelector("#active-filters");
-  const active = Object.entries(controls).filter(([name, control]) =>
-    control.value && !(name === "sort" && control.value === "listed-newest"));
-  holder.replaceChildren(...active.map(([name, control]) => {
-    const label = control.selectedOptions?.[0]?.textContent || control.value;
-    const filterName = ({type: 'Listing type', deal: 'Deal quality'})[name] || name;
+  const active = Object.entries(controls).flatMap(([name,control]) =>
+    (name==='sort' && control.value==='listed-newest'?[]:CruiserStrongFilters.values(control)).map(value=>({name,control,value})));
+  holder.replaceChildren(...active.map(({name,control,value}) => {
+    const label = [...control.options||[]].find(o=>o.value===value)?.textContent || value;
+    const filterName = ({type:'Listing type',deal:'Deal quality',minPrice:'Min price',price:'Max price',minMileage:'Min mileage',mileage:'Max mileage',year:'Year',interior:'Interior',age:'Listing age'})[name] || name;
     const chip = text("button", "filter-chip", `${filterName}: ${label} ×`);
-    chip.type = "button";
-    chip.setAttribute("aria-label", `Remove ${filterName} filter`);
-    chip.addEventListener("click", () => {
-      control.value = name === "sort" ? "listed-newest" : "";
-      if (name === "zip") origin = null;
-      if (name === "model") renderColorOptions();
-      updateFilterToggle(); render(); syncFilters();
-    });
-    return chip;
+    chip.type="button";chip.setAttribute("aria-label",`Remove ${filterName} filter: ${label}`);
+    chip.addEventListener("click",()=>{
+      CruiserStrongFilters.set(control,control.multiple?CruiserStrongFilters.values(control).filter(v=>v!==value):name==='sort'?'listed-newest':'');
+      if(name==='zip')origin=null;
+      if(name==='model'){renderColorOptions();renderInteriorOptions();}
+      updateFilterToggle();render();syncFilters();
+    });return chip;
   }));
   holder.append(...selectedColors().map(input => {
     const label = input.parentElement.textContent;
@@ -1509,7 +1526,7 @@ function openFilterDrawer() {
   clearTimeout(searchTimer);
   render(Math.max(24, ui.listings.children.length)); syncFilters();
   filterSnapshot = {
-    values: Object.fromEntries(Object.entries(controls).map(([key, control]) => [key, control.value])),
+    values: Object.fromEntries(Object.entries(controls).map(([key, control]) => [key, control.multiple?CruiserStrongFilters.values(control):control.value])),
     colors: new Set(selectedColors().map(input => input.value)),
     origin, status: ui.distanceStatus.textContent, error: ui.distanceStatus.classList.contains("error")
   };
@@ -1525,7 +1542,9 @@ function closeFilterDrawer(apply) {
   if (!filterSnapshot) return;
   clearTimeout(searchTimer);
   if (!apply) {
-    for (const [key, value] of Object.entries(filterSnapshot.values)) controls[key].value = value;
+    for (const [key, value] of Object.entries(filterSnapshot.values)) CruiserStrongFilters.set(controls[key],value);
+    renderInteriorOptions();
+    CruiserStrongFilters.set(controls.interior,filterSnapshot.values.interior);
     renderColorOptions(filterSnapshot.colors);
     origin = filterSnapshot.origin;
     ui.distanceStatus.textContent = filterSnapshot.status;
@@ -1540,7 +1559,7 @@ function closeFilterDrawer(apply) {
   document.body.style.top = "";
   window.scrollTo(0, filterScrollY);
   updateFilterToggle();
-  if (apply) { render(); syncFilters(); }
+  render(); syncFilters();
   ui.filterToggle.focus({ preventScroll: true });
 }
 document.querySelector("#filter-cancel").addEventListener("click", () => closeFilterDrawer(false));
