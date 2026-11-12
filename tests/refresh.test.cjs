@@ -46,6 +46,23 @@ test('owner authentication, origin, cooldown and dispatch protections', async ()
   } finally { global.fetch = original; }
 });
 
+test('owner codes require at least 16 characters and retain longer-code compatibility', async () => {
+  try {
+    for (const length of [15, 16, 31, 32, 48]) {
+      const candidate = 'x'.repeat(length);
+      process.env.REFRESH_OWNER_KEY = candidate;
+      const login = await call('POST', {action:'login', key:candidate});
+      assert.equal(login.code, length < 16 ? 503 : 200);
+      if (length >= 16) {
+        assert.equal((await call('POST', {action:'login', key:candidate + 'wrong'})).code, 401);
+        const cookie = login.headers['Set-Cookie'].split(';')[0];
+        assert.equal(handler.session({headers:{cookie}}, candidate), true);
+        assert.equal(handler.session({headers:{cookie}}, candidate + 'changed'), false);
+      }
+    }
+  } finally { process.env.REFRESH_OWNER_KEY = key; }
+});
+
 test('remembered sessions outlive seven days and valid legacy cookies upgrade', async () => {
   const {createHmac}=require('node:crypto');
   const login=await call('POST',{action:'login',key});

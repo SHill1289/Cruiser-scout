@@ -45,7 +45,7 @@ async function handler(req, res) {
   const send = (status, value) => res.status(status).json(value);
   if (!['GET', 'POST'].includes(req.method)) { res.setHeader('Allow', 'GET, POST'); return send(405, { message: 'Method not allowed.' }); }
   const key = process.env.REFRESH_OWNER_KEY, token = process.env.GITHUB_REFRESH_TOKEN;
-  if (!key || key.length < 32 || !token) return send(503, { configured: false, message: 'Owner refresh is awaiting its secure connection. Scheduled refreshes still run normally.' });
+  if (!key || key.length < 16 || !token) return send(503, { configured: false, message: 'Owner refresh is awaiting its secure connection. Scheduled refreshes still run normally.' });
   if (req.method === 'POST') {
     const origins = ['https://cruiser-scout.vercel.app', process.env.VERCEL_URL && 'https://' + process.env.VERCEL_URL].filter(Boolean);
     if (!origins.includes(req.headers.origin) || !String(req.headers['content-type'] || '').startsWith('application/json')) return send(403, { message: 'Request rejected.' });
