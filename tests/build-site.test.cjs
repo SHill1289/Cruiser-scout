@@ -26,4 +26,6 @@ test('data-only changes skip builds but mixed application changes and unknown ba
     assert.equal(needsBuild(['web/inventory.json',file]),true);
   assert.equal(shouldSkip({VERCEL_GIT_COMMIT_REF:'raptor-finder'}),true);
   assert.equal(shouldSkip({VERCEL_GIT_COMMIT_REF:'main'}),false);
+  const sha = 'a'.repeat(40);
+  assert.equal(shouldSkip({VERCEL_GIT_COMMIT_REF:'main', VERCEL_GIT_PREVIOUS_SHA:sha, VERCEL_GIT_COMMIT_SHA:sha}),false);
 });
