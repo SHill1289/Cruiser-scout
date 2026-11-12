@@ -111,6 +111,52 @@ function parseAutotrader(subject, html, received, resolve) {
   }
   return {rows,failed};
 }
+function canonicalRetail(url, source) {
+  const pattern=source==='cars.com' ? /^https:\/\/(?:www\.)?cars\.com\/vehicledetail\/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})\/?(?:[?#].*)?$/i : source==='cargurus' ? /^https:\/\/www\.cargurus\.com\/(?:details|Cars\/listing)\/(\d{6,12})\/?(?:[?#].*)?$/ : null;
+  const m=pattern && String(url || '').match(pattern);
+  return m ? source==='cars.com' ? 'https://www.cars.com/vehicledetail/'+m[1].toLowerCase()+'/' : 'https://www.cargurus.com/details/'+m[1] : null;
+}
+function resolveRetail(url, source) {
+  for (let i=0;i<4;i++) {
+    const canonical=canonicalRetail(url,source); if (canonical) return canonical;
+    const host=source==='cars.com'?'emaillinks.cars.com':source==='cargurus'?'emailclick.cargurus.com':null;
+    // Resolve only observed email links, stopping before the vehicle page.
+    if (!host || !String(url).startsWith('https://'+host+'/a/click?') || /[\s<>"']/.test(url)) return null;
+    const response=UrlFetchApp.fetch(url,{followRedirects:false,muteHttpExceptions:true});
+    if (![301,302,303,307,308].includes(response.getResponseCode())) return null;
+    const h=response.getAllHeaders(); url=String(h.Location || h.location || '');
+  }
+  return null;
+}
+function parseRetailAlert(subject, html, source, received, resolve) {
+  const rows=[], keys=new Set(); let failed=0;
+  if (source==='cars.com' ? !/^Inventory Alert:/i.test(subject) : source!=='cargurus' || !/Your search criteria/i.test(html)) return {rows,failed};
+  const plain=s=>decodeHtml(s.replace(/<[^>]+>/g,' ')).replace(/\s+/g,' ').trim();
+  // Every card title is a boundary, including unrelated recommendations.
+  const cards=[...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)].filter(a=>/^20\d{2}\s+\w/.test(plain(a[2])));
+  for (let i=0;i<cards.length;i++) {
+    const a=cards[i], vehicle=vehicleIdentity(plain(a[2])); if (!vehicle) continue;
+    const block=html.slice(a.index+a[0].length,cards[i+1]?.index || html.length);
+    const text=plain(block).split(/View details|Your search criteria/i)[0];
+    const url=canonicalRetail(resolve(decodeHtml(a[1]),source),source);
+    if (!url) { failed++; continue; }
+    const id=url.replace(/\/$/,'').split('/').pop(); if (keys.has(id)) continue; keys.add(id);
+    const price=text.match(/\$([\d,]+)(?:\.00)?\b/), mileage=text.match(source==='cars.com'?/([\d,]+)\s+mi\./i:/Mileage:\s*([\d,]+)/i);
+    const location=text.match(source==='cars.com'?/Location:\s*([^|]+?),\s*([A-Z]{2})\b/:/Mileage:\s*[\d,]+\s*\|\s*([^|]+?),\s*([A-Z]{2})\b/);
+    const color=source==='cars.com' && text.match(/Exterior color:\s*(.+?)(?=\s+Location:|$)/i);
+    const before=html.slice(i?cards[i-1].index+cards[i-1][0].length:0,a.index);
+    const photos=[...before.matchAll(/<img\b[^>]*src=["'](https:\/\/static\.cargurus\.com\/images\/forsale\/[^"'?#]+\.(?:jpe?g|png|webp))["']/gi)];
+    const photo=source==='cargurus' && photos.length?photos[photos.length-1][1]:'';
+    rows.push({...vehicle,source,listing_key:source+':'+id,source_listing_id:id,listing_url:url,
+      category:'retail',status:'unknown',title_status:'unknown',quality_flags:'email_discovery',
+      email_observed_at:received,listed_at:received,first_seen:received,last_seen:received,
+      asking_price:price?Number(price[1].replace(/,/g,'')):null,mileage:mileage?Number(mileage[1].replace(/,/g,'')):null,
+      city:location?location[1].trim():'',state:location?location[2]:'',exterior_color:color?color[1].trim():'',
+      photo_url:photo,photo_urls:photo?[photo]:[],current_bid:null,
+      notes:'Saved-search email discovery. Details are as reported in the email; availability and title history are unverified.'});
+  }
+  return {rows,failed};
+}
 function refreshAlerts(recheck) {
   const lock = LockService.getScriptLock();
   if (!lock.tryLock(1000)) return;
@@ -118,7 +164,7 @@ function refreshAlerts(recheck) {
     const props = PropertiesService.getScriptProperties(), all = props.getProperties();
     const now = Date.now(), cutoff = now - 7 * 86400000;
     for (const key of Object.keys(all)) if (key.startsWith('row:') && Date.parse(JSON.parse(all[key]).email_observed_at) < cutoff) props.deleteProperty(key);
-    const query = 'newer_than:7d -in:spam -in:trash (({from:updates@bringatrailer.com from:no-reply@carsandbids.com} subject:"now live" {Lexus "Land Cruiser"}) OR (from:email@messages.autotrader.com subject:"My Autotrader Alerts"))';
+    const query = 'newer_than:7d -in:spam -in:trash (({from:updates@bringatrailer.com from:no-reply@carsandbids.com} subject:"now live" {Lexus "Land Cruiser"}) OR (from:email@messages.autotrader.com subject:"My Autotrader Alerts") OR (from:email@emalert.cars.com subject:"Inventory Alert") OR (from:cargurus@mail.cargurus.com {Lexus Toyota}))';
     const result = Gmail.Users.Messages.list('me', {q:query, maxResults:100});
     let failures = 0;
     for (const item of result.messages || []) {
@@ -128,14 +174,14 @@ function refreshAlerts(recheck) {
         const m = Gmail.Users.Messages.get('me', item.id, {format:'full'});
         const headers = m.payload.headers || [], header = n => (headers.find(h => h.name.toLowerCase() === n) || {}).value || '';
         const from = header('from');
-        const source = /(?:^|<)updates@bringatrailer\.com>?$/i.test(from.trim()) ? 'bringatrailer' : /(?:^|<)no-reply@carsandbids\.com>?$/i.test(from.trim()) ? 'carsandbids' : /(?:^|<)email@messages.autotrader\.com>?$/i.test(from.trim()) ? 'autotrader' : null;
+        const source = /(?:^|<)updates@bringatrailer\.com>?$/i.test(from.trim()) ? 'bringatrailer' : /(?:^|<)no-reply@carsandbids\.com>?$/i.test(from.trim()) ? 'carsandbids' : /(?:^|<)email@messages.autotrader\.com>?$/i.test(from.trim()) ? 'autotrader' : /(?:^|<)email@emalert\.cars\.com>?$/i.test(from.trim()) ? 'cars.com' : /(?:^|<)cargurus@mail\.cargurus\.com>?$/i.test(from.trim()) ? 'cargurus' : null;
         const received = Number(m.internalDate);
         if (!source || received < cutoff || received > now + 60000) continue;
         const subject = header('subject');
-        if (source!=='autotrader' && !vehicleIdentity(subject)) { props.setProperty('seen:' + item.id, String(now)); continue; }
+        if (['bringatrailer','carsandbids'].includes(source) && !vehicleIdentity(subject)) { props.setProperty('seen:' + item.id, String(now)); continue; }
         const html = emailHtml(m.payload);
-        if (source==='autotrader') {
-          const parsed=parseAutotrader(subject,html,new Date(received).toISOString(),resolveAutotrader);
+        if (['autotrader','cars.com','cargurus'].includes(source)) {
+          const parsed=source==='autotrader'?parseAutotrader(subject,html,new Date(received).toISOString(),resolveAutotrader):parseRetailAlert(subject,html,source,new Date(received).toISOString(),resolveRetail);
           for (const row of parsed.rows) {
             const existing=props.getProperty('row:'+row.listing_key);
             if (!existing || Date.parse(JSON.parse(existing).email_observed_at)<=Date.parse(row.email_observed_at)) props.setProperty('row:'+row.listing_key,JSON.stringify(row));

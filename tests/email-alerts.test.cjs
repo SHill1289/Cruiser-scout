@@ -78,3 +78,31 @@ test('API whitelists output and handles upstream failure without exposing respon
  assert.equal(res.code,200); assert.equal(res.data.listings.length,1); assert.doesNotMatch(JSON.stringify(res.data),/private@example/); assert.match(res.headers['Cache-Control'],/s-maxage=120/);
  await handler(async()=>({ok:false}))({method:'GET'},res); assert.equal(res.code,503); assert.equal(res.headers['Cache-Control'],'no-store');
 });
+
+test('Cars.com cards preserve details and exclude similar out-of-scope vehicles',()=>{
+ const card=(y,id,p,mi,city)=>`<a href="https://www.cars.com/vehicledetail/${id}/?private=1">${y} Lexus LX 570 Base</a><td>${mi} mi. $${p}</td><td>Exterior color: Black Onyx</td><td>Location: ${city}</td><a href="x">View details about this car</a>`;
+ const id='12345678-1234-1234-1234-123456789012';
+ const html=card(2014,id,'34,999','110,416','Slatington, PA')+card(2009,'22345678-1234-1234-1234-123456789012','12,000','250,000','Heath, OH');
+ const parsed=api.parseRetailAlert('Inventory Alert: 6+ new listings matching your search',html,'cars.com',now,api.canonicalRetail);
+ assert.equal(parsed.failed,0);assert.equal(parsed.rows.length,1);
+ const r=publicFeed.clean(parsed.rows[0],Date.parse(now));
+ assert.equal(r.asking_price,34999);assert.equal(r.mileage,110416);assert.equal(r.city,'Slatington');assert.equal(r.state,'PA');assert.equal(r.exterior_color,'Black Onyx');assert.equal(r.status,'unknown');assert.equal(r.category,'retail');assert.doesNotMatch(JSON.stringify(r),/private/);
+ assert.equal(api.parseRetailAlert('Your Search is Saved!',html,'cars.com',now,api.canonicalRetail).rows.length,0);
+});
+test('CarGurus recommendations use each vehicle identity, price and mileage',()=>{
+ const card=(title,id,p)=>`<a href="https://www.cargurus.com/Cars/listing/${id}?tracking=private"><img src="https://static.cargurus.com/images/forsale/${id}.jpeg"></a><a href="https://www.cargurus.com/Cars/listing/${id}?tracking=private">${title}</a><h2>$${p} <span>$99,999</span></h2><p>Mileage: 121,000 | Austin, TX</p>View details`;
+ const html=card('2015 Lexus ES 350',123456789,'20,258')+card('2013 Lexus LX 570 4WD',123456790,'25,000')+'Your search criteria';
+ const p=api.parseRetailAlert('Lexus from $8,125',html,'cargurus',now,api.canonicalRetail);
+ assert.equal(p.rows.length,1);const r=publicFeed.clean(p.rows[0],Date.parse(now));
+ assert.equal(r.asking_price,25000);assert.equal(r.mileage,121000);assert.equal(r.city,'Austin');assert.equal(r.photo_url,'https://static.cargurus.com/images/forsale/123456790.jpeg');
+ assert.equal(r.listing_key,'cargurus:123456790');assert.equal(r.listing_url,'https://www.cargurus.com/details/123456790');
+ const merged=publicFeed.merge({listings:[{listing_key:r.listing_key,status:'active'}]},{listings:[r]},Date.parse(now));assert.equal(merged.listings.length,1);
+});
+test('retail redirect allowlist stops at canonical listings and retries failed eligible cards',()=>{
+ let calls=0;api.UrlFetchApp={fetch:()=>{calls++;return {getResponseCode:()=>302,getAllHeaders:()=>({Location:'https://www.cargurus.com/Cars/listing/123456789?tracking=secret'})}}};
+ assert.equal(api.resolveRetail('https://emailclick.cargurus.com/a/click?_e=abc','cargurus'),'https://www.cargurus.com/details/123456789');assert.equal(calls,1);
+ assert.equal(api.resolveRetail('https://emailclick.cargurus.com.evil/a/click?_e=abc','cargurus'),null);assert.equal(calls,1);
+ const p=api.parseRetailAlert('Lexus from $10000','<a href="https://evil.example">2013 Lexus LX 570</a>$20000 Mileage: 120000 | Austin, TX View details Your search criteria','cargurus',now,()=>null);
+ assert.equal(p.failed,1);assert.equal(p.rows.length,0);
+ assert.equal(publicFeed.clean({...row,source:'cars.com',listing_url:'https://www.cars.com.evil/vehicledetail/x/'},Date.parse(now)),null);
+});

@@ -15,7 +15,7 @@
   function summarize(rows, jobs, email, now=Date.now()) {
     const searches = jobs.map(j=>({...j,health:state(j,now)}));
     const mail = email ? {source:'Listing email alerts',status:email.partial?'partial':'ok',checked_at:email.checked_at,email:true,
-      detail:'BaT, Cars & Bids, and AutoTrader alerts. A successful check does not mean a new matching email arrived.'} :
+      detail:'BaT, Cars & Bids, AutoTrader, Cars.com, and CarGurus alerts. A successful check does not mean a new matching email arrived.'} :
       {source:'Listing email alerts',status:'error',email:true,detail:'The email feed could not be loaded. Main inventory remains available.'};
     searches.push({...mail,health:state(mail,now)});
     const counts = {healthy:0,attention:0,stale:0,paused:0,unknown:0};
