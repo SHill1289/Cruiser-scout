@@ -1,6 +1,26 @@
 [
   {
     "source": "Bring a Trailer",
+    "source_listing_id": "2006-lexus-lx470-89",
+    "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-89/",
+    "year": 2006,
+    "make": "Lexus",
+    "model": "LX470",
+    "sold_at": "2026-11-12",
+    "sale_price": 40500,
+    "mileage": 68000,
+    "mileage_is_approximate": true,
+    "city": "Castle Rock",
+    "state": "CO",
+    "postal_code": "80109",
+    "exterior_color": "Classic Silver Metallic",
+    "interior_color": "Gray Leather",
+    "vin": "JTJHT00W864010708",
+    "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/10/IMG_1396-scaled-7618e567c1ce06816c3fbcc8964e6441.jpg?w=1200",
+    "title_status": "clean title"
+  },
+  {
+    "source": "Bring a Trailer",
     "source_listing_id": "2007-lexus-lx470-60",
     "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-60/",
     "year": 2007,
