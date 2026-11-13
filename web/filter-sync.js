@@ -28,6 +28,7 @@
    if(!response.ok){message(data.message||'Sync unavailable. Filters remain on this device.');return;}
    if(adapter.editing()||started!==generation){schedule();return;}
    if(linked){message('Opened a filtered link · your synced filters are unchanged');buttons();return;}
+   if(data.query===null&&!state.pending&&!last){message('Choose filters to save and sync across devices');return;}
    // First device imports its existing filters only when no shared set exists.
    if(data.query===null&&!state.pending){state.query=last;state.pending=true;state.revision=null;persist();}
    if(state.pending){
