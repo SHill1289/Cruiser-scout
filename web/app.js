@@ -774,7 +774,7 @@ function renderCard(row, group) {
   save.setAttribute("aria-pressed", String(savedVehicles.has(group.vehicleKey)));
   save.setAttribute("aria-label", (savedVehicles.has(group.vehicleKey) ? "Remove from" : "Save to") + " watchlist: " + row.year + " " + vehicleName(row));
   save.addEventListener("click", () => toggleSaved(group.vehicleKey));
-  actions.append(research, save, link, comparisonButton(row, group));
+  actions.append(research, save, link, comparisonButton(row, group), CruiserReports.button(row, group.listings));
   card.append(actions);
   const others = otherListings(group);
   if (others) card.append(others);

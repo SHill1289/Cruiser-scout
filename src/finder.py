@@ -1910,7 +1910,15 @@ def run(root=ROOT, live=True):
     if live:
         from dealer_photos import enrich as enrich_dealer_photos
         health.append(enrich_dealer_photos(root, state, now, cache_public_photos))
+    report_results = []
+    if live:
+        from listing_reports import process_requests, recheck_listing, write as write_report
+        health.append(process_requests(root, state, now,
+            lambda row, reason: recheck_listing(state, row, reason, fetcher, now, changes),
+            writer=lambda path, report: report_results.append((path, report))))
     save(root, state, health, changes, cache_photos=live)
+    for report_path, report in report_results:
+        write_report(report_path, report)
     print(json.dumps({"vehicles": len(master_rows(state)), "listings": len(state["listings"]), "changes": len(changes), "sources": health}, indent=2))
     return 1 if any(h["status"] in {"error", "partial"} for h in health) else 0
 

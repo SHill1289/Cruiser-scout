@@ -18,6 +18,7 @@ on:
       - '!scripts/ignore_vercel_build.cjs'
       - '!.github/workflows/inventory_pages.yml'
       - '!.github/workflows/collection_watchdog.yml'
+      - '!.github/workflows/listing_recheck.yml'
       - '!scripts/collection_watchdog.py'
   pull_request:
     paths:

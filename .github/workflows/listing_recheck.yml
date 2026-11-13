@@ -1,0 +1,50 @@
+name: Queue listing recheck
+on:
+  workflow_dispatch:
+    inputs:
+      listing_key:
+        description: Existing Scout listing key
+        required: true
+        type: string
+      reason:
+        description: Reported issue
+        required: true
+        type: choice
+        options: [wrong_photo, already_sold, missing_information]
+permissions:
+  contents: read
+# Different reports must not cancel each other while collection is running.
+concurrency:
+  group: listing-report-${{ inputs.listing_key }}-${{ inputs.reason }}
+  cancel-in-progress: false
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record report for the next scheduled refresh
+        env:
+          REPORT_LISTING_KEY: ${{ inputs.listing_key }}
+          REPORT_REASON: ${{ inputs.reason }}
+        run: python src/listing_reports.py
+      - name: Save queue
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/recheck_requests/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Queue reported listing for recheck'
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            exit 1
+          fi
