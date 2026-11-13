@@ -76,7 +76,7 @@
     try {
       const {code, data} = await request("login", $("refresh-key").value.trim());
       $("refresh-key").value = "";
-      if (code === 200) await check(); else status.textContent = data.message;
+      if (code === 200) { await check(); window.CruiserFilterSync?.sync(); } else status.textContent = data.message;
     } catch { status.textContent = "Could not unlock owner controls. Please try again."; }
     finally { $("refresh-unlock").disabled = false; }
   });

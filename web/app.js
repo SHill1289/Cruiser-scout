@@ -23,6 +23,7 @@ const ui = {
   mapStatus: document.querySelector("#map-status"), mapViewport: document.querySelector(".map-viewport")
 };
 
+const explicitFilterLink = location.hash.includes("?");
 let inventory = [];
 let vehicles = [];
 let marketSales = [];
@@ -1096,6 +1097,19 @@ async function load() {
     });
     controls.year.replaceChildren(...[...new Set(inventory.map(r=>r.year))].sort((a,b)=>b-a).map(y=>new Option(String(y),String(y))));
     restoreFilters();
+    window.CruiserFilterSync.start({
+      explicit: explicitFilterLink,
+      read: () => inventoryFilterQuery(),
+      editing: () => document.querySelector('#filter-drawer').open,
+      apply: query => {
+        for(const [name,control] of Object.entries(controls)) CruiserStrongFilters.set(control,name==='sort'?'listed-newest':'');
+        origin=null;
+        restoreFilters(query);
+        updateFilterToggle(); render();
+        updateOrigin();
+        return inventoryFilterQuery();
+      }
+    });
     if (controls.zip.value) await updateOrigin();
     syncFilterLayout(true);
     updateFilterToggle();
@@ -1238,18 +1252,22 @@ function setViewMode(mode) {
   ui.listings.classList.toggle("table-view", mode === "table");
   for (const name of ["card", "table"]) document.querySelector(`#${name}-view`).setAttribute("aria-pressed", String(name === mode));
 }
-function syncFilters() {
-  if (document.querySelector("#filter-drawer").open) return;
+function inventoryFilterQuery() {
   const params = new URLSearchParams();
   selectedColors().forEach(input => params.append("color", input.value));
   for (const [name, control] of Object.entries(controls)) {
     if (!(name === "sort" && control.value === "listed-newest")) CruiserStrongFilters.values(control).forEach(v=>params.append(name,v));
   }
-  const path = currentView();
-  history.replaceState(null, "", `#${path}${params.size ? "?" + params : ""}`);
+  return params.toString();
 }
-function restoreFilters() {
-  const params = new URLSearchParams(location.hash.split("?")[1] || "");
+function syncFilters() {
+  if (document.querySelector('#filter-drawer').open) return;
+  const query=inventoryFilterQuery();
+  history.replaceState(null, '', `#${currentView()}${query?'?'+query:''}`);
+  window.CruiserFilterSync?.changed(query);
+}
+function restoreFilters(query = location.hash.split("?")[1] || "") {
+  const params = new URLSearchParams(query);
   const colors = new Set(params.getAll("color"));
   for (const [name, control] of Object.entries(controls)) {
     if(name==='interior')continue;

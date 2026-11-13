@@ -52,7 +52,7 @@
     try{
       const response=await request('/api/refresh',{action:'login',key:$('watch-sync-key').value.trim()});
       $('watch-sync-key').value='';
-      if(response.ok)await sync();else message((await response.json()).message||'Could not unlock syncing.');
+      if(response.ok){await sync();window.CruiserFilterSync?.sync();}else message((await response.json()).message||'Could not unlock syncing.');
     }catch{message('Could not connect. Your local saves are unchanged.');}
     finally{$('watch-sync-unlock').disabled=false;}
   });

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="photo-touch.css" />
     <link rel="stylesheet" href="compact-cards.css" />
     <link rel="stylesheet" href="collection-health.css" />
+    <link rel="stylesheet" href="filter-sync.css" />
     <link rel="stylesheet" href="strong-filters.css" />
   </head>
   <body>
@@ -157,6 +158,13 @@
                   </button>
                 </div>
               </div>
+            </div>
+            <div class="filter-sync-bar" aria-label="Saved inventory filters">
+              <span id="filter-sync-status" role="status">Filters saved on this device</span>
+              <button id="filter-sync-now" type="button">Sync filters</button>
+              <a id="filter-sync-unlock" href="#watchlist" hidden>Unlock syncing</a>
+              <button id="filter-sync-keep" type="button" hidden>Use these filters everywhere</button>
+              <button id="filter-sync-load" type="button" hidden>Load synced filters</button>
             </div>
             <div class="explorer-layout" id="explorer-layout">
               <form class="filters" id="filters" aria-label="Filter inventory">
@@ -686,6 +694,7 @@
     <script src="market-explorer.js" defer></script>
     <script src="market-chart.js" defer></script>
     <script src="collection-health.js" defer></script>
+    <script src="filter-sync.js" defer></script>
     <script src="app.js" defer></script>
     <script src="watchlist-sync.js" defer></script>
   </body>
