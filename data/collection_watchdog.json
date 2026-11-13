@@ -1,6 +1,6 @@
 {
   "source": "Collection watchdog",
   "status": "warning",
-  "checked_at": "2026-11-12T21:37:03.538377+00:00",
-  "detail": "No extra collection needed; normal scheduled retries and backfills continue. autodev: warning; see its source report. Existing retry/quota rules remain in effect."
+  "checked_at": "2026-11-13T07:01:39.114778+00:00",
+  "detail": "No extra collection needed; normal scheduled retries and backfills continue. cargurus-land-cruiser-2007: warning; see its source report. Existing retry/quota rules remain in effect. autodev: warning; see its source report. Existing retry/quota rules remain in effect."
 }
