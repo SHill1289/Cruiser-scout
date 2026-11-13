@@ -507,7 +507,7 @@ function reportedExtras(row) {
   return panel;
 }
 
-function equipmentHighlights(row, group) {
+function equipmentHighlights(row, group, compact = false) {
   const reports = [];
   const seen = new Set();
   for (const listing of group.listings) {
@@ -526,6 +526,16 @@ function equipmentHighlights(row, group) {
   panel.setAttribute("aria-label", "Equipment evidence");
   if (!reports.length) {
     panel.append(text("span", "equipment-unknown", "Special equipment not mentioned · absence not confirmed"));
+    return panel;
+  }
+  if (compact) {
+    const labels = [...new Set(reports.map(report => report.label))];
+    const priority = label => /night|infrared/i.test(label) ? 0 : /dvd|rear.seat|entertainment/i.test(label) ? 1 : /levinson/i.test(label) ? 2 : 3;
+    labels.sort((a,b)=>priority(a)-priority(b));
+    const tags = text("div", "detail-equipment-tags", "");
+    labels.slice(0,4).forEach(label=>tags.append(text("span", "tag", label)));
+    panel.append(tags, text("p", "detail-note", "Source mentions only; may describe missing or nonworking equipment. Factory origin needs confirmation."));
+    panel.append(researchJumpButton("research-equipment", `Review equipment evidence${labels.length>4 ? ` (${labels.length} mentions)` : ""}`));
     return panel;
   }
   const details = document.createElement("details");
@@ -1339,6 +1349,41 @@ function researchFact(label, content) {
   fact.append(text("small", "", label), text("strong", "", String(content || "Unknown")));
   return fact;
 }
+function researchJumpButton(id, label) {
+  const button = text("button", "detail-evidence-link", label);
+  button.type = "button";
+  button.addEventListener("click", () => {
+    const target = document.getElementById(id);
+    const details = target.querySelector("details");
+    if (details) details.open = true;
+    target.scrollIntoView({block:"start"});
+    const focus = target.querySelector("summary") || target;
+    if (!details) focus.tabIndex = -1;
+    focus.focus({preventScroll:true});
+  });
+  return button;
+}
+function researchHighlights(row, group) {
+  const grid=text("div","detail-highlights","");
+  const maintenance=text("section","detail-highlight-panel","");
+  maintenance.append(text("h3","","Maintenance evidence"));
+  const known=CruiserMaintenance.records(row,group.listings).filter(record=>record.claims.length);
+  if (!known.length) maintenance.append(text("p","detail-note","Not mentioned in collected evidence. This does not mean the work was not done."));
+  for(const record of known.slice(0,3)) {
+    const claim=record.claims[0], item=text("div","detail-maintenance-item","");
+    item.append(text("strong","",record.label),text("span","",claim.status));
+    if(record.differs)item.append(text("small","maintenance-differs","Reports differ — review evidence"));
+    else if(claim.historical)item.append(text("small","","Earlier listing — confirm current condition"));
+    const link=text("a","",`Evidence · ${claim.source} ↗`);
+    link.href=claim.url;link.target="_blank";link.rel="noopener noreferrer";
+    item.append(link);maintenance.append(item);
+  }
+  if(known.length) maintenance.append(text("p","detail-note","Listing-reported; confirm receipts, service dates and mileage."));
+  maintenance.append(researchJumpButton("research-maintenance","View all maintenance & condition evidence"));
+  const equipment=text("section","detail-highlight-panel","");
+  equipment.append(text("h3","","Notable equipment mentions"),equipmentHighlights(row,group,true));
+  grid.append(maintenance,equipment);return grid;
+}
 function openResearch(group, row = sortRows([...group.listings])[0]) {
   rememberBrowsing();
   const dialog = document.querySelector("#research-dialog");
@@ -1348,11 +1393,29 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   sourceLink.href = row.listing_url;
   sourceLink.target = "_blank";
   sourceLink.rel = "noopener noreferrer";
-  body.append(sourceLink);
+  const overview=text("section","detail-overview","");
+  overview.setAttribute("aria-label","Vehicle at a glance");
+  const status=text("div","detail-status","");
+  status.append(text("span","tag",saleStateLabel(row)),text("span","",`${row.source} · ${row.seller || "Seller not reported"}`));
+  overview.append(status);
+  const keyFacts=text("div","detail-key-facts","");
+  keyFacts.append(
+    researchFact(row.status === "sold" ? "Recorded sale price" : row.category === "auction" ? "Auction bid" : "Asking price",priceLabel(row)),
+    researchFact("Mileage",row.mileage == null ? "Not reported" : `${integer.format(row.mileage)} mi`),
+    researchFact("Location",[row.city,row.state].filter(Boolean).join(", ") || "Not reported")
+  );
+  overview.append(keyFacts,text("p","detail-note",`Last observed ${formatMoment(row.last_seen)} · ${row.title_status === "unknown" || !row.title_status ? "Title unverified" : row.title_status}`));
+  const actions=text("div","detail-actions","");
+  const save=text("button","save-button",savedVehicles.has(group.vehicleKey)?"★ Saved":"☆ Save");
+  save.type="button";save.setAttribute("aria-pressed",String(savedVehicles.has(group.vehicleKey)));
+  save.addEventListener("click",()=>{toggleSaved(group.vehicleKey);save.textContent=savedVehicles.has(group.vehicleKey)?"★ Saved":"☆ Save";save.setAttribute("aria-pressed",String(savedVehicles.has(group.vehicleKey)));});
+  actions.append(sourceLink,save,comparisonButton(row,group));
+  overview.append(actions);body.append(overview,researchHighlights(row,group));
   const rating = dealBadge(row);
-  if (rating) body.append(rating);
-  const layout = text("div", "research-layout", "");
-  const media = text("div", "", "");
+  if (rating) overview.append(rating);
+  const layout = text("section", "research-section detail-photos", "");
+  layout.append(text("h3", "", "Photos"));
+  const media = text("div", "detail-media", "");
   const urls = galleryUrls(row);
   if (urls.length) {
     const photo = document.createElement("img");
@@ -1372,19 +1435,22 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
         photo.replaceWith(text("div", "research-photo photo-placeholder", row.model || "Vehicle"));
         credit.textContent = "Photos unavailable";
         gallery.hidden = true;
+        photoButton.disabled = true;
+        photoButton.querySelector(".detail-photo-expand").hidden = true;
       }
     });
-    media.append(photo, credit);
+    const photoButton=text("button","detail-photo-button","");
+    photoButton.type="button";photoButton.setAttribute("aria-label",`Open full-screen photos of ${row.year} ${vehicleName(row)}`);
+    photoButton.append(photo,text("span","detail-photo-expand",`${urls.length} photo${urls.length === 1 ? "" : "s"} · Expand ⛶`));
+    photoButton.addEventListener("click",()=>openGallery(row,galleryUrls(row),0));
+    media.append(photoButton,credit);
     gallery.type = "button";
-    gallery.addEventListener("click", () => { dialog.close(); openGallery(row, galleryUrls(row), 0); });
+    gallery.addEventListener("click", () => openGallery(row, galleryUrls(row), 0));
     media.append(gallery);
   } else media.append(text("div", "research-photo photo-placeholder", row.model || "Vehicle"));
   const facts = text("div", "research-facts", "");
   facts.append(
-    researchFact(row.status === "sold" ? "Recorded sale" : row.category === "auction" ? "Auction bid" : "Asking price", priceLabel(row)),
-    researchFact("Mileage", row.mileage == null ? "Unknown" : `${integer.format(row.mileage)} mi`),
     researchFact("VIN", row.vin || "Unavailable"),
-    researchFact("Location", [row.city, row.state].filter(Boolean).join(", ") || "Unknown"),
     researchFact("Seller", row.seller || "Unknown"),
     researchFact("Listing date", row.listed_at ? formatDay(row.listed_at) + (row.listed_at_is_estimated ? " (estimated)" : "") : "Unknown"),
     researchFact("Truck added to Scout", formatDay(row.vehicle_first_seen || row.first_seen)),
@@ -1395,14 +1461,16 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     researchFact("Exterior", row.exterior_color || "Unknown"),
     researchFact("Interior", row.interior_color || "Unknown")
   );
-  layout.append(media, facts); body.append(layout);
+  layout.append(media);body.append(layout);
+  const specifications=text("section","research-section detail-specifications","");
+  specifications.append(text("h3","","Vehicle facts"),facts);body.append(specifications);
   if (row.source_description) {
     const description = text("section", "research-section", "");
     description.append(text("h3", "", "Source description"));
     const excerpt = text("p", "", row.source_description);
     excerpt.style.whiteSpace = "pre-line";
     description.append(excerpt);
-    const source = text("a", "maintenance-source", "Read full auction and current bid on Cars & Bids ↗");
+    const source = text("a", "maintenance-source", `Read full listing on ${row.source} ↗`);
     source.href = row.listing_url; source.target = "_blank"; source.rel = "noopener noreferrer";
     description.append(source);
     body.append(description);
@@ -1420,14 +1488,16 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   condition.id = "research-maintenance";
   condition.append(text("h3", "", "Maintenance & condition"), conditionRecords(row, group, true));
   const equipment = text("section", "research-section", "");
+  equipment.id="research-equipment";
   equipment.append(text("h3", "", "Equipment evidence"), equipmentHighlights(row, group));
-  body.insertBefore(equipment, layout);
-  body.insertBefore(condition, layout);
+  body.insertBefore(condition,more);
+  body.insertBefore(equipment,more);
+  more.append(CruiserReports.button(row,group.listings));
   const history = text("section", "research-section", "");
   history.append(text("h3", "", "Price & auction context"));
   history.append(text("p", "", row.deal_quality && row.deal_median_price
     ? `${row.deal_quality} deal against ${row.deal_comparable_count} completed sales in the ${row.deal_mileage_band} mileage band; median ${money.format(row.deal_median_price)}. Condition is not accounted for.`
-    : "No supported auction comparison for this listing."));
+    : "No supported completed-sale comparison for this listing."));
   const prices = priceObservations(row);
   history.append(text("h4", "", "Observed asking prices"));
   if (prices.length) {
@@ -1448,6 +1518,7 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   body.append(history);
   document.querySelector("#research-content").replaceChildren(body);
   dialog.showModal();
+  dialog.scrollTop=0;
 }
 function marketMetric(label, value, note) {
   const node = text("div", "metric-card", "");
