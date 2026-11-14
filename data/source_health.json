@@ -3,18 +3,18 @@
     "source": "TrueCar",
     "status": "ok",
     "detail": "71 of 71 nationwide Raptor listings below the source's $30,000 maximum checked. Dashboard applies a strict below-$30,000 asking-price rule, clean title and zero reported accidents.",
-    "checked_at": "2026-11-14T18:05:29+00:00"
+    "checked_at": "2026-11-14T22:26:23+00:00"
   },
   {
     "source": "CarGurus",
     "status": "manual_only",
     "detail": "Raptor collector not validated; checked manual imports supported.",
-    "checked_at": "2026-11-14T18:05:29+00:00"
+    "checked_at": "2026-11-14T22:26:23+00:00"
   },
   {
     "source": "CARFAX / Cars.com / Autotrader",
     "status": "manual_only",
     "detail": "No validated automatic Raptor collector; checked manual imports supported.",
-    "checked_at": "2026-11-14T18:05:29+00:00"
+    "checked_at": "2026-11-14T22:26:23+00:00"
   }
 ]
