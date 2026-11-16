@@ -1,6 +1,27 @@
 [
   {
     "source": "Bring a Trailer",
+    "source_listing_id": "2006-lexus-lx470-91",
+    "listing_url": "https://bringatrailer.com/listing/2006-lexus-lx470-91/",
+    "year": 2006,
+    "make": "Lexus",
+    "model": "LX470",
+    "sold_at": "2026-11-16",
+    "sale_price": 51500,
+    "mileage": 103000,
+    "mileage_is_approximate": true,
+    "city": "Huntingdon Valley",
+    "state": "PA",
+    "postal_code": "19006",
+    "exterior_color": "Cypress Pearl",
+    "interior_color": "Ivory Leather",
+    "vin": "JTJHT00W664014286",
+    "photo_url": "https://bringatrailer.com/wp-content/uploads/2026/10/GSB00863-scaled-4733a8533bec6e4db3ff0ade5200298d.jpg?w=1200",
+    "title_status": "clean title",
+    "currency": "USD"
+  },
+  {
+    "source": "Bring a Trailer",
     "source_listing_id": "2007-lexus-lx470-59",
     "listing_url": "https://bringatrailer.com/listing/2007-lexus-lx470-59/",
     "year": 2007,
