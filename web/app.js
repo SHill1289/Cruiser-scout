@@ -126,8 +126,9 @@ function saleStateLabel(row) {
   return ({ "for-sale": "For sale", "live-auction": "Live auction", sold: "Sold",
     "bid-not-met": "Bid not met", "auction-ended": "Auction ended", other: "Status unknown" })[saleState(row)];
 }
-function listingPrice(row) { return row.sold_price ?? row.asking_price ?? row.current_bid ?? null; }
+function listingPrice(row) { return row[CruiserPrices.fieldFor(row)] ?? null; }
 function priceLabel(row) {
+  if (row.price_review?.[CruiserPrices.fieldFor(row)]) return "Price needs review";
   const amount = listingPrice(row);
   if (amount == null) return "Price unavailable";
   if (row.status === "sold") return `${money.format(amount)} sold`;
@@ -140,8 +141,9 @@ function priceObservations(row) {
   return row.price_history.filter(point => Number.isFinite(point.asking_price) && Number.isFinite(Date.parse(point.observed_at)));
 }
 function priceDrops(row) {
-  const points = priceObservations(row);
-  return points.slice(1).flatMap((point, index) => point.asking_price < points[index].asking_price
+  if (row.price_review?.asking_price) return [];
+  const points = Array.isArray(row.price_history) ? row.price_history : [];
+  return points.slice(1).flatMap((point, index) => Number.isFinite(point.asking_price) && Number.isFinite(points[index].asking_price) && point.asking_price < points[index].asking_price
     ? [{ observedAt: point.observed_at, previous: points[index].asking_price, current: point.asking_price,
       amount: points[index].asking_price - point.asking_price }] : []);
 }
@@ -696,6 +698,11 @@ function renderCard(row, group) {
     stateRow.append(text("span", "duplicate-conflict-badge", "Accident reported on another source"));
   const rating = dealBadge(row);
   if (rating) stateRow.append(rating);
+  if (row.price_review?.[CruiserPrices.fieldFor(row)]) {
+    const warning = text("span", "tag alert", "Price needs review");
+    warning.title = row.price_review[CruiserPrices.fieldFor(row)];
+    stateRow.append(warning);
+  }
   const reduction = latestReduction(row);
   if (reduction) {
     const badge = text("span", "price-drop-badge", `Price down ${money.format(reduction.amount)}`);
@@ -1045,6 +1052,7 @@ async function load() {
     const alerts = await emailLoad;
     emailHealth = alerts;
     if (alerts) data = CruiserEmailAlerts.merge(data, alerts);
+    data = CruiserPrices.prepare(data);
     try {
       const colorResponse = await fetch("factory-colors.json", { cache: "no-cache" });
       if (colorResponse.ok) colorReference = await colorResponse.json();
@@ -1073,7 +1081,7 @@ async function load() {
     ui.collectionNotice.hidden = incomplete.length === 0;
     if (incomplete.length) document.querySelector("#collection-message").textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
     window.CruiserRefresh.notice(data.generated_at, incomplete.length > 0);
-    ui.marketSource.textContent = data.market_history?.source || "Completed sale results";
+    ui.marketSource.textContent = (data.market_history?.source || "Completed sale results") + " · Prices needing review are excluded from charts and statistics; original records remain available.";
     ui.updated.textContent = formatDate(data.generated_at);
     document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);
     ui.disclaimer.textContent = data.disclaimer || ui.disclaimer.textContent;
@@ -1405,6 +1413,15 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
     researchFact("Location",[row.city,row.state].filter(Boolean).join(", ") || "Not reported")
   );
   overview.append(keyFacts,text("p","detail-note",`Last observed ${formatMoment(row.last_seen)} · ${row.title_status === "unknown" || !row.title_status ? "Title unverified" : row.title_status}`));
+  const priceField = CruiserPrices.fieldFor(row);
+  if (row.price_review?.[priceField]) {
+    const review = text("section", "price-review-note", "");
+    review.append(text("strong", "", "Price needs review"), text("p", "", row.price_review[priceField]));
+    const reported = row.reported_prices?.[priceField];
+    if (Number.isFinite(reported)) review.append(text("p", "", `Source reported ${row.currency || "USD"} ${integer.format(reported)}. This is excluded from price sorting, price filters, deal ratings and market calculations until verified.`));
+    review.append(text("small", "", "The original source link below lets you check the amount. A review flag does not prove the price is wrong."));
+    overview.append(review);
+  }
   const actions=text("div","detail-actions","");
   const save=text("button","save-button",savedVehicles.has(group.vehicleKey)?"★ Saved":"☆ Save");
   save.type="button";save.setAttribute("aria-pressed",String(savedVehicles.has(group.vehicleKey)));
@@ -1539,7 +1556,7 @@ function renderMarketOverview() {
   const newCount = inventory.filter(row => Date.parse(row.first_seen) >= generatedAt.getTime() - 7 * 864e5).length;
   const metrics = document.querySelector("#market-metrics");
   metrics.replaceChildren(
-    marketMetric("Active retail listings", integer.format(active.length), "Asking prices, not sales"),
+    marketMetric("Active retail listings", integer.format(inventory.filter(row => row.status === "active" && row.category !== "auction").length), "Includes listings with unavailable or flagged prices"),
     marketMetric("Median asking price", active.length ? money.format(median(active.map(row => row.asking_price))) : "—", "Active retail listings"),
     marketMetric("Added in 7 days", integer.format(newCount), "Based on first seen"),
     marketMetric("Completed sales", integer.format(marketSales.length), "Historical feed")

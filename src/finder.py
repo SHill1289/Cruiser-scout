@@ -24,6 +24,7 @@ from statistics import median
 from bat_archive import archive_results as bat_archive_results, location as bat_location
 from bat_photos import gallery_urls as bat_gallery_urls, SELECTION_VERSION as BAT_PHOTO_VERSION
 from photo_selection import select_photos
+import price_integrity
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -1222,7 +1223,7 @@ def parse_historical_sale(page, url, now):
         "listing_url": url, "year": row["year"], "make": row["make"], "model": row["model"], "sold_at": sold_at,
         "sale_price": row["sold_price"], "mileage": row["mileage"],
         "mileage_is_approximate": row["mileage_is_approximate"],
-        **{key: row.get(key, "") for key in ("city", "state", "postal_code", "exterior_color", "interior_color", "vin", "photo_url", "title_status")},
+        **{key: row.get(key, "") for key in ("city", "state", "postal_code", "exterior_color", "interior_color", "vin", "photo_url", "title_status", "currency")},
     }
 
 
@@ -1297,6 +1298,8 @@ def inventory_candidate(row):
 
 def deal_rating(row, sales, minimum_comparables=3):
     """Compare a retail asking price with the median sale in its mileage band."""
+    row = price_integrity.clean(row)
+    sales = [price_integrity.clean(sale) for sale in sales]
     if (row.get("source") == "autodev" and not clean_title_candidate(row)
             or row.get("status") != "active" or row.get("category") != "retail"
             or not isinstance(row.get("asking_price"), (int, float))
@@ -1695,18 +1698,19 @@ def save(root, state, health, changes, cache_photos=False):
         "modifications_status", "modifications_evidence",
         "auction_result_at", "auction_ends_at", "bid_observed_at", "listed_at", "listed_at_is_estimated", "first_seen", "last_seen", "last_checked", "missing_checks", "quality_flags",
         "deal_quality", "deal_percent_vs_median", "deal_comparable_count", "deal_median_price", "deal_mileage_band",
-        "rust_location", "price_history", "vehicle_first_seen", "reappeared_at",
+        "rust_location", "price_history", "vehicle_first_seen", "reappeared_at", "price_review", "reported_prices",
     ]
     discovery_cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=14)).isoformat()
     public_rows = [r for r in rows if (inventory_candidate(r) or (r["source"] == "bringatrailer" and r["status"] in {"sold", "ended"}))
                   and (r["status"] in {"active", "sold", "ended"} or (r["source"] == "carsandbids" and r["status"] == "unknown"
                   and "rss_discovery" in r.get("quality_flags", "").split(";") and r.get("listed_at", "") >= discovery_cutoff))]
     cutoff = (datetime.fromisoformat(state["updated_at"]) - timedelta(days=731)).date().isoformat()
-    public_sales = [row for row in historical_sales if row.get("sold_at", "") >= cutoff]
+    public_sales = [price_integrity.clean(row, state["updated_at"]) for row in historical_sales if row.get("sold_at", "") >= cutoff]
+    public_rows = price_integrity.listings(public_rows, state["updated_at"])
     public_rows = [{**row, **change_metadata(state, row), **deal_rating(row, public_sales),
                     "accident_category": accident_category(row.get("accident_history")),
                     "rust_location": rust_location_evidence(row, state),
-                    "price_history": asking_price_history(state, row)} for row in public_rows]
+                    "price_history": [] if row.get("price_review", {}).get("asking_price") else [{**point, "asking_price": None if price_integrity.reason(row, "asking_price", point["asking_price"]) else point["asking_price"]} for point in asking_price_history(state, row)]} for row in public_rows]
     places, zips = load_location_points()
     public_rows = [{**row, **listing_coordinates(row, places, zips)} for row in public_rows]
     if cache_photos:
@@ -1729,7 +1733,7 @@ def save(root, state, health, changes, cache_photos=False):
             "source": "Collected confirmed sales (historical coverage primarily Bring a Trailer)",
             "window_months": 24,
             "sales": public_sales,
-            "results": [{**{key: row.get(key) for key in ("source", "listing_url", "year", "make", "model", "mileage", "city", "state", "exterior_color")}, "sale_price": row.get("sold_price") if row["status"] == "sold" else row.get("current_bid"),
+            "results": [{**{key: row.get(key) for key in ("source", "listing_url", "year", "make", "model", "mileage", "city", "state", "exterior_color", "currency")}, "sale_price": row.get("sold_price") if row["status"] == "sold" else row.get("current_bid"),
                          "sold_at": str(row.get("sold_at") or row.get("auction_result_at") or "")[:10],
                          "outcome": "sold" if row["status"] == "sold" else "unsold"}
                         for row in rows if ((row["status"] == "sold" and isinstance(row.get("sold_price"), (int, float)) and row["sold_price"] > 0) or (row["source"] == "bringatrailer" and row["status"] == "ended"))
@@ -1738,6 +1742,7 @@ def save(root, state, health, changes, cache_photos=False):
         "listings": [{key: row.get(key) for key in public_fields} for row in public_rows],
         "vehicles": public_vehicles,
     }
+    public_inventory["market_history"]["results"] = [price_integrity.clean(result, state["updated_at"]) for result in public_inventory["market_history"]["results"]]
     temp = web / "inventory.json.tmp"
     temp.write_text(json.dumps(public_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     temp.replace(web / "inventory.json")

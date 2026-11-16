@@ -25,9 +25,9 @@
       if (Number.isFinite(first) && inside(new Date(first).toISOString())) found.push({type:"new", at:new Date(first).toISOString(),row:active[0],key});
       for (const row of active) {
         for (const at of row.reappeared_at || []) if (inside(at)) found.push({type:"returned",at,row,key});
-        if (row.category !== "retail") continue;
-        const prices = (row.price_history || []).filter(p=>Number.isFinite(p.asking_price) && p.asking_price>0 && Number.isFinite(time(p.observed_at))).slice().sort((a,b)=>time(a.observed_at)-time(b.observed_at));
-        for (let i=1;i<prices.length;i++) if (prices[i].asking_price < prices[i-1].asking_price && inside(prices[i].observed_at))
+        if (row.category !== "retail" || row.price_review?.asking_price) continue;
+        const prices = (row.price_history || []).filter(p=>Number.isFinite(time(p.observed_at))).slice().sort((a,b)=>time(a.observed_at)-time(b.observed_at));
+        for (let i=1;i<prices.length;i++) if (Number.isFinite(prices[i].asking_price) && Number.isFinite(prices[i-1].asking_price) && prices[i].asking_price < prices[i-1].asking_price && inside(prices[i].observed_at))
           found.push({type:"drop",at:prices[i].observed_at,row,key,before:prices[i-1].asking_price,after:prices[i].asking_price});
       }
     }

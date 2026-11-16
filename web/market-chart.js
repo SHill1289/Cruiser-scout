@@ -28,13 +28,14 @@ function renderMarketFacets(suffix="") {
 }
 function marketResultLabel(row) {
   return (row.comparisonSet?"Set "+row.comparisonSet+" · ":"")+row.year+" "+CruiserFilters.modelLabel(row.model)+" · "+(row.mileage==null?"Mileage unavailable":integer.format(row.mileage)+" mi")+" · "+
-    (Number.isFinite(row.sale_price)?money.format(row.sale_price):"Price unavailable")+" · "+(row.outcome==="unsold"?"Reserve not met":"Sold");
+    (row.price_review?.sale_price?"Price needs review":Number.isFinite(row.sale_price)?money.format(row.sale_price):"Price unavailable")+" · "+(row.outcome==="unsold"?"Reserve not met":"Sold");
 }
 function marketResultCard(row) {
   const card=text("article","market-result","");
   const link=text("a","",marketResultLabel(row));
   link.href=row.listing_url;link.target="_blank";link.rel="noopener noreferrer";
   card.append(link,text("p","",row.sold_at+" · "+row.color_name+" · "+([row.city,row.state].filter(Boolean).join(", ")||"Location unavailable")));
+  if(row.price_review?.sale_price) card.append(text("p","price-review-note",row.price_review.sale_price + ". Excluded from market calculations."));
   return card;
 }
 function renderMarketChart(rows, comparisonRows=null) {
@@ -48,7 +49,7 @@ function renderMarketChart(rows, comparisonRows=null) {
   const mode=document.getElementById("market-axis").value;
   const points=rows.filter(r=>Number.isFinite(r.sale_price)&&r.sale_price>0&&(mode==="date"?Number.isFinite(Date.parse(r.sold_at)):Number.isFinite(r.mileage)));
   document.getElementById("market-chart-title").textContent=mode==="date"?"Sale price over time":"Sale price vs. mileage";
-  document.getElementById("market-chart-count").textContent=rows.length+" matching results · "+points.length+" plotted"+(rows.length>points.length?" · "+(rows.length-points.length)+" missing "+(mode==="date"?"price or date":"price or mileage"):"");
+  document.getElementById("market-chart-count").textContent=rows.length+" matching results · "+points.length+" plotted"+(rows.length>points.length?" · "+(rows.length-points.length)+" with missing or excluded "+(mode==="date"?"price or date":"price or mileage"):"");
   document.getElementById("market-results-list").replaceChildren(...rows.slice().sort((a,b)=>b.sold_at.localeCompare(a.sold_at)).map(marketResultCard));
   holder.replaceChildren();
   detail.textContent="Select a point to see its year, mileage, color, location, and sale result.";

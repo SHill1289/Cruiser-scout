@@ -1,0 +1,128 @@
+[
+  {
+    "name": "monthly-sized asking price",
+    "row": {
+      "asking_price": 349
+    },
+    "field": "asking_price",
+    "flag": true
+  },
+  {
+    "name": "zero placeholder",
+    "row": {
+      "asking_price": 0
+    },
+    "field": "asking_price",
+    "flag": true
+  },
+  {
+    "name": "negative sale",
+    "row": {
+      "sale_price": -5000
+    },
+    "field": "sale_price",
+    "flag": true
+  },
+  {
+    "name": "boolean amount",
+    "row": {
+      "asking_price": true
+    },
+    "field": "asking_price",
+    "flag": true
+  },
+  {
+    "name": "foreign currency",
+    "row": {
+      "sale_price": 34000,
+      "currency": "CAD"
+    },
+    "field": "sale_price",
+    "flag": true
+  },
+  {
+    "name": "premium low-mileage sale",
+    "row": {
+      "sale_price": 120000
+    },
+    "field": "sale_price",
+    "flag": false
+  },
+  {
+    "name": "unusual high placeholder",
+    "row": {
+      "asking_price": 999999
+    },
+    "field": "asking_price",
+    "flag": true
+  },
+  {
+    "name": "deposit in description",
+    "row": {
+      "asking_price": 5000,
+      "source_description": "$5,000 down with approved credit"
+    },
+    "field": "asking_price",
+    "flag": true
+  },
+  {
+    "name": "financing alongside real price",
+    "row": {
+      "asking_price": 35000,
+      "source_description": "$599/mo or $35,000 cash."
+    },
+    "field": "asking_price",
+    "flag": false
+  },
+  {
+    "name": "fresh low opening bid",
+    "row": {
+      "current_bid": 500,
+      "category": "auction",
+      "status": "active",
+      "bid_observed_at": "2026-11-16T11:00:00Z",
+      "auction_ends_at": "2026-11-17T12:00:00Z"
+    },
+    "field": "current_bid",
+    "flag": false
+  },
+  {
+    "name": "stale bid",
+    "row": {
+      "current_bid": 21000,
+      "category": "auction",
+      "status": "active",
+      "bid_observed_at": "2026-11-14T11:00:00Z",
+      "auction_ends_at": "2026-11-17T12:00:00Z"
+    },
+    "field": "current_bid",
+    "flag": true
+  },
+  {
+    "name": "passed auction deadline",
+    "row": {
+      "current_bid": 21000,
+      "category": "auction",
+      "status": "active",
+      "bid_observed_at": "2026-11-16T11:00:00Z",
+      "auction_ends_at": "2026-11-16T11:30:00Z"
+    },
+    "field": "current_bid",
+    "flag": true
+  },
+  {
+    "name": "confirmed unsold high bid",
+    "row": {
+      "sale_price": 500,
+      "outcome": "unsold"
+    },
+    "field": "sale_price",
+    "flag": false
+  },
+  {
+    "name": "missing amount",
+    "row": {},
+    "field": "asking_price",
+    "flag": false
+  }
+]
