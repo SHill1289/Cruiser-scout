@@ -1,7 +1,9 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const { salesFor, mileageBand } = require("../web/deal-comparables.js");
-const inventory = require("../web/inventory.json");
+const Prices = require("../web/price-integrity.js");
+const Fees = require("../web/auction-fees.js");
+const inventory = Fees.prepare(Prices.prepare(require("../web/inventory.json")), Prices);
 
 test("every published rating exposes precisely its sale count and median", () => {
   const rated = inventory.listings.filter(row => row.deal_quality);

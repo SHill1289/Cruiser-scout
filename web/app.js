@@ -131,7 +131,7 @@ function priceLabel(row) {
   if (row.price_review?.[CruiserPrices.fieldFor(row)]) return "Price needs review";
   const amount = listingPrice(row);
   if (amount == null) return "Price unavailable";
-  if (row.status === "sold") return `${money.format(amount)} sold`;
+  if (row.status === "sold") return `${row.auction_fee_included ? CruiserAuctionFees.format(amount) : money.format(amount)} sold${row.auction_fee_included ? " incl. BaT fee" : ""}`;
   if (row.category === "auction" && row.status === "ended") return `${money.format(amount)} high bid`;
   if (row.category === "auction") return `${money.format(amount)} current bid`;
   return money.format(amount);
@@ -423,7 +423,7 @@ function openDealComparables(row) {
   const difference = Number(row.deal_percent_vs_median);
   const comparison = difference === 0 ? "matches the median" : `is ${Math.abs(difference)}% ${difference < 0 ? "below" : "above"} the median`;
   const explanation = text("p", "", `This asking price ${comparison}. The rating uses completed ${row.model || "LX470"} sales in this mileage band from the two-year inventory snapshot, updated ${formatMoment(generatedAt)}. All tracked model years are included.`);
-  const method = text("p", "comparables-method", "Great: at least 15% below the median. Fair: less than 15% below through 15% above. Bad: more than 15% above. Percentages are rounded to whole numbers. At least three sales are required. This price comparison does not adjust for model year, condition, maintenance, modifications, or fees.");
+  const method = text("p", "comparables-method", "Great: at least 15% below the median. Fair: less than 15% below through 15% above. Bad: more than 15% above. Percentages are rounded to whole numbers. At least three sales are required. This price comparison does not adjust for model year, condition, maintenance or modifications. BaT sales include the estimated buyer’s fee; taxes, transport and other fees are excluded.");
   holder.replaceChildren(summary, explanation, method);
   if (sales.length !== row.deal_comparable_count || median(sales.map(sale => sale.sale_price)) !== row.deal_median_price) {
     holder.append(text("p", "empty", "The sales data does not match this rating. Refresh the page to load a consistent inventory snapshot."));
@@ -434,7 +434,7 @@ function openDealComparables(row) {
     scroll.setAttribute("aria-label", "Comparable completed sales");
     const table = document.createElement("table");
     table.className = "comparables-table";
-    table.append(text("caption", "", "Sales used in this rating, newest first"));
+    table.append(text("caption", "", "Sales used in this rating, newest first · BaT buyer fees included"));
     const head = document.createElement("thead");
     const headings = document.createElement("tr");
     for (const label of ["Vehicle", "Sold", "Mileage", "Sale price", "Source"]) {
@@ -449,7 +449,7 @@ function openDealComparables(row) {
       line.append(text("td", "", `${sale.year || "Year unknown"} ${vehicleName(sale)}`),
         text("td", "", formatDay(sale.sold_at)),
         text("td", "", `${sale.mileage_is_approximate ? "≈ " : ""}${integer.format(sale.mileage)} mi`),
-        text("td", "", money.format(sale.sale_price)));
+        text("td", "", (sale.auction_fee_included ? CruiserAuctionFees.format(sale.sale_price) + ` incl. fee (${CruiserAuctionFees.format(sale.hammer_price)} bid + ${CruiserAuctionFees.format(sale.buyer_fee)})` : money.format(sale.sale_price))));
       const source = document.createElement("td");
       const link = text("a", "", `View sale · ${sale.source || "Source"} ↗`);
       link.href = sale.listing_url;
@@ -729,7 +729,7 @@ function renderCard(row, group) {
   mileageButton.addEventListener("click", showDetails);
   identity.append(mileageButton);
   const facts = text("div", "card-primary-facts", "");
-  facts.append(makeMetric(priceLabel(row), row.status === "sold" ? "Recorded sale price" : row.category === "auction" ? "Auction price" : "Asking price"));
+  facts.append(makeMetric(priceLabel(row), row.status === "sold" ? "Sale total" : row.category === "auction" ? "Auction price" : "Asking price"));
   const compactMileage = mileageButton.cloneNode(true);
   compactMileage.className = "card-mileage";
   compactMileage.addEventListener("click", showDetails);
@@ -752,7 +752,7 @@ function renderCard(row, group) {
   identity.append(maintenanceHighlights(row, group));
   card.append(identity);
 
-  const price = makeMetric(priceLabel(row), row.status === "sold" ? "Final recorded price" : row.category === "auction" ? "Auction price" : "Asking price");
+  const price = makeMetric(priceLabel(row), row.status === "sold" ? "Sale total" : row.category === "auction" ? "Auction price" : "Asking price");
   price.classList.add("price-metric");
   const mileage = makeMetric(row.mileage == null ? "Mileage unavailable" : `${integer.format(row.mileage)} mi`, "Mileage");
   mileage.classList.add("mileage-metric");
@@ -1052,7 +1052,8 @@ async function load() {
     const alerts = await emailLoad;
     emailHealth = alerts;
     if (alerts) data = CruiserEmailAlerts.merge(data, alerts);
-    data = CruiserPrices.prepare(data);
+    data = CruiserAuctionFees.prepare(CruiserPrices.prepare(data), CruiserPrices);
+    document.querySelector("#auction-calculator").replaceChildren(auctionCalculator());
     try {
       const colorResponse = await fetch("factory-colors.json", { cache: "no-cache" });
       if (colorResponse.ok) colorReference = await colorResponse.json();
@@ -1060,7 +1061,6 @@ async function load() {
       console.warn("Factory color reference unavailable", colorError);
     }
     inventory = Array.isArray(data.listings) ? data.listings : [];
-    vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     marketSales = Array.isArray(data.market_history?.sales) ? data.market_history.sales : [];
     marketSales = CruiserMarket.unique([...marketSales, ...CruiserMarket.completed(inventory)]);
     marketRows = CruiserMarket.unique([...marketSales, ...(data.market_history?.results || [])]).map(row => {
@@ -1068,7 +1068,10 @@ async function load() {
       return {...row, model:CruiserFilters.model(row.model || "LX470"), outcome:row.outcome || "sold",
         color_key:color.name || "unknown", color_name:color.name || "Color unavailable"};
     });
-    marketSales = marketRows.filter(row => (row.outcome || "sold") === "sold" && Number.isFinite(row.sale_price) && row.sale_price > 0);
+    const comparableCutoff = new Date(Date.parse(data.generated_at) - 731 * 86400000).toISOString().slice(0,10);
+    marketSales = marketRows.filter(row => (row.outcome || "sold") === "sold" && Number.isFinite(row.sale_price) && row.sale_price > 0 && String(row.sold_at || "").slice(0,10) >= comparableCutoff);
+    inventory = inventory.map(row => CruiserPrices.rate(row, marketSales));
+    vehicles = listingGroups(inventory, Array.isArray(data.vehicles) ? data.vehicles : []);
     sourceHealth = Array.isArray(data.source_health) ? data.source_health : [];
     generatedAt = new Date(data.generated_at || Date.now());
     let previousVisit = null;
@@ -1081,7 +1084,7 @@ async function load() {
     ui.collectionNotice.hidden = incomplete.length === 0;
     if (incomplete.length) document.querySelector("#collection-message").textContent = `Partial refresh: ${incomplete.length} source search${incomplete.length === 1 ? " was" : "es were"} incomplete (${incomplete.map(source => source.source).join(", ")}). Previously verified listings were preserved; check each listing's last verified time.`;
     window.CruiserRefresh.notice(data.generated_at, incomplete.length > 0);
-    ui.marketSource.textContent = (data.market_history?.source || "Completed sale results") + " · Prices needing review are excluded from charts and statistics; original records remain available.";
+    ui.marketSource.textContent = (data.market_history?.source || "Completed sale results") + " · BaT sales include estimated buyer fees. Prices needing review are excluded from charts and statistics; original records remain available.";
     ui.updated.textContent = formatDate(data.generated_at);
     document.querySelector("#sidebar-updated").textContent = formatDate(data.generated_at);
     ui.disclaimer.textContent = data.disclaimer || ui.disclaimer.textContent;
@@ -1408,11 +1411,12 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   overview.append(status);
   const keyFacts=text("div","detail-key-facts","");
   keyFacts.append(
-    researchFact(row.status === "sold" ? "Recorded sale price" : row.category === "auction" ? "Auction bid" : "Asking price",priceLabel(row)),
+    researchFact(row.status === "sold" ? "Sale total" : row.category === "auction" ? "Auction bid" : "Asking price",priceLabel(row)),
     researchFact("Mileage",row.mileage == null ? "Not reported" : `${integer.format(row.mileage)} mi`),
     researchFact("Location",[row.city,row.state].filter(Boolean).join(", ") || "Not reported")
   );
   overview.append(keyFacts,text("p","detail-note",`Last observed ${formatMoment(row.last_seen)} · ${row.title_status === "unknown" || !row.title_status ? "Title unverified" : row.title_status}`));
+  if (row.auction_fee_included) overview.append(text("p","auction-fee-breakdown",`Winning bid ${CruiserAuctionFees.format(row.hammer_price)} + estimated BaT buyer’s fee ${CruiserAuctionFees.format(row.buyer_fee)} = ${CruiserAuctionFees.format(row.sold_price)}. Excludes taxes, transport and other charges.`));
   const priceField = CruiserPrices.fieldFor(row);
   if (row.price_review?.[priceField]) {
     const review = text("section", "price-review-note", "");
@@ -1430,6 +1434,11 @@ function openResearch(group, row = sortRows([...group.listings])[0]) {
   overview.append(actions);body.append(overview,researchHighlights(row,group));
   const rating = dealBadge(row);
   if (rating) overview.append(rating);
+  if (row.category === "auction" && ["bringatrailer","carsandbids","carsbids"].includes(CruiserAuctionFees.sourceKey(row.source))) {
+    const calculator = text("details","auction-calculator-disclosure","");
+    calculator.append(text("summary","","Auction premium calculator"),auctionCalculator(row));
+    body.append(calculator);
+  }
   const layout = text("section", "research-section detail-photos", "");
   layout.append(text("h3", "", "Photos"));
   const media = text("div", "detail-media", "");

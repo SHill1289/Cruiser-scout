@@ -25,6 +25,7 @@ from bat_archive import archive_results as bat_archive_results, location as bat_
 from bat_photos import gallery_urls as bat_gallery_urls, SELECTION_VERSION as BAT_PHOTO_VERSION
 from photo_selection import select_photos
 import price_integrity
+from auction_fees import buyer_total
 
 ROOT = Path(__file__).resolve().parents[1]
 UA = "LX470Finder/1.0 (+https://github.com/SHill1289/lx470-finder)"
@@ -1314,7 +1315,7 @@ def deal_rating(row, sales, minimum_comparables=3):
         label, includes = "150k-250k", lambda value: 150_000 <= value < 250_000
     else:
         label, includes = "250k+", lambda value: value >= 250_000
-    prices = [sale.get("sale_price") for sale in sales
+    prices = [buyer_total(sale) for sale in sales
               if sale.get("model", "LX470") == row.get("model", "LX470")
               and isinstance(sale.get("mileage"), (int, float)) and includes(sale["mileage"])
               and isinstance(sale.get("sale_price"), (int, float))]

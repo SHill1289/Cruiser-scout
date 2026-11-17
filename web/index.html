@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="comparison.css" />
     <link rel="stylesheet" href="deal-comparables.css" />
+    <link rel="stylesheet" href="auction-fees.css" />
     <link rel="stylesheet" href="photo-touch.css" />
     <link rel="stylesheet" href="compact-cards.css" />
     <link rel="stylesheet" href="collection-health.css" />
@@ -396,6 +397,8 @@
               </div>
             </div>
             <div class="metric-grid" id="market-metrics"></div>
+            <details class="panel"><summary>Auction premium calculator</summary><div id="auction-calculator"></div></details>
+            <p class="auction-fee-breakdown">Completed BaT sales include the estimated buyer’s fee. Winning bids and fees are shown separately in results. Taxes, transport and other charges are excluded. Unsold auction results remain high bids without a fee.</p>
             <div class="panel market-controls" id="market-controls">
               <div><h2>Completed sales explorer · Set A</h2><p id="market-count">Loading completed sales…</p></div>
               <label>Period<select id="market-period"><option value="24">Last 24 months</option><option value="12">Last 12 months</option></select></label>
@@ -688,6 +691,8 @@
     <script src="photo-coverage.js" defer></script>
     <script src="photo-cards.js" defer></script>
     <script src="price-integrity.js" defer></script>
+    <script src="auction-fees.js" defer></script>
+    <script src="auction-calculator.js" defer></script>
     <script src="deal-comparables.js" defer></script>
     <script src="filter-normalization.js" defer></script>
     <script src="strong-filters.js" defer></script>
