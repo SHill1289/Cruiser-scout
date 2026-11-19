@@ -1,6 +1,6 @@
 {
   "source": "Collection watchdog",
   "status": "warning",
-  "checked_at": "2026-11-18T22:23:23.790880+00:00",
-  "detail": "No extra collection needed; normal scheduled retries and backfills continue. autodev: warning; see its source report. Existing retry/quota rules remain in effect."
+  "checked_at": "2026-11-19T07:36:17.330907+00:00",
+  "detail": "No extra collection needed; normal scheduled retries and backfills continue. cargurus-lx570-2016: partial; see its source report. Existing retry/quota rules remain in effect. autodev: warning; see its source report. Existing retry/quota rules remain in effect. listing photos: warning; see its source report. Existing retry/quota rules remain in effect."
 }
