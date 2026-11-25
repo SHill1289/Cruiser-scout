@@ -1,6 +1,6 @@
 {
   "source": "Collection watchdog",
   "status": "warning",
-  "checked_at": "2026-11-24T23:39:43.253148+00:00",
+  "checked_at": "2026-11-25T08:46:46.281637+00:00",
   "detail": "No extra collection needed; normal scheduled retries and backfills continue. autodev: warning; see its source report. Existing retry/quota rules remain in effect."
 }
